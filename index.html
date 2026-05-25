@@ -904,7 +904,8 @@
 
     /* ── PRICING 3-COL ── */
     .pricing-grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
-    .pricing-grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+    .pricing-grid-4 { display: grid; grid-template-columns: repeat(5, 1fr); gap: 14px; }
+    .pricing-card { padding: 28px 20px; }
     .pricing-toggle-wrap { display: flex; align-items: center; gap: 14px; justify-content: center; margin-bottom: 48px; }
     .toggle-label { font-size: 0.88rem; color: var(--muted); }
     .pricing-toggle {
@@ -921,8 +922,9 @@
     .pricing-toggle.active .toggle-knob { transform: translateX(24px); background: #060e08; }
     .toggle-save { font-size: 0.65rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--emerald); background: var(--emerald-dim); border: 1px solid var(--emerald-bd); padding: 2px 8px; border-radius: 100px; margin-left: 6px; }
     .free-badge { background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.12); color: var(--muted); }
-    @media (max-width: 1100px) { .pricing-grid-4 { grid-template-columns: repeat(2, 1fr); } }
-    @media (max-width: 600px) { .pricing-grid-4 { grid-template-columns: 1fr; } }
+    @media (max-width: 1300px) { .pricing-grid-4 { grid-template-columns: repeat(3, 1fr); } }
+    @media (max-width: 900px)  { .pricing-grid-4 { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 600px)  { .pricing-grid-4 { grid-template-columns: 1fr; } }
 
     /* ── FDA DISCLAIMER ── */
     .fda-wrap { background: var(--bg); border-top: 1px solid var(--border); }
@@ -1834,6 +1836,30 @@
 
       <div class="pricing-card fade-in">
         <div class="pricing-tier-badge elite">Emerald Elite</div>
+        <div class="pricing-name">Emerald Elite</div>
+        <div class="pricing-tagline">Advanced optimization for serious health investors</div>
+        <div class="pricing-price">
+          <div class="price-amount monthly-price"><sup>$</sup>200<span>/mo</span></div>
+          <div class="price-amount annual-price" style="display:none"><sup>$</sup>2,200<span>/yr</span></div>
+          <div class="price-note monthly-price">7-day free trial included</div>
+          <div class="price-note annual-price" style="display:none">Save $200 · 1 month free</div>
+        </div>
+        <ul class="pricing-features">
+          <li><span class="f-check">✓</span> Everything in Gold</li>
+          <li><span class="f-check">✓</span> Advanced biomarker analysis</li>
+          <li><span class="f-check">✓</span> Wearable deep sync</li>
+          <li><span class="f-check">✓</span> Parasite &amp; detox protocols</li>
+          <li><span class="f-check">✓</span> Methylation testing guidance</li>
+          <li><span class="f-check">✓</span> Early feature access</li>
+          <li><span class="f-cross">✕</span> Practitioner client profiles</li>
+          <li><span class="f-cross">✕</span> HIPAA BAA</li>
+        </ul>
+        <a class="pricing-btn ghost monthly-price" href="#">Start Free Trial</a>
+        <a class="pricing-btn ghost annual-price" href="#" style="display:none">Start Free Trial</a>
+      </div>
+
+      <div class="pricing-card fade-in">
+        <div class="pricing-tier-badge elite">Pro Suite</div>
         <div class="pricing-name">Practitioner Intelligence</div>
         <div class="pricing-tagline">Clinical-grade tools for practitioners &amp; high-performers</div>
         <div class="pricing-price">
@@ -1937,6 +1963,11 @@
         <span class="footer-badge">HIPAA-Inspired</span>
         <span class="footer-badge">15 Languages</span>
       </div>
+      <div style="margin-top:20px;font-size:0.82rem;color:var(--muted);line-height:1.9;">
+        <p style="margin:0;">📍 470 West Broad St, Ste 1062</p>
+        <p style="margin:0;">Columbus, Ohio 43215</p>
+        <p style="margin:4px 0 0;">📞 <a href="tel:2166168995" style="color:var(--muted);text-decoration:none;">216-616-8995</a> &nbsp;·&nbsp; 📠 Fax: 514-591-3583</p>
+      </div>
     </div>
     <div class="footer-col">
       <h4>Platform</h4>
@@ -1972,7 +2003,7 @@
     </div>
   </div>
   <div class="footer-bottom">
-    <p>© 2026 Emerald Wellness, Inc. · emeraldwellness.health · All rights reserved</p>
+    <p>© 2026 Emerald Wellness, Inc. · emeraldwellness.health · 470 West Broad St, Ste 1062, Columbus, OH 43215 · 216-616-8995 · All rights reserved</p>
     <div class="footer-bottom-badges">
       <span>HSA/FSA Eligible</span>
       <span>·</span>
