@@ -1,0 +1,258 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 440 540" width="440" height="540">
+  <defs>
+
+    <!-- Orbit path (centered at origin, electrons follow this) -->
+    <path id="orb" d="M 145,0 A 145,44 0 1 1 -145,0 A 145,44 0 1 1 145,0"/>
+
+    <!-- Gem gradients -->
+    <linearGradient id="gtop" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#bbf7d0"/>
+      <stop offset="55%" stop-color="#4ade80"/>
+      <stop offset="100%" stop-color="#22c55e"/>
+    </linearGradient>
+    <linearGradient id="gfront" x1="0%" y1="0%" x2="25%" y2="100%">
+      <stop offset="0%" stop-color="#4ade80"/>
+      <stop offset="45%" stop-color="#16a34a"/>
+      <stop offset="100%" stop-color="#064e3b"/>
+    </linearGradient>
+    <linearGradient id="gright" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#15803d"/>
+      <stop offset="100%" stop-color="#052e16"/>
+    </linearGradient>
+    <linearGradient id="gleft" x1="100%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#166534"/>
+      <stop offset="100%" stop-color="#064e3b"/>
+    </linearGradient>
+    <linearGradient id="gpav" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#065f46"/>
+      <stop offset="100%" stop-color="#022c22"/>
+    </linearGradient>
+
+    <!-- Electron gradient -->
+    <radialGradient id="eGrad" cx="35%" cy="30%" r="65%">
+      <stop offset="0%" stop-color="#d1fae5"/>
+      <stop offset="50%" stop-color="#4ade80"/>
+      <stop offset="100%" stop-color="#15803d"/>
+    </radialGradient>
+    <radialGradient id="eGrad2" cx="35%" cy="30%" r="65%">
+      <stop offset="0%" stop-color="#fef9c3"/>
+      <stop offset="50%" stop-color="#86efac"/>
+      <stop offset="100%" stop-color="#22c55e"/>
+    </radialGradient>
+    <radialGradient id="eGrad3" cx="35%" cy="30%" r="65%">
+      <stop offset="0%" stop-color="#a7f3d0"/>
+      <stop offset="50%" stop-color="#34d399"/>
+      <stop offset="100%" stop-color="#065f46"/>
+    </radialGradient>
+
+    <!-- Ambient nucleus glow -->
+    <radialGradient id="nucleusGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#4ade80" stop-opacity="0.30"/>
+      <stop offset="60%" stop-color="#22c55e" stop-opacity="0.10"/>
+      <stop offset="100%" stop-color="#22c55e" stop-opacity="0"/>
+    </radialGradient>
+
+    <!-- Deep space background glow -->
+    <radialGradient id="bgGlow" cx="50%" cy="43%" r="48%">
+      <stop offset="0%" stop-color="#052e16" stop-opacity="0.5"/>
+      <stop offset="100%" stop-color="#022c22" stop-opacity="0"/>
+    </radialGradient>
+
+    <!-- Particle glow filter -->
+    <filter id="pGlow" x="-120%" y="-120%" width="340%" height="340%">
+      <feGaussianBlur stdDeviation="5" result="b1"/>
+      <feGaussianBlur stdDeviation="2" result="b2" in="SourceGraphic"/>
+      <feMerge>
+        <feMergeNode in="b1"/>
+        <feMergeNode in="b2"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <filter id="orbitGlow" x="-5%" y="-5%" width="110%" height="110%">
+      <feGaussianBlur stdDeviation="1.5" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="gemGlow" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="9" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="textGlow">
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+
+    <style>
+      /* Electron orbital animations - different speeds and directions */
+      @keyframes orb1 { from{offset-distance:0%} to{offset-distance:100%} }
+
+      /* Nucleus pulse */
+      @keyframes nucleusPulse {
+        0%,100%{opacity:0.18} 50%{opacity:0.42}
+      }
+      /* Orbit shimmer */
+      @keyframes orbitShimmer {
+        0%,100%{opacity:0.22} 50%{opacity:0.42}
+      }
+      /* Particle trail fade */
+      @keyframes trailFade {
+        0%,100%{opacity:0.08} 50%{opacity:0.18}
+      }
+
+      .nucPulse { animation: nucleusPulse 3s ease-in-out infinite; }
+      .orbShim  { animation: orbitShimmer 4s ease-in-out infinite; }
+    </style>
+  </defs>
+
+  <!-- ═══ DEEP BACKGROUND ═══ -->
+  <circle cx="220" cy="222" r="180" fill="url(#bgGlow)"/>
+
+  <!-- ═══ ORBITAL RINGS ═══ -->
+
+  <!-- Orbit 1: near-horizontal (0°) -->
+  <g transform="translate(220,222) rotate(0)">
+    <ellipse cx="0" cy="0" rx="145" ry="44"
+             fill="none" stroke="#4ade80" stroke-width="0.8"
+             stroke-dasharray="4 6" opacity="0.28" class="orbShim"/>
+    <!-- Electron 1 -->
+    <circle r="7.5" fill="url(#eGrad)" filter="url(#pGlow)">
+      <animateMotion dur="4.8s" repeatCount="indefinite" keyPoints="0;1" keyTimes="0;1" calcMode="linear">
+        <mpath href="#orb"/>
+      </animateMotion>
+    </circle>
+    <!-- Small trailing electron -->
+    <circle r="3" fill="#86efac" opacity="0.45">
+      <animateMotion dur="4.8s" repeatCount="indefinite" keyPoints="0.05;1.05" keyTimes="0;1" calcMode="linear">
+        <mpath href="#orb"/>
+      </animateMotion>
+    </circle>
+  </g>
+
+  <!-- Orbit 2: tilted 62° -->
+  <g transform="translate(220,222) rotate(62)">
+    <ellipse cx="0" cy="0" rx="145" ry="44"
+             fill="none" stroke="#22c55e" stroke-width="0.8"
+             stroke-dasharray="4 6" opacity="0.22" class="orbShim"/>
+    <!-- Electron 2 -->
+    <circle r="7.5" fill="url(#eGrad2)" filter="url(#pGlow)">
+      <animateMotion dur="6.5s" repeatCount="indefinite" keyPoints="1;0" keyTimes="0;1" calcMode="linear">
+        <mpath href="#orb"/>
+      </animateMotion>
+    </circle>
+    <circle r="3" fill="#d1fae5" opacity="0.40">
+      <animateMotion dur="6.5s" repeatCount="indefinite" keyPoints="0.94;-0.06" keyTimes="0;1" calcMode="linear">
+        <mpath href="#orb"/>
+      </animateMotion>
+    </circle>
+  </g>
+
+  <!-- Orbit 3: tilted -62° -->
+  <g transform="translate(220,222) rotate(-62)">
+    <ellipse cx="0" cy="0" rx="145" ry="44"
+             fill="none" stroke="#16a34a" stroke-width="0.8"
+             stroke-dasharray="4 6" opacity="0.20" class="orbShim"/>
+    <!-- Electron 3 -->
+    <circle r="7.5" fill="url(#eGrad3)" filter="url(#pGlow)">
+      <animateMotion dur="8.8s" repeatCount="indefinite" keyPoints="0.33;1.33" keyTimes="0;1" calcMode="linear">
+        <mpath href="#orb"/>
+      </animateMotion>
+    </circle>
+    <circle r="3" fill="#a7f3d0" opacity="0.40">
+      <animateMotion dur="8.8s" repeatCount="indefinite" keyPoints="0.38;1.38" keyTimes="0;1" calcMode="linear">
+        <mpath href="#orb"/>
+      </animateMotion>
+    </circle>
+  </g>
+
+  <!-- ═══ NUCLEUS GLOW (behind gem) ═══ -->
+  <circle cx="220" cy="222" r="72" fill="url(#nucleusGlow)" filter="url(#gemGlow)" class="nucPulse"/>
+  <circle cx="220" cy="222" r="48" fill="#4ade80" opacity="0.06" class="nucPulse"/>
+
+  <!-- ═══ 3D EMERALD NUCLEUS GEM ═══ -->
+  <!-- Gem centered at 220,222 — about 110×140px total -->
+  <!-- Crown Top Face -->
+  <polygon points="220,160  272,188  265,212  220,222  175,212  168,188"
+           fill="url(#gtop)" filter="url(#gemGlow)"/>
+
+  <!-- Highlight strip on top -->
+  <polygon points="220,160  272,188  265,193  220,167  175,193  168,188"
+           fill="rgba(255,255,255,0.20)"/>
+
+  <!-- Inner table facet -->
+  <polygon points="220,172  262,193  256,209  220,216  184,209  178,193"
+           fill="none" stroke="rgba(255,255,255,0.25)" stroke-width="1"/>
+
+  <!-- Left upper face -->
+  <polygon points="168,188  175,212  160,228  148,208"
+           fill="url(#gleft)" opacity="0.9"/>
+
+  <!-- Right upper face -->
+  <polygon points="272,188  265,212  280,228  292,208"
+           fill="url(#gright)"/>
+
+  <!-- Front main face (crown) -->
+  <polygon points="175,212  265,212  272,252  168,252"
+           fill="url(#gfront)"/>
+
+  <!-- Girdle band -->
+  <polygon points="168,252  272,252  278,260  162,260"
+           fill="rgba(255,255,255,0.05)" stroke="rgba(255,255,255,0.16)" stroke-width="0.8"/>
+
+  <!-- Left side face -->
+  <polygon points="148,208  160,228  162,260  220,294  168,252"
+           fill="#0d4a27" opacity="0.85"/>
+
+  <!-- Right side face -->
+  <polygon points="292,208  280,228  278,260  220,294  272,252"
+           fill="#042018"/>
+
+  <!-- Pavilion (bottom to point) -->
+  <polygon points="168,252  272,252  278,260  162,260  220,294"
+           fill="url(#gpav)"/>
+
+  <!-- Facet lines - front face -->
+  <line x1="175" y1="212" x2="220" y2="252" stroke="rgba(255,255,255,0.14)" stroke-width="0.9"/>
+  <line x1="265" y1="212" x2="220" y2="252" stroke="rgba(255,255,255,0.14)" stroke-width="0.9"/>
+  <line x1="220" y1="160" x2="220" y2="222" stroke="rgba(255,255,255,0.12)" stroke-width="0.8"/>
+  <line x1="168" y1="188" x2="272" y2="188" stroke="rgba(255,255,255,0.10)" stroke-width="0.7"/>
+
+  <!-- Pavilion facet lines -->
+  <line x1="168" y1="252" x2="220" y2="294" stroke="rgba(255,255,255,0.09)" stroke-width="0.7"/>
+  <line x1="272" y1="252" x2="220" y2="294" stroke="rgba(255,255,255,0.09)" stroke-width="0.7"/>
+
+  <!-- Gem text -->
+  <text x="220" y="238" text-anchor="middle" dominant-baseline="middle"
+        font-family="Georgia, serif" font-size="18" font-weight="700"
+        fill="rgba(6,14,8,0.72)" letter-spacing="0.5">EW</text>
+
+  <!-- ═══ SMALL SATELLITE DOTS on orbits ═══ -->
+  <!-- Extra tiny electrons for richness -->
+  <circle cx="75"  cy="222" r="2.5" fill="#4ade80" opacity="0.35"/>
+  <circle cx="365" cy="222" r="2"   fill="#4ade80" opacity="0.25"/>
+  <circle cx="160" cy="120" r="2"   fill="#22c55e" opacity="0.30"/>
+  <circle cx="280" cy="316" r="2"   fill="#22c55e" opacity="0.28"/>
+
+  <!-- ═══ DECORATIVE ATOMS RING ═══ -->
+  <circle cx="220" cy="222" r="160" fill="none" stroke="#4ade80"
+          stroke-width="0.4" stroke-dasharray="1 12" opacity="0.18"/>
+
+  <!-- ═══ WORDMARK ═══ -->
+  <circle cx="220" cy="386" r="3" fill="#4ade80" opacity="0.7"/>
+  <line x1="90"  y1="394" x2="350" y2="394" stroke="#22c55e" stroke-width="0.5" opacity="0.28"/>
+
+  <text x="220" y="422" text-anchor="middle"
+        font-family="Georgia, 'Times New Roman', serif"
+        font-size="28" font-weight="700" letter-spacing="7"
+        fill="#4ade80" filter="url(#textGlow)">EMERALD</text>
+
+  <text x="220" y="452" text-anchor="middle"
+        font-family="Georgia, 'Times New Roman', serif"
+        font-size="14.5" font-weight="400" letter-spacing="10"
+        fill="#7a9880">WELLNESS</text>
+
+  <text x="220" y="478" text-anchor="middle"
+        font-family="Georgia, serif" font-size="10"
+        font-style="italic" letter-spacing="2.5"
+        fill="#4a6855">Health Intelligence</text>
+
+  <line x1="130" y1="492" x2="310" y2="492" stroke="#22c55e" stroke-width="0.4" opacity="0.18"/>
+</svg>
