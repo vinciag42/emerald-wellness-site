@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>HIPAA & BAA — Emerald Wellness</title>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg: #060e08; --emerald: #4ade80; --white: #f0f0eb; --muted: #7a9880; --border: rgba(255,255,255,0.07);
+    }
+    body { background: var(--bg); color: var(--white); font-family: 'DM Sans', sans-serif; font-size: 15px; line-height: 1.8; }
+    nav { display: flex; align-items: center; justify-content: space-between; padding: 20px 40px; border-bottom: 1px solid var(--border); }
+    .nav-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; font-size: 1.1rem; font-weight: 600; color: var(--white); }
+    .nav-back { color: var(--emerald); text-decoration: none; font-size: 13px; }
+    .nav-back:hover { text-decoration: underline; }
+    .page-wrap { max-width: 780px; margin: 0 auto; padding: 60px 32px 100px; }
+    .page-label { font-size: 11px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: var(--emerald); margin-bottom: 12px; }
+    h1 { font-family: 'Playfair Display', serif; font-size: 2.4rem; font-weight: 700; color: var(--white); margin-bottom: 8px; }
+    .updated { font-size: 13px; color: var(--muted); margin-bottom: 48px; }
+    h2 { font-family: 'Playfair Display', serif; font-size: 1.25rem; font-weight: 600; color: var(--emerald); margin: 40px 0 12px; }
+    p { color: #c8d8cc; margin-bottom: 16px; }
+    ul { padding-left: 20px; margin-bottom: 16px; }
+    li { color: #c8d8cc; margin-bottom: 8px; }
+    a { color: var(--emerald); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .info-box { background: rgba(74,222,128,0.06); border: 1px solid rgba(74,222,128,0.2); border-radius: 12px; padding: 24px 28px; margin: 32px 0; }
+    .info-box p { margin: 0; color: var(--white); }
+    .badge { display: inline-block; background: rgba(74,222,128,0.12); border: 1px solid rgba(74,222,128,0.25); border-radius: 20px; padding: 4px 14px; font-size: 12px; font-weight: 600; color: var(--emerald); letter-spacing: 1px; margin-bottom: 24px; }
+    .divider { border: none; border-top: 1px solid var(--border); margin: 48px 0; }
+    footer { text-align: center; padding: 32px; font-size: 12px; color: var(--muted); border-top: 1px solid var(--border); }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="index.html">
+    <img src="logo-atom.svg" alt="Emerald Wellness" width="32" height="32" style="display:block;"/>
+    <span><span style="color:var(--emerald)">Emerald</span> Wellness</span>
+  </a>
+  <a class="nav-back" href="index.html">← Back to Home</a>
+</nav>
+
+<div class="page-wrap">
+  <div class="page-label">Legal</div>
+  <h1>HIPAA &amp; BAA</h1>
+  <p class="updated">Last updated: May 25, 2026</p>
+
+  <div class="badge">Practitioner Intelligence Plan</div>
+
+  <div class="info-box">
+    <p>A Business Associate Agreement (BAA) is available to all Practitioner Intelligence subscribers. Contact us at <a href="mailto:hipaa@emeraldwellness.health">hipaa@emeraldwellness.health</a> to request your BAA before storing any Protected Health Information (PHI) on our platform.</p>
+  </div>
+
+  <h2>Our Approach to HIPAA</h2>
+  <p>Emerald Wellness is committed to supporting our practitioner-tier subscribers in meeting their HIPAA obligations. For individual consumers using our platform for personal health tracking, Emerald Wellness operates as a personal health record (PHR) platform, which is generally not subject to HIPAA's Privacy Rule when data is collected directly from the individual.</p>
+  <p>For healthcare providers and practitioners who use our platform to manage client health information, Emerald Wellness acts as a Business Associate and provides a Business Associate Agreement (BAA) upon request.</p>
+
+  <h2>Who Needs a BAA</h2>
+  <p>You need a BAA with Emerald Wellness if you are:</p>
+  <ul>
+    <li>A covered entity under HIPAA (licensed healthcare provider, health plan, or healthcare clearinghouse)</li>
+    <li>Using our platform to store, process, or transmit Protected Health Information (PHI) on behalf of your patients or clients</li>
+    <li>A Practitioner Intelligence subscriber using client profile features</li>
+  </ul>
+
+  <h2>What We Cover</h2>
+  <p>Under our BAA, Emerald Wellness agrees to:</p>
+  <ul>
+    <li>Use and disclose PHI only as permitted under the agreement and applicable law</li>
+    <li>Implement appropriate safeguards to protect PHI</li>
+    <li>Report any breach of unsecured PHI to the covered entity</li>
+    <li>Ensure that subcontractors who handle PHI agree to the same restrictions</li>
+    <li>Return or destroy PHI upon termination of the agreement</li>
+    <li>Make PHI available for access, amendment, and accounting of disclosures as required</li>
+  </ul>
+
+  <h2>Security Safeguards</h2>
+  <p>Emerald Wellness implements the following technical and administrative safeguards:</p>
+  <ul>
+    <li><strong>Encryption:</strong> All data is encrypted in transit (TLS 1.2+) and at rest (AES-256)</li>
+    <li><strong>Access controls:</strong> Role-based access, multi-factor authentication support</li>
+    <li><strong>Audit logging:</strong> Access to health records is logged and auditable</li>
+    <li><strong>Data isolation:</strong> Client health records are isolated per practitioner account</li>
+    <li><strong>Breach notification:</strong> We will notify you within 60 days of discovering a breach affecting your PHI</li>
+  </ul>
+
+  <h2>Individual Consumers</h2>
+  <p>If you are an individual using Emerald Wellness for personal health tracking (not a healthcare provider), your data is governed by our <a href="privacy-policy.html">Privacy Policy</a>. Personal health records created and managed directly by the individual are generally exempt from HIPAA's Privacy Rule under the PHR exemption.</p>
+
+  <h2>Request a BAA</h2>
+  <p>To request a Business Associate Agreement, contact us:</p>
+  <ul>
+    <li><strong>Email:</strong> <a href="mailto:hipaa@emeraldwellness.health">hipaa@emeraldwellness.health</a></li>
+    <li><strong>Mail:</strong> Emerald Wellness, Inc., 470 West Broad St, Ste 1062, Columbus, Ohio 43215</li>
+    <li><strong>Phone:</strong> <a href="tel:2166168995">216-616-8995</a></li>
+  </ul>
+  <p>Please include your full name, practice name, NPI number (if applicable), and the email address associated with your Emerald Wellness account.</p>
+
+  <hr class="divider"/>
+  <p style="font-size:13px;color:var(--muted);">This page does not constitute legal advice. Consult a healthcare attorney for guidance specific to your HIPAA compliance obligations.</p>
+</div>
+
+<footer>
+  <p>© 2026 Emerald Wellness, Inc. · <a href="index.html">Home</a> · <a href="terms-of-service.html">Terms</a> · <a href="privacy-policy.html">Privacy</a> · <a href="hipaa.html">HIPAA</a> · <a href="medical-disclaimer.html">Medical Disclaimer</a></p>
+</footer>
+
+</body>
+</html>
