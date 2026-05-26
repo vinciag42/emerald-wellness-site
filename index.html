@@ -3,30 +3,172 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Emerald Wellness — Coming Soon</title>
+  <title>Emerald Wellness — Launching Soon</title>
+  <meta name="description" content="Emerald Wellness is a unified health intelligence platform bringing together peptide protocols, biomarker analysis, wearable sync, and personalized supplement guidance. Join the waitlist." />
+  <meta property="og:title" content="Emerald Wellness — Launching Soon" />
+  <meta property="og:description" content="Health Intelligence Platform — personalized supplement protocols, peptide guidance, biomarker analysis." />
+  <meta property="og:type" content="website" />
   <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=DM+Sans:wght@300;400;500;700&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     body {
-      min-height: 100vh; background: #060e08; display: flex; flex-direction: column;
-      align-items: center; justify-content: center; font-family: Georgia, serif;
-      padding: 32px 24px; text-align: center;
+      min-height: 100vh;
+      background: #060e08;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      font-family: 'DM Sans', Georgia, sans-serif;
+      padding: 32px 20px;
+      text-align: center;
+      color: #f0f0eb;
     }
-    .gem { font-size: 52px; margin-bottom: 24px; }
-    h1 { color: #4ade80; font-size: clamp(1.8rem, 5vw, 3rem); font-weight: 700;
-         letter-spacing: 6px; margin: 0 0 8px; text-transform: uppercase; }
-    .sub { color: #7a9880; font-size: 12px; letter-spacing: 3px; margin: 0 0 48px;
-           text-transform: uppercase; }
+    .gem { font-size: 52px; margin-bottom: 20px; }
+    h1 {
+      font-family: 'Cinzel', serif;
+      color: #4ade80;
+      font-size: clamp(1.4rem, 4.5vw, 2.4rem);
+      font-weight: 700;
+      letter-spacing: 6px;
+      margin: 0 0 6px;
+      text-transform: uppercase;
+    }
+    .sub {
+      color: #7a9880;
+      font-size: 11px;
+      letter-spacing: 3px;
+      margin: 0 0 44px;
+      text-transform: uppercase;
+      font-family: 'Cinzel', serif;
+    }
     .card {
-      border: 1px solid rgba(74,222,128,0.2); border-radius: 16px; padding: 40px;
-      max-width: 500px; width: 100%; background: rgba(74,222,128,0.04);
+      border: 1px solid rgba(74,222,128,0.2);
+      border-radius: 18px;
+      padding: 36px 32px;
+      max-width: 520px;
+      width: 100%;
+      background: rgba(74,222,128,0.04);
     }
-    .card h2 { color: #a8c8b0; font-size: 20px; font-weight: 600; margin: 0 0 14px; }
-    .card p { color: #7a9880; font-size: 14px; line-height: 1.8; margin: 0 0 8px; }
-    .divider { border: none; border-top: 1px solid rgba(74,222,128,0.1); margin: 28px 0; }
-    .contact { color: #4a6855; font-size: 12px; line-height: 2; }
+    .card h2 {
+      font-family: Georgia, serif;
+      color: #a8c8b0;
+      font-size: 21px;
+      font-weight: 600;
+      margin: 0 0 10px;
+    }
+    .card .tagline {
+      color: #7a9880;
+      font-size: 13.5px;
+      line-height: 1.8;
+      margin: 0 0 28px;
+      font-weight: 300;
+    }
+
+    /* Waitlist form */
+    .waitlist-section {
+      background: rgba(74,222,128,0.06);
+      border: 1px solid rgba(74,222,128,0.18);
+      border-radius: 12px;
+      padding: 22px 20px;
+      margin-bottom: 24px;
+    }
+    .waitlist-section .label {
+      font-family: 'Cinzel', serif;
+      font-size: 10px;
+      letter-spacing: 2px;
+      color: #86efac;
+      text-transform: uppercase;
+      font-weight: 700;
+      margin: 0 0 14px;
+    }
+    .form-row {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .form-row input {
+      width: 100%;
+      padding: 12px 16px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 10px;
+      color: #f0f0eb;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 13px;
+      outline: none;
+      transition: border-color .2s;
+    }
+    .form-row input:focus { border-color: rgba(74,222,128,0.4); }
+    .form-row input::placeholder { color: #4a6855; }
+    .btn-submit {
+      width: 100%;
+      padding: 13px;
+      background: linear-gradient(135deg, #22c55e, #4ade80);
+      color: #060e08;
+      border: none;
+      border-radius: 10px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 14px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: opacity .2s;
+      margin-top: 4px;
+    }
+    .btn-submit:hover { opacity: .88; }
+    .btn-submit:disabled { opacity: .5; cursor: not-allowed; }
+    .success-msg {
+      display: none;
+      color: #86efac;
+      font-size: 14px;
+      padding: 12px;
+      background: rgba(74,222,128,0.08);
+      border: 1px solid rgba(74,222,128,0.2);
+      border-radius: 10px;
+      margin-top: 10px;
+    }
+    .error-msg {
+      display: none;
+      color: #f87171;
+      font-size: 13px;
+      padding: 10px;
+      background: rgba(248,113,113,0.08);
+      border: 1px solid rgba(248,113,113,0.2);
+      border-radius: 10px;
+      margin-top: 10px;
+    }
+
+    .features {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      justify-content: center;
+      margin: 0 0 24px;
+    }
+    .feature-pill {
+      background: rgba(74,222,128,0.07);
+      border: 1px solid rgba(74,222,128,0.15);
+      border-radius: 20px;
+      padding: 5px 13px;
+      font-size: 12px;
+      color: #7a9880;
+      white-space: nowrap;
+    }
+
+    .divider { border: none; border-top: 1px solid rgba(74,222,128,0.1); margin: 24px 0; }
+    .contact { color: #4a6855; font-size: 12px; line-height: 2.2; }
     .contact a { color: #4ade80; text-decoration: none; }
-    footer { color: rgba(74,222,128,0.25); font-size: 11px; margin-top: 48px; letter-spacing: 1px; }
+
+    footer {
+      color: rgba(74,222,128,0.2);
+      font-size: 10.5px;
+      margin-top: 44px;
+      letter-spacing: 1px;
+      font-family: 'Cinzel', serif;
+    }
+    footer a { color: rgba(74,222,128,0.35); text-decoration: none; }
+    footer a:hover { color: #4ade80; }
   </style>
 </head>
 <body>
@@ -36,8 +178,29 @@
 
   <div class="card">
     <h2>Launching Soon</h2>
-    <p>We are building something extraordinary — a unified health intelligence platform that brings together peptide protocols, biomarker analysis, wearable sync, and personalized guidance.</p>
-    <p>Registration opens soon.</p>
+    <p class="tagline">We are building something extraordinary — a unified health intelligence platform that brings together peptide protocols, biomarker analysis, wearable sync, and personalized supplement guidance.</p>
+
+    <div class="features">
+      <span class="feature-pill">💊 Supplement Intelligence</span>
+      <span class="feature-pill">💉 Peptide Protocols</span>
+      <span class="feature-pill">🔬 Biomarker Analysis</span>
+      <span class="feature-pill">⌚ Wearable Sync</span>
+      <span class="feature-pill">🧬 Longevity Protocols</span>
+      <span class="feature-pill">🫀 Health AI Chat</span>
+    </div>
+
+    <!-- Waitlist Form -->
+    <div class="waitlist-section">
+      <p class="label">✦ Join the Waitlist — Be First</p>
+      <div class="form-row">
+        <input type="text" id="wl-name" placeholder="Your name (optional)" autocomplete="name" />
+        <input type="email" id="wl-email" placeholder="Your email address" required autocomplete="email" />
+        <button class="btn-submit" id="wl-btn" onclick="joinWaitlist()">Get Early Access →</button>
+      </div>
+      <div class="success-msg" id="wl-success">✓ You're on the list! We'll be in touch soon.</div>
+      <div class="error-msg" id="wl-error">Something went wrong. Please try again.</div>
+    </div>
+
     <hr class="divider"/>
     <div class="contact">
       <p>📍 470 West Broad St, Ste 1062 · Columbus, Ohio 43215</p>
@@ -46,6 +209,60 @@
     </div>
   </div>
 
-  <footer>© 2026 Emerald Wellness, Inc. · All rights reserved</footer>
+  <footer>
+    © 2026 Emerald Wellness, Inc. · All rights reserved &nbsp;·&nbsp;
+    <a href="privacy-policy.html">Privacy</a> &nbsp;·&nbsp;
+    <a href="terms-of-service.html">Terms</a> &nbsp;·&nbsp;
+    <a href="medical-disclaimer.html">Medical Disclaimer</a>
+  </footer>
+
+  <script>
+    async function joinWaitlist() {
+      const email = document.getElementById('wl-email').value.trim();
+      const name  = document.getElementById('wl-name').value.trim();
+      const btn   = document.getElementById('wl-btn');
+      const successEl = document.getElementById('wl-success');
+      const errorEl   = document.getElementById('wl-error');
+
+      if (!email || !email.includes('@')) {
+        document.getElementById('wl-email').style.borderColor = 'rgba(248,113,113,0.5)';
+        return;
+      }
+
+      btn.disabled = true;
+      btn.textContent = 'Joining…';
+      successEl.style.display = 'none';
+      errorEl.style.display   = 'none';
+
+      try {
+        const res = await fetch('https://emerald-wellness-app.vercel.app/api/waitlist', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ email, name, source: 'landing' }),
+        });
+        const data = await res.json();
+        if (data.success) {
+          successEl.style.display = 'block';
+          document.getElementById('wl-email').value = '';
+          document.getElementById('wl-name').value  = '';
+          btn.textContent = '✓ You\'re on the list!';
+        } else {
+          throw new Error(data.error || 'Failed');
+        }
+      } catch (err) {
+        errorEl.textContent = err.message === 'Failed to fetch'
+          ? 'Could not connect. Please try again later.'
+          : 'Something went wrong. Please try again.';
+        errorEl.style.display = 'block';
+        btn.disabled = false;
+        btn.textContent = 'Get Early Access →';
+      }
+    }
+
+    // Allow Enter key in email field
+    document.getElementById('wl-email').addEventListener('keydown', function(e) {
+      if (e.key === 'Enter') joinWaitlist();
+    });
+  </script>
 </body>
 </html>

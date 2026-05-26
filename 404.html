@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Page Not Found — Emerald Wellness</title>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=DM+Sans:wght@300;400;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      min-height: 100vh;
+      background: #060e08;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      font-family: 'DM Sans', sans-serif;
+      padding: 32px 24px;
+      text-align: center;
+      color: #f0f0eb;
+    }
+    .code {
+      font-family: 'Cinzel', serif;
+      font-size: clamp(80px, 20vw, 140px);
+      font-weight: 700;
+      color: rgba(74,222,128,0.12);
+      letter-spacing: -4px;
+      line-height: 1;
+      margin-bottom: 8px;
+      position: relative;
+    }
+    .gem-overlay {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%,-50%);
+      font-size: 52px;
+    }
+    h1 {
+      font-family: 'Cinzel', serif;
+      color: #a8c8b0;
+      font-size: clamp(1.1rem, 3vw, 1.5rem);
+      font-weight: 600;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      margin: 16px 0 10px;
+    }
+    p {
+      color: #7a9880;
+      font-size: 14px;
+      font-weight: 300;
+      margin: 0 0 32px;
+      max-width: 380px;
+      line-height: 1.7;
+    }
+    .actions {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .btn-primary {
+      background: linear-gradient(135deg, #22c55e, #4ade80);
+      color: #060e08;
+      padding: 12px 24px;
+      border-radius: 10px;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 13px;
+      transition: opacity .2s;
+    }
+    .btn-primary:hover { opacity: .85; }
+    .btn-ghost {
+      background: transparent;
+      color: #7a9880;
+      border: 1px solid rgba(255,255,255,0.1);
+      padding: 12px 24px;
+      border-radius: 10px;
+      text-decoration: none;
+      font-size: 13px;
+      transition: border-color .2s, color .2s;
+    }
+    .btn-ghost:hover { border-color: rgba(74,222,128,0.3); color: #4ade80; }
+    footer { color: rgba(74,222,128,0.2); font-size: 11px; margin-top: 60px; font-family: 'Cinzel', serif; letter-spacing: 1px; }
+  </style>
+</head>
+<body>
+  <div class="code" style="position:relative;">
+    404
+    <span class="gem-overlay">💎</span>
+  </div>
+  <h1>Page Not Found</h1>
+  <p>The page you're looking for doesn't exist or has been moved. Let's get you back on track.</p>
+  <div class="actions">
+    <a href="index.html" class="btn-primary">← Back to Home</a>
+    <a href="mailto:support@emeraldwellness.health" class="btn-ghost">Contact Support</a>
+  </div>
+  <footer>© 2026 Emerald Wellness, Inc.</footer>
+</body>
+</html>
