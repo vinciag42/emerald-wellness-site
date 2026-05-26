@@ -1,0 +1,224 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 540" width="400" height="540">
+  <defs>
+    <!-- Gem gradients -->
+    <linearGradient id="gTop" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#bbf7d0"/>
+      <stop offset="60%" stop-color="#4ade80"/>
+      <stop offset="100%" stop-color="#22c55e"/>
+    </linearGradient>
+    <linearGradient id="gFront" x1="0%" y1="0%" x2="30%" y2="100%">
+      <stop offset="0%" stop-color="#4ade80"/>
+      <stop offset="40%" stop-color="#16a34a"/>
+      <stop offset="100%" stop-color="#064e3b"/>
+    </linearGradient>
+    <linearGradient id="gRight" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#15803d"/>
+      <stop offset="100%" stop-color="#052e16"/>
+    </linearGradient>
+    <linearGradient id="gLeft" x1="100%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#166534"/>
+      <stop offset="100%" stop-color="#064e3b"/>
+    </linearGradient>
+    <linearGradient id="gPavFront" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#065f46"/>
+      <stop offset="100%" stop-color="#022c22"/>
+    </linearGradient>
+    <linearGradient id="gPavRight" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#042a1e"/>
+      <stop offset="100%" stop-color="#011a12"/>
+    </linearGradient>
+
+    <!-- Water gradients -->
+    <linearGradient id="gWater" x1="0%" y1="0%" x2="10%" y2="100%">
+      <stop offset="0%" stop-color="#4ade80" stop-opacity="0.9"/>
+      <stop offset="70%" stop-color="#22c55e" stop-opacity="0.5"/>
+      <stop offset="100%" stop-color="#15803d" stop-opacity="0.1"/>
+    </linearGradient>
+    <radialGradient id="gPool" cx="50%" cy="35%" r="60%">
+      <stop offset="0%" stop-color="#4ade80" stop-opacity="0.55"/>
+      <stop offset="60%" stop-color="#16a34a" stop-opacity="0.25"/>
+      <stop offset="100%" stop-color="#052e16" stop-opacity="0.1"/>
+    </radialGradient>
+    <radialGradient id="gGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#4ade80" stop-opacity="0.3"/>
+      <stop offset="100%" stop-color="#4ade80" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="gMist" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#86efac" stop-opacity="0.25"/>
+      <stop offset="100%" stop-color="#22c55e" stop-opacity="0"/>
+    </radialGradient>
+
+    <!-- Filters -->
+    <filter id="fGlow" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="8" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="fSoftGlow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="4" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="fDropShadow">
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#22c55e" flood-opacity="0.3"/>
+    </filter>
+
+    <!-- Water animation -->
+    <style>
+      @keyframes flowA { 0%{opacity:0;transform:translateY(-8px)} 20%{opacity:0.9} 80%{opacity:0.6} 100%{opacity:0;transform:translateY(130px)} }
+      @keyframes flowB { 0%{opacity:0;transform:translateY(-4px)} 20%{opacity:0.7} 80%{opacity:0.4} 100%{opacity:0;transform:translateY(110px)} }
+      @keyframes rippleAnim { 0%{opacity:0.5;r:8px} 100%{opacity:0;r:72px} }
+      @keyframes shimmerAnim { 0%,100%{opacity:0.2} 50%{opacity:0.55} }
+      @keyframes mistAnim { 0%,100%{opacity:0.15} 50%{opacity:0.35} }
+      @keyframes gemShine { 0%,100%{opacity:0.08} 50%{opacity:0.22} }
+      @keyframes dropFall { 0%{opacity:0;cy:232px} 60%{opacity:0.7} 100%{opacity:0;cy:320px} }
+      .fa{animation:flowA 2s ease-in infinite}
+      .fb{animation:flowA 2s ease-in 0.65s infinite}
+      .fc{animation:flowA 2s ease-in 1.3s infinite}
+      .fd{animation:flowB 2s ease-in 0.32s infinite}
+      .fe{animation:flowB 2s ease-in 0.98s infinite}
+      .ff{animation:flowB 2s ease-in 1.6s infinite}
+      .ra{animation:rippleAnim 2.8s ease-out infinite}
+      .rb{animation:rippleAnim 2.8s ease-out 0.9s infinite}
+      .rc{animation:rippleAnim 2.8s ease-out 1.9s infinite}
+      .sh{animation:shimmerAnim 3s ease-in-out infinite}
+      .ms{animation:mistAnim 2.5s ease-in-out infinite}
+      .gs{animation:gemShine 4s ease-in-out infinite}
+    </style>
+  </defs>
+
+  <!-- ═══ AMBIENT GLOW ═══ -->
+  <ellipse cx="200" cy="155" rx="130" ry="95" fill="url(#gGlow)" filter="url(#fGlow)"/>
+
+  <!-- ═══ 3D EMERALD GEM ═══ -->
+  <!-- Gem: isometric 3-point perspective, emerald cut with facets -->
+
+  <!-- CROWN TOP FACE (table) — viewed from above-left angle -->
+  <polygon points="200,32  270,68  262,100  200,112  138,100  130,68"
+           fill="url(#gTop)" filter="url(#fDropShadow)"/>
+
+  <!-- Inner table octagon -->
+  <polygon points="200,46  258,76  251,96  200,105  149,96  142,76"
+           fill="none" stroke="rgba(255,255,255,0.28)" stroke-width="1.2"/>
+
+  <!-- TOP FACE — highlight strip -->
+  <polygon points="200,32 270,68 262,75 200,40 138,75 130,68"
+           fill="rgba(255,255,255,0.22)"/>
+
+  <!-- Facet lines on top -->
+  <line x1="200" y1="32"  x2="200" y2="112" stroke="rgba(255,255,255,0.14)" stroke-width="0.9"/>
+  <line x1="130" y1="68"  x2="270" y2="68"  stroke="rgba(255,255,255,0.11)" stroke-width="0.9"/>
+  <line x1="138" y1="100" x2="262" y2="100" stroke="rgba(255,255,255,0.10)" stroke-width="0.8"/>
+
+  <!-- LEFT UPPER FACE -->
+  <polygon points="130,68 138,100 120,120 108,88"
+           fill="url(#gLeft)" opacity="0.9"/>
+
+  <!-- RIGHT UPPER FACE -->
+  <polygon points="270,68 262,100 280,120 292,88"
+           fill="url(#gRight)"/>
+
+  <!-- FRONT GIRDLE / MAIN FACE (crown → girdle) -->
+  <polygon points="138,100 262,100 272,148 128,148"
+           fill="url(#gFront)"/>
+
+  <!-- LEFT SIDE FACE -->
+  <polygon points="108,88 120,120 115,160 98,138"
+           fill="#0d4a27" opacity="0.85"/>
+
+  <!-- RIGHT SIDE FACE -->
+  <polygon points="292,88 280,120 285,160 302,138"
+           fill="#042018" opacity="0.9"/>
+
+  <!-- GIRDLE LINE (middle band) -->
+  <polygon points="128,148 272,148 280,158 120,158"
+           fill="rgba(255,255,255,0.06)" stroke="rgba(255,255,255,0.18)" stroke-width="0.8"/>
+
+  <!-- PAVILION FRONT (lower body → point) -->
+  <polygon points="120,158 128,148 272,148 280,158 200,230"
+           fill="url(#gPavFront)"/>
+
+  <!-- PAVILION LEFT SIDE -->
+  <polygon points="98,138 115,160 120,158 200,230"
+           fill="#031a10" opacity="0.9"/>
+
+  <!-- PAVILION RIGHT SIDE -->
+  <polygon points="302,138 285,160 280,158 200,230"
+           fill="url(#gPavRight)"/>
+
+  <!-- Pavilion facet lines -->
+  <line x1="128" y1="148" x2="200" y2="230" stroke="rgba(255,255,255,0.10)" stroke-width="0.8"/>
+  <line x1="272" y1="148" x2="200" y2="230" stroke="rgba(255,255,255,0.10)" stroke-width="0.8"/>
+  <line x1="200" y1="158" x2="200" y2="230" stroke="rgba(255,255,255,0.08)" stroke-width="0.7"/>
+
+  <!-- Front face interior facet lines -->
+  <line x1="138" y1="100" x2="200" y2="148" stroke="rgba(255,255,255,0.15)" stroke-width="0.9"/>
+  <line x1="262" y1="100" x2="200" y2="148" stroke="rgba(255,255,255,0.15)" stroke-width="0.9"/>
+  <line x1="128" y1="148" x2="200" y2="100" stroke="rgba(255,255,255,0.08)" stroke-width="0.7"/>
+  <line x1="272" y1="148" x2="200" y2="100" stroke="rgba(255,255,255,0.08)" stroke-width="0.7"/>
+
+  <!-- Gem internal glow pulse -->
+  <polygon points="185,105 215,105 218,140 200,155 182,140" fill="#4ade80" opacity="0.06" class="gs"/>
+
+  <!-- Shine corner -->
+  <polygon points="138,100 155,90 148,110 135,116" fill="rgba(255,255,255,0.18)"/>
+
+  <!-- ═══ WATERFALL ═══ -->
+  <!-- Stem from gem point -->
+  <rect x="197" y="228" width="6" height="16" rx="3" fill="#4ade80" opacity="0.7"/>
+
+  <!-- Animated water streams -->
+  <rect x="195" y="232" width="5" height="90" rx="2.5" fill="url(#gWater)" class="fa"/>
+  <rect x="188" y="238" width="3.5" height="80" rx="1.8" fill="url(#gWater)" opacity="0.75" class="fb"/>
+  <rect x="213" y="235" width="3.5" height="86" rx="1.8" fill="url(#gWater)" opacity="0.65" class="fc"/>
+  <rect x="203" y="240" width="2.5" height="75" rx="1.2" fill="url(#gWater)" opacity="0.55" class="fd"/>
+  <rect x="180" y="244" width="2"   height="68" rx="1"   fill="url(#gWater)" opacity="0.40" class="fe"/>
+  <rect x="219" y="242" width="2"   height="72" rx="1"   fill="url(#gWater)" opacity="0.40" class="ff"/>
+
+  <!-- Spray droplets -->
+  <circle cx="185" cy="295" r="1.5" fill="#4ade80" opacity="0" class="fa"/>
+  <circle cx="215" cy="300" r="1.2" fill="#4ade80" opacity="0" class="fb"/>
+  <circle cx="175" cy="305" r="1"   fill="#4ade80" opacity="0" class="fc"/>
+  <circle cx="225" cy="308" r="1"   fill="#4ade80" opacity="0" class="fd"/>
+
+  <!-- Mist above pool -->
+  <ellipse cx="200" cy="318" rx="42" ry="10" fill="url(#gMist)" class="ms"/>
+  <ellipse cx="200" cy="322" rx="32" ry="7"  fill="url(#gMist)" opacity="0.6" class="ms"/>
+
+  <!-- ═══ POOL ═══ -->
+  <ellipse cx="200" cy="342" rx="88" ry="26" fill="url(#gPool)"/>
+  <ellipse cx="200" cy="342" rx="88" ry="26" fill="none" stroke="#4ade80" stroke-width="1" opacity="0.3"/>
+
+  <!-- Animated ripples -->
+  <circle cx="200" cy="338" r="8"  fill="none" stroke="#4ade80" stroke-width="1.2" opacity="0" class="ra"/>
+  <circle cx="200" cy="338" r="8"  fill="none" stroke="#22c55e" stroke-width="0.8" opacity="0" class="rb"/>
+  <circle cx="200" cy="338" r="8"  fill="none" stroke="#16a34a" stroke-width="0.6" opacity="0" class="rc"/>
+
+  <!-- Pool shimmer -->
+  <ellipse cx="200" cy="339" rx="60" ry="16" fill="#4ade80" opacity="0.12" class="sh"/>
+  <ellipse cx="188" cy="337" rx="22" ry="5"  fill="#86efac" opacity="0.18" class="sh"/>
+
+  <!-- Pool reflection of gem point -->
+  <polygon points="200,366 210,355 190,355" fill="#22c55e" opacity="0.12"/>
+
+  <!-- ═══ DECORATIVE ELEMENTS ═══ -->
+  <circle cx="200" cy="382" r="3" fill="#4ade80" opacity="0.8"/>
+  <circle cx="174" cy="388" r="1.5" fill="#22c55e" opacity="0.4"/>
+  <circle cx="226" cy="388" r="1.5" fill="#22c55e" opacity="0.4"/>
+  <line x1="80"  y1="394" x2="320" y2="394" stroke="#22c55e" stroke-width="0.5" opacity="0.3"/>
+
+  <!-- ═══ WORDMARK ═══ -->
+  <text x="200" y="424" text-anchor="middle"
+        font-family="Georgia, 'Times New Roman', serif"
+        font-size="28" font-weight="700" letter-spacing="7"
+        fill="#4ade80" filter="url(#fSoftGlow)">EMERALD</text>
+
+  <text x="200" y="454" text-anchor="middle"
+        font-family="Georgia, 'Times New Roman', serif"
+        font-size="14.5" font-weight="400" letter-spacing="10"
+        fill="#7a9880">WELLNESS</text>
+
+  <text x="200" y="480" text-anchor="middle"
+        font-family="Georgia, serif" font-size="10" font-style="italic"
+        letter-spacing="2.5" fill="#4a6855">Health Intelligence</text>
+
+  <line x1="120" y1="494" x2="280" y2="494" stroke="#22c55e" stroke-width="0.4" opacity="0.2"/>
+</svg>
