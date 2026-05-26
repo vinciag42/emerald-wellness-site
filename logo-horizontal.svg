@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 380 72" width="380" height="72">
+  <defs>
+    <linearGradient id="hGemMain" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#6ee7a0"/>
+      <stop offset="45%" stop-color="#22c55e"/>
+      <stop offset="100%" stop-color="#15803d"/>
+    </linearGradient>
+    <linearGradient id="hGemTop" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#bbf7d0" stop-opacity="0.55"/>
+      <stop offset="100%" stop-color="#4ade80" stop-opacity="0.15"/>
+    </linearGradient>
+    <linearGradient id="hGemRight" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#000" stop-opacity="0.18"/>
+      <stop offset="100%" stop-color="#000" stop-opacity="0.08"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Gem mark -->
+  <polygon points="36,6 60,20 60,52 36,66 12,52 12,20" fill="url(#hGemMain)"/>
+  <polygon points="36,6 60,20 36,33 12,20"              fill="url(#hGemTop)"/>
+  <polygon points="36,33 60,20 60,52 36,66"             fill="url(#hGemRight)"/>
+  <polygon points="36,14 56,26 56,46 36,58 16,46 16,26" fill="none" stroke="rgba(255,255,255,0.2)" stroke-width="0.8"/>
+  <line x1="36" y1="6"  x2="36" y2="66" stroke="rgba(255,255,255,0.12)" stroke-width="0.7"/>
+  <line x1="12" y1="20" x2="60" y2="52" stroke="rgba(255,255,255,0.09)" stroke-width="0.7"/>
+  <line x1="60" y1="20" x2="12" y2="52" stroke="rgba(255,255,255,0.09)" stroke-width="0.7"/>
+  <text x="36" y="40" text-anchor="middle" dominant-baseline="middle"
+        font-family="Georgia, serif" font-size="15" font-weight="700"
+        fill="rgba(6,14,8,0.75)" letter-spacing="-0.5">EW</text>
+
+  <!-- Vertical divider -->
+  <line x1="78" y1="16" x2="78" y2="56" stroke="rgba(74,222,128,0.25)" stroke-width="1"/>
+
+  <!-- Text block -->
+  <text x="92" y="30" font-family="Georgia, 'Times New Roman', serif"
+        font-size="20" font-weight="700" letter-spacing="4" fill="#f0f0eb">EMERALD</text>
+  <text x="92" y="50" font-family="Georgia, 'Times New Roman', serif"
+        font-size="11" font-weight="400" letter-spacing="7" fill="#7a9880">WELLNESS</text>
+
+  <!-- Health Intelligence badge -->
+  <text x="318" y="40" text-anchor="middle" dominant-baseline="middle"
+        font-family="Georgia, serif" font-size="8" font-style="italic"
+        letter-spacing="1.5" fill="#4a6a50">Health Intelligence</text>
+</svg>
