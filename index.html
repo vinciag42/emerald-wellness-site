@@ -158,9 +158,11 @@ body{font-family:var(--sans);background:var(--bg);color:var(--text);overflow-x:h
 
   <!-- WAITLIST FORM -->
   <div class="cs-form-wrap" id="cs-form-section">
-    <div class="cs-form">
-      <input class="cs-form-input" type="email" id="cs-email" placeholder="Enter your email to secure your spot" autocomplete="email"/>
-      <button class="cs-form-btn" onclick="submitCS()">Join the Waitlist →</button>
+    <div style="display:flex;flex-direction:column;gap:10px;width:100%;max-width:480px;">
+      <input class="cs-form-input" type="text" id="cs-name" placeholder="Your first name" autocomplete="given-name" style="background:var(--bg2);border:1px solid var(--borderEm);border-radius:10px;padding:14px 18px;color:var(--text);font-family:var(--sans);font-size:14px;outline:none;width:100%;"/>
+      <input class="cs-form-input" type="email" id="cs-email" placeholder="Your email address" autocomplete="email" style="background:var(--bg2);border:1px solid var(--borderEm);border-radius:10px;padding:14px 18px;color:var(--text);font-family:var(--sans);font-size:14px;outline:none;width:100%;"/>
+      <input class="cs-form-input" type="tel" id="cs-phone" placeholder="Your phone number (optional)" autocomplete="tel" style="background:var(--bg2);border:1px solid var(--borderEm);border-radius:10px;padding:14px 18px;color:var(--text);font-family:var(--sans);font-size:14px;outline:none;width:100%;"/>
+      <button onclick="submitCS()" style="background:linear-gradient(135deg,#1a6b45,#2aab6a);color:#fff;border:none;border-radius:10px;padding:14px 18px;width:100%;font-family:var(--sans);font-size:14px;font-weight:600;cursor:pointer;letter-spacing:.5px;">Join the Waitlist →</button>
     </div>
   </div>
   <p class="cs-legal" id="cs-legal-text">No spam. Your 7-day free trial + 20% first-month discount are locked when you sign up today.</p>
@@ -286,25 +288,25 @@ updateCD();setInterval(updateCD,1000);
 
 // SUBMIT
 async function submitCS(){
+  const name  = document.getElementById('cs-name').value.trim();
   const email = document.getElementById('cs-email').value.trim();
+  const phone = document.getElementById('cs-phone').value.trim();
   if(!email || !email.includes('@')){
     document.getElementById('cs-email').style.border='1px solid #e05050';
     document.getElementById('cs-email').placeholder='Please enter a valid email';
     return;
   }
+  if(!name){
+    document.getElementById('cs-name').style.border='1px solid #e05050';
+    document.getElementById('cs-name').placeholder='Please enter your name';
+    return;
+  }
 
-  // ── SAVE TO SUPABASE WAITLIST ──
-  // Add Supabase SDK to coming-soon.html if you want live saving:
-  // <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
-  // Then uncomment and configure:
-  /*
-  const supabase = window.supabase.createClient('YOUR_URL','YOUR_ANON_KEY');
-  await supabase.from('waitlist').upsert({
-    email,
-    source: 'coming-soon',
-    referred_by: new URLSearchParams(window.location.search).get('ref') || null
-  }, { onConflict: 'email' });
-  */
+  // Save to Supabase waitlist
+  try {
+    const sb = window.supabase ? window.supabase.createClient('https://mczpuffmlspmghgneukz.supabase.co','sb_publishable_OAWniWdCQFuaqLledTmkEg_uuNnoK6S') : null;
+    if(sb) await sb.from('waitlist').upsert({ email, first_name:name, source:'coming-soon', referred_by: new URLSearchParams(window.location.search).get('ref')||null },{ onConflict:'email' });
+  } catch(e){}
 
   document.getElementById('cs-form-section').style.display='none';
   document.getElementById('cs-legal-text').style.display='none';
