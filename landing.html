@@ -2039,13 +2039,23 @@
     document.querySelectorAll('.monthly-price').forEach(el => el.style.display = isAnnual ? 'none' : '');
     document.querySelectorAll('.annual-price').forEach(el => el.style.display = isAnnual ? '' : 'none');
   }
-
-  function handleSignup(e) {
+const SUPABASE_URL='https://mczpuffmlspmghgneukz.supabase.co';
+  const SUPABASE_ANON='sb_publishable_OAWniWdCQFuaqLledTmkEg_uuNnoK6S';
+  const KLAVIYO_KEY='WtKVHz';
+  const KLAVIYO_LIST='XEEg3P';
+  async function handleSignup(e) {
     e.preventDefault();
-    document.getElementById('signup-success').style.display = 'block';
-    e.target.querySelector('.signup-btn').textContent = 'You\'re in ✦';
-    e.target.querySelector('.signup-btn').disabled = true;
+    const btn=e.target.querySelector('.signup-btn');
+    const name=e.target.querySelector('input[type="text"]').value.trim();
+    const phone=e.target.querySelector('input[type="tel"]').value.trim();
+    const email=e.target.querySelector('input[type="email"]').value.trim();
+    btn.textContent='Saving...';btn.disabled=true;
+    try{await fetch(SUPABASE_URL+'/rest/v1/waitlist',{method:'POST',headers:{'apikey':SUPABASE_ANON,'Authorization':'Bearer '+SUPABASE_ANON,'Content-Type':'application/json','Prefer':'return=minimal'},body:JSON.stringify({email:email,first_name:name,phone:phone,source:'landing',created_at:new Date().toISOString()})});}catch(err){console.warn(err);}
+    try{const p={token:KLAVIYO_KEY,properties:{'$email':email,'$first_name':name,'$phone_number':phone}};await fetch('https://a.klaviyo.com/api/identify?data='+btoa(JSON.stringify(p)));await fetch('https://a.klaviyo.com/api/v2/list/'+KLAVIYO_LIST+'/members',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({api_key:KLAVIYO_KEY,profiles:[{email:email,first_name:name}]})});}catch(err){console.warn(err);}
+    document.getElementById('signup-success').style.display='block';
+    btn.textContent="You're in ✦";
   }
+  
 
   const obs = new IntersectionObserver(
     entries => entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); }),
