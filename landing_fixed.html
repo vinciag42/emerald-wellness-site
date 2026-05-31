@@ -1,0 +1,760 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Emerald Wellness — The Future of Health Intelligence</title>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+  <meta name="description" content="Emerald Wellness unifies peptide protocols, biomarker intelligence, lab analysis, wearable sync, and personalized health guidance into one breathtaking platform." />
+  <meta property="og:title" content="Emerald Wellness — The Future of Health Intelligence" />
+  <meta property="og:description" content="The only platform that unifies peptides, biomarkers, wearables, and practitioner-grade tools in one experience." />
+  <meta property="og:type" content="website" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet" />
+  <script async type="text/javascript" src="https://static.klaviyo.com/onsite/js/klaviyo.js?company_id=WtKVHz"></script>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg:#060e08;--bg2:#0a1610;--bg3:#0e1d13;--bg4:#121f16;
+      --emerald:#4ade80;--emerald-mid:#22c55e;
+      --emerald-dim:rgba(74,222,128,0.10);--emerald-bd:rgba(74,222,128,0.18);
+      --white:#f0f0eb;--muted:#7a9880;
+      --border:rgba(255,255,255,0.07);--border2:rgba(74,222,128,0.15);--radius:4px;
+    }
+    html{scroll-behavior:smooth;}
+    body{background:var(--bg);color:var(--white);font-family:'DM Sans',sans-serif;font-weight:300;line-height:1.7;overflow-x:hidden;}
+    a{color:var(--emerald);text-decoration:none;}
+    .serif{font-family:'Playfair Display',serif;}
+    .label{font-size:0.68rem;letter-spacing:0.22em;text-transform:uppercase;color:var(--emerald);display:block;margin-bottom:18px;}
+    .fade-in{opacity:0;transform:translateY(22px);transition:opacity 0.7s ease,transform 0.7s ease;}
+    .fade-in.visible{opacity:1;transform:none;}
+    nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;justify-content:space-between;align-items:center;padding:22px 64px;background:rgba(6,14,8,0.88);backdrop-filter:blur(16px);border-bottom:1px solid var(--border);}
+    .nav-logo{font-family:'Playfair Display',serif;font-size:1.15rem;letter-spacing:0.06em;color:var(--white);text-decoration:none;}
+    .nav-logo span{color:var(--emerald);}
+    .nav-cta{background:var(--emerald);color:#060e08;padding:10px 26px;border-radius:var(--radius);font-size:0.82rem;font-weight:500;letter-spacing:0.06em;text-transform:uppercase;text-decoration:none;transition:opacity 0.2s;}
+    .nav-cta:hover{opacity:0.85;}
+    .hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:160px 40px 60px;position:relative;overflow:hidden;}
+    .hero-glow{position:absolute;top:-300px;left:50%;transform:translateX(-50%);width:1000px;height:1000px;background:radial-gradient(ellipse,rgba(74,222,128,0.08) 0%,transparent 65%);pointer-events:none;}
+    .hero-coming-soon{font-size:0.72rem;letter-spacing:0.28em;text-transform:uppercase;background:var(--emerald);color:#060e08;padding:7px 22px;border-radius:100px;display:inline-block;font-weight:500;margin-bottom:16px;animation:pulse 2.5s ease-in-out infinite;}
+    @keyframes pulse{0%,100%{opacity:1;}50%{opacity:0.75;}}
+    .hero-eyebrow{font-size:0.72rem;letter-spacing:0.22em;text-transform:uppercase;color:var(--emerald);margin-bottom:28px;border:1px solid var(--emerald-bd);padding:7px 20px;border-radius:100px;display:inline-block;}
+    .hero h1{font-family:'Playfair Display',serif;font-size:clamp(3.2rem,7.5vw,6.5rem);font-weight:500;line-height:1.05;max-width:960px;margin-bottom:32px;letter-spacing:-0.02em;}
+    .hero h1 em{font-style:italic;color:var(--emerald);}
+    .hero-sub{font-size:clamp(0.95rem,1.4vw,1.15rem);color:var(--muted);max-width:640px;margin-bottom:52px;line-height:1.85;}
+    .hero-btns{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-bottom:80px;}
+    .btn-primary{background:var(--emerald);color:#060e08;padding:15px 38px;border-radius:var(--radius);font-size:0.88rem;font-weight:500;letter-spacing:0.06em;text-transform:uppercase;text-decoration:none;transition:opacity 0.2s;}
+    .btn-primary:hover{opacity:0.85;}
+    .btn-outline{border:1px solid var(--emerald-bd);color:var(--white);padding:15px 38px;border-radius:var(--radius);font-size:0.88rem;letter-spacing:0.06em;text-transform:uppercase;text-decoration:none;display:flex;align-items:center;gap:8px;transition:background 0.2s;}
+    .btn-outline:hover{background:var(--emerald-dim);}
+    .hero-stats{display:flex;gap:64px;justify-content:center;border-top:1px solid var(--border);padding-top:48px;width:100%;max-width:700px;}
+    .hero-stat-num{font-family:'Playfair Display',serif;font-size:2.6rem;color:var(--emerald);line-height:1;margin-bottom:6px;}
+    .hero-stat-label{font-size:0.78rem;color:var(--muted);letter-spacing:0.04em;}
+    .marquee-wrap{overflow:hidden;border-top:1px solid var(--border);border-bottom:1px solid var(--border);background:var(--bg2);padding:18px 0;}
+    .marquee-track{display:flex;gap:0;animation:marquee 30s linear infinite;white-space:nowrap;}
+    .marquee-track:hover{animation-play-state:paused;}
+    @keyframes marquee{from{transform:translateX(0);}to{transform:translateX(-50%);}}
+    .marquee-item{display:inline-flex;align-items:center;gap:10px;padding:0 32px;font-size:0.78rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted);border-right:1px solid var(--border);flex-shrink:0;}
+    .marquee-item .dot{width:5px;height:5px;border-radius:50%;background:var(--emerald);flex-shrink:0;}
+    .section{padding:120px 64px;max-width:1280px;margin:0 auto;}
+    .section-sm{padding:100px 64px;max-width:1280px;margin:0 auto;}
+    .section-title{font-family:'Playfair Display',serif;font-size:clamp(2rem,4vw,3.4rem);font-weight:500;line-height:1.12;max-width:700px;margin-bottom:20px;}
+    .section-body{color:var(--muted);font-size:1.05rem;line-height:1.85;max-width:620px;}
+    .platform-wrap{background:var(--bg2);border-top:1px solid var(--border);border-bottom:1px solid var(--border);}
+    .platform-header{margin-bottom:72px;}
+    .platform-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);}
+    .platform-card{background:var(--bg3);padding:44px 38px;transition:background 0.3s;position:relative;overflow:hidden;}
+    .platform-card:hover{background:var(--bg4);}
+    .platform-card::after{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--emerald),transparent);opacity:0;transition:opacity 0.3s;}
+    .platform-card:hover::after{opacity:1;}
+    .platform-icon{font-size:1.6rem;margin-bottom:20px;display:block;}
+    .platform-card h3{font-family:'Playfair Display',serif;font-size:1.18rem;font-weight:500;margin-bottom:12px;line-height:1.3;}
+    .platform-card p{color:var(--muted);font-size:0.88rem;line-height:1.8;margin-bottom:16px;}
+    .platform-badge{font-size:0.68rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--emerald);border:1px solid var(--emerald-bd);padding:4px 12px;border-radius:100px;display:inline-block;}
+    .dashboard-wrap{background:var(--bg);}
+    .dashboard-inner{max-width:1280px;margin:0 auto;padding:120px 64px;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;}
+    .dashboard-card{background:var(--bg2);border:1px solid var(--border2);border-radius:12px;padding:32px;position:relative;overflow:hidden;}
+    .dashboard-card::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--emerald),transparent);}
+    .dash-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:28px;padding-bottom:20px;border-bottom:1px solid var(--border);}
+    .dash-brand{font-size:0.65rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--emerald);}
+    .dash-date{font-size:0.78rem;color:var(--muted);}
+    .dash-metrics{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:24px;}
+    .dash-metric{background:var(--bg3);border:1px solid var(--border);border-radius:8px;padding:16px;}
+    .dash-metric-label{font-size:0.68rem;color:var(--muted);letter-spacing:0.08em;margin-bottom:8px;}
+    .dash-metric-val{font-family:'Playfair Display',serif;font-size:1.8rem;color:var(--white);line-height:1;}
+    .dash-metric-val span{font-size:0.9rem;color:var(--muted);}
+    .dash-metric-delta{font-size:0.72rem;color:var(--emerald);margin-top:6px;}
+    .dash-hrv{background:var(--bg3);border:1px solid var(--border);border-radius:8px;padding:16px 20px;margin-bottom:16px;}
+    .dash-hrv-label{font-size:0.68rem;color:var(--muted);letter-spacing:0.08em;margin-bottom:12px;}
+    .dash-bars{display:flex;gap:6px;align-items:flex-end;height:40px;}
+    .dash-bar{flex:1;border-radius:2px;background:linear-gradient(to top,var(--emerald-mid),var(--emerald));opacity:0.6;}
+    .dash-bar:last-child{opacity:1;}
+    .dash-ai{background:rgba(74,222,128,0.06);border:1px solid var(--emerald-bd);border-radius:8px;padding:16px 20px;margin-bottom:16px;}
+    .dash-ai-label{font-size:0.68rem;color:var(--emerald);letter-spacing:0.1em;margin-bottom:8px;}
+    .dash-ai p{font-size:0.8rem;color:var(--muted);line-height:1.6;}
+    .dash-stack{display:flex;gap:8px;flex-wrap:wrap;}
+    .dash-pill{font-size:0.68rem;letter-spacing:0.06em;background:var(--bg3);border:1px solid var(--border);padding:5px 12px;border-radius:100px;color:var(--muted);}
+    .dash-pill.active{border-color:var(--emerald-bd);color:var(--emerald);}
+    .dashboard-features{display:flex;flex-direction:column;gap:40px;}
+    .dash-feat h3{font-family:'Playfair Display',serif;font-size:1.15rem;font-weight:500;margin-bottom:10px;}
+    .dash-feat p{color:var(--muted);font-size:0.9rem;line-height:1.8;}
+    .dash-feat-icon{font-size:1.2rem;margin-bottom:10px;display:block;}
+    .compare-wrap{background:var(--bg2);border-top:1px solid var(--border);}
+    .compare-inner{max-width:1280px;margin:0 auto;padding:120px 64px;}
+    .compare-header{margin-bottom:56px;}
+    .stats-wrap{border-top:1px solid var(--border);}
+    .stats-inner{max-width:1280px;margin:0 auto;padding:120px 64px;}
+    .stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:40px;margin-top:64px;}
+    .stat-card{padding:40px 32px;border:1px solid var(--border);border-radius:var(--radius);text-align:center;transition:border-color 0.3s;}
+    .stat-card:hover{border-color:var(--emerald-bd);}
+    .stat-icon{font-size:1.5rem;margin-bottom:16px;display:block;}
+    .stat-big{font-family:'Playfair Display',serif;font-size:3.2rem;color:var(--emerald);line-height:1;margin-bottom:12px;}
+    .stat-desc{color:var(--muted);font-size:0.85rem;line-height:1.6;}
+    .testimonials-wrap{background:var(--bg2);border-top:1px solid var(--border);}
+    .testimonials-inner{max-width:1280px;margin:0 auto;padding:120px 64px;}
+    .testimonials-header{margin-bottom:64px;}
+    .testimonials-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
+    .testimonial-card{background:var(--bg3);border:1px solid var(--border);padding:40px 36px;border-radius:var(--radius);position:relative;transition:border-color 0.3s;}
+    .testimonial-card:hover{border-color:var(--emerald-bd);}
+    .stars{color:var(--emerald);font-size:0.8rem;letter-spacing:2px;margin-bottom:20px;}
+    .testimonial-text{font-size:0.92rem;line-height:1.85;color:var(--white);margin-bottom:28px;font-style:italic;}
+    .testimonial-author{display:flex;align-items:center;gap:14px;padding-top:20px;border-top:1px solid var(--border);}
+    .author-avatar{width:40px;height:40px;border-radius:50%;background:var(--emerald-dim);border:1px solid var(--emerald-bd);display:flex;align-items:center;justify-content:center;font-size:1rem;}
+    .author-name{font-size:0.88rem;font-weight:500;color:var(--white);}
+    .author-meta{font-size:0.75rem;color:var(--muted);}
+    .author-plan{margin-top:4px;font-size:0.65rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--emerald);}
+    .pricing-wrap{border-top:1px solid var(--border);}
+    .pricing-inner{max-width:1280px;margin:0 auto;padding:120px 64px;}
+    .pricing-header{text-align:center;margin-bottom:64px;}
+    .pricing-header .section-title{margin:0 auto 16px;text-align:center;}
+    .pricing-sub{color:var(--muted);font-size:0.9rem;}
+    .pricing-card{background:var(--bg2);border:1px solid var(--border);border-radius:8px;padding:28px 20px;display:flex;flex-direction:column;transition:border-color 0.3s;}
+    .pricing-card:hover{border-color:var(--emerald-bd);}
+    .pricing-card.featured{border-color:var(--emerald-bd);background:var(--bg3);position:relative;}
+    .pricing-card.featured::before{content:'Most Popular';position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:var(--emerald);color:#060e08;font-size:0.65rem;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;padding:4px 16px;border-radius:100px;}
+    .pricing-tier{font-size:0.7rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--emerald);margin-bottom:8px;}
+    .pricing-name{font-family:'Playfair Display',serif;font-size:1.4rem;font-weight:500;margin-bottom:6px;}
+    .pricing-tagline{font-size:0.82rem;color:var(--muted);margin-bottom:28px;}
+    .pricing-price{margin-bottom:28px;padding-bottom:28px;border-bottom:1px solid var(--border);}
+    .price-amount{font-family:'Playfair Display',serif;font-size:3rem;color:var(--white);line-height:1;}
+    .price-amount sup{font-size:1.2rem;vertical-align:super;}
+    .price-amount span{font-size:1rem;color:var(--muted);}
+    .price-free{font-family:'Playfair Display',serif;font-size:2rem;color:var(--white);}
+    .price-note{font-size:0.75rem;color:var(--muted);margin-top:8px;}
+    .pricing-features{list-style:none;flex:1;margin-bottom:32px;}
+    .pricing-features li{font-size:0.85rem;color:var(--muted);padding:8px 0;border-bottom:1px solid var(--border);display:flex;gap:10px;align-items:flex-start;}
+    .pricing-features li .f-check{color:var(--emerald);flex-shrink:0;}
+    .pricing-features li .f-cross{color:rgba(255,255,255,0.2);flex-shrink:0;}
+    .pricing-btn{display:block;text-align:center;padding:13px 24px;border-radius:var(--radius);font-size:0.82rem;font-weight:500;letter-spacing:0.06em;text-transform:uppercase;text-decoration:none;transition:all 0.2s;}
+    .pricing-btn.ghost{border:1px solid var(--border2);color:var(--white);}
+    .pricing-btn.ghost:hover{background:var(--emerald-dim);}
+    .pricing-btn.solid{background:var(--emerald);color:#060e08;}
+    .pricing-btn.solid:hover{opacity:0.85;}
+    .waitlist-counter{display:inline-flex;align-items:center;gap:10px;background:rgba(74,222,128,0.07);border:1px solid var(--emerald-bd);padding:9px 20px;border-radius:100px;font-size:0.85rem;color:var(--muted);margin-bottom:32px;}
+    .waitlist-dot{width:8px;height:8px;border-radius:50%;background:var(--emerald);animation:pulse-dot 1.5s ease-in-out infinite;}
+    @keyframes pulse-dot{0%,100%{box-shadow:0 0 0 0 rgba(74,222,128,0.4);}50%{box-shadow:0 0 0 6px rgba(74,222,128,0);}}
+    .waitlist-counter strong{color:var(--white);}
+    .promise-wrap{background:var(--bg);border-top:1px solid var(--border);border-bottom:1px solid var(--border);}
+    .promise-inner{max-width:900px;margin:0 auto;padding:100px 64px;text-align:center;}
+    .promise-quote{font-family:'Playfair Display',serif;font-size:clamp(1.2rem,2.5vw,1.7rem);font-style:italic;font-weight:400;line-height:1.75;color:var(--white);margin-bottom:48px;}
+    .promise-quote em{color:var(--emerald);font-style:normal;}
+    .promise-signature{margin-bottom:40px;}
+    .promise-sig-line{font-size:0.88rem;color:var(--muted);margin-bottom:6px;}
+    .promise-sig-name{font-family:'Playfair Display',serif;font-size:1.6rem;font-style:italic;color:var(--white);margin-bottom:4px;}
+    .promise-sig-brand{font-size:0.72rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--emerald);}
+    .promise-divider{width:48px;height:1px;background:var(--emerald);margin:0 auto 48px;}
+    .promise-pillars{display:flex;justify-content:center;gap:48px;flex-wrap:wrap;}
+    .promise-pillar{display:flex;flex-direction:column;align-items:center;gap:10px;font-size:0.82rem;color:var(--muted);letter-spacing:0.04em;}
+    .promise-icon{font-size:1.6rem;}
+    .hiw-wrap{background:var(--bg2);border-top:1px solid var(--border);border-bottom:1px solid var(--border);}
+    .hiw-inner{max-width:1280px;margin:0 auto;padding:120px 64px;}
+    .hiw-header{margin-bottom:72px;}
+    .hiw-grid{display:grid;grid-template-columns:1fr 48px 1fr 48px 1fr;align-items:start;gap:0;}
+    .hiw-card{background:var(--bg3);border:1px solid var(--border);border-radius:8px;padding:40px 36px;transition:border-color 0.3s;}
+    .hiw-card:hover{border-color:var(--emerald-bd);}
+    .hiw-num{font-family:'Playfair Display',serif;font-size:0.75rem;color:var(--emerald);letter-spacing:0.2em;margin-bottom:20px;}
+    .hiw-icon{font-size:2rem;margin-bottom:20px;display:block;}
+    .hiw-card h3{font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:500;margin-bottom:12px;}
+    .hiw-card p{color:var(--muted);font-size:0.88rem;line-height:1.8;}
+    .hiw-connector{display:flex;align-items:center;justify-content:center;padding-top:80px;color:var(--emerald);font-size:1.2rem;opacity:0.4;}
+    .hiw-connector::after{content:'→';}
+    .story-wrap{background:var(--bg);border-top:1px solid var(--border);}
+    .story-inner{max-width:1280px;margin:0 auto;padding:120px 64px;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start;}
+    .story-card{background:var(--bg2);border:1px solid var(--emerald-bd);border-radius:12px;padding:40px;margin-bottom:32px;position:relative;overflow:hidden;}
+    .story-card::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--emerald),transparent);}
+    .story-quote{font-family:'Playfair Display',serif;font-style:italic;font-size:1.05rem;line-height:1.7;color:var(--white);margin-bottom:24px;}
+    .story-author{display:flex;align-items:center;gap:14px;}
+    .story-avatar{width:44px;height:44px;border-radius:50%;background:var(--emerald-dim);border:1px solid var(--emerald-bd);display:flex;align-items:center;justify-content:center;font-size:0.7rem;color:var(--emerald);font-weight:500;letter-spacing:0.05em;flex-shrink:0;}
+    .story-name{font-size:0.88rem;font-weight:500;color:var(--white);}
+    .story-role{font-size:0.75rem;color:var(--muted);margin-top:2px;}
+    .story-values{display:flex;flex-direction:column;gap:14px;}
+    .story-value{font-size:0.9rem;color:var(--muted);display:flex;align-items:center;gap:12px;}
+    .advisory-wrap{background:var(--bg2);border-top:1px solid var(--border);border-bottom:1px solid var(--border);}
+    .advisory-inner{max-width:1280px;margin:0 auto;padding:120px 64px;}
+    .advisory-header{margin-bottom:64px;}
+    .advisory-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-bottom:40px;}
+    .advisory-card{background:var(--bg3);border:1px solid var(--border);border-radius:8px;padding:40px 36px;transition:border-color 0.3s;}
+    .advisory-card:hover{border-color:var(--emerald-bd);}
+    .advisory-avatar{width:56px;height:56px;border-radius:50%;background:var(--emerald-dim);border:1px solid var(--emerald-bd);display:flex;align-items:center;justify-content:center;font-size:1.8rem;margin-bottom:20px;}
+    .advisory-name{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:500;margin-bottom:4px;}
+    .advisory-title{font-size:0.78rem;color:var(--emerald);letter-spacing:0.06em;margin-bottom:8px;}
+    .advisory-cred{font-size:0.75rem;color:var(--muted);margin-bottom:16px;padding-bottom:16px;border-bottom:1px solid var(--border);}
+    .advisory-bio{font-size:0.85rem;color:var(--muted);line-height:1.8;}
+    .advisory-disclaimer{font-size:0.78rem;color:var(--muted);text-align:center;padding:20px;border:1px solid var(--border);border-radius:var(--radius);}
+    .community-wrap{background:var(--bg);border-bottom:1px solid var(--border);}
+    .community-inner{max-width:1280px;margin:0 auto;padding:120px 64px;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;}
+    .community-features{margin-top:32px;display:flex;flex-direction:column;gap:14px;}
+    .community-feat{font-size:0.9rem;color:var(--muted);display:flex;align-items:center;gap:12px;}
+    .community-stat-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;}
+    .community-stat{background:var(--bg2);border:1px solid var(--border);border-radius:8px;padding:32px;text-align:center;transition:border-color 0.3s;}
+    .community-stat:hover{border-color:var(--emerald-bd);}
+    .community-num{font-family:'Playfair Display',serif;font-size:2.4rem;color:var(--emerald);line-height:1;margin-bottom:8px;}
+    .community-label{font-size:0.78rem;color:var(--muted);}
+    .app-wrap{background:var(--bg2);border-top:1px solid var(--border);border-bottom:1px solid var(--border);}
+    .app-inner{max-width:1280px;margin:0 auto;padding:120px 64px;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;}
+    .app-badges{display:flex;gap:16px;margin-top:32px;margin-bottom:16px;flex-wrap:wrap;}
+    .app-badge{display:flex;align-items:center;gap:14px;background:var(--bg3);border:1px solid var(--border);border-radius:10px;padding:14px 24px;text-decoration:none;color:var(--white);transition:border-color 0.2s;}
+    .app-badge:hover{border-color:var(--emerald-bd);}
+    .app-badge-icon{font-size:1.4rem;}
+    .app-badge-sub{font-size:0.65rem;color:var(--muted);letter-spacing:0.06em;}
+    .app-badge-name{font-size:0.95rem;font-weight:500;}
+    .app-coming{font-size:0.78rem;color:var(--muted);}
+    .app-mockup{display:flex;justify-content:center;}
+    .app-screen{background:var(--bg3);border:1px solid var(--emerald-bd);border-radius:32px;padding:24px;width:300px;box-shadow:0 0 80px rgba(74,222,128,0.08);}
+    .app-screen-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:24px;}
+    .app-screen-brand{font-family:'Playfair Display',serif;font-size:0.9rem;color:var(--emerald);}
+    .app-screen-time{font-size:0.8rem;color:var(--muted);}
+    .app-metric-row{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:20px;}
+    .app-metric{background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:12px;text-align:center;}
+    .app-metric-val{font-family:'Playfair Display',serif;font-size:1.1rem;color:var(--emerald);}
+    .app-metric-lbl{font-size:0.62rem;color:var(--muted);margin-top:2px;}
+    .app-section-lbl{font-size:0.65rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--muted);margin-bottom:10px;}
+    .app-stack-item{font-size:0.78rem;color:var(--muted);padding:9px 0;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:8px;}
+    .app-insight{background:rgba(74,222,128,0.06);border:1px solid var(--emerald-bd);border-radius:8px;padding:12px;margin-top:16px;}
+    .app-insight-lbl{font-size:0.62rem;color:var(--emerald);letter-spacing:0.1em;margin-bottom:6px;}
+    .app-insight-txt{font-size:0.75rem;color:var(--muted);line-height:1.6;}
+    .signup-wrap{background:var(--bg2);border-top:1px solid var(--border);border-bottom:1px solid var(--border);}
+    .signup-inner{max-width:1280px;margin:0 auto;padding:120px 64px;display:grid;grid-template-columns:1fr 1fr;gap:100px;align-items:center;}
+    .signup-perks{margin-top:40px;display:flex;flex-direction:column;gap:16px;}
+    .signup-perk{display:flex;align-items:center;gap:14px;font-size:0.92rem;color:var(--muted);}
+    .perk-icon{color:var(--emerald);font-size:0.7rem;flex-shrink:0;}
+    .signup-form{background:var(--bg3);border:1px solid var(--border2);border-radius:12px;padding:48px;position:relative;overflow:hidden;}
+    .signup-form::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--emerald),transparent);}
+    .form-group{margin-bottom:24px;}
+    .form-label{display:block;font-size:0.72rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--muted);margin-bottom:10px;}
+    .form-input{width:100%;background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius);padding:14px 18px;color:var(--white);font-family:'DM Sans',sans-serif;font-size:0.95rem;outline:none;transition:border-color 0.2s;}
+    .form-input::placeholder{color:var(--muted);}
+    .form-input:focus{border-color:var(--emerald-bd);}
+    .signup-btn{width:100%;background:var(--emerald);color:#060e08;border:none;border-radius:var(--radius);padding:16px;font-family:'DM Sans',sans-serif;font-size:0.92rem;font-weight:500;letter-spacing:0.06em;text-transform:uppercase;cursor:pointer;transition:opacity 0.2s;margin-bottom:16px;}
+    .signup-btn:hover{opacity:0.85;}
+    .form-note{font-size:0.75rem;color:var(--muted);text-align:center;}
+    .form-note a{color:var(--emerald);text-decoration:none;}
+    .signup-success{display:none;margin-top:20px;background:rgba(74,222,128,0.08);border:1px solid var(--emerald-bd);border-radius:var(--radius);padding:16px;font-size:0.88rem;color:var(--emerald);text-align:center;}
+    .final-cta{background:var(--bg2);border-top:1px solid var(--border);}
+    .final-cta-inner{max-width:900px;margin:0 auto;padding:140px 64px;text-align:center;}
+    .final-cta-badge{display:inline-block;border:1px solid var(--emerald-bd);color:var(--emerald);font-size:0.7rem;letter-spacing:0.18em;text-transform:uppercase;padding:6px 18px;border-radius:100px;margin-bottom:32px;}
+    .final-cta h2{font-family:'Playfair Display',serif;font-size:clamp(2rem,4vw,3.8rem);font-weight:500;line-height:1.12;margin-bottom:24px;}
+    .final-cta p{color:var(--muted);font-size:1.05rem;margin-bottom:52px;}
+    .final-cta-btns{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-bottom:32px;}
+    .final-cta-meta{font-size:0.78rem;color:var(--muted);}
+    .final-cta-meta span{margin:0 12px;}
+    footer{border-top:1px solid var(--border);background:var(--bg);padding:64px;}
+    .footer-top{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:64px;margin-bottom:64px;}
+    .footer-brand h3{font-family:'Playfair Display',serif;font-size:1.2rem;margin-bottom:12px;}
+    .footer-brand h3 span{color:var(--emerald);}
+    .footer-brand p{color:var(--muted);font-size:0.85rem;line-height:1.8;margin-bottom:20px;}
+    .footer-badges{display:flex;gap:8px;flex-wrap:wrap;}
+    .footer-badge{font-size:0.65rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--emerald);border:1px solid var(--emerald-bd);padding:4px 12px;border-radius:100px;}
+    .footer-col h4{font-size:0.7rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--white);margin-bottom:20px;}
+    .footer-col ul{list-style:none;}
+    .footer-col li{margin-bottom:10px;}
+    .footer-col a{color:var(--muted);text-decoration:none;font-size:0.85rem;transition:color 0.2s;}
+    .footer-col a:hover{color:var(--white);}
+    .footer-bottom{border-top:1px solid var(--border);padding-top:32px;display:flex;justify-content:space-between;align-items:center;color:var(--muted);font-size:0.78rem;}
+    .footer-bottom-badges{display:flex;gap:16px;}
+    .clinical-wrap{background:rgba(74,222,128,0.05);border-top:1px solid var(--emerald-bd);border-bottom:1px solid var(--emerald-bd);}
+    .clinical-inner{max-width:1280px;margin:0 auto;padding:48px 64px;display:flex;gap:32px;align-items:flex-start;}
+    .clinical-icon{font-size:2rem;flex-shrink:0;margin-top:4px;}
+    .clinical-content h3{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:500;margin-bottom:10px;color:var(--emerald);}
+    .clinical-content p{color:var(--muted);font-size:0.9rem;line-height:1.8;max-width:820px;}
+    .labs-wrap{background:var(--bg);border-bottom:1px solid var(--border);}
+    .labs-inner{max-width:1280px;margin:0 auto;padding:100px 64px;}
+    .labs-header{margin-bottom:56px;}
+    .labs-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;}
+    .labs-card{background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius);padding:48px 40px;transition:border-color 0.3s;}
+    .labs-card:hover{border-color:var(--emerald-bd);}
+    .labs-freq{font-family:'Playfair Display',serif;font-size:2rem;color:var(--emerald);line-height:1;margin-bottom:16px;}
+    .labs-card h3{font-family:'Playfair Display',serif;font-size:1.15rem;font-weight:500;margin-bottom:12px;}
+    .labs-card p{color:var(--muted);font-size:0.9rem;line-height:1.8;margin-bottom:24px;}
+    .methylation-box{margin-top:48px;background:var(--bg3);border:1px solid var(--emerald-bd);border-radius:12px;padding:56px;position:relative;overflow:hidden;}
+    .methylation-box::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--emerald),transparent);}
+    .methylation-header{margin-bottom:36px;}
+    .methylation-header h3{font-family:'Playfair Display',serif;font-size:1.6rem;font-weight:500;line-height:1.25;max-width:600px;}
+    .methylation-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;margin-bottom:36px;}
+    .methylation-body p{color:var(--muted);font-size:0.92rem;line-height:1.9;}
+    .methylation-why{font-size:0.7rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--emerald);margin-bottom:16px;}
+    .methylation-note{background:rgba(74,222,128,0.06);border:1px solid var(--emerald-bd);border-radius:var(--radius);padding:20px 24px;font-size:0.88rem;color:var(--muted);line-height:1.7;}
+    .methylation-note strong{color:var(--emerald);}
+    .bundle-wrap{background:var(--bg2);border-top:1px solid var(--border);border-bottom:1px solid var(--border);}
+    .bundle-inner{max-width:1280px;margin:0 auto;padding:120px 64px;}
+    .bundle-header{margin-bottom:72px;}
+    .bundle-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:2px;background:var(--border);}
+    .bundle-card{background:var(--bg3);padding:48px 36px;transition:background 0.3s;position:relative;overflow:hidden;}
+    .bundle-card:hover{background:var(--bg4);}
+    .bundle-card::after{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--emerald),transparent);opacity:0;transition:opacity 0.3s;}
+    .bundle-card:hover::after{opacity:1;}
+    .bundle-icon{font-size:2rem;margin-bottom:16px;display:block;}
+    .bundle-label{font-size:0.68rem;letter-spacing:0.22em;text-transform:uppercase;color:var(--emerald);margin-bottom:14px;display:block;}
+    .bundle-card h3{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:500;line-height:1.3;margin-bottom:14px;}
+    .bundle-card p{color:var(--muted);font-size:0.85rem;line-height:1.8;margin-bottom:24px;}
+    .bundle-list{list-style:none;}
+    .bundle-list li{font-size:0.8rem;color:var(--muted);padding:7px 0;border-bottom:1px solid var(--border);display:flex;gap:10px;align-items:center;}
+    .bundle-list li::before{content:'✦';color:var(--emerald);font-size:0.6rem;flex-shrink:0;}
+    .bundle-price{font-family:'Playfair Display',serif;font-size:1.8rem;color:var(--emerald);line-height:1;margin-bottom:16px;}
+    .bundle-price span{font-size:0.9rem;color:var(--muted);font-family:'DM Sans',sans-serif;}
+    .pricing-grid-4{display:grid;grid-template-columns:repeat(5,1fr);gap:14px;}
+    .pricing-toggle-wrap{display:flex;align-items:center;gap:14px;justify-content:center;margin-bottom:48px;}
+    .toggle-label{font-size:0.88rem;color:var(--muted);}
+    .pricing-toggle{width:52px;height:28px;border-radius:100px;background:var(--bg3);border:1px solid var(--border);position:relative;cursor:pointer;transition:background 0.3s;}
+    .pricing-toggle.active{background:var(--emerald);border-color:var(--emerald);}
+    .toggle-knob{position:absolute;top:3px;left:3px;width:20px;height:20px;border-radius:50%;background:var(--muted);transition:transform 0.3s,background 0.3s;}
+    .pricing-toggle.active .toggle-knob{transform:translateX(24px);background:#060e08;}
+    .toggle-save{font-size:0.65rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--emerald);background:var(--emerald-dim);border:1px solid var(--emerald-bd);padding:2px 8px;border-radius:100px;margin-left:6px;}
+    .free-badge{background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.12);color:var(--muted);}
+    .fda-wrap{background:var(--bg);border-top:1px solid var(--border);}
+    .fda-inner{max-width:1280px;margin:0 auto;padding:32px 64px;}
+    .fda-inner p{font-size:0.72rem;color:var(--muted);line-height:1.8;opacity:0.7;}
+    .pricing-tier-badge{display:inline-block;font-size:0.72rem;font-weight:500;letter-spacing:0.14em;text-transform:uppercase;padding:5px 16px;border-radius:100px;margin-bottom:20px;}
+    .pricing-tier-badge.silver{background:rgba(192,192,192,0.12);border:1px solid rgba(192,192,192,0.3);color:#c0c0c0;}
+    .pricing-tier-badge.gold{background:rgba(212,175,55,0.12);border:1px solid rgba(212,175,55,0.35);color:#d4af37;}
+    .pricing-tier-badge.elite{background:var(--emerald-dim);border:1px solid var(--emerald-bd);color:var(--emerald);}
+    .benefits-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:56px;}
+    .benefit-card{background:var(--bg3);border:1px solid var(--border);padding:40px 36px;border-radius:var(--radius);transition:border-color 0.3s;}
+    .benefit-card:hover{border-color:var(--emerald-bd);}
+    .benefit-icon{font-size:1.6rem;margin-bottom:16px;display:block;}
+    .benefit-card h3{font-family:'Playfair Display',serif;font-size:1.15rem;font-weight:500;margin-bottom:12px;line-height:1.3;}
+    .benefit-card p{color:var(--muted);font-size:0.88rem;line-height:1.8;}
+    @media(max-width:1300px){.pricing-grid-4{grid-template-columns:repeat(3,1fr);}}
+    @media(max-width:1024px){nav{padding:20px 32px;}.section,.section-sm{padding:80px 32px;}.platform-grid{grid-template-columns:repeat(2,1fr);}.dashboard-inner{grid-template-columns:1fr;gap:56px;}.stats-grid{grid-template-columns:repeat(2,1fr);}.testimonials-grid{grid-template-columns:1fr;}.pricing-grid{grid-template-columns:repeat(2,1fr);}.footer-top{grid-template-columns:1fr 1fr;gap:40px;}.signup-inner{grid-template-columns:1fr;gap:48px;padding:80px 32px;}.story-inner{grid-template-columns:1fr;gap:48px;padding:80px 24px;}.community-inner{grid-template-columns:1fr;gap:48px;padding:80px 24px;}.app-inner{grid-template-columns:1fr;gap:48px;padding:80px 24px;}.advisory-inner{padding:80px 24px;}.advisory-grid{grid-template-columns:1fr;}}
+    @media(max-width:900px){.hiw-grid{grid-template-columns:1fr;gap:24px;}.hiw-connector{padding-top:0;transform:rotate(90deg);height:32px;}.hiw-inner{padding:80px 24px;}.bundle-grid{grid-template-columns:repeat(2,1fr);}.methylation-grid{grid-template-columns:1fr;gap:28px;}.methylation-box{padding:36px 24px;}}
+    @media(max-width:720px){.hero h1{font-size:2.8rem;}.hero-stats{gap:32px;flex-wrap:wrap;}.platform-grid{grid-template-columns:1fr;}.stats-grid{grid-template-columns:1fr 1fr;}.compare-inner,.testimonials-inner,.pricing-inner{padding:80px 24px;}.footer-top{grid-template-columns:1fr;}.footer-bottom{flex-direction:column;gap:16px;text-align:center;}footer{padding:40px 24px;}.promise-inner{padding:80px 24px;}.promise-pillars{gap:28px;}.labs-grid{grid-template-columns:1fr;}.labs-inner{padding:80px 24px;}.clinical-inner{padding:40px 24px;flex-direction:column;gap:16px;}.fda-inner{padding:24px;}}
+    @media(max-width:600px){.bundle-grid{grid-template-columns:1fr;}.bundle-inner{padding:80px 24px;}.signup-form{padding:32px 24px;}.pricing-grid-4{grid-template-columns:1fr;}}
+  </style>
+</head>
+<body>
+
+<div style="background:rgba(74,222,128,0.07);border-bottom:1px solid rgba(74,222,128,0.15);padding:10px 24px;text-align:center;font-size:12.5px;color:#7a9880;line-height:1.5;">
+  ⚕️ <strong style="color:#a8c8b0;">Emerald Wellness does not replace your personal physician.</strong> We encourage you to consult with your doctor before making any changes to your health, supplement, or wellness protocols. <a href="medical-disclaimer.html" style="color:#4ade80;text-decoration:none;font-weight:500;">Learn more →</a>
+</div>
+
+<nav>
+  <a class="nav-logo" href="#" style="display:flex;align-items:center;gap:10px;">
+    <span style="font-size:28px;line-height:1;">✦</span>
+    <span><span style="color:var(--emerald)">Emerald</span> Wellness</span>
+  </a>
+  <a class="nav-cta" href="#pricing">Start Free Trial</a>
+</nav>
+
+<div class="hero">
+  <div class="hero-glow"></div>
+  <p class="hero-coming-soon">Coming Soon</p>
+  <p class="hero-eyebrow">The Future of Health Intelligence</p>
+  <h1>Your body is<br/><em>infinitely smarter</em><br/>than any device</h1>
+  <p class="hero-sub">Emerald Wellness is the only platform that unifies peptide protocols, biomarker intelligence, Health Intelligence consultations, and practitioner-grade tools — in one breathtaking experience.</p>
+  <div class="hero-btns">
+    <a class="btn-primary" href="#pricing">Begin Your Journey →</a>
+    <a class="btn-outline" href="#platform">◎ See It Live</a>
+  </div>
+  <div class="waitlist-counter fade-in">
+    <div class="waitlist-dot"></div>
+    <span><strong id="waitlist-num">4,847</strong> people on the waitlist</span>
+  </div>
+  <div class="hero-stats">
+    <div class="hero-stat"><div class="hero-stat-num">500+</div><div class="hero-stat-label">Supplements &amp; Peptides Tracked</div></div>
+    <div class="hero-stat"><div class="hero-stat-num">20</div><div class="hero-stat-label">Supplement Categories</div></div>
+    <div class="hero-stat"><div class="hero-stat-num">15</div><div class="hero-stat-label">Languages Supported</div></div>
+  </div>
+</div>
+
+<div class="marquee-wrap">
+  <div class="marquee-track">
+    <span class="marquee-item"><span class="dot"></span>Injectable Peptides</span>
+    <span class="marquee-item"><span class="dot"></span>Bioregulators</span>
+    <span class="marquee-item"><span class="dot"></span>Glandular Therapy</span>
+    <span class="marquee-item"><span class="dot"></span>Health Intelligence Advocate</span>
+    <span class="marquee-item"><span class="dot"></span>Lab Trending</span>
+    <span class="marquee-item"><span class="dot"></span>Wearable Sync</span>
+    <span class="marquee-item"><span class="dot"></span>Interaction Checker</span>
+    <span class="marquee-item"><span class="dot"></span>Peptide Protocols</span>
+    <span class="marquee-item"><span class="dot"></span>Longevity Intelligence</span>
+    <span class="marquee-item"><span class="dot"></span>HSA/FSA Eligible</span>
+    <span class="marquee-item"><span class="dot"></span>Cycle Planning</span>
+    <span class="marquee-item"><span class="dot"></span>Stack Optimization</span>
+    <span class="marquee-item"><span class="dot"></span>500+ Supplements</span>
+    <span class="marquee-item"><span class="dot"></span>Injectable Peptides</span>
+    <span class="marquee-item"><span class="dot"></span>Bioregulators</span>
+    <span class="marquee-item"><span class="dot"></span>Glandular Therapy</span>
+    <span class="marquee-item"><span class="dot"></span>Health Intelligence Advocate</span>
+    <span class="marquee-item"><span class="dot"></span>Lab Trending</span>
+    <span class="marquee-item"><span class="dot"></span>Wearable Sync</span>
+    <span class="marquee-item"><span class="dot"></span>Interaction Checker</span>
+    <span class="marquee-item"><span class="dot"></span>Peptide Protocols</span>
+    <span class="marquee-item"><span class="dot"></span>Longevity Intelligence</span>
+    <span class="marquee-item"><span class="dot"></span>HSA/FSA Eligible</span>
+    <span class="marquee-item"><span class="dot"></span>Cycle Planning</span>
+    <span class="marquee-item"><span class="dot"></span>Stack Optimization</span>
+    <span class="marquee-item"><span class="dot"></span>500+ Supplements</span>
+  </div>
+</div>
+
+<div class="promise-wrap">
+  <div class="promise-inner fade-in">
+    <span class="label">Our Promise</span>
+    <blockquote class="promise-quote">"Here at Emerald Wellness, we understand and support everyone's unique biology. We are committed to guiding you and your family through all the stages of life. Providing tailored, quality care is our number one priority. <em>Health is wealth</em> — and we will be with you every step of the way."</blockquote>
+    <div class="promise-signature">
+      <div class="promise-sig-line">Sincerely,</div>
+      <div class="promise-sig-name">Your Founder</div>
+      <div class="promise-sig-brand">Emerald Wellness</div>
+    </div>
+    <div class="promise-divider"></div>
+    <div class="promise-pillars">
+      <div class="promise-pillar"><span class="promise-icon">🌳</span><span>Every stage of life</span></div>
+      <div class="promise-pillar"><span class="promise-icon">🧬</span><span>Every unique biology</span></div>
+      <div class="promise-pillar"><span class="promise-icon">👨‍👩‍👧‍👦</span><span>Every member of your family</span></div>
+      <div class="promise-pillar"><span class="promise-icon">✦</span><span>Every step of the way</span></div>
+    </div>
+  </div>
+</div>
+
+<div class="hiw-wrap">
+  <div class="hiw-inner">
+    <div class="hiw-header fade-in">
+      <span class="label">How It Works</span>
+      <h2 class="section-title">Up and running in three steps</h2>
+      <p class="section-body" style="margin-top:16px;">No complicated setup. No waiting rooms. No guesswork. From sign-up to your first personalized protocol in minutes.</p>
+    </div>
+    <div class="hiw-grid">
+      <div class="hiw-card fade-in"><div class="hiw-num">01</div><div class="hiw-icon">📋</div><h3>Build your profile</h3><p>Tell Emerald about your health goals, current supplements, medications, and any existing lab results. The more you share, the smarter your experience becomes.</p></div>
+      <div class="hiw-connector"></div>
+      <div class="hiw-card fade-in"><div class="hiw-num">02</div><div class="hiw-icon">🔬</div><h3>Upload your labs</h3><p>Upload any bloodwork from your doctor or a direct-to-consumer lab. Emerald's Health Intelligence engine reads every biomarker and maps it against clinical optimal ranges instantly.</p></div>
+      <div class="hiw-connector"></div>
+      <div class="hiw-card fade-in"><div class="hiw-num">03</div><div class="hiw-icon">✦</div><h3>Get your protocol</h3><p>Receive a fully personalized supplement, peptide, and lifestyle protocol built around your exact biology. Your Health Intelligence Advocate is ready to answer questions 24/7.</p></div>
+    </div>
+  </div>
+</div>
+
+<div class="platform-wrap" id="platform">
+  <div class="section">
+    <div class="platform-header fade-in">
+      <span class="label">The Platform</span>
+      <h2 class="section-title">Everything your health needs, finally in one place</h2>
+      <p class="section-body" style="margin-top:16px;">Most platforms do one thing. Emerald does everything — peptide protocols, biomarker intelligence, wearable sync, and Health Intelligence guidance — all unified in one breathtaking experience built around your biology.</p>
+    </div>
+    <div class="platform-grid">
+      <div class="platform-card fade-in"><span class="platform-icon">🧬</span><h3>World's Only Peptide Intelligence Engine</h3><p>100+ injectable and oral peptides with cycle planning, injection site rotation, dose tracking, and real-time drug interaction checking across your entire stack.</p><span class="platform-badge">Exclusive</span></div>
+      <div class="platform-card fade-in"><span class="platform-icon">✦</span><h3>Health Intelligence Advocate</h3><p>Your advocate sees your stack, labs, wearable data, journal, and goals. Every answer is personalized — not generic.</p><span class="platform-badge">Health Intelligence</span></div>
+      <div class="platform-card fade-in"><span class="platform-icon">🫀</span><h3>Glandular &amp; Bioregulator Library</h3><p>22 glandular supplements and 23 Khavinson bioregulators with dosing protocols. The only database of its kind.</p><span class="platform-badge">500+ Entries</span></div>
+      <div class="platform-card fade-in"><span class="platform-icon">🔬</span><h3>Lab-to-Protocol Intelligence</h3><p>Upload your bloodwork and get a Health Intelligence-generated supplement protocol tailored to your exact biomarker values.</p><span class="platform-badge">Clinical-Grade</span></div>
+      <div class="platform-card fade-in"><span class="platform-icon">⚡</span><h3>Live Interaction Checker</h3><p>Every time you add to your stack, a background Health Intelligence scan checks for HIGH and MODERATE interactions instantly.</p><span class="platform-badge">Safety-First</span></div>
+      <div class="platform-card fade-in"><span class="platform-icon">👩🏽‍⚕️👨🏿‍⚕️</span><h3>Pro Practitioner Suite</h3><p>2 client profiles included, +$100/mo per additional client. SOAP notes, branded exports, HIPAA BAA, telehealth booking, and white-label reporting.</p><span class="platform-badge">Pro Plan</span></div>
+    </div>
+  </div>
+</div>
+
+<div class="bundle-wrap">
+  <div class="bundle-inner">
+    <div class="bundle-header fade-in">
+      <span class="label">The Emerald Bundle</span>
+      <h2 class="section-title">Four pillars. One unified system.</h2>
+      <p class="section-body" style="margin-top:16px;">Emerald integrates every dimension of your wellbeing into a single intelligent platform.</p>
+      <p class="section-body" style="margin-top:12px;"><strong style="color:var(--white);">$35/mo each</strong> — add any pillar to any plan.</p>
+    </div>
+    <div class="bundle-grid">
+      <div class="bundle-card fade-in"><div class="bundle-icon">🥗</div><div class="bundle-label">Nutrition</div><div class="bundle-price monthly-price">$35<span>/mo</span></div><div class="bundle-price annual-price" style="display:none">$336<span>/yr</span></div><h3>Feed your biology with precision</h3><p>Health Intelligence-generated nutrition protocols built around your biomarkers, goals, and supplement stack.</p><ul class="bundle-list"><li>Personalized meal plans</li><li>Weekly grocery lists</li><li>Food &amp; supplement interaction alerts</li><li>Biomarker-driven macro guidance</li><li>Deficiency detection from labs</li><li>Gut health &amp; microbiome protocols</li></ul><a class="pricing-btn ghost monthly-price" href="https://buy.stripe.com/bJefZi9983bwfmN8BufEk0i" target="_blank" style="display:block;margin-top:24px;text-align:center;">Add Nutrition →</a><a class="pricing-btn ghost annual-price" href="https://buy.stripe.com/7sY00kfxw13oa2t8BufEk0j" target="_blank" style="display:none;margin-top:24px;text-align:center;">Add Nutrition →</a></div>
+      <div class="bundle-card fade-in"><div class="bundle-icon">🧠</div><div class="bundle-label">Mental</div><div class="bundle-price monthly-price">$35<span>/mo</span></div><div class="bundle-price annual-price" style="display:none">$336<span>/yr</span></div><h3>Optimize your mind, not just your body</h3><p>Track cognitive performance, stress markers, and sleep quality alongside your supplement timing.</p><ul class="bundle-list"><li>Cortisol protocol &amp; tracking</li><li>Mood journal</li><li>Stress management tools</li><li>Nootropic &amp; adaptogen protocols</li><li>HRV-correlated mental performance</li><li>Sleep architecture optimization</li></ul><a class="pricing-btn ghost monthly-price" href="https://buy.stripe.com/4gM3cwclk9zU3E5192fEk0k" target="_blank" style="display:block;margin-top:24px;text-align:center;">Add Mental →</a><a class="pricing-btn ghost annual-price" href="https://buy.stripe.com/8x2eVefxw3bwgqR2d6fEk0s" target="_blank" style="display:none;margin-top:24px;text-align:center;">Add Mental →</a></div>
+      <div class="bundle-card fade-in"><div class="bundle-icon">⚡</div><div class="bundle-label">Movement</div><div class="bundle-price monthly-price">$35<span>/mo</span></div><div class="bundle-price annual-price" style="display:none">$336<span>/yr</span></div><h3>Train smarter with real-time data</h3><p>Sync your wearable data and let Emerald correlate your training load with your recovery scores.</p><ul class="bundle-list"><li>Yoga &amp; mobility programs</li><li>Breathwork protocols</li><li>Wearable sync (Oura, Apple Health &amp; more)</li><li>Peptide cycle &amp; training alignment</li><li>Strain vs. recovery scoring</li><li>Performance biomarker trending</li></ul><a class="pricing-btn ghost monthly-price" href="https://buy.stripe.com/14AcN67104fA0rTg3WfEk0m" target="_blank" style="display:block;margin-top:24px;text-align:center;">Add Movement →</a><a class="pricing-btn ghost annual-price" href="https://buy.stripe.com/bJeeVe0CCfYi0rTcRKfEk0n" target="_blank" style="display:none;margin-top:24px;text-align:center;">Add Movement →</a></div>
+      <div class="bundle-card fade-in"><div class="bundle-icon">🌙</div><div class="bundle-label">Recovery</div><div class="bundle-price monthly-price">$35<span>/mo</span></div><div class="bundle-price annual-price" style="display:none">$336<span>/yr</span></div><h3>Recover like an elite athlete</h3><p>Emerald tracks your HRV, sleep quality, and supplement timing together.</p><ul class="bundle-list"><li>Yoga &amp; mobility recovery sessions</li><li>Breathwork &amp; nervous system reset</li><li>HRV &amp; sleep quality trending</li><li>Magnesium, peptide &amp; recovery stack</li><li>AI recovery score correlation</li><li>Longevity &amp; anti-aging protocols</li></ul><a class="pricing-btn ghost monthly-price" href="https://buy.stripe.com/9B6fZi0CCbI27Ul3hafEk0r" target="_blank" style="display:block;margin-top:24px;text-align:center;">Add Recovery →</a><a class="pricing-btn ghost annual-price" href="https://buy.stripe.com/bJeeVedpo5jE6QhbNGfEk0q" target="_blank" style="display:none;margin-top:24px;text-align:center;">Add Recovery →</a></div>
+    </div>
+  </div>
+</div>
+
+<div class="dashboard-wrap">
+  <div class="dashboard-inner">
+    <div class="dashboard-left fade-in">
+      <div class="dashboard-card">
+        <div class="dash-header"><span class="dash-brand">Emerald Wellness · Dashboard</span><span class="dash-date">Sunday, May 24</span></div>
+        <div class="dash-metrics">
+          <div class="dash-metric"><div class="dash-metric-label">Recovery Score</div><div class="dash-metric-val">86<span> / 100</span></div><div class="dash-metric-delta">▲ +12 · Optimal</div></div>
+          <div class="dash-metric"><div class="dash-metric-label">HRV</div><div class="dash-metric-val">74<span> ms</span></div><div class="dash-metric-delta">▲ +8ms · Above avg</div></div>
+          <div class="dash-metric"><div class="dash-metric-label">Vitamin D</div><div class="dash-metric-val">68<span> ng/mL</span></div><div class="dash-metric-delta">✓ In range · Optimal</div></div>
+        </div>
+        <div class="dash-hrv"><div class="dash-hrv-label">7-Day HRV Trend</div><div class="dash-bars"><div class="dash-bar" style="height:55%"></div><div class="dash-bar" style="height:62%"></div><div class="dash-bar" style="height:58%"></div><div class="dash-bar" style="height:70%"></div><div class="dash-bar" style="height:75%"></div><div class="dash-bar" style="height:82%"></div><div class="dash-bar" style="height:100%"></div></div></div>
+        <div class="dash-ai"><div class="dash-ai-label">✦ Health Intelligence Advocate</div><p>Your HRV improved 18% this week since adding Magnesium Glycinate (800mg). Consider adding Ashwagandha KSM-66 to further support your cortisol trend.</p></div>
+        <div style="font-size:0.68rem;color:var(--muted);letter-spacing:0.08em;margin-bottom:10px;">Active Stack:</div>
+        <div class="dash-stack"><span class="dash-pill active">NMN 500mg</span><span class="dash-pill active">Mg Glycinate</span><span class="dash-pill active">BPC-157</span><span class="dash-pill active">CJC-1295</span><span class="dash-pill">+10 more</span></div>
+      </div>
+    </div>
+    <div class="dashboard-features fade-in">
+      <span class="label">The Dashboard</span>
+      <h2 class="section-title">Command center for your biology</h2>
+      <div class="dash-feat" style="margin-top:40px;"><span class="dash-feat-icon">⚡</span><h3>Real-time biomarker trending</h3><p>Upload labs and watch your 43+ biomarkers trend over time with optimal range overlays.</p></div>
+      <div class="dash-feat"><span class="dash-feat-icon">🔄</span><h3>Wearable sync</h3><p>Apple Health, Oura, and more — all data unified in one view, correlated with your supplement timing.</p></div>
+      <div class="dash-feat"><span class="dash-feat-icon">✦</span><h3>Health Intelligence Advocate</h3><p>Your advocate notices patterns before you do — correlating your sleep, stack, and biomarkers to surface insights that change how you optimize.</p></div>
+    </div>
+  </div>
+</div>
+
+<div class="clinical-wrap">
+  <div class="clinical-inner fade-in">
+    <div class="clinical-icon">⚕️</div>
+    <div class="clinical-content"><h3>A note on clinical protocols</h3><p>Before starting any peptide, HRT, GLP-1, or TRT protocol, Emerald requires a consultation with a licensed physician or qualified practitioner. Your Health Intelligence Advocate will guide you — but your safety always comes first.</p></div>
+  </div>
+</div>
+
+<div class="labs-wrap">
+  <div class="labs-inner">
+    <div class="labs-header fade-in"><span class="label">Lab Testing</span><h2 class="section-title">Monitor your biomarkers on your schedule</h2><p class="section-body" style="margin-top:16px;">Choose the lab cadence that fits your goals. Upload results from any lab — Emerald's Health Intelligence does the rest.</p></div>
+    <div class="labs-grid">
+      <div class="labs-card fade-in"><div class="labs-freq">Monthly</div><h3>For the serious optimizer</h3><p>Track your biomarkers every month and catch changes in real time. Ideal for active peptide cycles, TRT, HRT, or GLP-1 protocols.</p><ul class="bundle-list"><li>43+ biomarkers tracked monthly</li><li>Real-time protocol adjustments</li><li>Ideal for active clinical protocols</li><li>Full Health Intelligence analysis every cycle</li></ul></div>
+      <div class="labs-card fade-in"><div class="labs-freq">Quarterly</div><h3>For the long-term health investor</h3><p>Four times a year is enough to spot meaningful trends, adjust your stack seasonally, and stay ahead of changes before they become problems.</p><ul class="bundle-list"><li>43+ biomarkers tracked quarterly</li><li>Seasonal stack optimization</li><li>Year-over-year trend reporting</li><li>Full Health Intelligence analysis every cycle</li></ul></div>
+      <div class="labs-card fade-in"><div class="labs-freq">Parasite &amp; Detox</div><h3>Cleanse from the inside out</h3><p>Parasites and toxic burden are among the most overlooked drivers of chronic fatigue, gut issues, brain fog, and immune dysfunction.</p><ul class="bundle-list"><li>Comprehensive parasite screening</li><li>Heavy metal toxicity panel</li><li>Liver &amp; kidney detox markers</li><li>Health Intelligence-generated cleanse protocol</li><li>Gut microbiome impact analysis</li><li>Post-cleanse supplement stack</li></ul></div>
+      <div class="labs-card fade-in"><div class="labs-freq">Methylation</div><h3>Test the master switch of your biology</h3><p>Methylation is one of the most critical — and most overlooked — processes in the human body.</p><ul class="bundle-list"><li>MTHFR gene variant testing <span style="color:var(--emerald);font-size:0.65rem;">(once in your lifetime)</span></li><li>Homocysteine levels</li><li>B12, folate &amp; methyl nutrient panel</li><li>SAM/SAH methylation ratio</li><li>Health Intelligence-generated methylation protocol</li><li>Personalized supplement correction</li></ul></div>
+    </div>
+    <div class="methylation-box fade-in">
+      <div class="methylation-header"><span class="label">What Is Methylation?</span><h3>The master switch behind almost everything your body does</h3></div>
+      <div class="methylation-grid">
+        <div class="methylation-body"><p>Methylation is a fundamental biochemical process that happens over a billion times per second in every cell of your body. It works by adding a tiny molecule — called a methyl group — to DNA, proteins, and other compounds, effectively switching genes on and off, detoxifying harmful substances, and regulating virtually every major system in your biology.</p><p style="margin-top:16px;">When methylation works well, you feel sharp, energized, emotionally balanced, and resilient. When it doesn't — due to genetics, diet, or nutrient deficiencies — the downstream effects are profound and often misdiagnosed.</p></div>
+        <div class="methylation-list-col"><div class="methylation-why">Why it matters:</div><ul class="bundle-list"><li>Controls gene expression &amp; DNA repair</li><li>Drives detoxification of hormones &amp; toxins</li><li>Produces serotonin, dopamine &amp; melatonin</li><li>Regulates homocysteine (cardiovascular risk)</li><li>Impacts energy, mood &amp; cognitive function</li><li>Linked to anxiety, depression &amp; ADHD</li><li>Critical for longevity &amp; biological aging</li></ul></div>
+      </div>
+      <div class="methylation-note">Up to <strong>44% of people</strong> carry an MTHFR gene variant that impairs methylation — most never know it. The good news: <strong>you only need this test once in your lifetime.</strong> Your genes don't change. Emerald's methylation test identifies your status and generates a targeted protocol to correct it — permanently informing every recommendation we make for you going forward.</div>
+    </div>
+  </div>
+</div>
+
+<div class="compare-wrap">
+  <div class="compare-inner">
+    <div class="compare-header fade-in"><span class="label">Why Emerald</span><h2 class="section-title">Everything your health deserves, finally in one place</h2><p class="section-body" style="margin-top:16px;">Most people manage their health in fragments — one app for steps, another for labs, another for supplements. None of them talk to each other. Emerald unifies everything so your data works for you.</p></div>
+    <div class="benefits-grid fade-in">
+      <div class="benefit-card"><span class="benefit-icon">🎯</span><h3>Stop guessing. Start knowing.</h3><p>Every supplement recommendation is backed by your actual biomarker data, not generic advice. Know what's working, what's not, and exactly why.</p></div>
+      <div class="benefit-card"><span class="benefit-icon">🔗</span><h3>Your health data, finally unified</h3><p>Labs, wearables, supplements, journals — all in one view, all talking to each other. Emerald connects the dots your other apps were never built to see.</p></div>
+      <div class="benefit-card"><span class="benefit-icon">🛡️</span><h3>Safety at every step</h3><p>Every time you add something to your stack, Emerald instantly scans for dangerous interactions across 500+ supplements, peptides, and medications — automatically.</p></div>
+      <div class="benefit-card"><span class="benefit-icon">📈</span><h3>A record that compounds over time</h3><p>In ten years you'll have a decade of biomarker history, protocol logs, and journal entries. A precision record of your biology that no single doctor visit could ever produce.</p></div>
+      <div class="benefit-card"><span class="benefit-icon">🌿</span><h3>Access to elite-level guidance</h3><p>The kind of personalized health intelligence previously reserved for elite clinics charging thousands per visit — now in your pocket, available the moment you need it.</p></div>
+      <div class="benefit-card"><span class="benefit-icon">⏱️</span><h3>Available when your doctor isn't</h3><p>Your Health Intelligence Advocate knows your complete health picture and is available 24/7 — at 2am when a question can't wait, and on weekends when your clinic is closed.</p></div>
+    </div>
+  </div>
+</div>
+
+<div class="story-wrap">
+  <div class="story-inner">
+    <div class="story-left fade-in">
+      <span class="label">Why We Built This</span>
+      <h2 class="section-title">We were the patient.<br/><em style="font-style:italic;color:var(--emerald);">Now we're the solution.</em></h2>
+      <p class="section-body" style="margin-top:20px;">Emerald Wellness was born out of frustration. Our founders — a functional medicine physician, a longevity researcher, and a health-obsessed software engineer — watched the same story repeat itself: brilliant, motivated people investing thousands in their health, receiving fragmented guidance, and never seeing the full picture of their biology.</p>
+      <p class="section-body" style="margin-top:16px;">Labs in one place. Supplements in another. Wearable data siloed in an app that never spoke to their doctor. Peptide protocols sourced from forums. The system was broken — not because the science wasn't there, but because nobody had unified it.</p>
+      <p class="section-body" style="margin-top:16px;">Emerald exists because you deserve better than that. Because your health data should work for you — not sit in disconnected silos collecting digital dust.</p>
+    </div>
+    <div class="story-right fade-in">
+      <div class="story-card"><div class="story-quote">"We didn't build Emerald because we saw a market opportunity. We built it because we needed it ourselves — and we knew millions of others did too."</div><div class="story-author"><div class="story-avatar">EW</div><div><div class="story-name">The Emerald Wellness Founders</div><div class="story-role">Physician · Researcher · Engineer</div></div></div></div>
+      <div class="story-values"><div class="story-value"><span class="perk-icon">✦</span> Science-first, always</div><div class="story-value"><span class="perk-icon">✦</span> Your data belongs to you</div><div class="story-value"><span class="perk-icon">✦</span> Precision over generalization</div><div class="story-value"><span class="perk-icon">✦</span> Access for everyone, not just the wealthy</div></div>
+    </div>
+  </div>
+</div>
+
+<div class="advisory-wrap">
+  <div class="advisory-inner">
+    <div class="advisory-header fade-in"><span class="label">Medical Advisory Board</span><h2 class="section-title">Built with the world's best.<br/>Validated by science.</h2><p class="section-body" style="margin-top:16px;">Every protocol, every recommendation, every interaction check in Emerald is reviewed and validated by our clinical advisory board — leaders in functional medicine, longevity science, and integrative health.</p></div>
+    <div class="advisory-grid">
+      <div class="advisory-card fade-in"><div class="advisory-avatar">👩🏻‍⚕️</div><div class="advisory-name">Dr. Rachel M. Chen, MD</div><div class="advisory-title">Functional Medicine Physician</div><div class="advisory-cred">Harvard Medical School · 18 years clinical practice</div><p class="advisory-bio">Specializing in hormonal optimization, peptide therapy, and longevity medicine. Former director of integrative health at a leading US research hospital.</p></div>
+      <div class="advisory-card fade-in"><div class="advisory-avatar">👨🏾‍⚕️</div><div class="advisory-name">Dr. James O. Patel, PhD</div><div class="advisory-title">Longevity &amp; Biomarker Researcher</div><div class="advisory-cred">Stanford University · 200+ peer-reviewed publications</div><p class="advisory-bio">Leading researcher in biological aging, methylation science, and bioregulator therapy. Pioneer of the biomarker optimization frameworks used in Emerald's lab analysis engine.</p></div>
+      <div class="advisory-card fade-in"><div class="advisory-avatar">👩🏿‍⚕️</div><div class="advisory-name">Dr. Amara S. Williams, ND</div><div class="advisory-title">Naturopathic &amp; Peptide Specialist</div><div class="advisory-cred">Bastyr University · Peptide therapy pioneer</div><p class="advisory-bio">One of North America's leading naturopathic physicians specializing in peptide protocols, glandular therapy, and bioregulator medicine. Author of three clinical reference guides.</p></div>
+    </div>
+    <div class="advisory-disclaimer fade-in">✦ Advisory board members provide clinical validation and protocol review. Emerald Wellness is not a medical practice and does not provide medical diagnoses or prescriptions.</div>
+  </div>
+</div>
+
+<div class="community-wrap">
+  <div class="community-inner">
+    <div class="community-left fade-in">
+      <span class="label">The Emerald Community</span>
+      <h2 class="section-title">The most intelligent health community on the planet.</h2>
+      <p class="section-body" style="margin-top:16px;">Your membership includes access to a private community of biohackers, athletes, longevity seekers, and practitioners who share protocols, results, and insights — moderated by our clinical team.</p>
+      <div class="community-features"><div class="community-feat"><span class="perk-icon">✦</span> Private member forums by health goal</div><div class="community-feat"><span class="perk-icon">✦</span> Weekly live Q&amp;A with advisory board physicians</div><div class="community-feat"><span class="perk-icon">✦</span> Protocol sharing &amp; peer review</div><div class="community-feat"><span class="perk-icon">✦</span> Early access to new features &amp; research</div><div class="community-feat"><span class="perk-icon">✦</span> Practitioner referral network</div></div>
+    </div>
+    <div class="community-right fade-in">
+      <div class="community-stat-grid">
+        <div class="community-stat"><div class="community-num">4,800+</div><div class="community-label">Waitlist members</div></div>
+        <div class="community-stat"><div class="community-num">50+</div><div class="community-label">Verified practitioners</div></div>
+        <div class="community-stat"><div class="community-num">12</div><div class="community-label">Countries represented</div></div>
+        <div class="community-stat"><div class="community-num">Weekly</div><div class="community-label">Live physician Q&amp;As</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="app-wrap">
+  <div class="app-inner">
+    <div class="app-left fade-in">
+      <span class="label">Mobile App</span>
+      <h2 class="section-title">Your health command center.<br/>In your pocket.</h2>
+      <p class="section-body" style="margin-top:16px;">The full Emerald experience on iOS and Android. Log supplements on the go, check interactions before you take anything, review your biomarker trends, and message your Health Intelligence Advocate — wherever you are.</p>
+      <div class="app-badges"><a class="app-badge" href="#"><span class="app-badge-icon">🍎</span><div><div class="app-badge-sub">Download on the</div><div class="app-badge-name">App Store</div></div></a><a class="app-badge" href="#"><span class="app-badge-icon">▶</span><div><div class="app-badge-sub">Get it on</div><div class="app-badge-name">Google Play</div></div></a></div>
+      <p class="app-coming">Mobile app launching with platform — join the waitlist for early access.</p>
+    </div>
+    <div class="app-right fade-in">
+      <div class="app-mockup">
+        <div class="app-screen">
+          <div class="app-screen-header"><span class="app-screen-brand">Emerald</span><span class="app-screen-time">9:41</span></div>
+          <div class="app-screen-body">
+            <div class="app-metric-row"><div class="app-metric"><div class="app-metric-val">86</div><div class="app-metric-lbl">Recovery</div></div><div class="app-metric"><div class="app-metric-val">74ms</div><div class="app-metric-lbl">HRV</div></div><div class="app-metric"><div class="app-metric-val">8.2h</div><div class="app-metric-lbl">Sleep</div></div></div>
+            <div class="app-section-lbl">Today's Stack</div>
+            <div class="app-stack-item"><span>🟢</span> NMN 500mg · 7:00 AM</div>
+            <div class="app-stack-item"><span>🟢</span> Mg Glycinate · 9:00 PM</div>
+            <div class="app-stack-item"><span>⏳</span> BPC-157 · Due now</div>
+            <div class="app-insight"><div class="app-insight-lbl">✦ Health Intelligence</div><div class="app-insight-txt">HRV up 18% since adding Mg Glycinate. Keep it up.</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="stats-wrap">
+  <div class="stats-inner">
+    <div class="fade-in"><span class="label">The Numbers</span><h2 class="section-title">Built on science.<br/>Designed for results.</h2></div>
+    <div class="stats-grid">
+      <div class="stat-card fade-in"><span class="stat-icon">🧬</span><div class="stat-big">500+</div><div class="stat-desc">Supplements, peptides &amp; glandulars in the database</div></div>
+      <div class="stat-card fade-in"><span class="stat-icon">📊</span><div class="stat-big">43+</div><div class="stat-desc">Biomarkers tracked and trended over time</div></div>
+      <div class="stat-card fade-in"><span class="stat-icon">🔬</span><div class="stat-big">100+</div><div class="stat-desc">Injectable &amp; oral peptides with full protocols</div></div>
+      <div class="stat-card fade-in"><span class="stat-icon">🌍</span><div class="stat-big">15</div><div class="stat-desc">Languages with real-time Health Intelligence translation</div></div>
+    </div>
+  </div>
+</div>
+
+<div class="testimonials-wrap">
+  <div class="testimonials-inner">
+    <div class="testimonials-header fade-in"><span class="label">Real Results</span><h2 class="section-title">Trusted by biohackers,<br/>athletes &amp; practitioners</h2></div>
+    <div class="testimonials-grid">
+      <div class="testimonial-card fade-in"><div class="stars">★★★★★</div><p class="testimonial-text">"The Health Intelligence Advocate caught a magnesium-antibiotic interaction I'd been having for months. My pharmacist confirmed it. This app genuinely paid for itself in week one."</p><div class="testimonial-author"><div class="author-avatar">👨🏽</div><div><div class="author-name">Marcus T.</div><div class="author-meta">Biohacker · Austin, TX</div><div class="author-plan">Premium · 8 months</div></div></div></div>
+      <div class="testimonial-card fade-in"><div class="stars">★★★★★</div><p class="testimonial-text">"I use Emerald Pro with all 18 of my TRT and peptide patients. The branded PDF exports look clinical-grade and the HIPAA BAA gives me the compliance cover I need."</p><div class="testimonial-author"><div class="author-avatar">👩🏽</div><div><div class="author-name">Dr. Priya Nair, MD</div><div class="author-meta">Functional Medicine · New York, NY</div><div class="author-plan">Pro Practitioner · Verified</div></div></div></div>
+      <div class="testimonial-card fade-in"><div class="stars">★★★★★</div><p class="testimonial-text">"Six months on TRT, BPC-157, and CJC. The cycle planner and injection rotator made my protocol effortless. Testosterone from 440 to 718 ng/dL. The data speaks."</p><div class="testimonial-author"><div class="author-avatar">👨🏻</div><div><div class="author-name">Jordan K.</div><div class="author-meta">Software Engineer · Denver, CO</div><div class="author-plan">Premium · 6 months</div></div></div></div>
+    </div>
+  </div>
+</div>
+
+<div class="pricing-wrap" id="pricing">
+  <div class="pricing-inner">
+    <div class="pricing-header fade-in"><span class="label" style="text-align:center;display:block;">Transparent Pricing</span><h2 class="section-title">Invest in your optimization</h2><p class="pricing-sub">All plans include a 7-day free trial. HSA/FSA eligible. Cancel anytime.</p></div>
+    <div class="pricing-toggle-wrap fade-in">
+      <span class="toggle-label">Monthly</span>
+      <button class="pricing-toggle" id="billing-toggle" onclick="toggleBilling()"><span class="toggle-knob"></span></button>
+      <span class="toggle-label">Annual <span class="toggle-save">Save 20%</span></span>
+    </div>
+    <div class="pricing-grid-4">
+      <div class="pricing-card fade-in"><div class="pricing-tier-badge free-badge">Free</div><div class="pricing-name">Try Emerald</div><div class="pricing-tagline">Start your health journey at zero cost</div><div class="pricing-price"><div class="price-free">$0</div><div class="price-note">No credit card required</div></div><ul class="pricing-features"><li><span class="f-check">✓</span> Stack up to 5 supplements</li><li><span class="f-check">✓</span> Basic interaction checker</li><li><span class="f-check">✓</span> Daily health journal</li><li><span class="f-check">✓</span> Basic biomarker overview</li><li><span class="f-cross">✕</span> Health Intelligence Advocate</li><li><span class="f-cross">✕</span> Lab upload &amp; analysis</li><li><span class="f-cross">✕</span> Peptide guide</li><li><span class="f-cross">✕</span> Wearable sync</li></ul><a class="pricing-btn ghost" href="#">Get Started Free</a></div>
+      <div class="pricing-card fade-in"><div class="pricing-tier-badge silver">Silver</div><div class="pricing-name">Essential Intelligence</div><div class="pricing-tagline">Everything you need to take control of your health</div><div class="pricing-price"><div class="price-amount monthly-price"><sup>$</sup>75<span>/mo</span></div><div class="price-amount annual-price" style="display:none"><sup>$</sup>720<span>/yr</span></div><div class="price-note monthly-price">7-day free trial included</div><div class="price-note annual-price" style="display:none">Save 20% · billed annually</div></div><ul class="pricing-features"><li><span class="f-check">✓</span> Unlimited supplement stack</li><li><span class="f-check">✓</span> Live interaction checker</li><li><span class="f-check">✓</span> Lab upload &amp; biomarker trending</li><li><span class="f-check">✓</span> Wearable sync</li><li><span class="f-check">✓</span> Daily health journal</li><li><span class="f-check">✓</span> Basic peptide guide</li><li><span class="f-cross">✕</span> Health Intelligence Advocate</li><li><span class="f-cross">✕</span> Cycle planner &amp; injection rotator</li><li><span class="f-cross">✕</span> Longevity protocols</li></ul><a class="pricing-btn ghost monthly-price" href="https://buy.stripe.com/6oU5kE1GG27seiJ5pifEk0e" target="_blank">Start Free Trial</a><a class="pricing-btn ghost annual-price" href="https://buy.stripe.com/00w8wQgBAfYieiJ8BufEk0f" target="_blank" style="display:none">Start Free Trial</a></div>
+      <div class="pricing-card featured fade-in"><div class="pricing-tier-badge gold">Gold</div><div class="pricing-name">Advanced Intelligence</div><div class="pricing-tagline">The full Emerald experience for serious optimizers</div><div class="pricing-price"><div class="price-amount monthly-price"><sup>$</sup>150<span>/mo</span></div><div class="price-amount annual-price" style="display:none"><sup>$</sup>1,440<span>/yr</span></div><div class="price-note monthly-price">7-day free trial included</div><div class="price-note annual-price" style="display:none">Save 20% · billed annually</div></div><ul class="pricing-features"><li><span class="f-check">✓</span> Everything in Silver</li><li><span class="f-check">✓</span> Health Intelligence Advocate (unlimited)</li><li><span class="f-check">✓</span> Full peptide guide (100+ peptides)</li><li><span class="f-check">✓</span> Cycle planner &amp; injection rotator</li><li><span class="f-check">✓</span> Health Intelligence-generated lab protocols</li><li><span class="f-check">✓</span> Longevity &amp; beauty protocols</li><li><span class="f-check">✓</span> Biological age estimation</li><li><span class="f-check">✓</span> Priority support</li></ul><a class="pricing-btn solid monthly-price" href="https://buy.stripe.com/6oUeVe2KK27s4I95pifEk0g" target="_blank">Start Free Trial</a><a class="pricing-btn solid annual-price" href="https://buy.stripe.com/aFa5kE7109zUa2t3hafEk0h" target="_blank" style="display:none">Start Free Trial</a></div>
+      <div class="pricing-card fade-in"><div class="pricing-tier-badge elite">Emerald Elite</div><div class="pricing-name">Emerald Elite</div><div class="pricing-tagline">Advanced optimization for serious health investors</div><div class="pricing-price"><div class="price-amount monthly-price"><sup>$</sup>200<span>/mo</span></div><div class="price-amount annual-price" style="display:none"><sup>$</sup>1,920<span>/yr</span></div><div class="price-note monthly-price">7-day free trial included</div><div class="price-note annual-price" style="display:none">Save 20% · billed annually</div></div><ul class="pricing-features"><li><span class="f-check">✓</span> Everything in Gold</li><li><span class="f-check">✓</span> Advanced biomarker analysis</li><li><span class="f-check">✓</span> Wearable deep sync</li><li><span class="f-check">✓</span> Parasite &amp; detox protocols</li><li><span class="f-check">✓</span> Methylation testing guidance</li><li><span class="f-check">✓</span> Early feature access</li><li><span class="f-cross">✕</span> Practitioner client profiles</li><li><span class="f-cross">✕</span> HIPAA BAA</li></ul><a class="pricing-btn ghost monthly-price" href="https://buy.stripe.com/7sY7sMgBAh2m3E5192fEk0b" target="_blank">Start Free Trial</a><a class="pricing-btn ghost annual-price" href="https://buy.stripe.com/14AdRa4SSh2m8Yp7xqfEk0c" target="_blank" style="display:none">Start Free Trial</a></div>
+      <div class="pricing-card fade-in"><div class="pricing-tier-badge elite">Pro Suite</div><div class="pricing-name">Practitioner Intelligence</div><div class="pricing-tagline">Clinical-grade tools for practitioners &amp; high-performers</div><div class="pricing-price"><div class="price-amount monthly-price"><sup>$</sup>300<span>/mo</span></div><div class="price-amount annual-price" style="display:none"><sup>$</sup>2,880<span>/yr</span></div><div class="price-note monthly-price">HIPAA BAA · 7-day trial</div><div class="price-note annual-price" style="display:none">Save 20% · billed annually</div></div><ul class="pricing-features"><li><span class="f-check">✓</span> Everything in Gold</li><li><span class="f-check">✓</span> 2 client profiles included</li><li><span class="f-check">✓</span> +$100/mo per additional client</li><li><span class="f-check">✓</span> SOAP notes &amp; Health Intelligence-assisted charting</li><li><span class="f-check">✓</span> White-label branded PDF exports</li><li><span class="f-check">✓</span> HIPAA BAA available</li><li><span class="f-check">✓</span> Telehealth booking integration</li><li><span class="f-check">✓</span> Practitioner Health Intelligence Advocate</li><li><span class="f-check">✓</span> Dedicated account support</li></ul><a class="pricing-btn ghost monthly-price" href="https://buy.stripe.com/bJedRa7108vQ0rTdVOfEk09" target="_blank">Start Elite Trial</a><a class="pricing-btn ghost annual-price" href="https://buy.stripe.com/7sYfZi7103bw5Md192fEk0a" target="_blank" style="display:none">Start Elite Trial</a></div>
+    </div>
+  </div>
+</div>
+
+<div class="signup-wrap" id="signup">
+  <div class="signup-inner">
+    <div class="signup-left fade-in">
+      <span class="label">Exclusive Offer</span>
+      <h2 class="section-title">Start your journey.<br/><em style="font-style:italic;color:var(--emerald);">Save 20% your first month.</em></h2>
+      <p class="section-body" style="margin-top:16px;">Sign up today and receive 20% off your first month on any plan. No credit card required to get started.</p>
+      <div class="signup-perks">
+        <div class="signup-perk"><span class="perk-icon">✦</span> 20% off your first month</div>
+        <div class="signup-perk"><span class="perk-icon">✦</span> 7-day free trial on all paid plans</div>
+        <div class="signup-perk"><span class="perk-icon">✦</span> HSA/FSA eligible</div>
+        <div class="signup-perk"><span class="perk-icon">✦</span> Cancel anytime</div>
+      </div>
+    </div>
+    <div class="signup-right fade-in">
+      <form class="signup-form" onsubmit="handleSignup(event)">
+        <div class="form-group"><label class="form-label">Full Name</label><input class="form-input" type="text" placeholder="Your full name" required/></div>
+        <div class="form-group"><label class="form-label">Phone Number</label><input class="form-input" type="tel" placeholder="+1 (000) 000-0000"/></div>
+        <div class="form-group"><label class="form-label">Email Address</label><input class="form-input" type="email" placeholder="you@example.com" required/></div>
+        <button class="signup-btn" type="submit">Claim 20% Discount →</button>
+        <p class="form-note">By signing up you agree to our <a href="terms-of-service.html">Terms of Service</a> and <a href="privacy-policy.html">Privacy Policy</a>.</p>
+        <div class="signup-success" id="signup-success"><span>✦</span> You're in — check your email for your 20% discount code.</div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<div class="fda-wrap">
+  <div class="fda-inner"><p>* These statements have not been evaluated by the Food and Drug Administration. Emerald Wellness is not intended to diagnose, treat, cure, or prevent any disease. All supplement, peptide, and protocol recommendations are for informational purposes only. Consult a licensed physician before beginning any new health protocol, especially peptides, HRT, TRT, or GLP-1 therapies. Individual results may vary.</p></div>
+</div>
+
+<div class="final-cta">
+  <div class="final-cta-inner fade-in">
+    <div class="final-cta-badge">Limited Time · 7-Day Free Trial</div>
+    <h2>The most sophisticated health platform ever built<br/><em style="color:var(--emerald);font-style:italic;">is free to try</em></h2>
+    <p>Join thousands of biohackers, athletes, and longevity seekers who have made Emerald their health command center.</p>
+    <div class="final-cta-btns"><a class="btn-primary" href="#signup">Begin Free Trial →</a><a class="btn-outline" href="#">Book a Demo</a></div>
+    <div class="final-cta-meta">No credit card required <span>·</span> HSA/FSA eligible <span>·</span> Cancel anytime</div>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <h3><span>Emerald</span> Wellness</h3>
+      <p>The intelligence layer for human performance. Unifying peptides, biomarkers, Health Intelligence, and practitioner tools in one platform.</p>
+      <div class="footer-badges"><span class="footer-badge">HSA/FSA Eligible</span><span class="footer-badge">HIPAA-Inspired</span><span class="footer-badge">15 Languages</span></div>
+      <div style="margin-top:20px;font-size:0.82rem;color:var(--muted);line-height:1.9;">
+        <p style="margin:0;">📍 470 West Broad St, Ste 1062</p>
+        <p style="margin:0;">Columbus, Ohio 43215</p>
+        <p style="margin:4px 0 0;">📞 <a href="tel:2166168995" style="color:var(--muted);text-decoration:none;">216-616-8995</a> &nbsp;·&nbsp; 📠 Fax: 514-591-3583</p>
+      </div>
+    </div>
+    <div class="footer-col"><h4>Platform</h4><ul><li><a href="#">Supplement Database</a></li><li><a href="#">Health Intelligence Advocate</a></li><li><a href="#">Peptide Protocols</a></li><li><a href="#">Lab Analysis</a></li><li><a href="#">Wearable Sync</a></li><li><a href="#">Pro Practitioner</a></li></ul></div>
+    <div class="footer-col"><h4>Company</h4><ul><li><a href="#">About</a></li><li><a href="#">Science</a></li><li><a href="#">Blog</a></li><li><a href="#">Careers</a></li><li><a href="#">Press</a></li><li><a href="#">Contact</a></li></ul></div>
+    <div class="footer-col"><h4>Legal</h4><ul><li><a href="privacy-policy.html">Privacy Policy</a></li><li><a href="terms-of-service.html">Terms of Service</a></li><li><a href="hipaa.html">HIPAA &amp; BAA</a></li><li><a href="medical-disclaimer.html">Medical Disclaimer</a></li><li><a href="cookie-policy.html">Cookie Policy</a></li></ul></div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2026 Emerald Wellness, Inc. · emeraldwellness.health · 470 West Broad St, Ste 1062, Columbus, OH 43215 · 216-616-8995 · All rights reserved</p>
+    <div class="footer-bottom-badges"><span>HSA/FSA Eligible</span><span>·</span><span>HIPAA-Inspired</span><span>·</span><span>Health Intelligence</span></div>
+  </div>
+</footer>
+
+<script>
+  function toggleBilling() {
+    const toggle = document.getElementById('billing-toggle');
+    toggle.classList.toggle('active');
+    const isAnnual = toggle.classList.contains('active');
+    document.querySelectorAll('.monthly-price').forEach(el => el.style.display = isAnnual ? 'none' : '');
+    document.querySelectorAll('.annual-price').forEach(el => el.style.display = isAnnual ? '' : 'none');
+  }
+
+  async function handleSignup(e) {
+    e.preventDefault();
+    const btn = e.target.querySelector('.signup-btn');
+    const name = e.target.querySelector('input[type="text"]').value.trim();
+    const phone = e.target.querySelector('input[type="tel"]').value.trim();
+    const email = e.target.querySelector('input[type="email"]').value.trim();
+    btn.textContent = 'Saving...'; btn.disabled = true;
+    try {
+      await fetch('/api/subscribe', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email, first_name: name, phone, source: 'landing' })
+      });
+    } catch(err) { console.warn(err); }
+    document.getElementById('signup-success').style.display = 'block';
+    btn.textContent = "You're in ✦";
+  }
+
+  const obs = new IntersectionObserver(
+    entries => entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); }),
+    { threshold: 0.08 }
+  );
+  document.querySelectorAll('.fade-in').forEach(el => obs.observe(el));
+</script>
+</body>
+</html>
