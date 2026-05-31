@@ -2053,19 +2053,7 @@ const SUPABASE_URL='https://mczpuffmlspmghgneukz.supabase.co';
     const phone=e.target.querySelector('input[type="tel"]').value.trim();
     const email=e.target.querySelector('input[type="email"]').value.trim();
     btn.textContent='Saving...';btn.disabled=true;
-    try{await fetch(SUPABASE_URL+'/rest/v1/waitlist',{method:'POST',headers:{'apikey':SUPABASE_ANON,'Authorization':'Bearer '+SUPABASE_ANON,'Content-Type':'application/json','Prefer':'return=minimal'},body:JSON.stringify({email:email,first_name:name,phone:phone,source:'landing',created_at:new Date().toISOString()})});}catch(err){console.warn(err);}
-    try{const p={token:KLAVIYO_KEY,properties:{'$email':email,'$first_name':name,'$phone_number':phone}};await fetch('https://a.klaviyo.com/api/identify?data='+btoa(JSON.stringify(p)));await fetch('https://a.klaviyo.com/api/v2/list/'+KLAVIYO_LIST+'/members',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({api_key:KLAVIYO_KEY,profiles:[{email:email,first_name:name}]})});}catch(err){console.warn(err);}
+   try{await fetch('/api/subscribe',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({email:email,first_name:name,phone:phone,source:'landing'})});}catch(err){console.warn(err);}
     document.getElementById('signup-success').style.display='block';
     btn.textContent="You're in ✦";
   }
-  
-
-  const obs = new IntersectionObserver(
-    entries => entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); }),
-    { threshold: 0.08 }
-  );
-  document.querySelectorAll('.fade-in').forEach(el => obs.observe(el));
-</script>
-
-</body>
-</html>
