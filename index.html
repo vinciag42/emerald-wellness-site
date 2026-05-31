@@ -606,5 +606,162 @@ let stripe=null;
   if(urlParams.get('step')==='4') goStep(4);
 })();
 </script>
+<!DOCTYPE html>
+<html>
+<head><meta charset="UTF-8"/><title>Klaviyo Patch</title>
+<style>
+body{font-family:Arial,sans-serif;background:#050d07;color:#e8f2ec;padding:30px;text-align:center;}
+h1{color:#40d888;margin-bottom:6px;}
+p{color:#8aac96;margin-bottom:20px;font-size:15px;line-height:1.6;}
+button{background:#1a6b45;color:#fff;border:none;padding:18px 48px;border-radius:12px;font-size:18px;cursor:pointer;margin-bottom:16px;}
+button:hover{background:#2aab6a;}
+.done{color:#40d888;font-size:15px;margin-top:8px;display:none;}
+textarea{position:absolute;left:-9999px;}
+</style>
+</head>
+<body>
+<h1>✦ Klaviyo + Supabase Patch</h1>
+<p>Click Copy, then paste this code into index.html<br/>just before the &lt;/body&gt; tag at the very bottom.</p>
+<button onclick="copyIt()">📋 Copy Patch Code</button>
+<div class="done" id="done">✅ Copied! Paste it in GitHub just before &lt;/body&gt;</div>
+<textarea id="code">&lt;!-- KLAVIYO + SUPABASE WAITLIST PATCH --&gt;
+&lt;!-- Paste this just before &lt;/body&gt; in index.html --&gt;
+&lt;script&gt;
+(function(){
+  const SUPABASE_URL = 'https://mczpuffmlspmghgneukz.supabase.co';
+  const SUPABASE_ANON = 'sb_publishable_OAWniWdCQFuaqLledTmkEg_uuNnoK6S';
+  const KLAVIYO_KEY = 'WtKVHz';
+  const KLAVIYO_LIST = 'XEEg3P';
+
+  async function saveToSupabase(email, firstName, phone) {
+    try {
+      await fetch(SUPABASE_URL+'/rest/v1/waitlist', {
+        method:'POST',
+        headers:{
+          'apikey':SUPABASE_ANON,
+          'Authorization':'Bearer '+SUPABASE_ANON,
+          'Content-Type':'application/json',
+          'Prefer':'return=minimal'
+        },
+        body:JSON.stringify({
+          email:email,
+          first_name:firstName||'',
+          phone:phone||'',
+          source:'coming_soon',
+          created_at:new Date().toISOString()
+        })
+      });
+      console.log('✓ Saved to Supabase');
+    } catch(e){ console.warn('Supabase:',e); }
+  }
+
+  async function saveToKlaviyo(email, firstName, phone) {
+    try {
+      await fetch('https://a.klaviyo.com/api/profile-subscription-bulk-create-jobs/', {
+        method:'POST',
+        headers:{
+          'Authorization':'Klaviyo-API-Key '+KLAVIYO_KEY,
+          'Content-Type':'application/json',
+          'revision':'2023-12-15'
+        },
+        body:JSON.stringify({
+          data:{
+            type:'profile-subscription-bulk-create-job',
+            attributes:{
+              profiles:{
+                data:[{
+                  type:'profile',
+                  attributes:{
+                    email:email,
+                    first_name:firstName||'',
+                    phone_number:phone||'',
+                    subscriptions:{
+                      email:{marketing:{consent:'SUBSCRIBED'}}
+                    }
+                  }
+                }]
+              }
+            },
+            relationships:{
+              list:{data:{type:'list',id:KLAVIYO_LIST}}
+            }
+          }
+        })
+      });
+      console.log('✓ Saved to Klaviyo');
+    } catch(e){ console.warn('Klaviyo:',e); }
+  }
+
+  // Hook into all waitlist forms on the page
+  function hookForms() {
+    // Find all email inputs and intercept their submit
+    document.querySelectorAll('form').forEach(function(form){
+      form.addEventListener('submit', async function(e){
+        e.preventDefault();
+        e.stopPropagation();
+        const emailEl = form.querySelector('input[type="email"], input[name="email"]');
+        const nameEl  = form.querySelector('input[type="text"], input[name="name"], input[name="first_name"]');
+        const phoneEl = form.querySelector('input[type="tel"], input[name="phone"]');
+        if(!emailEl || !emailEl.value) return;
+        const email = emailEl.value.trim();
+        const name  = nameEl  ? nameEl.value.trim()  : '';
+        const phone = phoneEl ? phoneEl.value.trim() : '';
+        // Show loading state
+        const btn = form.querySelector('button[type="submit"],button');
+        if(btn){ btn.disabled=true; btn.textContent='Joining...'; }
+        // Save to both
+        await Promise.all([
+          saveToSupabase(email, name, phone),
+          saveToKlaviyo(email, name, phone)
+        ]);
+        // Show success
+        if(btn){ btn.disabled=false; btn.textContent='✓ You\'re on the list!'; }
+        // Trigger any existing success UI
+        const successEls = document.querySelectorAll('.success, .waitlist-success, #waitlist-success, .thank-you');
+        successEls.forEach(function(el){ el.style.display='block'; });
+        // Reset after 3 seconds
+        setTimeout(function(){
+          if(btn){ btn.textContent='Join the Waitlist →'; btn.disabled=false; }
+        }, 3000);
+      });
+    });
+
+    // Also hook any onclick buttons that aren't in forms
+    document.querySelectorAll('button, [onclick]').forEach(function(el){
+      const txt = (el.textContent||'').toLowerCase();
+      if(txt.includes('join') || txt.includes('waitlist') || txt.includes('notify')) {
+        el.addEventListener('click', async function(){
+          // find nearest email input
+          const emailEl = document.querySelector('input[type="email"]');
+          if(!emailEl || !emailEl.value) return;
+          await Promise.all([
+            saveToSupabase(emailEl.value.trim(),'',''),
+            saveToKlaviyo(emailEl.value.trim(),'','')
+          ]);
+          console.log('✓ Waitlist signup captured');
+        });
+      }
+    });
+  }
+
+  if(document.readyState==='loading'){
+    document.addEventListener('DOMContentLoaded', hookForms);
+  } else {
+    hookForms();
+  }
+})();
+&lt;/script&gt;
+</textarea>
+<script>
+function copyIt(){
+  const ta=document.getElementById('code');
+  ta.value=ta.value.replace(/&amp;/g,'&').replace(/&lt;/g,'<').replace(/&gt;/g,'>');
+  ta.select();
+  document.execCommand('copy');
+  document.getElementById('done').style.display='block';
+}
+</script>
+</body>
+</html>
 </body>
 </html>
