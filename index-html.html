@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Coming Soon — Emerald Wellness | Launching in 30 Days</title>
+<meta name="description" content="Emerald Wellness is launching in 30 days. Join the waitlist for your 7-day free trial, 20% off your first month, and founding member pricing locked forever."/>
+<meta name="robots" content="noindex, nofollow"/>
+<meta property="og:title" content="Emerald Wellness — Launching Soon"/>
+<meta property="og:description" content="The world's most complete biohacking platform. Launching in 30 days. Join the waitlist for 7 days free + 20% off your first month."/>
+<meta property="og:type" content="website"/>
+<meta property="og:url" content="https://emeraldwellness.health/coming-soon"/>
+<meta name="twitter:card" content="summary_large_image"/>
+<link rel="canonical" href="https://emeraldwellness.health/coming-soon"/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=DM+Sans:wght@300;400;500&family=Cinzel:wght@400;600&family=Cormorant+Garamond:ital,wght@1,300&display=swap" rel="stylesheet"/>
+<style>
+:root{
+  --bg:#050d07;--bg2:#080f0a;--bg3:#0c160e;
+  --em:#1a6b45;--emL:#2aab6a;--emXL:#40d888;--emPale:rgba(26,107,69,.08);
+  --gold:#c8a828;--goldL:#f0c84a;--goldXL:#ffe47a;--goldPale:rgba(200,168,40,.08);
+  --text:#e8f2ec;--textDim:#8aac96;--textMid:#b8d4c0;
+  --border:rgba(255,255,255,.06);--borderEm:rgba(26,107,69,.35);--borderGold:rgba(200,168,40,.3);
+  --serif:'Playfair Display',Georgia,serif;
+  --sans:'DM Sans',system-ui,sans-serif;
+  --cinzel:'Cinzel',serif;
+  --cormorant:'Cormorant Garamond',serif;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html,body{height:100%;}
+body{font-family:var(--sans);background:var(--bg);color:var(--text);overflow-x:hidden;min-height:100vh;}
+
+/* CANVAS BG */
+#bg-canvas{position:fixed;inset:0;z-index:0;opacity:.35;pointer-events:none;}
+
+/* LAYOUT */
+.page{position:relative;z-index:1;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:48px 24px;}
+
+/* LOGO */
+.cs-logo{display:flex;flex-direction:column;align-items:center;gap:8px;margin-bottom:40px;}
+.cs-diamond{width:48px;height:48px;background:linear-gradient(135deg,var(--em),var(--emXL));transform:rotate(45deg);border-radius:6px;box-shadow:0 0 40px rgba(64,216,136,.2);}
+.cs-brand{font-family:var(--cinzel);font-size:16px;letter-spacing:4px;color:var(--emXL);text-transform:uppercase;margin-top:8px;}
+.cs-tagline{font-family:var(--cormorant);font-size:14px;font-style:italic;color:var(--textDim);letter-spacing:2px;}
+
+/* EYEBROW */
+.cs-eyebrow{font-family:var(--cinzel);font-size:10px;letter-spacing:4px;color:var(--goldL);text-transform:uppercase;text-align:center;margin-bottom:20px;display:flex;align-items:center;gap:12px;}
+.cs-eyebrow::before,.cs-eyebrow::after{content:'';width:32px;height:1px;background:var(--borderGold);}
+
+/* HEADLINE */
+.cs-title{font-family:var(--serif);font-size:clamp(36px,6vw,72px);font-weight:900;line-height:1.05;text-align:center;margin-bottom:16px;max-width:700px;}
+.cs-title em{font-style:italic;color:var(--emXL);}
+.cs-title .gold{color:var(--goldXL);}
+.cs-sub{font-family:var(--cormorant);font-size:clamp(16px,2vw,20px);font-style:italic;color:var(--textMid);text-align:center;line-height:1.7;margin-bottom:48px;max-width:540px;}
+
+/* COUNTDOWN */
+.cs-countdown{display:flex;gap:clamp(16px,4vw,40px);justify-content:center;align-items:center;margin-bottom:48px;flex-wrap:wrap;}
+.cs-unit{text-align:center;min-width:72px;}
+.cs-num{font-family:var(--serif);font-size:clamp(44px,8vw,80px);font-weight:900;line-height:1;color:var(--emXL);display:block;text-shadow:0 0 40px rgba(64,216,136,.3);}
+.cs-unit-lbl{font-family:var(--cinzel);font-size:9px;letter-spacing:2.5px;color:var(--textDim);text-transform:uppercase;margin-top:6px;}
+.cs-sep{font-family:var(--serif);font-size:clamp(32px,5vw,56px);font-weight:300;color:var(--borderEm);margin-bottom:24px;align-self:flex-start;margin-top:8px;}
+
+/* OFFERS ROW */
+.cs-offers{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-bottom:40px;}
+.cs-offer-badge{display:flex;align-items:center;gap:7px;padding:7px 14px;border-radius:20px;font-size:11px;font-weight:600;letter-spacing:.5px;white-space:nowrap;}
+.badge-green{background:var(--emPale);border:1px solid var(--borderEm);color:var(--emXL);}
+.badge-gold{background:var(--goldPale);border:1px solid var(--borderGold);color:var(--goldL);}
+
+/* FORM */
+.cs-form-wrap{width:100%;max-width:480px;margin-bottom:16px;}
+.cs-form{display:flex;gap:0;border-radius:12px;overflow:hidden;border:1px solid var(--borderEm);background:var(--bg2);}
+.cs-form-input{flex:1;background:transparent;border:none;padding:16px 20px;color:var(--text);font-family:var(--sans);font-size:14px;outline:none;min-width:0;}
+.cs-form-input::placeholder{color:var(--textDim);}
+.cs-form-btn{background:linear-gradient(135deg,var(--em),var(--emL));color:#fff;border:none;padding:16px 24px;font-family:var(--sans);font-size:13px;font-weight:600;letter-spacing:.5px;cursor:pointer;transition:all .2s;white-space:nowrap;flex-shrink:0;}
+.cs-form-btn:hover{opacity:.9;}
+.cs-legal{font-size:11px;color:var(--textDim);text-align:center;line-height:1.5;}
+
+/* SUCCESS */
+.cs-success{width:100%;max-width:480px;background:var(--emPale);border:1px solid var(--borderEm);border-radius:16px;padding:28px;text-align:center;display:none;}
+.cs-success-icon{font-size:40px;margin-bottom:12px;}
+.cs-success h3{font-family:var(--serif);font-size:22px;font-weight:700;margin-bottom:8px;}
+.cs-success p{font-size:13px;color:var(--textMid);line-height:1.65;margin-bottom:18px;}
+.cs-ref-wrap{background:var(--bg2);border:1px solid var(--borderGold);border-radius:10px;padding:14px 16px;}
+.cs-ref-label{font-size:11px;color:var(--goldL);font-family:var(--cinzel);letter-spacing:1px;text-transform:uppercase;margin-bottom:8px;}
+.cs-ref-row{display:flex;gap:8px;}
+.cs-ref-input{flex:1;background:var(--bg3);border:1px solid var(--border);border-radius:8px;padding:9px 12px;color:var(--textMid);font-size:12px;font-family:var(--sans);outline:none;}
+.cs-ref-copy{background:var(--gold);color:#050d07;border:none;border-radius:8px;padding:9px 14px;font-size:11px;font-weight:700;font-family:var(--sans);cursor:pointer;letter-spacing:.5px;}
+.cs-ref-bonus{font-size:11px;color:var(--textDim);margin-top:8px;line-height:1.5;}
+
+/* COUNTER BADGE */
+.cs-counter{display:flex;align-items:center;gap:8px;margin-top:20px;}
+.cs-dot{width:7px;height:7px;border-radius:50%;background:var(--emXL);animation:pulse-dot 2s ease-in-out infinite;}
+@keyframes pulse-dot{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(.8)}}
+.cs-counter-text{font-size:12px;color:var(--textDim);}
+.cs-counter-text strong{color:var(--emXL);}
+
+/* FEATURES ROW */
+.cs-features{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:12px;max-width:760px;width:100%;margin-top:52px;}
+.cs-feature{background:var(--bg2);border:1px solid var(--border);border-radius:14px;padding:18px 16px;text-align:center;transition:border-color .2s;}
+.cs-feature:hover{border-color:var(--borderEm);}
+.cs-feature-icon{font-size:24px;margin-bottom:10px;}
+.cs-feature-name{font-size:12px;font-weight:500;color:var(--text);margin-bottom:4px;}
+.cs-feature-desc{font-size:11px;color:var(--textDim);line-height:1.5;}
+
+/* FOOTER */
+.cs-footer{position:relative;z-index:1;padding:24px;text-align:center;font-size:12px;color:var(--textDim);display:flex;gap:20px;justify-content:center;flex-wrap:wrap;border-top:1px solid var(--border);width:100%;margin-top:auto;}
+.cs-footer a{color:var(--textDim);text-decoration:none;transition:color .2s;}
+.cs-footer a:hover{color:var(--emXL);}
+
+@media(max-width:600px){
+  .cs-form{flex-direction:column;border-radius:12px;}
+  .cs-form-input{border-bottom:1px solid var(--borderEm);}
+  .cs-form-btn{border-radius:0 0 10px 10px;padding:14px;}
+  .cs-sep{display:none;}
+}
+</style>
+</head>
+<body>
+
+<canvas id="bg-canvas"></canvas>
+
+<div class="page">
+
+  <!-- LOGO -->
+  <div class="cs-logo">
+    <div class="cs-diamond"></div>
+    <div class="cs-brand">Emerald Wellness</div>
+    <div class="cs-tagline">The Intelligence Layer for Human Performance</div>
+  </div>
+
+  <!-- EYEBROW -->
+  <div class="cs-eyebrow">Launching in 30 Days</div>
+
+  <!-- HEADLINE -->
+  <h1 class="cs-title">
+    Something <em>Extraordinary</em><br/>
+    is <span class="gold">Coming</span>
+  </h1>
+  <p class="cs-sub">
+    500+ supplements, peptides & bioregulators. AI-powered stack optimization. Clinical-grade protocols. Built for people who refuse to leave their biology to chance.
+  </p>
+
+  <!-- COUNTDOWN -->
+  <div class="cs-countdown">
+    <div class="cs-unit"><span class="cs-num" id="cs-days">30</span><div class="cs-unit-lbl">Days</div></div>
+    <div class="cs-sep">:</div>
+    <div class="cs-unit"><span class="cs-num" id="cs-hours">00</span><div class="cs-unit-lbl">Hours</div></div>
+    <div class="cs-sep">:</div>
+    <div class="cs-unit"><span class="cs-num" id="cs-mins">00</span><div class="cs-unit-lbl">Minutes</div></div>
+    <div class="cs-sep">:</div>
+    <div class="cs-unit"><span class="cs-num" id="cs-secs">00</span><div class="cs-unit-lbl">Seconds</div></div>
+  </div>
+
+  <!-- OFFER BADGES -->
+  <div class="cs-offers">
+    <div class="cs-offer-badge badge-green">✓ 7-Day Free Trial</div>
+    <div class="cs-offer-badge badge-gold">✓ 20% Off First Month</div>
+    <div class="cs-offer-badge badge-green">✓ Refer 3 Friends → 20% Off Next Purchase</div>
+  </div>
+
+  <!-- WAITLIST FORM -->
+  <div class="cs-form-wrap" id="cs-form-section">
+    <div style="display:flex;flex-direction:column;gap:10px;width:100%;max-width:480px;">
+      <input class="cs-form-input" type="text" id="cs-name" placeholder="Your first name" autocomplete="given-name" style="background:var(--bg2);border:1px solid var(--borderEm);border-radius:10px;padding:14px 18px;color:var(--text);font-family:var(--sans);font-size:14px;outline:none;width:100%;"/>
+      <input class="cs-form-input" type="email" id="cs-email" placeholder="Your email address" autocomplete="email" style="background:var(--bg2);border:1px solid var(--borderEm);border-radius:10px;padding:14px 18px;color:var(--text);font-family:var(--sans);font-size:14px;outline:none;width:100%;"/>
+      <input class="cs-form-input" type="tel" id="cs-phone" placeholder="Your phone number (optional)" autocomplete="tel" style="background:var(--bg2);border:1px solid var(--borderEm);border-radius:10px;padding:14px 18px;color:var(--text);font-family:var(--sans);font-size:14px;outline:none;width:100%;"/>
+      <button onclick="submitCS()" style="background:linear-gradient(135deg,#1a6b45,#2aab6a);color:#fff;border:none;border-radius:10px;padding:14px 18px;width:100%;font-family:var(--sans);font-size:14px;font-weight:600;cursor:pointer;letter-spacing:.5px;">Join the Waitlist →</button>
+    </div>
+  </div>
+  <p class="cs-legal" id="cs-legal-text">No spam. Your 7-day free trial + 20% first-month discount are locked when you sign up today.</p>
+
+  <!-- SUCCESS STATE -->
+  <div class="cs-success" id="cs-success">
+    <div class="cs-success-icon">✦</div>
+    <h3>You're on the list.</h3>
+    <p>Welcome to Emerald Wellness. Your 7-day free trial and 20% first-month discount are locked. We'll email you the moment we launch.</p>
+    <div class="cs-ref-wrap">
+      <div class="cs-ref-label">Refer 3 Friends → 20% Off Your Next Purchase</div>
+      <div class="cs-ref-row">
+        <input class="cs-ref-input" id="cs-ref-url" value="emeraldwellness.health/ref/EW00000" readonly/>
+        <button class="cs-ref-copy" onclick="copyCSRef()">Copy Link</button>
+      </div>
+      <p class="cs-ref-bonus">Share your link. Each set of 3 friends who sign up earns you 20% off your next month — no limit on referrals.</p>
+    </div>
+  </div>
+
+  <!-- LIVE COUNTER -->
+  <div class="cs-counter">
+    <span class="cs-dot"></span>
+    <span class="cs-counter-text"><strong id="cs-count">4,847</strong> optimizers have already joined</span>
+  </div>
+
+  <!-- FEATURE PREVIEW -->
+  <div class="cs-features">
+    <div class="cs-feature">
+      <div class="cs-feature-icon">✦</div>
+      <div class="cs-feature-name">AI Health Advisor</div>
+      <div class="cs-feature-desc">Evidence-based answers on dosing, stacking & protocols</div>
+    </div>
+    <div class="cs-feature">
+      <div class="cs-feature-icon">⬡</div>
+      <div class="cs-feature-name">500+ Compounds</div>
+      <div class="cs-feature-desc">Full peptide & supplement database with interaction checker</div>
+    </div>
+    <div class="cs-feature">
+      <div class="cs-feature-icon">🧬</div>
+      <div class="cs-feature-name">Injection Site Guide</div>
+      <div class="cs-feature-desc">3D rotation maps for SubQ & IM protocols</div>
+    </div>
+    <div class="cs-feature">
+      <div class="cs-feature-icon">◬</div>
+      <div class="cs-feature-name">Lab Tracker</div>
+      <div class="cs-feature-desc">Import bloodwork & track biomarkers over time</div>
+    </div>
+    <div class="cs-feature">
+      <div class="cs-feature-icon">⟡</div>
+      <div class="cs-feature-name">200+ Protocols</div>
+      <div class="cs-feature-desc">Longevity, gut, cognitive, metabolic & performance</div>
+    </div>
+    <div class="cs-feature">
+      <div class="cs-feature-icon">👨‍⚕️</div>
+      <div class="cs-feature-name">For Practitioners</div>
+      <div class="cs-feature-desc">Pro Suite with patient management & HIPAA BAA</div>
+    </div>
+  </div>
+
+</div><!-- end .page -->
+
+<footer class="cs-footer">
+  <a href="index.html">Full Website</a>
+  <a href="signup.html">Sign Up</a>
+  <a href="blog/index.html">Intelligence Library</a>
+  <a href="privacy.html">Privacy</a>
+  <a href="terms.html">Terms</a>
+  <span>© 2026 Emerald Wellness LLC</span>
+</footer>
+
+<script>
+// CANVAS BACKGROUND
+(function(){
+  const canvas=document.getElementById('bg-canvas');
+  const ctx=canvas.getContext('2d');
+  let w,h,particles=[];
+  function resize(){w=canvas.width=window.innerWidth;h=canvas.height=window.innerHeight;}
+  resize();window.addEventListener('resize',resize);
+  for(let i=0;i<50;i++)particles.push({
+    x:Math.random()*2000,y:Math.random()*1000,
+    vx:(Math.random()-.5)*.25,vy:(Math.random()-.5)*.25,
+    r:Math.random()*1.5+.4,alpha:Math.random()*.4+.15
+  });
+  function draw(){
+    ctx.clearRect(0,0,w,h);
+    particles.forEach(p=>{
+      p.x+=p.vx;p.y+=p.vy;
+      if(p.x<0)p.x=w;if(p.x>w)p.x=0;
+      if(p.y<0)p.y=h;if(p.y>h)p.y=0;
+      ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
+      ctx.fillStyle=`rgba(64,216,136,${p.alpha})`;ctx.fill();
+    });
+    particles.forEach((p,i)=>{
+      particles.slice(i+1).forEach(q=>{
+        const d=Math.hypot(p.x-q.x,p.y-q.y);
+        if(d<130){
+          ctx.beginPath();ctx.moveTo(p.x,p.y);ctx.lineTo(q.x,q.y);
+          ctx.strokeStyle=`rgba(26,107,69,${.12*(1-d/130)})`;
+          ctx.lineWidth=.5;ctx.stroke();
+        }
+      });
+    });
+    requestAnimationFrame(draw);
+  }
+  draw();
+})();
+
+// COUNTDOWN — 30 days
+const launch = new Date(Date.now()+30*24*60*60*1000);
+function updateCD(){
+  const diff=launch-new Date();
+  if(diff<=0)return;
+  const d=Math.floor(diff/86400000),
+        h=Math.floor((diff%86400000)/3600000),
+        m=Math.floor((diff%3600000)/60000),
+        s=Math.floor((diff%60000)/1000);
+  document.getElementById('cs-days').textContent=String(d).padStart(2,'0');
+  document.getElementById('cs-hours').textContent=String(h).padStart(2,'0');
+  document.getElementById('cs-mins').textContent=String(m).padStart(2,'0');
+  document.getElementById('cs-secs').textContent=String(s).padStart(2,'0');
+}
+updateCD();setInterval(updateCD,1000);
+
+// SUBMIT
+async function submitCS(){
+  const name  = document.getElementById('cs-name').value.trim();
+  const email = document.getElementById('cs-email').value.trim();
+  const phone = document.getElementById('cs-phone').value.trim();
+
+  if(!name){
+    document.getElementById('cs-name').style.border='1px solid #e05050';
+    document.getElementById('cs-name').placeholder='Please enter your name';
+    return;
+  }
+  if(!email || !email.includes('@')){
+    document.getElementById('cs-email').style.border='1px solid #e05050';
+    document.getElementById('cs-email').placeholder='Please enter a valid email';
+    return;
+  }
+
+  const ref = 'emeraldwellness.health/ref/EW'+Math.random().toString(36).substr(2,6).toUpperCase();
+
+  // 1. Save to Supabase waitlist
+  try {
+    const sb = window.supabase ? window.supabase.createClient('https://mczpuffmlspmghgneukz.supabase.co','sb_publishable_OAWniWdCQFuaqLledTmkEg_uuNnoK6S') : null;
+    if(sb) await sb.from('waitlist').upsert({
+      email, first_name:name, source:'coming-soon', referral_link:ref,
+      referred_by: new URLSearchParams(window.location.search).get('ref')||null
+    },{ onConflict:'email' });
+  } catch(e){ console.warn('Supabase:', e); }
+
+  // 2. Add to Klaviyo via their Track API (works from browser)
+  try {
+    // Klaviyo identify
+    const klaviyoData = {
+      type: 'profile',
+      attributes: {
+        email: email,
+        first_name: name,
+        phone_number: phone || undefined,
+        properties: {
+          source: 'coming-soon',
+          referral_link: ref,
+          signup_date: new Date().toISOString()
+        }
+      }
+    };
+
+    // Use Klaviyo's client-side API
+    await fetch('https://a.klaviyo.com/client/subscriptions/?company_id=WtKVHz', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'revision': '2024-02-15' },
+      body: JSON.stringify({
+        data: {
+          type: 'subscription',
+          attributes: {
+            profile: { data: { type: 'profile', attributes: { email, first_name: name } } },
+            list_id: 'XEEg3P'
+          }
+        }
+      })
+    });
+    console.log('Klaviyo subscription sent');
+  } catch(e){ console.warn('Klaviyo:', e); }
+
+  // 3. Show success
+  document.getElementById('cs-form-section').style.display='none';
+  document.getElementById('cs-legal-text').style.display='none';
+  const suc = document.getElementById('cs-success');
+  suc.style.display='block';
+  document.getElementById('cs-ref-url').value = ref;
+
+  // Live counter animation
+  let n=4848;
+  setInterval(()=>{ n+=Math.floor(Math.random()*3)+1;
+    const el=document.getElementById('cs-count');
+    if(el) el.textContent=n.toLocaleString();
+  },9000);
+}
+
+// COPY REF
+function copyCSRef(){
+  const el=document.getElementById('cs-ref-url');
+  el.select();document.execCommand('copy');
+  const btn=document.querySelector('.cs-ref-copy');
+  btn.textContent='Copied!';setTimeout(()=>btn.textContent='Copy Link',2000);
+}
+
+// Enter key on input
+document.getElementById('cs-email').addEventListener('keydown',e=>{
+  if(e.key==='Enter')submitCS();
+});
+</script>
+</body>
+</html>
