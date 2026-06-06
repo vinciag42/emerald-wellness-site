@@ -13,6 +13,12 @@
 <meta name="twitter:card" content="summary_large_image"/>
 <link rel="canonical" href="https://emeraldwellness.health/coming-soon"/>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=DM+Sans:wght@300;400;500&family=Cinzel:wght@400;600&family=Cormorant+Garamond:ital,wght@1,300&display=swap" rel="stylesheet"/>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+<script>
+  const SUPABASE_URL  = 'https://mczpuffmlspmghgneukz.supabase.co';
+  const SUPABASE_ANON = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im1jenB1ZmZtbHNwbWdoZ25ldWt6Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODAxNjczODAsImV4cCI6MjA5NTc0MzM4MH0.hs0CQOyrcIk5WhRr9OUU1fVs7V1sMcea7RYwWuTAVag';
+  const _sb = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON);
+</script>
 <style>
 :root{
   --bg:#050d07;--bg2:#080f0a;--bg3:#0c160e;
@@ -294,17 +300,21 @@ async function submitCS(){
   }
 
   // ── SAVE TO SUPABASE WAITLIST ──
-  // Add Supabase SDK to coming-soon.html if you want live saving:
-  // <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
-  // Then uncomment and configure:
-  /*
-  const supabase = window.supabase.createClient('https://mczpuffmlspmghgneukz.supabase.co','eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im1jenB1ZmZtbHNwbWdoZ25ldWt6Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODAxNjczODAsImV4cCI6MjA5NTc0MzM4MH0.hs0CQOyrcIk5WhRr9OUU1fVs7V1sMcea7RYwWuTAVag');
-  await supabase.from('waitlist').upsert({
-    email,
-    source: 'coming-soon',
-    referred_by: new URLSearchParams(window.location.search).get('ref') || null
-  }, { onConflict: 'email' });
-  */
+  try {
+    const { error } = await _sb.from('waitlist').insert({
+      email,
+      source: 'coming-soon',
+      referred_by: new URLSearchParams(window.location.search).get('ref') || null
+    });
+    if(error){
+      if(error.code === '23505') console.log('[Emerald Waitlist] OK — email already on waitlist');
+      else console.warn('[Emerald Waitlist] ERROR:', error.message, error.details);
+    } else {
+      console.log('[Emerald Waitlist] OK — saved to waitlist table');
+    }
+  } catch(e){
+    console.warn('[Emerald Waitlist] ERROR:', e.message);
+  }
 
   document.getElementById('cs-form-section').style.display='none';
   document.getElementById('cs-legal-text').style.display='none';

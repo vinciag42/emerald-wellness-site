@@ -1715,16 +1715,20 @@ async function submitWaitlist(){
 
   // ── SAVE TO SUPABASE WAITLIST TABLE ──
   try {
-    const { error } = await _sb.from('waitlist').upsert({
+    const { error } = await _sb.from('waitlist').insert({
       email,
       first_name:   name,
       source:       'homepage-modal',
-      referral_link: ref,
       referred_by:  refCode
-    }, { onConflict: 'email' });
-    if(error) console.warn('Supabase waitlist error:', error.message);
+    });
+    if(error){
+      if(error.code === '23505') console.log('[Emerald Waitlist] OK — email already on waitlist');
+      else console.warn('[Emerald Waitlist] ERROR:', error.message, error.details);
+    } else {
+      console.log('[Emerald Waitlist] OK — saved to waitlist table');
+    }
   } catch(e){
-    console.warn('Supabase unavailable — proceeding anyway:', e.message);
+    console.warn('[Emerald Waitlist] ERROR:', e.message);
   }
 
   // ── ALSO SAVE QUESTIONNAIRE DATA if answered ──

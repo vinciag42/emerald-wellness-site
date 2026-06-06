@@ -13,6 +13,7 @@
 <meta name="twitter:card" content="summary_large_image"/>
 <link rel="canonical" href="https://emeraldwellness.health/coming-soon"/>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=DM+Sans:wght@300;400;500&family=Cinzel:wght@400;600&family=Cormorant+Garamond:ital,wght@1,300&display=swap" rel="stylesheet"/>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
 <style>
 :root{
   --bg:#050d07;--bg2:#080f0a;--bg3:#0c160e;
@@ -234,6 +235,126 @@ body{font-family:var(--sans);background:var(--bg);color:var(--text);overflow-x:h
 </footer>
 
 <script>
+// ── SUPABASE CONFIG ──
+const SUPABASE_URL  = 'https://mczpuffmlspmghgneukz.supabase.co';
+const SUPABASE_ANON = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im1jenB1ZmZtbHNwbWdoZ25ldWt6Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODAxNjczODAsImV4cCI6MjA5NTc0MzM4MH0.hs0CQOyrcIk5WhRr9OUU1fVs7V1sMcea7RYwWuTAVag';
+
+function wlLog(label, detail){
+  if(detail !== undefined) console.log('[Emerald Waitlist]', label, detail);
+  else console.log('[Emerald Waitlist]', label);
+}
+
+async function saveWaitlistRow({ email, first_name, source, referred_by }){
+  if(!window.supabase){
+    wlLog('ERROR — Supabase SDK not loaded. Check the script tag in <head>.');
+    return { ok:false, error:'Supabase SDK not loaded' };
+  }
+  const sb = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON);
+  // Match live table columns: id, email, first_name, source, referred_by
+  const payload = { email, first_name, source, referred_by: referred_by || null };
+  wlLog('Sending to Supabase waitlist table…', payload);
+
+  const { error } = await sb.from('waitlist').insert(payload);
+
+  if(error){
+    if(error.code === '23505'){
+      wlLog('OK — email already on waitlist', email);
+      return { ok:true, duplicate:true };
+    }
+    wlLog('ERROR — Supabase rejected save', {
+      message: error.message,
+      code: error.code,
+      details: error.details,
+      hint: error.hint
+    });
+    return { ok:false, error: error.message };
+  }
+
+  wlLog('OK — saved to waitlist table', email);
+  return { ok:true };
+}
+
+/** Server-side Supabase + Klaviyo via Vercel /api/subscribe */
+async function subscribeViaServer({ email, first_name, phone, source, referred_by }){
+  wlLog('Calling /api/subscribe (Supabase waitlist + Klaviyo list XEEg3P)…', { email, first_name, source });
+
+  let res;
+  try {
+    res = await fetch('/api/subscribe', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email, first_name, phone, source, referred_by })
+    });
+  } catch (networkErr) {
+    wlLog('ERROR — network failure reaching /api/subscribe', networkErr.message);
+    wlLog('TIP — Browser Klaviyo is blocked (403). You need Vercel:', 'Run "npx vercel dev" in project folder, then open the URL it prints.');
+    return { ok: false, error: networkErr.message, step: 'network' };
+  }
+
+  let data = {};
+  try {
+    data = await res.json();
+  } catch (_) {
+    data = { raw: await res.text().catch(() => '') };
+  }
+
+  if (res.status === 404) {
+    wlLog('ERROR — /api/subscribe returned 404 (not found)', data);
+    wlLog('CAUSE — Python "http.server" cannot run API routes.', null);
+    wlLog('FIX — Run in terminal:  npx vercel dev', 'Then test on the localhost URL vercel prints (not port 1000).');
+    return { ok: false, error: 'API route missing — use vercel dev or deploy to Vercel', step: '404', data };
+  }
+
+  if (!res.ok) {
+    let parsedDetail = data.detail || data.error;
+    try {
+      if (typeof data.detail === 'string' && data.detail.startsWith('{')) {
+        const kErr = JSON.parse(data.detail);
+        parsedDetail = kErr.errors?.[0]?.detail || data.detail;
+      }
+    } catch (_) {}
+    wlLog('ERROR — /api/subscribe failed', { httpStatus: res.status, step: data.step, message: parsedDetail, klaviyo: data.klaviyo, supabase: data.supabase });
+    if (data.step === 'klaviyo') {
+      wlLog('CAUSE — Klaviyo API rejected the request (see message above).', null);
+    }
+    return { ok: false, error: data.error || 'Subscribe API failed', step: data.step, data };
+  }
+
+  wlLog('OK — server subscribe complete (Klaviyo + Supabase via API)', data);
+  printSubscribeDiagnostics(data);
+  return { ok: true, data };
+}
+
+/** Print Klaviyo email diagnostics in browser console after signup */
+function printSubscribeDiagnostics(data){
+  const d = data?.diagnostics;
+  if(!d){
+    wlLog('DIAG — no diagnostics returned (deploy latest api/subscribe.js)', null);
+    return;
+  }
+
+  wlLog('DIAG — Klaviyo profile found:', d.profileFound ? 'YES' : 'NO (job may still be processing)');
+  wlLog('DIAG — on waitlist list XEEg3P:', d.onWaitlistList ? 'YES' : 'NO');
+  wlLog('DIAG — email marketing consent:', d.emailConsent);
+  wlLog('DIAG — can receive email:', d.canReceiveEmail);
+  if(d.consentTimestamp) wlLog('DIAG — consent timestamp:', d.consentTimestamp);
+
+  if(d.issues?.length){
+    wlLog('DIAG — ISSUES (these block or delay welcome email):', d.issues);
+    if(d.emailConsent !== 'SUBSCRIBED'){
+      wlLog('FIX — In Klaviyo: Lists → Emerald Wellness Waitlist → Settings → set Single opt-in (not double)', null);
+    }
+  } else {
+    wlLog('DIAG — API checks passed; profile should trigger welcome flow', null);
+    wlLog('DIAG — If email still skipped, open Klaviyo:', d.klaviyoUiCheck);
+    if(d.likelyCauseIfSkipped){
+      wlLog('DIAG — common Klaviyo skip reasons when API is OK:', d.likelyCauseIfSkipped);
+    }
+  }
+
+  wlLog('NOTE — Delivered 0 / Skipped 4 in flow means Klaviyo skipped at SEND time (not our API)', 'Check Skipped tab for exact reason: Smart Sending, Fails Flow Filters, etc.');
+}
+
 // CANVAS BACKGROUND
 (function(){
   const canvas=document.getElementById('bg-canvas');
@@ -304,58 +425,32 @@ async function submitCS(){
   }
 
   const ref = 'emeraldwellness.health/ref/EW'+Math.random().toString(36).substr(2,6).toUpperCase();
+  const referredBy = new URLSearchParams(window.location.search).get('ref') || null;
 
-  // 1. Save to Supabase waitlist
-  try {
-    const sb = window.supabase ? window.supabase.createClient('https://mczpuffmlspmghgneukz.supabase.co','eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im1jenB1ZmZtbHNwbWdoZ25ldWt6Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODAxNjczODAsImV4cCI6MjA5NTc0MzM4MH0.hs0CQOyrcIk5WhRr9OUU1fVs7V1sMcea7RYwWuTAVag') : null;
-    if(sb) await sb.from('waitlist').upsert({
-      email, first_name:name, source:'coming-soon', referral_link:ref,
-      referred_by: new URLSearchParams(window.location.search).get('ref')||null
-    },{ onConflict:'email' });
-  } catch(e){ console.warn('Supabase:', e); }
+  // Single path: /api/subscribe saves Supabase + Klaviyo (avoid double-insert 409 on first signup)
+  wlLog('Submitting waitlist signup via /api/subscribe…', { email, first_name: name, source: 'coming-soon' });
 
-  // 2. Add to Klaviyo via their Track API (works from browser)
-  try {
-    // Klaviyo identify
-    const klaviyoData = {
-      type: 'profile',
-      attributes: {
-        email: email,
-        first_name: name,
-        phone_number: phone || undefined,
-        properties: {
-          source: 'coming-soon',
-          referral_link: ref,
-          signup_date: new Date().toISOString()
-        }
-      }
-    };
+  const subscribeResult = await subscribeViaServer({
+    email,
+    first_name: name,
+    phone,
+    source: 'coming-soon',
+    referred_by: referredBy
+  });
 
-    // Use Klaviyo's client-side API
-    await fetch('https://a.klaviyo.com/client/subscriptions/?company_id=WtKVHz', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json', 'revision': '2024-02-15' },
-      body: JSON.stringify({
-        data: {
-          type: 'subscription',
-          attributes: {
-            profile: { data: { type: 'profile', attributes: { email, first_name: name } } },
-            list_id: 'XEEg3P'
-          }
-        }
-      })
-    });
-    console.log('Klaviyo subscription sent');
-  } catch(e){ console.warn('Klaviyo:', e); }
+  if(!subscribeResult.ok){
+    alert('We could not complete your signup right now. Please try again.\n\nDetails are in the browser console (F12 → Console).');
+    wlLog('STOP — signup failed', subscribeResult);
+    return;
+  }
 
-  // 3. Show success
+  // Show success after API confirms Supabase + Klaviyo
   document.getElementById('cs-form-section').style.display='none';
   document.getElementById('cs-legal-text').style.display='none';
   const suc = document.getElementById('cs-success');
   suc.style.display='block';
   document.getElementById('cs-ref-url').value = ref;
 
-  // Live counter animation
   let n=4848;
   setInterval(()=>{ n+=Math.floor(Math.random()*3)+1;
     const el=document.getElementById('cs-count');
