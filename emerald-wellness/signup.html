@@ -1,0 +1,666 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Sign Up | Emerald Wellness — Start Your 7-Day Free Trial</title>
+<meta name="description" content="Create your Emerald Wellness account. 7-day free trial, 20% off your first month. Choose your plan and start building your personalized health protocol today."/>
+<link rel="canonical" href="https://emeraldwellness.health/signup"/>
+
+<!-- ══ SUPABASE SDK ══ -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+<script>
+  // ── SUPABASE CONFIG ──
+  // Replace these two values with your project's URL and anon key
+  // Found in: Supabase Dashboard → Project Settings → API
+  const SUPABASE_URL  = 'https://mczpuffmlspmghgneukz.supabase.co';
+  const SUPABASE_ANON = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im1jenB1ZmZtbHNwbWdoZ25ldWt6Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODAxNjczODAsImV4cCI6MjA5NTc0MzM4MH0.hs0CQOyrcIk5WhRr9OUU1fVs7V1sMcea7RYwWuTAVag';
+  const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON);
+</script>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=DM+Sans:wght@300;400;500&family=Cinzel:wght@400;600&display=swap" rel="stylesheet"/>
+<style>
+:root{
+  --bg:#050d07;--bg2:#080f0a;--bg3:#0c160e;
+  --em:#1a6b45;--emL:#2aab6a;--emXL:#40d888;--emPale:rgba(26,107,69,.08);
+  --gold:#c8a828;--goldL:#f0c84a;--goldXL:#ffe47a;--goldPale:rgba(200,168,40,.08);
+  --text:#e8f2ec;--textDim:#8aac96;--textMid:#b8d4c0;
+  --border:rgba(255,255,255,.06);--borderEm:rgba(26,107,69,.35);--borderGold:rgba(200,168,40,.3);
+  --red:#e05050;--redPale:rgba(224,80,80,.08);
+  --serif:'Playfair Display',Georgia,serif;
+  --sans:'DM Sans',system-ui,sans-serif;
+  --cinzel:'Cinzel',serif;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{font-family:var(--sans);background:var(--bg);color:var(--text);min-height:100vh;}
+a{text-decoration:none;color:var(--emXL);}
+::-webkit-scrollbar{width:3px;}::-webkit-scrollbar-thumb{background:var(--em);border-radius:2px;}
+
+/* HEADER */
+header{background:rgba(8,15,10,.95);border-bottom:1px solid var(--borderEm);padding:0 48px;height:64px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100;backdrop-filter:blur(20px);}
+.logo{display:flex;align-items:center;gap:10px;font-family:var(--cinzel);font-size:13px;letter-spacing:2px;color:var(--emXL);}
+.diamond{width:24px;height:24px;background:linear-gradient(135deg,var(--em),var(--emXL));transform:rotate(45deg);border-radius:3px;flex-shrink:0;}
+.header-right{font-size:13px;color:var(--textDim);}
+.header-right a{color:var(--emXL);font-weight:500;}
+
+/* PROGRESS HEADER */
+.signup-progress{background:var(--bg2);border-bottom:1px solid var(--border);padding:16px 48px;}
+.progress-steps{display:flex;align-items:center;gap:0;max-width:600px;margin:0 auto;}
+.prog-step{display:flex;flex-direction:column;align-items:center;flex:1;position:relative;}
+.prog-step:not(:last-child)::after{content:'';position:absolute;top:14px;left:50%;width:100%;height:2px;background:var(--border);z-index:0;}
+.prog-step.done:not(:last-child)::after,.prog-step.active:not(:last-child)::after{background:var(--borderEm);}
+.prog-dot{width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:var(--cinzel);font-size:10px;font-weight:700;position:relative;z-index:1;transition:all .3s;}
+.prog-step.pending .prog-dot{background:var(--bg3);border:1px solid var(--border);color:var(--textDim);}
+.prog-step.active .prog-dot{background:var(--emPale);border:2px solid var(--emXL);color:var(--emXL);}
+.prog-step.done .prog-dot{background:var(--em);border:2px solid var(--emL);color:#fff;}
+.prog-label{font-family:var(--cinzel);font-size:8px;letter-spacing:1px;text-transform:uppercase;margin-top:6px;white-space:nowrap;}
+.prog-step.pending .prog-label{color:var(--textDim);}
+.prog-step.active .prog-label{color:var(--emXL);}
+.prog-step.done .prog-label{color:var(--textMid);}
+
+/* MAIN LAYOUT */
+.signup-body{max-width:1000px;margin:0 auto;padding:48px 24px 80px;display:grid;grid-template-columns:1fr 380px;gap:40px;align-items:start;}
+
+/* LEFT — STEP CONTAINER */
+.step-container{background:var(--bg2);border:1px solid var(--border);border-radius:20px;padding:36px;}
+.step{display:none;}
+.step.active{display:block;}
+.step-eyebrow{font-family:var(--cinzel);font-size:10px;letter-spacing:3px;color:var(--emXL);text-transform:uppercase;margin-bottom:10px;}
+.step-title{font-family:var(--serif);font-size:clamp(22px,3vw,30px);font-weight:700;line-height:1.15;margin-bottom:8px;}
+.step-sub{font-size:13px;color:var(--textMid);line-height:1.65;margin-bottom:28px;}
+
+/* PLAN CARDS */
+.plan-select-grid{display:flex;flex-direction:column;gap:12px;margin-bottom:24px;}
+.plan-select-card{background:var(--bg3);border:1.5px solid var(--border);border-radius:14px;padding:18px 20px;cursor:pointer;transition:all .2s;display:flex;align-items:flex-start;gap:16px;}
+.plan-select-card:hover{border-color:var(--borderEm);}
+.plan-select-card.selected{border-color:var(--emXL);background:var(--emPale);}
+.plan-select-card.selected-gold{border-color:var(--goldL) !important;background:var(--goldPale) !important;}
+.plan-radio{width:20px;height:20px;border-radius:50%;border:2px solid var(--border);flex-shrink:0;margin-top:2px;display:flex;align-items:center;justify-content:center;transition:all .2s;}
+.plan-select-card.selected .plan-radio,.plan-select-card.selected-gold .plan-radio{background:var(--em);border-color:var(--emXL);}
+.plan-select-card.selected-gold .plan-radio{background:var(--gold);border-color:var(--goldL);}
+.plan-radio-dot{width:8px;height:8px;border-radius:50%;background:#fff;display:none;}
+.plan-select-card.selected .plan-radio-dot,.plan-select-card.selected-gold .plan-radio-dot{display:block;}
+.plan-info{flex:1;}
+.plan-name-row{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:4px;}
+.plan-select-name{font-family:var(--cinzel);font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;}
+.plan-select-badge{padding:2px 8px;border-radius:10px;font-size:9px;font-weight:700;letter-spacing:.8px;text-transform:uppercase;}
+.badge-popular{background:linear-gradient(135deg,var(--em),var(--emL));color:#fff;}
+.badge-complete{background:linear-gradient(135deg,var(--emL),var(--emXL));color:#050d07;}
+.badge-pro{background:linear-gradient(135deg,var(--gold),var(--goldL));color:#050d07;}
+.plan-select-price{font-family:var(--serif);font-size:22px;font-weight:700;margin-bottom:4px;}
+.plan-select-price span{font-size:13px;color:var(--textDim);font-family:var(--sans);font-weight:400;}
+.plan-first-month{font-size:11px;color:var(--goldL);font-weight:600;margin-bottom:6px;}
+.plan-select-features{font-size:11px;color:var(--textDim);line-height:1.6;}
+
+/* FORM FIELDS */
+.form-group{margin-bottom:18px;}
+.form-label{font-size:11px;color:var(--textDim);letter-spacing:.8px;text-transform:uppercase;margin-bottom:7px;display:block;}
+.form-input{width:100%;background:var(--bg3);border:1px solid var(--border);border-radius:10px;padding:13px 16px;color:var(--text);font-family:var(--sans);font-size:14px;outline:none;transition:border-color .2s;}
+.form-input:focus{border-color:var(--borderEm);}
+.form-input.error{border-color:var(--red);}
+.form-error{font-size:11px;color:var(--red);margin-top:5px;display:none;}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+.form-input-wrap{position:relative;}
+.form-eye{position:absolute;right:14px;top:50%;transform:translateY(-50%);background:none;border:none;color:var(--textDim);cursor:pointer;font-size:14px;padding:0;}
+.form-hint{font-size:11px;color:var(--textDim);margin-top:5px;line-height:1.5;}
+
+/* HEALTH GOALS (Step 2 subset) */
+.goal-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:20px;}
+.goal-btn{background:var(--bg3);border:1px solid var(--border);border-radius:10px;padding:12px 14px;cursor:pointer;font-size:12px;color:var(--textMid);text-align:left;transition:all .2s;display:flex;align-items:center;gap:10px;font-family:var(--sans);}
+.goal-btn:hover{border-color:var(--borderEm);}
+.goal-btn.selected{border-color:var(--emXL);background:var(--emPale);color:var(--emXL);}
+.goal-btn-icon{font-size:16px;flex-shrink:0;}
+
+/* CHECKBOX */
+.checkbox-wrap{display:flex;align-items:flex-start;gap:10px;margin-bottom:14px;cursor:pointer;}
+.checkbox-wrap input[type="checkbox"]{width:16px;height:16px;margin-top:2px;accent-color:var(--em);flex-shrink:0;cursor:pointer;}
+.checkbox-label{font-size:12px;color:var(--textMid);line-height:1.55;}
+.checkbox-label a{color:var(--emXL);}
+
+/* BUTTONS */
+.btn-next{width:100%;padding:14px;background:linear-gradient(135deg,var(--em),var(--emL));color:#fff;border:none;border-radius:10px;font-size:14px;font-weight:600;font-family:var(--sans);letter-spacing:.5px;cursor:pointer;transition:all .3s;margin-top:4px;}
+.btn-next:hover{transform:translateY(-1px);box-shadow:0 8px 24px rgba(26,107,69,.35);}
+.btn-next:disabled{opacity:.5;cursor:not-allowed;transform:none;}
+.btn-gold{background:linear-gradient(135deg,var(--gold),var(--goldL));color:#050d07;font-weight:700;}
+.btn-back{width:100%;padding:12px;background:transparent;color:var(--textDim);border:1px solid var(--border);border-radius:10px;font-size:13px;font-family:var(--sans);cursor:pointer;transition:all .2s;margin-top:10px;}
+.btn-back:hover{border-color:var(--borderEm);color:var(--textMid);}
+.divider{display:flex;align-items:center;gap:12px;margin:18px 0;color:var(--textDim);font-size:12px;}
+.divider::before,.divider::after{content:'';flex:1;height:1px;background:var(--border);}
+
+/* SOCIAL SIGN UP */
+.social-btn{width:100%;padding:12px;background:var(--bg3);border:1px solid var(--border);border-radius:10px;font-size:13px;font-family:var(--sans);color:var(--textMid);cursor:pointer;transition:all .2s;display:flex;align-items:center;justify-content:center;gap:10px;margin-bottom:10px;}
+.social-btn:hover{border-color:var(--borderEm);color:var(--text);}
+.social-icon{width:18px;height:18px;flex-shrink:0;}
+
+/* SUCCESS */
+.signup-success{text-align:center;padding:20px 0;}
+.success-icon{font-size:56px;margin-bottom:20px;}
+.success-title{font-family:var(--serif);font-size:32px;font-weight:700;margin-bottom:12px;}
+.success-sub{font-size:14px;color:var(--textMid);line-height:1.7;margin-bottom:28px;max-width:420px;margin-left:auto;margin-right:auto;}
+.success-actions{display:flex;flex-direction:column;gap:10px;max-width:320px;margin:0 auto;}
+.btn-dashboard{padding:14px;background:linear-gradient(135deg,var(--em),var(--emL));color:#fff;border:none;border-radius:10px;font-size:14px;font-weight:600;font-family:var(--sans);cursor:pointer;transition:all .3s;text-decoration:none;display:block;text-align:center;}
+.btn-dashboard:hover{transform:translateY(-1px);box-shadow:0 8px 24px rgba(26,107,69,.35);}
+.ref-success-box{background:var(--goldPale);border:1px solid var(--borderGold);border-radius:12px;padding:16px;margin-top:20px;}
+.ref-success-label{font-family:var(--cinzel);font-size:9px;letter-spacing:2px;color:var(--goldL);text-transform:uppercase;margin-bottom:8px;}
+.ref-row{display:flex;gap:8px;}
+.ref-input{flex:1;background:var(--bg2);border:1px solid var(--border);border-radius:8px;padding:9px 12px;color:var(--textMid);font-size:12px;font-family:var(--sans);outline:none;}
+.ref-copy-btn{background:var(--gold);color:#050d07;border:none;border-radius:8px;padding:9px 14px;font-size:11px;font-weight:700;font-family:var(--sans);cursor:pointer;}
+
+/* RIGHT — ORDER SUMMARY */
+.order-summary{background:var(--bg2);border:1px solid var(--borderEm);border-radius:20px;padding:28px;position:sticky;top:120px;}
+.order-title{font-family:var(--cinzel);font-size:10px;letter-spacing:3px;color:var(--emXL);text-transform:uppercase;margin-bottom:20px;}
+.order-plan-name{font-family:var(--serif);font-size:20px;font-weight:700;margin-bottom:4px;}
+.order-plan-sub{font-size:12px;color:var(--textDim);margin-bottom:20px;}
+.order-line{display:flex;justify-content:space-between;font-size:13px;margin-bottom:10px;color:var(--textMid);}
+.order-line strong{color:var(--text);}
+.order-divider{border:none;border-top:1px solid var(--border);margin:14px 0;}
+.order-total{display:flex;justify-content:space-between;font-size:15px;font-weight:600;color:var(--text);}
+.order-total .total-num{font-family:var(--serif);font-size:20px;color:var(--emXL);}
+.order-badge{background:var(--goldPale);border:1px solid var(--borderGold);border-radius:8px;padding:10px 14px;margin-top:16px;font-size:12px;color:var(--goldL);display:flex;align-items:flex-start;gap:8px;line-height:1.5;}
+.order-badge-icon{flex-shrink:0;margin-top:1px;}
+.order-features{margin-top:20px;display:flex;flex-direction:column;gap:8px;}
+.order-feature{display:flex;align-items:flex-start;gap:8px;font-size:12px;color:var(--textMid);}
+.order-feature::before{content:'✓';color:var(--emXL);font-weight:700;flex-shrink:0;}
+.order-trust{display:flex;gap:12px;flex-wrap:wrap;margin-top:20px;padding-top:16px;border-top:1px solid var(--border);}
+.trust-item{font-size:10px;color:var(--textDim);display:flex;align-items:center;gap:4px;}
+
+/* MOBILE RESPONSIVE */
+@media(max-width:768px){
+  .signup-body{grid-template-columns:1fr;gap:20px;}
+  .order-summary{position:static;}
+  .form-row{grid-template-columns:1fr;}
+  header,.signup-progress{padding-left:16px;padding-right:16px;}
+  .signup-body{padding:24px 16px 60px;}
+}
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <a href="index.html" class="logo"><div class="diamond"></div>EMERALD WELLNESS</a>
+  <div class="header-right">Already have an account? <a href="signup.html">Log in</a></div>
+</header>
+
+<!-- PROGRESS BAR -->
+<div class="signup-progress">
+  <div class="progress-steps">
+    <div class="prog-step active" id="prog-1">
+      <div class="prog-dot">1</div>
+      <div class="prog-label">Choose Plan</div>
+    </div>
+    <div class="prog-step pending" id="prog-2">
+      <div class="prog-dot">2</div>
+      <div class="prog-label">Health Goals</div>
+    </div>
+    <div class="prog-step pending" id="prog-3">
+      <div class="prog-dot">3</div>
+      <div class="prog-label">Create Account</div>
+    </div>
+    <div class="prog-step pending" id="prog-4">
+      <div class="prog-dot">4</div>
+      <div class="prog-label">You're In</div>
+    </div>
+  </div>
+</div>
+
+<!-- MAIN BODY -->
+<div class="signup-body">
+
+  <!-- LEFT: STEPS -->
+  <div class="step-container">
+
+    <!-- ── STEP 1: CHOOSE PLAN ── -->
+    <div class="step active" id="step-1">
+      <p class="step-eyebrow">Step 1 of 3</p>
+      <h2 class="step-title">Choose your plan</h2>
+      <p class="step-sub">Every plan starts with a <strong style="color:var(--emXL)">7-day free trial</strong> and <strong style="color:var(--goldL)">20% off your first month</strong>. No credit card required to start.</p>
+
+      <div class="plan-select-grid" id="plan-cards">
+        <!-- Silver -->
+        <div class="plan-select-card" onclick="selectPlan('silver',this)" data-plan="silver" data-price="74.99" data-first="59.99">
+          <div class="plan-radio"><div class="plan-radio-dot"></div></div>
+          <div class="plan-info">
+            <div class="plan-name-row">
+              <span class="plan-select-name" style="color:var(--textMid)">Silver</span>
+            </div>
+            <div class="plan-select-price">$74.99<span>/mo after trial</span></div>
+            <div class="plan-first-month">First month: $59.99 (20% off)</div>
+            <div class="plan-select-features">Compound database · Basic interaction checker · Injection site guide · 10 AI queries/month</div>
+          </div>
+        </div>
+        <!-- Gold -->
+        <div class="plan-select-card selected" onclick="selectPlan('gold',this)" data-plan="gold" data-price="149.99" data-first="119.99">
+          <div class="plan-radio"><div class="plan-radio-dot"></div></div>
+          <div class="plan-info">
+            <div class="plan-name-row">
+              <span class="plan-select-name" style="color:var(--goldL)">Gold</span>
+              <span class="plan-select-badge badge-popular">Most Popular</span>
+            </div>
+            <div class="plan-select-price">$149.99<span>/mo after trial</span></div>
+            <div class="plan-first-month">First month: $119.99 (20% off)</div>
+            <div class="plan-select-features">Everything in Silver · Unlimited interactions · Lab tracker · 50 AI queries · Wearable sync</div>
+          </div>
+        </div>
+        <!-- Emerald Elite -->
+        <div class="plan-select-card" onclick="selectPlan('elite',this)" data-plan="elite" data-price="199.99" data-first="159.99">
+          <div class="plan-radio"><div class="plan-radio-dot"></div></div>
+          <div class="plan-info">
+            <div class="plan-name-row">
+              <span class="plan-select-name" style="color:var(--emXL)">Emerald Elite</span>
+              <span class="plan-select-badge badge-complete">Complete</span>
+            </div>
+            <div class="plan-select-price">$199.99<span>/mo after trial</span></div>
+            <div class="plan-first-month">First month: $159.99 (20% off)</div>
+            <div class="plan-select-features">Everything in Gold · Unlimited AI queries · Biological age tracker · Custom protocols · PDF exports</div>
+          </div>
+        </div>
+        <!-- Pro -->
+        <div class="plan-select-card" onclick="selectPlan('pro',this)" data-plan="pro" data-price="299.99" data-first="239.99">
+          <div class="plan-radio"><div class="plan-radio-dot"></div></div>
+          <div class="plan-info">
+            <div class="plan-name-row">
+              <span class="plan-select-name" style="color:var(--goldL)">Pro Practitioner</span>
+              <span class="plan-select-badge badge-pro">Practitioners</span>
+            </div>
+            <div class="plan-select-price">$299.99<span>/mo after trial</span></div>
+            <div class="plan-first-month">First month: $239.99 (20% off)</div>
+            <div class="plan-select-features">Everything in Elite · Patient management · SOAP notes · White-label exports · HIPAA BAA</div>
+          </div>
+        </div>
+      </div>
+
+      <button class="btn-next" onclick="goStep(2)">Continue with <span id="btn-plan-name">Gold</span> →</button>
+    </div>
+
+    <!-- ── STEP 2: HEALTH GOALS ── -->
+    <div class="step" id="step-2">
+      <p class="step-eyebrow">Step 2 of 3</p>
+      <h2 class="step-title">Tell us about your health goals</h2>
+      <p class="step-sub">This lets us personalize your dashboard and protocol recommendations from day one. Select all that apply.</p>
+
+      <div class="goal-grid" id="goal-grid">
+        <button class="goal-btn" onclick="toggleGoal(this)"><span class="goal-btn-icon">🧬</span>Longevity & Anti-Aging</button>
+        <button class="goal-btn" onclick="toggleGoal(this)"><span class="goal-btn-icon">🏋️</span>Performance & Recovery</button>
+        <button class="goal-btn" onclick="toggleGoal(this)"><span class="goal-btn-icon">⚡</span>Metabolic & Weight</button>
+        <button class="goal-btn" onclick="toggleGoal(this)"><span class="goal-btn-icon">🧠</span>Cognitive Enhancement</button>
+        <button class="goal-btn" onclick="toggleGoal(this)"><span class="goal-btn-icon">💪</span>Hormonal Optimization</button>
+        <button class="goal-btn" onclick="toggleGoal(this)"><span class="goal-btn-icon">🛡️</span>Immune & Gut Health</button>
+        <button class="goal-btn" onclick="toggleGoal(this)"><span class="goal-btn-icon">🌙</span>Sleep & Recovery</button>
+        <button class="goal-btn" onclick="toggleGoal(this)"><span class="goal-btn-icon">🥗</span>Nutrition Optimization</button>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label">Your experience level</label>
+        <select class="form-input" id="exp-level" style="cursor:pointer;background:var(--bg3);">
+          <option value="" style="background:var(--bg2);">Select your experience level</option>
+          <option value="beginner" style="background:var(--bg2);">🌱 Just starting out — new to supplements or peptides</option>
+          <option value="intermediate" style="background:var(--bg2);">📈 Some experience — taking supplements, want to optimize</option>
+          <option value="advanced" style="background:var(--bg2);">⚗️ Advanced optimizer — using peptides, tracking labs</option>
+          <option value="practitioner" style="background:var(--bg2);">👨‍⚕️ Healthcare practitioner — working with patients</option>
+        </select>
+      </div>
+
+      <button class="btn-next" onclick="goStep(3)">Continue →</button>
+      <button class="btn-back" onclick="goStep(1)">← Back</button>
+    </div>
+
+    <!-- ── STEP 3: CREATE ACCOUNT ── -->
+    <div class="step" id="step-3">
+      <p class="step-eyebrow">Step 3 of 3</p>
+      <h2 class="step-title">Create your account</h2>
+      <p class="step-sub">Your 7-day free trial starts immediately. No credit card required.</p>
+
+      <!-- Social signup -->
+      <button class="social-btn" onclick="handleSocial('google')">
+        <svg class="social-icon" viewBox="0 0 24 24"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
+        Continue with Google
+      </button>
+      <button class="social-btn" onclick="handleSocial('apple')">
+        <svg class="social-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+        Continue with Apple
+      </button>
+
+      <div class="divider">or create with email</div>
+
+      <!-- Email form -->
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label" for="su-first">First Name</label>
+          <input class="form-input" type="text" id="su-first" placeholder="First name" autocomplete="given-name"/>
+          <span class="form-error" id="err-first">Please enter your first name</span>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="su-last">Last Name</label>
+          <input class="form-input" type="text" id="su-last" placeholder="Last name" autocomplete="family-name"/>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="su-email">Email Address</label>
+        <input class="form-input" type="email" id="su-email" placeholder="your@email.com" autocomplete="email"/>
+        <span class="form-error" id="err-email">Please enter a valid email address</span>
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="su-pass">Password</label>
+        <div class="form-input-wrap">
+          <input class="form-input" type="password" id="su-pass" placeholder="Create a password (8+ characters)" autocomplete="new-password"/>
+          <button class="form-eye" onclick="togglePass()" type="button" aria-label="Toggle password visibility">👁</button>
+        </div>
+        <span class="form-hint">At least 8 characters, including a number</span>
+        <span class="form-error" id="err-pass">Password must be at least 8 characters</span>
+      </div>
+
+      <div id="ref-group" style="display:none;">
+        <div class="form-group">
+          <label class="form-label" for="su-ref">Referral Code (optional)</label>
+          <input class="form-input" type="text" id="su-ref" placeholder="e.g. EW4B2F91"/>
+          <span class="form-hint">Have a friend's referral code? Enter it here — they'll get 20% off their next purchase.</span>
+        </div>
+      </div>
+      <button type="button" onclick="toggleRefField()" style="background:none;border:none;color:var(--emXL);font-size:12px;cursor:pointer;padding:0;margin-bottom:18px;display:block;">+ Have a referral code?</button>
+
+      <label class="checkbox-wrap">
+        <input type="checkbox" id="su-terms"/>
+        <span class="checkbox-label">I agree to the <a href="terms.html" target="_blank">Terms of Service</a> and <a href="privacy.html" target="_blank">Privacy Policy</a>. I understand Emerald Wellness provides educational content only, not medical advice.</span>
+      </label>
+      <label class="checkbox-wrap">
+        <input type="checkbox" id="su-sms-consent"/>
+        <span class="checkbox-label">📱 Send me a welcome text message and important account alerts via SMS. Standard message rates apply. Reply STOP any time to opt out.</span>
+      </label>
+      <label class="checkbox-wrap">
+        <input type="checkbox" id="su-marketing" checked/>
+        <span class="checkbox-label">Send me personalized protocol updates, new research, and platform news. Unsubscribe any time.</span>
+      </label>
+
+      <button class="btn-next btn-gold" onclick="submitSignup()">
+        Start My Free 7-Day Trial →
+      </button>
+      <p style="font-size:11px;color:var(--textDim);text-align:center;margin-top:10px;line-height:1.5;">No credit card required. After your trial, your first month is 20% off. Cancel any time.</p>
+      <button class="btn-back" onclick="goStep(2)">← Back</button>
+    </div>
+
+    <!-- ── STEP 4: SUCCESS ── -->
+    <div class="step" id="step-4">
+      <div class="signup-success">
+        <div class="success-icon">✦</div>
+        <h2 class="success-title">Welcome to<br/>Emerald Wellness.</h2>
+        <p class="success-sub">Your 7-day free trial is active. Your first month is 20% off. We've emailed your confirmation and personalized protocol preview.</p>
+        <div class="success-actions">
+          <a href="index.html" class="btn-dashboard">Launch My Dashboard →</a>
+        </div>
+        <div class="ref-success-box" style="margin-top:24px;">
+          <div class="ref-success-label">Refer 3 Friends → 20% Off Your Next Purchase</div>
+          <p style="font-size:12px;color:var(--textMid);margin-bottom:10px;line-height:1.55;">Share your personal referral link. When 3 friends sign up, you automatically get 20% off your next month — no limit on referrals.</p>
+          <div class="ref-row">
+            <input class="ref-input" id="su-ref-url" value="emeraldwellness.health/ref/EW00000" readonly/>
+            <button class="ref-copy-btn" onclick="copySignupRef()">Copy</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- end step-container -->
+
+  <!-- RIGHT: ORDER SUMMARY -->
+  <div class="order-summary" id="order-summary">
+    <p class="order-title">Order Summary</p>
+    <div class="order-plan-name" id="sum-plan-name">Gold Plan</div>
+    <div class="order-plan-sub" id="sum-plan-sub">Monthly billing · Cancel any time</div>
+
+    <div class="order-line"><span>7-day free trial</span><strong style="color:var(--emXL);">$0.00</strong></div>
+    <div class="order-line"><span>First month (20% off)</span><strong id="sum-first-price" style="color:var(--goldL);">$119.99</strong></div>
+    <div class="order-line"><span>Then monthly</span><strong id="sum-monthly-price">$149.99/mo</strong></div>
+    <hr class="order-divider"/>
+    <div class="order-total"><span>Due today</span><span class="total-num">$0.00</span></div>
+
+    <div class="order-badge">
+      <span class="order-badge-icon">🔒</span>
+      <span>No credit card required. Your free trial starts immediately. First charge after 7 days at 20% off.</span>
+    </div>
+
+    <div class="order-features" id="sum-features">
+      <div class="order-feature">500+ compound database</div>
+      <div class="order-feature">Unlimited interaction checker</div>
+      <div class="order-feature">Lab tracker & biomarker trending</div>
+      <div class="order-feature">50 AI Health Advisor queries/month</div>
+      <div class="order-feature">Wearable integrations</div>
+      <div class="order-feature">Full protocol library (200+ protocols)</div>
+    </div>
+
+    <div class="order-trust">
+      <span class="trust-item">🔒 AES-256 Encrypted</span>
+      <span class="trust-item">⭐ 4.9 App Store</span>
+      <span class="trust-item">🛡️ HIPAA BAA Available</span>
+    </div>
+  </div>
+
+</div><!-- end signup-body -->
+
+<script>
+// ── PLAN DATA ──
+const PLANS = {
+  silver:{ name:'Silver Plan', first:'$59.99', monthly:'$74.99/mo', features:['500+ compound database','Basic interaction checker (up to 8 compounds)','Smart dosing scheduler','Injection site guide','10 AI Health Advisor queries/month'] },
+  gold:  { name:'Gold Plan',   first:'$119.99', monthly:'$149.99/mo', features:['500+ compound database','Unlimited interaction checker','Lab tracker & biomarker trending','50 AI queries/month','Full protocol library (200+ protocols)','Wearable integrations (Oura, WHOOP, Apple Health)'] },
+  elite: { name:'Emerald Elite', first:'$159.99', monthly:'$199.99/mo', features:['Everything in Gold','Unlimited AI queries','Biological age calculator','Custom protocol builder','Glandular & bioregulator database','Exportable health reports (PDF)'] },
+  pro:   { name:'Pro Practitioner', first:'$239.99', monthly:'$299.99/mo', features:['Everything in Elite','Patient profiles & management','SOAP progress notes','White-label branded exports','Bulk interaction checker','HIPAA BAA available'] }
+};
+
+let selectedPlan = 'gold';
+let currentStep = 1;
+
+function selectPlan(plan, el){
+  selectedPlan = plan;
+  document.querySelectorAll('.plan-select-card').forEach(c=>{
+    c.classList.remove('selected','selected-gold');
+  });
+  el.classList.add(plan==='pro'||plan==='silver'?'selected-gold':'selected');
+  updateOrderSummary();
+  document.getElementById('btn-plan-name').textContent = PLANS[plan].name.replace(' Plan','');
+}
+
+function updateOrderSummary(){
+  const p = PLANS[selectedPlan];
+  document.getElementById('sum-plan-name').textContent = p.name;
+  document.getElementById('sum-first-price').textContent = p.first;
+  document.getElementById('sum-monthly-price').textContent = p.monthly;
+  const f = document.getElementById('sum-features');
+  f.innerHTML = p.features.map(feat=>`<div class="order-feature">${feat}</div>`).join('');
+}
+
+function goStep(n){
+  document.querySelectorAll('.step').forEach(s=>s.classList.remove('active'));
+  document.getElementById('step-'+n).classList.add('active');
+  // update progress
+  for(let i=1;i<=4;i++){
+    const prog = document.getElementById('prog-'+i);
+    if(!prog) continue;
+    prog.className = 'prog-step ' + (i<n?'done':i===n?'active':'pending');
+    const dot = prog.querySelector('.prog-dot');
+    dot.textContent = i<n ? '✓' : i;
+  }
+  currentStep = n;
+  window.scrollTo({top:0,behavior:'smooth'});
+  // Hide order summary on success
+  if(n===4) document.getElementById('order-summary').style.display='none';
+}
+
+function toggleGoal(btn){
+  btn.classList.toggle('selected');
+}
+
+function togglePass(){
+  const p = document.getElementById('su-pass');
+  p.type = p.type==='password'?'text':'password';
+}
+
+function toggleRefField(){
+  const rg = document.getElementById('ref-group');
+  rg.style.display = rg.style.display==='none'?'block':'none';
+  if(rg.style.display==='block') document.getElementById('su-ref').focus();
+}
+
+function showErr(id, show){
+  const el = document.getElementById(id);
+  if(el) el.style.display = show?'block':'none';
+}
+function setError(inputId, errId, show){
+  const inp = document.getElementById(inputId);
+  if(inp) inp.classList.toggle('error', show);
+  showErr(errId, show);
+}
+
+async function submitSignup(){
+  const first  = document.getElementById('su-first').value.trim();
+  const last   = document.getElementById('su-last').value.trim();
+  const email  = document.getElementById('su-email').value.trim();
+  const pass   = document.getElementById('su-pass').value;
+  const terms  = document.getElementById('su-terms').checked;
+  const smsCon = document.getElementById('su-sms-consent')?.checked || false;
+  const mktCon = document.getElementById('su-marketing')?.checked || true;
+  const refCode= document.getElementById('su-ref')?.value.trim() || null;
+  const goals  = Array.from(document.querySelectorAll('.goal-btn.selected')).map(b=>b.textContent.trim());
+  const expLevel = document.getElementById('exp-level')?.value || null;
+
+  // ── CLIENT-SIDE VALIDATION ──
+  let valid = true;
+  setError('su-first','err-first',!first);         if(!first) valid=false;
+  setError('su-email','err-email',!email||!email.includes('@')); if(!email||!email.includes('@')) valid=false;
+  setError('su-pass','err-pass',pass.length<8);    if(pass.length<8) valid=false;
+  if(!terms){ alert('Please agree to the Terms of Service and Privacy Policy to continue.'); return; }
+  if(!valid) return;
+
+  // ── SHOW LOADING STATE ──
+  const btn = document.querySelector('.btn-next.btn-gold');
+  const origText = btn.textContent;
+  btn.textContent = 'Creating your account…';
+  btn.disabled = true;
+
+  try {
+    // ── STEP 1: CREATE AUTH USER IN SUPABASE ──
+    const { data: authData, error: authError } = await supabase.auth.signUp({
+      email,
+      password: pass,
+      options: {
+        data: {
+          first_name: first,
+          last_name:  last,
+          plan:       selectedPlan
+        },
+        emailRedirectTo: 'https://emeraldwellness.health/signup'
+      }
+    });
+
+    if(authError) throw authError;
+
+    const userId = authData.user?.id;
+    const referralLink = 'emeraldwellness.health/ref/EW' +
+                         Math.random().toString(36).substr(2,6).toUpperCase();
+
+    // ── STEP 2: SAVE PROFILE TO DATABASE ──
+    const { error: profileError } = await supabase
+      .from('profiles')
+      .insert({
+        id:               userId,
+        first_name:       first,
+        last_name:        last || null,
+        email:            email,
+        plan:             selectedPlan,
+        plan_name:        PLANS[selectedPlan].name,
+        monthly_price:    parseFloat(PLANS[selectedPlan].monthly.replace('$','').replace('/mo','')),
+        first_month_price: parseFloat(PLANS[selectedPlan].first.replace('$','')),
+        billing:          'monthly',
+        status:           'trial',
+        goals:            goals,
+        experience_level: expLevel,
+        sms_consent:      smsCon,
+        marketing_consent: mktCon,
+        referral_link:    referralLink,
+        referred_by:      refCode || null,
+        trial_ends_at:    new Date(Date.now() + 7*24*60*60*1000).toISOString()
+      });
+
+    if(profileError) {
+      console.error('Profile insert error:', profileError);
+      // Non-fatal — auth user created, profile may already exist
+    }
+
+    // ── STEP 3: SAVE HEALTH GOALS (normalized) ──
+    if(goals.length > 0 && userId) {
+      const goalRows = goals.map((goal, i) => ({
+        user_id: userId,
+        goal,
+        priority: i + 1
+      }));
+      await supabase.from('health_goals').insert(goalRows);
+    }
+
+    // ── STEP 4: TRACK REFERRAL if a code was entered ──
+    if(refCode && userId) {
+      await supabase.from('referrals').insert({
+        referred_email: email,
+        referred_id:    userId,
+        status:         'signed_up'
+      });
+    }
+
+    // ── STEP 5: FIRE EMAIL + SMS AUTOMATION ──
+    // Trigger Klaviyo/Mailchimp/Zapier webhook with full payload
+    fetch('https://your-backend.com/api/signup', {
+      method: 'POST',
+      headers: {'Content-Type':'application/json'},
+      body: JSON.stringify({
+        first_name:    first,
+        email:         email,
+        plan:          selectedPlan,
+        plan_name:     PLANS[selectedPlan].name,
+        plan_price:    PLANS[selectedPlan].monthly,
+        first_month:   PLANS[selectedPlan].first,
+        sms_consent:   smsCon,
+        goals:         goals,
+        referral_link: referralLink,
+        supabase_uid:  userId
+      })
+    }).catch(()=>{}); // Non-blocking
+
+    // ── STEP 6: SUCCESS ──
+    document.getElementById('su-ref-url').value = referralLink;
+    goStep(4);
+
+  } catch(err) {
+    console.error('Signup error:', err);
+
+    // Handle specific Supabase auth errors gracefully
+    if(err.message?.includes('already registered') ||
+       err.message?.includes('already been registered')) {
+      setError('su-email','err-email',true);
+      document.getElementById('err-email').textContent =
+        'This email is already registered. Try logging in instead.';
+      document.getElementById('err-email').style.display='block';
+    } else if(err.message?.includes('Password')) {
+      setError('su-pass','err-pass',true);
+    } else {
+      alert('Something went wrong creating your account. Please try again. \n\nError: ' + err.message);
+    }
+  } finally {
+    // Restore button
+    btn.textContent = origText;
+    btn.disabled = false;
+  }
+}
+
+function copySignupRef(){
+  const el = document.getElementById('su-ref-url');
+  el.select(); document.execCommand('copy');
+  const btn = document.querySelector('.ref-copy-btn');
+  btn.textContent='Copied!'; setTimeout(()=>btn.textContent='Copy',2000);
+}
+
+function handleSocial(provider){
+  alert(`Connect to your ${provider} OAuth flow here. After auth, proceed to the goals step.`);
+}
+
+// Init
+updateOrderSummary();
+</script>
+</body>
+</html>

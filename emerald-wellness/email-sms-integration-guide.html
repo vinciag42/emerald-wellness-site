@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Email & SMS Integration Guide | Emerald Wellness</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500&family=Cinzel:wght@400;600&family=DM+Mono:wght@400&display=swap" rel="stylesheet"/>
+<style>
+:root{--bg:#050d07;--bg2:#080f0a;--bg3:#0c160e;--em:#1a6b45;--emL:#2aab6a;--emXL:#40d888;--emPale:rgba(26,107,69,.08);--gold:#c8a828;--goldL:#f0c84a;--goldPale:rgba(200,168,40,.08);--text:#e8f2ec;--textDim:#8aac96;--textMid:#b8d4c0;--border:rgba(255,255,255,.06);--borderEm:rgba(26,107,69,.35);--borderGold:rgba(200,168,40,.3);--red:#e05050;--serif:'Playfair Display',Georgia,serif;--sans:'DM Sans',system-ui,sans-serif;--cinzel:'Cinzel',serif;--mono:'DM Mono',monospace;}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:var(--sans);background:var(--bg);color:var(--text);font-size:15px;line-height:1.8;}
+a{color:var(--emXL);}
+::-webkit-scrollbar{width:3px;}::-webkit-scrollbar-thumb{background:var(--em);}
+header{background:rgba(8,15,10,.95);border-bottom:1px solid var(--borderEm);padding:0 52px;height:64px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:10;backdrop-filter:blur(20px);}
+.logo{display:flex;align-items:center;gap:10px;font-family:var(--cinzel);font-size:13px;letter-spacing:2px;color:var(--emXL);text-decoration:none;}
+.diamond{width:24px;height:24px;background:linear-gradient(135deg,var(--em),var(--emXL));transform:rotate(45deg);border-radius:3px;}
+.main{max-width:840px;margin:0 auto;padding:56px 52px 80px;}
+.eyebrow{font-family:var(--cinzel);font-size:9px;letter-spacing:3px;color:var(--emXL);text-transform:uppercase;margin-bottom:10px;}
+h1{font-family:var(--serif);font-size:40px;font-weight:900;line-height:1.1;margin-bottom:10px;}
+h1 em{font-style:italic;color:var(--emXL);}
+.intro{font-size:15px;color:var(--textMid);line-height:1.75;margin-bottom:48px;max-width:600px;}
+h2{font-family:var(--serif);font-size:24px;font-weight:700;margin:40px 0 14px;}
+h3{font-family:var(--cinzel);font-size:11px;letter-spacing:2px;color:var(--textDim);text-transform:uppercase;margin:28px 0 12px;}
+p{color:var(--textMid);margin-bottom:14px;font-weight:300;}
+ul,ol{color:var(--textMid);padding-left:22px;margin-bottom:14px;font-weight:300;}
+li{margin-bottom:7px;}
+strong{color:var(--text);font-weight:500;}
+
+/* SECTION CARDS */
+.section-card{background:var(--bg2);border:1px solid var(--border);border-radius:18px;padding:32px;margin-bottom:28px;}
+.section-card.em{border-color:var(--borderEm);background:linear-gradient(135deg,var(--emPale),transparent);}
+.section-card.gold{border-color:var(--borderGold);background:linear-gradient(135deg,var(--goldPale),transparent);}
+
+/* SMS PREVIEW */
+.sms-preview{background:#1c1c1e;border-radius:16px;padding:20px 20px 16px;max-width:340px;margin:20px 0;}
+.sms-bubble{background:#1a6b45;border-radius:18px 18px 4px 18px;padding:14px 18px;margin-bottom:8px;}
+.sms-bubble p{color:#fff;font-size:14px;line-height:1.6;margin:0;}
+.sms-meta{font-size:11px;color:rgba(255,255,255,.4);text-align:right;}
+.sms-sender{font-size:11px;color:rgba(255,255,255,.5);margin-bottom:10px;text-align:center;}
+
+/* SMS TEXT BOX */
+.sms-text-box{background:var(--bg3);border:1px solid var(--borderEm);border-radius:12px;padding:20px 24px;margin:16px 0;font-family:var(--sans);font-size:13px;color:var(--textMid);line-height:1.75;white-space:pre-wrap;}
+.sms-char-count{font-size:11px;color:var(--textDim);text-align:right;margin-top:6px;}
+
+/* CODE BLOCKS */
+.code-block{background:var(--bg3);border:1px solid var(--border);border-radius:10px;padding:20px 24px;margin:16px 0;overflow-x:auto;}
+.code-block code{font-family:var(--mono);font-size:12px;color:var(--emXL);line-height:1.7;display:block;white-space:pre;}
+.code-block .comment{color:var(--textDim);}
+.code-block .key{color:#a0b0ff;}
+.code-block .str{color:var(--goldL);}
+.code-block .fn{color:var(--emXL);}
+
+/* PLATFORM GRID */
+.platform-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:14px;margin:20px 0;}
+.platform-card{background:var(--bg2);border:1px solid var(--border);border-radius:14px;padding:18px;transition:border-color .2s;}
+.platform-card:hover{border-color:var(--borderEm);}
+.platform-icon{font-size:24px;margin-bottom:10px;}
+.platform-name{font-size:14px;font-weight:500;color:var(--text);margin-bottom:4px;}
+.platform-desc{font-size:11px;color:var(--textDim);line-height:1.5;}
+.platform-tag{display:inline-block;margin-top:8px;padding:2px 8px;border-radius:10px;font-size:9px;font-weight:700;letter-spacing:.5px;}
+.tag-free{background:var(--emPale);color:var(--emXL);border:1px solid var(--borderEm);}
+.tag-paid{background:var(--goldPale);color:var(--goldL);border:1px solid var(--borderGold);}
+
+/* VARIABLES TABLE */
+.var-table{width:100%;border-collapse:collapse;margin:16px 0;font-size:13px;}
+.var-table th{background:rgba(26,107,69,.1);color:var(--emXL);padding:10px 14px;text-align:left;border-bottom:1px solid var(--borderEm);font-family:var(--cinzel);font-size:9px;letter-spacing:1px;text-transform:uppercase;}
+.var-table td{padding:10px 14px;border-bottom:1px solid var(--border);color:var(--textMid);vertical-align:top;}
+.var-table td:first-child{font-family:var(--mono);font-size:11px;color:var(--goldL);}
+
+/* CALLOUT */
+.callout{background:var(--emPale);border:1px solid var(--borderEm);border-left:3px solid var(--emXL);border-radius:4px 12px 12px 4px;padding:14px 18px;margin:16px 0;font-size:13px;color:var(--textMid);}
+.callout.gold{background:var(--goldPale);border-color:var(--borderGold);border-left-color:var(--goldL);}
+.callout-title{font-family:var(--cinzel);font-size:9px;letter-spacing:2px;color:var(--emXL);text-transform:uppercase;margin-bottom:6px;}
+.callout.gold .callout-title{color:var(--goldL);}
+
+footer{background:rgba(5,13,7,.95);border-top:1px solid var(--border);padding:24px 52px;display:flex;justify-content:space-between;align-items:center;font-size:12px;color:var(--textDim);flex-wrap:wrap;gap:12px;}
+@media(max-width:768px){header,footer{padding:0 16px;}.main{padding:36px 20px 60px;}}
+</style>
+</head>
+<body>
+<header>
+  <a href="index.html" class="logo"><div class="diamond"></div>EMERALD WELLNESS</a>
+  <span style="font-family:var(--cinzel);font-size:10px;letter-spacing:2px;color:var(--textDim);text-transform:uppercase;">Developer Docs</span>
+</header>
+
+<div class="main">
+  <p class="eyebrow">Automation & Integration</p>
+  <h1>Email & <em>SMS</em> Welcome<br/>Message Guide</h1>
+  <p class="intro">Complete guide to sending the welcome email and SMS automatically when a user signs up. Includes the full SMS copy, template variables, platform setup instructions for Mailchimp, Klaviyo, Twilio, and more.</p>
+
+  <!-- ══ SMS MESSAGE ══ -->
+  <h2>📱 SMS Welcome Message</h2>
+  <p>The SMS fires immediately after account creation — within seconds of the user clicking "Start My Free 7-Day Trial." Keep it warm, personal, and action-driving. Under 160 characters is one SMS segment (free on most platforms).</p>
+
+  <div class="section-card em">
+    <h3>SMS Copy — Primary Version</h3>
+    <div class="sms-preview">
+      <div class="sms-sender">Emerald Wellness · Now</div>
+      <div class="sms-bubble">
+        <p>Hi [FirstName] ✦ Welcome to Emerald Wellness! Your 7-day free trial is live. Health is wealth — and we'll guide you every step of the way. Launch your dashboard: emeraldwellness.health/signup Reply STOP to opt out.</p>
+      </div>
+      <div class="sms-meta">Delivered</div>
+    </div>
+    <div class="sms-text-box">Hi {{first_name}} ✦ Welcome to Emerald Wellness! Your 7-day free trial is live + 20% off your first month is locked in. Health is wealth — and we'll guide you every step of the way.
+
+Launch your dashboard: emeraldwellness.health/signup
+
+Reply STOP to opt out.</div>
+    <div class="sms-char-count">~210 chars · 2 SMS segments · Twilio cost: ~$0.015</div>
+  </div>
+
+  <div class="section-card">
+    <h3>SMS Copy — Short Version (1 segment, 160 chars)</h3>
+    <div class="sms-text-box">Hi {{first_name}}, welcome to Emerald Wellness ✦ Your 7-day free trial is live. We guide you every step of the way. emeraldwellness.health/signup · Reply STOP to opt out</div>
+    <div class="sms-char-count">160 chars exactly · 1 SMS segment · Twilio cost: ~$0.0079</div>
+  </div>
+
+  <div class="section-card gold">
+    <h3>SMS Copy — Practitioner Plan Version</h3>
+    <div class="sms-text-box">Hi {{first_name}}, welcome to Emerald Wellness Pro ✦ Your practitioner dashboard is live. Patient management, SOAP notes & HIPAA BAA — ready when you are. emeraldwellness.health/signup · Reply STOP to opt out</div>
+    <div class="sms-char-count">~200 chars · 2 SMS segments</div>
+  </div>
+
+  <div class="callout">
+    <div class="callout-title">⚡ Compliance Note</div>
+    TCPA (US) and CTIA guidelines require: explicit opt-in consent before sending SMS, sender identification in every message, and a clear STOP opt-out mechanism. The sign-up form already includes an SMS consent checkbox — ensure it is checked before triggering the SMS flow. Keep all opt-out records for a minimum of 5 years.
+  </div>
+
+  <!-- ══ EMAIL TEMPLATE VARIABLES ══ -->
+  <h2>✉️ Email Template Variables</h2>
+  <p>The HTML email template uses these merge tags. Replace with your ESP's variable syntax (Mailchimp, Klaviyo, SendGrid, etc.).</p>
+
+  <table class="var-table">
+    <thead>
+      <tr><th>Variable</th><th>Description</th><th>Example Value</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>{{FIRST_NAME}}</td><td>User's first name from signup form</td><td>Sarah</td></tr>
+      <tr><td>{{PLAN_NAME}}</td><td>Selected plan name</td><td>Gold</td></tr>
+      <tr><td>{{PLAN_PRICE}}</td><td>Full monthly price after trial</td><td>$149.99</td></tr>
+      <tr><td>{{FIRST_MONTH_PRICE}}</td><td>First month price (20% off)</td><td>$119.99</td></tr>
+      <tr><td>{{PLAN_FEATURES}}</td><td>Comma-separated feature list for their plan</td><td>500+ compound database, Unlimited interaction checker...</td></tr>
+      <tr><td>{{REFERRAL_LINK}}</td><td>Unique referral URL generated on signup</td><td>emeraldwellness.health/ref/EW4B2F91</td></tr>
+      <tr><td>{{UNSUBSCRIBE_LINK}}</td><td>ESP-provided unsubscribe URL (required by CAN-SPAM)</td><td>{{unsubscribe_url}} (Klaviyo), *|UNSUB|* (Mailchimp)</td></tr>
+    </tbody>
+  </table>
+
+  <!-- ══ TRIGGER CODE ══ -->
+  <h2>⚙️ Signup Trigger Code</h2>
+  <p>Add this to your <strong>signup.html</strong> <code style="font-family:var(--mono);font-size:12px;color:var(--goldL);background:var(--bg3);padding:2px 6px;border-radius:4px;">submitSignup()</code> function — after validation passes and before showing the success state:</p>
+
+  <div class="section-card">
+    <h3>JavaScript — Trigger on Signup</h3>
+    <div class="code-block">
+      <code><span class="comment">// Add inside submitSignup() after validation, before goStep(4)</span>
+
+<span class="comment">// 1. Collect form data</span>
+<span class="key">const</span> signupData = {
+  first_name: document.getElementById(<span class="str">'su-first'</span>).value.trim(),
+  last_name:  document.getElementById(<span class="str">'su-last'</span>).value.trim(),
+  email:      document.getElementById(<span class="str">'su-email'</span>).value.trim(),
+  plan:       selectedPlan,
+  referral:   document.getElementById(<span class="str">'su-ref'</span>).value.trim() || <span class="str">null</span>,
+  sms_consent: document.getElementById(<span class="str">'su-sms-consent'</span>)?.checked || <span class="str">false</span>,
+  goals:      Array.from(document.querySelectorAll(<span class="str">'.goal-btn.selected'</span>))
+              .map(b => b.textContent.trim()),
+  referral_link: <span class="str">'emeraldwellness.health/ref/EW'</span> +
+                 Math.random().toString(36).substr(2,6).toUpperCase()
+};
+
+<span class="comment">// 2. Send to your backend / ESP webhook</span>
+<span class="fn">fetch</span>(<span class="str">'https://your-backend.com/api/signup'</span>, {
+  method: <span class="str">'POST'</span>,
+  headers: { <span class="str">'Content-Type'</span>: <span class="str">'application/json'</span> },
+  body: JSON.stringify(signupData)
+})
+.<span class="fn">then</span>(res => res.json())
+.<span class="fn">then</span>(data => {
+  console.log(<span class="str">'Signup sent to ESP'</span>, data);
+})
+.<span class="fn">catch</span>(err => {
+  <span class="comment">// Non-blocking — proceed to success even if API fails</span>
+  console.error(<span class="str">'ESP trigger error:'</span>, err);
+});
+
+<span class="comment">// 3. Show success (always runs regardless of API response)</span>
+<span class="fn">goStep</span>(4);</code>
+    </div>
+  </div>
+
+  <!-- ══ PLATFORM SETUP ══ -->
+  <h2>🔌 Platform Setup Instructions</h2>
+
+  <div class="platform-grid">
+    <div class="platform-card">
+      <div class="platform-icon">📧</div>
+      <div class="platform-name">Klaviyo</div>
+      <div class="platform-desc">Best for ecommerce/subscription. Native SMS + email. Built-in segmentation and A/B testing.</div>
+      <span class="platform-tag tag-paid">From $45/mo</span>
+    </div>
+    <div class="platform-card">
+      <div class="platform-icon">🐵</div>
+      <div class="platform-name">Mailchimp</div>
+      <div class="platform-desc">Easiest to set up. Free tier available. Use Transactional API (Mandrill) for instant triggered emails.</div>
+      <span class="platform-tag tag-free">Free tier</span>
+    </div>
+    <div class="platform-card">
+      <div class="platform-icon">📱</div>
+      <div class="platform-name">Twilio</div>
+      <div class="platform-desc">Industry standard SMS API. Pay-per-message (~$0.0079/segment). Works alongside any ESP.</div>
+      <span class="platform-tag tag-paid">Pay per SMS</span>
+    </div>
+    <div class="platform-card">
+      <div class="platform-icon">⚡</div>
+      <div class="platform-name">SendGrid</div>
+      <div class="platform-desc">Transactional email at scale. 100 free emails/day. Simple API, excellent deliverability.</div>
+      <span class="platform-tag tag-free">Free tier</span>
+    </div>
+    <div class="platform-card">
+      <div class="platform-icon">🔄</div>
+      <div class="platform-name">Zapier / Make</div>
+      <div class="platform-desc">No-code option. Connect your signup webhook to Mailchimp + Twilio in minutes. No backend needed.</div>
+      <span class="platform-tag tag-free">Free tier</span>
+    </div>
+    <div class="platform-card">
+      <div class="platform-icon">🟣</div>
+      <div class="platform-name">ActiveCampaign</div>
+      <div class="platform-desc">Email + SMS + CRM in one. Best for complex automation sequences and lead scoring.</div>
+      <span class="platform-tag tag-paid">From $29/mo</span>
+    </div>
+  </div>
+
+  <!-- ══ KLAVIYO SETUP ══ -->
+  <h2>Klaviyo Setup (Recommended)</h2>
+  <div class="section-card em">
+    <h3>Step-by-step</h3>
+    <ol>
+      <li>Create a Klaviyo account at <strong>klaviyo.com</strong> and get your Public API Key from Account → Settings → API Keys.</li>
+      <li>Create a new <strong>List</strong> called "Emerald Wellness Members" and note the List ID.</li>
+      <li>In your backend API route, use the Klaviyo v3 API to add the subscriber and trigger the welcome flow:<br/>
+        <div class="code-block" style="margin-top:10px;">
+          <code><span class="comment">// Node.js backend example</span>
+<span class="key">const</span> KLAVIYO_KEY = process.env.KLAVIYO_PRIVATE_KEY;
+
+<span class="comment">// Add profile to Klaviyo</span>
+<span class="fn">await</span> fetch(<span class="str">'https://a.klaviyo.com/api/profiles/'</span>, {
+  method: <span class="str">'POST'</span>,
+  headers: {
+    <span class="str">'Authorization'</span>: <span class="str">`Klaviyo-API-Key ${KLAVIYO_KEY}`</span>,
+    <span class="str">'Content-Type'</span>: <span class="str">'application/json'</span>,
+    <span class="str">'revision'</span>: <span class="str">'2024-02-15'</span>
+  },
+  body: JSON.stringify({
+    data: {
+      type: <span class="str">'profile'</span>,
+      attributes: {
+        email: signupData.email,
+        first_name: signupData.first_name,
+        last_name: signupData.last_name,
+        properties: {
+          plan: signupData.plan,
+          referral_link: signupData.referral_link,
+          goals: signupData.goals.join(<span class="str">', '</span>),
+          sms_consent: signupData.sms_consent
+        }
+      }
+    }
+  })
+});
+
+<span class="comment">// Fire "Signup" event to trigger welcome flow</span>
+<span class="fn">await</span> fetch(<span class="str">'https://a.klaviyo.com/api/events/'</span>, {
+  method: <span class="str">'POST'</span>,
+  headers: { ... },
+  body: JSON.stringify({
+    data: {
+      type: <span class="str">'event'</span>,
+      attributes: {
+        metric: { data: { type: <span class="str">'metric'</span>,
+          attributes: { name: <span class="str">'Signup'</span> }}},
+        profile: { data: { type: <span class="str">'profile'</span>,
+          attributes: { email: signupData.email }}},
+        properties: { plan: signupData.plan }
+      }
+    }
+  })
+});</code>
+        </div>
+      </li>
+      <li>In Klaviyo → Flows → Create Flow → "Metric Triggered" → choose the <strong>Signup</strong> event.</li>
+      <li>Add an <strong>Email action</strong> with 0-minute delay. Paste the HTML from <code style="font-family:var(--mono);font-size:11px;color:var(--goldL)">email-welcome-template.html</code>. Map merge tags: <code style="font-family:var(--mono);font-size:11px;color:var(--goldL)">{{FIRST_NAME}}</code> → <code style="font-family:var(--mono);font-size:11px;color:var(--goldL)">{{ first_name }}</code>.</li>
+      <li>If SMS consent = true, add an <strong>SMS action</strong> with 30-second delay. Paste the SMS copy above.</li>
+      <li>Activate the flow. Test with your own email address.</li>
+    </ol>
+  </div>
+
+  <!-- ══ TWILIO SMS SETUP ══ -->
+  <h2>Twilio SMS Setup</h2>
+  <div class="section-card">
+    <h3>Backend API call (Node.js)</h3>
+    <div class="code-block">
+      <code><span class="key">const</span> twilio = require(<span class="str">'twilio'</span>);
+<span class="key">const</span> client = twilio(
+  process.env.TWILIO_ACCOUNT_SID,
+  process.env.TWILIO_AUTH_TOKEN
+);
+
+<span class="comment">// Only send if user consented to SMS at signup</span>
+<span class="key">if</span> (signupData.sms_consent && signupData.phone) {
+  <span class="fn">await</span> client.messages.create({
+    body: <span class="str">`Hi ${signupData.first_name} ✦ Welcome to Emerald Wellness! Your 7-day free trial is live + 20% off your first month is locked in. Health is wealth — we guide you every step of the way. emeraldwellness.health/signup · Reply STOP to opt out`</span>,
+    from: process.env.TWILIO_PHONE_NUMBER, <span class="comment">// Your Twilio number or Messaging Service SID</span>
+    to: signupData.phone
+  });
+}</code>
+    </div>
+    <div class="callout gold">
+      <div class="callout-title">Phone number collection</div>
+      The current signup.html form collects email only. To enable SMS, add a phone number field to Step 3 of the sign-up form with a separate SMS consent checkbox: "Send me a welcome text message (optional)." Never send SMS without explicit opt-in.
+    </div>
+  </div>
+
+  <!-- ══ NO-CODE: ZAPIER ══ -->
+  <h2>No-Code Option: Zapier</h2>
+  <div class="section-card">
+    <h3>Setup in 15 minutes — no backend required</h3>
+    <ol>
+      <li><strong>Add a Webhook trigger to signup.html</strong> — in the <code style="font-family:var(--mono);font-size:11px;color:var(--goldL)">submitSignup()</code> function, add a fetch POST to your Zapier Webhook URL (from Zapier → Trigger → Webhooks by Zapier → Catch Hook).</li>
+      <li><strong>Zapier Zap 1 — Email:</strong> Trigger: Webhook → Action: Mailchimp "Add/Update Subscriber" → Action: Mailchimp "Send Transactional Email" using the welcome template.</li>
+      <li><strong>Zapier Zap 2 — SMS:</strong> Trigger: Same Webhook → Filter: only if <code style="font-family:var(--mono);font-size:11px;color:var(--goldL)">sms_consent == true</code> → Action: Twilio "Send SMS Message" with the SMS copy above.</li>
+      <li>Test both Zaps. Turn them on. Done.</li>
+    </ol>
+  </div>
+
+  <!-- ══ TESTING CHECKLIST ══ -->
+  <h2>✅ Pre-Launch Testing Checklist</h2>
+  <div class="section-card em">
+    <ul>
+      <li>Sign up with a test email → confirm welcome email arrives within 60 seconds</li>
+      <li>Check email renders correctly in Gmail, Apple Mail, and Outlook (use Litmus or Email on Acid)</li>
+      <li>Test SMS delivery with a real phone number</li>
+      <li>Test STOP opt-out — reply STOP and confirm no further SMS are sent</li>
+      <li>Test unsubscribe link in email footer</li>
+      <li>Verify <strong>{{FIRST_NAME}}</strong> and all merge tags are populated (not shown as raw variables)</li>
+      <li>Confirm referral link is unique per user</li>
+      <li>Test across all 4 plans — confirm {{PLAN_NAME}}, {{PLAN_PRICE}}, {{FIRST_MONTH_PRICE}} populate correctly</li>
+      <li>Verify CAN-SPAM compliance: sender name, physical address, unsubscribe link all present</li>
+      <li>Check spam score (use mail-tester.com) — aim for 9+/10</li>
+    </ul>
+  </div>
+
+</div>
+
+<footer>
+  <a href="index.html" class="logo" style="text-decoration:none;font-size:12px;"><div class="diamond" style="width:20px;height:20px;"></div>Emerald Wellness</a>
+  <span style="font-size:12px;color:var(--textDim);">Developer Integration Guide</span>
+  <div style="display:flex;gap:16px;"><a href="privacy.html" style="color:var(--textDim);font-size:12px;">Privacy</a><a href="terms.html" style="color:var(--textDim);font-size:12px;">Terms</a></div>
+</footer>
+</body>
+</html>

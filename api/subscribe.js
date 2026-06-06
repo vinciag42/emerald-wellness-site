@@ -12,7 +12,7 @@ export default async function handler(req, res) {
   const KLAVIYO_KEY = 'pk_WtKVHz_49f453ff604a0678196e1c8a13dff471df';
   const KLAVIYO_LIST = 'XEEg3P';
   const SUPABASE_URL = 'https://mczpuffmlspmghgneukz.supabase.co';
-  const SUPABASE_ANON = 'sb_publishable_OAWniWdCQFuaqLledTmkEg_uuNnoK6S';
+  const SUPABASE_ANON = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im1jenB1ZmZtbHNwbWdoZ25ldWt6Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODAxNjczODAsImV4cCI6MjA5NTc0MzM4MH0.hs0CQOyrcIk5WhRr9OUU1fVs7V1sMcea7RYwWuTAVag';
 
   try {
     // Save to Klaviyo

@@ -158,11 +158,9 @@ body{font-family:var(--sans);background:var(--bg);color:var(--text);overflow-x:h
 
   <!-- WAITLIST FORM -->
   <div class="cs-form-wrap" id="cs-form-section">
-    <div style="display:flex;flex-direction:column;gap:10px;width:100%;max-width:480px;">
-      <input class="cs-form-input" type="text" id="cs-name" placeholder="Your first name" autocomplete="given-name" style="background:var(--bg2);border:1px solid var(--borderEm);border-radius:10px;padding:14px 18px;color:var(--text);font-family:var(--sans);font-size:14px;outline:none;width:100%;"/>
-      <input class="cs-form-input" type="email" id="cs-email" placeholder="Your email address" autocomplete="email" style="background:var(--bg2);border:1px solid var(--borderEm);border-radius:10px;padding:14px 18px;color:var(--text);font-family:var(--sans);font-size:14px;outline:none;width:100%;"/>
-      <input class="cs-form-input" type="tel" id="cs-phone" placeholder="Your phone number (optional)" autocomplete="tel" style="background:var(--bg2);border:1px solid var(--borderEm);border-radius:10px;padding:14px 18px;color:var(--text);font-family:var(--sans);font-size:14px;outline:none;width:100%;"/>
-      <button onclick="submitCS()" style="background:linear-gradient(135deg,#1a6b45,#2aab6a);color:#fff;border:none;border-radius:10px;padding:14px 18px;width:100%;font-family:var(--sans);font-size:14px;font-weight:600;cursor:pointer;letter-spacing:.5px;">Join the Waitlist →</button>
+    <div class="cs-form">
+      <input class="cs-form-input" type="email" id="cs-email" placeholder="Enter your email to secure your spot" autocomplete="email"/>
+      <button class="cs-form-btn" onclick="submitCS()">Join the Waitlist →</button>
     </div>
   </div>
   <p class="cs-legal" id="cs-legal-text">No spam. Your 7-day free trial + 20% first-month discount are locked when you sign up today.</p>
@@ -288,73 +286,32 @@ updateCD();setInterval(updateCD,1000);
 
 // SUBMIT
 async function submitCS(){
-  const name  = document.getElementById('cs-name').value.trim();
   const email = document.getElementById('cs-email').value.trim();
-  const phone = document.getElementById('cs-phone').value.trim();
-
-  if(!name){
-    document.getElementById('cs-name').style.border='1px solid #e05050';
-    document.getElementById('cs-name').placeholder='Please enter your name';
-    return;
-  }
   if(!email || !email.includes('@')){
     document.getElementById('cs-email').style.border='1px solid #e05050';
     document.getElementById('cs-email').placeholder='Please enter a valid email';
     return;
   }
 
-  const ref = 'emeraldwellness.health/ref/EW'+Math.random().toString(36).substr(2,6).toUpperCase();
+  // ── SAVE TO SUPABASE WAITLIST ──
+  // Add Supabase SDK to coming-soon.html if you want live saving:
+  // <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+  // Then uncomment and configure:
+  /*
+  const supabase = window.supabase.createClient('https://mczpuffmlspmghgneukz.supabase.co','eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im1jenB1ZmZtbHNwbWdoZ25ldWt6Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODAxNjczODAsImV4cCI6MjA5NTc0MzM4MH0.hs0CQOyrcIk5WhRr9OUU1fVs7V1sMcea7RYwWuTAVag');
+  await supabase.from('waitlist').upsert({
+    email,
+    source: 'coming-soon',
+    referred_by: new URLSearchParams(window.location.search).get('ref') || null
+  }, { onConflict: 'email' });
+  */
 
-  // 1. Save to Supabase waitlist
-  try {
-    const sb = window.supabase ? window.supabase.createClient('https://mczpuffmlspmghgneukz.supabase.co','eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im1jenB1ZmZtbHNwbWdoZ25ldWt6Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODAxNjczODAsImV4cCI6MjA5NTc0MzM4MH0.hs0CQOyrcIk5WhRr9OUU1fVs7V1sMcea7RYwWuTAVag') : null;
-    if(sb) await sb.from('waitlist').upsert({
-      email, first_name:name, source:'coming-soon', referral_link:ref,
-      referred_by: new URLSearchParams(window.location.search).get('ref')||null
-    },{ onConflict:'email' });
-  } catch(e){ console.warn('Supabase:', e); }
-
-  // 2. Add to Klaviyo via their Track API (works from browser)
-  try {
-    // Klaviyo identify
-    const klaviyoData = {
-      type: 'profile',
-      attributes: {
-        email: email,
-        first_name: name,
-        phone_number: phone || undefined,
-        properties: {
-          source: 'coming-soon',
-          referral_link: ref,
-          signup_date: new Date().toISOString()
-        }
-      }
-    };
-
-    // Use Klaviyo's client-side API
-    await fetch('https://a.klaviyo.com/client/subscriptions/?company_id=WtKVHz', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json', 'revision': '2024-02-15' },
-      body: JSON.stringify({
-        data: {
-          type: 'subscription',
-          attributes: {
-            profile: { data: { type: 'profile', attributes: { email, first_name: name } } },
-            list_id: 'XEEg3P'
-          }
-        }
-      })
-    });
-    console.log('Klaviyo subscription sent');
-  } catch(e){ console.warn('Klaviyo:', e); }
-
-  // 3. Show success
   document.getElementById('cs-form-section').style.display='none';
   document.getElementById('cs-legal-text').style.display='none';
   const suc = document.getElementById('cs-success');
   suc.style.display='block';
+  const ref = 'emeraldwellness.health/ref/EW'+Math.random().toString(36).substr(2,6).toUpperCase();
   document.getElementById('cs-ref-url').value = ref;
-
   // Live counter animation
   let n=4848;
   setInterval(()=>{ n+=Math.floor(Math.random()*3)+1;
