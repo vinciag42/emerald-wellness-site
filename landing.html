@@ -999,6 +999,7 @@
     }
   </style>
 <script async type="text/javascript" src="https://static.klaviyo.com/onsite/js/klaviyo.js?company_id=WtKVHz"></script>
+<script src="js/waitlist-api.js"></script>
 </head>
 <body>
 
@@ -2053,7 +2054,7 @@ const SUPABASE_URL='https://mczpuffmlspmghgneukz.supabase.co';
     const phone=e.target.querySelector('input[type="tel"]').value.trim();
     const email=e.target.querySelector('input[type="email"]').value.trim();
     btn.textContent='Saving...';btn.disabled=true;
-   try{await fetch('/api/subscribe',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({email:email,first_name:name,phone:phone,source:'landing'})});}catch(err){console.warn(err);}
+   try{await fetch(getSubscribeApiUrl(),{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({email:email,first_name:name,phone:phone,source:'landing'})});}catch(err){console.warn(err);}
     document.getElementById('signup-success').style.display='block';
     btn.textContent="You're in ✦";
   }

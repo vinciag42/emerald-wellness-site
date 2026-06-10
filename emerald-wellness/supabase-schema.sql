@@ -60,7 +60,7 @@ CREATE TABLE IF NOT EXISTS public.health_goals (
 );
 
 -- ── WAITLIST TABLE ────────────────────────────────────────────
--- For coming-soon.html waitlist signups (pre-account)
+-- For homepage waitlist signups (pre-account)
 CREATE TABLE IF NOT EXISTS public.waitlist (
   id           UUID DEFAULT uuid_generate_v4() PRIMARY KEY,
   email        TEXT NOT NULL UNIQUE,
