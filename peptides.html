@@ -1,0 +1,1289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Peptide Therapy & Wellness Products | Emerald Wellness</title>
+  <meta name="description" content="78+ physician-supervised compounds — peptides, TRT/HRT, NAD+, sexual health, lab panels, and supplies for longevity, performance, and weight optimization." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@300;400;500;600&family=Cinzel:wght@400;600&display=swap" rel="stylesheet" />
+  <style>
+    :root{--bg:#050d07;--bg-card:#0b1a0e;--emerald:#2ecc71;--emerald-dim:#1a7a43;--gold:#c9a84c;--cream:#f0ece0;--muted:#7a8f7e;--border:rgba(46,204,113,0.12);--border-gold:rgba(201,168,76,0.25);--white:#ffffff;--ff-display:'Playfair Display',serif;--ff-cinzel:'Cinzel',serif;--ff-body:'DM Sans',sans-serif;--radius-card:16px;--radius-pill:40px;--transition:0.3s cubic-bezier(0.4,0,0.2,1)}
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{background:var(--bg);color:var(--cream);font-family:var(--ff-body);font-size:16px;line-height:1.7;overflow-x:hidden}
+    a{color:inherit;text-decoration:none}
+    ::-webkit-scrollbar{width:6px}::-webkit-scrollbar-track{background:var(--bg)}::-webkit-scrollbar-thumb{background:var(--emerald-dim);border-radius:3px}
+
+    nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:18px 48px;background:rgba(5,13,7,0.94);backdrop-filter:blur(16px);border-bottom:1px solid var(--border)}
+    .nav-logo{font-family:var(--ff-cinzel);font-size:1.1rem;letter-spacing:.18em;color:var(--emerald)}
+    .nav-logo span{color:var(--gold)}
+    .nav-cta{background:var(--emerald);color:var(--bg);font-weight:700;font-size:.85rem;padding:10px 24px;border-radius:var(--radius-pill);transition:var(--transition)}
+    .nav-cta:hover{background:var(--gold)}
+
+    .hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:120px 24px 80px;position:relative;overflow:hidden}
+    .hero-bg-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(46,204,113,0.04) 1px,transparent 1px),linear-gradient(90deg,rgba(46,204,113,0.04) 1px,transparent 1px);background-size:60px 60px;mask-image:radial-gradient(ellipse 80% 60% at 50% 50%,black 40%,transparent 100%)}
+    .hero-glow{position:absolute;width:700px;height:700px;background:radial-gradient(circle,rgba(46,204,113,0.08) 0%,transparent 70%);top:50%;left:50%;transform:translate(-50%,-50%);pointer-events:none}
+    .hero-eyebrow{font-family:var(--ff-cinzel);font-size:.72rem;letter-spacing:.3em;color:var(--gold);text-transform:uppercase;margin-bottom:24px;position:relative}
+    .hero h1{font-family:var(--ff-display);font-size:clamp(2.6rem,6vw,5.2rem);font-weight:700;line-height:1.1;color:var(--white);max-width:820px;margin-bottom:28px;position:relative}
+    .hero h1 em{font-style:italic;color:var(--emerald)}
+    .hero-sub{font-size:1.1rem;font-weight:300;color:var(--muted);max-width:580px;margin-bottom:48px;position:relative}
+    .hero-actions{display:flex;gap:16px;flex-wrap:wrap;justify-content:center;position:relative}
+    .btn-primary{background:var(--emerald);color:var(--bg);font-weight:700;font-size:.95rem;padding:16px 40px;border-radius:var(--radius-pill);transition:var(--transition);border:none;cursor:pointer;display:inline-block}
+    .btn-primary:hover{background:var(--gold);box-shadow:0 0 32px rgba(201,168,76,0.3)}
+    .btn-outline{background:transparent;color:var(--cream);font-weight:500;font-size:.95rem;padding:16px 40px;border-radius:var(--radius-pill);border:1px solid var(--border);transition:var(--transition);cursor:pointer;display:inline-block}
+    .btn-outline:hover{border-color:var(--emerald);color:var(--emerald)}
+    .hero-stats{display:flex;gap:56px;justify-content:center;flex-wrap:wrap;margin-top:72px;position:relative;padding-top:48px}
+    .hero-stats::before{content:'';position:absolute;top:0;left:50%;transform:translateX(-50%);width:160px;height:1px;background:linear-gradient(90deg,transparent,var(--emerald-dim),transparent)}
+    .stat-item{text-align:center}
+    .stat-num{font-family:var(--ff-display);font-size:2.4rem;font-weight:700;color:var(--emerald);line-height:1}
+    .stat-label{font-size:.78rem;color:var(--muted);letter-spacing:.12em;text-transform:uppercase;margin-top:4px}
+
+    section{padding:100px 24px}
+    .container{max-width:1220px;margin:0 auto}
+    .section-eyebrow{font-family:var(--ff-cinzel);font-size:.7rem;letter-spacing:.3em;color:var(--gold);text-transform:uppercase;margin-bottom:16px;display:block}
+    .section-title{font-family:var(--ff-display);font-size:clamp(2rem,4vw,3.2rem);font-weight:700;color:var(--white);line-height:1.15;margin-bottom:20px}
+    .section-title em{font-style:italic;color:var(--emerald)}
+    .section-sub{font-size:1rem;color:var(--muted);max-width:560px;margin-bottom:48px}
+
+    .how-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:2px;background:var(--border);border:1px solid var(--border);border-radius:var(--radius-card);overflow:hidden}
+    .how-step{background:var(--bg-card);padding:44px 32px;transition:var(--transition)}
+    .how-step:hover{background:#0f2214}
+    .how-num{font-family:var(--ff-cinzel);font-size:3rem;font-weight:600;line-height:1;margin-bottom:20px;-webkit-text-stroke:1px var(--emerald-dim);color:transparent}
+    .how-step h3{font-family:var(--ff-display);font-size:1.2rem;font-weight:600;color:var(--white);margin-bottom:12px}
+    .how-step p{font-size:.9rem;color:var(--muted);line-height:1.7}
+
+    .search-bar{display:flex;gap:12px;align-items:center;margin-bottom:24px;flex-wrap:wrap}
+    .search-input{flex:1;max-width:420px;background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius-pill);padding:12px 20px;font-family:var(--ff-body);font-size:.9rem;color:var(--cream);outline:none;transition:var(--transition)}
+    .search-input::placeholder{color:var(--muted)}
+    .search-input:focus{border-color:var(--emerald)}
+    .result-count{font-size:.82rem;color:var(--muted)}
+    .result-count span{color:var(--emerald);font-weight:700}
+
+    .tab-bar{display:flex;gap:7px;flex-wrap:wrap;margin-bottom:32px}
+    .tab-btn{font-family:var(--ff-body);font-size:.76rem;font-weight:500;letter-spacing:.05em;padding:8px 16px;border-radius:var(--radius-pill);border:1px solid var(--border);background:transparent;color:var(--muted);cursor:pointer;transition:var(--transition);white-space:nowrap}
+    .tab-btn:hover{border-color:var(--emerald);color:var(--emerald)}
+    .tab-btn.active{background:var(--emerald);color:var(--bg);border-color:var(--emerald);font-weight:700}
+
+    .peptide-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:20px}
+    .no-results{display:none;text-align:center;padding:80px 24px;color:var(--muted);font-size:1rem;grid-column:1/-1}
+    .no-results.visible{display:block}
+
+    .peptide-card{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius-card);padding:26px 24px 22px;position:relative;overflow:hidden;transition:var(--transition);display:flex;flex-direction:column}
+    .peptide-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--emerald),var(--gold));opacity:0;transition:var(--transition)}
+    .peptide-card:hover{border-color:rgba(46,204,113,0.3);transform:translateY(-3px);box-shadow:0 16px 48px rgba(0,0,0,0.5)}
+    .peptide-card:hover::before{opacity:1}
+    .peptide-card.featured{border-color:var(--border-gold);background:linear-gradient(145deg,#0b1a0e,#0e1c0e)}
+    .peptide-card.featured::before{opacity:1;background:linear-gradient(90deg,var(--gold),var(--emerald))}
+    .peptide-card.hidden{display:none!important}
+    .unavail-badge{position:absolute;top:14px;right:14px;background:rgba(255,80,80,0.1);border:1px solid rgba(255,80,80,0.22);color:#ff9090;font-size:.63rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:3px 9px;border-radius:var(--radius-pill)}
+    .peptide-card.unavailable{opacity:.6}
+
+    .card-badge{display:inline-flex;align-items:center;gap:6px;font-size:.67rem;font-weight:600;letter-spacing:.09em;text-transform:uppercase;padding:4px 11px;border-radius:var(--radius-pill);margin-bottom:13px;width:fit-content}
+    .badge-weight{background:rgba(46,204,113,0.12);color:var(--emerald)}
+    .badge-recovery{background:rgba(201,168,76,0.12);color:var(--gold)}
+    .badge-longevity{background:rgba(100,180,255,0.1);color:#7ec8ff}
+    .badge-hormone{background:rgba(255,150,100,0.1);color:#ffaa7a}
+    .badge-trt{background:rgba(255,80,80,0.1);color:#ff9090}
+    .badge-hrt{background:rgba(255,150,220,0.1);color:#ffaadd}
+    .badge-sexual{background:rgba(150,100,255,0.1);color:#bb99ff}
+    .badge-labs{background:rgba(46,200,220,0.1);color:#7ee8f0}
+    .badge-supply{background:rgba(150,150,150,0.1);color:#aaaaaa}
+    .badge-nad{background:rgba(255,200,50,0.1);color:#ffd966}
+    .badge-immune{background:rgba(100,220,180,0.1);color:#70ddb4}
+    .badge-combo{background:rgba(180,255,100,0.1);color:#b4ff64}
+    .badge-nootropic{background:rgba(120,180,255,0.12);color:#90c8ff}
+
+    .peptide-name{font-family:var(--ff-display);font-size:1.22rem;font-weight:700;color:var(--white);margin-bottom:3px;line-height:1.25}
+    .peptide-aka{font-size:.74rem;color:var(--muted);margin-bottom:10px;font-style:italic;line-height:1.4}
+    .dose-variants{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:12px}
+    .dose-pill{font-size:.68rem;font-weight:600;padding:3px 9px;border-radius:var(--radius-pill);border:1px solid var(--border);color:var(--muted)}
+    .peptide-desc{font-size:.86rem;color:#a8bfac;line-height:1.75;margin-bottom:16px;flex:1}
+    .peptide-benefits{list-style:none;margin-bottom:18px;display:flex;flex-direction:column;gap:6px}
+    .peptide-benefits li{font-size:.81rem;color:var(--cream);display:flex;align-items:flex-start;gap:8px}
+    .peptide-benefits li::before{content:'✦';color:var(--emerald);font-size:.55rem;margin-top:5px;flex-shrink:0}
+    .peptide-meta{display:flex;gap:12px;flex-wrap:wrap;padding-top:14px;border-top:1px solid var(--border);margin-top:auto}
+    .meta-item{display:flex;flex-direction:column;gap:2px}
+    .meta-label{font-size:.63rem;color:var(--muted);letter-spacing:.1em;text-transform:uppercase}
+    .meta-val{font-size:.8rem;font-weight:600;color:var(--cream)}
+    .meta-val.gold{color:var(--gold)}
+
+    .compare-section{background:var(--bg-card)}
+    .compare-wrap{overflow-x:auto}
+    table{width:100%;border-collapse:collapse;min-width:700px}
+    thead tr{border-bottom:2px solid var(--emerald-dim)}
+    th{font-family:var(--ff-cinzel);font-size:.67rem;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);padding:13px 14px;text-align:left;font-weight:600}
+    td{padding:14px;font-size:.84rem;color:#a8bfac;border-bottom:1px solid var(--border);vertical-align:top}
+    tbody tr:hover td{background:rgba(46,204,113,0.03);color:var(--cream)}
+    td:first-child{font-family:var(--ff-display);font-weight:600;color:var(--white);font-size:.93rem}
+    .check{color:var(--emerald)}.dash{color:var(--muted)}
+
+    .safety-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:start}
+    .safety-card{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius-card);padding:36px}
+    .safety-card h3{font-family:var(--ff-display);font-size:1.3rem;font-weight:600;color:var(--white);margin-bottom:18px}
+    .safety-list{list-style:none;display:flex;flex-direction:column;gap:12px}
+    .safety-list li{font-size:.87rem;color:#a8bfac;display:flex;gap:11px;align-items:flex-start}
+    .safety-list li span.icon{font-size:.95rem;flex-shrink:0;margin-top:2px}
+    .disclaimer-box{background:rgba(201,168,76,0.06);border:1px solid var(--border-gold);border-radius:var(--radius-card);padding:28px 32px}
+    .disclaimer-box h4{font-family:var(--ff-cinzel);font-size:.7rem;letter-spacing:.2em;color:var(--gold);text-transform:uppercase;margin-bottom:12px}
+    .disclaimer-box p{font-size:.83rem;color:var(--muted);line-height:1.8}
+
+    .faq-list{max-width:800px}
+    .faq-item{border-bottom:1px solid var(--border);padding:24px 0}
+    .faq-q{font-family:var(--ff-display);font-size:1.05rem;font-weight:600;color:var(--white);cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:16px;user-select:none}
+    .faq-q .toggle{width:26px;height:26px;border-radius:50%;border:1px solid var(--border);display:flex;align-items:center;justify-content:center;flex-shrink:0;color:var(--emerald);transition:var(--transition)}
+    .faq-item.open .faq-q .toggle{background:var(--emerald);color:var(--bg);border-color:var(--emerald)}
+    .faq-a{font-size:.87rem;color:var(--muted);line-height:1.8;max-height:0;overflow:hidden;transition:max-height .4s ease,padding .3s ease}
+    .faq-item.open .faq-a{max-height:500px;padding-top:13px}
+
+    .cta-section{background:linear-gradient(135deg,#091410 0%,#0a1a0d 50%,#091410 100%);border-top:1px solid var(--border);border-bottom:1px solid var(--border);text-align:center;position:relative;overflow:hidden}
+    .cta-glow{position:absolute;inset:0;background:radial-gradient(ellipse 60% 80% at 50% 50%,rgba(46,204,113,0.05) 0%,transparent 70%);pointer-events:none}
+
+    footer{padding:48px 24px;border-top:1px solid var(--border);text-align:center}
+    footer p{font-size:.8rem;color:var(--muted)}
+    footer a{color:var(--emerald)}
+    .footer-logo{font-family:var(--ff-cinzel);font-size:1rem;letter-spacing:.2em;color:var(--emerald);margin-bottom:20px}
+    .footer-logo span{color:var(--gold)}
+
+    @media(max-width:900px){nav{padding:16px 20px}section{padding:72px 20px}.safety-grid{grid-template-columns:1fr}.peptide-grid{grid-template-columns:1fr}.how-grid{grid-template-columns:1fr}.hero-stats{gap:32px}}
+  </style>
+</head>
+<body>
+<nav>
+  <div class="nav-logo">EMERALD <span>✦</span> WELLNESS</div>
+  <a href="#consult" class="nav-cta">Begin Your Protocol</a>
+</nav>
+
+<section class="hero">
+  <div class="hero-bg-grid"></div><div class="hero-glow"></div>
+  <span class="hero-eyebrow">Precision Peptide Therapy · Clinically Guided</span>
+  <h1>The Molecules That<br/><em>Rewrite Your Biology</em></h1>
+  <p class="hero-sub">Physician-supervised peptides, hormone therapy, NAD+, and diagnostics — engineered for longevity, performance, and weight optimization.</p>
+  <div class="hero-actions">
+    <a href="#products" class="btn-primary">Explore All Products</a>
+    <a href="#how" class="btn-outline">How It Works</a>
+  </div>
+  <div class="hero-stats">
+    <div class="stat-item"><div class="stat-num">78+</div><div class="stat-label">Products &amp; Compounds</div></div>
+    <div class="stat-item"><div class="stat-num">500+</div><div class="stat-label">Compounds Tracked</div></div>
+    <div class="stat-item"><div class="stat-num">12</div><div class="stat-label">Clinical Categories</div></div>
+    <div class="stat-item"><div class="stat-num">1:1</div><div class="stat-label">Practitioner Access</div></div>
+  </div>
+</section>
+
+<section id="how">
+  <div class="container">
+    <span class="section-eyebrow">Your Journey</span>
+    <h2 class="section-title">Science-Backed, <em>Personally Yours</em></h2>
+    <p class="section-sub">Every Emerald Wellness protocol begins with your biology — not a template.</p>
+    <div class="how-grid">
+      <div class="how-step"><div class="how-num">01</div><h3>Biomarker Assessment</h3><p>Comprehensive lab panel maps your hormonal baseline, metabolic health, inflammation markers, and longevity metrics.</p></div>
+      <div class="how-step"><div class="how-num">02</div><h3>Physician Review</h3><p>A licensed practitioner reviews your results and crafts a protocol matched to your precise goals — no one-size formulas.</p></div>
+      <div class="how-step"><div class="how-num">03</div><h3>Protocol Delivery</h3><p>Pharmaceutical-grade compounds, dosing supplies, and your personalized protocol arrive discreetly to your door.</p></div>
+      <div class="how-step"><div class="how-num">04</div><h3>Ongoing Optimization</h3><p>Monthly check-ins, lab re-testing, and real-time adjustments through your Emerald Wellness dashboard.</p></div>
+    </div>
+  </div>
+</section>
+<section id="products" style="padding-top:40px">
+  <div class="container">
+    <span class="section-eyebrow">Full Catalog</span>
+    <h2 class="section-title">Every Product, <em>Explained</em></h2>
+    <p class="section-sub" style="margin-bottom:32px">Filter by category or search by name. All protocols are physician-supervised.</p>
+    <div class="search-bar">
+      <input class="search-input" id="searchInput" type="text" placeholder="Search — e.g. BPC-157, NAD+, Tirzepatide, Wolverine…" autocomplete="off"/>
+      <span class="result-count">Showing <span id="resultCount">78</span> products</span>
+    </div>
+    <div class="tab-bar">
+      <button class="tab-btn active" data-filter="all">All</button>
+      <button class="tab-btn" data-filter="weight">⬡ Weight Loss</button>
+      <button class="tab-btn" data-filter="hormone">◈ GH / Hormone</button>
+      <button class="tab-btn" data-filter="trt">♂ TRT</button>
+      <button class="tab-btn" data-filter="hrt">♀ HRT</button>
+      <button class="tab-btn" data-filter="sexual">◆ Sexual Health</button>
+      <button class="tab-btn" data-filter="recovery">✦ Recovery</button>
+      <button class="tab-btn" data-filter="combo">⚗ Stacks</button>
+      <button class="tab-btn" data-filter="longevity">◉ Longevity</button>
+      <button class="tab-btn" data-filter="nad">⚡ NAD+</button>
+      <button class="tab-btn" data-filter="nootropic">🧠 Nootropic</button>
+      <button class="tab-btn" data-filter="immune">🛡 Immune</button>
+      <button class="tab-btn" data-filter="labs">🧪 Lab Panels</button>
+      <button class="tab-btn" data-filter="supply">📦 Supplies</button>
+    </div>
+    <div class="peptide-grid" id="peptide-grid">
+    <div class="no-results" id="noResults">No products match your search.</div>
+
+<!-- ═══ WEIGHT LOSS ═══ -->
+<div class="peptide-card featured" data-cat="weight" data-name="semaglutide glp-1 weight loss b12">
+  <span class="card-badge badge-weight">⬡ Weight Loss</span>
+  <div class="peptide-name">Semaglutide</div>
+  <div class="dose-variants"><span class="dose-pill">10mg / 3mL</span><span class="dose-pill">+ B12 2.5mg/1mg · 2mL</span><span class="dose-pill">+ B12 5mg/2mg · 2mL</span><span class="dose-pill">+ B12 12.5mg/4mg · 4mL</span></div>
+  <div class="peptide-aka">GLP-1 Receptor Agonist · Ozempic® analog · Lyophilized</div>
+  <p class="peptide-desc">The gold-standard GLP-1 agonist that revolutionized metabolic medicine. Suppresses appetite at the neurological level, slows gastric emptying, and improves insulin sensitivity. Available standalone or pre-combined with B12 for energy and nerve support during weight loss.</p>
+  <ul class="peptide-benefits">
+    <li>Average 15–17% total body weight reduction in clinical trials</li>
+    <li>Reduces visceral fat preferentially over subcutaneous</li>
+    <li>Cardiovascular protective effects demonstrated (SELECT trial)</li>
+    <li>B12 combination reduces fatigue and supports nerve health during deficit</li>
+    <li>Eliminates "food noise" through central neurological action</li>
+  </ul>
+  <div class="peptide-meta">
+    <div class="meta-item"><span class="meta-label">Route</span><span class="meta-val">SubQ injection</span></div>
+    <div class="meta-item"><span class="meta-label">Frequency</span><span class="meta-val">Once weekly</span></div>
+    <div class="meta-item"><span class="meta-label">Onset</span><span class="meta-val gold">4–8 weeks</span></div>
+  </div>
+</div>
+
+<div class="peptide-card featured" data-cat="weight" data-name="tirzepatide dual agonist gip glp-1 weight loss b12 mounjaro">
+  <span class="card-badge badge-weight">⬡ Weight Loss</span>
+  <div class="peptide-name">Tirzepatide</div>
+  <div class="dose-variants"><span class="dose-pill">5mg</span><span class="dose-pill">15mg</span><span class="dose-pill">30mg</span><span class="dose-pill">60mg</span><span class="dose-pill">+ B12 17mg/1mg</span><span class="dose-pill">+ B12 34mg/2mg</span></div>
+  <div class="peptide-aka">Dual GIP/GLP-1 Agonist · Mounjaro® analog · Lyophilized 3mL</div>
+  <p class="peptide-desc">Dual agonist activating both GLP-1 and GIP receptors simultaneously — superior fat loss, glycemic control, and cardiometabolic benefits vs semaglutide. Full dose range from starter 5mg to high-dose 60mg maintenance, plus B12 combos for added metabolic support.</p>
+  <ul class="peptide-benefits">
+    <li>Up to 22.5% body weight reduction demonstrated (SURMOUNT trials)</li>
+    <li>Outperforms semaglutide in head-to-head studies</li>
+    <li>Reduces liver fat (NAFLD) by up to 74%</li>
+    <li>Preserves lean muscle mass during fat-loss phase</li>
+    <li>Full titration range: 5mg starter to 60mg maintenance</li>
+  </ul>
+  <div class="peptide-meta">
+    <div class="meta-item"><span class="meta-label">Route</span><span class="meta-val">SubQ injection</span></div>
+    <div class="meta-item"><span class="meta-label">Frequency</span><span class="meta-val">Once weekly</span></div>
+    <div class="meta-item"><span class="meta-label">Sizes</span><span class="meta-val gold">5/15/30/60mg + B12</span></div>
+  </div>
+</div>
+
+<div class="peptide-card featured" data-cat="weight" data-name="retatrutide triple agonist glp-1 gip glucagon weight loss">
+  <span class="card-badge badge-weight">⬡ Weight Loss</span>
+  <div class="peptide-name">Retatrutide</div>
+  <div class="dose-variants"><span class="dose-pill">5mg</span><span class="dose-pill">10mg</span><span class="dose-pill">15mg</span><span class="dose-pill">20mg</span><span class="dose-pill">30mg</span><span class="dose-pill">40mg</span></div>
+  <div class="peptide-aka">Triple Agonist GLP-1/GIP/Glucagon · Lyophilized 3mL</div>
+  <p class="peptide-desc">The most advanced anti-obesity peptide in development — a triple agonist targeting GLP-1, GIP, and glucagon receptors. Glucagon co-activation directly raises metabolic rate and fat oxidation beyond what dual agonists achieve. Six dose strengths for complete titration from 5mg to 40mg.</p>
+  <ul class="peptide-benefits">
+    <li>Up to 24% body weight reduction at 48 weeks (Phase 2 data)</li>
+    <li>Triple receptor activation — unmatched metabolic scope</li>
+    <li>Glucagon component directly elevates resting metabolic rate</li>
+    <li>Ideal escalation for patients who plateau on tirzepatide</li>
+    <li>Widest dose range available: 5mg through 40mg</li>
+  </ul>
+  <div class="peptide-meta">
+    <div class="meta-item"><span class="meta-label">Route</span><span class="meta-val">SubQ injection</span></div>
+    <div class="meta-item"><span class="meta-label">Frequency</span><span class="meta-val">Once weekly</span></div>
+    <div class="meta-item"><span class="meta-label">Sizes</span><span class="meta-val gold">5/10/15/20/30/40mg</span></div>
+  </div>
+</div>
+
+<div class="peptide-card" data-cat="weight" data-name="aod-9604 hgh fragment fat loss lipolysis">
+  <span class="card-badge badge-weight">⬡ Weight Loss</span>
+  <div class="peptide-name">AOD-9604</div>
+  <div class="dose-variants"><span class="dose-pill">5mg / 3mL</span></div>
+  <div class="peptide-aka">HGH Fragment 176–191 · Targeted Lipolysis · Lyophilized</div>
+  <p class="peptide-desc">The HGH fragment responsible solely for fat metabolism — stimulates lipolysis and inhibits lipogenesis without any blood-sugar-elevating effects of full HGH. Pure fat-burning signal. Ideal stack partner with CJC-1295/Ipamorelin for body recomposition.</p>
+  <ul class="peptide-benefits">
+    <li>Stimulates fat breakdown without raising IGF-1 or insulin</li>
+    <li>Inhibits lipogenesis — prevents fat regain after loss</li>
+    <li>Safe for metabolic patients — no glucose impact</li>
+    <li>Bonus: cartilage and bone repair properties</li>
+  </ul>
+  <div class="peptide-meta">
+    <div class="meta-item"><span class="meta-label">Route</span><span class="meta-val">SubQ injection</span></div>
+    <div class="meta-item"><span class="meta-label">Frequency</span><span class="meta-val">Daily (AM, fasted)</span></div>
+    <div class="meta-item"><span class="meta-label">Onset</span><span class="meta-val gold">6–8 weeks</span></div>
+  </div>
+</div>
+
+<!-- ═══ GH / HORMONE ═══ -->
+<div class="peptide-card" data-cat="hormone" data-name="sermorelin ghrh growth hormone pituitary">
+  <span class="card-badge badge-hormone">◈ GH / Hormone</span>
+  <div class="peptide-name">Sermorelin</div>
+  <div class="peptide-aka">GHRH Analog · Natural GH Restoration</div>
+  <p class="peptide-desc">Stimulates the pituitary to produce and release growth hormone naturally — restoring the GH output of your 20s without exogenous HGH. The safest, most sustainable GH optimization peptide for long-term protocols.</p>
+  <ul class="peptide-benefits">
+    <li>Increases endogenous HGH by 30–60%</li>
+    <li>Improves deep-wave sleep quality dramatically</li>
+    <li>Enhances lean muscle gain and fat burning simultaneously</li>
+    <li>Improves skin, collagen, hair quality, and bone density</li>
+  </ul>
+  <div class="peptide-meta">
+    <div class="meta-item"><span class="meta-label">Route</span><span class="meta-val">SubQ injection</span></div>
+    <div class="meta-item"><span class="meta-label">Frequency</span><span class="meta-val">Nightly</span></div>
+    <div class="meta-item"><span class="meta-label">Onset</span><span class="meta-val gold">6–12 weeks</span></div>
+  </div>
+</div>
+
+<div class="peptide-card" data-cat="hormone" data-name="cjc-1295 with dac long acting ghrh growth hormone">
+  <span class="card-badge badge-hormone">◈ GH / Hormone</span>
+  <div class="peptide-name">CJC-1295 (with DAC)</div>
+  <div class="dose-variants"><span class="dose-pill">5mg / 3mL</span></div>
+  <div class="peptide-aka">Long-Acting GHRH · 7–14 Day Half-Life · Lyophilized</div>
+  <p class="peptide-desc">Long-acting GHRH with Drug Affinity Complex providing sustained HGH and IGF-1 elevation over 7–14 days per dose. Only 2× weekly injections required — the most convenient GH secretagogue for busy protocols.</p>
+  <ul class="peptide-benefits">
+    <li>7–14 day half-life — only 2× weekly dosing required</li>
+    <li>Sustained HGH and IGF-1 elevation throughout the week</li>
+    <li>Drives significant body recomposition over 12-week cycles</li>
+    <li>Powerfully synergistic stacked with Ipamorelin</li>
+  </ul>
+  <div class="peptide-meta">
+    <div class="meta-item"><span class="meta-label">Route</span><span class="meta-val">SubQ injection</span></div>
+    <div class="meta-item"><span class="meta-label">Frequency</span><span class="meta-val">2× weekly</span></div>
+    <div class="meta-item"><span class="meta-label">Onset</span><span class="meta-val gold">8–12 weeks</span></div>
+  </div>
+</div>
+
+<div class="peptide-card" data-cat="hormone" data-name="cjc-1295 without dac mod grf short acting ghrh pulsatile">
+  <span class="card-badge badge-hormone">◈ GH / Hormone</span>
+  <div class="peptide-name">CJC-1295 (without DAC)</div>
+  <div class="dose-variants"><span class="dose-pill">5mg / 3mL</span></div>
+  <div class="peptide-aka">Mod GRF (1-29) · Pulsatile GHRH · Short-Acting · Lyophilized</div>
+  <p class="peptide-desc">Short-acting GHRH analog creating sharp, physiological GH pulses when paired with Ipamorelin. Preferred for protocols that mimic natural pulsatile GH release patterns — flexible timing around workouts and sleep cycles.</p>
+  <ul class="peptide-benefits">
+    <li>Creates sharp GH pulses vs sustained elevation of DAC version</li>
+    <li>More closely mimics natural pulsatile GH physiology</li>
+    <li>Flexible timing — around workouts and pre-sleep</li>
+    <li>Gold-standard Ipamorelin stack companion</li>
+  </ul>
+  <div class="peptide-meta">
+    <div class="meta-item"><span class="meta-label">Route</span><span class="meta-val">SubQ injection</span></div>
+    <div class="meta-item"><span class="meta-label">Frequency</span><span class="meta-val">2–3× daily</span></div>
+    <div class="meta-item"><span class="meta-label">Onset</span><span class="meta-val gold">6–10 weeks</span></div>
+  </div>
+</div>
+
+<div class="peptide-card" data-cat="hormone" data-name="ipamorelin ghrp selective growth hormone secretagogue">
+  <span class="card-badge badge-hormone">◈ GH / Hormone</span>
+  <div class="peptide-name">Ipamorelin</div>
+  <div class="dose-variants"><span class="dose-pill">5mg / 3mL</span><span class="dose-pill">10mg / 3mL</span></div>
+  <div class="peptide-aka">Selective GHRP · Clean GH Secretagogue · Lyophilized</div>
+  <p class="peptide-desc">The cleanest, most selective GH secretagogue available. Triggers natural GH pulses without elevating cortisol or prolactin. Available in 5mg and 10mg vials. The definitive CJC-1295 stack partner for maximum GH pulse amplitude.</p>
+  <ul class="peptide-benefits">
+    <li>Selective GH release — zero cortisol or prolactin elevation</li>
+    <li>Increases slow-wave sleep quality significantly</li>
+    <li>Rapid lean body mass gains over 12-week cycles</li>
+    <li>Anti-inflammatory effects — supports joint and gut health</li>
+  </ul>
+  <div class="peptide-meta">
+    <div class="meta-item"><span class="meta-label">Route</span><span class="meta-val">SubQ injection</span></div>
+    <div class="meta-item"><span class="meta-label">Frequency</span><span class="meta-val">Daily (pre-sleep)</span></div>
+    <div class="meta-item"><span class="meta-label">Sizes</span><span class="meta-val gold">5mg · 10mg</span></div>
+  </div>
+</div>
+
+<div class="peptide-card" data-cat="hormone" data-name="tesamorelin ghrh fda approved visceral fat abdominal">
+  <span class="card-badge badge-hormone">◈ GH / Hormone</span>
+  <div class="peptide-name">Tesamorelin</div>
+  <div class="dose-variants"><span class="dose-pill">5mg / 3mL</span><span class="dose-pill">10mg / 3mL</span></div>
+  <div class="peptide-aka">GHRH Analog · FDA-Approved · Visceral Fat Reduction · Lyophilized</div>
+  <p class="peptide-desc">The only GHRH analog with FDA approval, indicated for visceral fat reduction. Widely used in longevity medicine for targeted abdominal fat loss, GH optimization, and neuroprotection. Among the best-evidenced GH peptides available — clinically validated and physician-preferred.</p>
+  <ul class="peptide-benefits">
+    <li>FDA-approved for visceral fat reduction — uniquely validated</li>
+    <li>Reduces trunk fat by 18–20% in controlled trials</li>
+    <li>Improves IGF-1, lipid profiles, and cognitive function</li>
+    <li>Strong neuroprotective evidence — supports cognitive aging protocols</li>
+    <li>Available in 5mg and 10mg vials for flexible dosing</li>
+  </ul>
+  <div class="peptide-meta">
+    <div class="meta-item"><span class="meta-label">Route</span><span class="meta-val">SubQ injection</span></div>
+    <div class="meta-item"><span class="meta-label">Frequency</span><span class="meta-val">Daily (bedtime)</span></div>
+    <div class="meta-item"><span class="meta-label">Sizes</span><span class="meta-val gold">5mg · 10mg</span></div>
+  </div>
+</div>
+
+<div class="peptide-card" data-cat="hormone" data-name="igf-1 lr3 insulin-like growth factor anabolic muscle">
+  <span class="card-badge badge-hormone">◈ GH / Hormone</span>
+  <div class="peptide-name">IGF-1 LR3</div>
+  <div class="dose-variants"><span class="dose-pill">1mg / 3mL</span></div>
+  <div class="peptide-aka">Insulin-Like Growth Factor-1 Long R3 · Extended Half-Life · Lyophilized</div>
+  <p class="peptide-desc">Long-acting IGF-1 analog — the primary downstream mediator of HGH's anabolic effects. Binds IGF-1 receptors throughout muscle, bone, and organ tissue to drive cellular growth and protein synthesis with a 20–30 hour half-life vs 15 minutes for native IGF-1.</p>
+  <ul class="peptide-benefits">
+    <li>Promotes muscle hyperplasia — new muscle cell formation</li>
+    <li>20–30 hour half-life for sustained anabolic signaling</li>
+    <li>Accelerates post-workout recovery and nutrient partitioning</li>
+    <li>Supports connective tissue, cartilage, and bone density</li>
+  </ul>
+  <div class="peptide-meta">
+    <div class="meta-item"><span class="meta-label">Route</span><span class="meta-val">SubQ injection</span></div>
+    <div class="meta-item"><span class="meta-label">Frequency</span><span class="meta-val">Post-workout / daily</span></div>
+    <div class="meta-item"><span class="meta-label">Form</span><span class="meta-val gold">Lyophilized · 1mg</span></div>
+  </div>
+</div>
+
+<div class="peptide-card" data-cat="hormone" data-name="kisspeptin gnrh lh fsh testosterone upstream hormone">
+  <span class="card-badge badge-hormone">◈ GH / Hormone</span>
+  <div class="peptide-name">Kisspeptin-10</div>
+  <div class="dose-variants"><span class="dose-pill">5mg / 3mL</span></div>
+  <div class="peptide-aka">GnRH Pulse Initiator · Upstream Hormone Trigger · Lyophilized</div>
+  <p class="peptide-desc">The most upstream hormonal intervention available. Kisspeptin activates GnRH pulses from the hypothalamus, driving LH and FSH — the signals that stimulate endogenous testosterone and estrogen production — without suppressing the HPTA.</p>
+  <ul class="peptide-benefits">
+    <li>Restores endogenous testosterone without suppressing the HPTA</li>
+    <li>Improves libido, mood, and energy via upstream signaling</li>
+    <li>Supports fertility in men and women with hypothalamic dysfunction</li>
+    <li>Emerging cardioprotective and metabolic regulation evidence</li>
+  </ul>
+  <div class="peptide-meta">
+    <div class="meta-item"><span class="meta-label">Route</span><span class="meta-val">SubQ injection</span></div>
+    <div class="meta-item"><span class="meta-label">Frequency</span><span class="meta-val">Pulsatile protocol</span></div>
+    <div class="meta-item"><span class="meta-label">Onset</span><span class="meta-val gold">4–8 weeks</span></div>
+  </div>
+</div>
+
+<div class="peptide-card" data-cat="hormone" data-name="hcg human chorionic gonadotropin trt fertility testicular">
+  <span class="card-badge badge-hormone">◈ GH / Hormone</span>
+  <div class="peptide-name">HCG</div>
+  <div class="dose-variants"><span class="dose-pill">5000 IU / 3mL</span></div>
+  <div class="peptide-aka">Human Chorionic Gonadotropin · TRT Support · Fertility · Lyophilized</div>
+  <p class="peptide-desc">LH-mimicking hormone used alongside TRT to preserve testicular function and fertility — or as standalone therapy for hypogonadism. Essential for men on TRT who wish to maintain natural testosterone production, testicular volume, and fertility.</p>
+  <ul class="peptide-benefits">
+    <li>Preserves testicular size and fertility during TRT protocols</li>
+    <li>Stimulates Leydig cells to maintain endogenous testosterone production</li>
+    <li>Used in PCT (post-cycle therapy) to restore HPTA function</li>
+    <li>Supports fertility for men actively trying to conceive</li>
+  </ul>
+  <div class="peptide-meta">
+    <div class="meta-item"><span class="meta-label">Route</span><span class="meta-val">SubQ injection</span></div>
+    <div class="meta-item"><span class="meta-label">Frequency</span><span class="meta-val">2–3× weekly</span></div>
+    <div class="meta-item"><span class="meta-label">Form</span><span class="meta-val gold">5000 IU / 3mL</span></div>
+  </div>
+</div>
+
+<div class="peptide-card" data-cat="hormone" data-name="somatropin hgh human growth hormone recombinant direct">
+  <span class="card-badge badge-hormone">◈ GH / Hormone</span>
+  <div class="peptide-name">Somatropin</div>
+  <div class="dose-variants"><span class="dose-pill">5mg vial</span></div>
+  <div class="peptide-aka">Recombinant Human Growth Hormone (rHGH) · Direct GH Replacement</div>
+  <p class="peptide-desc">Pharmaceutical-grade recombinant HGH — the direct growth hormone molecule, not a secretagogue. Prescribed for verified adult GH deficiency. Produces the most potent and predictable GH effects available. Full physician oversight and diagnostic confirmation required.</p>
+  <ul class="peptide-benefits">
+    <li>Direct HGH replacement — most powerful GH intervention available</li>
+    <li>Increases lean mass, reduces fat, improves bone density and skin</li>
+    <li>FDA-approved for adult GH deficiency (with verified labs)</li>
+    <li>Improves exercise capacity, recovery, and quality-of-life markers</li>
+  </ul>
+  <div class="peptide-meta">
+    <div class="meta-item"><span class="meta-label">Route</span><span class="meta-val">SubQ injection</span></div>
+    <div class="meta-item"><span class="meta-label">Frequency</span><span class="meta-val">Daily</span></div>
+    <div class="meta-item"><span class="meta-label">Rx Required</span><span class="meta-val gold">Physician only</span></div>
+  </div>
+</div>
+
+<!-- ═══ TRT ═══ -->
+<div class="peptide-card featured" data-cat="trt" data-name="trt testosterone replacement therapy male membership subscription">
+  <span class="card-badge badge-trt">♂ TRT</span>
+  <div class="peptide-name">Signature TRT Membership</div>
+  <div class="peptide-aka">Male Testosterone Replacement Therapy · Monthly Subscription</div>
+  <p class="peptide-desc">Complete physician-managed testosterone replacement for men with low T. Labs, prescription, pharmaceutical-grade testosterone, estrogen management, and practitioner access — all in one monthly membership. No guessing, no gatekeeping.</p>
+  <ul class="peptide-benefits">
+    <li>Comprehensive baseline labs + follow-up panels every 90 days</li>
+    <li>Pharmaceutical-grade testosterone (cypionate/enanthate) delivered monthly</li>
+    <li>Estrogen management (anastrozole) included as needed</li>
+    <li>HCG or enclomiphene add-on available for fertility preservation</li>
+    <li>Direct practitioner messaging 7 days a week</li>
+  </ul>
+  <div class="peptide-meta">
+    <div class="meta-item"><span class="meta-label">Type</span><span class="meta-val">Monthly subscription</span></div>
+    <div class="meta-item"><span class="meta-label">Onset</span><span class="meta-val gold">4–6 weeks</span></div>
+  </div>
+</div>
+
+<div class="peptide-card unavailable" data-cat="trt" data-name="nandrolone decanoate deca anabolic injectable trt">
+  <span class="unavail-badge">Unavailable</span>
+  <span class="card-badge badge-trt">♂ TRT / Anabolic</span>
+  <div class="peptide-name">Nandrolone Decanoate</div>
+  <div class="dose-variants"><span class="dose-pill">200mg/mL · 5mL vial (Grapeseed Oil)</span></div>
+  <div class="peptide-aka">Deca-Durabolin · IM Injectable · Currently Unavailable</div>
+  <p class="peptide-desc">Long-acting anabolic steroid used in TRT-adjacent protocols for joint support, muscle preservation, and anemia. Known for joint-lubricating properties and a lower androgenic side-effect profile relative to testosterone.</p>
+  <ul class="peptide-benefits">
+    <li>Significant joint pain relief and synovial fluid improvement</li>
+    <li>Lean muscle preservation during caloric deficit or aging</li>
+    <li>Lower androgenic activity vs testosterone</li>
+  </ul>
+  <div class="peptide-meta">
+    <div class="meta-item"><span class="meta-label">Route</span><span class="meta-val">IM injection</span></div>
+    <div class="meta-item"><span class="meta-label">Rx Required</span><span class="meta-val gold">Physician only</span></div>
+  </div>
+</div>
+
+<!-- ═══ HRT ═══ -->
+<div class="peptide-card featured" data-cat="hrt" data-name="hrt hormone replacement therapy female membership subscription women">
+  <span class="card-badge badge-hrt">♀ HRT</span>
+  <div class="peptide-name">Signature HRT Membership</div>
+  <div class="peptide-aka">Female Hormone Replacement Therapy · Monthly Subscription</div>
+  <p class="peptide-desc">Complete physician-managed hormone replacement for women navigating perimenopause, menopause, or hormonal imbalance. Estrogen, progesterone, and testosterone — all balanced, personalized, and monitored. Restore vitality, protect long-term health.</p>
+  <ul class="peptide-benefits">
+    <li>Full female hormone panel (E2, progesterone, FSH, LH, testosterone)</li>
+    <li>Bioidentical or conventional HRT by licensed physician</li>
+    <li>Eliminates hot flashes, night sweats, and mood dysregulation</li>
+    <li>Protects bone density and cardiovascular health long-term</li>
+    <li>Testosterone optimization for libido and energy included</li>
+  </ul>
+  <div class="peptide-meta">
+    <div class="meta-item"><span class="meta-label">Type</span><span class="meta-val">Monthly subscription</span></div>
+    <div class="meta-item"><span class="meta-label">Onset</span><span class="meta-val gold">4–8 weeks</span></div>
+  </div>
+</div>
+
+<!-- ═══ SEXUAL HEALTH ═══ -->
+<div class="peptide-card" data-cat="sexual" data-name="pt-141 bremelanotide libido sexual desire arousal vyleesi">
+  <span class="card-badge badge-sexual">◆ Sexual Health</span>
+  <div class="peptide-name">PT-141</div>
+  <div class="dose-variants"><span class="dose-pill">10mg / 3mL</span></div>
+  <div class="peptide-aka">Bremelanotide · Central Melanocortin Agonist · Lyophilized</div>
+  <p class="peptide-desc">Works centrally on the brain's melanocortin system to activate sexual desire and arousal in both men and women. FDA-approved (as Vyleesi™) for hypoactive sexual desire disorder. Non-hormonal — works regardless of testosterone level.</p>
+  <ul class="peptide-benefits">
+    <li>Activates MC3R and MC4R hypothalamic receptors for desire</li>
+    <li>Effective in both men (erectile function) and women (arousal)</li>
+    <li>Onset 45–90 min; effects last 6–12 hours</li>
+    <li>Non-hormonal — no HPTA suppression</li>
+  </ul>
+  <div class="peptide-meta">
+    <div class="meta-item"><span class="meta-label">Route</span><span class="meta-val">SubQ injection</span></div>
+    <div class="meta-item"><span class="meta-label">Frequency</span><span class="meta-val">As needed</span></div>
+    <div class="meta-item"><span class="meta-label">Onset</span><span class="meta-val gold">45–90 minutes</span></div>
+  </div>
+</div>
+
+<div class="peptide-card" data-cat="sexual" data-name="oxytocin acetate bonding love hormone intimacy arousal libido">
+  <span class="card-badge badge-sexual">◆ Sexual Health</span>
+  <div class="peptide-name">Oxytocin Acetate</div>
+  <div class="dose-variants"><span class="dose-pill">5mg / 3mL</span></div>
+  <div class="peptide-aka">The Bonding Neuropeptide · Injectable · Lyophilized</div>
+  <p class="peptide-desc">The "love hormone" — oxytocin regulates social bonding, trust, emotional intimacy, arousal sensitivity, and orgasmic intensity. Available as a standalone injectable for sexual wellness, anxiety reduction, and social cognition enhancement.</p>
+  <ul class="peptide-benefits">
+    <li>Enhances emotional bonding, trust, and intimacy</li>
+    <li>Increases arousal sensitivity and orgasmic intensity</li>
+    <li>Reduces performance anxiety through anxiolytic pathway</li>
+    <li>Powerful synergy with PT-141 and Tadalafil protocols</li>
+  </ul>
+  <div class="peptide-meta">
+    <div class="meta-item"><span class="meta-label">Route</span><span class="meta-val">SubQ or intranasal</span></div>
+    <div class="meta-item"><span class="meta-label">Frequency</span><span class="meta-val">As needed</span></div>
+    <div class="meta-item"><span class="meta-label">Onset</span><span class="meta-val gold">15–30 minutes</span></div>
+  </div>
+</div>
+
+<div class="peptide-card" data-cat="sexual" data-name="tadalafil odt erectile dysfunction pde5 oral dissolving 10 15 30 count">
+  <span class="card-badge badge-sexual">◆ Sexual Health</span>
+  <div class="peptide-name">Tadalafil 6mg ODT</div>
+  <div class="dose-variants"><span class="dose-pill">10 Count</span><span class="dose-pill">15 Count</span><span class="dose-pill">30 Count</span></div>
+  <div class="peptide-aka">PDE5 Inhibitor · Orally Disintegrating Tablet · Fast-Absorb</div>
+  <p class="peptide-desc">Physician-prescribed tadalafil in orally disintegrating tablet format — dissolves under the tongue for rapid absorption, no water needed. 36-hour duration of action. Available in 10, 15, and 30 count packs for every usage frequency.</p>
+  <ul class="peptide-benefits">
+    <li>36-hour duration — the "weekend pill" with unmatched flexibility</li>
+    <li>ODT dissolves in seconds — faster onset than swallowed tablets</li>
+    <li>Supports urinary symptoms of BPH as a secondary benefit</li>
+    <li>Daily low-dose option for continuous readiness</li>
+  </ul>
+  <div class="peptide-meta">
+    <div class="meta-item"><span class="meta-label">Route</span><span class="meta-val">Sublingual ODT</span></div>
+    <div class="meta-item"><span class="meta-label">Counts</span><span class="meta-val">10 · 15 · 30</span></div>
+    <div class="meta-item"><span class="meta-label">Onset</span><span class="meta-val gold">30–60 minutes</span></div>
+  </div>
+</div>
+
+<div class="peptide-card" data-cat="sexual" data-name="tadalafil oxytocin combo odt sexual bonding intimacy 10 15 30 count">
+  <span class="card-badge badge-sexual">◆ Sexual Health</span>
+  <div class="peptide-name">Tadalafil / Oxytocin ODT</div>
+  <div class="dose-variants"><span class="dose-pill">12mg/100IU · 10 Count</span><span class="dose-pill">12mg/100IU · 15 Count</span><span class="dose-pill">12mg/100IU · 30 Count</span></div>
+  <div class="peptide-aka">Dual Mechanism Sexual Enhancement · Orally Disintegrating Tablet</div>
+  <p class="peptide-desc">Premium combination — tadalafil's PDE5 inhibition amplified by oxytocin's bonding neuropeptide effects. Addresses both the vascular and neurological dimensions of sexual experience simultaneously. Available in 10, 15, and 30 count packs.</p>
+  <ul class="peptide-benefits">
+    <li>Dual action: vascular (tadalafil) + neurological (oxytocin)</li>
+    <li>Oxytocin enhances bonding, intimacy, and orgasmic intensity</li>
+    <li>Reduces performance anxiety through oxytocin's anxiolytic effect</li>
+    <li>Higher tadalafil dose (12mg) for robust vascular response</li>
+  </ul>
+  <div class="peptide-meta">
+    <div class="meta-item"><span class="meta-label">Route</span><span class="meta-val">Sublingual ODT</span></div>
+    <div class="meta-item"><span class="meta-label">Counts</span><span class="meta-val">10 · 15 · 30</span></div>
+    <div class="meta-item"><span class="meta-label">Onset</span><span class="meta-val gold">30–45 minutes</span></div>
+  </div>
+</div>
+
+<div class="peptide-card" data-cat="sexual" data-name="melanotan 2 mt2 tanning libido melanocortin">
+  <span class="card-badge badge-sexual">◆ Sexual Health</span>
+  <div class="peptide-name">Melanotan 2</div>
+  <div class="dose-variants"><span class="dose-pill">10mg / 3mL</span></div>
+  <div class="peptide-aka">MT-II · Melanocortin Agonist · Tanning + Libido · Lyophilized</div>
+  <p class="peptide-desc">Synthetic alpha-MSH analog activating melanocortin receptors to stimulate melanin production (natural-looking tan) and sexual arousal through the same central pathway as PT-141. Dual cosmetic and libido-enhancing effects from a single compound.</p>
+  <ul class="peptide-benefits">
+    <li>Stimulates melanin production — produces a natural-looking tan</li>
+    <li>Activates central melanocortin receptors for libido enhancement</li>
+    <li>Appetite suppression noted as a secondary effect</li>
+    <li>Shares mechanism with PT-141 (bremelanotide)</li>
+  </ul>
+  <div class="peptide-meta">
+    <div class="meta-item"><span class="meta-label">Route</span><span class="meta-val">SubQ injection</span></div>
+    <div class="meta-item"><span class="meta-label">Frequency</span><span class="meta-val">Loading then maintenance</span></div>
+    <div class="meta-item"><span class="meta-label">Onset</span><span class="meta-val gold">1–2 weeks</span></div>
+  </div>
+</div>
+
+<!-- ═══ RECOVERY ═══ -->
+<div class="peptide-card" data-cat="recovery" data-name="bpc-157 body protective compound healing tendon gut nerve">
+  <span class="card-badge badge-recovery">✦ Recovery</span>
+  <div class="peptide-name">BPC-157</div>
+  <div class="dose-variants"><span class="dose-pill">5mg / 3mL</span><span class="dose-pill">10mg / 3mL</span></div>
+  <div class="peptide-aka">Body Protective Compound · Gastric Pentadecapeptide · Lyophilized</div>
+  <p class="peptide-desc">Nature's own repair sequence — derived from gastric juice protein. Accelerates healing of tendons, ligaments, muscles, nerves, and gut lining. Available in 5mg and 10mg vials. Zero known toxicity at human-equivalent dosing.</p>
+  <ul class="peptide-benefits">
+    <li>Accelerates tendon-to-bone healing 2–4× faster than control</li>
+    <li>Heals leaky gut, IBS, and inflammatory bowel conditions</li>
+    <li>Peripheral nerve repair and neuroprotection</li>
+    <li>Upregulates nitric oxide — improves blood flow to injured tissue</li>
+  </ul>
+  <div class="peptide-meta">
+    <div class="meta-item"><span class="meta-label">Route</span><span class="meta-val">SubQ or oral (gut)</span></div>
+    <div class="meta-item"><span class="meta-label">Frequency</span><span class="meta-val">1–2× daily</span></div>
+    <div class="meta-item"><span class="meta-label">Sizes</span><span class="meta-val gold">5mg · 10mg</span></div>
+  </div>
+</div>
+
+<div class="peptide-card" data-cat="recovery" data-name="tb-500 tb500 thymosin beta-4 systemic healing angiogenesis">
+  <span class="card-badge badge-recovery">✦ Recovery</span>
+  <div class="peptide-name">TB-500</div>
+  <div class="dose-variants"><span class="dose-pill">5mg / 3mL</span><span class="dose-pill">10mg / 3mL</span></div>
+  <div class="peptide-aka">Thymosin Beta-4 Fragment · Systemic Repair · Lyophilized</div>
+  <p class="peptide-desc">Synthetic thymosin beta-4 fragment for whole-body injury repair and angiogenesis. The 10mg vial is ideal for aggressive injury loading phases; 5mg for maintenance cycles. Best combined with BPC-157 in the classic Wolverine Stack.</p>
+  <ul class="peptide-benefits">
+    <li>Systemic reach — addresses injuries throughout the entire body</li>
+    <li>Angiogenesis: promotes new capillary formation for blood delivery</li>
+    <li>Anti-fibrotic and anti-inflammatory in muscle and cardiac tissue</li>
+    <li>Emerging cardiac tissue regeneration evidence</li>
+  </ul>
+  <div class="peptide-meta">
+    <div class="meta-item"><span class="meta-label">Route</span><span class="meta-val">SubQ injection</span></div>
+    <div class="meta-item"><span class="meta-label">Frequency</span><span class="meta-val">2×/week loading, 1×/week maint.</span></div>
+    <div class="meta-item"><span class="meta-label">Sizes</span><span class="meta-val gold">5mg · 10mg</span></div>
+  </div>
+</div>
+
+<div class="peptide-card" data-cat="recovery" data-name="kpv anti-inflammatory gut ibd colitis tripeptide nf-kb">
+  <span class="card-badge badge-recovery">✦ Recovery</span>
+  <div class="peptide-name">KPV</div>
+  <div class="dose-variants"><span class="dose-pill">10mg / 3mL</span></div>
+  <div class="peptide-aka">Lys-Pro-Val · Anti-Inflammatory Tripeptide · Lyophilized</div>
+  <p class="peptide-desc">Alpha-MSH tripeptide fragment with potent anti-inflammatory and gut-healing properties. Directly inhibits NF-κB — the master inflammation switch. Especially effective for IBD, colitis, and inflammatory skin conditions. Key ingredient in the KLOW longevity stack.</p>
+  <ul class="peptide-benefits">
+    <li>Directly inhibits NF-κB — the master inflammatory signaling pathway</li>
+    <li>Significant efficacy in colitis, IBD, and inflammatory bowel conditions</li>
+    <li>Antimicrobial and wound-healing at mucosal surfaces</li>
+    <li>Synergizes with BPC-157 and GHK-Cu in advanced gut protocols</li>
+  </ul>
+  <div class="peptide-meta">
+    <div class="meta-item"><span class="meta-label">Route</span><span class="meta-val">SubQ or oral</span></div>
+    <div class="meta-item"><span class="meta-label">Frequency</span><span class="meta-val">1–2× daily</span></div>
+    <div class="meta-item"><span class="meta-label">Onset</span><span class="meta-val gold">1–3 weeks</span></div>
+  </div>
+</div>
+
+<!-- ═══ STACKS / COMBOS ═══ -->
+<div class="peptide-card featured" data-cat="combo" data-name="cjc ipamorelin pre-mixed stack combo gh growth hormone">
+  <span class="card-badge badge-combo">⚗ Stack</span>
+  <div class="peptide-name">CJC-1295 / Ipamorelin</div>
+  <div class="dose-variants"><span class="dose-pill">5mg / 5mg · 3mL</span></div>
+  <div class="peptide-aka">Pre-Mixed GH Optimization Stack · Lyophilized</div>
+  <p class="peptide-desc">The gold-standard GH stack pre-combined in a single vial. CJC-1295 extends and amplifies the GH pulse; Ipamorelin triggers a clean, cortisol-free release. One vial, one injection, maximum results — the most prescribed GH combination in functional medicine.</p>
+  <ul class="peptide-benefits">
+    <li>Pre-mixed convenience — one injection instead of two</li>
+    <li>CJC-1295 amplifies and extends the GH pulse duration</li>
+    <li>Ipamorelin triggers clean GH release — no cortisol or prolactin spike</li>
+    <li>Combined effect elevates IGF-1 by 200–300% over baseline</li>
+    <li>Best-in-class body recomposition and anti-aging stack</li>
+  </ul>
+  <div class="peptide-meta">
+    <div class="meta-item"><span class="meta-label">Route</span><span class="meta-val">SubQ injection</span></div>
+    <div class="meta-item"><span class="meta-label">Frequency</span><span class="meta-val">Daily (pre-sleep)</span></div>
+    <div class="meta-item"><span class="meta-label">Onset</span><span class="meta-val gold">6–10 weeks</span></div>
+  </div>
+</div>
+
+<div class="peptide-card featured" data-cat="combo" data-name="wolverine bpc-157 tb-500 recovery stack pre-mixed healing injury">
+  <span class="card-badge badge-combo">⚗ Stack</span>
+  <div class="peptide-name">Wolverine Stack</div>
+  <div class="dose-variants"><span class="dose-pill">BPC-157 5mg + TB-500 5mg · 3mL</span><span class="dose-pill">BPC-157 10mg + TB-500 10mg · 3mL</span></div>
+  <div class="peptide-aka">BPC-157 / TB-500 · Pre-Mixed Recovery Stack · Lyophilized</div>
+  <p class="peptide-desc">The most powerful pre-mixed recovery stack — named for near-superhuman healing capability. BPC-157's targeted local repair combined with TB-500's systemic angiogenic and anti-fibrotic effects covers every tissue type and dimension of injury recovery. Available in 5/5mg and 10/10mg strengths.</p>
+  <ul class="peptide-benefits">
+    <li>Covers local (BPC-157) AND systemic (TB-500) repair simultaneously</li>
+    <li>Addresses tendon, ligament, muscle, nerve, gut, and cardiac tissue</li>
+    <li>10mg/10mg high-dose version for aggressive post-injury loading</li>
+    <li>Most requested combination in elite athletic recovery</li>
+    <li>One vial, two complementary peptides, one injection</li>
+  </ul>
+  <div class="peptide-meta">
+    <div class="meta-item"><span class="meta-label">Route</span><span class="meta-val">SubQ injection</span></div>
+    <div class="meta-item"><span class="meta-label">Frequency</span><span class="meta-val">1–2× daily</span></div>
+    <div class="meta-item"><span class="meta-label">Strengths</span><span class="meta-val gold">5/5mg · 10/10mg</span></div>
+  </div>
+</div>
+
+<div class="peptide-card featured" data-cat="combo" data-name="glow stack bpc-157 ghk-cu tb-500 skin collagen recovery beauty">
+  <span class="card-badge badge-combo">⚗ Stack</span>
+  <div class="peptide-name">GLOW Stack</div>
+  <div class="dose-variants"><span class="dose-pill">BPC-157 10mg + GHK-Cu 50mg + TB-500 10mg · 3mL</span></div>
+  <div class="peptide-aka">BPC-157 / GHK-Cu / TB-500 · Beauty &amp; Recovery Triple Stack · Lyophilized</div>
+  <p class="peptide-desc">The definitive skin, collagen, and cellular recovery triple stack. BPC-157 and TB-500 drive repair and angiogenesis while GHK-Cu's 4,000-gene activation signal rebuilds extracellular matrix, collagen, and elastin from the inside out. Heal and rejuvenate simultaneously.</p>
+  <ul class="peptide-benefits">
+    <li>GHK-Cu activates 4,000+ genes for collagen, elastin, and tissue remodeling</li>
+    <li>BPC-157 and TB-500 accelerate underlying cellular repair</li>
+    <li>Systemic anti-aging: skin, gut, joints, and connective tissue</li>
+    <li>Reverses epigenetic age markers in skin and connective tissue</li>
+  </ul>
+  <div class="peptide-meta">
+    <div class="meta-item"><span class="meta-label">Route</span><span class="meta-val">SubQ injection</span></div>
+    <div class="meta-item"><span class="meta-label">Frequency</span><span class="meta-val">Daily</span></div>
+    <div class="meta-item"><span class="meta-label">Onset</span><span class="meta-val gold">3–6 weeks</span></div>
+  </div>
+</div>
+
+<div class="peptide-card featured" data-cat="combo" data-name="klow stack bpc-157 ghk-cu tb-500 kpv anti-inflammatory longevity autoimmune">
+  <span class="card-badge badge-combo">⚗ Stack</span>
+  <div class="peptide-name">KLOW Stack</div>
+  <div class="dose-variants"><span class="dose-pill">BPC-157 10mg + GHK-Cu 50mg + TB-500 10mg + KPV 10mg · 3mL</span></div>
+  <div class="peptide-aka">Four-Peptide Anti-Inflammatory Longevity Stack · Lyophilized</div>
+  <p class="peptide-desc">Our most advanced pre-mixed longevity stack. GLOW's three-compound synergy amplified by KPV — the NF-κB inhibiting tripeptide that directly targets the master inflammation switch. Designed for autoimmune conditions, chronic inflammation, or aggressive longevity goals.</p>
+  <ul class="peptide-benefits">
+    <li>Four-compound synergy: repair + rebuild + regrow + anti-inflame</li>
+    <li>KPV directly blocks NF-κB — the master inflammatory signaling pathway</li>
+    <li>Comprehensive: gut, skin, joints, connective tissue, immune regulation</li>
+    <li>Ideal for autoimmune, IBD, or chronic inflammatory conditions</li>
+  </ul>
+  <div class="peptide-meta">
+    <div class="meta-item"><span class="meta-label">Route</span><span class="meta-val">SubQ injection</span></div>
+    <div class="meta-item"><span class="meta-label">Frequency</span><span class="meta-val">Daily</span></div>
+    <div class="meta-item"><span class="meta-label">Onset</span><span class="meta-val gold">2–4 weeks</span></div>
+  </div>
+</div>
+
+<!-- ═══ LONGEVITY ═══ -->
+<div class="peptide-card" data-cat="longevity" data-name="epithalon epithalamin telomere telomerase longevity aging melatonin">
+  <span class="card-badge badge-longevity">◉ Longevity</span>
+  <div class="peptide-name">Epithalon</div>
+  <div class="dose-variants"><span class="dose-pill">10mg / 3mL</span></div>
+  <div class="peptide-aka">Epithalamin Tetrapeptide · Telomerase Activator · Lyophilized</div>
+  <p class="peptide-desc">The most remarkable longevity peptide known. Activates telomerase — the enzyme protecting and elongating telomeres — targeting a primary biological clock of cellular aging. Decades of Russian clinical research. The 10mg vial provides a complete annual course.</p>
+  <ul class="peptide-benefits">
+    <li>Activates telomerase — extends telomere length in cell studies</li>
+    <li>Russian clinical data: 30–50% lifespan extension in animal models</li>
+    <li>Regulates melatonin — dramatically improves circadian rhythm</li>
+    <li>Anti-tumor and antioxidant enzyme improvements</li>
+  </ul>
+  <div class="peptide-meta">
+    <div class="meta-item"><span class="meta-label">Route</span><span class="meta-val">SubQ or IV</span></div>
+    <div class="meta-item"><span class="meta-label">Protocol</span><span class="meta-val">10-day course, 1–2×/year</span></div>
+    <div class="meta-item"><span class="meta-label">Form</span><span class="meta-val gold">Lyophilized · 10mg</span></div>
+  </div>
+</div>
+
+<div class="peptide-card" data-cat="longevity" data-name="ghk-cu copper peptide collagen elastin epigenetic skin longevity aging">
+  <span class="card-badge badge-longevity">◉ Longevity</span>
+  <div class="peptide-name">GHK-Cu</div>
+  <div class="dose-variants"><span class="dose-pill">50mg / 3mL</span></div>
+  <div class="peptide-aka">Copper Peptide · 4,000-Gene Remodeling Signal · Lyophilized</div>
+  <p class="peptide-desc">A naturally declining plasma peptide that activates over 4,000 genes linked to tissue repair, anti-inflammation, and stem cell activation. GHK-Cu levels drop 75% between ages 20 and 60 — replenishment is among the highest-leverage longevity interventions available.</p>
+  <ul class="peptide-benefits">
+    <li>Activates 4,000+ human genes — broadest regenerative signal known</li>
+    <li>Stimulates systemic collagen and elastin production</li>
+    <li>Reverses epigenetic age markers in fibroblast cultures</li>
+    <li>Potent anti-anxiety and neuroprotective effects</li>
+  </ul>
+  <div class="peptide-meta">
+    <div class="meta-item"><span class="meta-label">Route</span><span class="meta-val">SubQ or topical</span></div>
+    <div class="meta-item"><span class="meta-label">Frequency</span><span class="meta-val">Daily</span></div>
+    <div class="meta-item"><span class="meta-label">Form</span><span class="meta-val gold">Lyophilized · 50mg/3mL</span></div>
+  </div>
+</div>
+
+<div class="peptide-card" data-cat="longevity" data-name="ss-31 elamipretide mitochondria cardiolipin atp energy aging">
+  <span class="card-badge badge-longevity">◉ Longevity</span>
+  <div class="peptide-name">SS-31</div>
+  <div class="dose-variants"><span class="dose-pill">10mg / 3mL</span><span class="dose-pill">50mg / 3mL</span></div>
+  <div class="peptide-aka">Elamipretide · Mitochondria-Targeting Peptide · Lyophilized</div>
+  <p class="peptide-desc">First-in-class mitochondria-targeting peptide concentrating directly in the inner mitochondrial membrane to restore cardiolipin, reduce ROS, and revive ATP production. Addresses aging at the cellular energy level. Available in 10mg and 50mg vials.</p>
+  <ul class="peptide-benefits">
+    <li>Accumulates 1,000× more in mitochondria than cytoplasm</li>
+    <li>Restores cardiolipin integrity — governs ATP synthase efficiency</li>
+    <li>Dramatically reduces mitochondrial reactive oxygen species</li>
+    <li>Phase 2/3 trials for heart failure and aging-related fatigue</li>
+  </ul>
+  <div class="peptide-meta">
+    <div class="meta-item"><span class="meta-label">Route</span><span class="meta-val">SubQ injection</span></div>
+    <div class="meta-item"><span class="meta-label">Frequency</span><span class="meta-val">Daily or cyclically</span></div>
+    <div class="meta-item"><span class="meta-label">Sizes</span><span class="meta-val gold">10mg · 50mg</span></div>
+  </div>
+</div>
+
+<div class="peptide-card" data-cat="longevity" data-name="mots-c mitochondria ampk insulin metabolism exercise longevity">
+  <span class="card-badge badge-longevity">◉ Longevity</span>
+  <div class="peptide-name">MOTS-C</div>
+  <div class="dose-variants"><span class="dose-pill">10mg / 3mL</span></div>
+  <div class="peptide-aka">Mitochondrial-Derived Peptide · AMPK Activator · Lyophilized</div>
+  <p class="peptide-desc">A mitochondrial-derived peptide encoded in mitochondrial DNA — one of the most exciting longevity discoveries of the decade. MOTS-C activates AMPK, improves insulin sensitivity, and mimics metabolic exercise adaptations. Levels decline significantly with age.</p>
+  <ul class="peptide-benefits">
+    <li>Activates AMPK — master metabolic regulator that declines with aging</li>
+    <li>Dramatically improves insulin sensitivity and glucose uptake</li>
+    <li>Mimics metabolic adaptations of endurance exercise</li>
+    <li>Reduces obesity and metabolic dysfunction in animal models</li>
+  </ul>
+  <div class="peptide-meta">
+    <div class="meta-item"><span class="meta-label">Route</span><span class="meta-val">SubQ injection</span></div>
+    <div class="meta-item"><span class="meta-label">Frequency</span><span class="meta-val">Daily or 3×/week</span></div>
+    <div class="meta-item"><span class="meta-label">Onset</span><span class="meta-val gold">4–8 weeks</span></div>
+  </div>
+</div>
+
+<div class="peptide-card" data-cat="longevity" data-name="dsip delta sleep inducing peptide circadian rest cortisol">
+  <span class="card-badge badge-longevity">◉ Longevity</span>
+  <div class="peptide-name">DSIP</div>
+  <div class="dose-variants"><span class="dose-pill">5mg / 3mL</span><span class="dose-pill">15mg / 3mL</span></div>
+  <div class="peptide-aka">Delta Sleep-Inducing Peptide · Circadian Regulator · Lyophilized</div>
+  <p class="peptide-desc">Deepens sleep architecture by increasing delta-wave (slow-wave) activity — the stage governing GH secretion, cellular repair, and memory consolidation. Available in 5mg and 15mg vials for starter and extended protocol durations.</p>
+  <ul class="peptide-benefits">
+    <li>Significantly increases delta-wave sleep duration and depth</li>
+    <li>Reduces cortisol and normalizes the HPA axis</li>
+    <li>Antioxidant and anti-tumor effects in research models</li>
+    <li>Synergizes with Epithalon in circadian longevity protocols</li>
+  </ul>
+  <div class="peptide-meta">
+    <div class="meta-item"><span class="meta-label">Route</span><span class="meta-val">SubQ injection</span></div>
+    <div class="meta-item"><span class="meta-label">Frequency</span><span class="meta-val">Nightly, cyclically</span></div>
+    <div class="meta-item"><span class="meta-label">Sizes</span><span class="meta-val gold">5mg · 15mg</span></div>
+  </div>
+</div>
+
+<div class="peptide-card" data-cat="longevity" data-name="pinealon brain neuroprotection cognitive longevity pineal gland">
+  <span class="card-badge badge-longevity">◉ Longevity</span>
+  <div class="peptide-name">Pinealon</div>
+  <div class="dose-variants"><span class="dose-pill">5mg / 3mL</span><span class="dose-pill">10mg / 3mL</span></div>
+  <div class="peptide-aka">Glu-Asp-Arg Tripeptide · Pineal Gland Peptide · Neuroprotective · Lyophilized</div>
+  <p class="peptide-desc">Pineal gland tripeptide with potent neuroprotective and cognitive longevity properties. Crosses the blood-brain barrier to protect neurons, regulate circadian function, and reduce brain aging. A foundational compound in advanced longevity stacks alongside Epithalon and DSIP.</p>
+  <ul class="peptide-benefits">
+    <li>Crosses blood-brain barrier — direct CNS neuroprotective action</li>
+    <li>Reduces oxidative damage in neurons and retinal cells</li>
+    <li>Regulates circadian rhythms and melatonin output</li>
+    <li>Improves cognitive function and memory in aging models</li>
+  </ul>
+  <div class="peptide-meta">
+    <div class="meta-item"><span class="meta-label">Route</span><span class="meta-val">SubQ injection</span></div>
+    <div class="meta-item"><span class="meta-label">Frequency</span><span class="meta-val">Course-based cyclically</span></div>
+    <div class="meta-item"><span class="meta-label">Sizes</span><span class="meta-val gold">5mg · 10mg</span></div>
+  </div>
+</div>
+
+<!-- ═══ NAD+ ═══ -->
+<div class="peptide-card featured" data-cat="nad" data-name="nad+ nicotinamide adenine dinucleotide energy cellular sirtuins dna repair">
+  <span class="card-badge badge-nad">⚡ NAD+</span>
+  <div class="peptide-name">NAD+</div>
+  <div class="dose-variants"><span class="dose-pill">100mg / 3mL</span><span class="dose-pill">500mg / 10mL</span><span class="dose-pill">1000mg / 10mL</span><span class="dose-pill">Injection 200mg/mL · 5mL (1000mg)</span><span class="dose-pill">Injection 200mg/mL · 10mL (2000mg)</span></div>
+  <div class="peptide-aka">Nicotinamide Adenine Dinucleotide · Master Cellular Coenzyme · Lyophilized &amp; Injectable</div>
+  <p class="peptide-desc">The master cellular energy coenzyme — declines 50% between ages 20 and 60. NAD+ fuels mitochondria, powers DNA repair via PARP enzymes, and activates longevity sirtuins (SIRT1–SIRT7). Full range from 100mg maintenance to 2000mg high-dose IV-grade formulations.</p>
+  <ul class="peptide-benefits">
+    <li>Fuels mitochondrial ATP production — the cellular energy currency</li>
+    <li>Activates SIRT1–SIRT7 sirtuins — the longevity gene regulators</li>
+    <li>Activates PARP enzymes for DNA repair and genomic stability</li>
+    <li>Improves cognitive clarity, focus, and mental energy rapidly</li>
+    <li>Range: 100mg maintenance vials to 2000mg high-dose injectable</li>
+  </ul>
+  <div class="peptide-meta">
+    <div class="meta-item"><span class="meta-label">Route</span><span class="meta-val">SubQ or IV</span></div>
+    <div class="meta-item"><span class="meta-label">Frequency</span><span class="meta-val">Daily or pulsed</span></div>
+    <div class="meta-item"><span class="meta-label">Doses</span><span class="meta-val gold">100mg → 2000mg</span></div>
+  </div>
+</div>
+
+<!-- ═══ NOOTROPIC / PERFORMANCE ═══ -->
+<div class="peptide-card" data-cat="nootropic" data-name="semax acth nootropic cognitive bdnf brain focus neuroprotection stroke">
+  <span class="card-badge badge-nootropic">🧠 Nootropic</span>
+  <div class="peptide-name">Semax</div>
+  <div class="dose-variants"><span class="dose-pill">11mg / 3mL</span></div>
+  <div class="peptide-aka">ACTH 4-10 Analog · Cognitive Enhancer · Neuroprotective · Lyophilized</div>
+  <p class="peptide-desc">Synthetic ACTH 4-10 peptide with potent cognitive-enhancing and neuroprotective effects. Developed in Russia for stroke rehabilitation, now used broadly for cognitive optimization — improving BDNF, focus, learning, and stress resilience without addiction or tolerance.</p>
+  <ul class="peptide-benefits">
+    <li>Upregulates BDNF (brain-derived neurotrophic factor) significantly</li>
+    <li>Enhances working memory, attention, and information processing</li>
+    <li>Neuroprotective after ischemic injury — used in stroke recovery</li>
+    <li>Improves stress resilience through HPA axis modulation</li>
+  </ul>
+  <div class="peptide-meta">
+    <div class="meta-item"><span class="meta-label">Route</span><span class="meta-val">Intranasal or SubQ</span></div>
+    <div class="meta-item"><span class="meta-label">Frequency</span><span class="meta-val">1–2× daily</span></div>
+    <div class="meta-item"><span class="meta-label">Onset</span><span class="meta-val gold">30–60 minutes</span></div>
+  </div>
+</div>
+
+<div class="peptide-card" data-cat="nootropic" data-name="selank anxiety gaba serotonin nootropic focus anti-anxiety cognitive">
+  <span class="card-badge badge-nootropic">🧠 Nootropic</span>
+  <div class="peptide-name">Selank</div>
+  <div class="dose-variants"><span class="dose-pill">5mg / 3mL</span><span class="dose-pill">11mg / 3mL</span></div>
+  <div class="peptide-aka">Anxiolytic Nootropic · TBPH Analog · Lyophilized</div>
+  <p class="peptide-desc">Synthetic tuftsin analog with anxiolytic and nootropic effects through GABAergic and serotonergic modulation — without benzodiazepine dependency or cognitive dulling. Available in 5mg and 11mg vials.</p>
+  <ul class="peptide-benefits">
+    <li>Anxiolytic efficacy equivalent to low-dose benzodiazepines — no dependency</li>
+    <li>Enhances working memory, focus, and information processing speed</li>
+    <li>No withdrawal syndrome on cessation</li>
+    <li>Immunomodulatory: stabilizes immune function</li>
+  </ul>
+  <div class="peptide-meta">
+    <div class="meta-item"><span class="meta-label">Route</span><span class="meta-val">Intranasal or SubQ</span></div>
+    <div class="meta-item"><span class="meta-label">Frequency</span><span class="meta-val">1–2× daily</span></div>
+    <div class="meta-item"><span class="meta-label">Sizes</span><span class="meta-val gold">5mg · 11mg</span></div>
+  </div>
+</div>
+
+<div class="peptide-card" data-cat="nootropic" data-name="slu-pp-332 exercise mimetic errant mitochondrial biogenesis performance">
+  <span class="card-badge badge-nootropic">🧠 Performance</span>
+  <div class="peptide-name">SLU-PP-332</div>
+  <div class="dose-variants"><span class="dose-pill">5mg / 3mL</span></div>
+  <div class="peptide-aka">ERR Agonist · Exercise Mimetic · Mitochondrial Biogenesis · Lyophilized</div>
+  <p class="peptide-desc">First-in-class ERR agonist activating the same genetic programs triggered by aerobic exercise — mitochondrial biogenesis, fat oxidation, and metabolic adaptation — without physical exertion. Preclinical data shows mice running 50% longer without prior training.</p>
+  <ul class="peptide-benefits">
+    <li>Activates ERRα/β/γ — master regulators of mitochondrial biogenesis</li>
+    <li>Triggers exercise gene programs in heart, muscle, and metabolic tissue</li>
+    <li>Potent fat oxidation and metabolic rate increase</li>
+    <li>Emerging research for heart failure and metabolic disease</li>
+  </ul>
+  <div class="peptide-meta">
+    <div class="meta-item"><span class="meta-label">Route</span><span class="meta-val">SubQ injection</span></div>
+    <div class="meta-item"><span class="meta-label">Frequency</span><span class="meta-val">Daily or cyclically</span></div>
+    <div class="meta-item"><span class="meta-label">Form</span><span class="meta-val gold">Lyophilized · 5mg</span></div>
+  </div>
+</div>
+
+<!-- ═══ IMMUNE ═══ -->
+<div class="peptide-card" data-cat="immune" data-name="thymosin alpha-1 immune modulation thymus t-cells nk cancer hepatitis">
+  <span class="card-badge badge-immune">🛡 Immune</span>
+  <div class="peptide-name">Thymosin Alpha-1</div>
+  <div class="dose-variants"><span class="dose-pill">5mg / 3mL</span><span class="dose-pill">10mg / 3mL</span></div>
+  <div class="peptide-aka">Tα1 · Thymic Immunomodulator · Approved in 70+ Countries · Lyophilized</div>
+  <p class="peptide-desc">One of the most extensively studied immunomodulatory peptides. Approved in 70+ countries for hepatitis and immunodeficiency. Used in longevity protocols for immune surveillance restoration and chronic infection resolution. Available in 5mg and 10mg vials.</p>
+  <ul class="peptide-benefits">
+    <li>Activates and matures T-lymphocytes, NK cells, and dendritic cells</li>
+    <li>Approved in 70+ countries for hepatitis B/C and immunodeficiency</li>
+    <li>Used in cancer immune support alongside chemotherapy</li>
+    <li>Restores immune surveillance — critical for infection and tumor clearance</li>
+  </ul>
+  <div class="peptide-meta">
+    <div class="meta-item"><span class="meta-label">Route</span><span class="meta-val">SubQ injection</span></div>
+    <div class="meta-item"><span class="meta-label">Frequency</span><span class="meta-val">2× weekly</span></div>
+    <div class="meta-item"><span class="meta-label">Sizes</span><span class="meta-val gold">5mg · 10mg</span></div>
+  </div>
+</div>
+
+<div class="peptide-card" data-cat="immune" data-name="glutathione master antioxidant detox immune skin liver injectable">
+  <span class="card-badge badge-immune">🛡 Immune</span>
+  <div class="peptide-name">Glutathione</div>
+  <div class="dose-variants"><span class="dose-pill">200mg/mL · 10mL vial</span></div>
+  <div class="peptide-aka">Master Antioxidant · Detoxification · Immune Support · Injectable</div>
+  <p class="peptide-desc">The body's master antioxidant and primary detoxification molecule — glutathione levels decline dramatically with age. Injectable glutathione bypasses poor oral bioavailability entirely, delivering direct cellular antioxidant replenishment, liver detoxification, and immune modulation.</p>
+  <ul class="peptide-benefits">
+    <li>Neutralizes ROS across every cell type — master antioxidant</li>
+    <li>Phase II liver detoxification — binds and eliminates heavy metals and toxins</li>
+    <li>Regulates T-cell proliferation and NK cell activity</li>
+    <li>Improves skin clarity, brightness, and reduces hyperpigmentation</li>
+  </ul>
+  <div class="peptide-meta">
+    <div class="meta-item"><span class="meta-label">Route</span><span class="meta-val">SubQ or IV push</span></div>
+    <div class="meta-item"><span class="meta-label">Frequency</span><span class="meta-val">2–3× weekly</span></div>
+    <div class="meta-item"><span class="meta-label">Concentration</span><span class="meta-val gold">200mg/mL · 10mL</span></div>
+  </div>
+</div>
+
+<!-- ═══ LAB PANELS ═══ -->
+<div class="peptide-card" data-cat="labs" data-name="women female essential lab panel hormone thyroid homekit">
+  <span class="card-badge badge-labs">🧪 Lab Panel</span>
+  <div class="peptide-name">Women's Essential Lab Panel</div>
+  <div class="peptide-aka">Home Collection Kit Included · Full Female Hormone Baseline</div>
+  <p class="peptide-desc">Comprehensive female hormonal and metabolic baseline — identifies root causes of fatigue, weight gain, mood dysregulation, and hormonal imbalance. Covers the full female endocrine picture from sex hormones to adrenal and thyroid function.</p>
+  <ul class="peptide-benefits">
+    <li>Estradiol, progesterone, FSH, LH, testosterone (total &amp; free)</li>
+    <li>DHEA-S, cortisol (AM), prolactin, SHBG</li>
+    <li>Full thyroid panel: TSH, Free T3, Free T4, TPO antibodies</li>
+    <li>Vitamin D, ferritin, hs-CRP, fasting insulin, HbA1c</li>
+  </ul>
+  <div class="peptide-meta">
+    <div class="meta-item"><span class="meta-label">Collection</span><span class="meta-val">Home kit included</span></div>
+    <div class="meta-item"><span class="meta-label">Turnaround</span><span class="meta-val">3–5 business days</span></div>
+    <div class="meta-item"><span class="meta-label">Review</span><span class="meta-val gold">Physician included</span></div>
+  </div>
+</div>
+
+<div class="peptide-card" data-cat="labs" data-name="men male essential lab panel testosterone thyroid metabolic homekit">
+  <span class="card-badge badge-labs">🧪 Lab Panel</span>
+  <div class="peptide-name">Men's Essential Lab Panel</div>
+  <div class="peptide-aka">Home Collection Kit Included · Full Male Hormone Baseline</div>
+  <p class="peptide-desc">Foundational diagnostic panel for any male optimization protocol. Covers testosterone (total and free), thyroid, metabolic, cardiovascular, and inflammatory markers — everything your practitioner needs to build a precise, personalized protocol.</p>
+  <ul class="peptide-benefits">
+    <li>Total testosterone, free testosterone, SHBG, LH, FSH, estradiol</li>
+    <li>DHEA-S, prolactin, IGF-1, PSA</li>
+    <li>Complete metabolic panel, CBC, lipid panel</li>
+    <li>Thyroid (TSH, Free T3, Free T4), hs-CRP</li>
+  </ul>
+  <div class="peptide-meta">
+    <div class="meta-item"><span class="meta-label">Collection</span><span class="meta-val">Home kit included</span></div>
+    <div class="meta-item"><span class="meta-label">Turnaround</span><span class="meta-val">3–5 business days</span></div>
+    <div class="meta-item"><span class="meta-label">Review</span><span class="meta-val gold">Physician included</span></div>
+  </div>
+</div>
+
+<div class="peptide-card" data-cat="labs" data-name="trulab trt testosterone monitoring lab panel homekit follow-up">
+  <span class="card-badge badge-labs">🧪 Lab Panel</span>
+  <div class="peptide-name">TruLab TRT Panel</div>
+  <div class="peptide-aka">TRT Monitoring · Home Collection Kit Included</div>
+  <p class="peptide-desc">Purpose-built TRT monitoring panel for men on active testosterone replacement therapy. Tracks testosterone levels, estrogen conversion, hematologic safety, and metabolic health — designed for the 90-day follow-up cadence on all TRT protocols.</p>
+  <ul class="peptide-benefits">
+    <li>Total testosterone, free testosterone, SHBG, estradiol (sensitive)</li>
+    <li>CBC with differential — monitors hematocrit and RBC for TRT safety</li>
+    <li>PSA, LH, FSH (to assess HPTA suppression degree)</li>
+    <li>Comprehensive metabolic panel, lipid panel, hs-CRP</li>
+  </ul>
+  <div class="peptide-meta">
+    <div class="meta-item"><span class="meta-label">Collection</span><span class="meta-val">Home kit included</span></div>
+    <div class="meta-item"><span class="meta-label">Best For</span><span class="meta-val">TRT 90-day monitoring</span></div>
+    <div class="meta-item"><span class="meta-label">Review</span><span class="meta-val gold">Physician included</span></div>
+  </div>
+</div>
+
+<!-- ═══ SUPPLIES ═══ -->
+<div class="peptide-card" data-cat="supply" data-name="full kit syringes swabs bacteriostatic water starter complete injection">
+  <span class="card-badge badge-supply">📦 Supply</span>
+  <div class="peptide-name">Full Injection Kit</div>
+  <div class="peptide-aka">10 Syringes · 10 Alcohol Swabs · 10mL Bacteriostatic Water</div>
+  <p class="peptide-desc">Everything needed to begin your first peptide protocol in one kit. 10 insulin syringes, 10 sterile alcohol prep swabs, and one 10mL pharmaceutical-grade bacteriostatic water vial for reconstituting lyophilized peptides. Nothing else required.</p>
+  <ul class="peptide-benefits">
+    <li>10× 1mL insulin syringes (29–31 gauge, 0.5" needle)</li>
+    <li>10× individually wrapped sterile alcohol prep swabs</li>
+    <li>1× 10mL bacteriostatic water for peptide reconstitution</li>
+    <li>Reconstitution and injection video guide included</li>
+  </ul>
+  <div class="peptide-meta">
+    <div class="meta-item"><span class="meta-label">Best For</span><span class="meta-val gold">First-time starters</span></div>
+  </div>
+</div>
+
+<div class="peptide-card" data-cat="supply" data-name="box 100 syringes insulin needles bulk ongoing protocol">
+  <span class="card-badge badge-supply">📦 Supply</span>
+  <div class="peptide-name">Box of 100 Syringes</div>
+  <div class="peptide-aka">Insulin Syringes · 29–31 Gauge · 1mL · Bulk Pack</div>
+  <p class="peptide-desc">Bulk pack of 100 individually sterile-wrapped insulin syringes. Ideal for members on daily or multi-weekly dosing schedules managing 1–3+ month supply needs. Compatible with all subcutaneous peptide protocols.</p>
+  <ul class="peptide-benefits">
+    <li>100× individually sterile-wrapped syringes</li>
+    <li>1mL volume with fine graduation for precise dosing</li>
+    <li>29–31 gauge ultra-fine needle — minimal discomfort</li>
+  </ul>
+  <div class="peptide-meta">
+    <div class="meta-item"><span class="meta-label">Count</span><span class="meta-val">100 syringes</span></div>
+    <div class="meta-item"><span class="meta-label">Best For</span><span class="meta-val gold">Ongoing protocols</span></div>
+  </div>
+</div>
+
+<div class="peptide-card" data-cat="supply" data-name="bacteriostatic water bac water reconstitution lyophilized peptide benzyl alcohol">
+  <span class="card-badge badge-supply">📦 Supply</span>
+  <div class="peptide-name">Bacteriostatic Water</div>
+  <div class="peptide-aka">10mL Vial · 0.9% Benzyl Alcohol · Peptide Reconstitution</div>
+  <p class="peptide-desc">Pharmaceutical-grade bacteriostatic water for reconstituting all lyophilized peptide vials. The 0.9% benzyl alcohol preservative extends the shelf life of reconstituted peptide solutions up to 28 days under refrigeration. Required for all freeze-dried compounds.</p>
+  <ul class="peptide-benefits">
+    <li>0.9% benzyl alcohol extends reconstituted peptide life to 28 days</li>
+    <li>Sterile-filtered — no contaminants or pathogens</li>
+    <li>10mL multi-dose vial with rubber septum for repeated access</li>
+  </ul>
+  <div class="peptide-meta">
+    <div class="meta-item"><span class="meta-label">Volume</span><span class="meta-val">10mL vial</span></div>
+    <div class="meta-item"><span class="meta-label">Storage</span><span class="meta-val gold">Refrigerate after opening</span></div>
+  </div>
+</div>
+
+<div class="peptide-card" data-cat="supply" data-name="alcohol swabs sterile prep 100 count injection site vial">
+  <span class="card-badge badge-supply">📦 Supply</span>
+  <div class="peptide-name">Alcohol Swabs</div>
+  <div class="peptide-aka">100 Count · Sterile Prep Swabs · Individually Wrapped</div>
+  <p class="peptide-desc">Box of 100 individually wrapped, sterile 70% isopropyl alcohol prep swabs for injection site preparation and vial top sterilization. Essential for maintaining sterile technique across all subcutaneous injection protocols.</p>
+  <ul class="peptide-benefits">
+    <li>100× individually wrapped sterile alcohol swabs</li>
+    <li>70% isopropyl alcohol — pharmaceutical standard</li>
+    <li>For injection site prep and vial septum sterilization</li>
+  </ul>
+  <div class="peptide-meta">
+    <div class="meta-item"><span class="meta-label">Count</span><span class="meta-val">100 swabs</span></div>
+    <div class="meta-item"><span class="meta-label">Best For</span><span class="meta-val gold">All protocols</span></div>
+  </div>
+</div>
+
+    </div><!-- end grid -->
+  </div>
+</section>
+
+<!-- COMPARE TABLE -->
+<section style="background:var(--bg-card);padding:80px 24px" id="compare">
+  <div class="container">
+    <span class="section-eyebrow">Side by Side</span>
+    <h2 class="section-title">Find Your <em>Match</em></h2>
+    <p class="section-sub">Key compounds rated across therapeutic dimensions.</p>
+    <div style="overflow-x:auto">
+      <table>
+        <thead><tr><th>Compound</th><th>Goal</th><th>Fat Loss</th><th>Muscle</th><th>Recovery</th><th>Longevity</th><th>Libido</th><th>Neuro</th><th>Frequency</th></tr></thead>
+        <tbody>
+          <tr><td>Semaglutide</td><td>Weight loss</td><td><span class="check">●●●</span></td><td><span class="dash">—</span></td><td><span class="dash">—</span></td><td><span class="check">●</span></td><td><span class="dash">—</span></td><td><span class="dash">—</span></td><td>Weekly</td></tr>
+          <tr><td>Tirzepatide</td><td>Weight loss++</td><td><span class="check">●●●</span></td><td><span class="check">●</span></td><td><span class="dash">—</span></td><td><span class="check">●●</span></td><td><span class="dash">—</span></td><td><span class="dash">—</span></td><td>Weekly</td></tr>
+          <tr><td>Retatrutide</td><td>Triple agonist</td><td><span class="check">●●●</span></td><td><span class="check">●</span></td><td><span class="dash">—</span></td><td><span class="check">●●</span></td><td><span class="dash">—</span></td><td><span class="dash">—</span></td><td>Weekly</td></tr>
+          <tr><td>CJC / Ipamorelin</td><td>GH optimization</td><td><span class="check">●●</span></td><td><span class="check">●●●</span></td><td><span class="check">●●</span></td><td><span class="check">●●</span></td><td><span class="dash">—</span></td><td><span class="check">●</span></td><td>Daily</td></tr>
+          <tr><td>Tesamorelin</td><td>Visceral fat + GH</td><td><span class="check">●●●</span></td><td><span class="check">●●</span></td><td><span class="check">●</span></td><td><span class="check">●●</span></td><td><span class="dash">—</span></td><td><span class="check">●●</span></td><td>Daily</td></tr>
+          <tr><td>IGF-1 LR3</td><td>Anabolic / muscle</td><td><span class="check">●</span></td><td><span class="check">●●●</span></td><td><span class="check">●●</span></td><td><span class="check">●</span></td><td><span class="dash">—</span></td><td><span class="dash">—</span></td><td>Daily</td></tr>
+          <tr><td>Wolverine Stack</td><td>Injury recovery</td><td><span class="dash">—</span></td><td><span class="check">●</span></td><td><span class="check">●●●</span></td><td><span class="check">●●</span></td><td><span class="dash">—</span></td><td><span class="dash">—</span></td><td>Daily</td></tr>
+          <tr><td>KLOW Stack</td><td>Anti-inflame longevity</td><td><span class="dash">—</span></td><td><span class="dash">—</span></td><td><span class="check">●●●</span></td><td><span class="check">●●●</span></td><td><span class="dash">—</span></td><td><span class="dash">—</span></td><td>Daily</td></tr>
+          <tr><td>Epithalon</td><td>Telomere longevity</td><td><span class="dash">—</span></td><td><span class="dash">—</span></td><td><span class="check">●</span></td><td><span class="check">●●●</span></td><td><span class="dash">—</span></td><td><span class="check">●●</span></td><td>Course/year</td></tr>
+          <tr><td>SS-31</td><td>Mitochondrial health</td><td><span class="check">●</span></td><td><span class="check">●●</span></td><td><span class="check">●●</span></td><td><span class="check">●●●</span></td><td><span class="dash">—</span></td><td><span class="check">●</span></td><td>Daily</td></tr>
+          <tr><td>NAD+</td><td>Cellular energy</td><td><span class="check">●</span></td><td><span class="check">●</span></td><td><span class="check">●●</span></td><td><span class="check">●●●</span></td><td><span class="dash">—</span></td><td><span class="check">●●●</span></td><td>Daily/pulsed</td></tr>
+          <tr><td>Semax</td><td>Cognitive performance</td><td><span class="dash">—</span></td><td><span class="dash">—</span></td><td><span class="check">●</span></td><td><span class="check">●●</span></td><td><span class="dash">—</span></td><td><span class="check">●●●</span></td><td>Daily</td></tr>
+          <tr><td>Thymosin Alpha-1</td><td>Immune activation</td><td><span class="dash">—</span></td><td><span class="dash">—</span></td><td><span class="check">●●</span></td><td><span class="check">●●●</span></td><td><span class="dash">—</span></td><td><span class="dash">—</span></td><td>2×/week</td></tr>
+          <tr><td>PT-141</td><td>Sexual health</td><td><span class="dash">—</span></td><td><span class="dash">—</span></td><td><span class="dash">—</span></td><td><span class="dash">—</span></td><td><span class="check">●●●</span></td><td><span class="dash">—</span></td><td>As needed</td></tr>
+          <tr><td>Tadalafil/Oxytocin</td><td>Sexual health++</td><td><span class="dash">—</span></td><td><span class="dash">—</span></td><td><span class="dash">—</span></td><td><span class="dash">—</span></td><td><span class="check">●●●</span></td><td><span class="check">●</span></td><td>As needed</td></tr>
+          <tr><td>SLU-PP-332</td><td>Exercise mimetic</td><td><span class="check">●●●</span></td><td><span class="check">●●</span></td><td><span class="check">●</span></td><td><span class="check">●●</span></td><td><span class="dash">—</span></td><td><span class="check">●</span></td><td>Daily</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p style="font-size:.76rem;color:var(--muted);margin-top:14px">● Moderate &nbsp;·&nbsp; ●● Strong &nbsp;·&nbsp; ●●● Primary / best-in-class</p>
+  </div>
+</section>
+
+<!-- SAFETY -->
+<section id="safety" style="padding:80px 24px">
+  <div class="container">
+    <span class="section-eyebrow">Safety First</span>
+    <h2 class="section-title">Our <em>Clinical Standards</em></h2>
+    <p class="section-sub">Emerald Wellness operates at the intersection of cutting-edge and responsible medicine.</p>
+    <div class="safety-grid">
+      <div class="safety-card">
+        <h3>How We Keep You Safe</h3>
+        <ul class="safety-list">
+          <li><span class="icon">🧬</span><span>All compounds sourced from FDA-registered, cGMP-certified compounding pharmacies</span></li>
+          <li><span class="icon">🩺</span><span>Licensed physician reviews every protocol before dispensing — no automated approvals</span></li>
+          <li><span class="icon">🔬</span><span>Certificate of Analysis (COA) available for every compound batch</span></li>
+          <li><span class="icon">📊</span><span>Required baseline labs before initiation — we know your starting point</span></li>
+          <li><span class="icon">🔄</span><span>Mandatory follow-up labs at 90 days — adjustments expected, not optional</span></li>
+          <li><span class="icon">💬</span><span>Direct practitioner messaging through member dashboard, 7 days a week</span></li>
+          <li><span class="icon">⚡</span><span>Emergency consultation line for adverse reaction guidance</span></li>
+        </ul>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:24px">
+        <div class="disclaimer-box">
+          <h4>⚠ Medical Disclaimer</h4>
+          <p>Peptide therapy is a rapidly evolving field. Many compounds on this page are research chemicals or compounded preparations not FDA-approved for every listed indication. All protocols at Emerald Wellness are prescribed by licensed practitioners following individualized clinical assessment. This page is educational and does not constitute medical advice. Results vary by individual. Consult a qualified healthcare provider before initiating any injectable therapy.</p>
+        </div>
+        <div class="safety-card">
+          <h3>Contraindications to Discuss</h3>
+          <ul class="safety-list">
+            <li><span class="icon">🚫</span><span>Active malignancy — GH-stimulating peptides require oncology clearance</span></li>
+            <li><span class="icon">🚫</span><span>Pregnancy or breastfeeding — all injectables contraindicated</span></li>
+            <li><span class="icon">🚫</span><span>Personal or family history of MEN2 — GLP-1 agents contraindicated</span></li>
+            <li><span class="icon">🚫</span><span>Uncontrolled diabetes — requires endocrinology coordination</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section style="background:var(--bg-card);padding:80px 24px" id="faq">
+  <div class="container">
+    <span class="section-eyebrow">Common Questions</span>
+    <h2 class="section-title">What Members <em>Ask First</em></h2>
+    <div class="faq-list">
+      <div class="faq-item open">
+        <div class="faq-q">How do I reconstitute a lyophilized peptide?<span class="toggle">−</span></div>
+        <div class="faq-a">Draw the appropriate volume of bacteriostatic water into your syringe and inject it slowly into the vial, aiming at the glass wall — never directly onto the powder. Swirl gently; never shake. Once dissolved, refrigerate and use within 28 days. Your Full Kit includes bacteriostatic water and a step-by-step guide.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">What is the difference between Semaglutide, Tirzepatide, and Retatrutide?<span class="toggle">+</span></div>
+        <div class="faq-a">Semaglutide is a single GLP-1 agonist — the proven gold standard. Tirzepatide adds GIP receptor activation (dual agonist) for superior weight loss in head-to-head trials. Retatrutide adds glucagon receptor activation (triple agonist) for maximum fat oxidation and metabolic rate elevation. Most members start with tirzepatide and escalate to retatrutide if they plateau. Your physician determines the right starting point based on your labs and history.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">What are the GLOW and KLOW stacks?<span class="toggle">+</span></div>
+        <div class="faq-a">GLOW is our pre-mixed BPC-157 + GHK-Cu + TB-500 stack — combining local repair, systemic angiogenesis, and 4,000-gene collagen remodeling activation in one vial. KLOW builds on GLOW by adding KPV, a potent NF-κB inhibiting anti-inflammatory tripeptide, making it our most advanced longevity and anti-inflammatory protocol — ideal for autoimmune conditions or chronic inflammation.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Can I combine peptides into a stack?<span class="toggle">+</span></div>
+        <div class="faq-a">Yes — our pre-mixed combos (CJC/Ipamorelin, Wolverine, GLOW, KLOW) make stacking easy and convenient. Custom stacks are designed by your physician based on your specific goals and biomarkers. All stacking is physician-approved — we do not permit self-directed stacking outside practitioner guidance.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Is peptide therapy legal in the United States?<span class="toggle">+</span></div>
+        <div class="faq-a">Peptide therapy prescribed by a licensed US physician and dispensed by an FDA-registered compounding pharmacy is legal medical practice. Emerald Wellness operates exclusively within this framework. We only include compounds for which a legitimate medical prescribing pathway exists. We do not ship internationally.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">How do I know which products are right for me?<span class="toggle">+</span></div>
+        <div class="faq-a">Start with a lab panel — our Men's Essential, Women's Essential, or TruLab TRT Panel provides the biomarker baseline your physician needs to recommend the right protocol. Most members begin with one core compound (a GLP-1 for weight loss, or a GH secretagogue for body composition and aging) and add compounds over time based on lab results and response. Your physician designs the roadmap.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section" id="consult" style="padding:100px 24px">
+  <div class="cta-glow"></div>
+  <div class="container" style="position:relative">
+    <span class="section-eyebrow">Begin Today</span>
+    <h2 class="section-title" style="margin-bottom:20px">Your Protocol Starts<br/><em>With Your Lab Work</em></h2>
+    <p class="section-sub" style="margin:0 auto 48px">Most people start the wrong peptide because no one looked at their biomarkers first. We do it right.</p>
+    <div style="display:flex;gap:16px;flex-wrap:wrap;justify-content:center">
+      <a href="/signup.html" class="btn-primary">Start My Assessment</a>
+      <a href="/" class="btn-outline">Learn About Membership</a>
+    </div>
+    <p style="font-size:.78rem;color:var(--muted);margin-top:28px">No commitment required to begin · Physician consultation included with all tiers</p>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-logo">EMERALD <span>✦</span> WELLNESS</div>
+  <p style="margin-bottom:12px">© 2025 Emerald Wellness LLC · Columbus, Ohio · <a href="/privacy.html">Privacy Policy</a> · <a href="/terms.html">Terms of Service</a></p>
+  <p>This page is for informational purposes only and does not constitute medical advice. All protocols are physician-prescribed and individually evaluated.</p>
+</footer>
+
+<script>
+  const tabs = document.querySelectorAll('.tab-btn');
+  const cards = document.querySelectorAll('.peptide-card[data-cat]');
+  let activeFilter = 'all', activeSearch = '';
+
+  function applyFilters() {
+    let visible = 0;
+    cards.forEach(card => {
+      const catMatch = activeFilter === 'all' || card.dataset.cat === activeFilter;
+      const nameMatch = !activeSearch || (card.dataset.name || '').includes(activeSearch) || card.innerText.toLowerCase().includes(activeSearch);
+      if (catMatch && nameMatch) { card.classList.remove('hidden'); visible++; }
+      else card.classList.add('hidden');
+    });
+    document.getElementById('resultCount').textContent = visible;
+    document.getElementById('noResults').classList.toggle('visible', visible === 0);
+  }
+
+  tabs.forEach(btn => {
+    btn.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      btn.classList.add('active');
+      activeFilter = btn.dataset.filter;
+      applyFilters();
+    });
+  });
+
+  document.getElementById('searchInput').addEventListener('input', e => {
+    activeSearch = e.target.value.toLowerCase().trim();
+    applyFilters();
+  });
+
+  document.querySelectorAll('.faq-item').forEach(item => {
+    item.querySelector('.faq-q').addEventListener('click', () => {
+      const isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item').forEach(i => { i.classList.remove('open'); i.querySelector('.toggle').textContent = '+'; });
+      if (!isOpen) { item.classList.add('open'); item.querySelector('.toggle').textContent = '−'; }
+    });
+  });
+
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.style.opacity='1'; e.target.style.transform='translateY(0)'; } });
+  }, { threshold: 0.06 });
+  document.querySelectorAll('.peptide-card, .how-step, .safety-card').forEach(el => {
+    el.style.opacity='0'; el.style.transform='translateY(20px)';
+    el.style.transition='opacity 0.5s ease, transform 0.5s ease';
+    observer.observe(el);
+  });
+</script>
+</body>
+</html>
