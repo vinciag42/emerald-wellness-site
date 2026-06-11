@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Join Emerald Wellness | Choose Your Membership</title>
+  <meta name="description" content="Choose your Emerald Wellness membership tier — Silver, Gold, Emerald Elite, or Pro Practitioner Suite. Physician-supervised peptide therapy and hormone optimization."/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@300;400;500;600&family=Cinzel:wght@400;600&display=swap" rel="stylesheet"/>
+  <style>
+    :root{--bg:#050d07;--bg-card:#0b1a0e;--emerald:#2ecc71;--emerald-dim:#1a7a43;--gold:#c9a84c;--cream:#f0ece0;--muted:#7a8f7e;--border:rgba(46,204,113,0.12);--border-gold:rgba(201,168,76,0.25);--white:#ffffff;--ff-display:'Playfair Display',serif;--ff-cinzel:'Cinzel',serif;--ff-body:'DM Sans',sans-serif;--radius-pill:40px;--radius-card:16px;--transition:0.3s cubic-bezier(0.4,0,0.2,1)}
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{background:var(--bg);color:var(--cream);font-family:var(--ff-body);font-size:16px;line-height:1.7;overflow-x:hidden}
+    a{color:inherit;text-decoration:none}
+    ::-webkit-scrollbar{width:6px}::-webkit-scrollbar-track{background:var(--bg)}::-webkit-scrollbar-thumb{background:var(--emerald-dim);border-radius:3px}
+
+    nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:18px 48px;background:rgba(5,13,7,0.94);backdrop-filter:blur(16px);border-bottom:1px solid var(--border)}
+    .nav-logo{font-family:var(--ff-cinzel);font-size:1.1rem;letter-spacing:.18em;color:var(--emerald)}
+    .nav-logo span{color:var(--gold)}
+    .nav-links{display:flex;align-items:center;gap:28px}
+    .nav-links a{font-size:.82rem;font-weight:500;color:var(--muted);letter-spacing:.06em;transition:var(--transition)}
+    .nav-links a:hover{color:var(--emerald)}
+    .nav-back{background:transparent;border:1px solid var(--border);color:var(--muted);font-size:.82rem;font-weight:500;padding:8px 20px;border-radius:var(--radius-pill);transition:var(--transition)}
+    .nav-back:hover{border-color:var(--emerald);color:var(--emerald)}
+
+    .page-hero{padding:140px 24px 60px;text-align:center}
+    .eyebrow{font-family:var(--ff-cinzel);font-size:.7rem;letter-spacing:.3em;color:var(--gold);text-transform:uppercase;margin-bottom:16px;display:block}
+    h1{font-family:var(--ff-display);font-size:clamp(2.4rem,5vw,4rem);font-weight:700;line-height:1.1;color:var(--white);margin-bottom:20px}
+    h1 em{font-style:italic;color:var(--emerald)}
+    .hero-sub{font-size:1rem;color:var(--muted);max-width:520px;margin:0 auto 16px}
+    .trial-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(46,204,113,0.08);border:1px solid rgba(46,204,113,0.2);border-radius:var(--radius-pill);padding:8px 20px;font-size:.8rem;color:var(--emerald);font-weight:600;margin-top:8px}
+
+    /* TIERS */
+    .tiers-section{padding:60px 24px 100px}
+    .container{max-width:1200px;margin:0 auto}
+    .tiers-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px;margin-bottom:60px}
+    .tier-card{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius-card);padding:36px 28px;position:relative;overflow:hidden;display:flex;flex-direction:column;transition:var(--transition)}
+    .tier-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px}
+    .tier-card:hover{transform:translateY(-4px);box-shadow:0 20px 60px rgba(0,0,0,0.5)}
+    .tier-silver::before{background:linear-gradient(90deg,#8a9ba8,#b0c4cc)}
+    .tier-gold::before{background:linear-gradient(90deg,var(--gold),#e8c97a)}
+    .tier-elite::before{background:linear-gradient(90deg,var(--emerald),var(--gold))}
+    .tier-pro::before{background:linear-gradient(90deg,#7ec8ff,var(--emerald))}
+    .tier-elite{border-color:var(--border-gold);background:linear-gradient(145deg,#0b1a0e,#0e1e10)}
+    .popular-badge{position:absolute;top:18px;right:18px;background:var(--gold);color:var(--bg);font-family:var(--ff-cinzel);font-size:.62rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;padding:4px 11px;border-radius:var(--radius-pill)}
+    .tier-name-label{font-family:var(--ff-cinzel);font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);margin-bottom:10px}
+    .tier-name{font-family:var(--ff-display);font-size:1.8rem;font-weight:700;color:var(--white);margin-bottom:16px;line-height:1.1}
+    .tier-silver .tier-name{color:#b0c4cc}
+    .tier-gold .tier-name{color:var(--gold)}
+    .tier-elite .tier-name{color:var(--emerald)}
+    .tier-pro .tier-name{color:#7ec8ff}
+    .tier-price{margin-bottom:8px}
+    .price-amount{font-family:var(--ff-display);font-size:2.6rem;font-weight:700;color:var(--white);line-height:1}
+    .price-period{font-size:.8rem;color:var(--muted);margin-left:4px}
+    .trial-note{font-size:.75rem;color:var(--emerald);margin-bottom:24px}
+    .tier-desc{font-size:.84rem;color:var(--muted);line-height:1.7;margin-bottom:24px}
+    .tier-features{list-style:none;flex:1;margin-bottom:28px;display:flex;flex-direction:column;gap:9px}
+    .tier-features li{font-size:.82rem;color:var(--cream);display:flex;align-items:flex-start;gap:9px}
+    .tier-features li::before{content:'✦';color:var(--emerald);font-size:.55rem;margin-top:5px;flex-shrink:0}
+    .tier-features li.dim{color:var(--muted)}
+    .tier-features li.dim::before{color:var(--muted)}
+    .btn-tier{width:100%;font-family:var(--ff-body);font-weight:700;font-size:.88rem;letter-spacing:.05em;padding:14px 24px;border-radius:var(--radius-pill);border:none;cursor:pointer;transition:var(--transition);margin-top:auto}
+    .btn-silver{background:rgba(176,196,204,0.1);color:#b0c4cc;border:1px solid rgba(176,196,204,0.3)}
+    .btn-silver:hover{background:rgba(176,196,204,0.2)}
+    .btn-gold{background:rgba(201,168,76,0.12);color:var(--gold);border:1px solid var(--border-gold)}
+    .btn-gold:hover{background:var(--gold);color:var(--bg)}
+    .btn-elite{background:var(--emerald);color:var(--bg)}
+    .btn-elite:hover{background:var(--gold);box-shadow:0 0 28px rgba(201,168,76,0.3)}
+    .btn-pro{background:rgba(126,200,255,0.1);color:#7ec8ff;border:1px solid rgba(126,200,255,0.25)}
+    .btn-pro:hover{background:#7ec8ff;color:var(--bg)}
+
+    /* SIGNUP FORM */
+    .signup-form-section{background:var(--bg-card);padding:80px 24px}
+    .form-wrapper{max-width:560px;margin:0 auto}
+    .section-eyebrow{font-family:var(--ff-cinzel);font-size:.7rem;letter-spacing:.3em;color:var(--gold);text-transform:uppercase;margin-bottom:16px;display:block;text-align:center}
+    .section-title{font-family:var(--ff-display);font-size:clamp(1.8rem,4vw,2.8rem);font-weight:700;color:var(--white);line-height:1.15;margin-bottom:12px;text-align:center}
+    .section-title em{font-style:italic;color:var(--emerald)}
+    .section-sub{font-size:.9rem;color:var(--muted);text-align:center;margin-bottom:40px}
+
+    .selected-tier-display{background:rgba(46,204,113,0.06);border:1px solid var(--border);border-radius:12px;padding:16px 20px;margin-bottom:28px;display:flex;align-items:center;justify-content:space-between}
+    .selected-tier-name{font-family:var(--ff-display);font-size:1.1rem;font-weight:600;color:var(--white)}
+    .selected-tier-price{font-size:.85rem;color:var(--emerald);font-weight:600}
+
+    .form-group{margin-bottom:14px}
+    .form-label{font-size:.72rem;color:var(--muted);letter-spacing:.1em;text-transform:uppercase;margin-bottom:6px;display:block}
+    .form-input{width:100%;background:rgba(5,13,7,0.8);border:1px solid var(--border);border-radius:var(--radius-pill);padding:13px 20px;font-family:var(--ff-body);font-size:.88rem;color:var(--cream);outline:none;transition:var(--transition)}
+    .form-input::placeholder{color:var(--muted)}
+    .form-input:focus{border-color:var(--emerald)}
+    .form-row-2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+    .form-select{width:100%;background:rgba(5,13,7,0.8);border:1px solid var(--border);border-radius:var(--radius-pill);padding:13px 20px;font-family:var(--ff-body);font-size:.88rem;color:var(--cream);outline:none;transition:var(--transition);appearance:none;cursor:pointer}
+    .form-select:focus{border-color:var(--emerald)}
+    .form-select option{background:var(--bg-card)}
+    .btn-submit{width:100%;background:var(--emerald);color:var(--bg);font-family:var(--ff-body);font-weight:700;font-size:.95rem;letter-spacing:.05em;padding:16px 32px;border-radius:var(--radius-pill);border:none;cursor:pointer;transition:var(--transition);margin-top:8px}
+    .btn-submit:hover{background:var(--gold);box-shadow:0 0 32px rgba(201,168,76,0.3)}
+    .form-legal{font-size:.72rem;color:var(--muted);text-align:center;margin-top:14px;line-height:1.6}
+    .form-legal a{color:var(--emerald)}
+    .success-box{display:none;text-align:center;padding:40px;background:rgba(46,204,113,0.06);border:1px solid rgba(46,204,113,0.2);border-radius:var(--radius-card)}
+    .success-box.show{display:block}
+    .success-box h3{font-family:var(--ff-display);font-size:1.6rem;font-weight:600;color:var(--white);margin-bottom:12px}
+    .success-box p{font-size:.9rem;color:var(--muted)}
+
+    footer{padding:48px 24px;border-top:1px solid var(--border);text-align:center}
+    .footer-logo{font-family:var(--ff-cinzel);font-size:1rem;letter-spacing:.2em;color:var(--emerald);margin-bottom:14px}
+    .footer-logo span{color:var(--gold)}
+    footer p{font-size:.78rem;color:var(--muted)}
+    footer a{color:var(--emerald)}
+
+    @media(max-width:768px){nav{padding:16px 20px}.nav-links{display:none}.tiers-grid{grid-template-columns:1fr}.form-row-2{grid-template-columns:1fr}}
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo">EMERALD <span>✦</span> WELLNESS</div>
+  <div class="nav-links">
+    <a href="/peptides.html">Protocols</a>
+    <a href="/coming-soon.html">Home</a>
+  </div>
+  <a href="/coming-soon.html" class="nav-back">← Back</a>
+</nav>
+
+<div class="page-hero">
+  <span class="eyebrow">Founding Member Access</span>
+  <h1>Choose Your<br/><em>Optimization Path</em></h1>
+  <p class="hero-sub">Every tier includes physician review, home lab panel, and direct practitioner access. Start with a $1 / 7-day trial.</p>
+  <div class="trial-badge">✦ $1.00 / 7-Day Trial on All Tiers</div>
+</div>
+
+<section class="tiers-section">
+  <div class="container">
+    <div class="tiers-grid">
+
+      <!-- SILVER -->
+      <div class="tier-card tier-silver">
+        <div class="tier-name-label">Tier 01</div>
+        <div class="tier-name">Silver</div>
+        <div class="tier-price">
+          <span class="price-amount">$75</span><span class="price-period">/mo</span>
+        </div>
+        <div class="trial-note">$1.00 / 7-day trial</div>
+        <p class="tier-desc">The essential entry point — physician review, labs, and a single foundational protocol to begin your optimization journey.</p>
+        <ul class="tier-features">
+          <li>Physician protocol review &amp; approval</li>
+          <li>1 compound protocol per month</li>
+          <li>Essential lab panel (home kit)</li>
+          <li>Member dashboard access</li>
+          <li>Health Practitioner Advocate (AI)</li>
+          <li>Email practitioner support</li>
+          <li class="dim">Premium compound access</li>
+          <li class="dim">Stacking protocols</li>
+        </ul>
+        <button class="btn-tier btn-silver" onclick="selectTier('Silver', 75)">Start Silver Trial →</button>
+      </div>
+
+      <!-- GOLD -->
+      <div class="tier-card tier-gold">
+        <div class="tier-name-label">Tier 02</div>
+        <div class="tier-name">Gold</div>
+        <div class="tier-price">
+          <span class="price-amount">$150</span><span class="price-period">/mo</span>
+        </div>
+        <div class="trial-note">$1.00 / 7-day trial</div>
+        <p class="tier-desc">Expanded protocols and full compound catalog access — the right tier for weight loss, hormone optimization, or active recovery goals.</p>
+        <ul class="tier-features">
+          <li>Everything in Silver</li>
+          <li>Up to 3 compounds per month</li>
+          <li>Full compound catalog access</li>
+          <li>Comprehensive lab panel (home kit)</li>
+          <li>Quarterly physician check-in</li>
+          <li>Priority compound shipping</li>
+          <li>Stacking protocol guidance</li>
+          <li class="dim">TRT/HRT membership included</li>
+        </ul>
+        <button class="btn-tier btn-gold" onclick="selectTier('Gold', 150)">Start Gold Trial →</button>
+      </div>
+
+      <!-- EMERALD ELITE -->
+      <div class="tier-card tier-elite">
+        <div class="popular-badge">Most Popular</div>
+        <div class="tier-name-label">Tier 03</div>
+        <div class="tier-name">Emerald Elite</div>
+        <div class="tier-price">
+          <span class="price-amount">$200</span><span class="price-period">/mo</span>
+        </div>
+        <div class="trial-note">$1.00 / 7-day trial</div>
+        <p class="tier-desc">Our flagship tier — unlimited compound access, TRT/HRT included, monthly physician check-ins, and the full longevity protocol suite.</p>
+        <ul class="tier-features">
+          <li>Everything in Gold</li>
+          <li>Unlimited compound access</li>
+          <li>TRT or HRT membership included</li>
+          <li>Monthly physician check-ins</li>
+          <li>Advanced longevity protocols (NAD+, SS-31, Epithalon)</li>
+          <li>90-day monitoring lab panels</li>
+          <li>All pre-mixed stacks (Wolverine, GLOW, KLOW)</li>
+          <li>Direct practitioner messaging (7 days/week)</li>
+        </ul>
+        <button class="btn-tier btn-elite" onclick="selectTier('Emerald Elite', 200)">Start Elite Trial →</button>
+      </div>
+
+      <!-- PRO PRACTITIONER -->
+      <div class="tier-card tier-pro">
+        <div class="tier-name-label">Tier 04</div>
+        <div class="tier-name">Pro Practitioner Suite</div>
+        <div class="tier-price">
+          <span class="price-amount">$300</span><span class="price-period">/mo</span>
+        </div>
+        <div class="trial-note">$1.00 / 7-day trial</div>
+        <p class="tier-desc">For healthcare professionals and clinical operators — manage multiple patients, access clinical protocols, and integrate with your practice.</p>
+        <ul class="tier-features">
+          <li>Everything in Emerald Elite</li>
+          <li>Multi-patient management dashboard</li>
+          <li>Clinical protocol library access</li>
+          <li>HIPAA-compliant patient data handling</li>
+          <li>Bulk compound ordering discounts</li>
+          <li>Practice integration support</li>
+          <li>Dedicated account manager</li>
+          <li>White-label options available</li>
+        </ul>
+        <button class="btn-tier btn-pro" onclick="selectTier('Pro Practitioner Suite', 300)">Start Pro Trial →</button>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section class="signup-form-section" id="signup-form">
+  <div class="container">
+    <div class="form-wrapper">
+      <span class="section-eyebrow">Get Started</span>
+      <h2 class="section-title">Begin Your <em>Assessment</em></h2>
+      <p class="section-sub">Complete your profile and a physician will reach out within 24 hours to begin your lab panel and protocol design.</p>
+
+      <div class="selected-tier-display" id="tierDisplay" style="display:none">
+        <div>
+          <div style="font-size:.68rem;color:var(--muted);text-transform:uppercase;letter-spacing:.1em;margin-bottom:2px">Selected Tier</div>
+          <div class="selected-tier-name" id="tierName">—</div>
+        </div>
+        <div class="selected-tier-price" id="tierPrice">—</div>
+      </div>
+
+      <div id="formBox">
+        <div class="form-row-2">
+          <div class="form-group">
+            <label class="form-label">First Name</label>
+            <input class="form-input" type="text" id="fName" placeholder="Jane" autocomplete="given-name"/>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Last Name</label>
+            <input class="form-input" type="text" id="lName" placeholder="Smith" autocomplete="family-name"/>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Email Address</label>
+          <input class="form-input" type="email" id="emailField" placeholder="jane@example.com" autocomplete="email"/>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Phone (optional)</label>
+          <input class="form-input" type="tel" id="phoneField" placeholder="+1 (614) 555-0100" autocomplete="tel"/>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Primary Health Goal</label>
+          <select class="form-select" id="goalField">
+            <option value="" disabled selected>Select your primary goal…</option>
+            <option value="weight">Weight loss &amp; metabolic health</option>
+            <option value="hormone">Hormone optimization (TRT/HRT)</option>
+            <option value="longevity">Longevity &amp; anti-aging</option>
+            <option value="recovery">Recovery &amp; injury healing</option>
+            <option value="nad">NAD+ &amp; cellular energy</option>
+            <option value="sexual">Sexual health</option>
+            <option value="cognitive">Cognitive performance</option>
+            <option value="all">Full optimization — all of the above</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Membership Tier</label>
+          <select class="form-select" id="tierField">
+            <option value="" disabled selected>Choose a tier…</option>
+            <option value="Silver">Silver — $75/mo</option>
+            <option value="Gold">Gold — $150/mo</option>
+            <option value="Emerald Elite">Emerald Elite — $200/mo (Most Popular)</option>
+            <option value="Pro Practitioner Suite">Pro Practitioner Suite — $300/mo</option>
+          </select>
+        </div>
+        <button class="btn-submit" onclick="submitSignup()">Start My $1 Trial →</button>
+        <div class="form-legal">
+          By joining you agree to our <a href="/terms.html">Terms of Service</a> and <a href="/privacy.html">Privacy Policy</a>. Your $1 trial converts to your selected monthly plan after 7 days. Cancel anytime before the trial ends at no charge.
+        </div>
+      </div>
+
+      <div class="success-box" id="successBox">
+        <div style="font-size:2rem;margin-bottom:16px">✦</div>
+        <h3>You're In.</h3>
+        <p>Welcome to Emerald Wellness. A physician will contact you within 24 hours to schedule your intake and begin your lab panel. Check your email for confirmation.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-logo">EMERALD <span>✦</span> WELLNESS</div>
+  <p>© 2025 Emerald Wellness LLC · Columbus, Ohio · <a href="/privacy.html">Privacy</a> · <a href="/terms.html">Terms</a></p>
+</footer>
+
+<script>
+  function selectTier(name, price) {
+    document.getElementById('tierDisplay').style.display = 'flex';
+    document.getElementById('tierName').textContent = name;
+    document.getElementById('tierPrice').textContent = '$' + price + '/mo · $1 trial';
+    document.getElementById('tierField').value = name;
+    document.getElementById('signup-form').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    setTimeout(() => document.getElementById('fName').focus(), 600);
+  }
+
+  async function submitSignup() {
+    const fName = document.getElementById('fName').value.trim();
+    const lName = document.getElementById('lName').value.trim();
+    const email = document.getElementById('emailField').value.trim();
+    const phone = document.getElementById('phoneField').value.trim();
+    const goal = document.getElementById('goalField').value;
+    const tier = document.getElementById('tierField').value;
+    const btn = document.querySelector('.btn-submit');
+
+    if (!email || !email.includes('@')) {
+      document.getElementById('emailField').style.borderColor = '#ff6b6b';
+      document.getElementById('emailField').focus();
+      return;
+    }
+
+    btn.textContent = 'Processing…';
+    btn.disabled = true;
+
+    try {
+      await fetch('https://mczpuffmlspmghgneukz.supabase.co/rest/v1/waitlist', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'apikey': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im1jenB1ZmZtbHNwbWdoZ25ldWt6Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDc3NTg3NjUsImV4cCI6MjA2MzMzNDc2NX0.Xh4vIzGVwJJHdRIBBVABikMkuFg4CR4Ii4OSMhIJZOg',
+          'Prefer': 'return=minimal'
+        },
+        body: JSON.stringify({ first_name: fName, last_name: lName, email, phone, goal, tier, source: 'signup' })
+      });
+
+      await fetch('https://mczpuffmlspmghgneukz.supabase.co/functions/v1/klaviyo-signup', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email, firstName: fName, lastName: lName, goal, tier, source: 'signup' })
+      }).catch(() => {});
+
+      document.getElementById('formBox').style.display = 'none';
+      document.getElementById('successBox').classList.add('show');
+    } catch (err) {
+      btn.textContent = 'Try Again';
+      btn.disabled = false;
+    }
+  }
+</script>
+</body>
+</html>
