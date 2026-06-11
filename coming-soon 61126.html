@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Emerald Wellness | Launching Soon</title>
+  <meta name="description" content="Emerald Wellness — physician-supervised peptide therapy, hormone optimization, NAD+, and longevity protocols. Join the waitlist for early access."/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@300;400;500;600&family=Cinzel:wght@400;600&display=swap" rel="stylesheet"/>
+  <style>
+    :root{--bg:#050d07;--bg-card:#0b1a0e;--emerald:#2ecc71;--emerald-dim:#1a7a43;--gold:#c9a84c;--cream:#f0ece0;--muted:#7a8f7e;--border:rgba(46,204,113,0.12);--border-gold:rgba(201,168,76,0.25);--white:#ffffff;--ff-display:'Playfair Display',serif;--ff-cinzel:'Cinzel',serif;--ff-body:'DM Sans',sans-serif;--radius-pill:40px;--radius-card:16px;--transition:0.3s cubic-bezier(0.4,0,0.2,1)}
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{background:var(--bg);color:var(--cream);font-family:var(--ff-body);font-size:16px;line-height:1.7;overflow-x:hidden;min-height:100vh}
+    a{color:inherit;text-decoration:none}
+    ::-webkit-scrollbar{width:6px}::-webkit-scrollbar-track{background:var(--bg)}::-webkit-scrollbar-thumb{background:var(--emerald-dim);border-radius:3px}
+
+    /* NAV */
+    nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:18px 48px;background:rgba(5,13,7,0.94);backdrop-filter:blur(16px);border-bottom:1px solid var(--border)}
+    .nav-logo{font-family:var(--ff-cinzel);font-size:1.1rem;letter-spacing:.18em;color:var(--emerald)}
+    .nav-logo span{color:var(--gold)}
+    .nav-links{display:flex;align-items:center;gap:28px}
+    .nav-links a{font-size:.82rem;font-weight:500;color:var(--muted);letter-spacing:.06em;transition:var(--transition)}
+    .nav-links a:hover{color:var(--emerald)}
+    .nav-cta{background:var(--emerald);color:var(--bg);font-weight:700;font-size:.82rem;padding:9px 22px;border-radius:var(--radius-pill);transition:var(--transition)}
+    .nav-cta:hover{background:var(--gold)}
+
+    /* HERO */
+    .hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:120px 24px 80px;position:relative;overflow:hidden}
+    .hero-bg{position:absolute;inset:0;background-image:linear-gradient(rgba(46,204,113,0.04) 1px,transparent 1px),linear-gradient(90deg,rgba(46,204,113,0.04) 1px,transparent 1px);background-size:60px 60px;mask-image:radial-gradient(ellipse 80% 60% at 50% 50%,black 40%,transparent 100%)}
+    .hero-glow{position:absolute;width:800px;height:800px;background:radial-gradient(circle,rgba(46,204,113,0.07) 0%,transparent 70%);top:50%;left:50%;transform:translate(-50%,-50%);pointer-events:none}
+    .eyebrow{font-family:var(--ff-cinzel);font-size:.7rem;letter-spacing:.35em;color:var(--gold);text-transform:uppercase;margin-bottom:24px;position:relative}
+    h1{font-family:var(--ff-display);font-size:clamp(2.8rem,6vw,5.5rem);font-weight:700;line-height:1.08;color:var(--white);max-width:860px;margin-bottom:28px;position:relative}
+    h1 em{font-style:italic;color:var(--emerald)}
+    .hero-sub{font-size:1.1rem;font-weight:300;color:var(--muted);max-width:560px;margin-bottom:56px;position:relative;line-height:1.75}
+
+    /* WAITLIST FORM */
+    .waitlist-box{position:relative;background:linear-gradient(145deg,#0b1a0e,#0a1710);border:1px solid var(--border-gold);border-radius:var(--radius-card);padding:48px 40px;max-width:540px;width:100%;margin:0 auto}
+    .waitlist-box::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--gold),var(--emerald));border-radius:var(--radius-card) var(--radius-card) 0 0}
+    .waitlist-label{font-family:var(--ff-cinzel);font-size:.68rem;letter-spacing:.25em;color:var(--gold);text-transform:uppercase;margin-bottom:20px;display:block}
+    .waitlist-title{font-family:var(--ff-display);font-size:1.6rem;font-weight:700;color:var(--white);margin-bottom:8px}
+    .waitlist-sub{font-size:.88rem;color:var(--muted);margin-bottom:28px;line-height:1.65}
+    .form-row{display:flex;gap:10px;margin-bottom:12px}
+    .form-input{flex:1;background:rgba(5,13,7,0.8);border:1px solid var(--border);border-radius:var(--radius-pill);padding:13px 20px;font-family:var(--ff-body);font-size:.88rem;color:var(--cream);outline:none;transition:var(--transition)}
+    .form-input::placeholder{color:var(--muted)}
+    .form-input:focus{border-color:var(--emerald)}
+    .form-select{width:100%;background:rgba(5,13,7,0.8);border:1px solid var(--border);border-radius:var(--radius-pill);padding:13px 20px;font-family:var(--ff-body);font-size:.88rem;color:var(--cream);outline:none;transition:var(--transition);margin-bottom:12px;appearance:none;cursor:pointer}
+    .form-select:focus{border-color:var(--emerald)}
+    .form-select option{background:var(--bg-card);color:var(--cream)}
+    .btn-waitlist{width:100%;background:var(--emerald);color:var(--bg);font-family:var(--ff-body);font-weight:700;font-size:.95rem;letter-spacing:.06em;padding:15px 32px;border-radius:var(--radius-pill);border:none;cursor:pointer;transition:var(--transition);margin-top:4px}
+    .btn-waitlist:hover{background:var(--gold);box-shadow:0 0 32px rgba(201,168,76,0.3)}
+    .form-note{font-size:.72rem;color:var(--muted);text-align:center;margin-top:14px}
+    .success-msg{display:none;text-align:center;padding:20px;background:rgba(46,204,113,0.08);border:1px solid rgba(46,204,113,0.2);border-radius:12px;color:var(--emerald);font-size:.9rem;margin-top:16px}
+    .success-msg.show{display:block}
+
+    /* STATS */
+    .stats-row{display:flex;gap:56px;justify-content:center;flex-wrap:wrap;margin-top:64px;position:relative;padding-top:48px}
+    .stats-row::before{content:'';position:absolute;top:0;left:50%;transform:translateX(-50%);width:160px;height:1px;background:linear-gradient(90deg,transparent,var(--emerald-dim),transparent)}
+    .stat{text-align:center}
+    .stat-n{font-family:var(--ff-display);font-size:2.2rem;font-weight:700;color:var(--emerald);line-height:1}
+    .stat-l{font-size:.72rem;color:var(--muted);letter-spacing:.12em;text-transform:uppercase;margin-top:4px}
+
+    /* FEATURES */
+    .features{padding:100px 24px;background:var(--bg-card)}
+    .container{max-width:1100px;margin:0 auto}
+    .section-eyebrow{font-family:var(--ff-cinzel);font-size:.7rem;letter-spacing:.3em;color:var(--gold);text-transform:uppercase;margin-bottom:16px;display:block;text-align:center}
+    .section-title{font-family:var(--ff-display);font-size:clamp(2rem,4vw,3rem);font-weight:700;color:var(--white);line-height:1.15;margin-bottom:16px;text-align:center}
+    .section-title em{font-style:italic;color:var(--emerald)}
+    .section-sub{font-size:1rem;color:var(--muted);max-width:520px;margin:0 auto 64px;text-align:center}
+    .features-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px}
+    .feature-card{background:var(--bg);border:1px solid var(--border);border-radius:var(--radius-card);padding:36px 30px;transition:var(--transition)}
+    .feature-card:hover{border-color:rgba(46,204,113,0.25);transform:translateY(-3px)}
+    .feature-icon{font-size:2rem;margin-bottom:18px}
+    .feature-card h3{font-family:var(--ff-display);font-size:1.2rem;font-weight:600;color:var(--white);margin-bottom:10px}
+    .feature-card p{font-size:.88rem;color:var(--muted);line-height:1.75}
+
+    /* PRODUCTS PREVIEW */
+    .products-preview{padding:100px 24px}
+    .preview-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px;margin-bottom:40px}
+    .preview-pill{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius-card);padding:20px 24px;display:flex;align-items:center;gap:12px;transition:var(--transition)}
+    .preview-pill:hover{border-color:rgba(46,204,113,0.25)}
+    .preview-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
+    .dot-green{background:var(--emerald)}
+    .dot-gold{background:var(--gold)}
+    .dot-blue{background:#7ec8ff}
+    .dot-purple{background:#d87fff}
+    .dot-pink{background:#ffaadd}
+    .dot-orange{background:#ffaa7a}
+    .preview-pill span{font-size:.84rem;font-weight:500;color:var(--cream)}
+    .preview-cta{text-align:center}
+    .btn-explore{display:inline-flex;align-items:center;gap:10px;background:transparent;border:1px solid var(--emerald);color:var(--emerald);font-family:var(--ff-body);font-weight:600;font-size:.9rem;padding:14px 36px;border-radius:var(--radius-pill);transition:var(--transition);cursor:pointer}
+    .btn-explore:hover{background:var(--emerald);color:var(--bg)}
+
+    /* PROMISE */
+    .promise{padding:100px 24px;background:var(--bg-card)}
+    .promise-inner{max-width:780px;margin:0 auto;text-align:center}
+    .promise-quote{font-family:var(--ff-display);font-size:clamp(1.3rem,3vw,2rem);font-style:italic;color:var(--cream);line-height:1.5;margin-bottom:28px}
+    .promise-quote strong{color:var(--emerald);font-style:normal}
+    .promise-author{font-family:var(--ff-cinzel);font-size:.7rem;letter-spacing:.2em;color:var(--gold);text-transform:uppercase}
+
+    /* FOOTER */
+    footer{padding:48px 24px;border-top:1px solid var(--border);text-align:center}
+    .footer-logo{font-family:var(--ff-cinzel);font-size:1rem;letter-spacing:.2em;color:var(--emerald);margin-bottom:16px}
+    .footer-logo span{color:var(--gold)}
+    footer p{font-size:.78rem;color:var(--muted);margin-bottom:8px}
+    footer a{color:var(--emerald)}
+    .footer-links{display:flex;gap:24px;justify-content:center;flex-wrap:wrap;margin:16px 0}
+    .footer-links a{font-size:.78rem;color:var(--muted);transition:var(--transition)}
+    .footer-links a:hover{color:var(--emerald)}
+
+    @media(max-width:768px){nav{padding:16px 20px}.nav-links{display:none}.waitlist-box{padding:32px 24px}.form-row{flex-direction:column}.stats-row{gap:32px}}
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo">EMERALD <span>✦</span> WELLNESS</div>
+  <div class="nav-links">
+    <a href="/peptides.html">Protocols</a>
+    <a href="#features">Platform</a>
+    <a href="#products">Products</a>
+  </div>
+  <a href="/signup.html" class="nav-cta">Join Waitlist</a>
+</nav>
+
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-glow"></div>
+
+  <span class="eyebrow">Coming Soon · Columbus, Ohio</span>
+  <h1>Physician-Grade Optimization.<br/><em>Built For Your Biology.</em></h1>
+  <p class="hero-sub">Emerald Wellness is launching a full-spectrum health optimization platform — peptide therapy, hormone replacement, NAD+, longevity protocols, and precision diagnostics. All physician-supervised. All personalized.</p>
+
+  <div class="waitlist-box">
+    <span class="waitlist-label">Early Access</span>
+    <div class="waitlist-title">Join the Founding Member Waitlist</div>
+    <p class="waitlist-sub">Founding members receive locked-in pricing, priority onboarding, and exclusive access to protocols before public launch.</p>
+
+    <div class="form-row">
+      <input class="form-input" type="text" id="firstName" placeholder="First name" autocomplete="given-name"/>
+      <input class="form-input" type="text" id="lastName" placeholder="Last name" autocomplete="family-name"/>
+    </div>
+    <input class="form-input" type="email" id="emailInput" placeholder="Your email address" autocomplete="email" style="width:100%;margin-bottom:12px"/>
+    <select class="form-select" id="goalSelect">
+      <option value="" disabled selected>Primary health goal…</option>
+      <option value="weight">Weight loss &amp; metabolic health</option>
+      <option value="hormone">Hormone optimization (TRT/HRT)</option>
+      <option value="longevity">Longevity &amp; anti-aging</option>
+      <option value="recovery">Recovery &amp; performance</option>
+      <option value="nad">NAD+ &amp; cellular energy</option>
+      <option value="sexual">Sexual health</option>
+      <option value="all">Full optimization — all of the above</option>
+    </select>
+    <button class="btn-waitlist" onclick="submitWaitlist()">Reserve My Spot →</button>
+    <div class="form-note">No credit card required · Unsubscribe anytime · Your data is never sold</div>
+    <div class="success-msg" id="successMsg">
+      ✦ You're on the list! We'll reach out before launch with your founding member access.
+    </div>
+  </div>
+
+  <div class="stats-row">
+    <div class="stat"><div class="stat-n">78+</div><div class="stat-l">Compounds Available</div></div>
+    <div class="stat"><div class="stat-n">500+</div><div class="stat-l">Biomarkers Tracked</div></div>
+    <div class="stat"><div class="stat-n">4</div><div class="stat-l">Membership Tiers</div></div>
+    <div class="stat"><div class="stat-n">1:1</div><div class="stat-l">Physician Access</div></div>
+  </div>
+</section>
+
+<section class="features" id="features">
+  <div class="container">
+    <span class="section-eyebrow">The Platform</span>
+    <h2 class="section-title">Everything In <em>One Place</em></h2>
+    <p class="section-sub">Emerald Wellness integrates your labs, protocols, compounds, and practitioners into a seamless member experience.</p>
+
+    <div class="features-grid">
+      <div class="feature-card">
+        <div class="feature-icon">🧬</div>
+        <h3>Physician-Supervised Protocols</h3>
+        <p>Every compound requires a licensed physician review. No automated approvals, no guessing. Your protocol is designed by someone who has reviewed your labs.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🔬</div>
+        <h3>Home Lab Panels</h3>
+        <p>Comprehensive diagnostic panels with home collection kits — shipped to you, results in 3–5 days, reviewed by your practitioner before any protocol begins.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">💊</div>
+        <h3>Pharmaceutical-Grade Compounds</h3>
+        <p>All compounds sourced from FDA-registered, cGMP-certified compounding pharmacies. Certificate of Analysis available for every batch.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">📊</div>
+        <h3>Health Practitioner Advocate</h3>
+        <p>Your AI-powered health optimization guide — tracks your biomarkers, protocol history, and goals to surface personalized insights between practitioner check-ins.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🔄</div>
+        <h3>Ongoing Optimization</h3>
+        <p>Monthly check-ins, 90-day lab re-testing, and real-time protocol adjustments. Your biology changes — your protocol should too.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">📦</div>
+        <h3>Discreet Doorstep Delivery</h3>
+        <p>Your compounds, syringes, swabs, and reconstitution supplies arrive in discreet, temperature-appropriate packaging. Everything you need, nothing you don't.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="products-preview" id="products">
+  <div class="container">
+    <span class="section-eyebrow">Protocol Catalog</span>
+    <h2 class="section-title">78+ Compounds Across <em>12 Categories</em></h2>
+    <p class="section-sub">From GLP-1 weight loss agents to mitochondrial longevity peptides — every protocol in one platform.</p>
+
+    <div class="preview-grid">
+      <div class="preview-pill"><span class="preview-dot dot-green"></span><span>Semaglutide / Tirzepatide / Retatrutide</span></div>
+      <div class="preview-pill"><span class="preview-dot dot-gold"></span><span>CJC-1295 / Ipamorelin / Tesamorelin</span></div>
+      <div class="preview-pill"><span class="preview-dot dot-orange"></span><span>Signature TRT Membership</span></div>
+      <div class="preview-pill"><span class="preview-dot dot-pink"></span><span>Signature HRT Membership</span></div>
+      <div class="preview-pill"><span class="preview-dot dot-purple"></span><span>PT-141 / Oxytocin / Tadalafil ODT</span></div>
+      <div class="preview-pill"><span class="preview-dot dot-gold"></span><span>Wolverine Stack (BPC-157 / TB-500)</span></div>
+      <div class="preview-pill"><span class="preview-dot dot-green"></span><span>GLOW + KLOW Longevity Stacks</span></div>
+      <div class="preview-pill"><span class="preview-dot dot-blue"></span><span>Epithalon / SS-31 / MOTS-C / GHK-Cu</span></div>
+      <div class="preview-pill"><span class="preview-dot dot-blue"></span><span>NAD+ 100mg → 2000mg</span></div>
+      <div class="preview-pill"><span class="preview-dot dot-purple"></span><span>Semax / Selank / SLU-PP-332</span></div>
+      <div class="preview-pill"><span class="preview-dot dot-green"></span><span>Thymosin Alpha-1 / Glutathione</span></div>
+      <div class="preview-pill"><span class="preview-dot dot-blue"></span><span>Men's &amp; Women's Lab Panels</span></div>
+    </div>
+
+    <div class="preview-cta">
+      <a href="/peptides.html" class="btn-explore">Explore Full Catalog → </a>
+    </div>
+  </div>
+</section>
+
+<section class="promise">
+  <div class="container">
+    <div class="promise-inner">
+      <span class="section-eyebrow">Our Promise</span>
+      <p class="promise-quote">"Emerald Wellness exists because <strong>precision medicine shouldn't be reserved for the ultra-wealthy.</strong> Every person deserves access to the same science, the same compounds, and the same physician-level guidance that elite performers use to stay ahead of aging."</p>
+      <div class="promise-author">— Vincia, Founder & CEO, Emerald Wellness LLC</div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-logo">EMERALD <span>✦</span> WELLNESS</div>
+  <div class="footer-links">
+    <a href="/peptides.html">Protocols</a>
+    <a href="/signup.html">Join Waitlist</a>
+    <a href="/privacy.html">Privacy Policy</a>
+    <a href="/terms.html">Terms of Service</a>
+  </div>
+  <p>© 2025 Emerald Wellness LLC · Columbus, Ohio</p>
+  <p style="margin-top:8px">This site is for informational purposes only and does not constitute medical advice. All protocols are physician-prescribed and individually evaluated.</p>
+</footer>
+
+<script>
+  async function submitWaitlist() {
+    const firstName = document.getElementById('firstName').value.trim();
+    const lastName = document.getElementById('lastName').value.trim();
+    const email = document.getElementById('emailInput').value.trim();
+    const goal = document.getElementById('goalSelect').value;
+    const btn = document.querySelector('.btn-waitlist');
+
+    if (!email || !email.includes('@')) {
+      document.getElementById('emailInput').style.borderColor = '#ff6b6b';
+      document.getElementById('emailInput').focus();
+      return;
+    }
+
+    btn.textContent = 'Joining…';
+    btn.disabled = true;
+
+    try {
+      // Supabase waitlist insert
+      const res = await fetch('https://mczpuffmlspmghgneukz.supabase.co/rest/v1/waitlist', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'apikey': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im1jenB1ZmZtbHNwbWdoZ25ldWt6Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDc3NTg3NjUsImV4cCI6MjA2MzMzNDc2NX0.Xh4vIzGVwJJHdRIBBVABikMkuFg4CR4Ii4OSMhIJZOg',
+          'Prefer': 'return=minimal'
+        },
+        body: JSON.stringify({ first_name: firstName, last_name: lastName, email, goal, source: 'coming-soon' })
+      });
+
+      // Klaviyo track
+      await fetch('https://mczpuffmlspmghgneukz.supabase.co/functions/v1/klaviyo-signup', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email, firstName, lastName, goal, source: 'coming-soon' })
+      }).catch(() => {});
+
+      document.getElementById('successMsg').classList.add('show');
+      btn.textContent = '✦ You\'re on the list!';
+      btn.style.background = 'var(--gold)';
+    } catch (err) {
+      btn.textContent = 'Try Again';
+      btn.disabled = false;
+    }
+  }
+
+  // Scroll reveal
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.style.opacity='1'; e.target.style.transform='translateY(0)'; } });
+  }, { threshold: 0.08 });
+  document.querySelectorAll('.feature-card, .preview-pill, .stat').forEach(el => {
+    el.style.opacity='0'; el.style.transform='translateY(18px)';
+    el.style.transition='opacity 0.5s ease, transform 0.5s ease';
+    observer.observe(el);
+  });
+</script>
+</body>
+</html>
