@@ -1,0 +1,1067 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Emerald Wellness — AI Command Center</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap');
+:root{--bg:#050d07;--surface:#0d1f12;--card:#112318;--border:#1a3a22;--em:#10b981;--emD:#065f46;--emL:#6ee7b7;--gold:#d4a017;--goldL:#f5d060;--white:#f0fdf4;--gray:#6b7280;--grayL:#9ca3af;--red:#ef4444;--radius:10px;--fh:'Playfair Display',serif;--fb:'DM Sans',sans-serif;--fm:'DM Mono',monospace}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--white);font-family:var(--fb);min-height:100vh;display:flex;flex-direction:column}
+.topbar{display:flex;align-items:center;justify-content:space-between;padding:0 24px;height:56px;background:var(--surface);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:100}
+.logo{display:flex;align-items:center;gap:10px}
+.logo-text{font-family:var(--fh);font-size:17px;color:var(--white)}
+.logo-badge{font-size:10px;background:var(--emD);color:var(--emL);padding:2px 8px;border-radius:20px;font-weight:600;letter-spacing:1px}
+.topbar-right{display:flex;align-items:center;gap:12px}
+.conn-pill{font-size:11px;padding:4px 12px;border-radius:20px;font-weight:600;cursor:pointer;border:none;font-family:var(--fb)}
+.conn-pill.connected{background:#052e16;color:var(--emL);border:1px solid var(--emD)}
+.conn-pill.disconnected{background:#1f0808;color:#fca5a5;border:1px solid #991b1b}
+.conn-pill.loading{background:#1a1a00;color:var(--gold);border:1px solid #92400e}
+.ai-dot{width:7px;height:7px;border-radius:50%;background:var(--em);animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
+.tabs{display:flex;background:var(--surface);border-bottom:1px solid var(--border);overflow-x:auto;padding:0 16px;gap:2px;scrollbar-width:none}
+.tabs::-webkit-scrollbar{display:none}
+.tab{padding:11px 16px;font-size:13px;font-weight:500;color:var(--gray);cursor:pointer;border-bottom:2px solid transparent;white-space:nowrap;transition:color .15s,border-color .15s;display:flex;align-items:center;gap:6px;background:none;border-top:none;border-left:none;border-right:none;font-family:var(--fb)}
+.tab:hover{color:var(--emL)}
+.tab.active{color:var(--em);border-bottom-color:var(--em)}
+.main{flex:1;padding:22px;max-width:1200px;margin:0 auto;width:100%}
+.panel{display:none}.panel.active{display:block}
+.card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:20px;margin-bottom:16px}
+.card-title{font-size:12px;font-weight:700;color:var(--gold);letter-spacing:1.5px;text-transform:uppercase;margin-bottom:14px;display:flex;align-items:center;gap:8px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.grid3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px}
+.grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.stat{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:16px;text-align:center}
+.stat-val{font-family:var(--fh);font-size:30px;color:var(--gold);font-weight:700}
+.stat-label{font-size:10px;color:var(--grayL);margin-top:3px;letter-spacing:.5px;text-transform:uppercase}
+.stat-sub{font-size:11px;color:var(--em);margin-top:3px}
+.stat-live{font-size:10px;color:var(--grayL);background:var(--emD);padding:1px 6px;border-radius:10px;display:inline-block;margin-top:4px}
+label{font-size:12px;color:var(--grayL);display:block;margin-bottom:4px;font-weight:500}
+input,textarea,select{width:100%;background:var(--surface);border:1px solid var(--border);border-radius:7px;color:var(--white);font-family:var(--fb);font-size:13px;padding:9px 12px;outline:none;transition:border-color .15s;margin-bottom:11px}
+input:focus,textarea:focus,select:focus{border-color:var(--em)}
+textarea{resize:vertical;min-height:85px}
+select option{background:var(--surface)}
+.btn{display:inline-flex;align-items:center;gap:7px;padding:9px 18px;border-radius:8px;font-size:13px;font-weight:600;cursor:pointer;transition:all .15s;border:none;font-family:var(--fb)}
+.btn-primary{background:var(--em);color:#050d07}.btn-primary:hover{background:var(--emL)}
+.btn-gold{background:var(--gold);color:#050d07}.btn-gold:hover{background:var(--goldL)}
+.btn-outline{background:transparent;border:1px solid var(--border);color:var(--grayL)}.btn-outline:hover{border-color:var(--em);color:var(--em)}
+.btn-danger{background:transparent;border:1px solid #991b1b;color:var(--red)}
+.btn-sm{padding:6px 12px;font-size:12px}
+.btn-row{display:flex;gap:8px;flex-wrap:wrap;margin-top:4px}
+.ai-output{background:#030a05;border:1px solid var(--emD);border-radius:8px;padding:14px;font-size:13px;line-height:1.75;color:var(--white);min-height:80px;white-space:pre-wrap;word-break:break-word}
+.ai-output.loading{color:var(--grayL);font-style:italic}
+.ai-label{font-size:10px;color:var(--emL);font-weight:700;letter-spacing:1px;margin-bottom:8px;display:flex;align-items:center;gap:6px;text-transform:uppercase}
+.badge{display:inline-block;padding:2px 8px;border-radius:20px;font-size:10px;font-weight:700;letter-spacing:.5px}
+.b-green{background:#052e16;color:var(--emL)}.b-gold{background:#1c1200;color:var(--gold)}.b-red{background:#1f0808;color:#fca5a5}.b-blue{background:#0c1a2e;color:#93c5fd}.b-gray{background:var(--surface);color:var(--grayL)}
+table{width:100%;border-collapse:collapse;font-size:13px}
+th{text-align:left;padding:9px 12px;font-size:10px;color:var(--grayL);letter-spacing:.5px;font-weight:700;border-bottom:1px solid var(--border);text-transform:uppercase}
+td{padding:10px 12px;border-bottom:1px solid #0d1f12;color:var(--white);vertical-align:middle}
+tr:hover td{background:#0d1f12}
+.progress-wrap{background:var(--surface);border-radius:20px;height:5px;width:100%;overflow:hidden;margin-top:5px}
+.progress-bar{height:5px;border-radius:20px;background:linear-gradient(90deg,var(--emD),var(--em));transition:width .8s}
+.section-header{margin-bottom:20px}
+.section-header h2{font-family:var(--fh);font-size:22px;color:var(--white);font-weight:600}
+.section-header p{font-size:13px;color:var(--grayL);margin-top:4px}
+hr{border:none;border-top:1px solid var(--border);margin:14px 0}
+.chat-wrap{display:flex;flex-direction:column;gap:10px;max-height:300px;overflow-y:auto;padding-right:4px;margin-bottom:12px}
+.chat-msg{padding:10px 14px;border-radius:10px;font-size:13px;line-height:1.6;max-width:88%}
+.chat-msg.user{background:var(--emD);color:var(--white);align-self:flex-end}
+.chat-msg.ai{background:var(--surface);border:1px solid var(--border);color:var(--white);align-self:flex-start}
+.toggle-row{display:flex;align-items:center;justify-content:space-between;padding:10px 0;border-bottom:1px solid var(--border)}
+.toggle-row:last-child{border-bottom:none}
+.tname{font-size:13px;font-weight:500;color:var(--white)}
+.tdesc{font-size:11px;color:var(--grayL);margin-top:2px}
+.toggle{position:relative;width:38px;height:21px;flex-shrink:0}
+.toggle input{opacity:0;width:0;height:0}
+.toggle-slider{position:absolute;inset:0;background:var(--border);border-radius:21px;cursor:pointer;transition:.2s}
+.toggle-slider::before{content:'';position:absolute;width:15px;height:15px;left:3px;top:3px;background:white;border-radius:50%;transition:.2s}
+.toggle input:checked+.toggle-slider{background:var(--em)}
+.toggle input:checked+.toggle-slider::before{transform:translateX(17px)}
+.cal-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:8px}
+.cal-day{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:10px 8px;min-height:90px}
+.cal-day-name{font-size:10px;color:var(--gold);font-weight:700;letter-spacing:1px;margin-bottom:6px;text-transform:uppercase}
+.cal-post{font-size:9px;color:var(--grayL);background:var(--emD);border-radius:4px;padding:3px 5px;margin-top:4px;line-height:1.3}
+.cal-post.gold-post{background:#2a1a00;color:var(--gold)}
+.setup-step{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:14px;margin-bottom:10px}
+.setup-num{width:28px;height:28px;border-radius:50%;background:var(--emD);border:2px solid var(--em);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;color:var(--white);flex-shrink:0}
+.setup-num.done{background:var(--em);color:#050d07}
+.live-row{display:flex;align-items:center;gap:8px;padding:8px 0;border-bottom:1px solid var(--border);font-size:13px}
+.live-row:last-child{border-bottom:none}
+.live-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
+.live-dot.on{background:var(--em)}
+.live-dot.off{background:var(--red)}
+.live-dot.warn{background:var(--gold)}
+::-webkit-scrollbar{width:4px;height:4px}
+::-webkit-scrollbar-thumb{background:var(--border);border-radius:2px}
+.flex{display:flex}.items-center{align-items:center}.gap8{gap:8px}.gap12{gap:12px}.jbet{justify-content:space-between}
+.mt8{margin-top:8px}.mt12{margin-top:12px}.mt16{margin-top:16px}.mb8{margin-bottom:8px}.mb12{margin-bottom:12px}
+.text-sm{font-size:12px}.text-gold{color:var(--gold)}.text-em{color:var(--em)}.text-gray{color:var(--grayL)}.mono{font-family:var(--fm)}
+.alert{padding:10px 14px;border-radius:8px;font-size:12px;margin-bottom:12px;display:flex;gap:8px;align-items:flex-start}
+.alert-info{background:#0c1a2e;border:1px solid #1e3a5f;color:#93c5fd}
+.alert-warn{background:#1c1200;border:1px solid #92400e;color:var(--goldL)}
+.alert-success{background:#052e16;border:1px solid var(--emD);color:var(--emL)}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="logo">
+    <span style="font-size:20px">💎</span>
+    <span class="logo-text">Emerald Wellness</span>
+    <span class="logo-badge">AI COMMAND CENTER</span>
+  </div>
+  <div class="topbar-right">
+    <button class="conn-pill loading" id="sb-pill" onclick="testConnections()">⟳ Supabase</button>
+    <button class="conn-pill loading" id="kl-pill" onclick="testConnections()">⟳ Klaviyo</button>
+    <button class="conn-pill loading" id="ai-pill" onclick="testConnections()">⟳ Claude AI</button>
+    <div class="flex items-center gap8 text-sm text-gray"><span class="ai-dot"></span> Live</div>
+  </div>
+</div>
+
+<div class="tabs">
+  <button class="tab active" onclick="switchTab('dashboard')" id="tab-dashboard">📊 Dashboard</button>
+  <button class="tab" onclick="switchTab('leads')" id="tab-leads">👥 Leads & Members</button>
+  <button class="tab" onclick="switchTab('content')" id="tab-content">✍️ AI Content</button>
+  <button class="tab" onclick="switchTab('email')" id="tab-email">📧 Email Builder</button>
+  <button class="tab" onclick="switchTab('social')" id="tab-social">📱 Social AI</button>
+  <button class="tab" onclick="switchTab('reputation')" id="tab-reputation">🛡️ Reputation</button>
+  <button class="tab" onclick="switchTab('calls')" id="tab-calls">📞 Call Scripts</button>
+  <button class="tab" onclick="switchTab('calendar')" id="tab-calendar">📅 Calendar</button>
+  <button class="tab" onclick="switchTab('setup')" id="tab-setup">🔧 Setup & Keys</button>
+</div>
+
+<div class="main">
+
+<!-- ════════════════════════════════════════
+     DASHBOARD
+════════════════════════════════════════ -->
+<div class="panel active" id="panel-dashboard">
+  <div class="section-header">
+    <h2>Command Center</h2>
+    <p>Live data from Supabase + Klaviyo — updated every time you load</p>
+  </div>
+
+  <div class="grid4" style="margin-bottom:16px">
+    <div class="stat"><div class="stat-val" id="d-waitlist">—</div><div class="stat-label">Waitlist Signups</div><div class="stat-live">📡 Supabase live</div></div>
+    <div class="stat"><div class="stat-val" id="d-members">—</div><div class="stat-label">Active Members</div><div class="stat-live">📡 Supabase live</div></div>
+    <div class="stat"><div class="stat-val" id="d-klaviyo">—</div><div class="stat-label">Klaviyo Profiles</div><div class="stat-live">📡 Klaviyo live</div></div>
+    <div class="stat"><div class="stat-val text-gold">$526</div><div class="stat-label">Saved This Month</div><div class="stat-live">vs. 3rd-party tools</div></div>
+  </div>
+
+  <div class="grid2">
+    <div class="card">
+      <div class="card-title">📡 Live Connection Status</div>
+      <div id="connection-status">
+        <div class="live-row"><span class="live-dot warn" id="dot-sb"></span><div><div class="tname">Supabase Database</div><div class="tdesc" id="status-sb">Checking connection...</div></div></div>
+        <div class="live-row"><span class="live-dot warn" id="dot-kl"></span><div><div class="tname">Klaviyo Email (List: XEEg3P)</div><div class="tdesc" id="status-kl">Checking connection...</div></div></div>
+        <div class="live-row"><span class="live-dot warn" id="dot-ai"></span><div><div class="tname">Claude AI Engine</div><div class="tdesc" id="status-ai">Checking connection...</div></div></div>
+        <div class="live-row"><span class="live-dot on"></span><div><div class="tname">Stripe Payments</div><div class="tdesc">4 tiers live — Silver, Gold, Emerald Elite, Pro Practitioner</div></div></div>
+        <div class="live-row"><span class="live-dot on"></span><div><div class="tname">Vercel + GitHub</div><div class="tdesc">emerald-wellness-site.vercel.app — auto-deploys on push</div></div></div>
+      </div>
+      <hr>
+      <button class="btn btn-outline btn-sm" onclick="testConnections()">🔄 Refresh Status</button>
+    </div>
+
+    <div class="card">
+      <div class="card-title">🕐 Recent Waitlist Signups — Supabase Live</div>
+      <div id="recent-signups">
+        <div class="text-gray text-sm" style="padding:8px 0">Loading from Supabase...</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">⚡ Quick Actions — Connected</div>
+    <div class="btn-row">
+      <button class="btn btn-primary" onclick="switchTab('leads')">👥 View All Leads</button>
+      <button class="btn btn-gold" onclick="switchTab('email')">📧 Build Email Sequence</button>
+      <button class="btn btn-outline" onclick="switchTab('content')">✍️ Generate Content</button>
+      <button class="btn btn-outline" onclick="switchTab('reputation')">🛡️ Draft Review Response</button>
+      <button class="btn btn-outline" onclick="switchTab('setup')">🔧 Configure API Keys</button>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">💰 Monthly Savings Tracker</div>
+    <div style="display:flex;flex-direction:column;gap:11px">
+      <div><div class="flex jbet mb8"><span class="text-sm">Jasper AI (Content Writing)</span><span class="text-em text-sm mono">$49 saved</span></div><div class="progress-wrap"><div class="progress-bar" style="width:100%"></div></div></div>
+      <div><div class="flex jbet mb8"><span class="text-sm">ManyChat (Social Automation)</span><span class="text-em text-sm mono">$79 saved</span></div><div class="progress-wrap"><div class="progress-bar" style="width:100%"></div></div></div>
+      <div><div class="flex jbet mb8"><span class="text-sm">Marlie AI (Call Backup)</span><span class="text-em text-sm mono">$99 saved</span></div><div class="progress-wrap"><div class="progress-bar" style="width:100%"></div></div></div>
+      <div><div class="flex jbet mb8"><span class="text-sm">Buffer/Later (Scheduling)</span><span class="text-em text-sm mono">$15 saved</span></div><div class="progress-wrap"><div class="progress-bar" style="width:100%"></div></div></div>
+      <div><div class="flex jbet mb8"><span class="text-sm">Zapier (Automation Glue)</span><span class="text-em text-sm mono">$20 saved</span></div><div class="progress-wrap"><div class="progress-bar" style="width:100%"></div></div></div>
+      <div><div class="flex jbet mb8"><span class="text-sm">Birdeye (Deferred to Month 3)</span><span class="text-gold text-sm mono">$299 deferred</span></div><div class="progress-wrap"><div class="progress-bar" style="width:60%;background:linear-gradient(90deg,#2a1a00,var(--gold))"></div></div></div>
+    </div>
+    <hr><div class="flex jbet items-center"><span style="font-size:14px;font-weight:600">Total Saved This Month</span><span style="font-family:var(--fh);font-size:24px;color:var(--gold)">$526</span></div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════
+     LEADS & MEMBERS
+════════════════════════════════════════ -->
+<div class="panel" id="panel-leads">
+  <div class="section-header"><h2>Leads & Members</h2><p>Live from your Supabase database — synced with Klaviyo</p></div>
+
+  <div class="card">
+    <div class="card-title">➕ Add New Lead — Syncs to Supabase + Klaviyo Instantly</div>
+    <div class="grid2">
+      <div>
+        <label>Full Name</label><input id="lead-name" placeholder="e.g. Sarah Johnson" />
+        <label>Email Address</label><input id="lead-email" type="email" placeholder="sarah@email.com" />
+        <label>Tier Interest</label>
+        <select id="lead-tier">
+          <option value="silver">Silver ($75/mo)</option>
+          <option value="gold">Gold ($150/mo)</option>
+          <option value="elite">Emerald Elite ($200/mo)</option>
+          <option value="practitioner">Pro Practitioner ($300/mo)</option>
+          <option value="unknown">Not sure yet</option>
+        </select>
+      </div>
+      <div>
+        <label>Source</label>
+        <select id="lead-source">
+          <option value="instagram">Instagram DM</option>
+          <option value="facebook">Facebook</option>
+          <option value="website">Website</option>
+          <option value="referral">Referral</option>
+          <option value="call">Phone Call</option>
+          <option value="event">Event / Networking</option>
+          <option value="linkedin">LinkedIn</option>
+          <option value="healthcare">Healthcare Partner</option>
+        </select>
+        <label>Notes</label>
+        <textarea id="lead-notes" style="min-height:60px" placeholder="Any notes about this lead..."></textarea>
+        <div class="btn-row">
+          <button class="btn btn-primary" onclick="addLead()">⚡ Add to Supabase + Klaviyo</button>
+        </div>
+        <div id="lead-result" class="mt8"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">👥 Waitlist — Live from Supabase</div>
+    <div id="leads-table-wrap">
+      <div class="text-gray text-sm" style="padding:16px 0;text-align:center">Loading from Supabase...</div>
+    </div>
+    <div class="btn-row mt12">
+      <button class="btn btn-outline btn-sm" onclick="loadLeads()">🔄 Refresh</button>
+      <button class="btn btn-outline btn-sm" onclick="exportLeads()">📋 Export CSV</button>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">📧 Trigger Klaviyo Flow for a Lead</div>
+    <div class="grid2">
+      <div>
+        <label>Lead Email</label><input id="flow-email" placeholder="email@example.com" />
+        <label>Flow to Trigger</label>
+        <select id="flow-name">
+          <option value="EW_WaitlistWelcome">Waitlist Welcome</option>
+          <option value="EW_TrialStarted">Trial Started</option>
+          <option value="EW_TrialEnding">Trial Ending (Day 6)</option>
+          <option value="EW_MemberOnboarding">Member Onboarding</option>
+          <option value="EW_UpgradeOffer">Upgrade Offer</option>
+          <option value="EW_ReEngagement">Re-Engagement</option>
+        </select>
+      </div>
+      <div>
+        <label>Tier</label>
+        <select id="flow-tier"><option value="silver">Silver</option><option value="gold">Gold</option><option value="elite">Emerald Elite</option><option value="pro">Pro Practitioner</option></select>
+        <div class="btn-row mt12">
+          <button class="btn btn-gold" onclick="triggerFlow()">🚀 Trigger Klaviyo Flow</button>
+        </div>
+        <div id="flow-result" class="mt8"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════
+     AI CONTENT WRITER
+════════════════════════════════════════ -->
+<div class="panel" id="panel-content">
+  <div class="section-header"><h2>AI Content Writer</h2><p>Powered by Claude AI — Emerald Wellness brand voice baked in</p></div>
+  <div class="grid2">
+    <div class="card">
+      <div class="card-title">✍️ Generate Content</div>
+      <label>Content Type</label>
+      <select id="ct-type">
+        <option value="instagram">Instagram Caption</option>
+        <option value="facebook">Facebook Post</option>
+        <option value="linkedin">LinkedIn Article Intro</option>
+        <option value="tiktok">TikTok Script (60 sec)</option>
+        <option value="youtube">YouTube Description</option>
+        <option value="twitter">X / Twitter (3 variations)</option>
+        <option value="blog">Blog Post Introduction</option>
+        <option value="email-subject">Email Subject Lines (5 options)</option>
+        <option value="sms">SMS Messages (3 variations)</option>
+        <option value="ad">Facebook/IG Ad Copy</option>
+        <option value="pinterest">Pinterest Pin Description</option>
+      </select>
+      <label>Topic</label>
+      <input id="ct-topic" placeholder="e.g. NAD+ for energy and longevity, Peptide protocols, Gut health..." />
+      <label>Tone</label>
+      <select id="ct-tone">
+        <option value="empowering">Empowering & Motivational</option>
+        <option value="scientific">Scientific & Educational</option>
+        <option value="luxury">Luxury & Premium</option>
+        <option value="urgent">Urgent & CTA-focused</option>
+        <option value="storytelling">Storytelling & Personal</option>
+      </select>
+      <label>Call to Action</label>
+      <select id="ct-cta">
+        <option value="trial">$1 / 7-day Trial</option>
+        <option value="book">Book Free Strategy Call</option>
+        <option value="learn">Learn More at emeraldwellness.health</option>
+        <option value="none">No CTA</option>
+      </select>
+      <div class="btn-row"><button class="btn btn-primary" onclick="generateContent()">⚡ Generate with Claude AI</button><button class="btn btn-outline btn-sm" onclick="clearField('ct-output','Ready for content...')">Clear</button></div>
+    </div>
+    <div class="card">
+      <div class="ai-label"><span class="ai-dot"></span> Claude AI — Emerald Wellness Brand Voice</div>
+      <div class="ai-output" id="ct-output">Your content will appear here. Powered by Claude AI with your brand voice built in.</div>
+      <hr>
+      <div class="btn-row mt8">
+        <button class="btn btn-outline btn-sm" onclick="copyText('ct-output')">📋 Copy</button>
+        <button class="btn btn-outline btn-sm" onclick="generateContent()">🔄 Regenerate</button>
+        <button class="btn btn-outline btn-sm" onclick="switchTab('calendar')">📅 Add to Calendar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════
+     EMAIL BUILDER
+════════════════════════════════════════ -->
+<div class="panel" id="panel-email">
+  <div class="section-header"><h2>Email Sequence Builder</h2><p>Generate complete emails — paste directly into Klaviyo</p></div>
+  <div class="grid2">
+    <div class="card">
+      <div class="card-title">📧 Build Email</div>
+      <label>Sequence</label>
+      <select id="em-type">
+        <option value="welcome">Welcome / Onboarding (Email 1 of 7)</option>
+        <option value="trial-1">Trial Conversion — Day 1</option>
+        <option value="trial-3">Trial Conversion — Day 3</option>
+        <option value="trial-5">Trial Conversion — Day 5 (Upgrade Offer)</option>
+        <option value="trial-6">Trial Conversion — Day 6 (URGENCY)</option>
+        <option value="abandoned">Abandoned Signup — Email 1</option>
+        <option value="post-call">Post-Consultation — 48hr Follow-up</option>
+        <option value="upgrade-30">Upgrade Nudge — Day 30</option>
+        <option value="reengagement">Re-Engagement — Email 1</option>
+        <option value="newsletter">Monthly Newsletter</option>
+      </select>
+      <label>Member Tier</label>
+      <select id="em-tier">
+        <option value="silver">Silver ($75/mo)</option>
+        <option value="gold">Gold ($150/mo)</option>
+        <option value="elite">Emerald Elite ($200/mo)</option>
+        <option value="pro">Pro Practitioner ($300/mo)</option>
+        <option value="general">General / Pre-Signup</option>
+      </select>
+      <label>First Name Variable</label>
+      <input id="em-fname" value="{{ first_name|default:'Friend' }}" />
+      <div class="btn-row"><button class="btn btn-primary" onclick="generateEmail()">⚡ Generate Email</button></div>
+    </div>
+    <div class="card">
+      <div class="ai-label"><span class="ai-dot"></span> Klaviyo-Ready Email</div>
+      <div class="ai-output" id="em-output" style="min-height:220px">Your complete email — subject line, preview text, and full body — will appear here ready to paste into Klaviyo.</div>
+      <hr>
+      <div class="btn-row mt8">
+        <button class="btn btn-gold btn-sm" onclick="copyText('em-output')">📋 Copy for Klaviyo</button>
+        <button class="btn btn-outline btn-sm" onclick="generateEmail()">🔄 Regenerate</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">📊 Sequence Progress Tracker</div>
+    <table><thead><tr><th>Sequence</th><th>Emails</th><th>Trigger</th><th>Status</th><th>Generate</th></tr></thead>
+    <tbody>
+      <tr><td>Pre-Launch Waitlist</td><td>5</td><td>On signup</td><td><span class="badge b-green">✅ LIVE</span></td><td>—</td></tr>
+      <tr><td>Welcome / Onboarding</td><td>7</td><td>Paid signup</td><td><span class="badge b-gold">🔨 BUILD</span></td><td><button class="btn btn-primary btn-sm" onclick="quickEmail('welcome')">Generate</button></td></tr>
+      <tr><td>Trial Conversion</td><td>4</td><td>$1 trial start</td><td><span class="badge b-gold">🔨 BUILD</span></td><td><button class="btn btn-primary btn-sm" onclick="quickEmail('trial-1')">Generate</button></td></tr>
+      <tr><td>Abandoned Signup</td><td>3</td><td>Form incomplete</td><td><span class="badge b-gold">🔨 BUILD</span></td><td><button class="btn btn-primary btn-sm" onclick="quickEmail('abandoned')">Generate</button></td></tr>
+      <tr><td>Post-Consultation</td><td>2</td><td>48hr after call</td><td><span class="badge b-gold">🔨 BUILD</span></td><td><button class="btn btn-primary btn-sm" onclick="quickEmail('post-call')">Generate</button></td></tr>
+      <tr><td>Upgrade Nudge</td><td>3</td><td>Day 30/60/90</td><td><span class="badge b-gold">🔨 BUILD</span></td><td><button class="btn btn-primary btn-sm" onclick="quickEmail('upgrade-30')">Generate</button></td></tr>
+      <tr><td>Re-Engagement</td><td>3</td><td>No open 30 days</td><td><span class="badge b-gold">🔨 BUILD</span></td><td><button class="btn btn-primary btn-sm" onclick="quickEmail('reengagement')">Generate</button></td></tr>
+    </tbody></table>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════
+     SOCIAL AI
+════════════════════════════════════════ -->
+<div class="panel" id="panel-social">
+  <div class="section-header"><h2>Social DM Automation</h2><p>AI-generated DM flows for every platform and scenario</p></div>
+  <div class="grid2">
+    <div class="card">
+      <div class="card-title">🤖 Build DM Flow</div>
+      <label>Platform</label>
+      <select id="so-platform"><option value="instagram">Instagram DM</option><option value="facebook">Facebook Messenger</option><option value="whatsapp">WhatsApp</option><option value="linkedin">LinkedIn Message</option><option value="twitter">X / Twitter DM</option></select>
+      <label>Trigger Keyword</label>
+      <input id="so-keyword" placeholder="e.g. pricing, join, membership, trial, supplements" />
+      <label>Visitor Type</label>
+      <select id="so-visitor"><option value="personal">Personal Wellness Seeker</option><option value="practitioner">Healthcare Practitioner</option><option value="general">General Inquiry</option><option value="objection-price">Price Objection</option><option value="objection-trust">Skeptical / Trust Objection</option></select>
+      <div class="btn-row"><button class="btn btn-primary" onclick="generateDM()">⚡ Generate DM Flow</button></div>
+    </div>
+    <div class="card">
+      <div class="ai-label"><span class="ai-dot"></span> DM Flow Script — Copy into Your Platform</div>
+      <div class="ai-output" id="so-output">Your complete DM automation flow will appear here — ready to copy into Instagram, ManyChat, or whatever platform you use.</div>
+      <hr><div class="btn-row mt8"><button class="btn btn-outline btn-sm" onclick="copyText('so-output')">📋 Copy Script</button><button class="btn btn-outline btn-sm" onclick="generateDM()">🔄 Regenerate</button></div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-title">📋 Active Keyword Triggers</div>
+    <div class="toggle-row"><div><div class="tname">💰 "pricing" / "cost" / "how much"</div><div class="tdesc">Sends tier breakdown + $1 trial offer</div></div><label class="toggle"><input type="checkbox" checked><span class="toggle-slider"></span></label></div>
+    <div class="toggle-row"><div><div class="tname">🌿 "join" / "membership" / "sign up"</div><div class="tdesc">Sends welcome flow + strategy call booking</div></div><label class="toggle"><input type="checkbox" checked><span class="toggle-slider"></span></label></div>
+    <div class="toggle-row"><div><div class="tname">💊 "supplements" / "biohacking" / "protocol"</div><div class="tdesc">Sends compound database preview + CTA</div></div><label class="toggle"><input type="checkbox" checked><span class="toggle-slider"></span></label></div>
+    <div class="toggle-row"><div><div class="tname">👩‍⚕️ "practitioner" / "nurse" / "doctor" / "NP"</div><div class="tdesc">Sends Pro Practitioner Suite details + book demo</div></div><label class="toggle"><input type="checkbox"><span class="toggle-slider"></span></label></div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════
+     REPUTATION
+════════════════════════════════════════ -->
+<div class="panel" id="panel-reputation">
+  <div class="section-header"><h2>Reputation Monitor</h2><p>AI review responses in your brand voice — works alongside GetDandy</p></div>
+  <div class="grid2">
+    <div class="card">
+      <div class="card-title">⭐ Draft Review Response</div>
+      <label>Paste the Review</label>
+      <textarea id="rev-text" placeholder="Paste any review here — positive or negative..."></textarea>
+      <label>Star Rating</label>
+      <select id="rev-rating"><option value="5">⭐⭐⭐⭐⭐ 5 Stars</option><option value="4">⭐⭐⭐⭐ 4 Stars</option><option value="3">⭐⭐⭐ 3 Stars</option><option value="2">⭐⭐ 2 Stars</option><option value="1">⭐ 1 Star</option></select>
+      <label>Platform</label>
+      <select id="rev-platform"><option value="google">Google Business</option><option value="yelp">Yelp</option><option value="facebook">Facebook</option><option value="trustpilot">Trustpilot</option></select>
+      <div class="btn-row"><button class="btn btn-primary" onclick="generateResponse()">⚡ Draft Response</button></div>
+    </div>
+    <div class="card">
+      <div class="ai-label"><span class="ai-dot"></span> AI Response — Brand Voice</div>
+      <div class="ai-output" id="rev-output">Paste a review and click Draft Response. Ready to post in under 15 minutes.</div>
+      <hr><div class="btn-row mt8"><button class="btn btn-outline btn-sm" onclick="copyText('rev-output')">📋 Copy</button><button class="btn btn-outline btn-sm" onclick="generateResponse()">🔄 Regenerate</button></div>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════
+     CALL SCRIPTS
+════════════════════════════════════════ -->
+<div class="panel" id="panel-calls">
+  <div class="section-header"><h2>Call Script Engine</h2><p>AI scripts for every scenario + live Jade simulator</p></div>
+  <div class="grid2">
+    <div class="card">
+      <div class="card-title">📞 Generate Script</div>
+      <label>Scenario</label>
+      <select id="call-type">
+        <option value="inbound-general">Inbound — General Inquiry</option>
+        <option value="inbound-pricing">Inbound — Pricing Question</option>
+        <option value="inbound-practitioner">Inbound — Healthcare Practitioner</option>
+        <option value="outbound-followup">Outbound — Lead Follow-up</option>
+        <option value="outbound-trial">Outbound — Trial Expiring Tomorrow</option>
+        <option value="objection-price">Objection — Too Expensive</option>
+        <option value="objection-trust">Objection — Skeptical / Doesn't Trust</option>
+        <option value="voicemail">Voicemail Script</option>
+        <option value="missed-sms">Missed Call Text-Back</option>
+      </select>
+      <label>Interest Level</label>
+      <select id="call-interest"><option value="hot">Hot — Ready to buy</option><option value="warm">Warm — Needs info</option><option value="cold">Cold — Just browsing</option><option value="skeptical">Skeptical — Has objections</option></select>
+      <div class="btn-row"><button class="btn btn-primary" onclick="generateCallScript()">⚡ Generate Script</button></div>
+    </div>
+    <div class="card">
+      <div class="ai-label"><span class="ai-dot"></span> Jade — AI Voice Agent Script</div>
+      <div class="ai-output" id="call-output" style="min-height:220px">Select a scenario and generate your complete call script with branching responses.</div>
+      <hr><div class="btn-row mt8"><button class="btn btn-outline btn-sm" onclick="copyText('call-output')">📋 Copy</button><button class="btn btn-outline btn-sm" onclick="generateCallScript()">🔄 Regenerate</button></div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-title">💬 Live Jade Simulator — Practice Your Calls</div>
+    <div class="chat-wrap" id="call-chat">
+      <div class="chat-msg ai">Hi! I'm Jade 💚 Your Emerald Wellness virtual health concierge. Thank you for calling — how can I help you today?</div>
+    </div>
+    <div class="flex gap8"><input type="text" id="chat-input" placeholder="Type as the caller..." style="margin-bottom:0;flex:1" onkeydown="if(event.key==='Enter')sendChat()"><button class="btn btn-primary btn-sm" onclick="sendChat()">Send</button></div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════
+     CONTENT CALENDAR
+════════════════════════════════════════ -->
+<div class="panel" id="panel-calendar">
+  <div class="section-header"><h2>Content Calendar</h2><p>Your 7-day AI content blueprint — generate an entire week at once</p></div>
+  <div class="card">
+    <div class="card-title">📅 This Week</div>
+    <div class="cal-grid">
+      <div class="cal-day"><div class="cal-day-name">MON</div><div class="cal-post">💪 Motivation Monday<br>Member spotlight</div><div class="cal-post gold-post">IG · TT · FB</div></div>
+      <div class="cal-day"><div class="cal-day-name">TUE</div><div class="cal-post">🔬 Science Tuesday<br>Supplement deep-dive</div><div class="cal-post gold-post">LI · YT · Blog</div></div>
+      <div class="cal-day"><div class="cal-day-name">WED</div><div class="cal-post">🧠 Wisdom Wednesday<br>Practitioner feature</div><div class="cal-post gold-post">LI · IG · Email</div></div>
+      <div class="cal-day"><div class="cal-day-name">THU</div><div class="cal-post">✨ Transformation Thurs<br>Before/after result</div><div class="cal-post gold-post">IG · TT · PIN</div></div>
+      <div class="cal-day"><div class="cal-day-name">FRI</div><div class="cal-post">⭐ Feature Friday<br>$1 Trial CTA</div><div class="cal-post gold-post">ALL PLATFORMS</div></div>
+      <div class="cal-day"><div class="cal-day-name">SAT</div><div class="cal-post">🔬 Science Saturday<br>Blog/YouTube drop</div><div class="cal-post gold-post">YT · Blog · Email</div></div>
+      <div class="cal-day"><div class="cal-day-name">SUN</div><div class="cal-post">🌿 Self-Care Sunday<br>Longevity lifestyle</div><div class="cal-post gold-post">IG · FB · PIN</div></div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-title">⚡ Generate Full Week of Content</div>
+    <label>Weekly Topic</label>
+    <input id="cal-topic" placeholder="e.g. NAD+ and cellular energy, Peptide protocols, Gut microbiome optimization..." />
+    <label>Promotional Focus</label>
+    <select id="cal-promo">
+      <option value="trial">$1 / 7-day Trial Offer</option>
+      <option value="silver">Silver Membership ($75/mo)</option>
+      <option value="gold">Gold Membership ($150/mo)</option>
+      <option value="elite">Emerald Elite ($200/mo)</option>
+      <option value="practitioner">Pro Practitioner Suite ($300/mo)</option>
+      <option value="none">Educational — No promotion</option>
+    </select>
+    <div class="btn-row"><button class="btn btn-primary" onclick="generateWeek()">⚡ Generate Full Week</button></div>
+    <hr>
+    <div class="ai-label mt8"><span class="ai-dot"></span> Generated Week of Content</div>
+    <div class="ai-output" id="cal-output">Enter a weekly topic and click Generate — you'll get 7 ready-to-post pieces for every platform.</div>
+    <div class="btn-row mt8"><button class="btn btn-outline btn-sm" onclick="copyText('cal-output')">📋 Copy All</button></div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════
+     SETUP & API KEYS
+════════════════════════════════════════ -->
+<div class="panel" id="panel-setup">
+  <div class="section-header"><h2>Setup & Configuration</h2><p>Connect your API keys — stored locally in your browser, never sent anywhere</p></div>
+
+  <div class="alert alert-warn">⚠️ <strong>Important:</strong> For production use, store these keys as Vercel Environment Variables (not in the browser). This setup panel is for local testing only. See the deployment instructions below.</div>
+
+  <div class="grid2">
+    <div class="card">
+      <div class="card-title">🔑 API Keys — Local Testing</div>
+      <label>Supabase Project URL</label>
+      <input id="key-sb-url" placeholder="https://mczpuffmlspmghgneukz.supabase.co" />
+      <label>Supabase Service Role Key</label>
+      <input id="key-sb-key" type="password" placeholder="eyJhbGci... (from Supabase → Settings → API)" />
+      <label>Klaviyo Private API Key</label>
+      <input id="key-kl" type="password" placeholder="pk_... (from Klaviyo → Account → API Keys)" />
+      <label>Anthropic API Key (Claude AI)</label>
+      <input id="key-ai" type="password" placeholder="sk-ant-... (from console.anthropic.com)" />
+      <div class="btn-row">
+        <button class="btn btn-primary" onclick="saveKeys()">💾 Save Keys Locally</button>
+        <button class="btn btn-outline btn-sm" onclick="clearKeys()">🗑️ Clear All</button>
+      </div>
+      <div id="keys-result" class="mt8"></div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">🚀 Deploy to Vercel — Production Setup</div>
+      <p class="text-sm text-gray" style="margin-bottom:14px;line-height:1.6">To run this connected to real Supabase + Klaviyo data, add these 3 files to your GitHub repo:</p>
+
+      <div class="setup-step">
+        <div class="flex items-center gap12">
+          <div class="setup-num">1</div>
+          <div><div class="tname">Add <span class="mono" style="color:var(--em)">api/connect.js</span> to GitHub</div><div class="tdesc">The unified API handler — already built for you</div></div>
+        </div>
+      </div>
+      <div class="setup-step">
+        <div class="flex items-center gap12">
+          <div class="setup-num">2</div>
+          <div><div class="tname">Add <span class="mono" style="color:var(--em)">vercel.json</span> to GitHub</div><div class="tdesc">Routes all API calls correctly — already built</div></div>
+        </div>
+      </div>
+      <div class="setup-step">
+        <div class="flex items-center gap12">
+          <div class="setup-num">3</div>
+          <div><div class="tname">Add Environment Variables in Vercel</div><div class="tdesc">Dashboard → Your Project → Settings → Environment Variables</div></div>
+        </div>
+      </div>
+
+      <div style="background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:12px;margin-top:8px">
+        <div class="text-sm mono text-em" style="margin-bottom:6px">Vercel Environment Variables:</div>
+        <div class="text-sm mono text-gray" style="line-height:2">
+          SUPABASE_URL = your project URL<br>
+          SUPABASE_SERVICE_KEY = service role key<br>
+          KLAVIYO_PRIVATE_KEY = pk_...<br>
+          ANTHROPIC_API_KEY = sk-ant-...
+        </div>
+      </div>
+      <div class="btn-row mt12">
+        <button class="btn btn-outline btn-sm" onclick="copyDeployInstructions()">📋 Copy Instructions</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">📍 Where to Find Your Keys</div>
+    <table>
+      <thead><tr><th>Key</th><th>Where to Find It</th><th>Type</th></tr></thead>
+      <tbody>
+        <tr><td>Supabase URL</td><td>supabase.com → Your Project → Settings → API → Project URL</td><td><span class="badge b-blue">URL</span></td></tr>
+        <tr><td>Supabase Service Role Key</td><td>supabase.com → Settings → API → <strong>service_role</strong> (NOT anon key)</td><td><span class="badge b-red">Secret</span></td></tr>
+        <tr><td>Klaviyo Private Key</td><td>klaviyo.com → Account → Settings → API Keys → Create Private Key</td><td><span class="badge b-red">Secret</span></td></tr>
+        <tr><td>Anthropic API Key</td><td>console.anthropic.com → API Keys → Create Key</td><td><span class="badge b-red">Secret</span></td></tr>
+        <tr><td>Klaviyo Public Key</td><td>Already known: <span class="mono text-em">WtKVHz</span></td><td><span class="badge b-green">Public ✅</span></td></tr>
+        <tr><td>Klaviyo List ID</td><td>Already known: <span class="mono text-em">XEEg3P</span></td><td><span class="badge b-green">Public ✅</span></td></tr>
+        <tr><td>Supabase Project ID</td><td>Already known: <span class="mono text-em">mczpuffmlspmghgneukz</span></td><td><span class="badge b-green">Public ✅</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+</div><!-- /main -->
+
+<script>
+// ── CONFIG ──────────────────────────────────────────────────────
+// In production: all API calls go through /api/connect (Vercel serverless)
+// In local testing: uses keys stored in localStorage
+const API_BASE = window.location.hostname === 'localhost' || window.location.protocol === 'file:' ? null : '/api/connect';
+
+function getKeys() {
+  return {
+    sbUrl: localStorage.getItem('ew_sb_url') || '',
+    sbKey: localStorage.getItem('ew_sb_key') || '',
+    klKey: localStorage.getItem('ew_kl_key') || '',
+    aiKey: localStorage.getItem('ew_ai_key') || ''
+  };
+}
+
+// ── TAB SWITCHING ────────────────────────────────────────────────
+function switchTab(name) {
+  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+  document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+  document.getElementById('tab-' + name).classList.add('active');
+  document.getElementById('panel-' + name).classList.add('active');
+}
+
+// ── UNIVERSAL API CALLER ─────────────────────────────────────────
+async function apiCall(action, body = {}) {
+  // If deployed on Vercel — use serverless functions
+  if (API_BASE) {
+    const res = await fetch(`${API_BASE}?action=${action}`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(body)
+    });
+    return res.json();
+  }
+  // If local — call APIs directly using stored keys
+  const keys = getKeys();
+  switch(action) {
+    case 'supabase-stats': return localSupabaseStats(keys);
+    case 'klaviyo-stats': return localKlaviyoStats(keys);
+    case 'supabase-add-lead': return localAddLead(keys, body);
+    case 'klaviyo-add-profile': return localAddProfile(keys, body);
+    case 'klaviyo-trigger-flow': return localTriggerFlow(keys, body);
+    case 'sync-lead': return localSyncLead(keys, body);
+    case 'claude-generate': return localClaudeGenerate(keys, body);
+    default: return { error: 'Unknown action' };
+  }
+}
+
+// ── LOCAL API CALLS (direct when no Vercel) ──────────────────────
+async function localSupabaseStats(keys) {
+  if (!keys.sbUrl || !keys.sbKey) return { error: 'No Supabase keys' };
+  try {
+    const r = await fetch(`${keys.sbUrl}/rest/v1/waitlist?select=id,email,created_at&order=created_at.desc&limit=50`, {
+      headers: { 'apikey': keys.sbKey, 'Authorization': `Bearer ${keys.sbKey}` }
+    });
+    const data = await r.json();
+    return { waitlistCount: Array.isArray(data) ? data.length : 0, recentSignups: Array.isArray(data) ? data.slice(0,10) : [], memberCount: 0, members: [] };
+  } catch(e) { return { error: e.message }; }
+}
+
+async function localKlaviyoStats(keys) {
+  if (!keys.klKey) return { error: 'No Klaviyo key' };
+  try {
+    const r = await fetch('https://a.klaviyo.com/api/lists/XEEg3P/profiles/?page[size]=1', {
+      headers: { 'Authorization': `Klaviyo-API-Key ${keys.klKey}`, 'revision': '2024-02-15' }
+    });
+    const data = await r.json();
+    return { totalProfiles: data?.meta?.total || 0 };
+  } catch(e) { return { error: e.message }; }
+}
+
+async function localAddLead(keys, body) {
+  if (!keys.sbUrl || !keys.sbKey) return { error: 'No Supabase keys' };
+  const r = await fetch(`${keys.sbUrl}/rest/v1/waitlist`, {
+    method: 'POST',
+    headers: { 'apikey': keys.sbKey, 'Authorization': `Bearer ${keys.sbKey}`, 'Content-Type': 'application/json', 'Prefer': 'return=minimal' },
+    body: JSON.stringify({ ...body, created_at: new Date().toISOString() })
+  });
+  return { success: r.ok, status: r.status };
+}
+
+async function localAddProfile(keys, body) {
+  if (!keys.klKey) return { error: 'No Klaviyo key' };
+  const r = await fetch('https://a.klaviyo.com/api/profiles/', {
+    method: 'POST',
+    headers: { 'Authorization': `Klaviyo-API-Key ${keys.klKey}`, 'revision': '2024-02-15', 'Content-Type': 'application/json' },
+    body: JSON.stringify({ data: { type: 'profile', attributes: { email: body.email, first_name: body.first_name || '', properties: { tier_interest: body.tier_interest, source: body.source } } } })
+  });
+  return { success: r.ok };
+}
+
+async function localTriggerFlow(keys, body) {
+  if (!keys.klKey) return { error: 'No Klaviyo key' };
+  const r = await fetch('https://a.klaviyo.com/api/events/', {
+    method: 'POST',
+    headers: { 'Authorization': `Klaviyo-API-Key ${keys.klKey}`, 'revision': '2024-02-15', 'Content-Type': 'application/json' },
+    body: JSON.stringify({ data: { type: 'event', attributes: { properties: body.properties || {}, metric: { data: { type: 'metric', attributes: { name: body.flow_name } } }, profile: { data: { type: 'profile', attributes: { email: body.email } } } } } })
+  });
+  return { success: r.ok };
+}
+
+async function localSyncLead(keys, body) {
+  const sbRes = await localAddLead(keys, body);
+  const klRes = await localAddProfile(keys, { email: body.email, first_name: body.name, tier_interest: body.tier_interest, source: body.source });
+  return { success: true, results: { supabase: sbRes.success ? 'synced' : 'error', klaviyo: klRes.success ? 'synced' : 'error' } };
+}
+
+async function localClaudeGenerate(keys, body) {
+  const key = keys.aiKey;
+  if (!key) return { text: '⚠️ No Anthropic API key set. Go to Setup & Keys tab to add your key.' };
+  const r = await fetch('https://api.anthropic.com/v1/messages', {
+    method: 'POST',
+    headers: { 'x-api-key': key, 'anthropic-version': '2023-06-01', 'Content-Type': 'application/json' },
+    body: JSON.stringify({ model: 'claude-sonnet-4-6', max_tokens: 1000, system: body.system, messages: [{ role: 'user', content: body.prompt }] })
+  });
+  const d = await r.json();
+  return { text: d.content?.[0]?.text || 'Generation failed.' };
+}
+
+// ── BRAND VOICE SYSTEM ───────────────────────────────────────────
+const BRAND = `You are the AI content and operations engine for Emerald Wellness LLC — a premium health optimization and biohacking platform based in Columbus, Ohio. Founder: Vincia. AI Agent: Jade.
+Brand voice: empowering, science-backed, luxury wellness, professional yet warm. Never generic.
+Tiers: Silver $75/mo | Gold $150/mo | Emerald Elite $200/mo | Pro Practitioner $300/mo — all with $1/7-day trial.
+Website: emeraldwellness.health. Target: health-conscious adults 25-55 and healthcare practitioners.
+Never mention competitors. Be specific — reference real health optimization concepts, not vague wellness platitudes.`;
+
+async function claudeGenerate(prompt, outputId, loadingMsg) {
+  const el = document.getElementById(outputId);
+  el.textContent = loadingMsg || '⚡ Jade is generating...';
+  el.classList.add('loading');
+  const result = await apiCall('claude-generate', { prompt, system: BRAND });
+  el.textContent = result.text || result.error || 'Generation failed.';
+  el.classList.remove('loading');
+  return result.text;
+}
+
+// ── TEST CONNECTIONS ─────────────────────────────────────────────
+async function testConnections() {
+  setPill('sb-pill', 'loading', '⟳ Supabase');
+  setPill('kl-pill', 'loading', '⟳ Klaviyo');
+  setPill('ai-pill', 'loading', '⟳ Claude AI');
+
+  // Supabase
+  try {
+    const sbData = await apiCall('supabase-stats');
+    if (sbData.error) { setPill('sb-pill','disconnected','✕ Supabase'); setStatus('sb','off',sbData.error); }
+    else {
+      setPill('sb-pill','connected',`✅ Supabase (${sbData.waitlistCount} leads)`);
+      setStatus('sb','on',`Connected — ${sbData.waitlistCount} waitlist records, ${sbData.memberCount} members`);
+      document.getElementById('d-waitlist').textContent = sbData.waitlistCount;
+      document.getElementById('d-members').textContent = sbData.memberCount;
+      renderSignups(sbData.recentSignups);
+    }
+  } catch(e) { setPill('sb-pill','disconnected','✕ Supabase'); setStatus('sb','off','Could not connect — check your URL and Service Role Key in Setup'); }
+
+  // Klaviyo
+  try {
+    const klData = await apiCall('klaviyo-stats');
+    if (klData.error) { setPill('kl-pill','disconnected','✕ Klaviyo'); setStatus('kl','off',klData.error); }
+    else {
+      setPill('kl-pill','connected',`✅ Klaviyo (${klData.totalProfiles || '?'} profiles)`);
+      setStatus('kl','on',`Connected — List XEEg3P active`);
+      document.getElementById('d-klaviyo').textContent = klData.totalProfiles || '—';
+    }
+  } catch(e) { setPill('kl-pill','disconnected','✕ Klaviyo'); setStatus('kl','off','Could not connect — check your Private API Key in Setup'); }
+
+  // Claude AI — test with tiny prompt
+  try {
+    const aiTest = await apiCall('claude-generate', { prompt: 'Reply with exactly: CONNECTED', system: 'Reply with exactly: CONNECTED' });
+    if (aiTest.text && aiTest.text.includes('CONNECTED')) { setPill('ai-pill','connected','✅ Claude AI'); setStatus('ai','on','Claude AI connected and ready'); }
+    else { setPill('ai-pill','disconnected','✕ Claude AI'); setStatus('ai','off', aiTest.text || 'Connection failed'); }
+  } catch(e) { setPill('ai-pill','disconnected','✕ Claude AI'); setStatus('ai','off','Could not connect — check your Anthropic API key in Setup'); }
+}
+
+function setPill(id, state, text) {
+  const el = document.getElementById(id);
+  el.className = 'conn-pill ' + state;
+  el.textContent = text;
+}
+
+function setStatus(key, state, text) {
+  const dot = document.getElementById('dot-' + key);
+  const status = document.getElementById('status-' + key);
+  if (dot) dot.className = 'live-dot ' + (state === 'on' ? 'on' : 'off');
+  if (status) status.textContent = text;
+}
+
+function renderSignups(signups) {
+  const wrap = document.getElementById('recent-signups');
+  if (!signups || signups.length === 0) { wrap.innerHTML = '<div class="text-gray text-sm">No signups yet</div>'; return; }
+  wrap.innerHTML = signups.slice(0,8).map(s =>
+    `<div class="live-row"><span class="live-dot on"></span><div><div class="tname">${s.email}</div><div class="tdesc">${new Date(s.created_at).toLocaleDateString()} ${new Date(s.created_at).toLocaleTimeString()}</div></div></div>`
+  ).join('');
+}
+
+// ── LEADS ────────────────────────────────────────────────────────
+async function addLead() {
+  const email = document.getElementById('lead-email').value.trim();
+  const name = document.getElementById('lead-name').value.trim();
+  const tier = document.getElementById('lead-tier').value;
+  const source = document.getElementById('lead-source').value;
+  const el = document.getElementById('lead-result');
+  if (!email) { el.innerHTML = '<div class="alert alert-warn">⚠️ Email is required</div>'; return; }
+  el.innerHTML = '<div class="alert alert-info">⟳ Syncing to Supabase + Klaviyo...</div>';
+  const result = await apiCall('sync-lead', { email, name, tier_interest: tier, source });
+  if (result.success) {
+    el.innerHTML = `<div class="alert alert-success">✅ Synced! Supabase: ${result.results?.supabase} | Klaviyo: ${result.results?.klaviyo}</div>`;
+    document.getElementById('lead-email').value = '';
+    document.getElementById('lead-name').value = '';
+    loadLeads();
+  } else {
+    el.innerHTML = `<div class="alert alert-warn">⚠️ ${result.error || 'Sync failed — check API keys in Setup'}</div>`;
+  }
+}
+
+async function loadLeads() {
+  const wrap = document.getElementById('leads-table-wrap');
+  wrap.innerHTML = '<div class="text-gray text-sm" style="padding:12px 0">Loading...</div>';
+  const data = await apiCall('supabase-stats');
+  if (data.error || !data.recentSignups) { wrap.innerHTML = '<div class="alert alert-warn">Could not load leads — check Supabase connection in Setup</div>'; return; }
+  if (data.recentSignups.length === 0) { wrap.innerHTML = '<div class="text-gray text-sm" style="padding:12px 0;text-align:center">No leads yet — add your first lead above!</div>'; return; }
+  wrap.innerHTML = `<table><thead><tr><th>Email</th><th>Source</th><th>Tier Interest</th><th>Date</th><th>Action</th></tr></thead><tbody>
+    ${data.recentSignups.map(s => `<tr>
+      <td>${s.email}</td>
+      <td><span class="badge b-blue">${s.source || 'website'}</span></td>
+      <td><span class="badge b-gold">${s.tier_interest || '—'}</span></td>
+      <td>${new Date(s.created_at).toLocaleDateString()}</td>
+      <td><button class="btn btn-outline btn-sm" onclick="prefillFlow('${s.email}')">Trigger Flow</button></td>
+    </tr>`).join('')}
+  </tbody></table>`;
+}
+
+function prefillFlow(email) { document.getElementById('flow-email').value = email; switchTab('email'); }
+function exportLeads() { showToast('Export feature — connect to Supabase to download CSV'); }
+
+async function triggerFlow() {
+  const email = document.getElementById('flow-email').value.trim();
+  const flow = document.getElementById('flow-name').value;
+  const tier = document.getElementById('flow-tier').value;
+  const el = document.getElementById('flow-result');
+  if (!email) { el.innerHTML = '<div class="alert alert-warn">⚠️ Email required</div>'; return; }
+  el.innerHTML = '<div class="alert alert-info">⟳ Triggering Klaviyo flow...</div>';
+  const result = await apiCall('klaviyo-trigger-flow', { email, flow_name: flow, properties: { tier } });
+  el.innerHTML = result.success
+    ? `<div class="alert alert-success">✅ Flow "${flow}" triggered for ${email}</div>`
+    : `<div class="alert alert-warn">⚠️ ${result.error || 'Failed — check Klaviyo key'}</div>`;
+}
+
+// ── CONTENT GENERATION ───────────────────────────────────────────
+const typeMap = { instagram:'Write an Instagram caption (150-220 words) with 8-10 hashtags', facebook:'Write a Facebook post (200-280 words) with a hook', linkedin:'Write a LinkedIn article introduction (250-320 words)', tiktok:'Write a TikTok script (60 seconds) with hook, content, CTA', youtube:'Write a YouTube description (200-280 words) with keywords', twitter:'Write 3 Twitter/X post variations (under 280 chars each)', blog:'Write a blog post introduction (300-380 words) with SEO headline', 'email-subject':'Write 5 email subject lines with preview text', sms:'Write 3 SMS messages (under 160 chars each)', ad:'Write Facebook/IG ad copy with headline, body, and description', pinterest:'Write 3 Pinterest pin descriptions with keywords' };
+const ctaMap = { trial:'End with a $1/7-day trial CTA at emeraldwellness.health', book:'End with a CTA to book a free Health Strategy Call', learn:'End with a soft learn more CTA to emeraldwellness.health', none:'No CTA needed' };
+
+async function generateContent() {
+  const type = document.getElementById('ct-type').value;
+  const topic = document.getElementById('ct-topic').value || 'the science of health optimization and biohacking';
+  const tone = document.getElementById('ct-tone').value;
+  const cta = document.getElementById('ct-cta').value;
+  await claudeGenerate(`${typeMap[type]} about: "${topic}". Tone: ${tone}. ${ctaMap[cta]}. Be specific to health optimization — not generic wellness.`, 'ct-output', '✍️ Writing your content...');
+}
+
+// ── EMAIL GENERATION ─────────────────────────────────────────────
+const emailDesc = { 'welcome':'Welcome email (Email 1 of 7) for a new paid member — warm, celebratory, tells them exactly what to do next', 'trial-1':'Trial Day 1 email — welcome to the trial, quick win tip, what to explore first', 'trial-3':'Trial Day 3 email — results check-in, social proof, build excitement', 'trial-5':'Trial Day 5 email — subject: Don\'t lose your progress! — upgrade offer with full benefits list', 'trial-6':'Trial Day 6 email — URGENCY — trial ends tomorrow — lock in your rate now — strong CTA', 'abandoned':'Abandoned Signup Email 1 — they started the form but didn\'t finish — bring them back', 'post-call':'Post-consultation follow-up 48hrs after a Health Strategy Call — warm, recap value, next step is the $1 trial', 'upgrade-30':'Day 30 upgrade nudge — they\'re on Silver, show them what Gold or Elite offers', 'reengagement':'Re-engagement Email 1 — they haven\'t opened in 30 days — compelling reason to come back', 'newsletter':'Monthly newsletter — health optimization roundup, member spotlight, one featured protocol, one CTA' };
+const tierDesc = { silver:'Silver member ($75/mo)', gold:'Gold member ($150/mo)', elite:'Emerald Elite member ($200/mo)', pro:'Pro Practitioner member ($300/mo)', general:'General prospect, not yet a member' };
+
+async function generateEmail() {
+  const type = document.getElementById('em-type').value;
+  const tier = document.getElementById('em-tier').value;
+  const fname = document.getElementById('em-fname').value;
+  const prompt = `Write a Klaviyo email for Emerald Wellness.
+Sequence context: ${emailDesc[type]}
+Tier: ${tierDesc[tier]}
+First name variable: ${fname}
+
+Format exactly as:
+SUBJECT LINE: [write it — compelling, under 50 chars]
+PREVIEW TEXT: [under 85 chars]
+---
+[Full email body — warm opener with first name, value-driven body 200-300 words, clear CTA button text at the end, sign off from Vincia & the Emerald Wellness Team]
+
+Make it feel premium and personal. Reference specific benefits of their tier. Never be generic.`;
+  await claudeGenerate(prompt, 'em-output', '📧 Writing your email...');
+}
+
+function quickEmail(type) { document.getElementById('em-type').value = type; generateEmail(); switchTab('email'); }
+
+// ── SOCIAL DM ────────────────────────────────────────────────────
+async function generateDM() {
+  const platform = document.getElementById('so-platform').value;
+  const keyword = document.getElementById('so-keyword').value || 'pricing';
+  const visitor = document.getElementById('so-visitor').value;
+  const vMap = { personal:'a personal wellness seeker wanting to optimize their health', practitioner:'a healthcare practitioner (nurse, NP, or functional medicine doctor)', general:'someone with a general inquiry about Emerald Wellness', 'objection-price':'someone objecting that it\'s too expensive', 'objection-trust':'someone skeptical and questioning if it works' };
+  const prompt = `Write a complete ${platform} DM automation flow for Emerald Wellness. Triggers when someone sends a message containing "${keyword}". They appear to be ${vMap[visitor]}.
+
+Format:
+📩 MESSAGE 1 (Instant — sent immediately):
+[message text]
+
+↳ IF they respond with interest:
+📩 MESSAGE 2:
+[message text]
+
+↳ IF they ask about price:
+💰 PRICE MESSAGE:
+[message text including tier breakdown]
+
+📅 BOOKING CTA:
+[closing message with booking link: emeraldwellness.health]
+
+⏰ IF no response in 24hrs:
+📩 FOLLOW-UP:
+[gentle re-engagement]
+
+Keep each message under 120 words. Warm, conversational, never pushy. Sign as Jade from Emerald Wellness.`;
+  await claudeGenerate(prompt, 'so-output', '🤖 Building your DM flow...');
+}
+
+// ── REPUTATION ───────────────────────────────────────────────────
+async function generateResponse() {
+  const review = document.getElementById('rev-text').value.trim();
+  const rating = document.getElementById('rev-rating').value;
+  const platform = document.getElementById('rev-platform').value;
+  if (!review) { showToast('Please paste a review first'); return; }
+  const tone = rating >= 4 ? 'warm, grateful, and reinforcing' : rating == 3 ? 'empathetic and solution-focused' : 'empathetic, professional, and de-escalating without admitting fault';
+  const prompt = `Write a ${platform} review response for Emerald Wellness.
+Review (${rating} stars): "${review}"
+Response tone: ${tone}
+Under 120 words. Specific to what they said — not generic. ${rating <= 2 ? 'Acknowledge concern, invite them to contact team@emeraldwellness.health to resolve.' : 'Thank them sincerely and reinforce the value they received.'}
+Sign off: The Emerald Wellness Team`;
+  await claudeGenerate(prompt, 'rev-output', '🛡️ Drafting your response...');
+}
+
+// ── CALL SCRIPTS ─────────────────────────────────────────────────
+const callMap = { 'inbound-general':'General inbound inquiry about Emerald Wellness', 'inbound-pricing':'Inbound caller asking about membership pricing', 'inbound-practitioner':'Inbound call from a healthcare practitioner interested in the Pro Suite', 'outbound-followup':'Outbound follow-up to a lead who expressed interest but hasn\'t signed up', 'outbound-trial':'Outbound call to a trial member whose $1 trial expires TOMORROW', 'objection-price':'Caller says it\'s too expensive / out of their budget', 'objection-trust':'Caller is skeptical — unsure if the platform delivers real results', 'voicemail':'Voicemail to leave when no one answers', 'missed-sms':'Text message to send when a call is missed' };
+const interestMap = { hot:'HOT — they\'ve already done research and are ready to move forward', warm:'WARM — genuinely interested but needs more information', cold:'COLD — just browsing, low urgency', skeptical:'SKEPTICAL — has doubts and needs to be won over carefully' };
+
+async function generateCallScript() {
+  const type = document.getElementById('call-type').value;
+  const interest = document.getElementById('call-interest').value;
+  const prompt = `Write a complete Jade (AI voice agent) call script for Emerald Wellness.
+Scenario: ${callMap[type]}
+Caller interest: ${interestMap[interest]}
+
+Format as a dialogue:
+JADE: [opening]
+CALLER: [likely response]
+JADE: [response]
+[Continue with realistic branches]
+
+End with:
+— IF YES → BOOKING CTA: [exact words]
+— IF HESITANT → BRIDGE: [keep conversation going]
+— IF NO → GRACEFUL EXIT: [leave door open]
+
+Jade is warm, confident, never pushy. Always gives a compelling reason to take the next step.`;
+  await claudeGenerate(prompt, 'call-output', '📞 Writing your call script...');
+}
+
+// ── CALL SIMULATOR ───────────────────────────────────────────────
+const chatHistory = [{ role:'assistant', content:"Hi! I'm Jade 💚 Your Emerald Wellness virtual health concierge. Thank you for calling — how can I help you today?" }];
+async function sendChat() {
+  const input = document.getElementById('chat-input');
+  const msg = input.value.trim();
+  if (!msg) return;
+  input.value = '';
+  addChat(msg, 'user');
+  chatHistory.push({ role:'user', content:msg });
+  const thinkEl = addChat('Jade is thinking...', 'ai', 'thinking');
+  const keys = getKeys();
+  const aiKey = keys.aiKey;
+  if (!aiKey && !API_BASE) { thinkEl.textContent = '⚠️ Add your Anthropic API key in Setup to use the simulator.'; return; }
+  try {
+    const res = await fetch(API_BASE ? `${API_BASE}?action=claude-chat` : 'https://api.anthropic.com/v1/messages', {
+      method:'POST',
+      headers: API_BASE ? {'Content-Type':'application/json'} : {'x-api-key':aiKey,'anthropic-version':'2023-06-01','Content-Type':'application/json'},
+      body: JSON.stringify(API_BASE ? { messages: chatHistory } : { model:'claude-sonnet-4-6', max_tokens:1000, system:`You are Jade, the AI voice agent for Emerald Wellness LLC, Columbus OH. Warm, confident, professional. Goal: qualify callers, share the $1/7-day trial, book a free Health Strategy Call. Tiers: Silver $75 | Gold $150 | Emerald Elite $200 | Pro Practitioner $300/mo. Keep replies under 80 words. Always move toward booking.`, messages: chatHistory })
+    });
+    const d = await res.json();
+    const reply = API_BASE ? d.text : d.content?.[0]?.text || "I'm sorry, could you repeat that?";
+    thinkEl.textContent = reply;
+    chatHistory.push({ role:'assistant', content:reply });
+  } catch(e) { thinkEl.textContent = 'Connection error — check your API key in Setup.'; }
+}
+function addChat(text, type, id='') {
+  const wrap = document.getElementById('call-chat');
+  const div = document.createElement('div');
+  div.className = 'chat-msg ' + type;
+  if(id) div.id = id;
+  div.textContent = text;
+  wrap.appendChild(div);
+  wrap.scrollTop = wrap.scrollHeight;
+  return div;
+}
+
+// ── CALENDAR ─────────────────────────────────────────────────────
+async function generateWeek() {
+  const topic = document.getElementById('cal-topic').value || 'NAD+ and cellular energy optimization';
+  const promo = document.getElementById('cal-promo').value;
+  const promoMap = { trial:'$1/7-day trial', silver:'Silver $75/mo', gold:'Gold $150/mo', elite:'Emerald Elite $200/mo', practitioner:'Pro Practitioner $300/mo', none:'educational — no promotion' };
+  const prompt = `Create a 7-day Emerald Wellness social media content plan. Topic: "${topic}". Promo: ${promoMap[promo]}.
+
+For each day:
+[DAY — THEME] | Platforms: [list]
+Hook: [opening line]
+Message: [2 sentences]
+CTA: [call to action]
+
+Days: Monday (Motivation) | Tuesday (Science) | Wednesday (Wisdom) | Thursday (Transformation) | Friday (Feature — ALL platforms) | Saturday (Science Saturday) | Sunday (Self-Care)
+
+Each piece should be platform-appropriate and distinctly different. Content must educate, inspire, and convert.`;
+  await claudeGenerate(prompt, 'cal-output', '📅 Planning your week...');
+}
+
+// ── SETTINGS / KEYS ──────────────────────────────────────────────
+function saveKeys() {
+  localStorage.setItem('ew_sb_url', document.getElementById('key-sb-url').value.trim());
+  localStorage.setItem('ew_sb_key', document.getElementById('key-sb-key').value.trim());
+  localStorage.setItem('ew_kl_key', document.getElementById('key-kl').value.trim());
+  localStorage.setItem('ew_ai_key', document.getElementById('key-ai').value.trim());
+  document.getElementById('keys-result').innerHTML = '<div class="alert alert-success">✅ Keys saved locally. Click "Refresh Status" on Dashboard to test connections.</div>';
+  testConnections();
+}
+function clearKeys() {
+  ['ew_sb_url','ew_sb_key','ew_kl_key','ew_ai_key'].forEach(k => localStorage.removeItem(k));
+  ['key-sb-url','key-sb-key','key-kl','key-ai'].forEach(id => document.getElementById(id).value = '');
+  document.getElementById('keys-result').innerHTML = '<div class="alert alert-warn">Keys cleared.</div>';
+}
+function loadSavedKeys() {
+  const keys = getKeys();
+  if (keys.sbUrl) document.getElementById('key-sb-url').value = keys.sbUrl;
+  if (keys.sbKey) document.getElementById('key-sb-key').value = keys.sbKey;
+  if (keys.klKey) document.getElementById('key-kl').value = keys.klKey;
+  if (keys.aiKey) document.getElementById('key-ai').value = keys.aiKey;
+}
+
+function copyDeployInstructions() {
+  const text = `EMERALD WELLNESS — VERCEL DEPLOYMENT SETUP\n\n1. Add api/connect.js to your GitHub repo (vinciag42/emerald-wellness-site)\n2. Add vercel.json to root of repo\n3. In Vercel Dashboard → Your Project → Settings → Environment Variables, add:\n   SUPABASE_URL = https://mczpuffmlspmghgneukz.supabase.co\n   SUPABASE_SERVICE_KEY = [your service role key from Supabase Settings → API]\n   KLAVIYO_PRIVATE_KEY = [your private key from Klaviyo → Account → API Keys]\n   ANTHROPIC_API_KEY = [your key from console.anthropic.com]\n4. Push to GitHub — Vercel auto-deploys in 60 seconds\n5. Open your Vercel URL and all connections will be live!`;
+  navigator.clipboard.writeText(text);
+  showToast('Deployment instructions copied!');
+}
+
+// ── UTILS ────────────────────────────────────────────────────────
+function copyText(id) { navigator.clipboard.writeText(document.getElementById(id).textContent); showToast('Copied to clipboard!'); }
+function clearField(id, msg) { document.getElementById(id).textContent = msg; }
+function showToast(msg) {
+  const t = document.createElement('div');
+  t.style.cssText = 'position:fixed;bottom:24px;right:24px;background:#065f46;color:#6ee7b7;padding:10px 18px;border-radius:8px;font-size:13px;font-weight:600;z-index:9999;border:1px solid #10b981';
+  t.textContent = msg;
+  document.body.appendChild(t);
+  setTimeout(() => t.remove(), 2800);
+}
+
+// ── INIT ─────────────────────────────────────────────────────────
+window.addEventListener('load', () => {
+  loadSavedKeys();
+  testConnections();
+  loadLeads();
+});
+</script>
+</body>
+</html>
