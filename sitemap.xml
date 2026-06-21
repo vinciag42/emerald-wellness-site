@@ -2,37 +2,63 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://emeraldwellness.health/</loc>
-    <lastmod>2026-05-25</lastmod>
+    <lastmod>2026-06-20</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
+    <loc>https://emeraldwellness.health/peptides</loc>
+    <lastmod>2026-06-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://emeraldwellness.health/blog/</loc>
+    <lastmod>2026-06-20</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url><loc>https://emeraldwellness.health/blog/best-supplements-testosterone-2026</loc><lastmod>2026-06-20</lastmod><priority>0.7</priority></url>
+  <url><loc>https://emeraldwellness.health/blog/bpc157-tb500-injury-repair-stack</loc><lastmod>2026-06-20</lastmod><priority>0.7</priority></url>
+  <url><loc>https://emeraldwellness.health/blog/cjc1295-ipamorelin-gh-optimization-stack</loc><lastmod>2026-06-20</lastmod><priority>0.7</priority></url>
+  <url><loc>https://emeraldwellness.health/blog/epitalon-longevity-bioregulator-guide</loc><lastmod>2026-06-20</lastmod><priority>0.7</priority></url>
+  <url><loc>https://emeraldwellness.health/blog/nmn-longevity-guide-2026</loc><lastmod>2026-06-20</lastmod><priority>0.7</priority></url>
+  <url><loc>https://emeraldwellness.health/blog/semaglutide-protocol-dosing-guide</loc><lastmod>2026-06-20</lastmod><priority>0.7</priority></url>
+  <url><loc>https://emeraldwellness.health/blog/semax-selank-neuropeptide-stack</loc><lastmod>2026-06-20</lastmod><priority>0.7</priority></url>
+  <url><loc>https://emeraldwellness.health/blog/thymosin-alpha1-immune-reset-protocol</loc><lastmod>2026-06-20</lastmod><priority>0.7</priority></url>
+  <url>
+    <loc>https://emeraldwellness.health/advisors</loc>
+    <lastmod>2026-06-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://emeraldwellness.health/privacy-policy.html</loc>
-    <lastmod>2026-05-25</lastmod>
+    <lastmod>2026-06-20</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
     <loc>https://emeraldwellness.health/terms-of-service.html</loc>
-    <lastmod>2026-05-25</lastmod>
+    <lastmod>2026-06-20</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
     <loc>https://emeraldwellness.health/medical-disclaimer.html</loc>
-    <lastmod>2026-05-25</lastmod>
+    <lastmod>2026-06-20</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
     <loc>https://emeraldwellness.health/hipaa.html</loc>
-    <lastmod>2026-05-25</lastmod>
+    <lastmod>2026-06-20</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
     <loc>https://emeraldwellness.health/cookie-policy.html</loc>
-    <lastmod>2026-05-25</lastmod>
+    <lastmod>2026-06-20</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.2</priority>
   </url>

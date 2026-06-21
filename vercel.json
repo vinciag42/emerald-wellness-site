@@ -2,7 +2,18 @@
   "redirects": [
     { "source": "/index-html.html", "destination": "/", "permanent": true },
     { "source": "/emerald-wellness/coming-soon.html", "destination": "/", "permanent": true },
+    { "source": "/emerald-wellness/index.html", "destination": "/", "permanent": true },
+    { "source": "/emerald-wellness/advisors.html", "destination": "/advisors", "permanent": true },
+    { "source": "/emerald-wellness/blog/index.html", "destination": "/blog/", "permanent": true },
+    { "source": "/emerald-wellness/blog/:slug.html", "destination": "/blog/:slug", "permanent": true },
+    { "source": "/peptides.html", "destination": "/peptides", "permanent": true },
     { "source": "/privacy", "destination": "/privacy-policy.html", "permanent": true },
     { "source": "/terms", "destination": "/terms-of-service.html", "permanent": true }
+  ],
+  "rewrites": [
+    { "source": "/advisors", "destination": "/emerald-wellness/advisors.html" },
+    { "source": "/blog", "destination": "/emerald-wellness/blog/index.html" },
+    { "source": "/blog/:slug", "destination": "/emerald-wellness/blog/:slug.html" },
+    { "source": "/peptides", "destination": "/peptides.html" }
   ]
 }
