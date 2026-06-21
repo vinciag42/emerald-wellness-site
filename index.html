@@ -561,7 +561,7 @@ footer{background:var(--bg);border-top:1px solid var(--border);padding:60px 48px
     <div class="diamond"></div>
     EMERALD WELLNESS
   </a>
-  <button class="mobile-menu-toggle" onclick="toggleMobileNav()" aria-label="Open navigation" aria-expanded="false">☰</button>
+  <button class="mobile-menu-toggle" type="button" aria-label="Open navigation" aria-expanded="false">☰</button>
   <div class="nav-links">
     <a href="#features">Platform</a>
     <a href="#peptides">Peptides</a>
@@ -1539,6 +1539,7 @@ function toggleMobileNav(){
   const open=links.classList.toggle('open');
   btn.setAttribute('aria-expanded',open?'true':'false');
 }
+document.querySelector('.mobile-menu-toggle')?.addEventListener('click',toggleMobileNav);
 document.querySelectorAll('.nav-links a').forEach(link=>link.addEventListener('click',()=>{
   const links=document.querySelector('.nav-links');
   const btn=document.querySelector('.mobile-menu-toggle');
