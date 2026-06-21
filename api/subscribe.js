@@ -10,7 +10,10 @@ export default async function handler(req, res) {
   const { email, first_name, last_name, phone, goal, tier, source, referred_by } = req.body;
   if (!email) return res.status(400).json({ error: 'Email required', step: 'validation' });
 
-  const KLAVIYO_KEY = process.env.KLAVIYO_PRIVATE_KEY || 'pk_WtKVHz_49f453ff604a0678196e1c8a13dff471df';
+  const KLAVIYO_KEY = process.env.KLAVIYO_PRIVATE_KEY;
+  if (!KLAVIYO_KEY) {
+    return res.status(500).json({ error: 'Signup service is not configured', step: 'configuration' });
+  }
   const KLAVIYO_LIST = process.env.KLAVIYO_LIST_ID || 'XEEg3P';
   const SUPABASE_URL = process.env.SUPABASE_URL || 'https://mczpuffmlspmghgneukz.supabase.co';
   const SUPABASE_ANON = process.env.SUPABASE_ANON_KEY || 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im1jenB1ZmZtbHNwbWdoZ25ldWt6Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODAxNjczODAsImV4cCI6MjA5NTc0MzM4MH0.hs0CQOyrcIk5WhRr9OUU1fVs7V1sMcea7RYwWuTAVag';
