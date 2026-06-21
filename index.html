@@ -274,10 +274,12 @@ section{padding:100px 48px;}
 .plan-card{background:var(--bg);border:1px solid var(--border);border-radius:20px;padding:32px;position:relative;transition:all .3s;}
 .plan-card.featured{border-color:var(--borderEm);background:linear-gradient(160deg,rgba(26,107,69,.08),var(--bg));}
 .plan-card.pro{border-color:var(--borderGold);background:linear-gradient(160deg,rgba(200,168,40,.07),var(--bg));}
+.plan-card.platinum{border-color:var(--borderGold);background:radial-gradient(circle at 50% 0%,rgba(200,168,40,.16),transparent 34%),linear-gradient(160deg,rgba(26,107,69,.12),var(--bg));}
 .plan-badge{position:absolute;top:-12px;left:50%;transform:translateX(-50%);padding:4px 14px;border-radius:20px;font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;white-space:nowrap;}
 .badge-popular{background:linear-gradient(135deg,var(--em),var(--emL));color:#fff;}
 .badge-complete{background:linear-gradient(135deg,var(--emL),var(--emXL));color:#050d07;}
 .badge-pro{background:linear-gradient(135deg,var(--gold),var(--goldL));color:#050d07;}
+.badge-platinum{background:linear-gradient(135deg,var(--gold),var(--goldXL));color:#050d07;}
 .plan-name{font-family:var(--cinzel);font-size:14px;letter-spacing:2px;color:var(--textDim);margin-bottom:8px;}
 .plan-price{font-family:var(--serif);font-size:44px;font-weight:900;line-height:1;margin-bottom:4px;}
 .plan-price sup{font-size:20px;vertical-align:super;}
@@ -298,6 +300,8 @@ section{padding:100px 48px;}
 .plan-btn-elite:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(64,216,136,.3);}
 .plan-btn-pro{background:linear-gradient(135deg,var(--gold),var(--goldL));color:#050d07;font-weight:700;}
 .plan-btn-pro:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(200,168,40,.35);}
+.plan-btn-platinum{background:linear-gradient(135deg,var(--gold),var(--goldXL));color:#050d07;font-weight:800;}
+.plan-btn-platinum:hover{transform:translateY(-2px);box-shadow:0 10px 30px rgba(200,168,40,.42);}
 
 /* ADD-ONS */
 .addons-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:16px;margin-top:40px;}
@@ -1242,6 +1246,24 @@ footer{background:var(--bg);border-top:1px solid var(--border);padding:60px 48px
       </ul>
       <button class="plan-btn plan-btn-pro" onclick="openWaitlist()">Start 7-Day Pro Trial</button>
     </div>
+    <!-- Platinum Regenesis -->
+    <div class="plan-card platinum">
+      <div class="plan-badge badge-platinum">PLATINUM REGENESIS</div>
+      <div class="plan-name">EMERALD PLATINUM REGENESIS</div>
+      <div class="plan-price"><sup>$</sup><span id="p-platinum">599</span><span id="pd-platinum">.00</span><sub id="ps-platinum">/mo</sub></div>
+      <div class="plan-annual" id="pa-platinum">$1 setup/intro charge, then recurring billing after 7 days</div>
+      <hr class="plan-divider"/>
+      <ul class="plan-features">
+        <li>Quarterly labs</li>
+        <li>Doctor visit and lab review</li>
+        <li>Peptide, supplement, and vitamin monitoring</li>
+        <li>BodyScan progress tracking</li>
+        <li>Regenesis Score and Biology Dashboard</li>
+        <li>Plus option: $799/month</li>
+        <li>Concierge option: $999-$1,499/month</li>
+      </ul>
+      <button class="plan-btn plan-btn-platinum" onclick="openWaitlist()">Begin Your Regenesis</button>
+    </div>
   </div>
 
   <!-- Add-ons -->
@@ -1433,7 +1455,7 @@ footer{background:var(--bg);border-top:1px solid var(--border);padding:60px 48px
     </div>
     <div class="faq-item" onclick="toggleFaq(this)">
       <div class="faq-q">How does the annual billing work? <span class="faq-arrow">+</span></div>
-      <div class="faq-a"><p>Annual billing is charged as one payment for 12 months at the discounted rate (approximately 20% off monthly pricing). Silver annual: $59.99/mo ($719.88/yr). Gold annual: $119.99/mo ($1,439.88/yr). Emerald Elite annual: $159.99/mo ($1,919.88/yr). Pro Practitioner annual: $239.99/mo ($2,879.88/yr).</p></div>
+      <div class="faq-a"><p>Annual billing is charged as one payment for 12 months at the discounted rate. Silver annual: $59.99/mo ($719.88/yr). Gold annual: $119.99/mo ($1,439.88/yr). Emerald Elite annual: $159.99/mo ($1,919.88/yr). Pro Practitioner annual: $239.99/mo ($2,879.88/yr). Emerald Platinum Regenesis annual: $6,499/yr.</p></div>
     </div>
     <div class="faq-item" onclick="toggleFaq(this)">
       <div class="faq-q">How does the referral program work? <span class="faq-arrow">+</span></div>
@@ -1441,7 +1463,7 @@ footer{background:var(--bg);border-top:1px solid var(--border);padding:60px 48px
     </div>
     <div class="faq-item" onclick="toggleFaq(this)">
       <div class="faq-q">What does the 20% first-month discount cover? <span class="faq-arrow">+</span></div>
-      <div class="faq-a"><p>After your first 7 days, your first paid month on any plan is automatically discounted by <strong>20%</strong> — no coupon code needed. This applies to all four plans: Silver, Gold, Emerald Elite, and Pro Practitioner Suite. The discount is applied at checkout before your first billing cycle begins.</p></div>
+      <div class="faq-a"><p>After your first 7 days, your first paid month on any plan is automatically discounted by <strong>20%</strong> — no coupon code needed. This applies to paid plans including Silver, Gold, Emerald Elite, Pro Practitioner Suite, and Emerald Platinum Regenesis. The discount is applied at checkout before your first billing cycle begins.</p></div>
     </div>
 <div class="faq-a"><p>Yes. Every paid plan is $1 for the first 7 days, charged today. After your first 7 days, your first paid month is <strong>20% off</strong>. Cancel any time before renewal.</p></div>
     </div>
@@ -1556,7 +1578,7 @@ document.querySelectorAll('.reveal').forEach(el=>revObs.observe(el));
 
 // BILLING TOGGLE
 let annual=false;
-const prices={silver:[74.99,59.99],gold:[149.99,119.99],elite:[199.99,159.99],pro:[299.99,239.99]};
+const prices={silver:[74.99,59.99],gold:[149.99,119.99],elite:[199.99,159.99],pro:[299.99,239.99],platinum:[599,6499]};
 function toggleBilling(){
   annual=!annual;
   document.getElementById('billing-toggle').classList.toggle('on',annual);
@@ -1564,16 +1586,18 @@ function toggleBilling(){
   document.getElementById('lbl-annual').classList.toggle('active',annual);
   const idx=annual?1:0;
   const fmt=(n)=>{const p=n.toFixed(2).split('.');return{int:p[0],dec:'.'+p[1]};};
-  const s=fmt(prices.silver[idx]),g=fmt(prices.gold[idx]),e=fmt(prices.elite[idx]),pr=fmt(prices.pro[idx]);
+  const s=fmt(prices.silver[idx]),g=fmt(prices.gold[idx]),e=fmt(prices.elite[idx]),pr=fmt(prices.pro[idx]),pl=fmt(prices.platinum[idx]);
   document.getElementById('p-silver').textContent=s.int;document.getElementById('pd-silver').textContent=s.dec;
   document.getElementById('p-gold').textContent=g.int;document.getElementById('pd-gold').textContent=g.dec;
   document.getElementById('p-elite').textContent=e.int;document.getElementById('pd-elite').textContent=e.dec;
   document.getElementById('p-pro').textContent=pr.int;document.getElementById('pd-pro').textContent=pr.dec;
+  document.getElementById('p-platinum').textContent=annual?'6,499':pl.int;document.getElementById('pd-platinum').textContent=annual?'':pl.dec;document.getElementById('ps-platinum').textContent=annual?'/yr':'/mo';
   const ann=(mo,save)=>annual?`Billed annually · Save $${save}/yr`:'';
   document.getElementById('pa-silver').textContent=annual?'Billed annually · Save $180/yr':'';
   document.getElementById('pa-gold').textContent=annual?'Billed annually · Save $360/yr':'';
   document.getElementById('pa-elite').textContent=annual?'Billed annually · Save $480/yr':'';
   document.getElementById('pa-pro').textContent=annual?'Billed annually · Save $720/yr':'';
+  document.getElementById('pa-platinum').textContent=annual?'Billed annually at $6,499/yr':'$1 setup/intro charge, then recurring billing after 7 days';
 }
 
 // BIOAGE CALC
