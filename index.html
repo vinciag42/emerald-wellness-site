@@ -517,7 +517,7 @@ footer{background:var(--bg);border-top:1px solid var(--border);padding:60px 48px
 <section id="hero">
   <canvas id="hero-canvas"></canvas>
   <div class="hero-content">
-    <div class="hero-live-badge"><span class="live-dot"></span><strong id="hero-counter">4,847</strong> optimizers on the waitlist</div>
+    <div class="hero-live-badge"><span class="live-dot"></span><strong id="hero-counter">4,847</strong> optimizers enrolled early</div>
     <p class="hero-eyebrow">Personalized Wellness, Peptide & Supplement Protocols</p>
     <h1 class="hero-title">
       Personalized <em>Wellness Protocols</em><br/>for <span class="gold">Whole-Body Wellness</span>
@@ -964,7 +964,7 @@ footer{background:var(--bg);border-top:1px solid var(--border);padding:60px 48px
 <!-- LAUNCH COUNTDOWN -->
 <section style="padding:60px 48px 0;text-align:center;">
   <div id="launch-countdown">
-    <p class="countdown-label">Opening in 30 Days</p>
+    <p class="countdown-label">Early Enrollment Is Open</p>
     <div class="countdown-units">
       <div class="countdown-unit"><span class="countdown-num" id="cd-days">--</span><div class="countdown-unit-lbl">Days</div></div>
       <div class="countdown-unit"><span class="countdown-num" id="cd-hours">--</span><div class="countdown-unit-lbl">Hours</div></div>
@@ -972,7 +972,7 @@ footer{background:var(--bg);border-top:1px solid var(--border);padding:60px 48px
       <div class="countdown-unit"><span class="countdown-num" id="cd-secs">--</span><div class="countdown-unit-lbl">Seconds</div></div>
     </div>
     <p style="font-size:13px;color:var(--textDim);margin-top:20px;">Early members get <strong style="color:var(--goldL);">$1 for the first 7 days + 20% off your first month. Founding member pricing locked forever.</strong></p>
-    <a href="#pricing" class="btn-primary" style="margin-top:20px;display:inline-block;">Secure Your Spot →</a>
+    <a href="#pricing" class="btn-primary" style="margin-top:20px;display:inline-block;">Start for $1 →</a>
   </div>
 </section>
 
@@ -1278,7 +1278,7 @@ footer{background:var(--bg);border-top:1px solid var(--border);padding:60px 48px
     </div>
     <div class="faq-item" onclick="toggleFaq(this)">
       <div class="faq-q">How does the referral program work? <span class="faq-arrow">+</span></div>
-      <div class="faq-a"><p>Refer 3 friends who sign up for a paid Emerald Wellness plan and you'll receive <strong>20% off your next month's purchase</strong> — automatically applied. Your unique referral link is generated when you join the waitlist or create an account. There is no cap on referrals; each set of 3 qualifying referrals earns you another 20% discount.</p></div>
+      <div class="faq-a"><p>Refer 3 friends who sign up for a paid Emerald Wellness plan and you'll receive <strong>20% off your next month's purchase</strong> — automatically applied. Your unique referral link is generated when you join early or create an account. There is no cap on referrals; each set of 3 qualifying referrals earns you another 20% discount.</p></div>
     </div>
     <div class="faq-item" onclick="toggleFaq(this)">
       <div class="faq-q">What does the 20% first-month discount cover? <span class="faq-arrow">+</span></div>
@@ -1453,7 +1453,7 @@ setTimeout(function(){
 </script>
 <!-- WAITLIST MODAL — 5-STEP HEALTH QUESTIONNAIRE -->
 <div id="waitlist-overlay" onclick="closeWaitlist(event)">
-  <div id="waitlist-modal" role="dialog" aria-modal="true" aria-label="Join the Emerald Wellness Waitlist">
+  <div id="waitlist-modal" role="dialog" aria-modal="true" aria-label="Start Emerald Wellness enrollment">
     <button class="wl-close" onclick="closeWaitlistBtn()" aria-label="Close">✕</button>
 
     <!-- STEP CONTAINER -->
@@ -1545,14 +1545,14 @@ setTimeout(function(){
       <div class="wl-step" id="wl-step-4">
         <p class="wl-eyebrow">Your Personalized Preview</p>
         <h2 class="wl-title">Your starting protocol preview</h2>
-        <p class="wl-sub">Based on your goals and symptoms, here is a brief preview of what Emerald Wellness will build for you. Full protocols unlock at launch.</p>
+        <p class="wl-sub">Based on your goals and symptoms, here is a brief preview of what Emerald Wellness will build for you. Full protocols unlock after enrollment.</p>
         <div class="wl-recs" id="wl-recs-container">
           <!-- Populated by JS -->
         </div>
         <div class="wl-rec-note" id="wl-rec-note">These are informational starting points only — not medical advice. Your full personalized protocol, interaction checker, and Health Protocol Advocate will be available after enrollment.</div>
         <div class="wl-nav">
           <button class="wl-btn-back" onclick="prevStep(4)">← Back</button>
-          <button class="wl-btn-next" onclick="nextStep(4)">Claim My Spot →</button>
+          <button class="wl-btn-next" onclick="nextStep(4)">Continue →</button>
         </div>
       </div>
 
@@ -1616,9 +1616,9 @@ setTimeout(function(){
 <div id="exit-popup">
   <div id="exit-card">
     <button class="exit-close" onclick="closeExit()">✕</button>
-    <p class="exit-eyebrow">Wait — Don't Miss This</p>
-    <h2 class="exit-title">Your First 7 Days for $1 + 20% Off Closes at Launch</h2>
-    <p class="exit-sub">Lock in the $1 first 7 days, 20% off your first month, and founding member pricing before public launch.</p>
+    <p class="exit-eyebrow">Don't Miss This</p>
+    <h2 class="exit-title">Your First 7 Days for $1 + 20% Off</h2>
+    <p class="exit-sub">Start with $1 for the first 7 days, 20% off your first month, and founding member pricing.</p>
     <div class="exit-offer">
       <p>🔒 $1 for the first 7 days · 20% off first month · Founding member pricing locked forever</p>
     </div>
