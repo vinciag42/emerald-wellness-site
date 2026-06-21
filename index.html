@@ -905,7 +905,7 @@
 
     /* ── PRICING 3-COL ── */
     .pricing-grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
-    .pricing-grid-4 { display: grid; grid-template-columns: repeat(5, 1fr); gap: 14px; }
+    .pricing-grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
     .pricing-card { padding: 28px 20px; }
     .pricing-toggle-wrap { display: flex; align-items: center; gap: 14px; justify-content: center; margin-bottom: 48px; }
     .toggle-label { font-size: 0.88rem; color: var(--muted); }
@@ -923,7 +923,7 @@
     .pricing-toggle.active .toggle-knob { transform: translateX(24px); background: #060e08; }
     .toggle-save { font-size: 0.65rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--emerald); background: var(--emerald-dim); border: 1px solid var(--emerald-bd); padding: 2px 8px; border-radius: 100px; margin-left: 6px; }
     .free-badge { background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.12); color: var(--muted); }
-    @media (max-width: 1300px) { .pricing-grid-4 { grid-template-columns: repeat(3, 1fr); } }
+    @media (max-width: 1300px) { .pricing-grid-4 { grid-template-columns: repeat(2, 1fr); } }
     @media (max-width: 900px)  { .pricing-grid-4 { grid-template-columns: repeat(2, 1fr); } }
     @media (max-width: 600px)  { .pricing-grid-4 { grid-template-columns: 1fr; } }
 
@@ -1288,7 +1288,7 @@
     <span><span style="color:var(--emerald)">Emerald</span> Wellness</span>
   </a>
   <a class="regenesis-nav-link" href="#regenesis">Regenesis&#8482;</a>
-  <a class="nav-cta" href="#pricing">Start Free Trial</a>
+  <a class="nav-cta" href="#pricing">Start for $1</a>
 </nav>
 
 <!-- HERO -->
@@ -2128,7 +2128,7 @@
     <div class="pricing-header fade-in">
       <span class="label" style="text-align:center;display:block;">Transparent Pricing</span>
       <h2 class="section-title">Invest in your optimization</h2>
-      <p class="pricing-sub">All plans include a 7-day free trial. HSA/FSA eligible. Cancel anytime.</p>
+      <p class="pricing-sub">All paid plans are $1 for the first 7 days. HSA/FSA eligible. Cancel anytime.</p>
     </div>
     <div class="pricing-toggle-wrap fade-in">
       <span class="toggle-label">Monthly</span>
@@ -2141,34 +2141,13 @@
     <div class="pricing-grid-4">
 
       <div class="pricing-card fade-in">
-        <div class="pricing-tier-badge free-badge">Free</div>
-        <div class="pricing-name">Try Emerald</div>
-        <div class="pricing-tagline">Start your health journey at zero cost</div>
-        <div class="pricing-price">
-          <div class="price-free">$0</div>
-          <div class="price-note">No credit card required</div>
-        </div>
-        <ul class="pricing-features">
-          <li><span class="f-check">✓</span> Stack up to 5 supplements</li>
-          <li><span class="f-check">✓</span> Basic interaction checker</li>
-          <li><span class="f-check">✓</span> Daily health journal</li>
-          <li><span class="f-check">✓</span> Basic biomarker overview</li>
-          <li><span class="f-cross">✕</span> Health Intelligence Advocate</li>
-          <li><span class="f-cross">✕</span> Lab upload &amp; analysis</li>
-          <li><span class="f-cross">✕</span> Peptide guide</li>
-          <li><span class="f-cross">✕</span> Wearable sync</li>
-        </ul>
-        <a class="pricing-btn ghost" href="#">Get Started Free</a>
-      </div>
-
-      <div class="pricing-card fade-in">
         <div class="pricing-tier-badge silver">Silver</div>
         <div class="pricing-name">Essential Intelligence</div>
         <div class="pricing-tagline">Everything you need to take control of your health</div>
         <div class="pricing-price">
           <div class="price-amount monthly-price"><sup>$</sup>75<span>/mo</span></div>
           <div class="price-amount annual-price" style="display:none"><sup>$</sup>720<span>/yr</span></div>
-          <div class="price-note monthly-price">7-day free trial included</div>
+          <div class="price-note monthly-price">$1 for the first 7 days</div>
           <div class="price-note annual-price" style="display:none">Save 20% · billed annually</div>
         </div>
         <ul class="pricing-features">
@@ -2182,8 +2161,8 @@
           <li><span class="f-cross">✕</span> Cycle planner &amp; injection rotator</li>
           <li><span class="f-cross">✕</span> Longevity protocols</li>
         </ul>
-        <a class="pricing-btn ghost monthly-price" href="https://buy.stripe.com/6oU5kE1GG27seiJ5pifEk0e" target="_blank">Start Free Trial</a>
-        <a class="pricing-btn ghost annual-price" href="https://buy.stripe.com/00w8wQgBAfYieiJ8BufEk0f" target="_blank" style="display:none">Start Free Trial</a>
+        <a class="pricing-btn ghost monthly-price" href="https://buy.stripe.com/6oU5kE1GG27seiJ5pifEk0e" target="_blank">Start for $1</a>
+        <a class="pricing-btn ghost annual-price" href="https://buy.stripe.com/00w8wQgBAfYieiJ8BufEk0f" target="_blank" style="display:none">Start for $1</a>
       </div>
 
       <div class="pricing-card featured fade-in">
@@ -2193,7 +2172,7 @@
         <div class="pricing-price">
           <div class="price-amount monthly-price"><sup>$</sup>150<span>/mo</span></div>
           <div class="price-amount annual-price" style="display:none"><sup>$</sup>1,440<span>/yr</span></div>
-          <div class="price-note monthly-price">7-day free trial included</div>
+          <div class="price-note monthly-price">$1 for the first 7 days</div>
           <div class="price-note annual-price" style="display:none">Save 20% · billed annually</div>
         </div>
         <ul class="pricing-features">
@@ -2206,8 +2185,8 @@
           <li><span class="f-check">✓</span> Biological age estimation</li>
           <li><span class="f-check">✓</span> Priority support</li>
         </ul>
-        <a class="pricing-btn solid monthly-price" href="https://buy.stripe.com/6oUeVe2KK27s4I95pifEk0g" target="_blank">Start Free Trial</a>
-        <a class="pricing-btn solid annual-price" href="https://buy.stripe.com/aFa5kE7109zUa2t3hafEk0h" target="_blank" style="display:none">Start Free Trial</a>
+        <a class="pricing-btn solid monthly-price" href="https://buy.stripe.com/6oUeVe2KK27s4I95pifEk0g" target="_blank">Start for $1</a>
+        <a class="pricing-btn solid annual-price" href="https://buy.stripe.com/aFa5kE7109zUa2t3hafEk0h" target="_blank" style="display:none">Start for $1</a>
       </div>
 
       <div class="pricing-card fade-in">
@@ -2217,7 +2196,7 @@
         <div class="pricing-price">
           <div class="price-amount monthly-price"><sup>$</sup>200<span>/mo</span></div>
           <div class="price-amount annual-price" style="display:none"><sup>$</sup>1,920<span>/yr</span></div>
-          <div class="price-note monthly-price">7-day free trial included</div>
+          <div class="price-note monthly-price">$1 for the first 7 days</div>
           <div class="price-note annual-price" style="display:none">Save 20% · billed annually</div>
         </div>
         <ul class="pricing-features">
@@ -2230,8 +2209,8 @@
           <li><span class="f-cross">✕</span> Practitioner client profiles</li>
           <li><span class="f-cross">✕</span> HIPAA BAA</li>
         </ul>
-        <a class="pricing-btn ghost monthly-price" href="https://buy.stripe.com/7sY7sMgBAh2m3E5192fEk0b" target="_blank">Start Free Trial</a>
-        <a class="pricing-btn ghost annual-price" href="https://buy.stripe.com/14AdRa4SSh2m8Yp7xqfEk0c" target="_blank" style="display:none">Start Free Trial</a>
+        <a class="pricing-btn ghost monthly-price" href="https://buy.stripe.com/7sY7sMgBAh2m3E5192fEk0b" target="_blank">Start for $1</a>
+        <a class="pricing-btn ghost annual-price" href="https://buy.stripe.com/14AdRa4SSh2m8Yp7xqfEk0c" target="_blank" style="display:none">Start for $1</a>
       </div>
 
       <div class="pricing-card fade-in">
@@ -2275,10 +2254,10 @@
     <div class="signup-left fade-in">
       <span class="label">Exclusive Offer</span>
       <h2 class="section-title">Start your journey.<br /><em style="font-style:italic;color:var(--emerald);">Save 20% your first month.</em></h2>
-      <p class="section-body" style="margin-top:16px;">Sign up today and receive 20% off your first month on any plan. No credit card required to get started.</p>
+      <p class="section-body" style="margin-top:16px;">Sign up today and receive 20% off your first month on any plan. $1 charged today to get started.</p>
       <div class="signup-perks">
         <div class="signup-perk"><span class="perk-icon">✦</span> 20% off your first month</div>
-        <div class="signup-perk"><span class="perk-icon">✦</span> 7-day free trial on all paid plans</div>
+        <div class="signup-perk"><span class="perk-icon">✦</span> $1 for the first 7 days on all paid plans</div>
         <div class="signup-perk"><span class="perk-icon">✦</span> HSA/FSA eligible</div>
         <div class="signup-perk"><span class="perk-icon">✦</span> Cancel anytime</div>
       </div>
@@ -2318,15 +2297,15 @@
 <!-- FINAL CTA -->
 <div class="final-cta">
   <div class="final-cta-inner fade-in">
-    <div class="final-cta-badge">Limited Time · 7-Day Free Trial</div>
-    <h2>The most sophisticated health platform ever built<br /><em style="color:var(--emerald);font-style:italic;">is free to try</em></h2>
+    <div class="final-cta-badge">Limited Time · $1 for First 7 Days</div>
+    <h2>The most sophisticated health platform ever built<br /><em style="color:var(--emerald);font-style:italic;">is $1 for the first 7 days</em></h2>
     <p>Join thousands of biohackers, athletes, and longevity seekers who have made Emerald their health command center.</p>
     <div class="final-cta-btns">
-      <a class="btn-primary" href="#">Begin Free Trial →</a>
+      <a class="btn-primary" href="#">Begin for $1 →</a>
       <a class="btn-outline" href="#">Book a Demo</a>
     </div>
     <div class="final-cta-meta">
-      No credit card required
+      $1 charged today
       <span>·</span>
       HSA/FSA eligible
       <span>·</span>

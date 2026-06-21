@@ -32,7 +32,7 @@ This project is the **marketing and signup website**, not the full app itself. I
 |---------------------|-------------------------------|
 | Read about the platform | See features, pricing, and testimonials |
 | Join the waitlist before launch | Their name and email are saved |
-| Sign up and start a free trial | They create an account and enter payment details |
+| Sign up and start for $1 | They create an account and enter payment details |
 | Read health articles | 8 in-depth guides in the "Intelligence Library" |
 | Learn about the advisory board | Meet the doctors and experts who review content |
 | Read legal policies | Privacy, terms, HIPAA, and medical disclaimer |
@@ -71,7 +71,7 @@ This project is the **marketing and signup website**, not the full app itself. I
 
 2. **Visitor goes to Sign Up** → They choose a plan (Silver, Gold, Elite, or Pro), add optional extras, and create a password.
 
-3. **Payment** → They are sent to Stripe to enter card details. They get a **7-day free trial** before being charged.
+3. **Payment** → They are sent to Stripe to enter card details and pay **$1 for the first 7 days** before the selected plan renews.
 
 4. **Referrals** → Users can share a referral link. When 3 friends sign up, they get 20% off.
 

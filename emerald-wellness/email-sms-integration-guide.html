@@ -90,18 +90,18 @@ footer{background:rgba(5,13,7,.95);border-top:1px solid var(--border);padding:24
 
   <!-- ══ SMS MESSAGE ══ -->
   <h2>📱 SMS Welcome Message</h2>
-  <p>The SMS fires immediately after account creation — within seconds of the user clicking "Start My Free 7-Day Trial." Keep it warm, personal, and action-driving. Under 160 characters is one SMS segment (free on most platforms).</p>
+  <p>The SMS fires immediately after account creation — within seconds of the user clicking "Start My $1 Trial." Keep it warm, personal, and action-driving. Under 160 characters is one SMS segment (free on most platforms).</p>
 
   <div class="section-card em">
     <h3>SMS Copy — Primary Version</h3>
     <div class="sms-preview">
       <div class="sms-sender">Emerald Wellness · Now</div>
       <div class="sms-bubble">
-        <p>Hi [FirstName] ✦ Welcome to Emerald Wellness! Your 7-day free trial is live. Health is wealth — and we'll guide you every step of the way. Launch your dashboard: emeraldwellness.health/signup Reply STOP to opt out.</p>
+        <p>Hi [FirstName] ✦ Welcome to Emerald Wellness! Your first 7 days are live for $1. Health is wealth — and we'll guide you every step of the way. Launch your dashboard: emeraldwellness.health/signup Reply STOP to opt out.</p>
       </div>
       <div class="sms-meta">Delivered</div>
     </div>
-    <div class="sms-text-box">Hi {{first_name}} ✦ Welcome to Emerald Wellness! Your 7-day free trial is live + 20% off your first month is locked in. Health is wealth — and we'll guide you every step of the way.
+    <div class="sms-text-box">Hi {{first_name}} ✦ Welcome to Emerald Wellness! Your first 7 days are live for $1 + 20% off your first month is locked in. Health is wealth — and we'll guide you every step of the way.
 
 Launch your dashboard: emeraldwellness.health/signup
 
@@ -111,7 +111,7 @@ Reply STOP to opt out.</div>
 
   <div class="section-card">
     <h3>SMS Copy — Short Version (1 segment, 160 chars)</h3>
-    <div class="sms-text-box">Hi {{first_name}}, welcome to Emerald Wellness ✦ Your 7-day free trial is live. We guide you every step of the way. emeraldwellness.health/signup · Reply STOP to opt out</div>
+    <div class="sms-text-box">Hi {{first_name}}, welcome to Emerald Wellness ✦ Your first 7 days are live for $1. We guide you every step of the way. emeraldwellness.health/signup · Reply STOP to opt out</div>
     <div class="sms-char-count">160 chars exactly · 1 SMS segment · Twilio cost: ~$0.0079</div>
   </div>
 
@@ -308,7 +308,7 @@ Reply STOP to opt out.</div>
 <span class="comment">// Only send if user consented to SMS at signup</span>
 <span class="key">if</span> (signupData.sms_consent && signupData.phone) {
   <span class="fn">await</span> client.messages.create({
-    body: <span class="str">`Hi ${signupData.first_name} ✦ Welcome to Emerald Wellness! Your 7-day free trial is live + 20% off your first month is locked in. Health is wealth — we guide you every step of the way. emeraldwellness.health/signup · Reply STOP to opt out`</span>,
+    body: <span class="str">`Hi ${signupData.first_name} ✦ Welcome to Emerald Wellness! Your first 7 days are live for $1 + 20% off your first month is locked in. Health is wealth — we guide you every step of the way. emeraldwellness.health/signup · Reply STOP to opt out`</span>,
     from: process.env.TWILIO_PHONE_NUMBER, <span class="comment">// Your Twilio number or Messaging Service SID</span>
     to: signupData.phone
   });

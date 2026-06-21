@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1"/>
-<title>Sign Up | Emerald Wellness — Start Your 7-Day Free Trial</title>
-<meta name="description" content="Create your Emerald Wellness account. 7-day free trial, 20% off your first month. Choose your plan and start building your personalized health protocol today."/>
+<title>Sign Up | Emerald Wellness — Start Your First 7 Days for $1</title>
+<meta name="description" content="Create your Emerald Wellness account. $1 for the first 7 days, 20% off your first month. Choose your plan and start building your personalized health protocol today."/>
 <link rel="canonical" href="https://emeraldwellness.health/signup"/>
 
 <!-- ══ SUPABASE SDK ══ -->
@@ -214,7 +214,7 @@ header{background:rgba(8,15,10,.95);border-bottom:1px solid var(--borderEm);padd
     <div class="step active" id="step-1">
       <p class="step-eyebrow">Step 1 of 3</p>
       <h2 class="step-title">Choose your plan</h2>
-      <p class="step-sub">Every plan starts with a <strong style="color:var(--emXL)">7-day free trial</strong> and <strong style="color:var(--goldL)">20% off your first month</strong>. No credit card required to start.</p>
+      <p class="step-sub">Every plan starts with a <strong style="color:var(--emXL)">$1 for the first 7 days</strong> and <strong style="color:var(--goldL)">20% off your first month</strong>. $1 is charged today.</p>
 
       <div class="plan-select-grid" id="plan-cards">
         <!-- Silver -->
@@ -309,7 +309,7 @@ header{background:rgba(8,15,10,.95);border-bottom:1px solid var(--borderEm);padd
     <div class="step" id="step-3">
       <p class="step-eyebrow">Step 3 of 3</p>
       <h2 class="step-title">Create your account</h2>
-      <p class="step-sub">Your 7-day free trial starts immediately. No credit card required.</p>
+      <p class="step-sub">Your first 7 days start immediately for $1. $1 charged today.</p>
 
       <!-- Social signup -->
       <button class="social-btn" onclick="handleSocial('google')">
@@ -373,9 +373,9 @@ header{background:rgba(8,15,10,.95);border-bottom:1px solid var(--borderEm);padd
       </label>
 
       <button class="btn-next btn-gold" onclick="submitSignup()">
-        Start My Free 7-Day Trial →
+        Start My $1 Trial →
       </button>
-      <p style="font-size:11px;color:var(--textDim);text-align:center;margin-top:10px;line-height:1.5;">No credit card required. After your trial, your first month is 20% off. Cancel any time.</p>
+      <p style="font-size:11px;color:var(--textDim);text-align:center;margin-top:10px;line-height:1.5;">$1 charged today. After your trial, your first month is 20% off. Cancel any time.</p>
       <button class="btn-back" onclick="goStep(2)">← Back</button>
     </div>
 
@@ -384,7 +384,7 @@ header{background:rgba(8,15,10,.95);border-bottom:1px solid var(--borderEm);padd
       <div class="signup-success">
         <div class="success-icon">✦</div>
         <h2 class="success-title">Welcome to<br/>Emerald Wellness.</h2>
-        <p class="success-sub">Your 7-day free trial is active. Your first month is 20% off. We've emailed your confirmation and personalized protocol preview.</p>
+        <p class="success-sub">Your first 7 days are active for $1. Your first month is 20% off. We've emailed your confirmation and personalized protocol preview.</p>
         <div class="success-actions">
           <a href="index.html" class="btn-dashboard">Launch My Dashboard →</a>
         </div>
@@ -407,15 +407,15 @@ header{background:rgba(8,15,10,.95);border-bottom:1px solid var(--borderEm);padd
     <div class="order-plan-name" id="sum-plan-name">Gold Plan</div>
     <div class="order-plan-sub" id="sum-plan-sub">Monthly billing · Cancel any time</div>
 
-    <div class="order-line"><span>7-day free trial</span><strong style="color:var(--emXL);">$0.00</strong></div>
+    <div class="order-line"><span>First 7 days</span><strong style="color:var(--emXL);">$1.00</strong></div>
     <div class="order-line"><span>First month (20% off)</span><strong id="sum-first-price" style="color:var(--goldL);">$119.99</strong></div>
     <div class="order-line"><span>Then monthly</span><strong id="sum-monthly-price">$149.99/mo</strong></div>
     <hr class="order-divider"/>
-    <div class="order-total"><span>Due today</span><span class="total-num">$0.00</span></div>
+    <div class="order-total"><span>Due today</span><span class="total-num">$1.00</span></div>
 
     <div class="order-badge">
       <span class="order-badge-icon">🔒</span>
-      <span>No credit card required. Your free trial starts immediately. First charge after 7 days at 20% off.</span>
+      <span>Your first 7 days start immediately for $1. The selected plan renews after 7 days at 20% off.</span>
     </div>
 
     <div class="order-features" id="sum-features">

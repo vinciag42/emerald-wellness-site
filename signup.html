@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1"/>
-<title>Join Emerald Wellness — Start Your Free Trial</title>
+<title>Join Emerald Wellness — Start for $1</title>
 <style>
 :root{
   --bg:#050d07;--bg2:#0a1a0f;--bg3:#0f2415;
@@ -132,15 +132,15 @@ footer{text-align:center;padding:24px;border-top:1px solid var(--border);font-si
 
 <nav>
   <div class="logo">✦ EMERALD<span>WELLNESS</span></div>
-  <div class="nav-badge">7-Day Free Trial</div>
+  <div class="nav-badge">$1 for First 7 Days</div>
 </nav>
 
 <div class="hero">
   <div class="hero-eyebrow">Start Your Journey</div>
-  <h1>Your <em>7-Day Free Trial</em><br/>Starts Right Now</h1>
+  <h1>Your First 7 Days<br/><em>Start for Just $1</em></h1>
   <p class="hero-sub">Join thousands of optimizers using AI-powered protocols, 500+ compounds, and clinical-grade guidance.</p>
   <div class="trust-row">
-    <div class="trust-item">7-Day Free Trial</div>
+    <div class="trust-item">$1 for First 7 Days</div>
     <div class="trust-item">20% Off First Month</div>
     <div class="trust-item">Cancel Anytime</div>
     <div class="trust-item">No Hidden Fees</div>
@@ -193,7 +193,7 @@ footer{text-align:center;padding:24px;border-top:1px solid var(--border);font-si
   <!-- STEP 2: Plan Selection -->
   <div class="step-card" id="step2">
     <div class="step-title">Choose Your Plan</div>
-    <div class="step-sub">All plans include a 7-day free trial + 20% off your first month</div>
+    <div class="step-sub">All paid plans are $1 for the first 7 days + 20% off your first month</div>
     <div id="err2" class="error-msg"></div>
 
     <div class="billing-toggle">
@@ -205,25 +205,25 @@ footer{text-align:center;padding:24px;border-top:1px solid var(--border);font-si
       <div class="plan-card" id="plan-silver" onclick="selectPlan('silver')">
         <div class="plan-name">🥈 Silver</div>
         <div class="plan-price" id="price-silver">$75<span>/mo</span></div>
-        <div class="plan-trial">7 days free · then 20% off first month</div>
+        <div class="plan-trial">$1 for first 7 days · then 20% off first month</div>
         <div class="plan-features">✓ 500+ compound database<br/>✓ AI Health Advisor<br/>✓ Basic protocols<br/>✓ Lab tracker</div>
       </div>
       <div class="plan-card popular" id="plan-gold" onclick="selectPlan('gold')">
         <div class="plan-name">🥇 Gold</div>
         <div class="plan-price" id="price-gold">$150<span>/mo</span></div>
-        <div class="plan-trial">7 days free · then 20% off first month</div>
+        <div class="plan-trial">$1 for first 7 days · then 20% off first month</div>
         <div class="plan-features">✓ Everything in Silver<br/>✓ Stack Builder<br/>✓ 200+ protocols<br/>✓ Injection site guides</div>
       </div>
       <div class="plan-card" id="plan-elite" onclick="selectPlan('elite')">
         <div class="plan-name">💎 Emerald Elite</div>
         <div class="plan-price" id="price-elite">$200<span>/mo</span></div>
-        <div class="plan-trial">7 days free · then 20% off first month</div>
+        <div class="plan-trial">$1 for first 7 days · then 20% off first month</div>
         <div class="plan-features">✓ Everything in Gold<br/>✓ AI Protocol Builder<br/>✓ Biomarker optimization<br/>✓ Priority support</div>
       </div>
       <div class="plan-card" id="plan-pro" onclick="selectPlan('pro')">
         <div class="plan-name">⚕️ Pro Practitioner</div>
         <div class="plan-price" id="price-pro">$300<span>/mo</span></div>
-        <div class="plan-trial">7 days free · then 20% off first month</div>
+        <div class="plan-trial">$1 for first 7 days · then 20% off first month</div>
         <div class="plan-features">✓ Everything in Elite<br/>✓ Patient management<br/>✓ HIPAA BAA<br/>✓ White-label reports</div>
       </div>
     </div>
@@ -265,7 +265,7 @@ footer{text-align:center;padding:24px;border-top:1px solid var(--border);font-si
       <div class="summary-row" id="summaryAddonsRow" style="display:none;"><span>Add-ons (<span id="addonCount">0</span>)</span><span id="summaryAddons">$0</span></div>
       <div class="summary-row total"><span>Total after trial</span><span class="price" id="summaryTotal">$0/mo</span></div>
     </div>
-    <div class="trial-note">✦ Your card won't be charged until after your 7-day free trial</div>
+    <div class="trial-note">✦ Your card will be charged $1 today, then the selected plan price after 7 days</div>
     <button class="btn-primary" onclick="goStep3()">Continue → Create Account</button>
     <button class="btn-secondary" onclick="goStep(1)">← Back</button>
   </div>
@@ -295,7 +295,7 @@ footer{text-align:center;padding:24px;border-top:1px solid var(--border);font-si
       <div class="summary-row" id="referralRow" style="display:none;"><span>Referral discount</span><span style="color:var(--greenXL);">-20% first month</span></div>
       <div class="summary-row total"><span>After 7-day trial</span><span class="price" id="summaryTotal3">$0/mo</span></div>
     </div>
-    <div class="trial-note">✦ 7-day free trial — no charge today</div>
+    <div class="trial-note">✦ $1 for the first 7 days — $1 charged today</div>
     <button class="btn-primary" id="btnCreateAccount" onclick="createAccount()">Create Account & Go to Checkout →</button>
     <button class="btn-secondary" onclick="goStep(2)">← Back</button>
   </div>
@@ -305,9 +305,9 @@ footer{text-align:center;padding:24px;border-top:1px solid var(--border);font-si
     <div class="success-wrap">
       <div class="success-icon">✦</div>
       <div class="success-title">Welcome to Emerald Wellness!</div>
-      <div class="success-sub">Your account is created and your 7-day free trial is now active. You'll receive a welcome email shortly.</div>
+  <div class="success-sub">Your account is created and your first 7 days are active for $1. You'll receive a welcome email shortly.</div>
       <div class="success-items">
-        <div class="success-item">7-day free trial activated</div>
+        <div class="success-item">First 7 days activated for $1</div>
         <div class="success-item">20% off your first month locked in</div>
         <div class="success-item">Full platform access granted</div>
         <div class="success-item">Welcome email on its way</div>
