@@ -2202,7 +2202,7 @@
     </div>
     <div class="pricing-toggle-wrap fade-in">
       <span class="toggle-label">Monthly</span>
-      <button class="pricing-toggle" id="billing-toggle" onclick="toggleBilling()">
+      <button class="pricing-toggle" id="billing-toggle" type="button" aria-label="Toggle monthly and annual pricing">
         <span class="toggle-knob"></span>
       </button>
       <span class="toggle-label">Annual <span class="toggle-save">Save 20%</span></span>
@@ -2232,7 +2232,7 @@
           <li><span class="f-cross">✕</span> Longevity protocols</li>
         </ul>
         <a class="pricing-btn ghost monthly-price" href="https://buy.stripe.com/6oU5kE1GG27seiJ5pifEk0e" target="_blank">Review Checkout</a>
-        <a class="pricing-btn ghost annual-price" href="https://buy.stripe.com/00w8wQgBAfYieiJ8BufEk0f" target="_blank" style="display:none">Choose Annual</a>
+        <a class="pricing-btn ghost annual-price" href="mailto:support@emeraldwellness.health?subject=Silver%20Annual%20Plan" style="display:none">Contact for Annual</a>
       </div>
 
       <div class="pricing-card featured fade-in">
@@ -2279,7 +2279,7 @@
           <li><span class="f-cross">✕</span> Practitioner client profiles</li>
           <li><span class="f-cross">✕</span> HIPAA BAA</li>
         </ul>
-        <a class="pricing-btn ghost monthly-price" href="https://buy.stripe.com/7sY7sMgBAh2m3E5192fEk0b" target="_blank">Review Checkout</a>
+        <a class="pricing-btn ghost monthly-price" href="mailto:support@emeraldwellness.health?subject=Emerald%20Elite%20Monthly%20Plan">Contact for Elite</a>
         <a class="pricing-btn ghost annual-price" href="https://buy.stripe.com/14AdRa4SSh2m8Yp7xqfEk0c" target="_blank" style="display:none">Choose Annual</a>
       </div>
 
@@ -2346,9 +2346,7 @@
           <label class="form-label">Email Address</label>
           <input class="form-input" type="email" placeholder="you@example.com" required />
         </div>
-        <div aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden;">
-          <label>Website <input type="text" name="website" tabindex="-1" autocomplete="off" /></label>
-        </div>
+        <input type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" hidden />
 
         <button class="signup-btn" type="submit">Join Early Access →</button>
         <p class="form-note">By signing up you agree to our <a href="terms-of-service.html">Terms of Service</a> and <a href="privacy-policy.html">Privacy Policy</a>.</p>
@@ -2451,13 +2449,14 @@
 </footer>
 
 <script>
-  function toggleBilling() {
+  window.toggleBilling = function toggleBilling() {
     const toggle = document.getElementById('billing-toggle');
     toggle.classList.toggle('active');
     const isAnnual = toggle.classList.contains('active');
     document.querySelectorAll('.monthly-price').forEach(el => el.style.display = isAnnual ? 'none' : '');
     document.querySelectorAll('.annual-price').forEach(el => el.style.display = isAnnual ? '' : 'none');
   }
+  document.getElementById('billing-toggle')?.addEventListener('click', window.toggleBilling);
   async function handleSignup(e) {
     e.preventDefault();
     const btn=e.target.querySelector('.signup-btn');
