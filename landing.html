@@ -997,7 +997,280 @@
       .footer-bottom { flex-direction: column; gap: 16px; text-align: center; }
       footer { padding: 40px 24px; }
     }
-  </style>
+
+    /* ═══ REGENESIS SECTION ═══ */
+    .regenesis-section {
+      background: linear-gradient(180deg, var(--bg) 0%, #061209 50%, var(--bg) 100%);
+      position: relative;
+      overflow: hidden;
+      padding: 120px 64px;
+    }
+    .regenesis-section::before {
+      content: '';
+      position: absolute;
+      top: -200px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 1200px;
+      height: 800px;
+      background: radial-gradient(ellipse, rgba(74,222,128,0.06) 0%, transparent 60%);
+      pointer-events: none;
+    }
+    .regenesis-inner {
+      max-width: 1280px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+    }
+    .regenesis-kicker {
+      font-size: 0.68rem;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: #d4af37;
+      display: inline-block;
+      font-weight: 600;
+      margin-bottom: 16px;
+      border: 1px solid rgba(212,175,55,0.3);
+      padding: 6px 18px;
+      border-radius: 100px;
+    }
+    .regenesis-headline {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.2rem, 4.5vw, 3.8rem);
+      font-weight: 600;
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+      color: var(--white);
+      margin-bottom: 16px;
+    }
+    .regenesis-headline .regen-gold {
+      background: linear-gradient(135deg, #d4af37 0%, #f5e17a 50%, #d4af37 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .regenesis-tagline {
+      font-size: 1.1rem;
+      color: var(--emerald);
+      letter-spacing: 0.06em;
+      margin-bottom: 24px;
+      font-style: italic;
+    }
+    .regenesis-body {
+      font-size: 1rem;
+      color: var(--muted);
+      max-width: 640px;
+      line-height: 1.8;
+      margin-bottom: 40px;
+    }
+    .regenesis-buttons {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      margin-bottom: 72px;
+    }
+    .regenesis-btn-primary {
+      background: linear-gradient(135deg, #d4af37 0%, #f5e17a 100%);
+      color: #060e08;
+      padding: 14px 32px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: opacity 0.2s, transform 0.2s;
+      display: inline-block;
+    }
+    .regenesis-btn-primary:hover { opacity: 0.88; transform: translateY(-1px); }
+    .regenesis-btn-ghost {
+      background: transparent;
+      color: var(--white);
+      padding: 13px 32px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      text-decoration: none;
+      border: 1px solid rgba(212,175,55,0.4);
+      transition: border-color 0.2s, color 0.2s;
+      display: inline-block;
+    }
+    .regenesis-btn-ghost:hover { border-color: #d4af37; color: #d4af37; }
+    .regenesis-layout {
+      display: grid;
+      grid-template-columns: 1fr 420px;
+      gap: 64px;
+      align-items: start;
+    }
+    .regenesis-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+    .regenesis-card {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(74,222,128,0.12);
+      border-radius: 12px;
+      padding: 28px;
+      transition: border-color 0.3s, box-shadow 0.3s;
+      position: relative;
+      overflow: hidden;
+    }
+    .regenesis-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 2px;
+      background: linear-gradient(90deg, transparent, rgba(212,175,55,0.5), transparent);
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+    .regenesis-card:hover {
+      border-color: rgba(74,222,128,0.28);
+      box-shadow: 0 8px 32px rgba(74,222,128,0.06);
+    }
+    .regenesis-card:hover::before { opacity: 1; }
+    .regenesis-card-icon {
+      width: 40px; height: 40px;
+      background: var(--emerald-dim);
+      border: 1px solid var(--emerald-bd);
+      border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 16px;
+      font-size: 1.1rem;
+    }
+    .regenesis-card-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--white);
+      margin-bottom: 10px;
+      letter-spacing: 0.02em;
+    }
+    .regenesis-card-name .tm { color: var(--emerald); font-size: 0.65rem; vertical-align: super; }
+    .regenesis-card-desc {
+      font-size: 0.85rem;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+    .regenesis-dashboard {
+      background: rgba(255,255,255,0.04);
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+      border: 1px solid rgba(212,175,55,0.2);
+      border-radius: 20px;
+      padding: 32px;
+      position: sticky;
+      top: 100px;
+      box-shadow: 0 8px 48px rgba(0,0,0,0.4), 0 0 80px rgba(74,222,128,0.04);
+    }
+    .regenesis-dashboard-header {
+      font-size: 0.65rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: #d4af37;
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .regenesis-dashboard-header::before {
+      content: '';
+      width: 6px; height: 6px;
+      background: #d4af37;
+      border-radius: 50%;
+      box-shadow: 0 0 8px #d4af37;
+    }
+    .regenesis-score {
+      text-align: center;
+      margin-bottom: 28px;
+    }
+    .regenesis-score-number {
+      font-family: 'Playfair Display', serif;
+      font-size: 5rem;
+      font-weight: 700;
+      line-height: 1;
+      background: linear-gradient(135deg, #4ade80 0%, #d4af37 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 4px;
+    }
+    .regenesis-score-label {
+      font-size: 0.78rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--emerald);
+    }
+    .regenesis-divider {
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(74,222,128,0.15), transparent);
+      margin: 20px 0;
+    }
+    .regenesis-future-self {
+      font-size: 0.75rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 16px;
+    }
+    .regenesis-status-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .regenesis-status-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.82rem;
+    }
+    .regenesis-status-label { color: var(--muted); }
+    .regenesis-status-badge {
+      font-size: 0.68rem;
+      letter-spacing: 0.1em;
+      padding: 3px 10px;
+      border-radius: 100px;
+    }
+    .regenesis-badge-tracking { background: rgba(74,222,128,0.12); color: var(--emerald); }
+    .regenesis-badge-synced { background: rgba(74,222,128,0.12); color: var(--emerald); }
+    .regenesis-badge-active { background: rgba(212,175,55,0.12); color: #d4af37; }
+    .regenesis-badge-improving { background: rgba(74,222,128,0.08); color: #86efac; }
+    .regenesis-disclaimer {
+      font-size: 0.72rem;
+      color: rgba(122,152,128,0.6);
+      text-align: center;
+      margin-top: 56px;
+      padding-top: 24px;
+      border-top: 1px solid var(--border);
+      line-height: 1.8;
+      max-width: 760px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .regenesis-nav-link {
+      font-size: 0.82rem;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      color: #d4af37;
+      text-decoration: none;
+      text-transform: uppercase;
+      transition: opacity 0.2s;
+      margin-right: 8px;
+    }
+    .regenesis-nav-link:hover { opacity: 0.75; }
+    @media (max-width: 920px) {
+      .regenesis-section { padding: 80px 24px; }
+      .regenesis-layout { grid-template-columns: 1fr; gap: 48px; }
+      .regenesis-grid { grid-template-columns: 1fr; }
+      .regenesis-dashboard { position: static; }
+      .regenesis-buttons { flex-direction: column; align-items: flex-start; }
+      .regenesis-btn-primary, .regenesis-btn-ghost { width: 100%; text-align: center; box-sizing: border-box; }
+    }
+</style>
 <script async type="text/javascript" src="https://static.klaviyo.com/onsite/js/klaviyo.js?company_id=WtKVHz"></script>
 <script src="js/waitlist-api.js"></script>
 </head>
@@ -1014,6 +1287,7 @@
     <span style="font-size:28px;line-height:1;">✦</span>
     <span><span style="color:var(--emerald)">Emerald</span> Wellness</span>
   </a>
+  <a class="regenesis-nav-link" href="#regenesis">Regenesis&#8482;</a>
   <a class="nav-cta" href="#pricing">Start Free Trial</a>
 </nav>
 
@@ -1206,6 +1480,90 @@
     </div>
   </div>
 </div>
+
+<!-- EMERALD PLATINUM REGENESIS -->
+<section id="regenesis" class="regenesis-section">
+  <div class="regenesis-inner">
+    <div class="fade-in">
+      <span class="regenesis-kicker">NEW &bull; EMERALD PLATINUM</span>
+      <h2 class="regenesis-headline">Emerald Platinum <span class="regen-gold">Regenesis&#8482;</span></h2>
+      <p class="regenesis-tagline">Where Transformation Begins.</p>
+      <p class="regenesis-body">Total health optimization based on your specific biology.<br><br>Regenesis connects your body photos, wellness stack, biomarker trends, recovery habits, and goals into one visual transformation command center.</p>
+      <div class="regenesis-buttons">
+        <a href="#pricing" class="regenesis-btn-primary">Begin Your Regenesis</a>
+        <a href="#pricing" class="regenesis-btn-ghost">View Platinum Plan</a>
+      </div>
+    </div>
+
+    <div class="regenesis-layout fade-in">
+      <div class="regenesis-grid">
+
+        <div class="regenesis-card">
+          <div class="regenesis-card-icon">&#128247;</div>
+          <div class="regenesis-card-name">BodyScan<span class="tm">&#8482;</span></div>
+          <p class="regenesis-card-desc">Upload front, side, back, face, and hand photos to create a private progress baseline and before/after timeline.</p>
+        </div>
+
+        <div class="regenesis-card">
+          <div class="regenesis-card-icon">&#127775;</div>
+          <div class="regenesis-card-name">Future Self<span class="tm">&#8482;</span></div>
+          <p class="regenesis-card-desc">Visualize estimated 30, 90, and 365-day outcomes based on user-entered goals, progress patterns, and consistency.</p>
+        </div>
+
+        <div class="regenesis-card">
+          <div class="regenesis-card-icon">&#9881;</div>
+          <div class="regenesis-card-name">Protocol Intelligence<span class="tm">&#8482;</span></div>
+          <p class="regenesis-card-desc">Track supplements, peptides, red-light therapy, workouts, sleep, and recovery habits in one integrated wellness stack.</p>
+        </div>
+
+        <div class="regenesis-card">
+          <div class="regenesis-card-icon">&#128200;</div>
+          <div class="regenesis-card-name">Biology Dashboard<span class="tm">&#8482;</span></div>
+          <p class="regenesis-card-desc">Connect measurements, labs, wearables, and habits to see what is moving your biology in the right direction.</p>
+        </div>
+
+      </div>
+
+      <div class="regenesis-dashboard fade-in">
+        <div class="regenesis-dashboard-header">Regenesis Score&#8482;</div>
+        <div class="regenesis-score">
+          <div class="regenesis-score-number">91</div>
+          <div class="regenesis-score-label">Excellent Trajectory</div>
+        </div>
+
+        <div class="regenesis-divider"></div>
+
+        <div class="regenesis-future-self">Future Self&#8482; &mdash; Today &rarr; 90 Days</div>
+
+        <ul class="regenesis-status-list">
+          <li class="regenesis-status-item">
+            <span class="regenesis-status-label">Body</span>
+            <span class="regenesis-status-badge regenesis-badge-tracking">Tracking</span>
+          </li>
+          <li class="regenesis-status-item">
+            <span class="regenesis-status-label">Labs</span>
+            <span class="regenesis-status-badge regenesis-badge-synced">Synced</span>
+          </li>
+          <li class="regenesis-status-item">
+            <span class="regenesis-status-label">Stack</span>
+            <span class="regenesis-status-badge regenesis-badge-active">Active</span>
+          </li>
+          <li class="regenesis-status-item">
+            <span class="regenesis-status-label">Recovery</span>
+            <span class="regenesis-status-badge regenesis-badge-improving">Improving</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <p class="regenesis-disclaimer">
+      Educational wellness projections only. Emerald Wellness does not diagnose, treat, prescribe, or guarantee outcomes.<br>
+      Consult a licensed healthcare provider before beginning peptides, HRT, TRT, GLP-1 therapies, or other medical treatments.
+    </p>
+  </div>
+</section>
+
+
 
 <!-- EMERALD BUNDLE -->
 <div class="bundle-wrap">
@@ -1897,6 +2255,12 @@
           <li><span class="f-check">✓</span> Telehealth booking integration</li>
           <li><span class="f-check">✓</span> Practitioner Health Intelligence Advocate</li>
           <li><span class="f-check">✓</span> Dedicated account support</li>
+        <li><span class="f-check">&#10003;</span> Emerald Platinum Regenesis&#8482;</li>
+        <li><span class="f-check">&#10003;</span> BodyScan&#8482;</li>
+        <li><span class="f-check">&#10003;</span> Future Self&#8482;</li>
+        <li><span class="f-check">&#10003;</span> Protocol Intelligence&#8482;</li>
+        <li><span class="f-check">&#10003;</span> Regenesis Score&#8482;</li>
+
         </ul>
         <a class="pricing-btn ghost monthly-price" href="https://buy.stripe.com/bJedRa7108vQ0rTdVOfEk09" target="_blank">Start Elite Trial</a>
         <a class="pricing-btn ghost annual-price" href="https://buy.stripe.com/7sYfZi7103bw5Md192fEk0a" target="_blank" style="display:none">Start Elite Trial</a>
@@ -1934,7 +2298,7 @@
           <label class="form-label">Email Address</label>
           <input class="form-input" type="email" placeholder="you@example.com" required />
         </div>
-       
+
         <button class="signup-btn" type="submit">Claim 20% Discount →</button>
         <p class="form-note">By signing up you agree to our <a href="terms-of-service.html">Terms of Service</a> and <a href="privacy-policy.html">Privacy Policy</a>.</p>
         <div class="signup-success" id="signup-success">
@@ -2042,21 +2406,23 @@
     document.querySelectorAll('.monthly-price').forEach(el => el.style.display = isAnnual ? 'none' : '');
     document.querySelectorAll('.annual-price').forEach(el => el.style.display = isAnnual ? '' : 'none');
   }
-const SUPABASE_URL='https://mczpuffmlspmghgneukz.supabase.co';
-  const SUPABASE_ANON='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im1jenB1ZmZtbHNwbWdoZ25ldWt6Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODAxNjczODAsImV4cCI6MjA5NTc0MzM4MH0.hs0CQOyrcIk5WhRr9OUU1fVs7V1sMcea7RYwWuTAVag';
-  const KLAVIYO_KEY='WtKVHz';
-  const KLAVIYO_LIST='XEEg3P';
   async function handleSignup(e) {
     e.preventDefault();
-    const SUPABASE_URL='https://mczpuffmlspmghgneukz.supabase.co';const SUPABASE_ANON='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im1jenB1ZmZtbHNwbWdoZ25ldWt6Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODAxNjczODAsImV4cCI6MjA5NTc0MzM4MH0.hs0CQOyrcIk5WhRr9OUU1fVs7V1sMcea7RYwWuTAVag';const KLAVIYO_KEY='pk_WtKVHz_49f453ff604a0678196e1c8a13dff471df';const KLAVIYO_LIST='XEEg3P';
     const btn=e.target.querySelector('.signup-btn');
     const name=e.target.querySelector('input[type="text"]').value.trim();
     const phone=e.target.querySelector('input[type="tel"]').value.trim();
     const email=e.target.querySelector('input[type="email"]').value.trim();
     btn.textContent='Saving...';btn.disabled=true;
-   try{await fetch(getSubscribeApiUrl(),{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({email:email,first_name:name,phone:phone,source:'landing'})});}catch(err){console.warn(err);}
-    document.getElementById('signup-success').style.display='block';
-    btn.textContent="You're in ✦";
+    try {
+      const response=await fetch(getSubscribeApiUrl(),{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({email:email,first_name:name,phone:phone,source:'landing'})});
+      if (!response.ok) throw new Error('Signup request failed');
+      document.getElementById('signup-success').style.display='block';
+      btn.textContent="You're in ✦";
+    } catch (err) {
+      console.warn(err);
+      btn.textContent='Please try again';
+      btn.disabled=false;
+    }
   }
 </script>
 </body>
