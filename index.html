@@ -195,6 +195,63 @@ section{padding:100px 48px;}
 .proto-items{display:flex;flex-wrap:wrap;gap:6px;}
 .proto-item{padding:2px 8px;background:var(--emPale);border:1px solid var(--borderEm);border-radius:8px;font-size:10px;color:var(--emXL);letter-spacing:.5px;}
 
+/* REGENESIS */
+.regenesis-section{background:radial-gradient(circle at 50% 0%,rgba(64,216,136,.10),transparent 38%),var(--bg);border-top:1px solid var(--border);border-bottom:1px solid var(--border);position:relative;overflow:hidden;}
+.regenesis-section::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(200,168,40,.05),transparent 34%,rgba(26,107,69,.08));pointer-events:none;}
+.regenesis-inner{max-width:1180px;margin:0 auto;position:relative;z-index:1;}
+.regenesis-kicker{display:inline-flex;align-items:center;justify-content:center;padding:7px 14px;border:1px solid var(--borderGold);border-radius:999px;background:var(--goldPale);color:var(--goldL);font-family:var(--cinzel);font-size:10px;letter-spacing:2px;text-transform:uppercase;margin-bottom:20px;}
+.regenesis-headline{font-family:var(--serif);font-size:clamp(36px,5vw,64px);line-height:1.04;font-weight:900;text-align:center;margin-bottom:12px;}
+.regenesis-headline em{font-style:italic;color:var(--goldXL);}
+.regenesis-tagline{font-family:var(--cormorant);font-size:clamp(20px,2.4vw,28px);color:var(--emXL);font-style:italic;margin-bottom:16px;}
+.regenesis-body{max-width:720px;text-align:center;color:var(--textMid);font-size:15px;line-height:1.75;margin-bottom:28px;}
+.regenesis-body strong{color:var(--text);}
+.regenesis-cta-row{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-bottom:52px;}
+.regenesis-btn-primary,.regenesis-btn-secondary{border:none;border-radius:10px;padding:14px 26px;font-family:var(--sans);font-size:13px;font-weight:600;letter-spacing:.5px;transition:all .25s;}
+.regenesis-btn-primary{background:linear-gradient(135deg,var(--gold),var(--goldL));color:#050d07;}
+.regenesis-btn-primary:hover{transform:translateY(-2px);box-shadow:0 10px 30px rgba(200,168,40,.28);}
+.regenesis-btn-secondary{background:transparent;color:var(--emXL);border:1px solid var(--borderEm);}
+.regenesis-btn-secondary:hover{background:var(--emPale);}
+.regenesis-card{background:var(--bg2);border:1px solid var(--border);border-radius:18px;padding:26px;position:relative;overflow:hidden;transition:all .25s;}
+.regenesis-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--goldL),transparent);opacity:0;transition:opacity .25s;}
+.regenesis-card:hover{border-color:var(--borderGold);transform:translateY(-3px);}
+.regenesis-card:hover::before{opacity:1;}
+.regenesis-card-icon{font-size:26px;margin-bottom:14px;}
+.regenesis-card-title{font-family:var(--serif);font-size:18px;font-weight:700;margin-bottom:10px;color:var(--text);}
+.regenesis-card-title sup{color:var(--goldL);font-size:11px;}
+.regenesis-card-desc{font-size:13px;color:var(--textMid);line-height:1.65;}
+.regenesis-disclaimer{margin-top:34px;background:rgba(200,168,40,.06);border:1px solid var(--borderGold);border-radius:14px;padding:18px 22px;color:var(--textDim);font-size:12px;line-height:1.65;text-align:center;}
+.regenesis-disclaimer strong{color:var(--goldL);}
+.regenesis-dash3{display:grid;grid-template-columns:200px 1fr 220px;gap:16px;margin-bottom:8px;}
+.regenesis-dash3-panel{background:var(--bg2);border:1px solid var(--border);border-radius:16px;padding:18px;}
+.regenesis-dash3-panel.score{text-align:center;border-color:var(--borderEm);}
+.regenesis-dash3-label{font-family:var(--cinzel);font-size:9px;letter-spacing:1.5px;color:var(--textDim);text-transform:uppercase;margin-bottom:10px;}
+.regenesis-score-ring{width:78px;height:78px;border-radius:50%;border:7px solid var(--emXL);display:flex;align-items:center;justify-content:center;margin:0 auto 10px;color:var(--text);font-size:24px;font-weight:700;font-family:var(--serif);}
+.regenesis-score-tag-sm{color:var(--emXL);font-size:11px;font-weight:600;margin-bottom:4px;}
+.regenesis-score-sub{font-size:9px;color:var(--textDim);line-height:1.4;margin-bottom:14px;}
+.regenesis-score-stats{text-align:left;border-top:1px solid var(--border);padding-top:10px;}
+.regenesis-score-stat-row{display:flex;justify-content:space-between;font-size:10px;color:var(--textDim);padding:3px 0;}
+.regenesis-score-stat-row span:last-child{color:var(--emXL);}
+.regenesis-dash3-header{display:flex;justify-content:space-between;margin-bottom:12px;}
+.regenesis-dash3-title{color:var(--text);font-size:11px;font-weight:600;}
+.regenesis-dash3-link{color:var(--goldL);font-size:10px;}
+.regenesis-future-row{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;}
+.regenesis-upload-slot{aspect-ratio:3/4;background:var(--bg3);border:1.5px dashed var(--border);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:18px;color:var(--textDim);margin-bottom:6px;}
+.regenesis-upload-slot.filled{border-color:var(--borderEm);color:var(--emXL);}
+.regenesis-upload-slot.future{border-color:var(--borderGold);color:var(--goldL);}
+.regenesis-upload-caption{text-align:center;font-size:9px;color:var(--textDim);}
+.regenesis-future-note{font-size:9px;color:var(--textDim);margin-top:10px;}
+.regenesis-biology-list{display:flex;flex-direction:column;gap:9px;}
+.regenesis-biology-row{display:flex;justify-content:space-between;font-size:10px;}
+.regenesis-biology-row span:first-child{color:var(--textDim);}
+.regenesis-biology-row span:last-child{color:var(--emXL);}
+.regenesis-biology-row span:last-child.neutral{color:var(--text);}
+.regenesis-biology-row span:last-child.gold{color:var(--goldL);}
+.regenesis-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;margin-bottom:70px;}
+@media(max-width:920px){
+  .regenesis-dash3{grid-template-columns:1fr;}
+  .regenesis-grid{grid-template-columns:1fr;}
+}
+
 /* PRICING */
 #pricing{background:var(--bg2);}
 .billing-toggle{display:flex;align-items:center;gap:16px;justify-content:center;margin:40px 0;}
@@ -950,6 +1007,105 @@ footer{background:var(--bg);border-top:1px solid var(--border);padding:60px 48px
       <div class="hiw-title">Track & Optimize</div>
       <div class="hiw-desc">Log how you feel, import labs, connect wearables. Watch your biological age score move. The platform learns your response patterns and adjusts protocols accordingly.</div>
     </div>
+  </div>
+</section>
+
+<section id="regenesis" class="regenesis-section">
+  <div class="regenesis-inner">
+
+    <div class="text-center reveal" style="display:flex;flex-direction:column;align-items:center;">
+      <div class="regenesis-kicker">✦ New • Emerald Platinum</div>
+      <h2 class="regenesis-headline">Emerald Platinum<br/><em>Regenesis™</em></h2>
+      <p class="regenesis-tagline">Where Transformation Begins.</p>
+      <p class="regenesis-body">
+        <strong>Health optimization based on your biology.</strong><br/>
+        Regenesis connects your body photos, wellness stack, biomarker tracking, recovery habits, and longevity optimization goals into one personalized wellness dashboard.
+      </p>
+      <div class="regenesis-cta-row">
+        <button class="regenesis-btn-primary" onclick="window.location='signup.html'">Begin Your Regenesis</button>
+        <button class="regenesis-btn-secondary" onclick="document.getElementById('pricing').scrollIntoView({behavior:'smooth'})">View Platinum Plan</button>
+      </div>
+    </div>
+
+    <!-- FEATURE CARDS -->
+    <div class="regenesis-grid reveal">
+      <div class="regenesis-card">
+        <div class="regenesis-card-icon">📸</div>
+        <div class="regenesis-card-title">BodyScan<sup>™</sup></div>
+        <div class="regenesis-card-desc">Upload front, side, back, face, and hand photos to create a private progress baseline and before/after timeline.</div>
+      </div>
+      <div class="regenesis-card">
+        <div class="regenesis-card-icon">⏳</div>
+        <div class="regenesis-card-title">Emerald Regenesis Outlook<sup>™</sup></div>
+        <div class="regenesis-card-desc">See where your biology is headed. Educational projections based on your Regenesis Score™, BodyScan™, and Protocol Vault™ trends.</div>
+      </div>
+      <div class="regenesis-card">
+        <div class="regenesis-card-icon">⬡</div>
+        <div class="regenesis-card-title">Protocol Intelligence<sup>™</sup></div>
+        <div class="regenesis-card-desc">Track supplements, peptides, red-light therapy, workouts, sleep, and recovery habits in one integrated wellness stack.</div>
+      </div>
+      <div class="regenesis-card">
+        <div class="regenesis-card-icon">◬</div>
+        <div class="regenesis-card-title">Biology Dashboard<sup>™</sup></div>
+        <div class="regenesis-card-desc">Connect measurements, labs, wearables, and habits to see what is moving your biology in the right direction.</div>
+      </div>
+    </div>
+
+    <!-- DASHBOARD MOCKUP -->
+    <div class="regenesis-dash3 reveal">
+
+      <div class="regenesis-dash3-panel score">
+        <div class="regenesis-dash3-label">Regenesis Score™</div>
+        <div class="regenesis-score-ring">91</div>
+        <div class="regenesis-score-tag-sm">✦ Excellent</div>
+        <div class="regenesis-score-sub">Trending well above your baseline</div>
+        <div class="regenesis-score-stats">
+          <div class="regenesis-score-stat-row"><span>Consistency</span><span>↑94%</span></div>
+          <div class="regenesis-score-stat-row"><span>Recovery</span><span>↑22%</span></div>
+          <div class="regenesis-score-stat-row"><span>Tracking</span><span>Active</span></div>
+        </div>
+      </div>
+
+      <div class="regenesis-dash3-panel">
+        <div class="regenesis-dash3-header">
+          <div class="regenesis-dash3-title">Emerald Regenesis Outlook™</div>
+          <div class="regenesis-dash3-link">View timeline</div>
+        </div>
+        <div class="regenesis-future-row">
+          <div>
+            <div class="regenesis-upload-slot filled">📷</div>
+            <div class="regenesis-upload-caption">Today</div>
+          </div>
+          <div>
+            <div class="regenesis-upload-slot">📷</div>
+            <div class="regenesis-upload-caption">90 Days</div>
+          </div>
+          <div>
+            <div class="regenesis-upload-slot future">📷</div>
+            <div class="regenesis-upload-caption">1 Year</div>
+          </div>
+        </div>
+        <div class="regenesis-future-note">Educational projections based on your own uploaded BodyScan™ photos, Regenesis Score™, and Protocol Vault™ trends — not stock or generated imagery.</div>
+      </div>
+
+      <div class="regenesis-dash3-panel">
+        <div class="regenesis-dash3-label" style="margin-bottom:14px;">Biology Dashboard™</div>
+        <div class="regenesis-biology-list">
+          <div class="regenesis-biology-row"><span>Biomarkers</span><span>Optimal</span></div>
+          <div class="regenesis-biology-row"><span>Recovery</span><span>Good</span></div>
+          <div class="regenesis-biology-row"><span>Sleep</span><span class="neutral">7h 32m</span></div>
+          <div class="regenesis-biology-row"><span>Stack</span><span>Active</span></div>
+          <div class="regenesis-biology-row"><span>Consistency</span><span class="gold">94%</span></div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- DISCLAIMER -->
+    <div class="regenesis-disclaimer reveal">
+      <strong>Educational wellness projections only.</strong> Emerald Wellness does not diagnose, treat, prescribe, or guarantee outcomes. Consult a licensed healthcare provider before beginning peptides, HRT, TRT, GLP-1 therapies, or other medical treatments.
+    </div>
+
   </div>
 </section>
 
