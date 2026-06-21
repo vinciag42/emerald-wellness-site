@@ -240,33 +240,52 @@
 
     /* ── MARQUEE ── */
     .marquee-wrap {
-      overflow: hidden;
       border-top: 1px solid var(--border);
       border-bottom: 1px solid var(--border);
       background: var(--bg2);
-      padding: 18px 0;
+      padding: 24px 32px;
     }
     .marquee-track {
-      display: flex; gap: 0;
-      animation: marquee 30s linear infinite;
-      white-space: nowrap;
-    }
-    .marquee-track:hover { animation-play-state: paused; }
-    @keyframes marquee {
-      from { transform: translateX(0); }
-      to   { transform: translateX(-50%); }
+      display: flex; gap: 12px; flex-wrap: wrap;
+      justify-content: center; max-width: 1180px; margin: 0 auto;
     }
     .marquee-item {
       display: inline-flex; align-items: center; gap: 10px;
-      padding: 0 32px;
+      padding: 10px 16px;
       font-size: 0.78rem; letter-spacing: 0.12em;
       text-transform: uppercase; color: var(--muted);
-      border-right: 1px solid var(--border);
+      border: 1px solid var(--border); border-radius: 999px;
       flex-shrink: 0;
     }
     .marquee-item .dot {
       width: 5px; height: 5px; border-radius: 50%;
       background: var(--emerald); flex-shrink: 0;
+    }
+
+    .landing-overview {
+      padding: 96px 64px 88px;
+      background:
+        radial-gradient(circle at 10% 10%, rgba(74,222,128,0.08), transparent 34%),
+        var(--bg);
+      border-bottom: 1px solid var(--border);
+    }
+    .landing-overview-inner {
+      max-width: 1180px; margin: 0 auto;
+      display: grid; grid-template-columns: 0.9fr 1.1fr; gap: 56px; align-items: start;
+    }
+    .landing-overview-list {
+      display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px;
+    }
+    .landing-overview-item {
+      border: 1px solid var(--border); border-radius: var(--radius-lg);
+      background: rgba(255,255,255,0.025); padding: 22px;
+    }
+    .landing-overview-item strong {
+      display: block; color: var(--white); font-size: 0.95rem;
+      margin-bottom: 8px; letter-spacing: 0.02em;
+    }
+    .landing-overview-item span {
+      display: block; color: var(--muted); font-size: 0.9rem; line-height: 1.65;
     }
 
     /* ── SECTION WRAPPER ── */
@@ -1049,6 +1068,8 @@
     @media (max-width: 1024px) {
       nav { padding: 20px 32px; }
       .section, .section-sm { padding: 80px 32px; }
+      .landing-overview { padding: 80px 32px; }
+      .landing-overview-inner { grid-template-columns: 1fr; gap: 36px; }
       .platform-grid { grid-template-columns: repeat(2, 1fr); }
       .dashboard-inner { grid-template-columns: 1fr; gap: 56px; }
       .stats-grid { grid-template-columns: repeat(2, 1fr); }
@@ -1059,6 +1080,7 @@
     @media (max-width: 720px) {
       .hero h1 { font-size: 2.8rem; }
       .hero-stats { gap: 32px; flex-wrap: wrap; }
+      .landing-overview-list { grid-template-columns: 1fr; }
       .platform-grid { grid-template-columns: 1fr; }
       .stats-grid { grid-template-columns: 1fr 1fr; }
       .pricing-grid { grid-template-columns: 1fr; }
@@ -1394,23 +1416,40 @@
   </div>
 </div>
 
+<!-- LANDING OVERVIEW -->
+<div class="landing-overview">
+  <div class="landing-overview-inner">
+    <div>
+      <span class="label">Complete Wellness Command Center</span>
+      <h2 class="section-title">A full landing page for the whole Emerald Wellness experience</h2>
+      <p class="section-body">
+        Emerald Wellness is more than a supplement list. The platform is designed to help people organize labs, wearables, peptides, supplements, cycle planning, safety notes, education, and pricing in one clear journey.
+      </p>
+    </div>
+    <div class="landing-overview-list">
+      <div class="landing-overview-item">
+        <strong>Education & planning</strong>
+        <span>Peptide, supplement, bioregulator, and glandular therapy education with safety-first language.</span>
+      </div>
+      <div class="landing-overview-item">
+        <strong>Biomarker organization</strong>
+        <span>Lab trending, wearable sync, health goals, notes, and long-term wellness tracking.</span>
+      </div>
+      <div class="landing-overview-item">
+        <strong>Customer journey</strong>
+        <span>Clear sections for how it works, platform features, Regenesis™, pricing, and early access.</span>
+      </div>
+      <div class="landing-overview-item">
+        <strong>Trust boundaries</strong>
+        <span>Educational support that encourages clinician review before health, supplement, or protocol changes.</span>
+      </div>
+    </div>
+  </div>
+</div>
+
 <!-- MARQUEE -->
 <div class="marquee-wrap">
   <div class="marquee-track">
-    <!-- doubled for seamless loop -->
-    <span class="marquee-item"><span class="dot"></span>Injectable Peptides</span>
-    <span class="marquee-item"><span class="dot"></span>Bioregulators</span>
-    <span class="marquee-item"><span class="dot"></span>Glandular Therapy</span>
-    <span class="marquee-item"><span class="dot"></span>Health Intelligence Advocate</span>
-    <span class="marquee-item"><span class="dot"></span>Lab Trending</span>
-    <span class="marquee-item"><span class="dot"></span>Wearable Sync</span>
-    <span class="marquee-item"><span class="dot"></span>Interaction Checker</span>
-    <span class="marquee-item"><span class="dot"></span>Peptide Protocols</span>
-    <span class="marquee-item"><span class="dot"></span>Longevity Intelligence</span>
-    <span class="marquee-item"><span class="dot"></span>HSA/FSA Eligibility Varies</span>
-    <span class="marquee-item"><span class="dot"></span>Cycle Planning</span>
-    <span class="marquee-item"><span class="dot"></span>Stack Optimization</span>
-    <span class="marquee-item"><span class="dot"></span>500+ Supplements</span>
     <span class="marquee-item"><span class="dot"></span>Injectable Peptides</span>
     <span class="marquee-item"><span class="dot"></span>Bioregulators</span>
     <span class="marquee-item"><span class="dot"></span>Glandular Therapy</span>
