@@ -1,5 +1,15 @@
 {
   "redirects": [
+    { "source": "/signup.html", "destination": "/#pricing", "permanent": false },
+    { "source": "/emerald-wellness/signup.html", "destination": "/#pricing", "permanent": false },
+    { "source": "/sign%20up%20061126.html", "destination": "/#pricing", "permanent": true },
+    { "source": "/command-center.html", "destination": "/404.html", "permanent": false },
+    { "source": "/emerald-wellness/supabase-setup-guide.html", "destination": "/404.html", "permanent": false },
+    { "source": "/emerald-wellness/email-sms-integration-guide.html", "destination": "/404.html", "permanent": false },
+    { "source": "/emerald-wellness/email-welcome-template.html", "destination": "/404.html", "permanent": false },
+    { "source": "/emerald-wellness/supabase-schema.sql", "destination": "/404.html", "permanent": false },
+    { "source": "/emerald-wellness/EW_SupplementDB.jsx", "destination": "/404.html", "permanent": false },
+    { "source": "/emerald-wellness-complete_5.zip", "destination": "/404.html", "permanent": false },
     { "source": "/index-html.html", "destination": "/", "permanent": true },
     { "source": "/emerald-wellness/coming-soon.html", "destination": "/", "permanent": true },
     { "source": "/emerald-wellness/index.html", "destination": "/", "permanent": true },
@@ -16,5 +26,17 @@
     { "source": "/blog/", "destination": "/emerald-wellness/blog/index.html" },
     { "source": "/blog/:slug", "destination": "/emerald-wellness/blog/:slug.html" },
     { "source": "/peptides", "destination": "/peptides.html" }
+  ],
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        { "key": "X-Content-Type-Options", "value": "nosniff" },
+        { "key": "X-Frame-Options", "value": "DENY" },
+        { "key": "Referrer-Policy", "value": "strict-origin-when-cross-origin" },
+        { "key": "Permissions-Policy", "value": "camera=(), microphone=(), geolocation=()" },
+        { "key": "Strict-Transport-Security", "value": "max-age=31536000; includeSubDomains" }
+      ]
+    }
   ]
 }

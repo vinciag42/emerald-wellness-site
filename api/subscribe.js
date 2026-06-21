@@ -1,14 +1,39 @@
 export default async function handler(req, res) {
-  res.setHeader('Access-Control-Allow-Origin', '*');
+  const allowedOrigins = new Set([
+    'https://emeraldwellness.health',
+    'https://www.emeraldwellness.health',
+    'https://emerald-wellness-site.vercel.app'
+  ]);
+  const origin = req.headers.origin;
+  if (origin && allowedOrigins.has(origin)) {
+    res.setHeader('Access-Control-Allow-Origin', origin);
+    res.setHeader('Vary', 'Origin');
+  }
   res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
   res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+  res.setHeader('Cache-Control', 'no-store');
 
   if (req.method === 'OPTIONS') return res.status(200).end();
   if (req.method !== 'POST') return res.status(405).json({ error: 'Method not allowed' });
+  if (origin && !allowedOrigins.has(origin)) return res.status(403).json({ error: 'Origin not allowed' });
+  if (!req.headers['content-type']?.includes('application/json')) {
+    return res.status(415).json({ error: 'JSON body required' });
+  }
 
-  // Accept ALL signup fields so every signup is stored in full
-  const { email, first_name, last_name, phone, goal, tier, source, referred_by } = req.body;
-  if (!email) return res.status(400).json({ error: 'Email required', step: 'validation' });
+  // Normalize and bound all public form fields.
+  const { email, first_name, last_name, phone, goal, tier, source, referred_by, website } = req.body || {};
+  if (website) return res.status(200).json({ success: true });
+  const cleanEmail = String(email || '').trim().toLowerCase();
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(cleanEmail) || cleanEmail.length > 254) {
+    return res.status(400).json({ error: 'Valid email required', step: 'validation' });
+  }
+  const cleanFirstName = String(first_name || '').trim().slice(0, 80);
+  const cleanLastName = String(last_name || '').trim().slice(0, 80);
+  const cleanPhone = String(phone || '').trim().slice(0, 40);
+  const cleanGoal = String(goal || '').trim().slice(0, 120);
+  const cleanTier = String(tier || '').trim().slice(0, 80);
+  const cleanSource = String(source || 'landing').trim().slice(0, 80);
+  const cleanReferral = String(referred_by || '').trim().slice(0, 80);
 
   const KLAVIYO_KEY = process.env.KLAVIYO_PRIVATE_KEY;
   if (!KLAVIYO_KEY) {
@@ -28,18 +53,18 @@ export default async function handler(req, res) {
 
   try {
     // ── 1. Subscribe email to Klaviyo list ──
-    console.log('[subscribe] STEP 1 — Klaviyo subscribe → list', KLAVIYO_LIST, email);
+    console.log('[subscribe] Starting consented list subscription');
     const subscribePayload = {
       data: {
         type: 'profile-subscription-bulk-create-job',
         attributes: {
-          custom_source: source || 'Emerald Wellness Waitlist Form',
+          custom_source: cleanSource,
           profiles: {
             data: [{
               type: 'profile',
               attributes: {
-                email,
-                ...(phone ? { phone_number: phone } : {}),
+                email: cleanEmail,
+                ...(cleanPhone ? { phone_number: cleanPhone } : {}),
                 subscriptions: { email: { marketing: { consent: 'SUBSCRIBED' } } }
               }
             }]
@@ -58,30 +83,30 @@ export default async function handler(req, res) {
 
     if (!klaviyoOk) {
       console.error('[subscribe] STEP 1 FAILED — Klaviyo', klaviyoRes.status, klaviyoText);
-      return res.status(502).json({ error: 'Klaviyo subscription failed', step: 'klaviyo', status: klaviyoRes.status, detail: klaviyoText, ...result });
+      return res.status(502).json({ error: 'Subscription service unavailable', step: 'klaviyo' });
     }
     console.log('[subscribe] STEP 1 OK — Klaviyo accepted subscribe job');
 
     // ── 2. Update Klaviyo profile with name + phone + goal/tier as custom properties ──
-    if (first_name || last_name || phone || goal || tier) {
+    if (cleanFirstName || cleanLastName || cleanPhone || cleanGoal || cleanTier) {
       console.log('[subscribe] STEP 2 — Klaviyo profile update…');
-      result.klaviyoProfile = await updateKlaviyoProfile(email, first_name, last_name, phone, goal, tier, klaviyoHeaders);
+      result.klaviyoProfile = await updateKlaviyoProfile(cleanEmail, cleanFirstName, cleanLastName, cleanPhone, cleanGoal, cleanTier, klaviyoHeaders);
       if (result.klaviyoProfile.ok) console.log('[subscribe] STEP 2 OK — profile updated via', result.klaviyoProfile.method);
       else console.warn('[subscribe] STEP 2 WARN — profile not updated', result.klaviyoProfile);
     }
 
     // ── 3. Supabase waitlist — store ALL fields ──
     const sbPayload = {
-      email,
-      first_name: first_name || null,
-      last_name: last_name || null,
-      phone: phone || null,
-      goal: goal || null,
-      tier: tier || null,
-      source: source || 'coming-soon',
-      referred_by: referred_by || null
+      email: cleanEmail,
+      first_name: cleanFirstName || null,
+      last_name: cleanLastName || null,
+      phone: cleanPhone || null,
+      goal: cleanGoal || null,
+      tier: cleanTier || null,
+      source: cleanSource,
+      referred_by: cleanReferral || null
     };
-    console.log('[subscribe] STEP 3 — Supabase waitlist insert', sbPayload);
+    console.log('[subscribe] Saving consented signup');
 
     let sbRes = await fetch(`${SUPABASE_URL}/rest/v1/waitlist`, {
       method: 'POST',
@@ -98,7 +123,7 @@ export default async function handler(req, res) {
     // Fallback: if a column doesn't exist yet (PGRST204), retry with core fields only so the signup is never lost
     if (sbRes.status === 400 && sbText.includes('column')) {
       console.warn('[subscribe] STEP 3 — extra columns missing, retrying with core fields. Run add-waitlist-columns.sql to store everything.');
-      const corePayload = { email, first_name: first_name || null, source: source || 'coming-soon', referred_by: referred_by || null };
+      const corePayload = { email: cleanEmail, first_name: cleanFirstName || null, source: cleanSource, referred_by: cleanReferral || null };
       sbRes = await fetch(`${SUPABASE_URL}/rest/v1/waitlist`, {
         method: 'POST',
         headers: { 'apikey': SUPABASE_ANON, 'Authorization': `Bearer ${SUPABASE_ANON}`, 'Content-Type': 'application/json', 'Prefer': 'return=minimal' },
@@ -113,40 +138,15 @@ export default async function handler(req, res) {
 
     if (!sbOk) {
       console.error('[subscribe] STEP 3 FAILED — Supabase', sbRes.status, sbText);
-      return res.status(502).json({ error: 'Supabase save failed', step: 'supabase', status: sbRes.status, detail: sbText, ...result });
+      return res.status(502).json({ error: 'Signup storage unavailable', step: 'supabase' });
     }
     console.log('[subscribe] STEP 3 OK —', sbDuplicate ? 'email already on waitlist' : 'new waitlist row saved');
 
-    // ── 4. Diagnostics ──
-    await sleep(2000);
-    result.diagnostics = await diagnoseKlaviyoProfile(email, KLAVIYO_LIST, klaviyoHeaders);
-
-    result.success = true;
-    return res.status(200).json(result);
+    return res.status(200).json({ success: true, duplicate: sbDuplicate });
   } catch (err) {
     console.error('[subscribe] Unexpected error', err);
-    return res.status(500).json({ error: err.message, step: 'exception', ...result });
+    return res.status(500).json({ error: 'Unexpected signup error', step: 'exception' });
   }
-}
-
-function sleep(ms) { return new Promise((resolve) => setTimeout(resolve, ms)); }
-
-async function diagnoseKlaviyoProfile(email, listId, headers) {
-  const diag = { email, listId, profileFound: false, onWaitlistList: false, emailConsent: null, issues: [] };
-  const emailFilter = encodeURIComponent(`equals(email,"${email}")`);
-  try {
-    const profileRes = await fetch(`https://a.klaviyo.com/api/profiles/?filter=${emailFilter}&additional-fields[profile]=subscriptions`, { headers });
-    const profileJson = await profileRes.json().catch(() => ({}));
-    const profile = profileJson.data?.[0];
-    if (!profile) { diag.issues.push('Profile still processing — check list members in 30–60s'); return diag; }
-    diag.profileFound = true;
-    const sub = profile.attributes?.subscriptions?.email?.marketing;
-    diag.emailConsent = sub?.consent ?? 'unknown';
-    const listRes = await fetch(`https://a.klaviyo.com/api/lists/${listId}/profiles/?filter=${emailFilter}`, { headers });
-    const listJson = await listRes.json().catch(() => ({}));
-    diag.onWaitlistList = (listJson.data?.length ?? 0) > 0;
-  } catch (err) { diag.issues.push(`Diagnostic error: ${err.message}`); }
-  return diag;
 }
 
 async function updateKlaviyoProfile(email, first_name, last_name, phone, goal, tier, headers) {
