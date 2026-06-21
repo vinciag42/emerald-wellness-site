@@ -416,14 +416,6 @@ footer{background:var(--bg);border-top:1px solid var(--border);padding:60px 48px
 .wl-submit{background:linear-gradient(135deg,var(--em),var(--emL));color:#fff;border:none;border-radius:10px;padding:14px;font-size:15px;font-weight:500;font-family:var(--sans);letter-spacing:.5px;cursor:pointer;transition:all .3s;width:100%;}
 .wl-submit:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(26,107,69,.4);}
 
-/* COUNTDOWN */
-#launch-countdown{background:linear-gradient(135deg,var(--emPale),transparent);border:1px solid var(--borderEm);border-radius:20px;padding:28px 40px;margin:0 auto 48px;max-width:700px;text-align:center;}
-.countdown-label{font-family:var(--cinzel);font-size:10px;letter-spacing:3px;color:var(--emXL);text-transform:uppercase;margin-bottom:16px;}
-.countdown-units{display:flex;justify-content:center;gap:24px;flex-wrap:wrap;}
-.countdown-unit{text-align:center;}
-.countdown-num{font-family:var(--serif);font-size:44px;font-weight:900;color:var(--emXL);line-height:1;min-width:64px;display:block;}
-.countdown-unit-lbl{font-size:10px;letter-spacing:1.5px;color:var(--textDim);text-transform:uppercase;margin-top:4px;}
-
 /* EXIT POPUP */
 #exit-popup{position:fixed;inset:0;background:rgba(0,0,0,.7);z-index:400;display:flex;align-items:center;justify-content:center;padding:20px;opacity:0;pointer-events:none;transition:opacity .3s;}
 #exit-popup.open{opacity:1;pointer-events:all;}
@@ -958,21 +950,6 @@ footer{background:var(--bg);border-top:1px solid var(--border);padding:60px 48px
       <div class="hiw-title">Track & Optimize</div>
       <div class="hiw-desc">Log how you feel, import labs, connect wearables. Watch your biological age score move. The platform learns your response patterns and adjusts protocols accordingly.</div>
     </div>
-  </div>
-</section>
-
-<!-- LAUNCH COUNTDOWN -->
-<section style="padding:60px 48px 0;text-align:center;">
-  <div id="launch-countdown">
-    <p class="countdown-label"></p>
-    <div class="countdown-units">
-      <div class="countdown-unit"><span class="countdown-num" id="cd-days">--</span><div class="countdown-unit-lbl">Days</div></div>
-      <div class="countdown-unit"><span class="countdown-num" id="cd-hours">--</span><div class="countdown-unit-lbl">Hours</div></div>
-      <div class="countdown-unit"><span class="countdown-num" id="cd-mins">--</span><div class="countdown-unit-lbl">Minutes</div></div>
-      <div class="countdown-unit"><span class="countdown-num" id="cd-secs">--</span><div class="countdown-unit-lbl">Seconds</div></div>
-    </div>
-    <p style="font-size:13px;color:var(--textDim);margin-top:20px;">Members get <strong style="color:var(--goldL);">$1 for the first 7 days + 20% off your first month. Founding member pricing locked forever.</strong></p>
-    <a href="#pricing" class="btn-primary" style="margin-top:20px;display:inline-block;">Start for $1 →</a>
   </div>
 </section>
 
@@ -1820,20 +1797,6 @@ function copyRef(){
   const btn=document.querySelector('.wl-ref-copy');
   btn.textContent='Copied!';setTimeout(()=>btn.textContent='Copy',2000);
 }
-
-// ── COUNTDOWN — 30 DAYS ──
-const launch=new Date(Date.now()+30*24*60*60*1000);
-function updateCountdown(){
-  const diff=launch-new Date();
-  if(diff<=0)return;
-  const d=Math.floor(diff/86400000),h=Math.floor((diff%86400000)/3600000),m=Math.floor((diff%3600000)/60000),s=Math.floor((diff%60000)/1000);
-  const cd=document.getElementById('cd-days'),ch=document.getElementById('cd-hours'),cm=document.getElementById('cd-mins'),cs=document.getElementById('cd-secs');
-  if(cd)cd.textContent=String(d).padStart(2,'0');
-  if(ch)ch.textContent=String(h).padStart(2,'0');
-  if(cm)cm.textContent=String(m).padStart(2,'0');
-  if(cs)cs.textContent=String(s).padStart(2,'0');
-}
-updateCountdown();setInterval(updateCountdown,1000);
 
 // Open waitlist on nav CTA
 </script>
