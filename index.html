@@ -14,7 +14,7 @@
 <link rel="dns-prefetch" href="//fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin/>
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"/>
-<link rel="canonical" href="https://emeraldwellness.health/emerald-wellness/"/>
+<link rel="canonical" href="https://emeraldwellness.health/"/>
 <!-- Open Graph -->
 <meta property="og:type" content="website"/>
 <meta property="og:url" content="https://emeraldwellness.health/"/>
@@ -57,7 +57,8 @@
         {"@type":"Offer","name":"Silver","price":"74.99","priceCurrency":"USD","billingIncrement":"P1M"},
         {"@type":"Offer","name":"Gold","price":"149.99","priceCurrency":"USD","billingIncrement":"P1M"},
         {"@type":"Offer","name":"Emerald Elite","price":"199.99","priceCurrency":"USD","billingIncrement":"P1M"},
-        {"@type":"Offer","name":"Pro Practitioner Suite","price":"299.99","priceCurrency":"USD","billingIncrement":"P1M"}
+        {"@type":"Offer","name":"Pro Practitioner Suite","price":"299.99","priceCurrency":"USD","billingIncrement":"P1M"},
+        {"@type":"Offer","name":"Emerald Platinum Regenesis","price":"599.00","priceCurrency":"USD","billingIncrement":"P1M"}
       ],
       "aggregateRating":{"@type":"AggregateRating","ratingValue":"4.9","reviewCount":"2847","bestRating":"5"}
     },
@@ -86,15 +87,14 @@
 }
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
 html{scroll-behavior:smooth;font-size:16px;}
-body{font-family:var(--sans);background:var(--bg);color:var(--text);overflow-x:hidden;cursor:none;}
+body{font-family:var(--sans);background:var(--bg);color:var(--text);overflow-x:hidden;cursor:auto;}
 a{text-decoration:none;color:inherit;}
 img{display:block;max-width:100%;}
 input,textarea,select{cursor:text;}
 button{cursor:pointer;}
 
 /* CURSOR */
-#cursor{position:fixed;pointer-events:none;z-index:9999;width:10px;height:10px;border-radius:50%;background:var(--goldL);transform:translate(-50%,-50%);transition:width .3s,height .3s,opacity .3s;mix-blend-mode:screen;}
-#cursor-ring{position:fixed;pointer-events:none;z-index:9998;width:36px;height:36px;border-radius:50%;border:1px solid rgba(64,216,136,.4);transform:translate(-50%,-50%);transition:transform .08s,width .3s,height .3s,opacity .3s;}
+#cursor,#cursor-ring{display:none;}
 
 /* SCROLLBAR */
 ::-webkit-scrollbar{width:4px;}
@@ -105,7 +105,7 @@ button{cursor:pointer;}
 #nav{position:fixed;top:0;left:0;right:0;z-index:250;display:flex;align-items:center;justify-content:space-between;padding:18px 48px;background:rgba(5,13,7,.75);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);transition:all .3s;}
 .nav-logo{display:flex;align-items:center;gap:12px;font-family:var(--cinzel);font-size:15px;letter-spacing:2px;color:var(--emXL);}
 .diamond{width:28px;height:28px;background:linear-gradient(135deg,var(--em),var(--emXL));transform:rotate(45deg);border-radius:3px;}
-.nav-links{display:flex;align-items:center;gap:32px;}
+.nav-links{display:flex;align-items:center;gap:18px;}
 .nav-links a{font-size:13px;color:var(--textMid);letter-spacing:.5px;transition:color .2s;}
 .nav-links a:hover{color:var(--emXL);}
 .nav-cta{background:linear-gradient(135deg,var(--em),var(--emL));color:#fff;padding:10px 22px;border-radius:8px;font-size:13px;font-weight:500;letter-spacing:.5px;transition:opacity .2s;}
@@ -434,7 +434,7 @@ footer{background:var(--bg);border-top:1px solid var(--border);padding:60px 48px
 .press-logo{font-family:var(--cinzel);font-size:12px;letter-spacing:2px;color:rgba(138,172,150,.4);transition:color .2s;cursor:default;}
 .press-logo:hover{color:var(--textMid);}
 
-/* WAITLIST MODAL — MULTI-STEP */
+/* ENROLLMENT MODAL — MULTI-STEP */
 #waitlist-overlay{position:fixed;inset:0;background:rgba(0,0,0,.82);z-index:300;display:flex;align-items:center;justify-content:center;padding:16px;opacity:0;pointer-events:none;transition:opacity .3s;}
 #waitlist-overlay.open{opacity:1;pointer-events:all;}
 #waitlist-modal{background:var(--bg2);border:1px solid var(--borderEm);border-radius:24px;width:100%;max-width:520px;max-height:92vh;overflow-y:auto;position:relative;transform:translateY(20px);transition:transform .3s;scrollbar-width:none;}
@@ -526,7 +526,7 @@ footer{background:var(--bg);border-top:1px solid var(--border);padding:60px 48px
 .live-dot{width:7px;height:7px;border-radius:50%;background:var(--emXL);animation:pulse-dot 2s ease-in-out infinite;}
 .hero-live-badge strong{color:var(--emXL);}
 
-@media(max-width:768px){
+@media(max-width:1080px){
   #nav{padding:16px 20px;}
   .mobile-menu-toggle{display:block;}
   .nav-links{display:none;position:absolute;top:100%;left:16px;right:16px;background:rgba(5,13,7,.96);border:1px solid var(--borderEm);border-radius:16px;padding:18px;flex-direction:column;align-items:stretch;gap:0;}
@@ -590,18 +590,11 @@ footer{background:var(--bg);border-top:1px solid var(--border);padding:60px 48px
   <button class="mobile-menu-toggle" type="button" aria-label="Open navigation" aria-expanded="false">☰</button>
   <div class="nav-links">
     <a href="#features">Platform</a>
-    <a href="#peptides">Peptides</a>
-    <a href="#bioregulators">Bioregulators</a>
-    <a href="#vitamins">Vitamins</a>
-    <a href="#supplements">Supplements</a>
     <a href="#protocols">Protocols</a>
     <a href="#parasite-protocol">Parasite/Fungal</a>
     <a href="#stack-check">Stack Check</a>
     <a href="#pricing">Pricing</a>
     <a href="https://shop.emeraldwellness.health/products-list">Store</a>
-    <a href="/advisors">Advisors</a>
-    <a href="/blog/nmn-longevity-guide-2026">Blog</a>
-    <a href="#practitioners">For Practitioners</a>
     <a href="#pricing" class="nav-cta">Start for $1</a>
   </div>
 </nav>
@@ -1625,7 +1618,7 @@ footer{background:var(--bg);border-top:1px solid var(--border);padding:60px 48px
     </a>
   </div>
   <div style="text-align:center;margin-top:36px;">
-    <a href="/blog/index" class="btn-ghost" style="display:inline-block;">View All 8 Articles in the Intelligence Library →</a>
+    <a href="/blog/" class="btn-ghost" style="display:inline-block;">View All 8 Articles in the Intelligence Library →</a>
   </div>
 </section>
 
@@ -1713,7 +1706,7 @@ footer{background:var(--bg);border-top:1px solid var(--border);padding:60px 48px
         <li><a href="/blog/nmn-longevity-guide-2026">Blog</a></li>
         <li><a href="/advisors">Advisory Board</a></li>
         <li><a href="#faq">FAQ</a></li>
-        <li><a href="/blog/index">Documentation</a></li>
+        <li><a href="/blog/">Documentation</a></li>
         <li><a href="mailto:enterprise@emeraldwellness.health">API Access</a></li>
       </ul>
     </div>
@@ -1905,7 +1898,7 @@ setTimeout(function(){
   }
 },45000);
 </script>
-<!-- WAITLIST MODAL — 5-STEP HEALTH QUESTIONNAIRE -->
+<!-- ENROLLMENT MODAL — 5-STEP HEALTH QUESTIONNAIRE -->
 <div id="waitlist-overlay" onclick="closeWaitlist(event)">
   <div id="waitlist-modal" role="dialog" aria-modal="true" aria-label="Start Emerald Wellness enrollment">
     <button class="wl-close" onclick="closeWaitlistBtn()" aria-label="Close">✕</button>
@@ -2083,7 +2076,7 @@ setTimeout(function(){
 
 <script>
 // ═══════════════════════════════════════
-// WAITLIST — 5-STEP HEALTH QUESTIONNAIRE
+// ENROLLMENT — 5-STEP HEALTH QUESTIONNAIRE
 // ═══════════════════════════════════════
 const WL_ANSWERS = {goal:null, symptoms:[], level:null};
 const WL_TOTAL_STEPS = 5;
@@ -2211,7 +2204,7 @@ function buildCat(label, items, cls){
   </div>`;
 }
 
-// ── WAITLIST SUBMIT → SUPABASE ──
+// ── ENROLLMENT SUBMIT → SUPABASE ──
 async function submitWaitlist(){
   const name  = document.getElementById('wl-name').value.trim();
   const email = document.getElementById('wl-email').value.trim();
@@ -2225,29 +2218,52 @@ async function submitWaitlist(){
   const ref     = 'emeraldwellness.health/ref/EW'+Math.random().toString(36).substr(2,6).toUpperCase();
   const refCode = new URLSearchParams(window.location.search).get('ref') || null;
 
-  // ── SAVE TO SUPABASE WAITLIST TABLE ──
+  // ── SEND TO LAUNCH SUBSCRIBE API (Klaviyo + Supabase when configured) ──
+  let savedByApi = false;
+  try {
+    const apiRes = await fetch('/api/subscribe', {
+      method: 'POST',
+      headers: {'Content-Type':'application/json'},
+      body: JSON.stringify({
+        email,
+        first_name: name,
+        goal: goal || symptoms.slice(0,3).join(', '),
+        tier: 'homepage-enrollment',
+        source: 'homepage-enrollment-modal',
+        referred_by: refCode
+      })
+    });
+    savedByApi = apiRes.ok;
+    if(!savedByApi) console.warn('[Emerald Enrollment] API unavailable, falling back to Supabase only.');
+  } catch(e) {
+    console.warn('[Emerald Enrollment] API unavailable, falling back to Supabase only:', e.message);
+  }
+
+  // ── FALLBACK: SAVE TO SUPABASE LEAD TABLE ──
+  if(!savedByApi) {
   try {
     const { error } = await _sb.from('waitlist').insert({
       email,
       first_name:   name,
-      source:       'homepage-modal',
+      source:       'homepage-enrollment-modal',
       referred_by:  refCode
     });
     if(error){
-      if(error.code === '23505') console.log('[Emerald Waitlist] OK — email already on waitlist');
-      else console.warn('[Emerald Waitlist] ERROR:', error.message, error.details);
+      if(error.code === '23505') console.log('[Emerald Enrollment] OK — email already captured');
+      else console.warn('[Emerald Enrollment] ERROR:', error.message, error.details);
     } else {
-      console.log('[Emerald Waitlist] OK — saved to waitlist table');
+      console.log('[Emerald Enrollment] OK — saved to lead table');
     }
   } catch(e){
-    console.warn('[Emerald Waitlist] ERROR:', e.message);
+    console.warn('[Emerald Enrollment] ERROR:', e.message);
+  }
   }
 
   // ── ALSO SAVE QUESTIONNAIRE DATA if answered ──
   if(goal || symptoms.length > 0) {
     try {
       await _sb.from('waitlist').update({
-        source: JSON.stringify({ goal, symptoms, level, source:'homepage-modal' })
+        source: JSON.stringify({ goal, symptoms, level, source:'homepage-enrollment-modal' })
       }).eq('email', email);
     } catch(e){}
   }
@@ -2276,7 +2292,7 @@ function copyRef(){
   btn.textContent='Copied!';setTimeout(()=>btn.textContent='Copy',2000);
 }
 
-// Open waitlist on nav CTA
+// Open enrollment on nav CTA
 </script>
 
 </body>
