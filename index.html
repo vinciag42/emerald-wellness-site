@@ -163,6 +163,28 @@ section{padding:100px 48px;}
 .feature-desc{font-size:14px;color:var(--textMid);line-height:1.7;}
 .feature-tag{display:inline-block;margin-top:16px;padding:3px 10px;background:var(--emPale);border:1px solid var(--borderEm);border-radius:20px;font-size:10px;color:var(--emXL);letter-spacing:.8px;text-transform:uppercase;}
 
+/* STACK CHECK */
+#stack-check{background:var(--bg3);border-top:1px solid var(--border);border-bottom:1px solid var(--border);}
+.stack-check-wrap{display:grid;grid-template-columns:minmax(0,1fr) minmax(320px,460px);gap:24px;margin-top:44px;align-items:stretch;}
+.stack-panel{background:var(--bg2);border:1px solid var(--border);border-radius:20px;padding:28px;}
+.stack-panel.gold{border-color:var(--borderGold);background:linear-gradient(160deg,rgba(200,168,40,.08),var(--bg2));}
+.stack-field{display:flex;flex-direction:column;gap:8px;margin-bottom:16px;}
+.stack-field label{font-size:11px;color:var(--textDim);letter-spacing:1px;text-transform:uppercase;}
+.stack-field textarea{min-height:96px;resize:vertical;background:var(--bg);border:1px solid var(--border);border-radius:12px;padding:14px 16px;color:var(--text);font-family:var(--sans);font-size:14px;line-height:1.5;outline:none;}
+.stack-field textarea:focus{border-color:var(--borderEm);}
+.stack-check-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:6px;}
+.stack-btn{border:none;border-radius:10px;padding:13px 22px;font-family:var(--sans);font-size:13px;font-weight:700;letter-spacing:.4px;background:linear-gradient(135deg,var(--em),var(--emL));color:#fff;}
+.stack-btn.secondary{background:transparent;border:1px solid var(--borderEm);color:var(--emXL);}
+.stack-result-title{font-family:var(--serif);font-size:22px;font-weight:700;margin-bottom:10px;}
+.stack-result-sub{font-size:13px;color:var(--textMid);line-height:1.65;margin-bottom:18px;}
+.stack-result-list{display:flex;flex-direction:column;gap:10px;}
+.stack-result-card{background:var(--bg);border:1px solid var(--border);border-radius:12px;padding:14px 16px;font-size:13px;color:var(--textMid);line-height:1.55;}
+.stack-result-card strong{color:var(--text);}
+.stack-result-card.warn{border-color:rgba(224,80,80,.35);background:rgba(224,80,80,.08);}
+.stack-result-card.good{border-color:var(--borderEm);background:var(--emPale);}
+.stack-disclaimer{font-size:11px;color:var(--textDim);line-height:1.55;margin-top:16px;}
+@media(max-width:860px){.stack-check-wrap{grid-template-columns:1fr;}}
+
 /* PEPTIDE SHOWCASE */
 #peptides{background:var(--bg2);}
 .peptide-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:16px;margin-top:48px;}
@@ -573,6 +595,7 @@ footer{background:var(--bg);border-top:1px solid var(--border);padding:60px 48px
     <a href="#vitamins">Vitamins</a>
     <a href="#supplements">Supplements</a>
     <a href="#protocols">Protocols</a>
+    <a href="#stack-check">Stack Check</a>
     <a href="#pricing">Pricing</a>
     <a href="https://shop.emeraldwellness.health/products-list">Store</a>
     <a href="/advisors">Advisors</a>
@@ -719,6 +742,43 @@ footer{background:var(--bg);border-top:1px solid var(--border);padding:60px 48px
       <div class="feature-title">Health Metrics Dashboard</div>
       <div class="feature-desc">Wearable integrations with Apple Health, Garmin, WHOOP, and Oura. Correlate HRV, sleep, recovery, and biomarkers with your supplement timing.</div>
       <span class="feature-tag">Wearable Sync</span>
+    </div>
+  </div>
+</section>
+
+<!-- MEDICATION & STACK CHECK -->
+<section id="stack-check">
+  <div class="reveal text-center">
+    <p class="section-label">Medication & Stack Check</p>
+    <h2 class="section-title">Cross-Reference Your Current<br/><em style="color:var(--emXL)">Medications, Supplements & Peptides</em></h2>
+    <p class="section-sub mx-auto" style="text-align:center;">Enter what you are currently taking to preview how Emerald organizes interaction flags, timing notes, food guidance, and complementary stack ideas.</p>
+  </div>
+  <div class="stack-check-wrap reveal">
+    <div class="stack-panel">
+      <div class="stack-field">
+        <label for="med-list">Current medications</label>
+        <textarea id="med-list" placeholder="Example: metformin, warfarin, thyroid medication, blood pressure medication"></textarea>
+      </div>
+      <div class="stack-field">
+        <label for="wellness-list">Supplements, vitamins, peptides, GLP-1s, or bioregulators</label>
+        <textarea id="wellness-list" placeholder="Example: berberine, vitamin D3 + K2, magnesium, BPC-157, semaglutide, NMN"></textarea>
+      </div>
+      <div class="stack-field">
+        <label for="allergy-list">Allergies or sensitivities</label>
+        <textarea id="allergy-list" placeholder="Example: shellfish, iodine, niacin flush, sulfa allergy"></textarea>
+      </div>
+      <div class="stack-check-actions">
+        <button class="stack-btn" onclick="runStackCheck()">Run Preview Check</button>
+        <button class="stack-btn secondary" onclick="clearStackCheck()">Clear</button>
+      </div>
+      <p class="stack-disclaimer">Educational preview only. This does not diagnose, treat, prescribe, or replace medical advice. Always review medications, supplements, peptides, and lab changes with a qualified healthcare provider.</p>
+    </div>
+    <div class="stack-panel gold">
+      <div class="stack-result-title">Preview Results</div>
+      <p class="stack-result-sub">Your check will look for common timing issues, medication conflicts, food guidance, and complementary support categories.</p>
+      <div class="stack-result-list" id="stack-results">
+        <div class="stack-result-card good"><strong>Ready.</strong> Enter your current list and run the preview check.</div>
+      </div>
     </div>
   </div>
 </section>
@@ -1496,6 +1556,7 @@ footer{background:var(--bg);border-top:1px solid var(--border);padding:60px 48px
         <li><a href="#features">Features</a></li>
         <li><a href="#peptides">Peptide Database</a></li>
         <li><a href="#protocols">Protocols</a></li>
+        <li><a href="#stack-check">Medication & Stack Check</a></li>
         <li><a href="#pricing">Pricing</a></li>
         <li><a href="https://shop.emeraldwellness.health/products-list">Store</a></li>
         <li><a href="#pricing">Pro Practitioner Suite</a></li>
@@ -1598,6 +1659,58 @@ function toggleBilling(){
   document.getElementById('pa-elite').textContent=annual?'Billed annually · Save $480/yr':'';
   document.getElementById('pa-pro').textContent=annual?'Billed annually · Save $720/yr':'';
   document.getElementById('pa-platinum').textContent=annual?'Billed annually at $6,499/yr':'$1 setup/intro charge, then recurring billing after 7 days';
+}
+
+// MEDICATION & STACK CHECK PREVIEW
+function runStackCheck(){
+  const meds=(document.getElementById('med-list')?.value||'').toLowerCase();
+  const stack=(document.getElementById('wellness-list')?.value||'').toLowerCase();
+  const allergies=(document.getElementById('allergy-list')?.value||'').toLowerCase();
+  const combined=`${meds} ${stack} ${allergies}`;
+  const results=[];
+
+  if(!meds.trim()&&!stack.trim()&&!allergies.trim()){
+    results.push({type:'warn',html:'<strong>Add your list first.</strong> Enter medications, supplements, vitamins, peptides, or sensitivities to preview the stack check.'});
+  }
+  if((meds.includes('warfarin')||meds.includes('blood thinner')||meds.includes('eliquis')||meds.includes('xarelto'))&&(stack.includes('omega')||stack.includes('vitamin k')||stack.includes('k2')||stack.includes('resveratrol')||stack.includes('fish oil'))){
+    results.push({type:'warn',html:'<strong>Blood thinner review:</strong> Warfarin/blood thinners should be reviewed carefully with omega-3, vitamin K/K2, resveratrol, and related supplements.'});
+  }
+  if((meds.includes('metformin')||meds.includes('insulin')||meds.includes('diabetes'))&&(stack.includes('berberine')||stack.includes('semaglutide')||stack.includes('tirzepatide')||stack.includes('chromium')||stack.includes('bitter melon'))){
+    results.push({type:'warn',html:'<strong>Glucose-lowering stack:</strong> Metformin, insulin, GLP-1s, berberine, chromium, and similar compounds may require glucose monitoring and clinician review.'});
+  }
+  if((meds.includes('thyroid')||meds.includes('levothyroxine')||meds.includes('synthroid'))&&(stack.includes('iron')||stack.includes('calcium')||stack.includes('magnesium')||stack.includes('zinc'))){
+    results.push({type:'warn',html:'<strong>Thyroid timing:</strong> Thyroid medication is commonly separated from minerals such as iron, calcium, magnesium, and zinc.'});
+  }
+  if((meds.includes('ssri')||meds.includes('sertraline')||meds.includes('prozac')||meds.includes('lexapro')||meds.includes('antidepressant'))&&(stack.includes('5-htp')||stack.includes('tryptophan')||stack.includes('st john')||stack.includes('sam-e'))){
+    results.push({type:'warn',html:'<strong>Serotonin support review:</strong> SSRIs/antidepressants should be reviewed before combining with 5-HTP, tryptophan, St. John’s Wort, or SAM-e.'});
+  }
+  if(combined.includes('shellfish')&&(stack.includes('glucosamine')||stack.includes('marine collagen'))){
+    results.push({type:'warn',html:'<strong>Allergy note:</strong> Shellfish sensitivity may matter for some glucosamine or marine-derived products. Check sourcing.'});
+  }
+  if(stack.includes('vitamin d')||stack.includes('d3')){
+    results.push({type:'good',html:'<strong>Food guidance:</strong> Vitamin D/D3 is commonly organized with a fat-containing meal and paired with K2/magnesium context.'});
+  }
+  if(stack.includes('magnesium')){
+    results.push({type:'good',html:'<strong>Timing note:</strong> Magnesium is commonly placed in evening routines or separated from certain medications/minerals when needed.'});
+  }
+  if(stack.includes('nmn')||stack.includes('nad')){
+    results.push({type:'good',html:'<strong>Complementary stack idea:</strong> NAD+/NMN protocols are often organized with methylation support, sleep, recovery, and energy tracking.'});
+  }
+  if(stack.includes('bpc')||stack.includes('tb-500')){
+    results.push({type:'good',html:'<strong>Peptide tracking:</strong> Healing peptide protocols should track timing, cycle length, injury/recovery notes, and clinician guidance.'});
+  }
+  if(stack.includes('semaglutide')||stack.includes('tirzepatide')||stack.includes('retatrutide')){
+    results.push({type:'warn',html:'<strong>GLP-1 monitoring:</strong> GLP-1 protocols should be reviewed with medications, labs, protein intake, hydration, and muscle-preservation planning.'});
+  }
+  if(results.length===0){
+    results.push({type:'good',html:'<strong>No common preview flags found.</strong> Emerald would still organize timing, food notes, interactions, complements, and lab context for clinician review.'});
+  }
+
+  document.getElementById('stack-results').innerHTML=results.map(r=>`<div class="stack-result-card ${r.type}">${r.html}</div>`).join('');
+}
+function clearStackCheck(){
+  ['med-list','wellness-list','allergy-list'].forEach(id=>{const el=document.getElementById(id);if(el)el.value='';});
+  document.getElementById('stack-results').innerHTML='<div class="stack-result-card good"><strong>Ready.</strong> Enter your current list and run the preview check.</div>';
 }
 
 // BIOAGE CALC
