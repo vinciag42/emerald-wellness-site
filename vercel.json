@@ -25,6 +25,7 @@
     { "source": "/terms", "destination": "/terms-of-service.html", "permanent": true }
   ],
   "rewrites": [
+    { "source": "/app", "destination": "/app.html" },
     { "source": "/advisors", "destination": "/emerald-wellness/advisors.html" },
     { "source": "/blog/", "destination": "/emerald-wellness/blog/index.html" },
     { "source": "/blog/:slug", "destination": "/emerald-wellness/blog/:slug.html" },
