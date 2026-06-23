@@ -343,8 +343,10 @@ document.querySelector(".mobile-select").addEventListener("change",e=>showTab(e.
 function renderList(){
   const q=(document.getElementById("search").value||"").toLowerCase();
   const list=compounds.filter(c=>[c.name,c.type,c.cat,c.def].join(" ").toLowerCase().includes(q));
+  if(list.length && !list.some(c=>c.name===current.name)) current=list[0];
   document.getElementById("compoundList").innerHTML=list.map((c,i)=>`<div class="compound ${c.name===current.name?'selected':''}" data-name="${c.name}"><div class="compound-name">${c.name}</div><div class="compound-type">${c.type} · ${c.cat}</div><div class="tags"><span class="tag">${c.cat}</span><span class="tag">${c.type}</span></div></div>`).join("");
   document.querySelectorAll(".compound").forEach(el=>el.addEventListener("click",()=>{current=compounds.find(c=>c.name===el.dataset.name);renderList();renderDetail();}));
+  renderDetail();
 }
 function renderDetail(){
   document.getElementById("compoundDetail").innerHTML=`<p class="eyebrow">${current.type}</p><h2>${current.name}</h2><p class="lead">${current.def}</p><div class="detail-grid"><div class="detail"><b>Best time</b>${current.timing}</div><div class="detail"><b>With or without food</b>${current.food}</div><div class="detail"><b>Interactions / review</b>${current.interactions}</div><div class="detail"><b>Complementary stack</b>${current.pairs}</div></div><p class="notice">Education only. Confirm dose, route, timing and safety with a qualified healthcare provider.</p>`;
