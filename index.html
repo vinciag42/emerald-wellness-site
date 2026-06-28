@@ -593,6 +593,7 @@ footer{background:var(--bg);border-top:1px solid var(--border);padding:60px 48px
     <a href="#protocols">Protocols</a>
     <a href="#parasite-protocol">Parasite/Fungal</a>
     <a href="#stack-check">Stack Check</a>
+    <a href="/specialty-modules">Modules</a>
     <a href="/app">App</a>
     <a href="#pricing">Pricing</a>
     <a href="https://shop.emeraldwellness.health/products-list">Store</a>
@@ -1467,7 +1468,8 @@ footer{background:var(--bg);border-top:1px solid var(--border);padding:60px 48px
   <div style="margin-top:60px;" class="reveal">
     <p class="section-label">Premium Add-Ons</p>
     <h3 style="font-family:var(--serif);font-size:26px;font-weight:700;margin-bottom:8px;">Specialty Modules — <span style="color:var(--goldL)">+$49.99/mo each</span></h3>
-    <p style="font-size:14px;color:var(--textMid);">Available on Gold, Elite, and Pro plans. Stack as many as you need.</p>
+    <p style="font-size:14px;color:var(--textMid);">Available by membership tier. Gold includes 1 active module, Platinum Plus includes 3, Concierge includes unlimited, and a 3-module add-on bundle is $89/month.</p>
+    <p style="margin-top:12px;"><a class="btn-gold" href="/specialty-modules">Browse all 25 specialty modules â†’</a></p>
   </div>
   <div class="addons-grid reveal">
     <div class="addon-card"><div class="addon-icon">🏋️</div><div><div class="addon-name">Sports Performance Module</div><div class="addon-price">+$49.99/mo</div><div class="addon-desc">Advanced periodization, VO2max optimization, and HRV-based training overlays.</div></div></div>
@@ -2293,6 +2295,16 @@ function copyRef(){
   const btn=document.querySelector('.wl-ref-copy');
   btn.textContent='Copied!';setTimeout(()=>btn.textContent='Copy',2000);
 }
+
+// Specialty Module Marketplace pricing display
+document.querySelectorAll('.addon-price').forEach(el=>{
+  if(el.textContent.includes('$49.99')) el.textContent = '+$35/mo';
+});
+document.querySelectorAll('h3').forEach(el=>{
+  if(el.textContent.includes('Specialty Modules') && el.textContent.includes('$49.99')) {
+    el.innerHTML = 'Specialty Module Marketplaceâ„¢ â€” <span style="color:var(--goldL)">+$35/mo each</span>';
+  }
+});
 
 // Open enrollment on nav CTA
 </script>

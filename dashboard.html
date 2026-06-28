@@ -3,104 +3,16 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"/>
-<title>Emerald Wellness Dashboard — Specialty Modules</title>
-<meta name="description" content="Emerald Wellness Specialty Modules dashboard for hormone optimization, metabolism, brain performance, gut health, longevity, sleep, inflammation, skin, athletic performance and sexual wellness education."/>
+<title>Emerald Wellness Dashboard — Specialty Module Marketplace</title>
+<meta name="description" content="Emerald Wellness member dashboard for Specialty Modules, module scores, assessments, symptoms, labs, Protocol Vault links, BodyScan progress, learning, reports, and concierge support."/>
 <meta name="robots" content="noindex, nofollow"/>
 <link rel="canonical" href="https://emeraldwellness.health/dashboard"/>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;900&family=DM+Sans:wght@300;400;500;700&family=Cinzel:wght@400;600&display=swap" rel="stylesheet"/>
 <style>
-:root{
-  --bg:#050d07;--bg2:#080f0a;--bg3:#0c160e;--panel:#101d13;
-  --em:#1a6b45;--emL:#2aab6a;--emXL:#40d888;--emPale:rgba(26,107,69,.12);
-  --gold:#c8a828;--goldL:#f0c84a;--goldPale:rgba(200,168,40,.12);
-  --red:#e05050;--redPale:rgba(224,80,80,.12);
-  --blue:#75a7ff;--bluePale:rgba(117,167,255,.1);
-  --text:#e8f2ec;--mid:#b8d4c0;--dim:#8aac96;--border:rgba(255,255,255,.08);
-  --serif:'Playfair Display',Georgia,serif;--sans:'DM Sans',system-ui,sans-serif;--cinzel:'Cinzel',serif;
-}
-*{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth}
-body{background:radial-gradient(circle at 18% 0%,rgba(64,216,136,.16),transparent 32%),linear-gradient(180deg,var(--bg),#030704);color:var(--text);font-family:var(--sans);line-height:1.55}
-a{color:inherit;text-decoration:none}
-button,input,textarea,select{font-family:inherit}
-button{cursor:pointer}
-.shell{min-height:100vh;display:grid;grid-template-columns:290px minmax(0,1fr)}
-.side{position:sticky;top:0;height:100vh;background:rgba(8,15,10,.9);border-right:1px solid var(--border);padding:24px;overflow:auto}
-.brand{display:flex;align-items:center;gap:12px;margin-bottom:24px}
-.diamond{width:28px;height:28px;border-radius:4px;background:linear-gradient(135deg,var(--em),var(--emXL));transform:rotate(45deg);box-shadow:0 0 24px rgba(64,216,136,.25)}
-.brand span{font-family:var(--cinzel);letter-spacing:2px;font-size:13px;color:var(--emXL)}
-.plan-card{border:1px solid rgba(200,168,40,.25);background:linear-gradient(135deg,var(--goldPale),rgba(26,107,69,.06));border-radius:18px;padding:16px;margin-bottom:18px}
-.plan-card small{display:block;color:var(--dim);font-family:var(--cinzel);font-size:9px;letter-spacing:2px;text-transform:uppercase;margin-bottom:8px}
-.plan-card strong{display:block;font-family:var(--serif);font-size:22px;color:var(--goldL);margin-bottom:8px}
-.nav{display:flex;flex-direction:column;gap:8px}
-.nav button,.nav a{width:100%;border:1px solid transparent;background:transparent;color:var(--mid);text-align:left;padding:12px 14px;border-radius:12px;font-size:14px}
-.nav button.active,.nav button:hover,.nav a:hover{background:var(--emPale);border-color:rgba(64,216,136,.25);color:var(--emXL)}
-.main{padding:28px;max-width:1320px;width:100%;margin:0 auto}
-.topbar{display:flex;justify-content:space-between;align-items:center;gap:16px;margin-bottom:24px}
-.mobile-select{display:none;background:var(--bg2);border:1px solid var(--border);color:var(--text);border-radius:12px;padding:13px;width:100%}
-.pill{display:inline-flex;align-items:center;gap:8px;border:1px solid rgba(64,216,136,.25);background:var(--emPale);color:var(--emXL);border-radius:999px;padding:7px 12px;font-size:12px;font-weight:700;letter-spacing:.4px}
-.hero{border:1px solid rgba(64,216,136,.28);background:linear-gradient(135deg,rgba(26,107,69,.2),rgba(200,168,40,.08));border-radius:28px;padding:34px;margin-bottom:22px}
-.eyebrow{font-family:var(--cinzel);letter-spacing:3px;text-transform:uppercase;color:var(--emXL);font-size:10px;margin-bottom:12px}
-h1,h2,h3{font-family:var(--serif);line-height:1.1}
-h1{font-size:clamp(36px,6vw,68px);max-width:900px}
-h2{font-size:clamp(28px,4vw,44px);margin-bottom:12px}
-h3{font-size:22px;margin-bottom:10px}
-.lead{font-size:18px;color:var(--mid);max-width:920px;margin-top:18px}
-.grid{display:grid;grid-template-columns:repeat(12,1fr);gap:18px}
-.card{grid-column:span 4;background:rgba(8,15,10,.82);border:1px solid var(--border);border-radius:20px;padding:22px}
-.card.wide{grid-column:span 8}
-.card.full{grid-column:1/-1}
-.copy{color:var(--mid);font-size:15px}
-.muted{color:var(--dim);font-size:13px}
-.actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:18px}
-.btn{border:0;border-radius:12px;background:linear-gradient(135deg,var(--em),var(--emL));color:white;padding:13px 18px;font-weight:800;min-height:46px;display:inline-flex;align-items:center;justify-content:center;gap:8px}
-.btn.gold{background:linear-gradient(135deg,var(--gold),var(--goldL));color:#071008}
-.btn.ghost{background:transparent;border:1px solid rgba(64,216,136,.3);color:var(--emXL)}
-.btn.locked{background:rgba(255,255,255,.06);border:1px solid var(--border);color:var(--dim)}
-.tab{display:none}
-.tab.active{display:block}
-.module-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:16px;margin-top:18px}
-.module-card{border:1px solid var(--border);background:var(--bg2);border-radius:20px;padding:20px;position:relative;overflow:hidden}
-.module-card.active{border-color:rgba(64,216,136,.42);background:linear-gradient(145deg,var(--emPale),var(--bg2))}
-.module-card.locked{opacity:.78}
-.module-card::before{content:'';position:absolute;inset:0 0 auto;height:3px;background:linear-gradient(90deg,transparent,var(--emXL),transparent);opacity:.4}
-.module-icon{font-size:28px;margin-bottom:12px}
-.module-card h3{font-size:21px}
-.tag-row{display:flex;gap:6px;flex-wrap:wrap;margin:12px 0}
-.tag{font-size:10px;text-transform:uppercase;letter-spacing:.7px;border:1px solid var(--border);border-radius:999px;color:var(--mid);padding:4px 8px}
-.score-ring{width:118px;height:118px;border-radius:999px;display:grid;place-items:center;background:conic-gradient(var(--emXL) calc(var(--score)*1%),rgba(255,255,255,.08) 0);padding:9px}
-.score-inner{width:100%;height:100%;border-radius:999px;background:var(--bg2);display:grid;place-items:center;text-align:center;border:1px solid var(--border)}
-.score-inner strong{font-family:var(--serif);font-size:34px;color:var(--emXL)}
-.score-inner span{display:block;font-size:10px;color:var(--dim);letter-spacing:1px;text-transform:uppercase}
-.dash-head{display:grid;grid-template-columns:minmax(0,1fr) 150px;gap:20px;align-items:center}
-.section-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin-top:18px}
-.panel{background:var(--bg2);border:1px solid var(--border);border-radius:18px;padding:20px}
-.panel.gold{border-color:rgba(240,200,74,.25);background:linear-gradient(145deg,var(--goldPale),var(--bg2))}
-.field{display:flex;flex-direction:column;gap:8px;margin:12px 0}
-.field label{font-size:11px;color:var(--dim);letter-spacing:1.3px;text-transform:uppercase}
-.field input,.field textarea,.field select{width:100%;background:var(--bg3);border:1px solid var(--border);border-radius:12px;color:var(--text);padding:13px 14px;outline:none;min-height:46px}
-.field textarea{min-height:92px;resize:vertical}
-.check-list{display:grid;gap:10px;margin-top:12px}
-.check-item{display:flex;gap:10px;align-items:flex-start;background:var(--bg3);border:1px solid var(--border);border-radius:12px;padding:12px}
-.check-item input{width:20px;height:20px;accent-color:var(--emL);margin-top:2px}
-.mini-bars{display:flex;align-items:end;gap:8px;height:120px;margin-top:12px;border-bottom:1px solid var(--border)}
-.bar{flex:1;min-width:18px;background:linear-gradient(180deg,var(--emXL),var(--em));border-radius:8px 8px 0 0;position:relative}
-.bar span{position:absolute;bottom:100%;left:50%;transform:translateX(-50%);font-size:10px;color:var(--dim);margin-bottom:5px}
-.resource-list{display:grid;gap:10px;margin-top:12px}
-.resource{border:1px solid var(--border);background:var(--bg3);border-radius:12px;padding:12px}
-.notice{border:1px solid rgba(240,200,74,.25);background:var(--goldPale);border-radius:16px;padding:16px;color:var(--mid);font-size:13px;margin-top:18px}
-.formula{display:grid;grid-template-columns:repeat(6,1fr);gap:10px;margin-top:14px}
-.formula div{background:var(--bg3);border:1px solid var(--border);border-radius:12px;padding:12px;text-align:center}
-.formula strong{display:block;color:var(--emXL);font-family:var(--serif);font-size:22px}
-.admin-editor{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
-.hidden{display:none!important}
-@media(max-width:980px){
-  .shell{display:block}.side{position:relative;height:auto}.nav{display:none}.mobile-select{display:block}.main{padding:18px}
-  .topbar{align-items:stretch;flex-direction:column}.card,.card.wide{grid-column:1/-1}.dash-head,.section-grid,.admin-editor{grid-template-columns:1fr}.formula{grid-template-columns:repeat(2,1fr)}
-  .module-grid{grid-template-columns:1fr}.hero{padding:24px}.btn{width:100%}
-}
+:root{--bg:#050d07;--bg2:#080f0a;--bg3:#0c160e;--panel:#101d13;--em:#1a6b45;--emL:#2aab6a;--emXL:#40d888;--emPale:rgba(26,107,69,.12);--gold:#c8a828;--goldL:#f0c84a;--goldPale:rgba(200,168,40,.12);--red:#e05050;--text:#e8f2ec;--mid:#b8d4c0;--dim:#8aac96;--border:rgba(255,255,255,.08);--serif:'Playfair Display',Georgia,serif;--sans:'DM Sans',system-ui,sans-serif;--cinzel:'Cinzel',serif}
+*{box-sizing:border-box;margin:0;padding:0}body{background:radial-gradient(circle at 18% 0%,rgba(64,216,136,.16),transparent 32%),linear-gradient(180deg,var(--bg),#030704);color:var(--text);font-family:var(--sans);line-height:1.55}a{color:inherit;text-decoration:none}button,input,textarea,select{font-family:inherit}button{cursor:pointer}.shell{min-height:100vh;display:grid;grid-template-columns:292px minmax(0,1fr)}.side{position:sticky;top:0;height:100vh;background:rgba(8,15,10,.92);border-right:1px solid var(--border);padding:24px;overflow:auto}.brand{display:flex;align-items:center;gap:12px;margin-bottom:24px}.diamond{width:28px;height:28px;border-radius:4px;background:linear-gradient(135deg,var(--em),var(--emXL));transform:rotate(45deg);box-shadow:0 0 24px rgba(64,216,136,.25)}.brand span{font-family:var(--cinzel);letter-spacing:2px;font-size:13px;color:var(--emXL)}.plan-card{border:1px solid rgba(200,168,40,.25);background:linear-gradient(135deg,var(--goldPale),rgba(26,107,69,.06));border-radius:18px;padding:16px;margin-bottom:18px}.plan-card small{display:block;color:var(--dim);font-family:var(--cinzel);font-size:9px;letter-spacing:2px;text-transform:uppercase;margin-bottom:8px}.plan-card strong{display:block;font-family:var(--serif);font-size:22px;color:var(--goldL);margin-bottom:8px}.nav{display:flex;flex-direction:column;gap:8px}.nav button,.nav a{width:100%;border:1px solid transparent;background:transparent;color:var(--mid);text-align:left;padding:12px 14px;border-radius:12px;font-size:14px}.nav button.active,.nav button:hover,.nav a:hover{background:var(--emPale);border-color:rgba(64,216,136,.25);color:var(--emXL)}.main{padding:28px;max-width:1360px;width:100%;margin:0 auto}.topbar{display:flex;justify-content:space-between;align-items:center;gap:16px;margin-bottom:24px}.mobile-select{display:none;background:var(--bg2);border:1px solid var(--border);color:var(--text);border-radius:12px;padding:13px;width:100%}.pill{display:inline-flex;align-items:center;gap:8px;border:1px solid rgba(64,216,136,.25);background:var(--emPale);color:var(--emXL);border-radius:999px;padding:7px 12px;font-size:12px;font-weight:700;letter-spacing:.4px}.hero{border:1px solid rgba(64,216,136,.28);background:linear-gradient(135deg,rgba(26,107,69,.2),rgba(200,168,40,.08));border-radius:28px;padding:34px;margin-bottom:22px}.eyebrow{font-family:var(--cinzel);letter-spacing:3px;text-transform:uppercase;color:var(--emXL);font-size:10px;margin-bottom:12px}h1,h2,h3{font-family:var(--serif);line-height:1.1}h1{font-size:clamp(36px,6vw,68px);max-width:920px}h2{font-size:clamp(28px,4vw,44px);margin-bottom:12px}h3{font-size:22px;margin-bottom:10px}.lead{font-size:18px;color:var(--mid);max-width:940px;margin-top:18px}.copy{color:var(--mid);font-size:15px}.muted{color:var(--dim);font-size:13px}.actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:18px}.btn{border:0;border-radius:12px;background:linear-gradient(135deg,var(--em),var(--emL));color:white;padding:13px 18px;font-weight:800;min-height:46px;display:inline-flex;align-items:center;justify-content:center;gap:8px}.btn.gold{background:linear-gradient(135deg,var(--gold),var(--goldL));color:#071008}.btn.ghost{background:transparent;border:1px solid rgba(64,216,136,.3);color:var(--emXL)}.btn.locked{background:rgba(255,255,255,.06);border:1px solid var(--border);color:var(--dim)}.tab{display:none}.tab.active{display:block}.grid{display:grid;grid-template-columns:repeat(12,1fr);gap:18px}.card{grid-column:span 4;background:rgba(8,15,10,.82);border:1px solid var(--border);border-radius:20px;padding:22px}.card.wide{grid-column:span 8}.card.full{grid-column:1/-1}.controls{display:grid;grid-template-columns:minmax(220px,1fr) 220px 220px;gap:12px;margin:18px 0}.controls input,.controls select,.field input,.field textarea,.field select{width:100%;background:var(--bg3);border:1px solid var(--border);border-radius:12px;color:var(--text);padding:13px 14px;outline:none;min-height:46px}.module-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(282px,1fr));gap:16px}.module-card{border:1px solid var(--border);background:var(--bg2);border-radius:20px;padding:20px;position:relative;overflow:hidden;display:flex;flex-direction:column;gap:10px}.module-card.active{border-color:rgba(64,216,136,.42);background:linear-gradient(145deg,var(--emPale),var(--bg2))}.module-card.locked{opacity:.82}.module-card::before{content:'';position:absolute;inset:0 0 auto;height:3px;background:linear-gradient(90deg,transparent,var(--emXL),transparent);opacity:.42}.module-icon{font-size:30px}.tag-row{display:flex;gap:6px;flex-wrap:wrap}.tag{font-size:10px;text-transform:uppercase;letter-spacing:.7px;border:1px solid var(--border);border-radius:999px;color:var(--mid);padding:4px 8px}.score-ring{width:118px;height:118px;border-radius:999px;display:grid;place-items:center;background:conic-gradient(var(--emXL) calc(var(--score)*1%),rgba(255,255,255,.08) 0);padding:9px}.score-inner{width:100%;height:100%;border-radius:999px;background:var(--bg2);display:grid;place-items:center;text-align:center;border:1px solid var(--border)}.score-inner strong{font-family:var(--serif);font-size:34px;color:var(--emXL)}.score-inner span{display:block;font-size:10px;color:var(--dim);letter-spacing:1px;text-transform:uppercase}.dash-head{display:grid;grid-template-columns:minmax(0,1fr) 150px;gap:20px;align-items:center}.section-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin-top:18px}.panel{background:var(--bg2);border:1px solid var(--border);border-radius:18px;padding:20px}.panel.gold{border-color:rgba(240,200,74,.25);background:linear-gradient(145deg,var(--goldPale),var(--bg2))}.field{display:flex;flex-direction:column;gap:8px;margin:12px 0}.field label{font-size:11px;color:var(--dim);letter-spacing:1.3px;text-transform:uppercase}.field textarea{min-height:92px;resize:vertical}.check-list{display:grid;gap:10px;margin-top:12px}.check-item{display:flex;gap:10px;align-items:flex-start;background:var(--bg3);border:1px solid var(--border);border-radius:12px;padding:12px}.check-item input{width:20px;height:20px;accent-color:var(--emL);margin-top:2px}.mini-bars{display:flex;align-items:end;gap:8px;height:120px;margin-top:12px;border-bottom:1px solid var(--border)}.bar{flex:1;min-width:18px;background:linear-gradient(180deg,var(--emXL),var(--em));border-radius:8px 8px 0 0;position:relative}.bar span{position:absolute;bottom:100%;left:50%;transform:translateX(-50%);font-size:10px;color:var(--dim);margin-bottom:5px}.resource-list{display:grid;gap:10px;margin-top:12px}.resource{border:1px solid var(--border);background:var(--bg3);border-radius:12px;padding:12px}.notice{border:1px solid rgba(240,200,74,.25);background:var(--goldPale);border-radius:16px;padding:16px;color:var(--mid);font-size:13px;margin-top:18px}.formula{display:grid;grid-template-columns:repeat(6,1fr);gap:10px;margin-top:14px}.formula div{background:var(--bg3);border:1px solid var(--border);border-radius:12px;padding:12px;text-align:center}.formula strong{display:block;color:var(--emXL);font-family:var(--serif);font-size:22px}.admin-editor{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}@media(max-width:980px){.shell{display:block}.side{position:relative;height:auto}.nav{display:none}.mobile-select{display:block}.main{padding:18px}.topbar{align-items:stretch;flex-direction:column}.card,.card.wide{grid-column:1/-1}.dash-head,.section-grid,.admin-editor,.controls{grid-template-columns:1fr}.formula{grid-template-columns:repeat(2,1fr)}.module-grid{grid-template-columns:1fr}.hero{padding:24px}.btn{width:100%}}
 </style>
 </head>
 <body>
@@ -110,7 +22,8 @@ h3{font-size:22px;margin-bottom:10px}
     <div class="plan-card">
       <small>Membership Access</small>
       <strong id="planName">Gold</strong>
-      <p class="muted" id="planAccess">1 active module allowed</p>
+      <p class="muted" id="planAccess">1 active module included</p>
+      <p class="muted" id="planExtra">Extra modules $35/month each</p>
       <div class="field">
         <label>Preview plan selector</label>
         <select id="planSelect">
@@ -118,7 +31,7 @@ h3{font-size:22px;margin-bottom:10px}
           <option value="gold" selected>Gold — 1 active module</option>
           <option value="platinum_plus">Platinum Plus — 3 active modules</option>
           <option value="concierge">Concierge Regenesis — unlimited</option>
-          <option value="concierge_premium">Concierge Premium — unlimited + premium concierge</option>
+          <option value="concierge_premium">Concierge Regenesis Premium — unlimited + premium concierge</option>
         </select>
       </div>
     </div>
@@ -131,11 +44,11 @@ h3{font-size:22px;margin-bottom:10px}
       <button data-tab="progress-reports">Progress Reports</button>
       <button data-tab="biology-intelligence">Biology Intelligence</button>
       <button data-tab="admin">Admin Builder</button>
+      <a href="/specialty-modules">Public Marketplace</a>
       <a href="/app">App Preview</a>
       <a href="/#pricing">Upgrade</a>
     </nav>
   </aside>
-
   <main class="main">
     <div class="topbar">
       <select class="mobile-select" aria-label="Choose dashboard section">
@@ -148,9 +61,9 @@ h3{font-size:22px;margin-bottom:10px}
         <option value="biology-intelligence">Biology Intelligence</option>
         <option value="admin">Admin Builder</option>
       </select>
-      <span class="pill">Specialty Modules Framework</span>
+      <span class="pill">Specialty Module Marketplace™</span>
       <div class="actions" style="margin-top:0">
-        <a class="btn ghost" href="/app">App</a>
+        <a class="btn ghost" href="/specialty-modules">Public Page</a>
         <a class="btn gold" href="/#pricing">Upgrade</a>
       </div>
     </div>
@@ -158,24 +71,18 @@ h3{font-size:22px;margin-bottom:10px}
     <section id="overview" class="tab active">
       <div class="hero">
         <p class="eyebrow">Emerald Specialty Modules</p>
-        <h1>One reusable framework. Unlimited wellness intelligence modules.</h1>
-        <p class="lead">Activate focused education tracks for hormones, metabolism, cognition, gut health, longevity, sleep, inflammation, skin and hair, athletic performance, sexual wellness and concierge-guided progression.</p>
+        <h1>One marketplace. One module engine. Unlimited focused wellness education tracks.</h1>
+        <p class="lead">Browse, activate, track, learn, and report from the same module data system used by the public website, dashboard, and mobile-ready app experience.</p>
+        <div class="actions"><button class="btn" data-tab="specialty-modules">Browse Modules</button><a class="btn ghost" href="/specialty-modules">View Public Marketplace</a></div>
       </div>
       <div class="grid">
-        <div class="card"><div class="score-ring" style="--score:82"><div class="score-inner"><strong id="avgScore">82</strong><span>Avg Score</span></div></div><h3>Module Score</h3><p class="copy">Each module calculates a 0–100 education and tracking score from symptoms, labs, adherence, tasks, BodyScan inputs and goals.</p></div>
-        <div class="card"><h3>Membership Rules</h3><p class="copy">Free previews modules. Gold activates 1. Platinum Plus activates 3. Concierge tiers activate unlimited modules with premium support on Concierge Premium.</p></div>
-        <div class="card"><h3>Reusable Engine</h3><p class="copy">All cards open the same Module Dashboard component. Module-specific questions, labs, tasks, protocols and resources load dynamically from the module definition/database.</p></div>
+        <div class="card"><div class="score-ring" style="--score:82"><div class="score-inner"><strong id="avgScore">82</strong><span>Avg Score</span></div></div><h3>Module Score</h3><p class="copy">Scores use symptoms, labs, protocol adherence, daily tasks, BodyScan changes, and goals.</p></div>
+        <div class="card"><h3>Membership Rules</h3><p class="copy">Free previews only. Gold activates 1. Platinum Plus activates 3. Concierge tiers activate unlimited modules.</p></div>
+        <div class="card"><h3>Billing Add-ons</h3><p class="copy">Extra module add-on: $35/month. 3-module bundle: $89/month. Concierge upgrade CTA is ready for Stripe checkout IDs.</p></div>
         <div class="card full">
           <h3>Score Formula</h3>
-          <div class="formula">
-            <div><strong>20%</strong>Symptoms</div>
-            <div><strong>20%</strong>Labs</div>
-            <div><strong>20%</strong>Protocol adherence</div>
-            <div><strong>15%</strong>Daily tasks</div>
-            <div><strong>10%</strong>BodyScan</div>
-            <div><strong>15%</strong>Goals</div>
-          </div>
-          <p class="notice">Emerald Wellness provides educational wellness intelligence and tracking tools. It does not diagnose, treat, cure, or replace medical care. Always consult a qualified healthcare provider.</p>
+          <div class="formula"><div><strong>20%</strong>Symptoms</div><div><strong>20%</strong>Labs</div><div><strong>20%</strong>Protocol adherence</div><div><strong>15%</strong>Daily tasks</div><div><strong>10%</strong>BodyScan</div><div><strong>15%</strong>Goals</div></div>
+          <p class="notice" id="overviewDisclaimer"></p>
         </div>
       </div>
     </section>
@@ -183,254 +90,68 @@ h3{font-size:22px;margin-bottom:10px}
     <section id="specialty-modules" class="tab">
       <div class="hero">
         <p class="eyebrow">Specialty Modules</p>
-        <h2>Choose focused tracks for deeper education and progress tracking.</h2>
-        <p class="lead">Locked modules show upgrade guidance. Active modules open the reusable dashboard.</p>
+        <h2>Member marketplace with activation rules, locked modules, and upgrade paths.</h2>
+        <p class="lead">Search, filter, activate included modules, purchase extra modules, or open an active module dashboard.</p>
+      </div>
+      <div class="controls">
+        <input id="moduleSearch" placeholder="Search modules, symptoms, categories..."/>
+        <select id="categoryFilter"></select>
+        <select id="statusFilter"><option value="all">All statuses</option><option value="active">Active</option><option value="included">Included / available</option><option value="locked">Locked</option></select>
       </div>
       <div id="moduleCards" class="module-grid"></div>
+      <p class="notice" id="marketDisclaimer"></p>
     </section>
 
-    <section id="active-module" class="tab">
-      <div id="moduleDashboard"></div>
-    </section>
-
-    <section id="protocol-vault" class="tab">
-      <div class="hero">
-        <p class="eyebrow">Protocol Vault Integration</p>
-        <h2>Module protocols connect to the Emerald Protocol Vault.</h2>
-        <p class="lead">Protocols are educational references. They are organized by module and are not treatment instructions.</p>
-      </div>
-      <div id="protocolVaultList" class="grid"></div>
-    </section>
-
-    <section id="biology-labs" class="tab">
-      <div class="hero">
-        <p class="eyebrow">Biology Labs Integration</p>
-        <h2>Recommended labs by module.</h2>
-        <p class="lead">Labs are shown as provider-review categories for educational planning and quarterly discussion.</p>
-      </div>
-      <div id="labsList" class="grid"></div>
-    </section>
-
-    <section id="progress-reports" class="tab">
-      <div class="hero">
-        <p class="eyebrow">Progress Reports</p>
-        <h2>Monthly reports and milestone graduation summaries.</h2>
-        <p class="lead">Generate safe educational reports from scores, symptoms, tasks and milestones.</p>
-      </div>
-      <div class="grid">
-        <div class="card wide" id="reportPreview"></div>
-        <div class="card">
-          <h3>Report Actions</h3>
-          <button class="btn" id="generateMonthlyReport">Generate Monthly Report</button>
-          <button class="btn ghost" id="generateGraduationReport" style="margin-top:10px">Generate Graduation Report</button>
-          <p class="notice">Reports are educational summaries for discussion with qualified professionals.</p>
-        </div>
-      </div>
-    </section>
-
-    <section id="biology-intelligence" class="tab">
-      <div class="hero">
-        <p class="eyebrow">Biology Intelligence</p>
-        <h2>Safe educational insights from module progress.</h2>
-        <p class="lead">Insights organize patterns, questions and next discussion points without medical-provider language.</p>
-      </div>
-      <div id="insightList" class="grid"></div>
-    </section>
-
-    <section id="admin" class="tab">
-      <div class="hero">
-        <p class="eyebrow">Admin Builder</p>
-        <h2>Create and edit specialty modules later without rebuilding the app.</h2>
-        <p class="lead">This admin interface writes to local preview storage now. The SQL schema included with this build supports saving these records in Supabase later.</p>
-      </div>
-      <div class="grid">
-        <div class="card wide">
-          <h3>Create / Edit Module Definition</h3>
-          <div class="admin-editor">
-            <div class="field"><label>Module name</label><input id="adminName" placeholder="Example: Thyroid Resilience"/></div>
-            <div class="field"><label>Icon</label><input id="adminIcon" placeholder="✨"/></div>
-            <div class="field"><label>Category</label><input id="adminCategory" placeholder="Hormone / Gut / Performance"/></div>
-            <div class="field"><label>Recommended labs</label><input id="adminLabs" placeholder="TSH, Free T3, Free T4"/></div>
-            <div class="field"><label>Protocols</label><input id="adminProtocols" placeholder="Morning routine, lab review checklist"/></div>
-            <div class="field"><label>Daily tasks</label><input id="adminTasks" placeholder="Hydration, protein, movement"/></div>
-          </div>
-          <div class="field"><label>Description</label><textarea id="adminDescription" placeholder="Educational module description"></textarea></div>
-          <button class="btn" id="saveAdminModule">Save Module</button>
-        </div>
-        <div class="card">
-          <h3>Admin Rules</h3>
-          <p class="copy">Module content should stay educational, should not promise results, and should avoid diagnosis/treatment language.</p>
-        </div>
-      </div>
-    </section>
+    <section id="active-module" class="tab"><div id="moduleDashboard"></div></section>
+    <section id="protocol-vault" class="tab"><div class="hero"><p class="eyebrow">Protocol Vault Integration</p><h2>Module protocols connect to the Emerald Protocol Vault.</h2><p class="lead">Protocols are educational references organized by module.</p></div><div id="protocolVaultList" class="grid"></div></section>
+    <section id="biology-labs" class="tab"><div class="hero"><p class="eyebrow">Biology Labs Integration</p><h2>Recommended labs by module.</h2><p class="lead">Labs are provider-review categories for quarterly discussion and progress tracking.</p></div><div id="labsList" class="grid"></div></section>
+    <section id="progress-reports" class="tab"><div class="hero"><p class="eyebrow">Progress Reports</p><h2>Monthly reports and milestone graduation summaries.</h2><p class="lead">Generate educational summaries from module scores, symptoms, tasks, and milestones.</p></div><div class="grid"><div class="card wide" id="reportPreview"></div><div class="card"><h3>Report Actions</h3><button class="btn" id="generateMonthlyReport">Generate Monthly Report</button><button class="btn ghost" id="generateGraduationReport" style="margin-top:10px">Generate Graduation Report</button><p class="notice">Reports are educational summaries for discussion with qualified professionals.</p></div></div></section>
+    <section id="biology-intelligence" class="tab"><div class="hero"><p class="eyebrow">Biology Intelligence</p><h2>Safe educational insights from module progress.</h2><p class="lead">Insights organize patterns, questions, and next discussion points without medical-provider language.</p></div><div id="insightList" class="grid"></div></section>
+    <section id="admin" class="tab"><div class="hero"><p class="eyebrow">Admin Module Builder</p><h2>Create, edit, publish, and price modules without rebuilding the app.</h2><p class="lead">This preview saves admin-created modules locally. The Supabase schema supports database-backed publishing.</p></div><div class="grid"><div class="card wide"><h3>Create / Edit Module Definition</h3><div class="admin-editor"><div class="field"><label>Module name</label><input id="adminName" placeholder="Example: Adrenal Resilience"/></div><div class="field"><label>Icon</label><input id="adminIcon" placeholder="✨"/></div><div class="field"><label>Category</label><select id="adminCategory"></select></div><div class="field"><label>Price teaser</label><input id="adminPrice" placeholder="$35/month add-on"/></div><div class="field"><label>Best for</label><input id="adminBestFor" placeholder="Who this module helps organize"/></div><div class="field"><label>Recommended labs</label><input id="adminLabs" placeholder="CBC, CMP, Vitamin D"/></div><div class="field"><label>Protocol templates</label><input id="adminProtocols" placeholder="Education guide, review checklist"/></div><div class="field"><label>Daily tasks</label><input id="adminTasks" placeholder="Hydration, movement, sleep"/></div></div><div class="field"><label>Public marketing copy</label><textarea id="adminDescription" placeholder="Educational module description"></textarea></div><label class="check-item"><input id="adminFeatured" type="checkbox"/> <span>Featured module</span></label><label class="check-item"><input id="adminComingSoon" type="checkbox"/> <span>Coming soon</span></label><button class="btn" id="saveAdminModule">Save Module</button></div><div class="card"><h3>Admin Rules</h3><p class="copy">Admins can set category, price, audience, questions, symptoms, labs, protocol templates, daily tasks, resources, scoring weights, featured status, coming-soon status, and publish state.</p><p class="notice" id="adminDisclaimer"></p></div></div></section>
   </main>
 </div>
 
+<script src="/js/specialty-modules-data.js"></script>
 <script>
-const DISCLAIMER = "Emerald Wellness provides educational wellness intelligence and tracking tools. It does not diagnose, treat, cure, or replace medical care. Always consult a qualified healthcare provider.";
-const ACCESS_RULES = {
-  free:{label:"Free",limit:0,copy:"Preview only"},
-  gold:{label:"Gold",limit:1,copy:"1 active module allowed"},
-  platinum_plus:{label:"Platinum Plus",limit:3,copy:"3 active modules allowed"},
-  concierge:{label:"Concierge Regenesis",limit:999,copy:"Unlimited modules"},
-  concierge_premium:{label:"Concierge Premium",limit:999,copy:"Unlimited modules + premium concierge support"}
-};
-const BASE_MODULES = [
-  {id:"hormone",name:"Hormone Optimization",icon:"⚖️",category:"Hormones",desc:"Organize hormone-support education, labs, symptoms, lifestyle patterns and provider discussion points.",questions:["Energy pattern across the day?","Sleep quality and recovery?","Recent hormone labs reviewed with provider?","Stress load this month?"],symptoms:["Fatigue","Mood changes","Low libido","Temperature sensitivity","Cycle changes"],labs:["TSH","Free T3","Free T4","Estradiol/Testosterone as appropriate","DHEA-S","AM Cortisol"],protocols:["Hormone lab review checklist","Sleep and stress foundation","Protein and strength rhythm"],tasks:["Morning light exposure","Protein-forward breakfast","Strength training or mobility","Evening wind-down"],resources:["Hormone labs explained","Cycle-aware tracking","Stress and endocrine education"]},
-  {id:"metabolism",name:"Weight Loss & Metabolism",icon:"⚡",category:"Metabolic",desc:"Track metabolic education, appetite patterns, GLP-1 discussion points, body changes and nutrition consistency.",questions:["Main metabolism goal?","Appetite or cravings pattern?","Current protein target?","Any glucose medications to review?"],symptoms:["Cravings","Low energy","GI upset","Plateau","Blood sugar swings"],labs:["Fasting glucose","A1c","Fasting insulin","Lipids","CMP","hs-CRP"],protocols:["Protein and fiber framework","GLP-1 provider questions","Strength preservation plan"],tasks:["Protein target","Water/electrolytes","Post-meal walk","Meal timing log"],resources:["Metabolic markers 101","Plateau troubleshooting education","Muscle-preserving weight loss"]},
-  {id:"brain",name:"Brain Performance",icon:"🧠",category:"Cognitive",desc:"Track cognitive clarity, focus, sleep, stress, nootropic education and brain-supportive routines.",questions:["Main cognitive goal?","Focus window length?","Sleep and screen timing?","Stimulant or medication review needed?"],symptoms:["Brain fog","Distractibility","Anxiety","Poor recall","Afternoon crash"],labs:["B12","Ferritin","Vitamin D","Thyroid panel","Omega index","hs-CRP"],protocols:["Focus environment design","Sleep-first cognition plan","Nootropic safety review"],tasks:["Deep work block","Hydration","10-minute walk","Screen cutoff"],resources:["BDNF education","Caffeine timing","Nutrients for cognition"]},
-  {id:"gut",name:"Gut Health",icon:"🌿",category:"Gut",desc:"Organize gut terrain education, symptoms, food triggers, microbiome support, parasite/yeast/fungal education and provider testing.",questions:["Top gut concern?","Known food triggers?","Travel/exposure history?","Testing discussed with provider?"],symptoms:["Bloating","Constipation","Loose stool","Reflux","Food sensitivity"],labs:["CBC","CMP","hs-CRP","Ferritin","Vitamin D","Provider-selected stool testing"],protocols:["Gut terrain mapping","Binder timing education","Microbiome rebuild plan"],tasks:["Food/symptom log","Hydration","Fiber target","Mindful meal pace"],resources:["Gut terrain basics","Parasite/yeast/fungal education","Microbiome rebuilding"]},
-  {id:"womens",name:"Women’s Health",icon:"♀️",category:"Women",desc:"Track cycle education, perimenopause/menopause discussion points, labs, symptoms and lifestyle patterns.",questions:["Current life stage?","Cycle regularity?","Top symptom this month?","Provider visit scheduled?"],symptoms:["Hot flashes","Cycle changes","Mood shifts","Sleep disruption","Cravings"],labs:["CBC","Ferritin","Vitamin D","Thyroid panel","Estradiol/Progesterone when appropriate","FSH/LH when appropriate"],protocols:["Cycle-aware wellness planning","Perimenopause discussion guide","Iron and energy review"],tasks:["Cycle/symptom log","Protein target","Strength training","Sleep routine"],resources:["Women’s lab markers","Cycle tracking education","Menopause support questions"]},
-  {id:"mens",name:"Men’s Performance",icon:"♂️",category:"Men",desc:"Organize men’s performance education, recovery, hormones, cardiovascular markers and provider review points.",questions:["Main performance goal?","Recovery quality?","Libido/energy changes?","Recent labs reviewed?"],symptoms:["Low libido","Low motivation","Poor recovery","Sleep disruption","Abdominal fat gain"],labs:["Total testosterone","Free testosterone","SHBG","Estradiol","DHEA-S","Lipids","hs-CRP"],protocols:["Performance lab review","Strength and recovery rhythm","Cardiometabolic foundation"],tasks:["Strength session","Protein target","Sleep window","Zone 2 movement"],resources:["Testosterone labs explained","Recovery tracking","Men’s longevity markers"]},
-  {id:"longevity",name:"Longevity & Healthy Aging",icon:"🧬",category:"Longevity",desc:"Track healthy aging education, biomarkers, mitochondrial support, inflammation, sleep and quarterly progress.",questions:["Primary longevity goal?","Current biological age focus?","Inflammation or recovery concern?","Quarterly labs scheduled?"],symptoms:["Low resilience","Slow recovery","Poor sleep","Joint stiffness","Energy dips"],labs:["CBC","CMP","A1c","Insulin","Lipids","hs-CRP","Vitamin D","Homocysteine"],protocols:["Quarterly biomarker review","Mitochondrial support education","Inflammation pattern map"],tasks:["Zone 2 movement","Resistance training","Sleep consistency","Protein and plants"],resources:["Longevity biomarkers","Mitochondria education","Inflammation and aging"]},
-  {id:"sleep",name:"Sleep Optimization",icon:"🌙",category:"Sleep",desc:"Track sleep architecture education, evening routines, wearable patterns, recovery and provider discussion points.",questions:["Average sleep duration?","Wake-up frequency?","Evening screen/caffeine timing?","Wearable trend reviewed?"],symptoms:["Insomnia","Night waking","Morning fatigue","Restless sleep","Low HRV"],labs:["Vitamin D","Magnesium/RBC magnesium when available","Ferritin","Thyroid panel","Cortisol pattern when appropriate"],protocols:["Sleep hygiene foundation","Caffeine and light timing","Recovery rhythm"],tasks:["Morning light","Caffeine cutoff","Dark/cool room","Evening wind-down"],resources:["Sleep stages explained","HRV basics","Light timing education"]},
-  {id:"inflammation",name:"Pain & Inflammation",icon:"🔥",category:"Inflammation",desc:"Track discomfort patterns, recovery, inflammatory markers, mobility and provider-guided education.",questions:["Main area of discomfort?","What worsens or improves it?","Recent injury or diagnosis to discuss?","Current medications/supplements?"],symptoms:["Joint pain","Muscle soreness","Stiffness","Swelling","Low recovery"],labs:["hs-CRP","ESR when ordered","CBC","CMP","Vitamin D","Omega index"],protocols:["Inflammation pattern review","Mobility and recovery rhythm","Peptide education questions"],tasks:["Mobility work","Hydration","Anti-inflammatory meal","Pain scale log"],resources:["Inflammation markers","Recovery education","BPC/TB educational overview"]},
-  {id:"skin_hair",name:"Skin & Hair Optimization",icon:"✨",category:"Aesthetics",desc:"Track skin and hair education, nutrients, hormones, inflammation, peptides and lifestyle patterns.",questions:["Primary skin/hair goal?","Recent shedding or texture change?","Nutrition pattern?","Hormone or thyroid labs reviewed?"],symptoms:["Hair shedding","Dry skin","Acne","Slow healing","Brittle nails"],labs:["Ferritin","Vitamin D","B12","Zinc/Copper when appropriate","Thyroid panel","Hormone labs when appropriate"],protocols:["Skin/hair nutrient review","Collagen support education","GHK-Cu education track"],tasks:["Protein target","Hydration","Sun protection","Sleep consistency"],resources:["Hair lab markers","Skin barrier basics","Copper peptide education"]},
-  {id:"athletic",name:"Athletic Performance",icon:"🏋️",category:"Performance",desc:"Track training readiness, recovery, performance labs, BodyScan changes and periodized daily actions.",questions:["Primary performance goal?","Training load this week?","Recovery score trend?","Injury history to discuss?"],symptoms:["Soreness","Poor recovery","Low endurance","Strength plateau","Sleep disruption"],labs:["CBC","Ferritin","Vitamin D","CMP","Testosterone as appropriate","hs-CRP"],protocols:["Periodization education","Recovery peptide questions","Protein and creatine foundation"],tasks:["Training log","Protein target","Mobility","Recovery sleep"],resources:["VO2max basics","HRV and recovery","Strength preservation"]},
-  {id:"sexual",name:"Sexual Wellness",icon:"❤️",category:"Sexual Wellness",desc:"Organize libido, circulation, hormones, mood, relationship context and provider-safe education.",questions:["Primary wellness goal?","Libido or performance changes?","Medication review needed?","Hormone labs reviewed?"],symptoms:["Low libido","Performance concern","Stress impact","Low confidence","Relationship strain"],labs:["Hormone panel as appropriate","Lipids","A1c","Thyroid panel","CBC","CMP"],protocols:["Sexual wellness provider guide","PT-141 education questions","Cardiometabolic foundation"],tasks:["Stress reset","Movement","Sleep window","Communication prompt"],resources:["Sexual wellness markers","Medication review questions","Hormone and circulation basics"]}
-];
-const STORE_KEY = "ew_specialty_modules_v1";
-const state = loadState();
-let currentModuleId = state.currentModuleId || "hormone";
-function loadState(){
-  try { return JSON.parse(localStorage.getItem(STORE_KEY)) || {plan:"gold",active:["hormone"],modules:null,answers:{},symptoms:{},labs:{},tasks:{},progress:{},reports:[]}; }
-  catch(e){ return {plan:"gold",active:["hormone"],modules:null,answers:{},symptoms:{},labs:{},tasks:{},progress:{},reports:[]}; }
-}
-function saveState(){ state.currentModuleId=currentModuleId; localStorage.setItem(STORE_KEY,JSON.stringify(state)); }
-function modules(){ return [...BASE_MODULES,...(state.modules||[])]; }
-function moduleById(id){ return modules().find(m=>m.id===id) || modules()[0]; }
-function activeLimit(){ return ACCESS_RULES[state.plan].limit; }
-function canActivate(id){ return state.active.includes(id) || state.active.length < activeLimit(); }
-function slugify(s){ return s.toLowerCase().replace(/[^a-z0-9]+/g,"-").replace(/^-|-$/g,""); }
-function showTab(id){
-  document.querySelectorAll(".tab").forEach(p=>p.classList.toggle("active",p.id===id));
-  document.querySelectorAll("[data-tab]").forEach(b=>b.classList.toggle("active",b.dataset.tab===id));
-  document.querySelector(".mobile-select").value=id;
-  if(id==="active-module") renderModuleDashboard();
-  if(id==="protocol-vault") renderProtocolVault();
-  if(id==="biology-labs") renderLabs();
-  if(id==="progress-reports") renderReports();
-  if(id==="biology-intelligence") renderInsights();
-  window.scrollTo({top:0,behavior:"smooth"});
-}
-function updatePlanUI(){
-  const rule=ACCESS_RULES[state.plan];
-  document.getElementById("planName").textContent=rule.label;
-  document.getElementById("planAccess").textContent=rule.copy;
-  document.getElementById("planSelect").value=state.plan;
-}
-function renderCards(){
-  const wrap=document.getElementById("moduleCards");
-  wrap.innerHTML=modules().map(m=>{
-    const active=state.active.includes(m.id);
-    const locked=!active && !canActivate(m.id);
-    const free=state.plan==="free";
-    return `<article class="module-card ${active?'active':''} ${locked||free?'locked':''}">
-      <div class="module-icon">${m.icon}</div>
-      <h3>${m.name}</h3>
-      <p class="copy">${m.desc}</p>
-      <div class="tag-row"><span class="tag">${m.category}</span><span class="tag">${scoreModule(m.id)} score</span>${active?'<span class="tag">Active</span>':''}</div>
-      <div class="actions">
-        ${free?`<button class="btn locked" data-upgrade="${m.id}">Preview Only — Upgrade</button>`:
-        active?`<button class="btn" data-open="${m.id}">Open Dashboard</button><button class="btn ghost" data-deactivate="${m.id}">Deactivate</button>`:
-        locked?`<button class="btn locked" data-upgrade="${m.id}">Locked — Upgrade</button>`:
-        `<button class="btn" data-activate="${m.id}">Activate Module</button>`}
-      </div>
-    </article>`;
-  }).join("");
-  wrap.querySelectorAll("[data-activate]").forEach(b=>b.addEventListener("click",()=>activateModule(b.dataset.activate)));
-  wrap.querySelectorAll("[data-open]").forEach(b=>b.addEventListener("click",()=>openModule(b.dataset.open)));
-  wrap.querySelectorAll("[data-deactivate]").forEach(b=>b.addEventListener("click",()=>deactivateModule(b.dataset.deactivate)));
-  wrap.querySelectorAll("[data-upgrade]").forEach(b=>b.addEventListener("click",()=>{location.href="/#pricing";}));
-}
-function activateModule(id){ if(!canActivate(id)) return; if(!state.active.includes(id)) state.active.push(id); currentModuleId=id; saveState(); renderCards(); showTab("active-module"); }
-function deactivateModule(id){ state.active=state.active.filter(x=>x!==id); if(currentModuleId===id) currentModuleId=state.active[0]||"hormone"; saveState(); renderCards(); }
-function openModule(id){ currentModuleId=id; saveState(); showTab("active-module"); }
-function scorePart(value, fallback=50){ const n=Number(value); return Number.isFinite(n)?Math.max(0,Math.min(100,n)):fallback; }
-function scoreModule(id){
-  const symptoms=state.symptoms[id]||{};
-  const labs=state.labs[id]||{};
-  const tasks=state.tasks[id]||{};
-  const progress=state.progress[id]||{};
-  const symptomScore=100-scorePart(symptoms.severity,45);
-  const labScore=scorePart(labs.completion,55);
-  const protocolScore=scorePart(progress.protocolAdherence,60);
-  const taskList=Object.values(tasks);
-  const taskScore=taskList.length?Math.round(taskList.filter(Boolean).length/taskList.length*100):50;
-  const bodyScore=scorePart(progress.bodyScan,55);
-  const goalScore=scorePart(progress.goals,50);
-  return Math.round(symptomScore*.2+labScore*.2+protocolScore*.2+taskScore*.15+bodyScore*.1+goalScore*.15);
-}
-function renderModuleDashboard(){
-  const m=moduleById(currentModuleId);
-  const score=scoreModule(m.id);
-  const answers=state.answers[m.id]||{};
-  const symptoms=state.symptoms[m.id]||{};
-  const labs=state.labs[m.id]||{};
-  const progress=state.progress[m.id]||{};
-  const taskState=state.tasks[m.id]||{};
-  document.getElementById("moduleDashboard").innerHTML=`<div class="hero">
-    <div class="dash-head">
-      <div><p class="eyebrow">${m.category} Module</p><h2>${m.icon} ${m.name}</h2><p class="lead">${m.desc}</p></div>
-      <div class="score-ring" style="--score:${score}"><div class="score-inner"><strong>${score}</strong><span>Module Score</span></div></div>
-    </div>
-    <p class="notice">${DISCLAIMER}</p>
-  </div>
-  <div class="section-grid">
-    <div class="panel"><h3>Specialized Assessment</h3>${m.questions.map((q,i)=>`<div class="field"><label>${q}</label><textarea data-answer="${i}" placeholder="Save your educational tracking note...">${answers[i]||""}</textarea></div>`).join("")}<button class="btn" id="saveAssessment">Save Assessment</button></div>
-    <div class="panel"><h3>Symptom Tracker</h3><div class="field"><label>Overall symptom intensity 0–100</label><input type="number" min="0" max="100" id="symptomSeverity" value="${symptoms.severity??45}"></div><div class="field"><label>Current symptoms</label><textarea id="symptomNotes">${symptoms.notes||m.symptoms.join(", ")}</textarea></div><button class="btn" id="saveSymptoms">Save Symptoms</button></div>
-    <div class="panel gold"><h3>Recommended Labs</h3><p class="copy">${m.labs.join(" · ")}</p><div class="field"><label>Lab completion 0–100</label><input type="number" min="0" max="100" id="labCompletion" value="${labs.completion??55}"></div><div class="field"><label>Lab notes</label><textarea id="labNotes">${labs.notes||""}</textarea></div><button class="btn" id="saveLabs">Save Lab Tracking</button></div>
-    <div class="panel"><h3>Protocol Vault</h3><div class="resource-list">${m.protocols.map(p=>`<div class="resource"><strong>${p}</strong><p class="muted">Educational protocol reference connected to ${m.name}.</p></div>`).join("")}</div></div>
-    <div class="panel"><h3>BodyScan + Progress</h3><div class="field"><label>Protocol adherence 0–100</label><input type="number" min="0" max="100" id="protocolAdherence" value="${progress.protocolAdherence??60}"></div><div class="field"><label>BodyScan/body changes 0–100</label><input type="number" min="0" max="100" id="bodyScan" value="${progress.bodyScan??55}"></div><div class="field"><label>Goals achieved 0–100</label><input type="number" min="0" max="100" id="goalsAchieved" value="${progress.goals??50}"></div><button class="btn" id="saveProgress">Save Progress</button></div>
-    <div class="panel"><h3>Daily Action Checklist</h3><div class="check-list">${m.tasks.map((t,i)=>`<label class="check-item"><input type="checkbox" data-task="${i}" ${taskState[i]?"checked":""}><span>${t}</span></label>`).join("")}</div><button class="btn" id="saveTasks">Save Daily Tasks</button></div>
-    <div class="panel"><h3>Biology Intelligence Insights</h3><p class="copy">${makeInsight(m,score)}</p></div>
-    <div class="panel"><h3>Learning Center</h3><div class="resource-list">${m.resources.map(r=>`<div class="resource">${r}</div>`).join("")}</div></div>
-    <div class="panel"><h3>Concierge Center</h3><p class="copy">${state.plan==="concierge_premium"?"Premium concierge support enabled: priority review queue and expanded guidance notes.":"Use this section to prepare questions for your clinician, coach, or concierge review."}</p><div class="field"><label>Concierge questions</label><textarea id="conciergeNotes">${progress.conciergeNotes||""}</textarea></div><button class="btn ghost" id="saveConcierge">Save Concierge Notes</button></div>
-    <div class="panel"><h3>Progress Analytics</h3><div class="mini-bars">${historyBars(m.id)}</div><p class="muted">Trend graph updates when you save module progress.</p></div>
-  </div>`;
-  bindModuleForms(m.id);
-}
-function bindModuleForms(id){
-  document.getElementById("saveAssessment").addEventListener("click",()=>{state.answers[id]={};document.querySelectorAll("[data-answer]").forEach(x=>state.answers[id][x.dataset.answer]=x.value);saveState();renderModuleDashboard();});
-  document.getElementById("saveSymptoms").addEventListener("click",()=>{state.symptoms[id]={severity:document.getElementById("symptomSeverity").value,notes:document.getElementById("symptomNotes").value};saveProgressPoint(id);saveState();renderModuleDashboard();});
-  document.getElementById("saveLabs").addEventListener("click",()=>{state.labs[id]={completion:document.getElementById("labCompletion").value,notes:document.getElementById("labNotes").value};saveProgressPoint(id);saveState();renderModuleDashboard();});
-  document.getElementById("saveProgress").addEventListener("click",()=>{state.progress[id]={...(state.progress[id]||{}),protocolAdherence:document.getElementById("protocolAdherence").value,bodyScan:document.getElementById("bodyScan").value,goals:document.getElementById("goalsAchieved").value};saveProgressPoint(id);saveState();renderModuleDashboard();});
-  document.getElementById("saveTasks").addEventListener("click",()=>{state.tasks[id]={};document.querySelectorAll("[data-task]").forEach(x=>state.tasks[id][x.dataset.task]=x.checked);saveProgressPoint(id);saveState();renderModuleDashboard();});
-  document.getElementById("saveConcierge").addEventListener("click",()=>{state.progress[id]={...(state.progress[id]||{}),conciergeNotes:document.getElementById("conciergeNotes").value};saveState();});
-}
-function saveProgressPoint(id){ state.progress[id]={...(state.progress[id]||{}),history:[...((state.progress[id]||{}).history||[]),scoreModule(id)].slice(-8)}; }
-function historyBars(id){ const h=((state.progress[id]||{}).history||[44,52,61,scoreModule(id)]); return h.map(v=>`<div class="bar" style="height:${Math.max(8,v)}%"><span>${v}</span></div>`).join(""); }
-function makeInsight(m,score){
-  if(score>=80) return `${m.name} is trending strong. Keep tracking symptoms, labs and daily actions; consider using your next review to discuss what is most sustainable. ${DISCLAIMER}`;
-  if(score>=60) return `${m.name} shows a stable foundation with room for focused improvement. Review symptom patterns, lab completion and daily action consistency. ${DISCLAIMER}`;
-  return `${m.name} may benefit from more consistent tracking. Start with labs, symptoms and one daily action before making bigger changes. ${DISCLAIMER}`;
-}
-function renderProtocolVault(){ document.getElementById("protocolVaultList").innerHTML=modules().map(m=>`<div class="card"><h3>${m.icon} ${m.name}</h3><ul>${m.protocols.map(p=>`<li>${p}</li>`).join("")}</ul></div>`).join(""); }
-function renderLabs(){ document.getElementById("labsList").innerHTML=modules().map(m=>`<div class="card"><h3>${m.icon} ${m.name}</h3><p class="copy">${m.labs.join(" · ")}</p></div>`).join(""); }
-function renderReports(){
-  const active=moduleById(currentModuleId); const score=scoreModule(active.id);
-  document.getElementById("reportPreview").innerHTML=`<h3>${active.name} Report Preview</h3><p class="copy">Current module score: ${score}/100.</p><p class="copy">${makeInsight(active,score)}</p><p class="notice">${DISCLAIMER}</p>`;
-}
-function generateReport(type){
-  const m=moduleById(currentModuleId);
-  const report={id:Date.now(),type,moduleId:m.id,moduleName:m.name,score:scoreModule(m.id),createdAt:new Date().toISOString(),disclaimer:DISCLAIMER};
-  state.reports.push(report); saveState();
-  document.getElementById("reportPreview").innerHTML=`<h3>${type==="monthly"?"Monthly":"Milestone / Graduation"} Report Generated</h3><p class="copy">${m.name}: ${report.score}/100. This report summarizes educational tracking patterns, not medical outcomes.</p><p class="notice">${DISCLAIMER}</p>`;
-}
-function renderInsights(){ document.getElementById("insightList").innerHTML=state.active.map(id=>{const m=moduleById(id);return `<div class="card"><h3>${m.icon} ${m.name}</h3><p class="copy">${makeInsight(m,scoreModule(id))}</p></div>`}).join("") || `<div class="card full"><h3>No active modules yet</h3><p class="copy">Activate a module to generate Biology Intelligence insights.</p></div>`; }
-function saveAdminModule(){
-  const name=document.getElementById("adminName").value.trim();
-  if(!name) return alert("Add a module name first.");
-  const module={id:`custom-${slugify(name)}`,name,icon:document.getElementById("adminIcon").value.trim()||"✨",category:document.getElementById("adminCategory").value.trim()||"Custom",desc:document.getElementById("adminDescription").value.trim()||"Custom educational specialty module.",questions:["What is your primary goal?","What changed this month?","What should be reviewed with a qualified provider?"],symptoms:["Track symptom notes"],labs:document.getElementById("adminLabs").value.split(",").map(x=>x.trim()).filter(Boolean),protocols:document.getElementById("adminProtocols").value.split(",").map(x=>x.trim()).filter(Boolean),tasks:document.getElementById("adminTasks").value.split(",").map(x=>x.trim()).filter(Boolean),resources:["Custom learning resource"]};
-  state.modules=[...(state.modules||[]).filter(m=>m.id!==module.id),module]; saveState(); renderCards(); alert("Module saved to preview storage.");
-}
-document.querySelectorAll("[data-tab]").forEach(b=>b.addEventListener("click",()=>showTab(b.dataset.tab)));
-document.querySelector(".mobile-select").addEventListener("change",e=>showTab(e.target.value));
-document.getElementById("planSelect").addEventListener("change",e=>{state.plan=e.target.value; if(state.active.length>activeLimit()) state.active=state.active.slice(0,activeLimit()); saveState(); updatePlanUI(); renderCards(); renderModuleDashboard();});
-document.getElementById("generateMonthlyReport").addEventListener("click",()=>generateReport("monthly"));
-document.getElementById("generateGraduationReport").addEventListener("click",()=>generateReport("graduation"));
-document.getElementById("saveAdminModule").addEventListener("click",saveAdminModule);
-updatePlanUI(); renderCards(); renderModuleDashboard(); renderProtocolVault(); renderLabs(); renderReports(); renderInsights();
+const DISCLAIMER = window.EW_MODULE_DISCLAIMER;
+const ACCESS_RULES = window.EW_MODULE_ACCESS;
+const CATEGORIES = window.EW_MODULE_CATEGORIES;
+const BASE_MODULES = window.EW_SPECIALTY_MODULES;
+const STORE_KEY = "ew_specialty_marketplace_v2";
+let state = loadState();
+let currentModuleId = state.currentModuleId || "hormone-optimization";
+function loadState(){try{return JSON.parse(localStorage.getItem(STORE_KEY))||{plan:"gold",active:["hormone-optimization"],modules:[],answers:{},symptoms:{},labs:{},tasks:{},progress:{},reports:[]};}catch(e){return {plan:"gold",active:["hormone-optimization"],modules:[],answers:{},symptoms:{},labs:{},tasks:{},progress:{},reports:[]};}}
+function saveState(){state.currentModuleId=currentModuleId;localStorage.setItem(STORE_KEY,JSON.stringify(state));}
+function modules(){return [...BASE_MODULES,...(state.modules||[])].filter(m=>m.published!==false);}
+function moduleById(id){return modules().find(m=>m.id===id)||modules()[0];}
+function activeLimit(){return ACCESS_RULES[state.plan].limit;}
+function isConcierge(){return state.plan==="concierge"||state.plan==="concierge_premium";}
+function canActivate(id){return state.active.includes(id)||state.active.length<activeLimit();}
+function slugify(s){return s.toLowerCase().replace(/[^a-z0-9]+/g,"-").replace(/^-|-$/g,"");}
+function escapeHtml(s){return String(s||"").replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#39;"}[m]));}
+function setupOptions(){categoryFilter.innerHTML=CATEGORIES.map(c=>`<option value="${escapeHtml(c)}">${escapeHtml(c)}</option>`).join("");adminCategory.innerHTML=CATEGORIES.filter(c=>c!=="All").map(c=>`<option>${escapeHtml(c)}</option>`).join("");}
+function showTab(id){document.querySelectorAll(".tab").forEach(p=>p.classList.toggle("active",p.id===id));document.querySelectorAll("[data-tab]").forEach(b=>b.classList.toggle("active",b.dataset.tab===id));document.querySelector(".mobile-select").value=id;if(id==="active-module")renderModuleDashboard();if(id==="protocol-vault")renderProtocolVault();if(id==="biology-labs")renderLabs();if(id==="progress-reports")renderReports();if(id==="biology-intelligence")renderInsights();window.scrollTo({top:0,behavior:"smooth"});}
+function updatePlanUI(){const rule=ACCESS_RULES[state.plan];planName.textContent=rule.label;planAccess.textContent=rule.copy;planExtra.textContent=rule.extra;planSelect.value=state.plan;}
+function visibleModules(){const q=moduleSearch.value.trim().toLowerCase();const cat=categoryFilter.value;const status=statusFilter.value;return modules().filter(m=>{const active=state.active.includes(m.id);const locked=state.plan==="free"||(!active&&!canActivate(m.id));const search=[m.name,m.category,m.desc,m.bestFor,...m.features].join(" ").toLowerCase().includes(q);const catOk=cat==="All"||m.category===cat;const statusOk=status==="all"||(status==="active"&&active)||(status==="included"&&!active&&!locked)||(status==="locked"&&locked);return search&&catOk&&statusOk;});}
+function renderCards(){moduleCards.innerHTML=visibleModules().map(m=>{const active=state.active.includes(m.id);const locked=state.plan==="free"||(!active&&!canActivate(m.id));const included=!active&&!locked;return `<article class="module-card ${active?'active':''} ${locked?'locked':''}"><div class="module-icon">${m.icon}</div><h3>${escapeHtml(m.name)}</h3><p class="copy">${escapeHtml(m.desc)}</p><p class="muted"><b>Best for:</b> ${escapeHtml(m.bestFor)}</p><div class="tag-row"><span class="tag">${escapeHtml(m.category)}</span><span class="tag">${scoreModule(m.id)} score</span>${active?'<span class="tag">Active</span>':included?'<span class="tag">Included</span>':'<span class="tag">Locked</span>'}</div><ul class="copy">${m.features.slice(0,3).map(f=>`<li>${escapeHtml(f)}</li>`).join("")}</ul><p class="muted">${escapeHtml(m.priceTeaser)}</p><div class="actions">${active?`<button class="btn" data-open="${m.id}">Open Dashboard</button><button class="btn ghost" data-deactivate="${m.id}">Deactivate</button>`:locked?`<a class="btn locked" href="/#pricing">Upgrade Plan</a><button class="btn ghost" data-purchase="${m.id}">Purchase Extra Module</button>`:`<button class="btn" data-activate="${m.id}">Start Module</button>`}</div></article>`;}).join("")||`<div class="card full"><h3>No modules found</h3><p class="copy">Try a different search or category.</p></div>`;
+moduleCards.querySelectorAll("[data-activate]").forEach(b=>b.addEventListener("click",()=>activateModule(b.dataset.activate)));moduleCards.querySelectorAll("[data-open]").forEach(b=>b.addEventListener("click",()=>openModule(b.dataset.open)));moduleCards.querySelectorAll("[data-deactivate]").forEach(b=>b.addEventListener("click",()=>deactivateModule(b.dataset.deactivate)));moduleCards.querySelectorAll("[data-purchase]").forEach(b=>b.addEventListener("click",()=>{alert("Stripe placeholder ready: STRIPE_EXTRA_MODULE_PRICE_ID for $35/month add-on.");}));}
+function activateModule(id){if(!canActivate(id))return;if(!state.active.includes(id))state.active.push(id);currentModuleId=id;saveState();renderCards();showTab("active-module");}
+function deactivateModule(id){state.active=state.active.filter(x=>x!==id);if(currentModuleId===id)currentModuleId=state.active[0]||modules()[0].id;saveState();renderCards();}
+function openModule(id){currentModuleId=id;saveState();showTab("active-module");}
+function scorePart(value,fallback=50){const n=Number(value);return Number.isFinite(n)?Math.max(0,Math.min(100,n)):fallback;}
+function scoreModule(id){const symptoms=state.symptoms[id]||{};const labs=state.labs[id]||{};const tasks=state.tasks[id]||{};const progress=state.progress[id]||{};const symptomScore=100-scorePart(symptoms.severity,45);const labScore=scorePart(labs.completion,55);const protocolScore=scorePart(progress.protocolAdherence,60);const taskList=Object.values(tasks);const taskScore=taskList.length?Math.round(taskList.filter(Boolean).length/taskList.length*100):50;const bodyScore=scorePart(progress.bodyScan,55);const goalScore=scorePart(progress.goals,50);return Math.round(symptomScore*.2+labScore*.2+protocolScore*.2+taskScore*.15+bodyScore*.1+goalScore*.15);}
+function renderModuleDashboard(){const m=moduleById(currentModuleId);const score=scoreModule(m.id);const answers=state.answers[m.id]||{};const symptoms=state.symptoms[m.id]||{};const labs=state.labs[m.id]||{};const progress=state.progress[m.id]||{};const taskState=state.tasks[m.id]||{};moduleDashboard.innerHTML=`<div class="hero"><div class="dash-head"><div><p class="eyebrow">${escapeHtml(m.category)} Module</p><h2>${m.icon} ${escapeHtml(m.name)}</h2><p class="lead">${escapeHtml(m.desc)}</p><p class="copy"><b>Best for:</b> ${escapeHtml(m.bestFor)}</p></div><div class="score-ring" style="--score:${score}"><div class="score-inner"><strong>${score}</strong><span>Module Score</span></div></div></div><p class="notice">${DISCLAIMER}</p></div><div class="section-grid"><div class="panel"><h3>Initial Assessment</h3>${m.questions.map((q,i)=>`<div class="field"><label>${escapeHtml(q)}</label><textarea data-answer="${i}" placeholder="Save your educational tracking note...">${escapeHtml(answers[i]||"")}</textarea></div>`).join("")}<button class="btn" id="saveAssessment">Save Assessment</button></div><div class="panel"><h3>Symptom Tracker</h3><div class="field"><label>Overall symptom intensity 0-100</label><input type="number" min="0" max="100" id="symptomSeverity" value="${symptoms.severity??45}"></div><div class="field"><label>Current symptoms</label><textarea id="symptomNotes">${escapeHtml(symptoms.notes||m.symptoms.join(", "))}</textarea></div><button class="btn" id="saveSymptoms">Save Symptoms</button></div><div class="panel gold"><h3>Recommended Labs</h3><p class="copy">${m.labs.map(escapeHtml).join(" · ")}</p><div class="field"><label>Lab completion 0-100</label><input type="number" min="0" max="100" id="labCompletion" value="${labs.completion??55}"></div><div class="field"><label>Lab notes</label><textarea id="labNotes">${escapeHtml(labs.notes||"")}</textarea></div><button class="btn" id="saveLabs">Save Lab Tracking</button></div><div class="panel"><h3>Protocol Vault</h3><div class="resource-list">${m.protocols.map(p=>`<div class="resource"><strong>${escapeHtml(p)}</strong><p class="muted">Educational Protocol Vault reference connected to ${escapeHtml(m.name)}.</p></div>`).join("")}</div></div><div class="panel"><h3>BodyScan + Progress</h3><div class="field"><label>Protocol adherence 0-100</label><input type="number" min="0" max="100" id="protocolAdherence" value="${progress.protocolAdherence??60}"></div><div class="field"><label>BodyScan/body changes 0-100</label><input type="number" min="0" max="100" id="bodyScan" value="${progress.bodyScan??55}"></div><div class="field"><label>Goals achieved 0-100</label><input type="number" min="0" max="100" id="goalsAchieved" value="${progress.goals??50}"></div><button class="btn" id="saveProgress">Save Progress</button></div><div class="panel"><h3>Daily Action Checklist</h3><div class="check-list">${m.tasks.map((t,i)=>`<label class="check-item"><input type="checkbox" data-task="${i}" ${taskState[i]?"checked":""}><span>${escapeHtml(t)}</span></label>`).join("")}</div><button class="btn" id="saveTasks">Save Daily Tasks</button></div><div class="panel"><h3>Biology Intelligence Insights</h3><p class="copy">${makeInsight(m,score)}</p></div><div class="panel"><h3>Learning Center</h3><div class="resource-list">${m.resources.map(r=>`<div class="resource">${escapeHtml(r)}</div>`).join("")}</div></div><div class="panel ${isConcierge()?'gold':''}"><h3>Concierge Center</h3><p class="copy">${isConcierge()?`${state.plan==="concierge_premium"?"Premium concierge support":"Concierge support"} enabled for this plan.`:"Concierge center unlocks with Concierge Regenesis."}</p><div class="field"><label>Concierge questions</label><textarea id="conciergeNotes">${escapeHtml(progress.conciergeNotes||"")}</textarea></div><button class="btn ghost" id="saveConcierge">Save Concierge Notes</button></div><div class="panel"><h3>Progress Analytics</h3><div class="mini-bars">${historyBars(m.id)}</div><p class="muted">Trend graph updates when you save module progress.</p></div><div class="panel"><h3>Monthly Report</h3><p class="copy">Generate monthly educational report from your current module data.</p><button class="btn ghost" onclick="generateReport('monthly')">Generate Monthly Report</button></div><div class="panel"><h3>Milestone / Graduation Report</h3><p class="copy">Summarize progress milestones when a module goal is completed.</p><button class="btn ghost" onclick="generateReport('graduation')">Generate Graduation Report</button></div></div>`;bindModuleForms(m.id);}
+function bindModuleForms(id){saveAssessment.onclick=()=>{state.answers[id]={};document.querySelectorAll("[data-answer]").forEach(x=>state.answers[id][x.dataset.answer]=x.value);saveState();renderModuleDashboard();};saveSymptoms.onclick=()=>{state.symptoms[id]={severity:symptomSeverity.value,notes:symptomNotes.value};saveProgressPoint(id);saveState();renderModuleDashboard();};saveLabs.onclick=()=>{state.labs[id]={completion:labCompletion.value,notes:labNotes.value};saveProgressPoint(id);saveState();renderModuleDashboard();};saveProgress.onclick=()=>{state.progress[id]={...(state.progress[id]||{}),protocolAdherence:protocolAdherence.value,bodyScan:bodyScan.value,goals:goalsAchieved.value};saveProgressPoint(id);saveState();renderModuleDashboard();};saveTasks.onclick=()=>{state.tasks[id]={};document.querySelectorAll("[data-task]").forEach(x=>state.tasks[id][x.dataset.task]=x.checked);saveProgressPoint(id);saveState();renderModuleDashboard();};saveConcierge.onclick=()=>{state.progress[id]={...(state.progress[id]||{}),conciergeNotes:conciergeNotes.value};saveState();};}
+function saveProgressPoint(id){state.progress[id]={...(state.progress[id]||{}),history:[...((state.progress[id]||{}).history||[]),scoreModule(id)].slice(-8)};}
+function historyBars(id){const h=((state.progress[id]||{}).history||[44,52,61,scoreModule(id)]);return h.map(v=>`<div class="bar" style="height:${Math.max(8,v)}%"><span>${v}</span></div>`).join("");}
+function makeInsight(m,score){if(score>=80)return `${escapeHtml(m.name)} is trending strong. Keep tracking symptoms, labs, daily actions, and sustainability questions. ${DISCLAIMER}`;if(score>=60)return `${escapeHtml(m.name)} shows a stable foundation with room for focused improvement. Review symptom patterns, lab completion, and action consistency. ${DISCLAIMER}`;return `${escapeHtml(m.name)} may benefit from more consistent tracking. Start with labs, symptoms, and one daily action before making bigger changes. ${DISCLAIMER}`;}
+function renderProtocolVault(){protocolVaultList.innerHTML=modules().map(m=>`<div class="card"><h3>${m.icon} ${escapeHtml(m.name)}</h3><ul>${m.protocols.map(p=>`<li>${escapeHtml(p)}</li>`).join("")}</ul></div>`).join("");}
+function renderLabs(){labsList.innerHTML=modules().map(m=>`<div class="card"><h3>${m.icon} ${escapeHtml(m.name)}</h3><p class="copy">${m.labs.map(escapeHtml).join(" · ")}</p></div>`).join("");}
+function renderReports(){const active=moduleById(currentModuleId);const score=scoreModule(active.id);reportPreview.innerHTML=`<h3>${escapeHtml(active.name)} Report Preview</h3><p class="copy">Current module score: ${score}/100.</p><p class="copy">${makeInsight(active,score)}</p><p class="notice">${DISCLAIMER}</p>`;}
+function generateReport(type){const m=moduleById(currentModuleId);const report={id:Date.now(),type,moduleId:m.id,moduleName:m.name,score:scoreModule(m.id),createdAt:new Date().toISOString(),disclaimer:DISCLAIMER};state.reports.push(report);saveState();if(reportPreview)reportPreview.innerHTML=`<h3>${type==="monthly"?"Monthly":"Milestone / Graduation"} Report Generated</h3><p class="copy">${escapeHtml(m.name)}: ${report.score}/100. This report summarizes educational tracking patterns, not medical outcomes.</p><p class="notice">${DISCLAIMER}</p>`;}
+function renderInsights(){insightList.innerHTML=state.active.map(id=>{const m=moduleById(id);return `<div class="card"><h3>${m.icon} ${escapeHtml(m.name)}</h3><p class="copy">${makeInsight(m,scoreModule(id))}</p></div>`}).join("")||`<div class="card full"><h3>No active modules yet</h3><p class="copy">Activate a module to generate Biology Intelligence insights.</p></div>`;}
+function saveAdminModule(){const name=adminName.value.trim();if(!name)return alert("Add a module name first.");const mod={id:`custom-${slugify(name)}`,slug:`custom-${slugify(name)}`,name,icon:adminIcon.value.trim()||"✨",category:adminCategory.value,desc:adminDescription.value.trim()||"Custom educational specialty module.",description:adminDescription.value.trim()||"Custom educational specialty module.",bestFor:adminBestFor.value.trim()||"Members with this focused wellness goal.",features:["Module score","Assessment","Symptom tracker","Learning center"],priceTeaser:adminPrice.value.trim()||"Included by tier. Extra module add-on available.",questions:["What is your primary goal?","What changed this month?","Which labs or BodyScan updates should be reviewed?","What should be discussed with a qualified provider?"],symptoms:["Track symptom notes"],labs:adminLabs.value.split(",").map(x=>x.trim()).filter(Boolean),protocols:adminProtocols.value.split(",").map(x=>x.trim()).filter(Boolean),tasks:adminTasks.value.split(",").map(x=>x.trim()).filter(Boolean),resources:["Custom learning resource"],featured:adminFeatured.checked,comingSoon:adminComingSoon.checked,published:true};state.modules=[...(state.modules||[]).filter(m=>m.id!==mod.id),mod];saveState();renderCards();alert("Module saved to preview storage.");}
+document.querySelectorAll("[data-tab]").forEach(b=>b.addEventListener("click",()=>showTab(b.dataset.tab)));document.querySelector(".mobile-select").addEventListener("change",e=>showTab(e.target.value));planSelect.addEventListener("change",e=>{state.plan=e.target.value;if(state.active.length>activeLimit())state.active=state.active.slice(0,activeLimit());saveState();updatePlanUI();renderCards();renderModuleDashboard();});moduleSearch.addEventListener("input",renderCards);categoryFilter.addEventListener("change",renderCards);statusFilter.addEventListener("change",renderCards);generateMonthlyReport.addEventListener("click",()=>generateReport("monthly"));generateGraduationReport.addEventListener("click",()=>generateReport("graduation"));saveAdminModule.addEventListener("click",saveAdminModule);overviewDisclaimer.textContent=DISCLAIMER;marketDisclaimer.textContent=DISCLAIMER;adminDisclaimer.textContent=DISCLAIMER;setupOptions();updatePlanUI();renderCards();renderModuleDashboard();renderProtocolVault();renderLabs();renderReports();renderInsights();
 </script>
 </body>
 </html>

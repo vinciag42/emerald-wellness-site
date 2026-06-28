@@ -28,6 +28,7 @@
   "rewrites": [
     { "source": "/app", "destination": "/app.html" },
     { "source": "/dashboard", "destination": "/dashboard.html" },
+    { "source": "/specialty-modules", "destination": "/specialty-modules.html" },
     { "source": "/advisors", "destination": "/emerald-wellness/advisors.html" },
     { "source": "/blog/", "destination": "/emerald-wellness/blog/index.html" },
     { "source": "/blog/:slug", "destination": "/emerald-wellness/blog/:slug.html" },
