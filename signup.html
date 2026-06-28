@@ -577,6 +577,32 @@ async function launchStripeCheckout(userId) {
 }
 
 // ─── HANDLE RETURN FROM STRIPE ────────────────────────────────────────────────
+async function launchStripeCheckout(userId) {
+  const response = await fetch('/api/create-checkout-session', {
+    method: 'POST',
+    headers: {'Content-Type':'application/json'},
+    body: JSON.stringify({
+      userId: userId || '',
+      email: userData.email,
+      plan: selectedPlan,
+      billing,
+      addons: Array.from(selectedAddons),
+      referral: referralValid ? document.getElementById('referralCode').value.trim() : '',
+      referralValid
+    })
+  });
+
+  const data = await response.json().catch(()=>({}));
+  if(!response.ok || !data.url) {
+    const btn = document.getElementById('btnCreateAccount');
+    btn.disabled=false; btn.textContent='Create Account & Go to Checkout â†’';
+    showErr('err3', data.error || 'Unable to start Stripe checkout. Please try again.');
+    return;
+  }
+
+  window.location.href = data.url;
+}
+
 const urlParams = new URLSearchParams(window.location.search);
 if(urlParams.get('step')==='4') {
   goStep(4);

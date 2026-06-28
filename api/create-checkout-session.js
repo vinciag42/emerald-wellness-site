@@ -1,0 +1,121 @@
+const STRIPE_API_BASE = 'https://api.stripe.com/v1';
+
+const PLAN_PRICES = {
+  monthly: {
+    silver: 'price_1Tb97eLzsA0y5z9V1qno7S07',
+    gold: 'price_1Tb97gLzsA0y5z9VwduDs3O1',
+    elite: 'price_1Tb97ZLzsA0y5z9VlhXybXrF',
+    pro: 'price_1Tb9DpLzsA0y5z9VvXt3LCRs',
+  },
+  annual: {
+    silver: 'price_1Td1UpLzsA0y5z9VPeq424L4',
+    gold: 'price_1Tb97dLzsA0y5z9VXYyasB1x',
+    elite: 'price_1Tb97dLzsA0y5z9VKWuTcpIU',
+    pro: 'price_1Tb9EvLzsA0y5z9Va2CX66J0',
+  },
+};
+
+const ADDON_PRICE = 'price_1TnCp8LzsA0y5z9VkssgXhRr';
+const ALLOWED_ADDONS = new Set(['sleep', 'cognitive', 'sexual', 'gut', 'nutrition', 'lab', 'recovery']);
+
+function json(res, status, payload) {
+  res.statusCode = status;
+  res.setHeader('Content-Type', 'application/json');
+  res.end(JSON.stringify(payload));
+}
+
+function appendLineItem(params, index, item) {
+  if (item.price) params.append(`line_items[${index}][price]`, item.price);
+  if (item.price_data) {
+    params.append(`line_items[${index}][price_data][currency]`, item.price_data.currency);
+    params.append(`line_items[${index}][price_data][unit_amount]`, String(item.price_data.unit_amount));
+    params.append(`line_items[${index}][price_data][product_data][name]`, item.price_data.product_data.name);
+  }
+  params.append(`line_items[${index}][quantity]`, String(item.quantity || 1));
+}
+
+async function stripePost(path, params) {
+  const key = process.env.STRIPE_SECRET_KEY;
+  if (!key) throw new Error('Missing STRIPE_SECRET_KEY environment variable.');
+
+  const response = await fetch(`${STRIPE_API_BASE}${path}`, {
+    method: 'POST',
+    headers: {
+      Authorization: `Bearer ${key}`,
+      'Content-Type': 'application/x-www-form-urlencoded',
+      'Stripe-Version': '2026-06-24.dahlia',
+    },
+    body: params,
+  });
+
+  const data = await response.json();
+  if (!response.ok) {
+    const message = data?.error?.message || 'Stripe API request failed.';
+    throw new Error(message);
+  }
+  return data;
+}
+
+module.exports = async function handler(req, res) {
+  if (req.method !== 'POST') return json(res, 405, { error: 'Method not allowed' });
+
+  try {
+    const body = typeof req.body === 'string' ? JSON.parse(req.body || '{}') : req.body || {};
+    const origin = req.headers.origin || `https://${req.headers.host}`;
+    const plan = String(body.plan || '').toLowerCase();
+    const billing = String(body.billing || 'monthly').toLowerCase();
+    const email = String(body.email || '').trim();
+    const userId = String(body.userId || '');
+    const addons = Array.isArray(body.addons) ? body.addons.filter((key) => ALLOWED_ADDONS.has(key)) : [];
+    const referral = body.referral ? String(body.referral).trim() : '';
+
+    const planPrice = PLAN_PRICES[billing]?.[plan];
+    if (!planPrice) return json(res, 400, { error: 'Invalid plan or billing interval.' });
+    if (!email || !email.includes('@')) return json(res, 400, { error: 'A valid email is required.' });
+
+    const lineItems = [
+      {
+        price_data: {
+          currency: 'usd',
+          unit_amount: 100,
+          product_data: { name: 'Emerald Wellness 7-Day Intro' },
+        },
+        quantity: 1,
+      },
+      { price: planPrice, quantity: 1 },
+    ];
+
+    if (addons.length) {
+      lineItems.push({ price: ADDON_PRICE, quantity: addons.length });
+    }
+
+    const params = new URLSearchParams();
+    params.append('mode', 'subscription');
+    params.append('customer_email', email);
+    params.append('success_url', `${origin}/signup.html?step=4&session_id={CHECKOUT_SESSION_ID}`);
+    params.append('cancel_url', `${origin}/signup.html?step=3`);
+    params.append('subscription_data[trial_period_days]', '7');
+    params.append('metadata[user_id]', userId);
+    params.append('metadata[plan]', plan);
+    params.append('metadata[billing]', billing);
+    params.append('metadata[addons]', addons.join(','));
+    params.append('metadata[referral]', referral);
+    params.append('subscription_data[metadata][user_id]', userId);
+    params.append('subscription_data[metadata][plan]', plan);
+    params.append('subscription_data[metadata][billing]', billing);
+    params.append('subscription_data[metadata][addons]', addons.join(','));
+    params.append('subscription_data[metadata][referral]', referral);
+
+    lineItems.forEach((item, index) => appendLineItem(params, index, item));
+
+    if (body.referralValid) {
+      params.append('discounts[0][coupon]', 'REFERRAL20');
+    }
+
+    const session = await stripePost('/checkout/sessions', params);
+    return json(res, 200, { id: session.id, url: session.url });
+  } catch (error) {
+    console.error('[create-checkout-session]', error.message);
+    return json(res, 500, { error: error.message || 'Unable to create checkout session.' });
+  }
+};
