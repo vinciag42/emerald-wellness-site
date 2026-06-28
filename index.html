@@ -1467,18 +1467,18 @@ footer{background:var(--bg);border-top:1px solid var(--border);padding:60px 48px
   <!-- Add-ons -->
   <div style="margin-top:60px;" class="reveal">
     <p class="section-label">Premium Add-Ons</p>
-    <h3 style="font-family:var(--serif);font-size:26px;font-weight:700;margin-bottom:8px;">Specialty Modules — <span style="color:var(--goldL)">+$49.99/mo each</span></h3>
+    <h3 style="font-family:var(--serif);font-size:26px;font-weight:700;margin-bottom:8px;">Specialty Module Marketplace™ — <span style="color:var(--goldL)">+$35/mo each</span></h3>
     <p style="font-size:14px;color:var(--textMid);">Available by membership tier. Gold includes 1 active module, Platinum Plus includes 3, Concierge includes unlimited, and a 3-module add-on bundle is $89/month.</p>
     <p style="margin-top:12px;"><a class="btn-gold" href="/specialty-modules">Browse all 25 specialty modules â†’</a></p>
   </div>
   <div class="addons-grid reveal">
-    <div class="addon-card"><div class="addon-icon">🏋️</div><div><div class="addon-name">Sports Performance Module</div><div class="addon-price">+$49.99/mo</div><div class="addon-desc">Advanced periodization, VO2max optimization, and HRV-based training overlays.</div></div></div>
-    <div class="addon-card"><div class="addon-icon">⚡</div><div><div class="addon-name">Peptide Mastery Track</div><div class="addon-price">+$49.99/mo</div><div class="addon-desc">Video masterclasses, advanced peptide stacking trees, reconstitution calculators.</div></div></div>
-    <div class="addon-card"><div class="addon-icon">🌙</div><div><div class="addon-name">Sleep Science Suite</div><div class="addon-price">+$49.99/mo</div><div class="addon-desc">Sleep stage analysis, DSIP & melatonin dosing windows, chronotype optimization.</div></div></div>
-    <div class="addon-card"><div class="addon-icon">🧬</div><div><div class="addon-name">Genomics Integration</div><div class="addon-price">+$49.99/mo</div><div class="addon-desc">Upload 23andMe or AncestryDNA raw data for SNP-informed protocol recommendations.</div></div></div>
-    <div class="addon-card"><div class="addon-icon">🫀</div><div><div class="addon-name">Cardiovascular Optimizer</div><div class="addon-price">+$49.99/mo</div><div class="addon-desc">Lipid, HRV, blood pressure, and hs-CRP tracking with protocol recommendations.</div></div></div>
-    <div class="addon-card"><div class="addon-icon">🥗</div><div><div class="addon-name">Nutrition & Diet Optimization</div><div class="addon-price">+$49.99/mo</div><div class="addon-desc">Macro and micronutrient protocols, food-supplement timing, anti-inflammatory meal plans, and gut microbiome nutrition plans.</div></div></div>
-    <div class="addon-card"><div class="addon-icon">🧪</div><div><div class="addon-name">Advanced Lab Panel Builder</div><div class="addon-price">+$49.99/mo</div><div class="addon-desc">Customizable quarterly lab panels with reference ranges calibrated to your age, sex, and goals.</div></div></div>
+    <div class="addon-card"><div class="addon-icon">🏋️</div><div><div class="addon-name">Sports Performance Module</div><div class="addon-price">+$35/mo</div><div class="addon-desc">Advanced periodization, VO2max optimization, and HRV-based training overlays.</div></div></div>
+    <div class="addon-card"><div class="addon-icon">⚡</div><div><div class="addon-name">Peptide Mastery Track</div><div class="addon-price">+$35/mo</div><div class="addon-desc">Video masterclasses, advanced peptide stacking trees, reconstitution calculators.</div></div></div>
+    <div class="addon-card"><div class="addon-icon">🌙</div><div><div class="addon-name">Sleep Science Suite</div><div class="addon-price">+$35/mo</div><div class="addon-desc">Sleep stage analysis, DSIP & melatonin dosing windows, chronotype optimization.</div></div></div>
+    <div class="addon-card"><div class="addon-icon">🧬</div><div><div class="addon-name">Genomics Integration</div><div class="addon-price">+$35/mo</div><div class="addon-desc">Upload 23andMe or AncestryDNA raw data for SNP-informed protocol recommendations.</div></div></div>
+    <div class="addon-card"><div class="addon-icon">🫀</div><div><div class="addon-name">Cardiovascular Optimizer</div><div class="addon-price">+$35/mo</div><div class="addon-desc">Lipid, HRV, blood pressure, and hs-CRP tracking with protocol recommendations.</div></div></div>
+    <div class="addon-card"><div class="addon-icon">🥗</div><div><div class="addon-name">Nutrition & Diet Optimization</div><div class="addon-price">+$35/mo</div><div class="addon-desc">Macro and micronutrient protocols, food-supplement timing, anti-inflammatory meal plans, and gut microbiome nutrition plans.</div></div></div>
+    <div class="addon-card"><div class="addon-icon">🧪</div><div><div class="addon-name">Advanced Lab Panel Builder</div><div class="addon-price">+$35/mo</div><div class="addon-desc">Customizable quarterly lab panels with reference ranges calibrated to your age, sex, and goals.</div></div></div>
   </div>
 </section>
 
@@ -2295,16 +2295,6 @@ function copyRef(){
   const btn=document.querySelector('.wl-ref-copy');
   btn.textContent='Copied!';setTimeout(()=>btn.textContent='Copy',2000);
 }
-
-// Specialty Module Marketplace pricing display
-document.querySelectorAll('.addon-price').forEach(el=>{
-  if(el.textContent.includes('$49.99')) el.textContent = '+$35/mo';
-});
-document.querySelectorAll('h3').forEach(el=>{
-  if(el.textContent.includes('Specialty Modules') && el.textContent.includes('$49.99')) {
-    el.innerHTML = 'Specialty Module Marketplaceâ„¢ â€” <span style="color:var(--goldL)">+$35/mo each</span>';
-  }
-});
 
 // Open enrollment on nav CTA
 </script>
