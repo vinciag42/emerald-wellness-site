@@ -573,6 +573,7 @@ async function createAccount() {
       }
     }
 
+    await syncMarketingEmail('signup-checkout-started');
     await launchStripeCheckout(userId);
 
   } catch(err) {
@@ -583,6 +584,27 @@ async function createAccount() {
 }
 
 // ─── STRIPE CHECKOUT ──────────────────────────────────────────────────────────
+async function syncMarketingEmail(source) {
+  try {
+    await fetch('/api/subscribe', {
+      method: 'POST',
+      headers: {'Content-Type':'application/json'},
+      body: JSON.stringify({
+        email: userData.email,
+        first_name: userData.firstName,
+        last_name: userData.lastName,
+        phone: userData.phone,
+        goal: userData.healthGoal,
+        tier: selectedPlan || 'signup',
+        source: source || 'signup',
+        referred_by: referralValid ? document.getElementById('referralCode').value.trim().toUpperCase() : ''
+      })
+    });
+  } catch(err) {
+    console.warn('[Emerald Email] Marketing sync skipped', err);
+  }
+}
+
 async function launchStripeCheckout(userId) {
   const response = await fetch('/api/create-checkout-session', {
     method: 'POST',

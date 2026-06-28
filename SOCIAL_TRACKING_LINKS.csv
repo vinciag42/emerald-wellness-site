@@ -1,0 +1,13 @@
+platform,placement,campaign,content_name,url,approval_status
+instagram,bio,launch,main_home,https://emeraldwellness.health/?utm_source=instagram&utm_medium=bio&utm_campaign=launch,pending
+instagram,story,launch,begin_regenesis,https://emeraldwellness.health/?utm_source=instagram&utm_medium=story&utm_campaign=launch&utm_content=begin_regenesis#pricing,pending
+instagram,post,launch,founder_story,https://emeraldwellness.health/?utm_source=instagram&utm_medium=organic_post&utm_campaign=launch&utm_content=founder_story,pending
+facebook,page_profile,launch,main_home,https://emeraldwellness.health/?utm_source=facebook&utm_medium=page_profile&utm_campaign=launch,pending
+facebook,organic_post,launch,founder_story,https://emeraldwellness.health/?utm_source=facebook&utm_medium=organic_post&utm_campaign=launch&utm_content=founder_story,pending
+linkedin,company_profile,launch,main_home,https://emeraldwellness.health/?utm_source=linkedin&utm_medium=company_profile&utm_campaign=launch,pending
+linkedin,organic_post,launch,professional_positioning,https://emeraldwellness.health/?utm_source=linkedin&utm_medium=organic_post&utm_campaign=launch&utm_content=professional_positioning,pending
+tiktok,bio,launch,main_home,https://emeraldwellness.health/?utm_source=tiktok&utm_medium=bio&utm_campaign=launch,pending
+tiktok,organic_video,education,medication_stack_check,https://emeraldwellness.health/app?utm_source=tiktok&utm_medium=organic_video&utm_campaign=education&utm_content=medication_stack_check,pending
+youtube,channel,launch,main_home,https://emeraldwellness.health/?utm_source=youtube&utm_medium=channel&utm_campaign=launch,pending
+youtube,video_description,education,personal_health_intelligence,https://emeraldwellness.health/app?utm_source=youtube&utm_medium=video_description&utm_campaign=education&utm_content=personal_health_intelligence,pending
+emerald_site,nav,shop,products_list,https://shop.emeraldwellness.health/products-list?utm_source=emerald_site&utm_medium=nav&utm_campaign=shop,pending

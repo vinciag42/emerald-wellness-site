@@ -62,6 +62,88 @@ async function updateSupabaseProfile(userId, updates) {
   }
 }
 
+async function emitKlaviyoEvent(metricName, profile, properties = {}) {
+  const key = process.env.KLAVIYO_PRIVATE_KEY;
+  if (!key || !profile?.email) return;
+
+  const safeProperties = {};
+  const allowed = [
+    'plan',
+    'billing_interval',
+    'status',
+    'source',
+    'stripe_event',
+    'stripe_customer_id',
+    'stripe_subscription_id',
+    'cancel_at_period_end',
+    'current_period_end',
+  ];
+
+  for (const field of allowed) {
+    if (properties[field] !== undefined && properties[field] !== null && properties[field] !== '') {
+      safeProperties[field] = properties[field];
+    }
+  }
+
+  try {
+    const response = await fetch('https://a.klaviyo.com/api/events/', {
+      method: 'POST',
+      headers: {
+        Authorization: `Klaviyo-API-Key ${key}`,
+        'Content-Type': 'application/json',
+        revision: '2024-02-15',
+      },
+      body: JSON.stringify({
+        data: {
+          type: 'event',
+          attributes: {
+            metric: {
+              data: {
+                type: 'metric',
+                attributes: { name: metricName },
+              },
+            },
+            profile: {
+              data: {
+                type: 'profile',
+                attributes: {
+                  email: profile.email,
+                  ...(profile.first_name ? { first_name: profile.first_name } : {}),
+                  ...(profile.last_name ? { last_name: profile.last_name } : {}),
+                },
+              },
+            },
+            properties: safeProperties,
+          },
+        },
+      }),
+    });
+
+    if (!response.ok) {
+      const text = await response.text();
+      console.warn('[klaviyo-event]', metricName, response.status, text.slice(0, 300));
+    }
+  } catch (error) {
+    console.warn('[klaviyo-event]', metricName, error.message);
+  }
+}
+
+async function getStripeCustomerEmail(customerId) {
+  const key = process.env.STRIPE_SECRET_KEY;
+  if (!key || !customerId) return null;
+
+  try {
+    const response = await fetch(`https://api.stripe.com/v1/customers/${encodeURIComponent(customerId)}`, {
+      headers: { Authorization: `Bearer ${key}` },
+    });
+    if (!response.ok) return null;
+    const customer = await response.json();
+    return customer?.email || null;
+  } catch (_) {
+    return null;
+  }
+}
+
 const PRICE_TO_PLAN = {
   price_1Tb97eLzsA0y5z9V1qno7S07: { plan: 'silver', billing_interval: 'monthly' },
   price_1TmoCpLzsA0y5z9VelLKqXRr: { plan: 'gold', billing_interval: 'monthly' },
@@ -123,36 +205,69 @@ module.exports = async function handler(req, res) {
 
     if (event.type === 'checkout.session.completed') {
       const userId = object.metadata?.user_id;
-      await updateSupabaseProfile(userId, {
-        stripe_customer_id: object.customer || null,
-        stripe_subscription_id: object.subscription || null,
-        status: 'trial',
+      const lifecycle = {
         plan: object.metadata?.plan || null,
         billing_interval: object.metadata?.billing || null,
+        status: 'trial',
+        source: 'stripe_checkout',
+        stripe_event: event.type,
+        stripe_customer_id: object.customer || null,
+        stripe_subscription_id: object.subscription || null,
+      };
+      await updateSupabaseProfile(userId, {
+        stripe_customer_id: lifecycle.stripe_customer_id,
+        stripe_subscription_id: lifecycle.stripe_subscription_id,
+        status: lifecycle.status,
+        plan: lifecycle.plan,
+        billing_interval: lifecycle.billing_interval,
         addons: object.metadata?.addons ? object.metadata.addons.split(',').filter(Boolean) : [],
         updated_at: new Date().toISOString(),
       });
+      await emitKlaviyoEvent('Trial Started', {
+        email: object.customer_details?.email || object.customer_email || object.email || null,
+      }, lifecycle);
     }
 
     if (event.type === 'customer.subscription.updated') {
       const derived = subscriptionPlan(object);
-      await updateProfileForStripeObject(object, {
+      const customerEmail = object.customer_email || object.metadata?.email || await getStripeCustomerEmail(object.customer);
+      const lifecycle = {
         stripe_subscription_id: object.id || null,
         status: object.status === 'active' || object.status === 'trialing' ? 'active' : object.status,
         plan: object.metadata?.plan || derived.plan || null,
         billing_interval: object.metadata?.billing || derived.billing_interval || null,
-        addons: object.metadata?.addons ? object.metadata.addons.split(',').filter(Boolean) : [],
         cancel_at_period_end: Boolean(object.cancel_at_period_end),
         current_period_end: object.current_period_end ? new Date(object.current_period_end * 1000).toISOString() : null,
+        stripe_event: event.type,
+      };
+      await updateProfileForStripeObject(object, {
+        stripe_subscription_id: lifecycle.stripe_subscription_id,
+        status: lifecycle.status,
+        plan: lifecycle.plan,
+        billing_interval: lifecycle.billing_interval,
+        addons: object.metadata?.addons ? object.metadata.addons.split(',').filter(Boolean) : [],
+        cancel_at_period_end: lifecycle.cancel_at_period_end,
+        current_period_end: lifecycle.current_period_end,
         updated_at: new Date().toISOString(),
       });
+      await emitKlaviyoEvent('Subscription Updated', {
+        email: customerEmail,
+      }, lifecycle);
     }
 
     if (event.type === 'customer.subscription.deleted') {
+      const customerEmail = object.customer_email || object.metadata?.email || await getStripeCustomerEmail(object.customer);
       await updateProfileForStripeObject(object, {
         stripe_subscription_id: object.id || null,
         status: 'cancelled',
         updated_at: new Date().toISOString(),
+      });
+      await emitKlaviyoEvent('Subscription Cancelled', {
+        email: customerEmail,
+      }, {
+        status: 'cancelled',
+        stripe_event: event.type,
+        stripe_subscription_id: object.id || null,
       });
     }
 
@@ -160,6 +275,18 @@ module.exports = async function handler(req, res) {
       await updateSupabaseProfileByStripeCustomer(object.id, {
         email: object.email || null,
         updated_at: new Date().toISOString(),
+      });
+    }
+
+    if (event.type === 'invoice.payment_failed') {
+      const customerEmail = object.customer_email || await getStripeCustomerEmail(object.customer);
+      await emitKlaviyoEvent('Payment Failed', {
+        email: customerEmail,
+      }, {
+        status: 'payment_failed',
+        stripe_event: event.type,
+        stripe_customer_id: object.customer || null,
+        stripe_subscription_id: object.subscription || null,
       });
     }
 

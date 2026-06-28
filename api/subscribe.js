@@ -69,9 +69,9 @@ export default async function handler(req, res) {
               }
             }]
           }
-        }
-      },
-      relationships: { list: { data: { type: 'list', id: KLAVIYO_LIST } } }
+        },
+        relationships: { list: { data: { type: 'list', id: KLAVIYO_LIST } } }
+      }
     };
 
     const klaviyoRes = await fetch('https://a.klaviyo.com/api/profile-subscription-bulk-create-jobs/', {
