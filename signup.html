@@ -376,7 +376,11 @@ function initSupabaseClient() {
 async function ensureSupabaseClient() {
   const existing = initSupabaseClient();
   if (existing) return existing;
-  await loadScript('https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js');
+  try {
+    await loadScript('https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js');
+  } catch(e) {
+    return null;
+  }
   return initSupabaseClient();
 }
 
@@ -592,11 +596,8 @@ function loadScript(src){
     document.head.appendChild(s);
   });
 }
-let stripe=null;
 (async()=>{
-  await loadScript('https://js.stripe.com/v3/');
   await ensureSupabaseClient();
-  stripe=Stripe(STRIPE_KEY);
   initSupabaseClient();
   const urlParams=new URLSearchParams(window.location.search);
   applyUrlSelections();
