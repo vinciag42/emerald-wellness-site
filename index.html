@@ -666,6 +666,41 @@ footer{background:var(--bg);border-top:1px solid var(--border);padding:60px 48px
   </div>
 </section>
 
+<!-- CHOOSE YOUR PATH -->
+<section id="choose-path" style="background:var(--bg);padding-top:72px;padding-bottom:72px;">
+  <div class="reveal text-center">
+    <p class="section-label">Start Here</p>
+    <h2 class="section-title">Choose the path that fits your next step.</h2>
+    <p class="section-sub mx-auto" style="text-align:center;">Emerald Wellness has a lot inside it. This gives every visitor a clean starting point before the deeper education library.</p>
+  </div>
+  <div class="features-grid" style="margin-top:42px;">
+    <div class="feature-card reveal">
+      <div class="feature-icon">◎</div>
+      <div class="feature-title">I want the app</div>
+      <div class="feature-desc">Preview the dashboard, medication and stack check, labs, protocols, and specialty module experience.</div>
+      <a class="btn-ghost" href="/app" style="display:inline-flex;margin-top:18px;">View App Preview</a>
+    </div>
+    <div class="feature-card reveal">
+      <div class="feature-icon">✦</div>
+      <div class="feature-title">I want Regenesis</div>
+      <div class="feature-desc">Start with Platinum Regenesis for quarterly labs, doctor visit preparation, body tracking, and premium biology planning.</div>
+      <a class="btn-primary" href="/signup.html?plan=platinum&billing=monthly&regenesis=platinum" style="display:inline-flex;margin-top:18px;">Begin Regenesis</a>
+    </div>
+    <div class="feature-card reveal">
+      <div class="feature-icon">◬</div>
+      <div class="feature-title">I want education</div>
+      <div class="feature-desc">Explore peptides, vitamins, supplements, bioregulators, protocols, interactions, timing, and wellness education.</div>
+      <a class="btn-ghost" href="#education-library" style="display:inline-flex;margin-top:18px;">Explore Education</a>
+    </div>
+    <div class="feature-card reveal">
+      <div class="feature-icon">◆</div>
+      <div class="feature-title">I want the shop</div>
+      <div class="feature-desc">Go directly to the Emerald Wellness store for available peptide and wellness products.</div>
+      <a class="btn-ghost" href="https://shop.emeraldwellness.health/products-list" style="display:inline-flex;margin-top:18px;">Visit Store</a>
+    </div>
+  </div>
+</section>
+
 <!-- MARQUEE -->
 <div class="marquee-wrap">
   <div class="marquee-track" id="marqueeTrack">
@@ -1964,7 +1999,7 @@ setTimeout(()=>{if(document.getElementById('cookie-banner'))document.getElementB
 function startCheckout(plan){
   const billing = annual ? 'annual' : 'monthly';
   if(plan === 'platinum'){
-    window.location.href = `/signup.html?plan=elite&billing=${billing}&regenesis=platinum`;
+    window.location.href = `/signup.html?plan=platinum&billing=${billing}&regenesis=platinum`;
     return;
   }
   window.location.href = `/signup.html?plan=${encodeURIComponent(plan)}&billing=${billing}`;

@@ -21,13 +21,19 @@
     { "source": "/emerald-wellness/blog/:slug.html", "destination": "/blog/:slug", "permanent": true },
     { "source": "/peptides.html", "destination": "/peptides", "permanent": true },
     { "source": "/blog", "destination": "/blog/", "permanent": true },
-    { "source": "/privacy", "destination": "/privacy-policy.html", "permanent": true },
-    { "source": "/terms", "destination": "/terms-of-service.html", "permanent": true }
+    { "source": "/privacy-policy", "destination": "/privacy-policy.html", "permanent": true },
+    { "source": "/terms-of-service", "destination": "/terms-of-service.html", "permanent": true }
   ],
   "rewrites": [
     { "source": "/signup", "destination": "/signup.html" },
     { "source": "/app", "destination": "/app.html" },
     { "source": "/dashboard", "destination": "/dashboard.html" },
+    { "source": "/privacy", "destination": "/privacy-policy.html" },
+    { "source": "/privacy/", "destination": "/privacy-policy.html" },
+    { "source": "/terms", "destination": "/terms-of-service.html" },
+    { "source": "/terms/", "destination": "/terms-of-service.html" },
+    { "source": "/hipaa", "destination": "/hipaa.html" },
+    { "source": "/hipaa/", "destination": "/hipaa.html" },
     { "source": "/specialty-modules", "destination": "/specialty-modules.html" },
     { "source": "/advisors", "destination": "/emerald-wellness/advisors.html" },
     { "source": "/blog/", "destination": "/emerald-wellness/blog/index.html" },

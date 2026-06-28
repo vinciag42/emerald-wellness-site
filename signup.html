@@ -205,27 +205,33 @@ footer{text-align:center;padding:24px;border-top:1px solid var(--border);font-si
     <div class="plans-grid">
       <div class="plan-card" id="plan-silver" onclick="selectPlan('silver')">
         <div class="plan-name">🥈 Silver</div>
-        <div class="plan-price" id="price-silver">$75<span>/mo</span></div>
+        <div class="plan-price" id="price-silver">$74.99<span>/mo</span></div>
         <div class="plan-trial">$1 for first 7 days · then 20% off first month</div>
         <div class="plan-features">✓ 500+ compound database<br/>✓ AI Health Advisor<br/>✓ Basic protocols<br/>✓ Lab tracker</div>
       </div>
       <div class="plan-card popular" id="plan-gold" onclick="selectPlan('gold')">
         <div class="plan-name">🥇 Gold</div>
-        <div class="plan-price" id="price-gold">$150<span>/mo</span></div>
+        <div class="plan-price" id="price-gold">$149.99<span>/mo</span></div>
         <div class="plan-trial">$1 for first 7 days · then 20% off first month</div>
         <div class="plan-features">✓ Everything in Silver<br/>✓ Stack Builder<br/>✓ 200+ protocols<br/>✓ Injection site guides</div>
       </div>
       <div class="plan-card" id="plan-elite" onclick="selectPlan('elite')">
         <div class="plan-name">💎 Emerald Elite</div>
-        <div class="plan-price" id="price-elite">$200<span>/mo</span></div>
+        <div class="plan-price" id="price-elite">$199.99<span>/mo</span></div>
         <div class="plan-trial">$1 for first 7 days · then 20% off first month</div>
         <div class="plan-features">✓ Everything in Gold<br/>✓ AI Protocol Builder<br/>✓ Biomarker optimization<br/>✓ Priority support</div>
       </div>
       <div class="plan-card" id="plan-pro" onclick="selectPlan('pro')">
         <div class="plan-name">⚕️ Pro Practitioner</div>
-        <div class="plan-price" id="price-pro">$300<span>/mo</span></div>
+        <div class="plan-price" id="price-pro">$299.99<span>/mo</span></div>
         <div class="plan-trial">$1 for first 7 days · then 20% off first month</div>
         <div class="plan-features">✓ Everything in Elite<br/>✓ Patient management<br/>✓ HIPAA BAA<br/>✓ White-label reports</div>
+      </div>
+      <div class="plan-card" id="plan-platinum" onclick="selectPlan('platinum')">
+        <div class="plan-name">✦ Platinum Regenesis</div>
+        <div class="plan-price" id="price-platinum">$599<span>/mo</span></div>
+        <div class="plan-trial">$1 for first 7 days · then recurring billing after trial</div>
+        <div class="plan-features">✓ Regenesis dashboard<br/>✓ Quarterly lab rhythm<br/>✓ Doctor visit preparation<br/>✓ Premium biology planning</div>
       </div>
     </div>
 
@@ -331,16 +337,18 @@ const SUPABASE_ANON = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFz
 
 const PRICES = {
   monthly: {
-    silver: { id:'price_1Tb97eLzsA0y5z9V1qno7S07', amount:75 },
+    silver: { id:'price_1Tb97eLzsA0y5z9V1qno7S07', amount:74.99 },
     gold:   { id:'price_1TmoCpLzsA0y5z9VelLKqXRr', amount:149.99 },
-    elite:  { id:'price_1Tb97ZLzsA0y5z9VlhXybXrF', amount:200 },
-    pro:    { id:'price_1Tb9DpLzsA0y5z9VvXt3LCRs', amount:300 },
+    elite:  { id:'price_1Tb97ZLzsA0y5z9VlhXybXrF', amount:199.99 },
+    pro:    { id:'price_1Tb9DpLzsA0y5z9VvXt3LCRs', amount:299.99 },
+    platinum: { id:'dynamic_platinum_monthly', amount:599 },
   },
   annual: {
-    silver: { id:'price_1Td1UpLzsA0y5z9VPeq424L4', amount:720 },
-    gold:   { id:'price_1Tb97dLzsA0y5z9VXYyasB1x', amount:1440 },
-    elite:  { id:'price_1Tb97dLzsA0y5z9VKWuTcpIU', amount:1920 },
-    pro:    { id:'price_1Tb9EvLzsA0y5z9Va2CX66J0', amount:2880 },
+    silver: { id:'price_1Td1UpLzsA0y5z9VPeq424L4', amount:719.88 },
+    gold:   { id:'price_1Tb97dLzsA0y5z9VXYyasB1x', amount:1439.88 },
+    elite:  { id:'price_1Tb97dLzsA0y5z9VKWuTcpIU', amount:1919.88 },
+    pro:    { id:'price_1Tb9EvLzsA0y5z9Va2CX66J0', amount:2879.88 },
+    platinum: { id:'dynamic_platinum_annual', amount:6499 },
   }
 };
 
@@ -354,7 +362,7 @@ const ADDON_PRICES = {
   recovery:  { id:'price_1TnCp8LzsA0y5z9VkssgXhRr', name:'Recovery Bundle', amount:49.99 },
 };
 
-const PLAN_NAMES = { silver:'Silver', gold:'Gold', elite:'Emerald Elite', pro:'Pro Practitioner' };
+const PLAN_NAMES = { silver:'Silver', gold:'Gold', elite:'Emerald Elite', pro:'Pro Practitioner', platinum:'Emerald Platinum Regenesis' };
 
 // ─── STATE ────────────────────────────────────────────────────────────────────
 let selectedPlan = '';
@@ -434,13 +442,13 @@ function setBilling(type) {
 }
 
 function updatePriceDisplay() {
-  const plans = ['silver','gold','elite','pro'];
-  const annualLabels = {silver:'$720/yr',gold:'$1,440/yr',elite:'$1,920/yr',pro:'$2,880/yr'};
+  const plans = ['silver','gold','elite','pro','platinum'];
+  const annualLabels = {silver:'$719.88/yr',gold:'$1,439.88/yr',elite:'$1,919.88/yr',pro:'$2,879.88/yr',platinum:'$6,499/yr'};
   plans.forEach(p => {
     const el = document.getElementById('price-'+p);
     if(billing==='monthly') {
       const amt = PRICES.monthly[p].amount;
-      el.innerHTML = '$'+amt+'<span>/mo</span>';
+      el.innerHTML = '$'+formatMoney(amt)+'<span>/mo</span>';
     } else {
       el.innerHTML = annualLabels[p]+'<span style="font-size:13px;color:var(--textMid)"> /yr</span>';
     }
@@ -469,16 +477,20 @@ function updateSummary() {
   const total = planAmt + addonTotal;
   const suffix = billing==='monthly' ? '/mo' : '/yr';
 
-  document.getElementById('summaryPlan').textContent = selectedPlan ? PLAN_NAMES[selectedPlan]+' — $'+planAmt+suffix : '— select a plan';
+  document.getElementById('summaryPlan').textContent = selectedPlan ? PLAN_NAMES[selectedPlan]+' — $'+formatMoney(planAmt)+suffix : '— select a plan';
   document.getElementById('summaryAddonsRow').style.display = selectedAddons.size > 0 ? 'flex' : 'none';
   document.getElementById('addonCount').textContent = selectedAddons.size;
-  document.getElementById('summaryAddons').textContent = '+$'+addonTotal+suffix;
-  document.getElementById('summaryTotal').textContent = selectedPlan ? '$'+total+suffix : '$0/mo';
+  document.getElementById('summaryAddons').textContent = '+$'+formatMoney(addonTotal)+suffix;
+  document.getElementById('summaryTotal').textContent = selectedPlan ? '$'+formatMoney(total)+suffix : '$0/mo';
 
-  document.getElementById('summaryPlan3').textContent = selectedPlan ? PLAN_NAMES[selectedPlan]+' — $'+planAmt+suffix : '—';
+  document.getElementById('summaryPlan3').textContent = selectedPlan ? PLAN_NAMES[selectedPlan]+' — $'+formatMoney(planAmt)+suffix : '—';
   document.getElementById('addonsRow3').style.display = selectedAddons.size > 0 ? 'flex' : 'none';
-  document.getElementById('summaryAddons3').textContent = '+$'+addonTotal+suffix;
-  document.getElementById('summaryTotal3').textContent = selectedPlan ? '$'+total+suffix : '$0/mo';
+  document.getElementById('summaryAddons3').textContent = '+$'+formatMoney(addonTotal)+suffix;
+  document.getElementById('summaryTotal3').textContent = selectedPlan ? '$'+formatMoney(total)+suffix : '$0/mo';
+}
+
+function formatMoney(amount) {
+  return Number(amount).toLocaleString('en-US', { minimumFractionDigits: Number(amount) % 1 ? 2 : 0, maximumFractionDigits: 2 });
 }
 
 function goStep3() {
@@ -579,7 +591,8 @@ function applyUrlSelections() {
   const requestedBilling = params.get('billing');
   const requestedPlan = params.get('plan');
   if(requestedBilling === 'annual' || requestedBilling === 'monthly') setBilling(requestedBilling);
-  if(requestedPlan && PRICES[billing]?.[requestedPlan]) selectPlan(requestedPlan);
+  if(params.get('regenesis') === 'platinum') selectPlan('platinum');
+  else if(requestedPlan && PRICES[billing]?.[requestedPlan]) selectPlan(requestedPlan);
 }
 
 const urlParams = new URLSearchParams(window.location.search);

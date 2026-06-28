@@ -6,12 +6,28 @@ const PLAN_PRICES = {
     gold: 'price_1TmoCpLzsA0y5z9VelLKqXRr',
     elite: 'price_1Tb97ZLzsA0y5z9VlhXybXrF',
     pro: 'price_1Tb9DpLzsA0y5z9VvXt3LCRs',
+    platinum: {
+      price_data: {
+        currency: 'usd',
+        unit_amount: 59900,
+        recurring: { interval: 'month' },
+        product_data: { name: 'Emerald Platinum Regenesis' },
+      },
+    },
   },
   annual: {
     silver: 'price_1Td1UpLzsA0y5z9VPeq424L4',
     gold: 'price_1Tb97dLzsA0y5z9VXYyasB1x',
     elite: 'price_1Tb97dLzsA0y5z9VKWuTcpIU',
     pro: 'price_1Tb9EvLzsA0y5z9Va2CX66J0',
+    platinum: {
+      price_data: {
+        currency: 'usd',
+        unit_amount: 649900,
+        recurring: { interval: 'year' },
+        product_data: { name: 'Emerald Platinum Regenesis Annual' },
+      },
+    },
   },
 };
 
@@ -30,6 +46,9 @@ function appendLineItem(params, index, item) {
     params.append(`line_items[${index}][price_data][currency]`, item.price_data.currency);
     params.append(`line_items[${index}][price_data][unit_amount]`, String(item.price_data.unit_amount));
     params.append(`line_items[${index}][price_data][product_data][name]`, item.price_data.product_data.name);
+    if (item.price_data.recurring?.interval) {
+      params.append(`line_items[${index}][price_data][recurring][interval]`, item.price_data.recurring.interval);
+    }
   }
   params.append(`line_items[${index}][quantity]`, String(item.quantity || 1));
 }
@@ -73,6 +92,10 @@ module.exports = async function handler(req, res) {
     if (!planPrice) return json(res, 400, { error: 'Invalid plan or billing interval.' });
     if (!email || !email.includes('@')) return json(res, 400, { error: 'A valid email is required.' });
 
+    const planLineItem = typeof planPrice === 'string'
+      ? { price: planPrice, quantity: 1 }
+      : { ...planPrice, quantity: 1 };
+
     const lineItems = [
       {
         price_data: {
@@ -82,7 +105,7 @@ module.exports = async function handler(req, res) {
         },
         quantity: 1,
       },
-      { price: planPrice, quantity: 1 },
+      planLineItem,
     ];
 
     if (addons.length) {
