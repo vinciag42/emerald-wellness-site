@@ -109,6 +109,19 @@ export default async function handler(req, res) {
     if (result.klaviyoEvent.ok) console.log('[subscribe] STEP 3 OK — Klaviyo Submitted Enrollment event created');
     else console.warn('[subscribe] STEP 3 WARN — Klaviyo event not created', result.klaviyoEvent);
 
+    result.klaviyoSignupEvent = await emitKlaviyoEvent('Signup', {
+      email: cleanEmail,
+      first_name: cleanFirstName,
+      last_name: cleanLastName
+    }, {
+      selected_tier: cleanTier || 'homepage-enrollment',
+      source: cleanSource,
+      referred_by: cleanReferral || '',
+      lifecycle_status: 'lead'
+    }, klaviyoHeaders);
+    if (result.klaviyoSignupEvent.ok) console.log('[subscribe] STEP 3B OK — Klaviyo Signup event created');
+    else console.warn('[subscribe] STEP 3B WARN — Klaviyo Signup event not created', result.klaviyoSignupEvent);
+
     const sbPayload = {
       email: cleanEmail,
       first_name: cleanFirstName || null,
