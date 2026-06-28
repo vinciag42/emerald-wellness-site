@@ -3,7 +3,7 @@ const STRIPE_API_BASE = 'https://api.stripe.com/v1';
 const PLAN_PRICES = {
   monthly: {
     silver: 'price_1Tb97eLzsA0y5z9V1qno7S07',
-    gold: 'price_1Tb97gLzsA0y5z9VwduDs3O1',
+    gold: 'price_1Tb97eLzsA0y5z9VmZogI4tn',
     elite: 'price_1Tb97ZLzsA0y5z9VlhXybXrF',
     pro: 'price_1Tb9DpLzsA0y5z9VvXt3LCRs',
   },

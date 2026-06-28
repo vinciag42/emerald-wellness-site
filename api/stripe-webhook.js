@@ -64,7 +64,7 @@ async function updateSupabaseProfile(userId, updates) {
 
 const PRICE_TO_PLAN = {
   price_1Tb97eLzsA0y5z9V1qno7S07: { plan: 'silver', billing_interval: 'monthly' },
-  price_1Tb97gLzsA0y5z9VwduDs3O1: { plan: 'gold', billing_interval: 'monthly' },
+  price_1Tb97eLzsA0y5z9VmZogI4tn: { plan: 'gold', billing_interval: 'monthly' },
   price_1Tb97ZLzsA0y5z9VlhXybXrF: { plan: 'elite', billing_interval: 'monthly' },
   price_1Tb9DpLzsA0y5z9VvXt3LCRs: { plan: 'pro', billing_interval: 'monthly' },
   price_1Td1UpLzsA0y5z9VPeq424L4: { plan: 'silver', billing_interval: 'annual' },
