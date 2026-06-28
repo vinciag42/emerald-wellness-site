@@ -8,6 +8,7 @@
     { "source": "/emerald-wellness/email-sms-integration-guide.html", "destination": "/404.html", "permanent": false },
     { "source": "/emerald-wellness/email-welcome-template.html", "destination": "/404.html", "permanent": false },
     { "source": "/emerald-wellness/supabase-schema.sql", "destination": "/404.html", "permanent": false },
+    { "source": "/emerald-wellness/specialty-modules-schema.sql", "destination": "/404.html", "permanent": false },
     { "source": "/emerald-wellness/EW_SupplementDB.jsx", "destination": "/404.html", "permanent": false },
     { "source": "/emerald-wellness-complete_5.zip", "destination": "/404.html", "permanent": false },
     { "source": "/index-html.html", "destination": "/", "permanent": true },
@@ -26,6 +27,7 @@
   ],
   "rewrites": [
     { "source": "/app", "destination": "/app.html" },
+    { "source": "/dashboard", "destination": "/dashboard.html" },
     { "source": "/advisors", "destination": "/emerald-wellness/advisors.html" },
     { "source": "/blog/", "destination": "/emerald-wellness/blog/index.html" },
     { "source": "/blog/:slug", "destination": "/emerald-wellness/blog/:slug.html" },
