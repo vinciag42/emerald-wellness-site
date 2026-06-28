@@ -96,6 +96,12 @@ export default async function handler(req, res) {
     }
 
     // ── 3. Supabase waitlist — store ALL fields ──
+    if (result.klaviyoProfile?.profileId) {
+      result.klaviyoListAdd = await addProfileToKlaviyoList(result.klaviyoProfile.profileId, KLAVIYO_LIST, klaviyoHeaders);
+      if (result.klaviyoListAdd.ok) console.log('[subscribe] STEP 2B OK — profile explicitly added to Klaviyo list');
+      else console.warn('[subscribe] STEP 2B WARN — profile not explicitly added to list', result.klaviyoListAdd);
+    }
+
     result.klaviyoEvent = await emitKlaviyoEvent('Submitted Enrollment', {
       email: cleanEmail,
       first_name: cleanFirstName,
@@ -212,6 +218,22 @@ async function emitKlaviyoEvent(metricName, profile, properties, headers) {
   }
 }
 
+async function addProfileToKlaviyoList(profileId, listId, headers) {
+  try {
+    const response = await fetch(`https://a.klaviyo.com/api/lists/${encodeURIComponent(listId)}/relationships/profiles`, {
+      method: 'POST',
+      headers,
+      body: JSON.stringify({
+        data: [{ type: 'profile', id: profileId }]
+      })
+    });
+    const text = await response.text();
+    return { ok: response.ok || response.status === 204, status: response.status, body: text.slice(0, 300) };
+  } catch (error) {
+    return { ok: false, status: 0, body: error.message };
+  }
+}
+
 async function updateKlaviyoProfile(email, first_name, last_name, phone, goal, tier, headers) {
   const props = {};
   if (goal) props.health_goal = goal;
@@ -228,7 +250,11 @@ async function updateKlaviyoProfile(email, first_name, last_name, phone, goal, t
   });
   const profileText = await profileRes.text();
 
-  if (profileRes.ok || profileRes.status === 201) return { ok: true, status: profileRes.status, method: 'create' };
+  if (profileRes.ok || profileRes.status === 201) {
+    let profileId = null;
+    try { profileId = JSON.parse(profileText).data?.id || null; } catch (_) {}
+    return { ok: true, status: profileRes.status, method: 'create', profileId };
+  }
   if (profileRes.status !== 409) return { ok: false, status: profileRes.status, body: profileText.slice(0, 300) };
 
   let profileId = null;
