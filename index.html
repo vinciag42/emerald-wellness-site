@@ -151,6 +151,7 @@ section{padding:100px 48px;}
 #our-promise{background:var(--bg2);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:64px 48px;}
 .promise-card{max-width:980px;margin:0 auto;text-align:center;background:linear-gradient(135deg,rgba(26,107,69,.12),rgba(200,168,40,.08));border:1px solid var(--borderEm);border-radius:24px;padding:42px 48px;}
 .promise-card .section-label{color:var(--goldL);opacity:1;}
+.founder-story-grid{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(280px,.8fr);gap:28px;align-items:start;max-width:1080px;margin:0 auto;}
 .promise-copy{font-family:var(--cormorant);font-size:clamp(22px,3vw,32px);line-height:1.55;color:var(--text);font-style:italic;}
 .promise-copy em{color:var(--emXL);}
 
@@ -537,6 +538,7 @@ footer{background:var(--bg);border-top:1px solid var(--border);padding:60px 48px
   .nav-links a:last-child{border-bottom:0;text-align:center;margin-top:8px;}
   section{padding:70px 20px;}
   #our-promise{padding:54px 20px;}
+  .founder-story-grid{grid-template-columns:1fr;}
   .promise-card{padding:32px 24px;}
   #hero{padding:100px 20px 60px;}
   .hero-stats{gap:24px;}
@@ -612,10 +614,10 @@ footer{background:var(--bg);border-top:1px solid var(--border);padding:60px 48px
     <h1 class="hero-title">
       Your body is<br/><em>infinitely smarter</em><br/>than any device
     </h1>
-    <p class="hero-sub">500+ supplements, peptides, glandulars & bioregulators.<br/>Smart stack optimization. Clinical-grade protocols. Built for people who refuse to leave performance to chance.</p>
+    <p class="hero-sub">Prescriptions, labs, supplements, peptides, symptoms, wearables, and wellness protocols — organized in one educational intelligence platform.</p>
     <div class="hero-actions">
       <a href="#pricing" class="btn-primary">Start for $1 →</a>
-      <a href="#features" class="btn-ghost">Explore the Platform</a>
+      <a href="#our-promise" class="btn-ghost">Why Emerald Exists</a>
     </div>
     <div class="hero-stats">
       <div class="stat"><div class="stat-num">500+</div><div class="stat-lbl">Compounds</div></div>
@@ -626,13 +628,35 @@ footer{background:var(--bg);border-top:1px solid var(--border);padding:60px 48px
   </div>
 </section>
 
-<!-- OUR PROMISE -->
+<!-- WHY EMERALD EXISTS -->
 <section id="our-promise">
   <div class="promise-card reveal">
-    <p class="section-label">Our Promise</p>
-    <p class="promise-copy">
-      "Here at Emerald Wellness, we understand and support everyone's unique biology. We are committed to guiding you and your family through all the stages of life. Providing tailored, quality care is our number one priority. <em>Health is wealth</em> — and we will be with you every step of the way."
-    </p>
+    <p class="section-label">Why Emerald Wellness Exists</p>
+    <h2 class="section-title" style="text-align:center;margin-bottom:24px;">A calmer, smarter way to understand your health journey.</h2>
+    <div class="founder-story-grid">
+      <div>
+        <p class="promise-copy" style="font-size:18px;text-align:left;margin-bottom:18px;">
+          Emerald Wellness was born from nearly 30 years in the medical field and a front-row seat to the evolution of medicine, diagnostics, and patient care. Through every advancement, one truth has remained constant: people want to feel their best. When your mind is clear, your energy is steady, your body feels strong, and you understand what is happening inside you, life feels possible again.
+        </p>
+        <p class="promise-copy" style="font-size:18px;text-align:left;margin-bottom:18px;">
+          After years of caring for patients, I became tired of watching people simply exist instead of truly living. Too many were exhausted, confused, overmedicated, undereducated, and left without a clear picture of their own health. They were taking prescriptions, supplements, vitamins, peptides, and therapies without understanding why, when to take them, how they worked together, or what questions to ask their providers.
+        </p>
+        <p class="promise-copy" style="font-size:18px;text-align:left;">
+          Emerald Wellness was created from that frustration, but also from hope — hope that people could have one connected place for prescriptions, labs, supplements, peptides, symptoms, biometrics, wearables, and wellness protocols.
+        </p>
+      </div>
+      <div style="background:var(--bg3);border:1px solid var(--borderGold);border-radius:22px;padding:26px;box-shadow:0 18px 50px rgba(0,0,0,.22);">
+        <div class="section-label" style="color:var(--goldL);margin-bottom:14px;">What It Does</div>
+        <p style="color:var(--textMid);line-height:1.8;font-size:15px;margin-bottom:16px;">Emerald organizes your health story so you can track trends, timing, interactions, lab patterns, wearable signals, symptoms, and provider-review questions in one place.</p>
+        <div style="display:flex;flex-direction:column;gap:10px;margin-bottom:18px;">
+          <span class="feature-tag">Medication & stack organization</span>
+          <span class="feature-tag">Quarterly lab rhythm</span>
+          <span class="feature-tag">Wearable + biomarker trends</span>
+          <span class="feature-tag">Educational protocol intelligence</span>
+        </div>
+        <p class="stack-disclaimer" style="margin:0;">Emerald Wellness is not a diagnosis or replacement for medical care. It is educational wellness intelligence designed to help people understand, optimize, and move toward a life where they do not just exist — they thrive.</p>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -744,6 +768,36 @@ footer{background:var(--bg);border-top:1px solid var(--border);padding:60px 48px
   </div>
 </section>
 
+<!-- HOW IT WORKS -->
+<section id="how" style="background:var(--bg2);">
+  <div class="reveal text-center">
+    <p class="section-label">Getting Started</p>
+    <h2 class="section-title">From Zero to<br/>Optimized in Minutes</h2>
+  </div>
+  <div class="hiw-steps">
+    <div class="hiw-step reveal">
+      <div class="hiw-num">01</div>
+      <div class="hiw-title">Build Your Stack</div>
+      <div class="hiw-desc">Search or scan 500+ compounds. Add everything you're taking — supplements, peptides, medications. Your complete stack in one place.</div>
+    </div>
+    <div class="hiw-step reveal">
+      <div class="hiw-num">02</div>
+      <div class="hiw-title">Run the Analysis</div>
+      <div class="hiw-desc">Instant interaction check, timing optimization, and synergy scoring. The platform flags conflicts and suggests adjustments based on your goals.</div>
+    </div>
+    <div class="hiw-step reveal">
+      <div class="hiw-num">03</div>
+      <div class="hiw-title">Follow Your Schedule</div>
+      <div class="hiw-desc">Smart daily reminders with exact doses, timing rationale, and food pairing instructions. Built around your sleep, workout, and meal schedule.</div>
+    </div>
+    <div class="hiw-step reveal">
+      <div class="hiw-num">04</div>
+      <div class="hiw-title">Track & Optimize</div>
+      <div class="hiw-desc">Log how you feel, import labs, connect wearables. Watch your biological age score move. The platform learns your response patterns and adjusts protocols accordingly.</div>
+    </div>
+  </div>
+</section>
+
 <!-- MEDICATION & STACK CHECK -->
 <section id="stack-check">
   <div class="reveal text-center">
@@ -778,6 +832,432 @@ footer{background:var(--bg);border-top:1px solid var(--border);padding:60px 48px
         <div class="stack-result-card good"><strong>Ready.</strong> Enter your current list and run the preview check.</div>
       </div>
     </div>
+  </div>
+</section>
+
+<!-- LABS + DOCTOR REVIEW -->
+<section id="labs-review" style="background:var(--bg2);">
+  <div class="reveal text-center">
+    <p class="section-label">Labs + Doctor Review</p>
+    <h2 class="section-title">Quarterly labs make the wellness plan measurable.</h2>
+    <p class="section-sub mx-auto" style="text-align:center;">Emerald is designed around a Q90 rhythm: organize labs, review what changed, connect those trends to the stack, and prepare better questions for your doctor or qualified provider.</p>
+  </div>
+  <div class="features-grid" style="margin-top:42px;">
+    <div class="feature-card reveal">
+      <div class="feature-icon">◬</div>
+      <div class="feature-title">Quarterly Biomarker Rhythm</div>
+      <div class="feature-desc">Track labs every quarter so supplements, vitamins, peptides, GLP-1s, hormones, and lifestyle changes can be reviewed against real trends.</div>
+      <span class="feature-tag">Q90 Review</span>
+    </div>
+    <div class="feature-card reveal">
+      <div class="feature-icon">✦</div>
+      <div class="feature-title">Doctor Visit Preparation</div>
+      <div class="feature-desc">Turn scattered notes into organized provider-review questions about medications, interactions, labs, symptoms, timing, and follow-up decisions.</div>
+      <span class="feature-tag">Provider Questions</span>
+    </div>
+    <div class="feature-card reveal">
+      <div class="feature-icon">◎</div>
+      <div class="feature-title">Progress Reports</div>
+      <div class="feature-desc">See what is improving, what needs attention, and what should be discussed before changing protocols or adding new therapies.</div>
+      <span class="feature-tag">Trend Reports</span>
+    </div>
+  </div>
+  <p class="stack-disclaimer" style="max-width:980px;margin:28px auto 0;">Educational organization only. Emerald Wellness does not diagnose, treat, prescribe, or replace a licensed medical provider. Lab interpretation and treatment decisions should be reviewed with a qualified healthcare professional.</p>
+</section>
+
+<section id="regenesis" class="regenesis-section">
+  <div class="regenesis-inner">
+
+    <div class="text-center reveal" style="display:flex;flex-direction:column;align-items:center;">
+      <div class="regenesis-kicker">✦ New • Emerald Platinum</div>
+      <h2 class="regenesis-headline">Emerald Platinum<br/><em>Regenesis™</em></h2>
+      <p class="regenesis-tagline">Where Transformation Begins.</p>
+      <p class="regenesis-body">
+        <strong>Health optimization based on your biology.</strong><br/>
+        Regenesis connects your body photos, wellness stack, biomarker tracking, recovery habits, and longevity optimization goals into one personalized wellness dashboard.
+      </p>
+      <div class="regenesis-cta-row">
+        <button class="regenesis-btn-primary" onclick="document.getElementById('pricing').scrollIntoView({behavior:'smooth'})">Begin Your Regenesis</button>
+        <button class="regenesis-btn-secondary" onclick="document.getElementById('pricing').scrollIntoView({behavior:'smooth'})">View Platinum Plan</button>
+      </div>
+    </div>
+
+    <!-- FEATURE CARDS -->
+    <div class="regenesis-grid reveal">
+      <div class="regenesis-card">
+        <div class="regenesis-card-icon">📸</div>
+        <div class="regenesis-card-title">BodyScan<sup>™</sup></div>
+        <div class="regenesis-card-desc">Upload front, side, back, face, and hand photos to create a private progress baseline and before/after timeline.</div>
+      </div>
+      <div class="regenesis-card">
+        <div class="regenesis-card-icon">⏳</div>
+        <div class="regenesis-card-title">Emerald Regenesis Outlook<sup>™</sup></div>
+        <div class="regenesis-card-desc">See where your biology is headed. Educational projections based on your Regenesis Score™, BodyScan™, and Protocol Vault™ trends.</div>
+      </div>
+      <div class="regenesis-card">
+        <div class="regenesis-card-icon">⬡</div>
+        <div class="regenesis-card-title">Protocol Intelligence<sup>™</sup></div>
+        <div class="regenesis-card-desc">Track supplements, peptides, red-light therapy, workouts, sleep, and recovery habits in one integrated wellness stack.</div>
+      </div>
+      <div class="regenesis-card">
+        <div class="regenesis-card-icon">◬</div>
+        <div class="regenesis-card-title">Biology Dashboard<sup>™</sup></div>
+        <div class="regenesis-card-desc">Connect measurements, labs, wearables, and habits to see what is moving your biology in the right direction.</div>
+      </div>
+    </div>
+
+    <!-- DASHBOARD MOCKUP -->
+    <div class="regenesis-dash3 reveal">
+
+      <div class="regenesis-dash3-panel score">
+        <div class="regenesis-dash3-label">Regenesis Score™</div>
+        <div class="regenesis-score-ring">91</div>
+        <div class="regenesis-score-tag-sm">✦ Excellent</div>
+        <div class="regenesis-score-sub">Trending well above your baseline</div>
+        <div class="regenesis-score-stats">
+          <div class="regenesis-score-stat-row"><span>Consistency</span><span>↑94%</span></div>
+          <div class="regenesis-score-stat-row"><span>Recovery</span><span>↑22%</span></div>
+          <div class="regenesis-score-stat-row"><span>Tracking</span><span>Active</span></div>
+        </div>
+      </div>
+
+      <div class="regenesis-dash3-panel">
+        <div class="regenesis-dash3-header">
+          <div class="regenesis-dash3-title">Emerald Regenesis Outlook™</div>
+          <div class="regenesis-dash3-link">View timeline</div>
+        </div>
+        <div class="regenesis-future-row">
+          <div>
+            <div class="regenesis-upload-slot filled">📷</div>
+            <div class="regenesis-upload-caption">Today</div>
+          </div>
+          <div>
+            <div class="regenesis-upload-slot">📷</div>
+            <div class="regenesis-upload-caption">90 Days</div>
+          </div>
+          <div>
+            <div class="regenesis-upload-slot future">📷</div>
+            <div class="regenesis-upload-caption">1 Year</div>
+          </div>
+        </div>
+        <div class="regenesis-future-note">Educational projections based on your own uploaded BodyScan™ photos, Regenesis Score™, and Protocol Vault™ trends — not stock or generated imagery.</div>
+      </div>
+
+      <div class="regenesis-dash3-panel">
+        <div class="regenesis-dash3-label" style="margin-bottom:14px;">Biology Dashboard™</div>
+        <div class="regenesis-biology-list">
+          <div class="regenesis-biology-row"><span>Biomarkers</span><span>Optimal</span></div>
+          <div class="regenesis-biology-row"><span>Recovery</span><span>Good</span></div>
+          <div class="regenesis-biology-row"><span>Sleep</span><span class="neutral">7h 32m</span></div>
+          <div class="regenesis-biology-row"><span>Stack</span><span>Active</span></div>
+          <div class="regenesis-biology-row"><span>Consistency</span><span class="gold">94%</span></div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- DISCLAIMER -->
+    <div class="regenesis-disclaimer reveal">
+      <strong>Educational wellness projections only.</strong> Emerald Wellness does not diagnose, treat, prescribe, or guarantee outcomes. Consult a licensed healthcare provider before beginning peptides, HRT, TRT, GLP-1 therapies, or other medical treatments.
+    </div>
+
+  </div>
+</section>
+
+<!-- PRICING -->
+<section id="pricing">
+  <div class="reveal text-center">
+    <p class="section-label">Pricing</p>
+<p class="section-sub mx-auto" style="text-align:center;">Choose the tier that fits your protocol. Every paid plan starts at <strong>$1 for the first 7 days</strong> + <strong style="color:var(--goldL);">20% off your first month</strong>. $1 charged today.</p>
+  <!-- Offer badges row -->
+  <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:20px;">
+    <div style="display:flex;align-items:center;gap:8px;padding:8px 16px;background:var(--emPale);border:1px solid var(--borderEm);border-radius:20px;">
+      <span style="font-size:14px;">✓</span>
+      <span style="font-family:var(--cinzel);font-size:10px;letter-spacing:1px;color:var(--emXL);text-transform:uppercase;">$1 for First 7 Days</span>
+    </div>
+    <div style="display:flex;align-items:center;gap:8px;padding:8px 16px;background:var(--goldPale);border:1px solid var(--borderGold);border-radius:20px;">
+      <span style="font-size:14px;">✓</span>
+      <span style="font-family:var(--cinzel);font-size:10px;letter-spacing:1px;color:var(--goldL);text-transform:uppercase;">20% Off First Month</span>
+    </div>
+    <div style="display:flex;align-items:center;gap:8px;padding:8px 16px;background:var(--emPale);border:1px solid var(--borderEm);border-radius:20px;">
+      <span style="font-size:14px;">✓</span>
+      <span style="font-family:var(--cinzel);font-size:10px;letter-spacing:1px;color:var(--emXL);text-transform:uppercase;">Refer 3 → 20% Off Next Purchase</span>
+    </div>
+  </div>
+  </div>
+  <div class="billing-toggle">
+    <span class="toggle-lbl active" id="lbl-monthly">Monthly</span>
+    <div class="toggle-switch" id="billing-toggle" onclick="toggleBilling()">
+      <div class="toggle-knob"></div>
+    </div>
+    <span class="toggle-lbl" id="lbl-annual">Annual</span>
+    <span class="save-badge">Save 20%</span>
+  </div>
+  <div class="plans-grid reveal">
+    <!-- Silver -->
+    <div class="plan-card">
+      <div class="plan-name">SILVER</div>
+      <div class="plan-price"><sup>$</sup><span id="p-silver">74</span><span id="pd-silver">.99</span><sub>/mo</sub></div>
+      <div class="plan-annual" id="pa-silver"></div>
+      <hr class="plan-divider"/>
+      <ul class="plan-features">
+        <li>Supplement & peptide database (500+)</li>
+        <li>Basic interaction checker (up to 8 compounds)</li>
+        <li>Smart dosing scheduler</li>
+        <li>Injection site protocols</li>
+        <li>Store access for peptides & wellness products</li>
+        <li>10 Health Protocol Advocate queries/month</li>
+        <li class="locked">Lab tracker & trend analysis</li>
+        <li class="locked">Full protocol library</li>
+        <li class="locked">Unlimited protocol queries</li>
+      </ul>
+      <button class="plan-btn plan-btn-ghost" onclick="startCheckout('silver')">Start for $1</button>
+    </div>
+    <!-- Gold -->
+    <div class="plan-card featured">
+      <div class="plan-badge badge-popular">MOST POPULAR</div>
+      <div class="plan-name">GOLD</div>
+      <div class="plan-price"><sup>$</sup><span id="p-gold">149</span><span id="pd-gold">.99</span><sub>/mo</sub></div>
+      <div class="plan-annual" id="pa-gold"></div>
+      <hr class="plan-divider"/>
+      <ul class="plan-features">
+        <li>Everything in Silver</li>
+        <li>Unlimited interaction checker</li>
+        <li>Lab tracker & biomarker trending</li>
+        <li>Full protocol library (200+ protocols)</li>
+        <li>50 Health Protocol Advocate queries/month</li>
+        <li>Sound therapy & recovery library</li>
+        <li>Wearable integrations (Oura, WHOOP, Apple Health)</li>
+        <li class="locked">Unlimited protocol queries</li>
+      </ul>
+      <button class="plan-btn plan-btn-solid" onclick="startCheckout('gold')">Start for $1</button>
+    </div>
+    <!-- Emerald Elite -->
+    <div class="plan-card featured">
+      <div class="plan-badge badge-complete">COMPLETE</div>
+      <div class="plan-name">EMERALD ELITE</div>
+      <div class="plan-price"><sup>$</sup><span id="p-elite">199</span><span id="pd-elite">.99</span><sub>/mo</sub></div>
+      <div class="plan-annual" id="pa-elite"></div>
+      <hr class="plan-divider"/>
+      <ul class="plan-features">
+        <li>Everything in Gold</li>
+        <li>Unlimited Health Protocol Advocate queries</li>
+        <li>Biological age calculator & tracking</li>
+        <li>Custom protocol builder</li>
+        <li>Glandular & bioregulator database</li>
+        <li>Priority support</li>
+        <li>Exportable health reports (PDF)</li>
+        <li>Personalized optimization cycles</li>
+      </ul>
+      <button class="plan-btn plan-btn-elite" onclick="startCheckout('elite')">Start for $1</button>
+    </div>
+    <!-- Pro Practitioner Suite -->
+    <div class="plan-card pro">
+      <div class="plan-badge badge-pro">PRO PRACTITIONERS</div>
+      <div class="plan-name">PRO PRACTITIONER SUITE</div>
+      <div class="plan-price"><sup>$</sup><span id="p-pro">299</span><span id="pd-pro">.99</span><sub>/mo</sub></div>
+      <div class="plan-annual" id="pa-pro"></div>
+      <hr class="plan-divider"/>
+      <ul class="plan-features">
+        <li>Everything in Emerald Elite</li>
+        <li>Patient profiles & management</li>
+        <li>Per-patient stack & medication log</li>
+        <li>SOAP progress notes</li>
+        <li>White-label branded exports</li>
+        <li>Bulk interaction checker</li>
+        <li>Appointment scheduling</li>
+        <li>Practitioner protocol mode</li>
+        <li>HIPAA BAA available</li>
+      </ul>
+      <button class="plan-btn plan-btn-pro" onclick="startCheckout('pro')">Start 7-Day Pro Trial</button>
+    </div>
+    <!-- Platinum Regenesis -->
+    <div class="plan-card platinum">
+      <div class="plan-badge badge-platinum">PLATINUM REGENESIS</div>
+      <div class="plan-name">EMERALD PLATINUM REGENESIS</div>
+      <div class="plan-price"><sup>$</sup><span id="p-platinum">599</span><span id="pd-platinum">.00</span><sub id="ps-platinum">/mo</sub></div>
+      <div class="plan-annual" id="pa-platinum">$1 setup/intro charge, then recurring billing after 7 days</div>
+      <hr class="plan-divider"/>
+      <ul class="plan-features">
+        <li>Quarterly labs</li>
+        <li>Doctor visit and lab review</li>
+        <li>Peptide, supplement, and vitamin monitoring</li>
+        <li>BodyScan progress tracking</li>
+        <li>Regenesis Score and Biology Dashboard</li>
+        <li>Plus option: $799/month</li>
+        <li>Concierge option: $999-$1,499/month</li>
+      </ul>
+      <button class="plan-btn plan-btn-platinum" onclick="startCheckout('platinum')">Begin Your Regenesis</button>
+    </div>
+  </div>
+
+  <!-- Add-ons -->
+  <div style="margin-top:60px;" class="reveal">
+    <p class="section-label">Premium Add-Ons</p>
+    <h3 style="font-family:var(--serif);font-size:26px;font-weight:700;margin-bottom:8px;">Specialty Module Marketplace™ — <span style="color:var(--goldL)">+$49.99/mo each</span></h3>
+    <p style="font-size:14px;color:var(--textMid);">Available by membership tier. Gold includes 1 active module, Platinum Plus includes 3, Concierge includes unlimited, and a 3-module add-on bundle is $89/month.</p>
+    <p style="margin-top:12px;"><a class="btn-gold" href="/specialty-modules">Browse the expanded specialty module library â†’</a></p>
+  </div>
+  <div class="addons-grid reveal">
+    <div class="addon-card"><div class="addon-icon">🏋️</div><div><div class="addon-name">Sports Performance Module</div><div class="addon-price">+$49.99/mo</div><div class="addon-desc">Advanced periodization, VO2max optimization, and HRV-based training overlays.</div></div></div>
+    <div class="addon-card"><div class="addon-icon">⚡</div><div><div class="addon-name">Peptide Mastery Track</div><div class="addon-price">+$49.99/mo</div><div class="addon-desc">Video masterclasses, advanced peptide stacking trees, reconstitution calculators.</div></div></div>
+    <div class="addon-card"><div class="addon-icon">🌙</div><div><div class="addon-name">Sleep Science Suite</div><div class="addon-price">+$49.99/mo</div><div class="addon-desc">Sleep stage analysis, DSIP & melatonin dosing windows, chronotype optimization.</div></div></div>
+    <div class="addon-card"><div class="addon-icon">🧬</div><div><div class="addon-name">Genomics Integration</div><div class="addon-price">+$49.99/mo</div><div class="addon-desc">Upload 23andMe or AncestryDNA raw data for SNP-informed protocol recommendations.</div></div></div>
+    <div class="addon-card"><div class="addon-icon">🫀</div><div><div class="addon-name">Cardiovascular Optimizer</div><div class="addon-price">+$49.99/mo</div><div class="addon-desc">Lipid, HRV, blood pressure, and hs-CRP tracking with protocol recommendations.</div></div></div>
+    <div class="addon-card"><div class="addon-icon">🥗</div><div><div class="addon-name">Nutrition & Diet Optimization</div><div class="addon-price">+$49.99/mo</div><div class="addon-desc">Macro and micronutrient protocols, food-supplement timing, anti-inflammatory meal plans, and gut microbiome nutrition plans.</div></div></div>
+    <div class="addon-card"><div class="addon-icon">🧪</div><div><div class="addon-name">Advanced Lab Panel Builder</div><div class="addon-price">+$49.99/mo</div><div class="addon-desc">Customizable quarterly lab panels with reference ranges calibrated to your age, sex, and goals.</div></div></div>
+  </div>
+</section>
+
+<!-- PRACTITIONERS -->
+<section id="practitioners">
+  <div class="reveal">
+    <p class="section-label">For Clinicians & Coaches</p>
+    <h2 class="section-title">Built for the Practitioners<br/>Who Lead the Field</h2>
+    <p class="section-sub">The Pro Practitioner Suite gives you a clinical workspace that scales — from solo practitioners to multi-provider clinics.</p>
+  </div>
+  <div class="prac-grid reveal">
+    <div class="prac-tile"><div class="prac-tile-icon">👨‍⚕️</div><div class="prac-tile-name">Functional Medicine MDs</div></div>
+    <div class="prac-tile"><div class="prac-tile-icon">🏃</div><div class="prac-tile-name">Sports Medicine Physicians</div></div>
+    <div class="prac-tile"><div class="prac-tile-icon">🧬</div><div class="prac-tile-name">Longevity Clinics</div></div>
+    <div class="prac-tile"><div class="prac-tile-icon">💉</div><div class="prac-tile-name">Peptide Therapy Specialists</div></div>
+    <div class="prac-tile"><div class="prac-tile-icon">🏋️</div><div class="prac-tile-name">Performance Coaches</div></div>
+    <div class="prac-tile"><div class="prac-tile-icon">🌿</div><div class="prac-tile-name">Naturopathic Doctors</div></div>
+    <div class="prac-tile"><div class="prac-tile-icon">🎯</div><div class="prac-tile-name">Registered Dietitians</div></div>
+    <div class="prac-tile"><div class="prac-tile-icon">🥗</div><div class="prac-tile-name">Nutrition Specialists</div></div>
+  </div>
+  <div class="enterprise-cta reveal">
+    <div>
+      <h3>Enterprise & Multi-Provider Clinics</h3>
+      <p>Custom pricing, SSO, shared patient databases, white-label branding, dedicated onboarding, and a HIPAA BAA. Let's build your clinical infrastructure together.</p>
+    </div>
+    <a href="mailto:enterprise@emeraldwellness.health" class="btn-gold">Contact Enterprise Sales →</a>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section id="testimonials" style="background:var(--bg2);">
+  <div class="reveal text-center">
+    <p class="section-label">Member Results</p>
+    <h2 class="section-title">Trusted by Biohackers,<br/>Athletes & Longevity Seekers</h2>
+  </div>
+  <div class="testimonials-grid">
+    <div class="testi-card reveal">
+      <div class="testi-stars">★★★★★</div>
+      <div class="testi-text">"The interaction checker alone saved me from a serious mistake — I had TB-500 and a NSAID stacked in a way that would have blunted healing. This platform paid for itself in the first week."</div>
+      <div class="testi-author">Marcus T.</div>
+      <div class="testi-role">Competitive CrossFit Athlete, Denver CO</div>
+    </div>
+    <div class="testi-card reveal">
+      <div class="testi-stars">★★★★★</div>
+      <div class="testi-text">"I've tried every supplement tracker app on the market. Nothing comes close. The Health Protocol Advocate helps organize peptide and supplement questions clearly."</div>
+      <div class="testi-author">Sarah K.</div>
+      <div class="testi-role">Longevity Enthusiast, 51 — Biological Age 39</div>
+    </div>
+    <div class="testi-card reveal">
+      <div class="testi-stars">★★★★★</div>
+      <div class="testi-text">"The Pro Practitioner Suite has completely changed how I manage patients on complex peptide protocols. The SOAP notes and white-label exports are clinic-grade."</div>
+      <div class="testi-author">Dr. Priya Nair, MD</div>
+      <div class="testi-role">Functional & Integrative Medicine, Austin TX</div>
+    </div>
+    <div class="testi-card reveal">
+      <div class="testi-stars">★★★★★</div>
+      <div class="testi-text">"I brought my biological age down 8 years in 14 months following the longevity protocol. The lab tracker showing my CRP and HbA1c trend is genuinely motivating."</div>
+      <div class="testi-author">David R.</div>
+      <div class="testi-role">Tech Executive, 48 — Seattle WA</div>
+    </div>
+    <div class="testi-card reveal">
+      <div class="testi-stars">★★★★★</div>
+      <div class="testi-text">"As a registered dietitian, I recommend this to every serious wellness client. The genomics integration module changed how I think about personalized nutrition."</div>
+      <div class="testi-author">Jennifer M., RD</div>
+      <div class="testi-role">Clinical Dietitian & Wellness Coach</div>
+    </div>
+    <div class="testi-card reveal">
+      <div class="testi-stars">★★★★★</div>
+      <div class="testi-text">"The sound therapy module paired with my DSIP protocol genuinely changed my sleep architecture. HRV up 22 points in 6 weeks. I check the dashboard every morning."</div>
+      <div class="testi-author">Sophia R.</div>
+      <div class="testi-role">Wellness Coach & Breathwork Instructor</div>
+    </div>
+  </div>
+</section>
+
+<!-- BLOG -->
+<section id="blog">
+  <div class="reveal">
+    <p class="section-label">Intelligence Library</p>
+    <h2 class="section-title">Deep Dives for the<br/>Serious Optimizer</h2>
+    <p class="section-sub">Peer-reviewed science translated into actionable protocol guidance. Written by our advisory board and reviewed for clinical accuracy.</p>
+  </div>
+  <div class="blog-grid">
+    <a href="/blog/nmn-longevity-guide-2026" class="blog-card reveal">
+      <div class="blog-img">🧬</div>
+      <div class="blog-body">
+        <div class="blog-cat">Longevity</div>
+        <div class="blog-title">NMN Complete Protocol 2026: Dosing, Benefits & Longevity Stack</div>
+        <div class="blog-excerpt">Everything about NMN — optimal dosing by age, sublingual vs liposomal, the TMG rule, and the complete NAD+ longevity stack.</div>
+        <div class="blog-meta"><span>Dr. Yuki Tanaka, PhD</span><span>·</span><span>13 min</span></div>
+      </div>
+    </a>
+    <a href="/blog/bpc157-tb500-injury-repair-stack" class="blog-card reveal">
+      <div class="blog-img">💉</div>
+      <div class="blog-body">
+        <div class="blog-cat">Peptide Protocols</div>
+        <div class="blog-title">BPC-157 + TB-500: The Definitive Injury Repair Stack 2026</div>
+        <div class="blog-excerpt">Reconstitution protocols, injection site maps, loading vs maintenance phases, and the synergy science behind the #1 healing peptide stack.</div>
+        <div class="blog-meta"><span>Dr. Amara Osei, MD</span><span>·</span><span>16 min</span></div>
+      </div>
+    </a>
+    <a href="/blog/cjc1295-ipamorelin-gh-optimization-stack" class="blog-card reveal">
+      <div class="blog-img">🚀</div>
+      <div class="blog-body">
+        <div class="blog-cat">Performance</div>
+        <div class="blog-title">CJC-1295 + Ipamorelin: The GH Optimization Stack 2026</div>
+        <div class="blog-excerpt">Why CJC without DAC + Ipamorelin produces 3–6× synergistic GH pulses — complete protocol, timing, cycling, and IGF-1 monitoring.</div>
+        <div class="blog-meta"><span>Dr. James Holloway, MD</span><span>·</span><span>14 min</span></div>
+      </div>
+    </a>
+  </div>
+  <!-- Secondary blog row -->
+  <div class="blog-grid" style="margin-top:20px;">
+    <a href="/blog/semaglutide-protocol-dosing-guide" class="blog-card reveal">
+      <div class="blog-img">⚡</div>
+      <div class="blog-body">
+        <div class="blog-cat">Metabolic</div>
+        <div class="blog-title">Semaglutide Protocol 2026: Dosing, Titration & Stack Planning</div>
+        <div class="blog-excerpt">Complete titration schedule, side effect management, muscle preservation protocol, and the supplement stack that amplifies GLP-1 results.</div>
+        <div class="blog-meta"><span>Dr. Marcus Webb, MD</span><span>·</span><span>15 min</span></div>
+      </div>
+    </a>
+    <a href="/blog/thymosin-alpha1-immune-reset-protocol" class="blog-card reveal">
+      <div class="blog-img">🛡️</div>
+      <div class="blog-body">
+        <div class="blog-cat">Immune</div>
+        <div class="blog-title">Thymosin Alpha-1: The Complete Immune Reset Protocol 2026</div>
+        <div class="blog-excerpt">4,000+ studies, approved in 35 countries. The longevity, chronic infection, and vaccine enhancement protocols — with full clinical evidence.</div>
+        <div class="blog-meta"><span>Dr. Priya Nair, MD</span><span>·</span><span>13 min</span></div>
+      </div>
+    </a>
+    <a href="/blog/semax-selank-neuropeptide-stack" class="blog-card reveal">
+      <div class="blog-img">🧠</div>
+      <div class="blog-body">
+        <div class="blog-cat">Cognitive</div>
+        <div class="blog-title">Semax + Selank: The Neuropeptide Stack for Focus & Anxiety</div>
+        <div class="blog-excerpt">The cleanest cognitive stack available — sharp focus without stimulant edge, calm without sedation. Full protocol and intranasal details.</div>
+        <div class="blog-meta"><span>Dr. Elena Vasquez, PhD</span><span>·</span><span>14 min</span></div>
+      </div>
+    </a>
+  </div>
+  <div style="text-align:center;margin-top:36px;">
+    <a href="/blog/" class="btn-ghost" style="display:inline-block;">View All 8 Articles in the Intelligence Library →</a>
+  </div>
+</section>
+
+<!-- EDUCATION LIBRARY PREVIEW -->
+<section id="education-library" style="background:var(--bg2);">
+  <div class="reveal text-center">
+    <p class="section-label">Education Library</p>
+    <h2 class="section-title">Deep education lives lower — after the path to start is clear.</h2>
+    <p class="section-sub mx-auto" style="text-align:center;">For members who want detail, the full reference library still covers peptides, vitamins, supplements, bioregulators, biological age, parasite/yeast/fungal organization, and protocol education.</p>
   </div>
 </section>
 
@@ -1207,423 +1687,6 @@ footer{background:var(--bg);border-top:1px solid var(--border);padding:60px 48px
       <div class="proto-desc">Strengthening innate and adaptive immunity, reducing chronic inflammation, and resetting immune dysregulation with peptide immunomodulators.</div>
       <div class="proto-items"><span class="proto-item">Thymosin-α1</span><span class="proto-item">LL-37</span><span class="proto-item">Glutathione</span><span class="proto-item">Zinc</span></div>
     </div>
-  </div>
-</section>
-
-<!-- HOW IT WORKS -->
-<section id="how" style="background:var(--bg2);">
-  <div class="reveal text-center">
-    <p class="section-label">Getting Started</p>
-    <h2 class="section-title">From Zero to<br/>Optimized in Minutes</h2>
-  </div>
-  <div class="hiw-steps">
-    <div class="hiw-step reveal">
-      <div class="hiw-num">01</div>
-      <div class="hiw-title">Build Your Stack</div>
-      <div class="hiw-desc">Search or scan 500+ compounds. Add everything you're taking — supplements, peptides, medications. Your complete stack in one place.</div>
-    </div>
-    <div class="hiw-step reveal">
-      <div class="hiw-num">02</div>
-      <div class="hiw-title">Run the Analysis</div>
-      <div class="hiw-desc">Instant interaction check, timing optimization, and synergy scoring. The platform flags conflicts and suggests adjustments based on your goals.</div>
-    </div>
-    <div class="hiw-step reveal">
-      <div class="hiw-num">03</div>
-      <div class="hiw-title">Follow Your Schedule</div>
-      <div class="hiw-desc">Smart daily reminders with exact doses, timing rationale, and food pairing instructions. Built around your sleep, workout, and meal schedule.</div>
-    </div>
-    <div class="hiw-step reveal">
-      <div class="hiw-num">04</div>
-      <div class="hiw-title">Track & Optimize</div>
-      <div class="hiw-desc">Log how you feel, import labs, connect wearables. Watch your biological age score move. The platform learns your response patterns and adjusts protocols accordingly.</div>
-    </div>
-  </div>
-</section>
-
-<section id="regenesis" class="regenesis-section">
-  <div class="regenesis-inner">
-
-    <div class="text-center reveal" style="display:flex;flex-direction:column;align-items:center;">
-      <div class="regenesis-kicker">✦ New • Emerald Platinum</div>
-      <h2 class="regenesis-headline">Emerald Platinum<br/><em>Regenesis™</em></h2>
-      <p class="regenesis-tagline">Where Transformation Begins.</p>
-      <p class="regenesis-body">
-        <strong>Health optimization based on your biology.</strong><br/>
-        Regenesis connects your body photos, wellness stack, biomarker tracking, recovery habits, and longevity optimization goals into one personalized wellness dashboard.
-      </p>
-      <div class="regenesis-cta-row">
-        <button class="regenesis-btn-primary" onclick="document.getElementById('pricing').scrollIntoView({behavior:'smooth'})">Begin Your Regenesis</button>
-        <button class="regenesis-btn-secondary" onclick="document.getElementById('pricing').scrollIntoView({behavior:'smooth'})">View Platinum Plan</button>
-      </div>
-    </div>
-
-    <!-- FEATURE CARDS -->
-    <div class="regenesis-grid reveal">
-      <div class="regenesis-card">
-        <div class="regenesis-card-icon">📸</div>
-        <div class="regenesis-card-title">BodyScan<sup>™</sup></div>
-        <div class="regenesis-card-desc">Upload front, side, back, face, and hand photos to create a private progress baseline and before/after timeline.</div>
-      </div>
-      <div class="regenesis-card">
-        <div class="regenesis-card-icon">⏳</div>
-        <div class="regenesis-card-title">Emerald Regenesis Outlook<sup>™</sup></div>
-        <div class="regenesis-card-desc">See where your biology is headed. Educational projections based on your Regenesis Score™, BodyScan™, and Protocol Vault™ trends.</div>
-      </div>
-      <div class="regenesis-card">
-        <div class="regenesis-card-icon">⬡</div>
-        <div class="regenesis-card-title">Protocol Intelligence<sup>™</sup></div>
-        <div class="regenesis-card-desc">Track supplements, peptides, red-light therapy, workouts, sleep, and recovery habits in one integrated wellness stack.</div>
-      </div>
-      <div class="regenesis-card">
-        <div class="regenesis-card-icon">◬</div>
-        <div class="regenesis-card-title">Biology Dashboard<sup>™</sup></div>
-        <div class="regenesis-card-desc">Connect measurements, labs, wearables, and habits to see what is moving your biology in the right direction.</div>
-      </div>
-    </div>
-
-    <!-- DASHBOARD MOCKUP -->
-    <div class="regenesis-dash3 reveal">
-
-      <div class="regenesis-dash3-panel score">
-        <div class="regenesis-dash3-label">Regenesis Score™</div>
-        <div class="regenesis-score-ring">91</div>
-        <div class="regenesis-score-tag-sm">✦ Excellent</div>
-        <div class="regenesis-score-sub">Trending well above your baseline</div>
-        <div class="regenesis-score-stats">
-          <div class="regenesis-score-stat-row"><span>Consistency</span><span>↑94%</span></div>
-          <div class="regenesis-score-stat-row"><span>Recovery</span><span>↑22%</span></div>
-          <div class="regenesis-score-stat-row"><span>Tracking</span><span>Active</span></div>
-        </div>
-      </div>
-
-      <div class="regenesis-dash3-panel">
-        <div class="regenesis-dash3-header">
-          <div class="regenesis-dash3-title">Emerald Regenesis Outlook™</div>
-          <div class="regenesis-dash3-link">View timeline</div>
-        </div>
-        <div class="regenesis-future-row">
-          <div>
-            <div class="regenesis-upload-slot filled">📷</div>
-            <div class="regenesis-upload-caption">Today</div>
-          </div>
-          <div>
-            <div class="regenesis-upload-slot">📷</div>
-            <div class="regenesis-upload-caption">90 Days</div>
-          </div>
-          <div>
-            <div class="regenesis-upload-slot future">📷</div>
-            <div class="regenesis-upload-caption">1 Year</div>
-          </div>
-        </div>
-        <div class="regenesis-future-note">Educational projections based on your own uploaded BodyScan™ photos, Regenesis Score™, and Protocol Vault™ trends — not stock or generated imagery.</div>
-      </div>
-
-      <div class="regenesis-dash3-panel">
-        <div class="regenesis-dash3-label" style="margin-bottom:14px;">Biology Dashboard™</div>
-        <div class="regenesis-biology-list">
-          <div class="regenesis-biology-row"><span>Biomarkers</span><span>Optimal</span></div>
-          <div class="regenesis-biology-row"><span>Recovery</span><span>Good</span></div>
-          <div class="regenesis-biology-row"><span>Sleep</span><span class="neutral">7h 32m</span></div>
-          <div class="regenesis-biology-row"><span>Stack</span><span>Active</span></div>
-          <div class="regenesis-biology-row"><span>Consistency</span><span class="gold">94%</span></div>
-        </div>
-      </div>
-
-    </div>
-
-    <!-- DISCLAIMER -->
-    <div class="regenesis-disclaimer reveal">
-      <strong>Educational wellness projections only.</strong> Emerald Wellness does not diagnose, treat, prescribe, or guarantee outcomes. Consult a licensed healthcare provider before beginning peptides, HRT, TRT, GLP-1 therapies, or other medical treatments.
-    </div>
-
-  </div>
-</section>
-
-<!-- PRICING -->
-<section id="pricing">
-  <div class="reveal text-center">
-    <p class="section-label">Pricing</p>
-<p class="section-sub mx-auto" style="text-align:center;">Choose the tier that fits your protocol. Every paid plan starts at <strong>$1 for the first 7 days</strong> + <strong style="color:var(--goldL);">20% off your first month</strong>. $1 charged today.</p>
-  <!-- Offer badges row -->
-  <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:20px;">
-    <div style="display:flex;align-items:center;gap:8px;padding:8px 16px;background:var(--emPale);border:1px solid var(--borderEm);border-radius:20px;">
-      <span style="font-size:14px;">✓</span>
-      <span style="font-family:var(--cinzel);font-size:10px;letter-spacing:1px;color:var(--emXL);text-transform:uppercase;">$1 for First 7 Days</span>
-    </div>
-    <div style="display:flex;align-items:center;gap:8px;padding:8px 16px;background:var(--goldPale);border:1px solid var(--borderGold);border-radius:20px;">
-      <span style="font-size:14px;">✓</span>
-      <span style="font-family:var(--cinzel);font-size:10px;letter-spacing:1px;color:var(--goldL);text-transform:uppercase;">20% Off First Month</span>
-    </div>
-    <div style="display:flex;align-items:center;gap:8px;padding:8px 16px;background:var(--emPale);border:1px solid var(--borderEm);border-radius:20px;">
-      <span style="font-size:14px;">✓</span>
-      <span style="font-family:var(--cinzel);font-size:10px;letter-spacing:1px;color:var(--emXL);text-transform:uppercase;">Refer 3 → 20% Off Next Purchase</span>
-    </div>
-  </div>
-  </div>
-  <div class="billing-toggle">
-    <span class="toggle-lbl active" id="lbl-monthly">Monthly</span>
-    <div class="toggle-switch" id="billing-toggle" onclick="toggleBilling()">
-      <div class="toggle-knob"></div>
-    </div>
-    <span class="toggle-lbl" id="lbl-annual">Annual</span>
-    <span class="save-badge">Save 20%</span>
-  </div>
-  <div class="plans-grid reveal">
-    <!-- Silver -->
-    <div class="plan-card">
-      <div class="plan-name">SILVER</div>
-      <div class="plan-price"><sup>$</sup><span id="p-silver">74</span><span id="pd-silver">.99</span><sub>/mo</sub></div>
-      <div class="plan-annual" id="pa-silver"></div>
-      <hr class="plan-divider"/>
-      <ul class="plan-features">
-        <li>Supplement & peptide database (500+)</li>
-        <li>Basic interaction checker (up to 8 compounds)</li>
-        <li>Smart dosing scheduler</li>
-        <li>Injection site protocols</li>
-        <li>Store access for peptides & wellness products</li>
-        <li>10 Health Protocol Advocate queries/month</li>
-        <li class="locked">Lab tracker & trend analysis</li>
-        <li class="locked">Full protocol library</li>
-        <li class="locked">Unlimited protocol queries</li>
-      </ul>
-      <button class="plan-btn plan-btn-ghost" onclick="startCheckout('silver')">Start for $1</button>
-    </div>
-    <!-- Gold -->
-    <div class="plan-card featured">
-      <div class="plan-badge badge-popular">MOST POPULAR</div>
-      <div class="plan-name">GOLD</div>
-      <div class="plan-price"><sup>$</sup><span id="p-gold">149</span><span id="pd-gold">.99</span><sub>/mo</sub></div>
-      <div class="plan-annual" id="pa-gold"></div>
-      <hr class="plan-divider"/>
-      <ul class="plan-features">
-        <li>Everything in Silver</li>
-        <li>Unlimited interaction checker</li>
-        <li>Lab tracker & biomarker trending</li>
-        <li>Full protocol library (200+ protocols)</li>
-        <li>50 Health Protocol Advocate queries/month</li>
-        <li>Sound therapy & recovery library</li>
-        <li>Wearable integrations (Oura, WHOOP, Apple Health)</li>
-        <li class="locked">Unlimited protocol queries</li>
-      </ul>
-      <button class="plan-btn plan-btn-solid" onclick="startCheckout('gold')">Start for $1</button>
-    </div>
-    <!-- Emerald Elite -->
-    <div class="plan-card featured">
-      <div class="plan-badge badge-complete">COMPLETE</div>
-      <div class="plan-name">EMERALD ELITE</div>
-      <div class="plan-price"><sup>$</sup><span id="p-elite">199</span><span id="pd-elite">.99</span><sub>/mo</sub></div>
-      <div class="plan-annual" id="pa-elite"></div>
-      <hr class="plan-divider"/>
-      <ul class="plan-features">
-        <li>Everything in Gold</li>
-        <li>Unlimited Health Protocol Advocate queries</li>
-        <li>Biological age calculator & tracking</li>
-        <li>Custom protocol builder</li>
-        <li>Glandular & bioregulator database</li>
-        <li>Priority support</li>
-        <li>Exportable health reports (PDF)</li>
-        <li>Personalized optimization cycles</li>
-      </ul>
-      <button class="plan-btn plan-btn-elite" onclick="startCheckout('elite')">Start for $1</button>
-    </div>
-    <!-- Pro Practitioner Suite -->
-    <div class="plan-card pro">
-      <div class="plan-badge badge-pro">PRO PRACTITIONERS</div>
-      <div class="plan-name">PRO PRACTITIONER SUITE</div>
-      <div class="plan-price"><sup>$</sup><span id="p-pro">299</span><span id="pd-pro">.99</span><sub>/mo</sub></div>
-      <div class="plan-annual" id="pa-pro"></div>
-      <hr class="plan-divider"/>
-      <ul class="plan-features">
-        <li>Everything in Emerald Elite</li>
-        <li>Patient profiles & management</li>
-        <li>Per-patient stack & medication log</li>
-        <li>SOAP progress notes</li>
-        <li>White-label branded exports</li>
-        <li>Bulk interaction checker</li>
-        <li>Appointment scheduling</li>
-        <li>Practitioner protocol mode</li>
-        <li>HIPAA BAA available</li>
-      </ul>
-      <button class="plan-btn plan-btn-pro" onclick="startCheckout('pro')">Start 7-Day Pro Trial</button>
-    </div>
-    <!-- Platinum Regenesis -->
-    <div class="plan-card platinum">
-      <div class="plan-badge badge-platinum">PLATINUM REGENESIS</div>
-      <div class="plan-name">EMERALD PLATINUM REGENESIS</div>
-      <div class="plan-price"><sup>$</sup><span id="p-platinum">599</span><span id="pd-platinum">.00</span><sub id="ps-platinum">/mo</sub></div>
-      <div class="plan-annual" id="pa-platinum">$1 setup/intro charge, then recurring billing after 7 days</div>
-      <hr class="plan-divider"/>
-      <ul class="plan-features">
-        <li>Quarterly labs</li>
-        <li>Doctor visit and lab review</li>
-        <li>Peptide, supplement, and vitamin monitoring</li>
-        <li>BodyScan progress tracking</li>
-        <li>Regenesis Score and Biology Dashboard</li>
-        <li>Plus option: $799/month</li>
-        <li>Concierge option: $999-$1,499/month</li>
-      </ul>
-      <button class="plan-btn plan-btn-platinum" onclick="startCheckout('platinum')">Begin Your Regenesis</button>
-    </div>
-  </div>
-
-  <!-- Add-ons -->
-  <div style="margin-top:60px;" class="reveal">
-    <p class="section-label">Premium Add-Ons</p>
-    <h3 style="font-family:var(--serif);font-size:26px;font-weight:700;margin-bottom:8px;">Specialty Module Marketplace™ — <span style="color:var(--goldL)">+$49.99/mo each</span></h3>
-    <p style="font-size:14px;color:var(--textMid);">Available by membership tier. Gold includes 1 active module, Platinum Plus includes 3, Concierge includes unlimited, and a 3-module add-on bundle is $89/month.</p>
-    <p style="margin-top:12px;"><a class="btn-gold" href="/specialty-modules">Browse the expanded specialty module library â†’</a></p>
-  </div>
-  <div class="addons-grid reveal">
-    <div class="addon-card"><div class="addon-icon">🏋️</div><div><div class="addon-name">Sports Performance Module</div><div class="addon-price">+$49.99/mo</div><div class="addon-desc">Advanced periodization, VO2max optimization, and HRV-based training overlays.</div></div></div>
-    <div class="addon-card"><div class="addon-icon">⚡</div><div><div class="addon-name">Peptide Mastery Track</div><div class="addon-price">+$49.99/mo</div><div class="addon-desc">Video masterclasses, advanced peptide stacking trees, reconstitution calculators.</div></div></div>
-    <div class="addon-card"><div class="addon-icon">🌙</div><div><div class="addon-name">Sleep Science Suite</div><div class="addon-price">+$49.99/mo</div><div class="addon-desc">Sleep stage analysis, DSIP & melatonin dosing windows, chronotype optimization.</div></div></div>
-    <div class="addon-card"><div class="addon-icon">🧬</div><div><div class="addon-name">Genomics Integration</div><div class="addon-price">+$49.99/mo</div><div class="addon-desc">Upload 23andMe or AncestryDNA raw data for SNP-informed protocol recommendations.</div></div></div>
-    <div class="addon-card"><div class="addon-icon">🫀</div><div><div class="addon-name">Cardiovascular Optimizer</div><div class="addon-price">+$49.99/mo</div><div class="addon-desc">Lipid, HRV, blood pressure, and hs-CRP tracking with protocol recommendations.</div></div></div>
-    <div class="addon-card"><div class="addon-icon">🥗</div><div><div class="addon-name">Nutrition & Diet Optimization</div><div class="addon-price">+$49.99/mo</div><div class="addon-desc">Macro and micronutrient protocols, food-supplement timing, anti-inflammatory meal plans, and gut microbiome nutrition plans.</div></div></div>
-    <div class="addon-card"><div class="addon-icon">🧪</div><div><div class="addon-name">Advanced Lab Panel Builder</div><div class="addon-price">+$49.99/mo</div><div class="addon-desc">Customizable quarterly lab panels with reference ranges calibrated to your age, sex, and goals.</div></div></div>
-  </div>
-</section>
-
-<!-- PRACTITIONERS -->
-<section id="practitioners">
-  <div class="reveal">
-    <p class="section-label">For Clinicians & Coaches</p>
-    <h2 class="section-title">Built for the Practitioners<br/>Who Lead the Field</h2>
-    <p class="section-sub">The Pro Practitioner Suite gives you a clinical workspace that scales — from solo practitioners to multi-provider clinics.</p>
-  </div>
-  <div class="prac-grid reveal">
-    <div class="prac-tile"><div class="prac-tile-icon">👨‍⚕️</div><div class="prac-tile-name">Functional Medicine MDs</div></div>
-    <div class="prac-tile"><div class="prac-tile-icon">🏃</div><div class="prac-tile-name">Sports Medicine Physicians</div></div>
-    <div class="prac-tile"><div class="prac-tile-icon">🧬</div><div class="prac-tile-name">Longevity Clinics</div></div>
-    <div class="prac-tile"><div class="prac-tile-icon">💉</div><div class="prac-tile-name">Peptide Therapy Specialists</div></div>
-    <div class="prac-tile"><div class="prac-tile-icon">🏋️</div><div class="prac-tile-name">Performance Coaches</div></div>
-    <div class="prac-tile"><div class="prac-tile-icon">🌿</div><div class="prac-tile-name">Naturopathic Doctors</div></div>
-    <div class="prac-tile"><div class="prac-tile-icon">🎯</div><div class="prac-tile-name">Registered Dietitians</div></div>
-    <div class="prac-tile"><div class="prac-tile-icon">🥗</div><div class="prac-tile-name">Nutrition Specialists</div></div>
-  </div>
-  <div class="enterprise-cta reveal">
-    <div>
-      <h3>Enterprise & Multi-Provider Clinics</h3>
-      <p>Custom pricing, SSO, shared patient databases, white-label branding, dedicated onboarding, and a HIPAA BAA. Let's build your clinical infrastructure together.</p>
-    </div>
-    <a href="mailto:enterprise@emeraldwellness.health" class="btn-gold">Contact Enterprise Sales →</a>
-  </div>
-</section>
-
-<!-- TESTIMONIALS -->
-<section id="testimonials" style="background:var(--bg2);">
-  <div class="reveal text-center">
-    <p class="section-label">Member Results</p>
-    <h2 class="section-title">Trusted by Biohackers,<br/>Athletes & Longevity Seekers</h2>
-  </div>
-  <div class="testimonials-grid">
-    <div class="testi-card reveal">
-      <div class="testi-stars">★★★★★</div>
-      <div class="testi-text">"The interaction checker alone saved me from a serious mistake — I had TB-500 and a NSAID stacked in a way that would have blunted healing. This platform paid for itself in the first week."</div>
-      <div class="testi-author">Marcus T.</div>
-      <div class="testi-role">Competitive CrossFit Athlete, Denver CO</div>
-    </div>
-    <div class="testi-card reveal">
-      <div class="testi-stars">★★★★★</div>
-      <div class="testi-text">"I've tried every supplement tracker app on the market. Nothing comes close. The Health Protocol Advocate helps organize peptide and supplement questions clearly."</div>
-      <div class="testi-author">Sarah K.</div>
-      <div class="testi-role">Longevity Enthusiast, 51 — Biological Age 39</div>
-    </div>
-    <div class="testi-card reveal">
-      <div class="testi-stars">★★★★★</div>
-      <div class="testi-text">"The Pro Practitioner Suite has completely changed how I manage patients on complex peptide protocols. The SOAP notes and white-label exports are clinic-grade."</div>
-      <div class="testi-author">Dr. Priya Nair, MD</div>
-      <div class="testi-role">Functional & Integrative Medicine, Austin TX</div>
-    </div>
-    <div class="testi-card reveal">
-      <div class="testi-stars">★★★★★</div>
-      <div class="testi-text">"I brought my biological age down 8 years in 14 months following the longevity protocol. The lab tracker showing my CRP and HbA1c trend is genuinely motivating."</div>
-      <div class="testi-author">David R.</div>
-      <div class="testi-role">Tech Executive, 48 — Seattle WA</div>
-    </div>
-    <div class="testi-card reveal">
-      <div class="testi-stars">★★★★★</div>
-      <div class="testi-text">"As a registered dietitian, I recommend this to every serious wellness client. The genomics integration module changed how I think about personalized nutrition."</div>
-      <div class="testi-author">Jennifer M., RD</div>
-      <div class="testi-role">Clinical Dietitian & Wellness Coach</div>
-    </div>
-    <div class="testi-card reveal">
-      <div class="testi-stars">★★★★★</div>
-      <div class="testi-text">"The sound therapy module paired with my DSIP protocol genuinely changed my sleep architecture. HRV up 22 points in 6 weeks. I check the dashboard every morning."</div>
-      <div class="testi-author">Sophia R.</div>
-      <div class="testi-role">Wellness Coach & Breathwork Instructor</div>
-    </div>
-  </div>
-</section>
-
-<!-- BLOG -->
-<section id="blog">
-  <div class="reveal">
-    <p class="section-label">Intelligence Library</p>
-    <h2 class="section-title">Deep Dives for the<br/>Serious Optimizer</h2>
-    <p class="section-sub">Peer-reviewed science translated into actionable protocol guidance. Written by our advisory board and reviewed for clinical accuracy.</p>
-  </div>
-  <div class="blog-grid">
-    <a href="/blog/nmn-longevity-guide-2026" class="blog-card reveal">
-      <div class="blog-img">🧬</div>
-      <div class="blog-body">
-        <div class="blog-cat">Longevity</div>
-        <div class="blog-title">NMN Complete Protocol 2026: Dosing, Benefits & Longevity Stack</div>
-        <div class="blog-excerpt">Everything about NMN — optimal dosing by age, sublingual vs liposomal, the TMG rule, and the complete NAD+ longevity stack.</div>
-        <div class="blog-meta"><span>Dr. Yuki Tanaka, PhD</span><span>·</span><span>13 min</span></div>
-      </div>
-    </a>
-    <a href="/blog/bpc157-tb500-injury-repair-stack" class="blog-card reveal">
-      <div class="blog-img">💉</div>
-      <div class="blog-body">
-        <div class="blog-cat">Peptide Protocols</div>
-        <div class="blog-title">BPC-157 + TB-500: The Definitive Injury Repair Stack 2026</div>
-        <div class="blog-excerpt">Reconstitution protocols, injection site maps, loading vs maintenance phases, and the synergy science behind the #1 healing peptide stack.</div>
-        <div class="blog-meta"><span>Dr. Amara Osei, MD</span><span>·</span><span>16 min</span></div>
-      </div>
-    </a>
-    <a href="/blog/cjc1295-ipamorelin-gh-optimization-stack" class="blog-card reveal">
-      <div class="blog-img">🚀</div>
-      <div class="blog-body">
-        <div class="blog-cat">Performance</div>
-        <div class="blog-title">CJC-1295 + Ipamorelin: The GH Optimization Stack 2026</div>
-        <div class="blog-excerpt">Why CJC without DAC + Ipamorelin produces 3–6× synergistic GH pulses — complete protocol, timing, cycling, and IGF-1 monitoring.</div>
-        <div class="blog-meta"><span>Dr. James Holloway, MD</span><span>·</span><span>14 min</span></div>
-      </div>
-    </a>
-  </div>
-  <!-- Secondary blog row -->
-  <div class="blog-grid" style="margin-top:20px;">
-    <a href="/blog/semaglutide-protocol-dosing-guide" class="blog-card reveal">
-      <div class="blog-img">⚡</div>
-      <div class="blog-body">
-        <div class="blog-cat">Metabolic</div>
-        <div class="blog-title">Semaglutide Protocol 2026: Dosing, Titration & Stack Planning</div>
-        <div class="blog-excerpt">Complete titration schedule, side effect management, muscle preservation protocol, and the supplement stack that amplifies GLP-1 results.</div>
-        <div class="blog-meta"><span>Dr. Marcus Webb, MD</span><span>·</span><span>15 min</span></div>
-      </div>
-    </a>
-    <a href="/blog/thymosin-alpha1-immune-reset-protocol" class="blog-card reveal">
-      <div class="blog-img">🛡️</div>
-      <div class="blog-body">
-        <div class="blog-cat">Immune</div>
-        <div class="blog-title">Thymosin Alpha-1: The Complete Immune Reset Protocol 2026</div>
-        <div class="blog-excerpt">4,000+ studies, approved in 35 countries. The longevity, chronic infection, and vaccine enhancement protocols — with full clinical evidence.</div>
-        <div class="blog-meta"><span>Dr. Priya Nair, MD</span><span>·</span><span>13 min</span></div>
-      </div>
-    </a>
-    <a href="/blog/semax-selank-neuropeptide-stack" class="blog-card reveal">
-      <div class="blog-img">🧠</div>
-      <div class="blog-body">
-        <div class="blog-cat">Cognitive</div>
-        <div class="blog-title">Semax + Selank: The Neuropeptide Stack for Focus & Anxiety</div>
-        <div class="blog-excerpt">The cleanest cognitive stack available — sharp focus without stimulant edge, calm without sedation. Full protocol and intranasal details.</div>
-        <div class="blog-meta"><span>Dr. Elena Vasquez, PhD</span><span>·</span><span>14 min</span></div>
-      </div>
-    </a>
-  </div>
-  <div style="text-align:center;margin-top:36px;">
-    <a href="/blog/" class="btn-ghost" style="display:inline-block;">View All 8 Articles in the Intelligence Library →</a>
   </div>
 </section>
 
