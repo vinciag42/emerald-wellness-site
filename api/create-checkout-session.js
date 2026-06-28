@@ -2,37 +2,33 @@ const STRIPE_API_BASE = 'https://api.stripe.com/v1';
 
 const PLAN_PRICES = {
   monthly: {
-    silver: 'price_1Tb97eLzsA0y5z9V1qno7S07',
-    gold: 'price_1TmoCpLzsA0y5z9VelLKqXRr',
-    elite: 'price_1Tb97ZLzsA0y5z9VlhXybXrF',
-    pro: 'price_1Tb9DpLzsA0y5z9VvXt3LCRs',
-    platinum: {
-      price_data: {
-        currency: 'usd',
-        unit_amount: 59900,
-        recurring: { interval: 'month' },
-        product_data: { name: 'Emerald Platinum Regenesis' },
-      },
-    },
+    silver: dynamicRecurringPrice('Emerald Wellness Silver', 7499, 'month'),
+    gold: dynamicRecurringPrice('Emerald Wellness Gold', 14999, 'month'),
+    elite: dynamicRecurringPrice('Emerald Elite', 19999, 'month'),
+    pro: dynamicRecurringPrice('Emerald Pro Practitioner Suite', 29999, 'month'),
+    platinum: dynamicRecurringPrice('Emerald Platinum Regenesis', 59900, 'month'),
   },
   annual: {
-    silver: 'price_1Td1UpLzsA0y5z9VPeq424L4',
-    gold: 'price_1Tb97dLzsA0y5z9VXYyasB1x',
-    elite: 'price_1Tb97dLzsA0y5z9VKWuTcpIU',
-    pro: 'price_1Tb9EvLzsA0y5z9Va2CX66J0',
-    platinum: {
-      price_data: {
-        currency: 'usd',
-        unit_amount: 649900,
-        recurring: { interval: 'year' },
-        product_data: { name: 'Emerald Platinum Regenesis Annual' },
-      },
-    },
+    silver: dynamicRecurringPrice('Emerald Wellness Silver Annual', 71988, 'year'),
+    gold: dynamicRecurringPrice('Emerald Wellness Gold Annual', 143988, 'year'),
+    elite: dynamicRecurringPrice('Emerald Elite Annual', 191988, 'year'),
+    pro: dynamicRecurringPrice('Emerald Pro Practitioner Suite Annual', 287988, 'year'),
+    platinum: dynamicRecurringPrice('Emerald Platinum Regenesis Annual', 649900, 'year'),
   },
 };
 
-const ADDON_PRICE = 'price_1TnCp8LzsA0y5z9VkssgXhRr';
 const ALLOWED_ADDONS = new Set(['sleep', 'cognitive', 'sexual', 'gut', 'nutrition', 'lab', 'recovery']);
+
+function dynamicRecurringPrice(name, unitAmount, interval) {
+  return {
+    price_data: {
+      currency: 'usd',
+      unit_amount: unitAmount,
+      recurring: { interval },
+      product_data: { name },
+    },
+  };
+}
 
 function json(res, status, payload) {
   res.statusCode = status;
@@ -92,9 +88,7 @@ module.exports = async function handler(req, res) {
     if (!planPrice) return json(res, 400, { error: 'Invalid plan or billing interval.' });
     if (!email || !email.includes('@')) return json(res, 400, { error: 'A valid email is required.' });
 
-    const planLineItem = typeof planPrice === 'string'
-      ? { price: planPrice, quantity: 1 }
-      : { ...planPrice, quantity: 1 };
+    const planLineItem = { ...planPrice, quantity: 1 };
 
     const lineItems = [
       {
@@ -109,7 +103,10 @@ module.exports = async function handler(req, res) {
     ];
 
     if (addons.length) {
-      lineItems.push({ price: ADDON_PRICE, quantity: addons.length });
+      lineItems.push({
+        ...dynamicRecurringPrice('Emerald Wellness Specialty Module Add-on', 4999, billing === 'annual' ? 'year' : 'month'),
+        quantity: addons.length,
+      });
     }
 
     const params = new URLSearchParams();
