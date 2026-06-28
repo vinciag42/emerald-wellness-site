@@ -17,10 +17,10 @@ Expanded launch architecture:
 - Allergy, autoimmune wellness, environmental toxin awareness, mold exposure education, and heavy metal awareness modules are included.
 - Smart recommendation rules support symptoms/goals including fatigue + brain fog + sleep, allergies, mold exposure, toxin exposure, menopause, blood sugar/weight, inflammation/joint discomfort, and stress/burnout.
 
-Stripe placeholders to configure before live paid add-ons:
+Stripe live prices configured:
 
-- `STRIPE_EXTRA_MODULE_PRICE_ID` for the $35/month extra module add-on
-- `STRIPE_THREE_MODULE_BUNDLE_PRICE_ID` for the $89/month 3-module bundle
+- `STRIPE_EXTRA_MODULE_PRICE_ID`: `price_1TnCp8LzsA0y5z9VkssgXhRr` for the $49.99/month extra module add-on
+- `STRIPE_THREE_MODULE_BUNDLE_PRICE_ID`: `price_1TnCpALzsA0y5z9V4vqXmqQh` for the $89/month 3-module bundle
 
 Safety language:
 

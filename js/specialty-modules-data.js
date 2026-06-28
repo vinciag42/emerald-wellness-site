@@ -2,8 +2,8 @@ window.EW_MODULE_DISCLAIMER = "Emerald Wellness provides educational wellness in
 
 window.EW_MODULE_ACCESS = {
   free: { label: "Free", limit: 0, copy: "Preview only", extra: "Start Free Assessment / Upgrade" },
-  gold: { label: "Gold", limit: 1, copy: "1 active module included", extra: "Extra modules $35/month each" },
-  platinum_plus: { label: "Platinum Plus", limit: 3, copy: "3 active modules included", extra: "Extra modules $35/month each or 3-module bundle $89/month" },
+  gold: { label: "Gold", limit: 1, copy: "1 active module included", extra: "Extra modules $49.99/month each" },
+  platinum_plus: { label: "Platinum Plus", limit: 3, copy: "3 active modules included", extra: "Extra modules $49.99/month each or 3-module bundle $89/month" },
   concierge: { label: "Concierge Regenesis", limit: 999, copy: "Unlimited modules included", extra: "Concierge support enabled" },
   concierge_premium: { label: "Concierge Regenesis Premium", limit: 999, copy: "Unlimited modules included", extra: "Premium concierge support enabled" }
 };
@@ -243,8 +243,8 @@ window.EW_SPECIALTY_MODULES = Object.entries(EW_LIBRARY).flatMap(([category, nam
       longDescription: `${ewDescription(name, category)} The module keeps language educational and helps members organize patterns, questions, and wellness tracking for discussion with qualified professionals.`,
       bestFor: ewBestFor(name, category),
       features: ["Module score", "Assessment", "Symptom tracker", "Recommended labs", "Daily check-ins", "Learning center"],
-      priceMonthly: 35,
-      priceTeaser: active ? "Active launch module. Included by tier; extra modules $35/mo." : "Coming soon. Join to be notified when this module opens.",
+      priceMonthly: 49.99,
+      priceTeaser: active ? "Active launch module. Included by tier; extra modules $49.99/mo." : "Coming soon. Join to be notified when this module opens.",
       includedPlanLevel: "Gold+",
       status: active ? "active" : "coming_soon",
       active,
