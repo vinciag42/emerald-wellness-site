@@ -365,9 +365,20 @@ let userData = {};
 let supabaseClient = null;
 
 // ─── INIT ─────────────────────────────────────────────────────────────────────
-try {
-  supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON);
-} catch(e) { console.warn('Supabase init error:', e); }
+function initSupabaseClient() {
+  if (supabaseClient) return supabaseClient;
+  if (window.supabase && typeof window.supabase.createClient === 'function') {
+    supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON);
+    return supabaseClient;
+  }
+  return null;
+}
+async function ensureSupabaseClient() {
+  const existing = initSupabaseClient();
+  if (existing) return existing;
+  await loadScript('https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js');
+  return initSupabaseClient();
+}
 
 
 // ─── NAVIGATION ───────────────────────────────────────────────────────────────
@@ -495,8 +506,9 @@ async function createAccount() {
   try {
     let userId = null;
 
-    if(supabaseClient) {
-      const {data,error} = await supabaseClient.auth.signUp({
+    const client = await ensureSupabaseClient();
+    if(client) {
+      const {data,error} = await client.auth.signUp({
         email: userData.email,
         password: pw,
         options:{data:{first_name:userData.firstName,last_name:userData.lastName}}
@@ -505,7 +517,7 @@ async function createAccount() {
       userId = data?.user?.id;
 
       if(userId) {
-        await supabaseClient.from('profiles').upsert({
+        await client.from('profiles').upsert({
           id: userId,
           first_name: userData.firstName,
           last_name: userData.lastName,
@@ -583,19 +595,9 @@ function loadScript(src){
 let stripe=null;
 (async()=>{
   await loadScript('https://js.stripe.com/v3/');
-  await loadScript('https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2');
+  await ensureSupabaseClient();
   stripe=Stripe(STRIPE_KEY);
-  // Wait for supabase global to be available
-  let attempts=0;
-  while(!window.supabase && attempts<20){
-    await new Promise(r=>setTimeout(r,100));
-    attempts++;
-  }
-  if(window.supabase){
-    supabaseClient=window.supabase.createClient(SUPABASE_URL,SUPABASE_ANON);
-  } else {
-    console.warn('Supabase did not load in time');
-  }
+  initSupabaseClient();
   const urlParams=new URLSearchParams(window.location.search);
   applyUrlSelections();
   if(urlParams.get('step')==='4') goStep(4);
