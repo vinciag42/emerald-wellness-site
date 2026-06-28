@@ -138,6 +138,7 @@ button{cursor:pointer;}
 .marquee-item{font-family:var(--cinzel);font-size:11px;letter-spacing:3px;color:var(--textDim);display:flex;align-items:center;gap:16px;}
 .marquee-item::after{content:'◆';color:var(--em);font-size:8px;}
 @keyframes marquee{0%{transform:translateY(-50%) translateX(0)}100%{transform:translateY(-50%) translateX(-50%)}}
+@media(max-width:640px){.marquee-wrap{display:none;}}
 
 /* SECTIONS */
 section{padding:100px 48px;}
