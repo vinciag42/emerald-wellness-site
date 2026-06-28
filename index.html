@@ -666,35 +666,35 @@ footer{background:var(--bg);border-top:1px solid var(--border);padding:60px 48px
   </div>
 </section>
 
-<!-- CHOOSE YOUR PATH -->
+<!-- STARTING PATHS -->
 <section id="choose-path" style="background:var(--bg);padding-top:72px;padding-bottom:72px;">
   <div class="reveal text-center">
     <p class="section-label">Start Here</p>
-    <h2 class="section-title">Choose the path that fits your next step.</h2>
-    <p class="section-sub mx-auto" style="text-align:center;">Emerald Wellness has a lot inside it. This gives every visitor a clean starting point before the deeper education library.</p>
+    <h2 class="section-title">Where would you like to begin?</h2>
+    <p class="section-sub mx-auto" style="text-align:center;">A clean starting point for every visitor: preview the app, begin Regenesis, explore the education library, or visit the Emerald Wellness shop.</p>
   </div>
   <div class="features-grid" style="margin-top:42px;">
     <div class="feature-card reveal">
       <div class="feature-icon">◎</div>
-      <div class="feature-title">I want the app</div>
-      <div class="feature-desc">Preview the dashboard, medication and stack check, labs, protocols, and specialty module experience.</div>
+      <div class="feature-title">Preview the App</div>
+      <div class="feature-desc">See the dashboard, medication and stack check, labs, protocols, and specialty module experience before choosing a plan.</div>
       <a class="btn-ghost" href="/app" style="display:inline-flex;margin-top:18px;">View App Preview</a>
     </div>
     <div class="feature-card reveal">
       <div class="feature-icon">✦</div>
-      <div class="feature-title">I want Regenesis</div>
-      <div class="feature-desc">Start with Platinum Regenesis for quarterly labs, doctor visit preparation, body tracking, and premium biology planning.</div>
+      <div class="feature-title">Begin Regenesis</div>
+      <div class="feature-desc">Start Platinum Regenesis for quarterly labs, doctor visit preparation, body tracking, and premium biology planning.</div>
       <a class="btn-primary" href="/signup.html?plan=platinum&billing=monthly&regenesis=platinum" style="display:inline-flex;margin-top:18px;">Begin Regenesis</a>
     </div>
     <div class="feature-card reveal">
       <div class="feature-icon">◬</div>
-      <div class="feature-title">I want education</div>
+      <div class="feature-title">Explore Education</div>
       <div class="feature-desc">Explore peptides, vitamins, supplements, bioregulators, protocols, interactions, timing, and wellness education.</div>
       <a class="btn-ghost" href="#education-library" style="display:inline-flex;margin-top:18px;">Explore Education</a>
     </div>
     <div class="feature-card reveal">
       <div class="feature-icon">◆</div>
-      <div class="feature-title">I want the shop</div>
+      <div class="feature-title">Visit the Shop</div>
       <div class="feature-desc">Go directly to the Emerald Wellness store for available peptide and wellness products.</div>
       <a class="btn-ghost" href="https://shop.emeraldwellness.health/products-list" style="display:inline-flex;margin-top:18px;">Visit Store</a>
     </div>
@@ -1137,7 +1137,7 @@ footer{background:var(--bg);border-top:1px solid var(--border);padding:60px 48px
     <p class="section-label">Premium Add-Ons</p>
     <h3 style="font-family:var(--serif);font-size:26px;font-weight:700;margin-bottom:8px;">Specialty Module Marketplace™ — <span style="color:var(--goldL)">+$49.99/mo each</span></h3>
     <p style="font-size:14px;color:var(--textMid);">Available by membership tier. Gold includes 1 active module, Platinum Plus includes 3, Concierge includes unlimited, and a 3-module add-on bundle is $89/month.</p>
-    <p style="margin-top:12px;"><a class="btn-gold" href="/specialty-modules">Browse the expanded specialty module library â†’</a></p>
+    <p style="margin-top:12px;"><a class="btn-gold" href="/specialty-modules">Browse the expanded specialty module library →</a></p>
   </div>
   <div class="addons-grid reveal">
     <div class="addon-card"><div class="addon-icon">🏋️</div><div><div class="addon-name">Sports Performance Module</div><div class="addon-price">+$49.99/mo</div><div class="addon-desc">Advanced periodization, VO2max optimization, and HRV-based training overlays.</div></div></div>
@@ -2009,12 +2009,7 @@ function startTrial(plan){startCheckout(plan || 'gold');}
 // EXIT POPUP
 let exitFired=false;
 function closeExit(){document.getElementById('exit-popup').classList.remove('open');}
-setTimeout(function(){
-  if(!exitFired&&!document.getElementById('waitlist-overlay').classList.contains('open')){
-    exitFired=true;
-    document.getElementById('exit-popup').classList.add('open');
-  }
-},45000);
+// Keep the premium experience calm: no automatic exit interruption.
 </script>
 <!-- ENROLLMENT MODAL — 5-STEP HEALTH QUESTIONNAIRE -->
 <div id="waitlist-overlay" onclick="closeWaitlist(event)">
@@ -2181,14 +2176,14 @@ setTimeout(function(){
 <div id="exit-popup">
   <div id="exit-card">
     <button class="exit-close" onclick="closeExit()">✕</button>
-    <p class="exit-eyebrow">Don't Miss This</p>
-    <h2 class="exit-title">Your First 7 Days for $1 + 20% Off</h2>
-    <p class="exit-sub">Start with $1 for the first 7 days and 20% off your first month.</p>
+    <p class="exit-eyebrow">Ready When You Are</p>
+    <h2 class="exit-title">Start Emerald Wellness for $1</h2>
+    <p class="exit-sub">Begin with $1 for the first 7 days and 20% off your first month.</p>
     <div class="exit-offer">
       <p>🔒 $1 for the first 7 days · 20% off first month</p>
     </div>
-    <button class="exit-btn" onclick="closeExit();startCheckout('gold');">Claim My $1 Trial →</button>
-    <button class="exit-dismiss" onclick="closeExit()">No thanks, I'll pay full price later</button>
+    <button class="exit-btn" onclick="closeExit();startCheckout('gold');">Start for $1 →</button>
+    <button class="exit-dismiss" onclick="closeExit()">Continue browsing</button>
   </div>
 </div>
 

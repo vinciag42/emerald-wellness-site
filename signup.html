@@ -578,7 +578,7 @@ async function launchStripeCheckout(userId) {
   const data = await response.json().catch(()=>({}));
   if(!response.ok || !data.url) {
     const btn = document.getElementById('btnCreateAccount');
-    btn.disabled=false; btn.textContent='Create Account & Go to Checkout â†’';
+    btn.disabled=false; btn.textContent='Create Account & Go to Checkout →';
     showErr('err3', data.error || 'Unable to start Stripe checkout. Please try again.');
     return;
   }
