@@ -34,7 +34,7 @@ alter table public.specialty_modules add column if not exists short_description 
 alter table public.specialty_modules add column if not exists long_description text;
 alter table public.specialty_modules add column if not exists best_for text;
 alter table public.specialty_modules add column if not exists status text not null default 'active' check (status in ('active','coming_soon','archived'));
-alter table public.specialty_modules add column if not exists price_monthly numeric not null default 35;
+alter table public.specialty_modules add column if not exists price_monthly numeric not null default 49.99;
 alter table public.specialty_modules add column if not exists included_plan_level text not null default 'Gold+';
 alter table public.specialty_modules add column if not exists is_featured boolean not null default false;
 alter table public.specialty_modules add column if not exists is_public_preview_enabled boolean not null default true;

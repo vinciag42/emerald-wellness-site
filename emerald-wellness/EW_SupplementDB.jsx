@@ -79,7 +79,7 @@ const PLANS = [
   },
   {
     id:"elite",name:"EMERALD ELITE",price:199.99,annualPrice:159.99,color:C.emXL,borderColor:C.borderEm,complete:true,
-    features:["Everything in Gold","Unlimited AI Health Advisor queries","Biological age calculator & tracking","Custom protocol builder","Glandular & bioregulator database","Priority support & early access","Exportable health reports (PDF)","Personalized AI optimization cycles"],
+    features:["Everything in Gold","Unlimited AI Health Advisor queries","Biological age calculator & tracking","Custom protocol builder","Glandular & bioregulator database","Priority support & enrollment","Exportable health reports (PDF)","Personalized AI optimization cycles"],
     locked:[],
     btnStyle:{background:`linear-gradient(135deg,${C.emL},${C.emXL})`,color:"#050d07",fontWeight:"700"},btnLabel:"Start Free Trial",
   },
@@ -279,8 +279,8 @@ export default function EmeraldWellnessApp() {
       isNotif:true,
     },
     {
-      icon:"💎",title:"You're on the founding member waitlist",
-      sub:"Lock in your founding member pricing — 30 days free at launch, forever.",
+      icon:"💎",title:"Your Emerald Wellness enrollment is ready",
+      sub:"Start with $1 for the first 7 days, then continue with your selected plan.",
       isWaitlist:true,
     },
   ];
@@ -332,7 +332,7 @@ export default function EmeraldWellnessApp() {
             <div style={{...S.cardGold(),marginBottom:24}}>
               <p style={{fontFamily:F.cinzel,fontSize:10,letterSpacing:2,color:C.goldL,marginBottom:12}}>FOUNDING MEMBER OFFER</p>
               <div style={{...S.cardEm({padding:12,marginBottom:14}),background:C.emPale}}>
-                <p style={{fontSize:13,color:C.textMid,lineHeight:1.6}}>✦ <strong style={{color:C.emXL}}>30 days free</strong> at launch<br/>✦ <strong style={{color:C.emXL}}>Founding member pricing</strong> locked forever<br/>✦ Early access before public launch</p>
+                <p style={{fontSize:13,color:C.textMid,lineHeight:1.6}}>✦ <strong style={{color:C.emXL}}>$1 for the first 7 days</strong><br/>✦ Continue with your selected plan<br/>✦ Membership access after enrollment</p>
               </div>
               <input value={waitlistEmail} onChange={e=>setWaitlistEmail(e.target.value)} placeholder="Enter your email" style={{...S.input,marginBottom:10}}/>
               <button onClick={async()=>{
@@ -345,14 +345,14 @@ export default function EmeraldWellnessApp() {
                   },{onConflict:'email'});
                 }catch(e){console.warn('Supabase waitlist:',e);}
                 setWaitlistDone(true);
-              }} style={S.btn({background:`linear-gradient(135deg,${C.gold},${C.goldL})`,color:"#050d07",fontWeight:700,width:"100%"})}>Claim Founding Member Spot →</button>
+              }} style={S.btn({background:`linear-gradient(135deg,${C.gold},${C.goldL})`,color:"#050d07",fontWeight:700,width:"100%"})}>Start Enrollment →</button>
             </div>
           )}
           {step.isWaitlist&&waitlistDone&&(
             <div style={{...S.cardEm(),textAlign:"center",marginBottom:24}}>
               <div style={{fontSize:32,marginBottom:8}}>✦</div>
               <div style={{color:C.emXL,fontSize:15,fontWeight:600,marginBottom:6}}>You're on the list.</div>
-              <p style={{fontSize:13,color:C.textMid,lineHeight:1.65}}>We'll email you when Emerald Wellness launches. Your 30-day free trial and founding member pricing are locked.</p>
+              <p style={{fontSize:13,color:C.textMid,lineHeight:1.65}}>Your $1 first 7 days and selected plan are ready.</p>
               <div style={{marginTop:14,padding:12,background:C.bg3,borderRadius:8}}>
                 <p style={{fontSize:11,color:C.textDim,marginBottom:6}}>Share to move up the waitlist:</p>
                 <div style={{display:"flex",gap:8}}>

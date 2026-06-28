@@ -82,7 +82,7 @@ This project is the **marketing and signup website**, not the full app itself. I
 You do not need to understand the technical details. just know these outside tools power the site:
 
 - **Supabase**: Stores user accounts and waitlist signups
-- **Klaviyo**: Sends marketing emails to people on the waitlist
+- **Klaviyo**: Sends marketing emails to members getting started
 - **Stripe**: Handles payments and subscriptions
 - **Vercel**: Where the site is hosted online (planned)
 
