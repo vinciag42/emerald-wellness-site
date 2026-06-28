@@ -533,51 +533,6 @@ async function createAccount() {
 
 // ─── STRIPE CHECKOUT ──────────────────────────────────────────────────────────
 async function launchStripeCheckout(userId) {
-  const lineItems = [];
-
-  // Main plan
-  lineItems.push({price: PRICES[billing][selectedPlan].id, quantity:1});
-
-  // Add-ons
-  selectedAddons.forEach(key => {
-    if(!ADDON_PRICES[key]?.id) {
-      throw new Error('Specialty module checkout is waiting for the new $49.99 Stripe price IDs to be connected.');
-    }
-    lineItems.push({price: ADDON_PRICES[key].id, quantity:1});
-  });
-
-  const params = {
-    lineItems: lineItems,
-    mode: 'subscription',
-    successUrl: window.location.origin+'/signup.html?step=4&session={CHECKOUT_SESSION_ID}',
-    cancelUrl: window.location.origin+'/signup.html?step=3',
-    customerEmail: userData.email,
-    subscriptionData: {
-      trialPeriodDays: 7,
-      metadata: {
-        user_id: userId || '',
-        plan: selectedPlan,
-        billing: billing,
-        addons: Array.from(selectedAddons).join(','),
-        referral: referralValid ? document.getElementById('referralCode').value.trim() : ''
-      }
-    }
-  };
-
-  if(referralValid) {
-    params.discounts = [{coupon:'REFERRAL20'}];
-  }
-
-  const {error} = await stripe.redirectToCheckout(params);
-  if(error) {
-    const btn = document.getElementById('btnCreateAccount');
-    btn.disabled=false; btn.textContent='Create Account & Go to Checkout →';
-    showErr('err3', error.message);
-  }
-}
-
-// ─── HANDLE RETURN FROM STRIPE ────────────────────────────────────────────────
-async function launchStripeCheckout(userId) {
   const response = await fetch('/api/create-checkout-session', {
     method: 'POST',
     headers: {'Content-Type':'application/json'},
@@ -603,7 +558,16 @@ async function launchStripeCheckout(userId) {
   window.location.href = data.url;
 }
 
+function applyUrlSelections() {
+  const params = new URLSearchParams(window.location.search);
+  const requestedBilling = params.get('billing');
+  const requestedPlan = params.get('plan');
+  if(requestedBilling === 'annual' || requestedBilling === 'monthly') setBilling(requestedBilling);
+  if(requestedPlan && PRICES[billing]?.[requestedPlan]) selectPlan(requestedPlan);
+}
+
 const urlParams = new URLSearchParams(window.location.search);
+applyUrlSelections();
 if(urlParams.get('step')==='4') {
   goStep(4);
 }
@@ -633,6 +597,7 @@ let stripe=null;
     console.warn('Supabase did not load in time');
   }
   const urlParams=new URLSearchParams(window.location.search);
+  applyUrlSelections();
   if(urlParams.get('step')==='4') goStep(4);
 })();
 </script>

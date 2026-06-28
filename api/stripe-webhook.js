@@ -42,7 +42,7 @@ function verifyStripeSignature(rawBody, signatureHeader, secret) {
 
 async function updateSupabaseProfile(userId, updates) {
   const url = process.env.SUPABASE_URL;
-  const serviceKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
+  const serviceKey = process.env.SUPABASE_SERVICE_ROLE_KEY || process.env.SUPABASE_SERVICE_KEY;
   if (!url || !serviceKey || !userId) return;
 
   const response = await fetch(`${url}/rest/v1/profiles?id=eq.${encodeURIComponent(userId)}`, {
@@ -60,6 +60,50 @@ async function updateSupabaseProfile(userId, updates) {
     const text = await response.text();
     throw new Error(`Supabase profile update failed: ${text}`);
   }
+}
+
+const PRICE_TO_PLAN = {
+  price_1Tb97eLzsA0y5z9V1qno7S07: { plan: 'silver', billing_interval: 'monthly' },
+  price_1Tb97gLzsA0y5z9VwduDs3O1: { plan: 'gold', billing_interval: 'monthly' },
+  price_1Tb97ZLzsA0y5z9VlhXybXrF: { plan: 'elite', billing_interval: 'monthly' },
+  price_1Tb9DpLzsA0y5z9VvXt3LCRs: { plan: 'pro', billing_interval: 'monthly' },
+  price_1Td1UpLzsA0y5z9VPeq424L4: { plan: 'silver', billing_interval: 'annual' },
+  price_1Tb97dLzsA0y5z9VXYyasB1x: { plan: 'gold', billing_interval: 'annual' },
+  price_1Tb97dLzsA0y5z9VKWuTcpIU: { plan: 'elite', billing_interval: 'annual' },
+  price_1Tb9EvLzsA0y5z9Va2CX66J0: { plan: 'pro', billing_interval: 'annual' },
+};
+
+function subscriptionPlan(subscription) {
+  const priceId = subscription.items?.data?.find((item) => PRICE_TO_PLAN[item.price?.id])?.price?.id;
+  return PRICE_TO_PLAN[priceId] || {};
+}
+
+async function updateSupabaseProfileByStripeCustomer(customerId, updates) {
+  const url = process.env.SUPABASE_URL;
+  const serviceKey = process.env.SUPABASE_SERVICE_ROLE_KEY || process.env.SUPABASE_SERVICE_KEY;
+  if (!url || !serviceKey || !customerId) return;
+
+  const response = await fetch(`${url}/rest/v1/profiles?stripe_customer_id=eq.${encodeURIComponent(customerId)}`, {
+    method: 'PATCH',
+    headers: {
+      apikey: serviceKey,
+      Authorization: `Bearer ${serviceKey}`,
+      'Content-Type': 'application/json',
+      Prefer: 'return=minimal',
+    },
+    body: JSON.stringify(updates),
+  });
+
+  if (!response.ok) {
+    const text = await response.text();
+    throw new Error(`Supabase customer profile update failed: ${text}`);
+  }
+}
+
+async function updateProfileForStripeObject(object, updates) {
+  const userId = object.metadata?.user_id;
+  if (userId) return updateSupabaseProfile(userId, updates);
+  return updateSupabaseProfileByStripeCustomer(object.customer || object.id, updates);
 }
 
 module.exports = async function handler(req, res) {
@@ -91,22 +135,30 @@ module.exports = async function handler(req, res) {
     }
 
     if (event.type === 'customer.subscription.updated') {
-      const userId = object.metadata?.user_id;
-      await updateSupabaseProfile(userId, {
+      const derived = subscriptionPlan(object);
+      await updateProfileForStripeObject(object, {
         stripe_subscription_id: object.id || null,
         status: object.status === 'active' || object.status === 'trialing' ? 'active' : object.status,
-        plan: object.metadata?.plan || null,
-        billing_interval: object.metadata?.billing || null,
+        plan: object.metadata?.plan || derived.plan || null,
+        billing_interval: object.metadata?.billing || derived.billing_interval || null,
         addons: object.metadata?.addons ? object.metadata.addons.split(',').filter(Boolean) : [],
+        cancel_at_period_end: Boolean(object.cancel_at_period_end),
+        current_period_end: object.current_period_end ? new Date(object.current_period_end * 1000).toISOString() : null,
         updated_at: new Date().toISOString(),
       });
     }
 
     if (event.type === 'customer.subscription.deleted') {
-      const userId = object.metadata?.user_id;
-      await updateSupabaseProfile(userId, {
+      await updateProfileForStripeObject(object, {
         stripe_subscription_id: object.id || null,
         status: 'cancelled',
+        updated_at: new Date().toISOString(),
+      });
+    }
+
+    if (event.type === 'customer.updated') {
+      await updateSupabaseProfileByStripeCustomer(object.id, {
+        email: object.email || null,
         updated_at: new Date().toISOString(),
       });
     }
