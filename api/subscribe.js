@@ -96,6 +96,19 @@ export default async function handler(req, res) {
     }
 
     // ── 3. Supabase waitlist — store ALL fields ──
+    result.klaviyoEvent = await emitKlaviyoEvent('Submitted Enrollment', {
+      email: cleanEmail,
+      first_name: cleanFirstName,
+      last_name: cleanLastName
+    }, {
+      selected_tier: cleanTier || 'homepage-enrollment',
+      source: cleanSource,
+      referred_by: cleanReferral || '',
+      lifecycle_status: 'lead'
+    }, klaviyoHeaders);
+    if (result.klaviyoEvent.ok) console.log('[subscribe] STEP 3 OK — Klaviyo Submitted Enrollment event created');
+    else console.warn('[subscribe] STEP 3 WARN — Klaviyo event not created', result.klaviyoEvent);
+
     const sbPayload = {
       email: cleanEmail,
       first_name: cleanFirstName || null,
@@ -146,6 +159,43 @@ export default async function handler(req, res) {
   } catch (err) {
     console.error('[subscribe] Unexpected error', err);
     return res.status(500).json({ error: 'Unexpected signup error', step: 'exception' });
+  }
+}
+
+async function emitKlaviyoEvent(metricName, profile, properties, headers) {
+  try {
+    const response = await fetch('https://a.klaviyo.com/api/events/', {
+      method: 'POST',
+      headers,
+      body: JSON.stringify({
+        data: {
+          type: 'event',
+          attributes: {
+            metric: {
+              data: {
+                type: 'metric',
+                attributes: { name: metricName }
+              }
+            },
+            profile: {
+              data: {
+                type: 'profile',
+                attributes: {
+                  email: profile.email,
+                  ...(profile.first_name ? { first_name: profile.first_name } : {}),
+                  ...(profile.last_name ? { last_name: profile.last_name } : {})
+                }
+              }
+            },
+            properties: properties || {}
+          }
+        }
+      })
+    });
+    const text = await response.text();
+    return { ok: response.ok || response.status === 202, status: response.status, body: text.slice(0, 300) };
+  } catch (error) {
+    return { ok: false, status: 0, body: error.message };
   }
 }
 
