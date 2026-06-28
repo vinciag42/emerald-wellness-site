@@ -8,6 +8,15 @@ Implemented surfaces:
 - Shared frontend module data: `/js/specialty-modules-data.js`
 - Supabase schema and seed data: `/emerald-wellness/specialty-modules-schema.sql`
 
+Expanded launch architecture:
+
+- 96 total specialty modules seeded.
+- 10 strategic module categories.
+- 15 active launch modules.
+- 81 coming-soon modules for long-term 75-100 module scaling.
+- Allergy, autoimmune wellness, environmental toxin awareness, mold exposure education, and heavy metal awareness modules are included.
+- Smart recommendation rules support symptoms/goals including fatigue + brain fog + sleep, allergies, mold exposure, toxin exposure, menopause, blood sugar/weight, inflammation/joint discomfort, and stress/burnout.
+
 Stripe placeholders to configure before live paid add-ons:
 
 - `STRIPE_EXTRA_MODULE_PRICE_ID` for the $35/month extra module add-on

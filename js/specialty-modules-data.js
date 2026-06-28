@@ -10,77 +10,298 @@ window.EW_MODULE_ACCESS = {
 
 window.EW_MODULE_CATEGORIES = [
   "All",
-  "Hormones",
-  "Weight Loss",
-  "Brain Performance",
-  "Gut Health",
-  "Sleep",
-  "Longevity",
-  "Pain & Inflammation",
-  "Skin & Hair",
-  "Men's Health",
-  "Women's Health",
-  "Athletic Performance",
-  "Sexual Wellness",
-  "Metabolic Health",
-  "Stress & Cortisol",
-  "Immune Health"
+  "Foundational Health",
+  "Hormones & Metabolism",
+  "Brain & Mental Performance",
+  "Digestive & Immune Health",
+  "Cardiovascular & Longevity",
+  "Performance & Recovery",
+  "Appearance & Vitality",
+  "Environmental Health",
+  "Specialized Wellness",
+  "Advanced Bio-Optimization"
 ];
 
-window.EW_SPECIALTY_MODULES = [
-  ["hormone-optimization", "Hormone Optimization", "Hormones", "⚖️", "Organize hormone-support education, labs, symptoms, lifestyle patterns, and provider discussion points.", "Adults tracking energy, sleep, libido, mood, cycle changes, or hormone lab conversations.", ["Module score", "Hormone lab checklist", "Cycle and symptom tracker", "Protocol Vault links"]],
-  ["weight-loss-metabolism", "Weight Loss & Metabolism", "Weight Loss", "⚡", "Track metabolic education, appetite patterns, body composition goals, GLP-1 discussion points, and nutrition consistency.", "Members focused on body composition, appetite awareness, glucose education, or metabolic habits.", ["Appetite tracker", "BodyScan progress", "Protein and hydration checklist", "Metabolic lab prompts"]],
-  ["brain-fog-focus", "Brain Fog & Focus", "Brain Performance", "🧠", "Support focus education through sleep, stress, nutrient, wearable, and daily cognitive pattern tracking.", "Members tracking focus, clarity, memory, workload strain, or recovery routines.", ["Focus score", "Sleep/stress questions", "Learning center", "Daily clarity checklist"]],
-  ["gut-reset", "Gut Reset", "Gut Health", "🌿", "Organize digestive education, symptom patterns, food timing, microbiome support, and provider-review questions.", "Members tracking bloating, digestion, bowel patterns, food response, or gut-support routines.", ["Gut symptom tracker", "Food response notes", "Protocol Vault links", "Digestive lab prompts"]],
-  ["womens-health", "Women's Health", "Women's Health", "🌸", "Track cycle-aware education, energy patterns, mood, recovery, nutrients, and provider discussion points.", "Women organizing monthly patterns, cycle changes, wellness goals, and lab-review notes.", ["Cycle-aware tracker", "Hormone lab prompts", "Monthly report", "Concierge questions"]],
-  ["menopause-support", "Menopause Support", "Women's Health", "🌙", "Organize menopause-transition education, sleep, temperature shifts, mood, strength, and provider-review planning.", "Women tracking perimenopause or menopause patterns and quarterly wellness reviews.", ["Sleep and hot-flash tracking", "Strength checklist", "Provider questions", "Learning center"]],
-  ["mens-performance", "Men's Performance", "Men's Health", "🏋️", "Track men's wellness education around strength, recovery, cardiovascular habits, hormones, and performance goals.", "Men focused on energy, training, recovery, libido, or metabolic markers.", ["Performance score", "Training recovery tracker", "Lab prompts", "Daily action checklist"]],
-  ["testosterone-optimization", "Testosterone Optimization", "Men's Health", "🔥", "Organize testosterone-support education, sleep, resistance training, nutrition, and provider lab-review questions.", "Men tracking testosterone conversations, strength, libido, mood, or recovery habits.", ["Hormone lab checklist", "Strength rhythm", "Sleep tracker", "Provider review notes"]],
-  ["longevity-healthy-aging", "Longevity & Healthy Aging", "Longevity", "🧬", "Track healthy-aging education, biomarkers, inflammation, mitochondrial support, and quarterly progress reviews.", "Members focused on long-range healthspan, recovery, biomarkers, and sustainable routines.", ["Longevity score", "Quarterly lab prompts", "Biology Intelligence insights", "Milestone report"]],
-  ["sleep-repair", "Sleep Repair", "Sleep", "🌙", "Track sleep education, evening routines, wearable trends, recovery patterns, and sleep-support consistency.", "Members tracking sleep quality, nighttime waking, morning fatigue, HRV, or recovery.", ["Sleep checklist", "Wearable notes", "Recovery graph", "Learning center"]],
-  ["pain-inflammation", "Pain & Inflammation", "Pain & Inflammation", "🔥", "Organize inflammation education, discomfort patterns, mobility, recovery habits, and provider-review questions.", "Members tracking soreness, stiffness, recovery patterns, or inflammation-related labs.", ["Pain scale tracker", "Mobility checklist", "Inflammation labs", "Protocol Vault links"]],
-  ["skin-optimization", "Skin Optimization", "Skin & Hair", "✨", "Track skin-support education, hydration, collagen routines, nutrients, hormones, and lifestyle patterns.", "Members focused on skin quality, texture, recovery, glow, or aesthetic wellness tracking.", ["Skin tracker", "Nutrient prompts", "GHK-Cu education link", "Monthly progress report"]],
-  ["hair-growth", "Hair Growth", "Skin & Hair", "🌱", "Organize hair-wellness education, nutrient status, stress, hormones, thyroid markers, and progress notes.", "Members tracking shedding, growth cycles, nutrient questions, or thyroid/hormone review notes.", ["Hair photo notes", "Ferritin and thyroid prompts", "Stress checklist", "Learning center"]],
-  ["athletic-recovery", "Athletic Recovery", "Athletic Performance", "🏃", "Track training readiness, soreness, HRV, mobility, protein habits, and performance recovery education.", "Athletes and active members focused on recovery, adaptation, consistency, and injury-prevention questions.", ["Recovery score", "Training log", "Mobility checklist", "BodyScan progress"]],
-  ["stress-cortisol", "Stress & Cortisol", "Stress & Cortisol", "🫧", "Track stress education, nervous-system routines, sleep, caffeine timing, symptoms, and cortisol discussion points.", "Members managing heavy workload, poor recovery, sleep disruption, cravings, or resilience goals.", ["Stress score", "Breathwork checklist", "Sleep/stimulant tracker", "Cortisol lab prompts"]],
-  ["sexual-wellness", "Sexual Wellness", "Sexual Wellness", "❤️", "Organize sexual-wellness education around hormones, circulation, stress, sleep, and provider-safe questions.", "Members tracking libido, confidence, stress impact, medication-review questions, or relationship context.", ["Wellness tracker", "Hormone/circulation prompts", "Concierge notes", "Learning center"]],
-  ["thyroid-optimization", "Thyroid Optimization", "Hormones", "🦋", "Track thyroid education, energy, temperature, hair, digestion, labs, and provider-review notes.", "Members organizing thyroid lab conversations, energy patterns, metabolism, and symptom trends.", ["Thyroid lab checklist", "Temperature/energy notes", "Nutrition prompts", "Progress analytics"]],
-  ["glp1-support", "GLP-1 Support", "Weight Loss", "💧", "Support GLP-1 education with hydration, protein, digestion, muscle preservation, and provider-review tracking.", "Members using or discussing GLP-1 medication plans with qualified providers.", ["Protein checklist", "Digestive tracker", "Muscle-preservation prompts", "BodyScan progress"]],
-  ["heart-metabolic-health", "Heart & Metabolic Health", "Metabolic Health", "🫀", "Organize cardiovascular and metabolic education around lipids, glucose, movement, sleep, and inflammation.", "Members tracking cholesterol, glucose, blood pressure notes, body composition, or prevention goals.", ["Lipid/glucose prompts", "Movement checklist", "Quarterly review", "Progress report"]],
-  ["immune-health", "Immune Health", "Immune Health", "🛡️", "Track immune-support education, sleep, stress, nutrients, recovery patterns, and provider discussion points.", "Members focused on resilience, nutrient status, recovery, and immune-support routines.", ["Immune score", "Vitamin D/zinc prompts", "Recovery checklist", "Learning center"]],
-  ["detox-liver-support", "Detox & Liver Support", "Metabolic Health", "🍃", "Organize liver-support education, hydration, digestion, nutrients, medication/supplement spacing, and lab-review notes.", "Members tracking liver enzymes, environmental exposure questions, digestion, or supplement stacks.", ["CMP prompts", "Hydration/fiber checklist", "Stack spacing notes", "Provider questions"]],
-  ["muscle-building", "Muscle Building", "Athletic Performance", "💪", "Track muscle-building education, protein, strength training, recovery, creatine habits, and body-composition progress.", "Members focused on strength, lean mass, training consistency, and recovery.", ["Training checklist", "Protein tracker", "BodyScan lean-mass notes", "Milestone report"]],
-  ["mood-emotional-balance", "Mood & Emotional Balance", "Brain Performance", "🌤️", "Organize mood-support education through sleep, stress, nutrients, routines, and provider-safe discussion points.", "Members tracking mood patterns, stress, sleep disruption, focus, or lifestyle consistency.", ["Mood tracker", "Sleep/stress prompts", "Daily support checklist", "Learning center"]],
-  ["fertility-support", "Fertility Support", "Women's Health", "🌷", "Track fertility-support education, cycle timing, nutrients, lifestyle factors, and provider-review questions.", "Members organizing preconception wellness, cycle tracking, lab questions, and partner-support routines.", ["Cycle tracker", "Nutrient prompts", "Provider questions", "Monthly report"]],
-  ["peptide-education", "Peptide Education", "Longevity", "💉", "Organize peptide education, vocabulary, safety questions, protocol references, and provider discussion notes.", "Members who want safer, organized peptide education before speaking with qualified professionals.", ["Peptide learning center", "Protocol Vault links", "Question builder", "Safety checklist"]]
-].map(([id, name, category, icon, desc, bestFor, features], index) => ({
-  id,
-  slug: id,
-  name,
-  category,
-  icon,
-  desc,
-  description: desc,
-  bestFor,
-  features,
-  priceTeaser: "Included by tier. Extra modules $35/mo; 3-module bundle $89/mo.",
-  questions: [
-    `What is your main ${name.toLowerCase()} goal this month?`,
-    "Which symptoms or patterns do you want to track?",
-    "Which labs, wearables, or BodyScan updates should be reviewed?",
-    "What questions should be discussed with a qualified healthcare provider?"
+const EW_ACTIVE_LAUNCH_MODULES = new Set([
+  "hormone-optimization",
+  "weight-loss-and-metabolism",
+  "sleep-repair",
+  "brain-fog-and-focus",
+  "gut-reset",
+  "menopause-support",
+  "men-s-performance",
+  "inflammation-reduction",
+  "longevity-and-healthy-aging",
+  "skin-optimization",
+  "allergies-and-seasonal-wellness",
+  "autoimmune-wellness-support",
+  "environmental-toxin-awareness",
+  "mold-exposure-education",
+  "heavy-metal-awareness"
+]);
+
+const EW_FEATURED_MODULES = new Set([
+  "hormone-optimization",
+  "weight-loss-metabolism",
+  "sleep-repair",
+  "brain-fog-focus",
+  "gut-reset",
+  "allergies-and-seasonal-wellness",
+  "autoimmune-wellness-support",
+  "environmental-toxin-awareness",
+  "mold-exposure-education",
+  "heavy-metal-awareness"
+]);
+
+const EW_LIBRARY = {
+  "Foundational Health": [
+    "Health Optimization Fundamentals",
+    "Healthy Habits & Lifestyle",
+    "Nutrition Foundations",
+    "Hydration Optimization",
+    "Exercise & Movement",
+    "Recovery & Resilience",
+    "Sleep Repair",
+    "Stress Management",
+    "Mindfulness & Meditation",
+    "Healthy Aging"
   ],
-  symptoms: ["Energy", "Sleep", "Mood", "Recovery", "Digestive or body changes"],
-  labs: category === "Hormones" ? ["TSH", "Free T3", "Free T4", "Sex hormones as appropriate", "AM cortisol when appropriate"] :
-    category === "Weight Loss" ? ["A1c", "Fasting insulin", "Lipids", "CMP", "Vitamin D"] :
-    category === "Metabolic Health" ? ["A1c", "Fasting insulin", "Lipids", "hs-CRP", "CMP"] :
-    category === "Skin & Hair" ? ["Ferritin", "Vitamin D", "B12", "Zinc/Copper when appropriate", "Thyroid panel"] :
-    ["CBC", "CMP", "Vitamin D", "hs-CRP", "Provider-selected specialty labs"],
-  protocols: [`${name} education guide`, "Quarterly review checklist", "Medication and stack check prompts"],
-  tasks: ["Track symptoms", "Complete daily habit", "Review learning resource", "Log lab or BodyScan update"],
-  resources: [`${name} foundations`, "How module scoring works", "Questions for your provider"],
-  featured: index < 6,
-  comingSoon: false,
-  published: true,
-  sort: index + 1
-}));
+  "Hormones & Metabolism": [
+    "Hormone Optimization",
+    "Menopause Support",
+    "Perimenopause Support",
+    "Women's Health",
+    "Men's Performance",
+    "Testosterone Optimization",
+    "Thyroid Optimization",
+    "Adrenal Health",
+    "Cortisol & Stress",
+    "Blood Sugar Optimization",
+    "Weight Loss & Metabolism",
+    "GLP-1 Companion Program",
+    "Metabolic Flexibility"
+  ],
+  "Brain & Mental Performance": [
+    "Brain Fog & Focus",
+    "Memory Optimization",
+    "Mood & Emotional Wellness",
+    "Executive Performance",
+    "Cognitive Longevity",
+    "ADHD Support",
+    "Burnout Recovery",
+    "Mental Resilience"
+  ],
+  "Digestive & Immune Health": [
+    "Gut Reset",
+    "Digestive Health",
+    "Food Sensitivity & Elimination",
+    "Microbiome Health",
+    "Immune Health",
+    "Allergies & Seasonal Wellness",
+    "Histamine & Mast Cell Support",
+    "Autoimmune Wellness Support",
+    "Long COVID Recovery Support",
+    "Chronic Fatigue Support",
+    "Fibromyalgia Wellness Support"
+  ],
+  "Cardiovascular & Longevity": [
+    "Longevity & Healthy Aging",
+    "Heart Health",
+    "Cholesterol Optimization",
+    "Blood Pressure Support",
+    "Inflammation Reduction",
+    "Mitochondrial Health",
+    "Cellular Longevity",
+    "Healthy Aging for Women",
+    "Healthy Aging for Men"
+  ],
+  "Performance & Recovery": [
+    "Athletic Performance",
+    "Muscle Building",
+    "Recovery Optimization",
+    "Mobility & Flexibility",
+    "Joint Health",
+    "Bone Health",
+    "Injury Recovery"
+  ],
+  "Appearance & Vitality": [
+    "Skin Optimization",
+    "Hair Growth",
+    "Healthy Nails",
+    "Collagen & Connective Tissue",
+    "Healthy Weight Maintenance",
+    "Healthy Body Composition"
+  ],
+  "Environmental Health": [
+    "Environmental Toxin Awareness",
+    "Mold Exposure Education",
+    "Heavy Metal Awareness",
+    "Air Quality & Respiratory Wellness",
+    "Water Quality Awareness",
+    "Household Chemical Exposure",
+    "Endocrine Disruptor Education",
+    "Plastic & Microplastic Exposure"
+  ],
+  "Specialized Wellness": [
+    "Sexual Wellness",
+    "Fertility Support",
+    "Healthy Pregnancy Education",
+    "Postpartum Recovery",
+    "Healthy Family Wellness",
+    "Healthy Travel & Jet Lag",
+    "Shift Worker Wellness",
+    "Migraine & Headache Wellness",
+    "Healthy Vision",
+    "Hearing Wellness",
+    "Oral Health",
+    "Kidney Wellness",
+    "Liver Health",
+    "Respiratory Wellness"
+  ],
+  "Advanced Bio-Optimization": [
+    "Biomarker Mastery",
+    "Advanced Lab Interpretation",
+    "Peptide Education",
+    "Supplement Optimization",
+    "Protocol Builder",
+    "Recovery Technologies",
+    "Red Light Therapy",
+    "Sauna Optimization",
+    "Cold Exposure",
+    "Wearable Device Integration"
+  ]
+};
+
+function ewSlug(name) {
+  return name.toLowerCase().replace(/&/g, "and").replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
+}
+
+function ewCategoryIcon(category) {
+  return {
+    "Foundational Health": "◇",
+    "Hormones & Metabolism": "⚖",
+    "Brain & Mental Performance": "◉",
+    "Digestive & Immune Health": "✦",
+    "Cardiovascular & Longevity": "◆",
+    "Performance & Recovery": "△",
+    "Appearance & Vitality": "✧",
+    "Environmental Health": "◎",
+    "Specialized Wellness": "◈",
+    "Advanced Bio-Optimization": "✺"
+  }[category] || "◇";
+}
+
+function ewDescription(name, category) {
+  const lower = name.toLowerCase();
+  if (lower.includes("allerg")) return "Track seasonal wellness patterns, histamine-aware education, immune-support habits, and questions to discuss with a qualified healthcare provider.";
+  if (lower.includes("autoimmune")) return "Organize autoimmune wellness education, symptom tracking, inflammation patterns, recovery habits, and provider-review questions.";
+  if (lower.includes("mold")) return "Build mold exposure awareness with environment notes, respiratory wellness tracking, symptom patterns, and safe next-discussion prompts.";
+  if (lower.includes("heavy metal")) return "Track heavy metal awareness education, exposure history, lab-discussion prompts, and environmental wellness questions.";
+  if (lower.includes("toxin") || lower.includes("chemical") || lower.includes("plastic") || lower.includes("microplastic") || lower.includes("endocrine disruptor")) return "Organize environmental toxin awareness, exposure reduction education, household review notes, and provider-safe wellness insights.";
+  if (lower.includes("sleep")) return "Track sleep education, evening routines, wearable trends, recovery patterns, and sleep-support consistency.";
+  if (lower.includes("weight") || lower.includes("glp") || lower.includes("blood sugar")) return "Track metabolic education, appetite patterns, body composition goals, glucose-support habits, and provider-review prompts.";
+  if (lower.includes("hormone") || lower.includes("thyroid") || lower.includes("testosterone") || lower.includes("menopause")) return "Organize hormone and metabolism education, labs, symptoms, lifestyle patterns, and provider discussion points.";
+  if (lower.includes("brain") || lower.includes("mood") || lower.includes("memory") || lower.includes("burnout") || lower.includes("adhd")) return "Support cognitive and emotional wellness education through sleep, stress, nutrients, routines, and tracking.";
+  if (lower.includes("gut") || lower.includes("digestive") || lower.includes("microbiome")) return "Organize digestive education, symptom patterns, food timing, microbiome support, and provider-review questions.";
+  if (lower.includes("heart") || lower.includes("cholesterol") || lower.includes("pressure") || lower.includes("inflammation") || lower.includes("longevity")) return "Track cardiovascular and longevity education, biomarkers, inflammation patterns, movement, sleep, and quarterly reviews.";
+  return `A focused ${category.toLowerCase()} education module with module score, assessment, symptoms, labs, Protocol Vault links, BodyScan notes, daily tasks, reports, and learning resources.`;
+}
+
+function ewBestFor(name, category) {
+  const lower = name.toLowerCase();
+  if (lower.includes("allerg")) return "Members tracking seasonal symptoms, histamine patterns, immune routines, and environmental triggers.";
+  if (lower.includes("autoimmune")) return "Members organizing inflammation patterns, fatigue, joint discomfort, recovery habits, and provider-review questions.";
+  if (lower.includes("mold")) return "Members with mold exposure concerns who want organized awareness, respiratory tracking, and discussion prompts.";
+  if (lower.includes("heavy metal")) return "Members tracking exposure questions, lab-review planning, and safer environmental wellness education.";
+  if (lower.includes("toxin") || lower.includes("chemical") || lower.includes("plastic")) return "Members reviewing toxin exposure, household products, plastics, air, water, and sensitivity patterns.";
+  return `Members focused on ${name.toLowerCase()} education, tracking, and personalized wellness insights.`;
+}
+
+function ewLabs(category) {
+  if (category === "Hormones & Metabolism") return ["A1c", "Fasting insulin", "Lipids", "Thyroid panel", "Hormone labs as appropriate"];
+  if (category === "Digestive & Immune Health") return ["CBC", "CMP", "Vitamin D", "hs-CRP", "Provider-selected immune or digestive labs"];
+  if (category === "Environmental Health") return ["CBC", "CMP", "hs-CRP", "Exposure-history review", "Provider-selected specialty labs"];
+  if (category === "Cardiovascular & Longevity") return ["A1c", "Lipids", "hs-CRP", "CMP", "Vitamin D"];
+  if (category === "Appearance & Vitality") return ["Ferritin", "Vitamin D", "B12", "Thyroid panel", "Provider-selected nutrient labs"];
+  return ["CBC", "CMP", "Vitamin D", "hs-CRP", "Provider-selected specialty labs"];
+}
+
+let ewSort = 1;
+window.EW_SPECIALTY_MODULES = Object.entries(EW_LIBRARY).flatMap(([category, names]) =>
+  names.map((name) => {
+    const slug = ewSlug(name);
+    const active = EW_ACTIVE_LAUNCH_MODULES.has(slug);
+    return {
+      id: slug,
+      slug,
+      name,
+      category,
+      icon: ewCategoryIcon(category),
+      desc: ewDescription(name, category),
+      shortDescription: ewDescription(name, category),
+      description: ewDescription(name, category),
+      longDescription: `${ewDescription(name, category)} The module keeps language educational and helps members organize patterns, questions, and wellness tracking for discussion with qualified professionals.`,
+      bestFor: ewBestFor(name, category),
+      features: ["Module score", "Assessment", "Symptom tracker", "Recommended labs", "Daily check-ins", "Learning center"],
+      priceMonthly: 35,
+      priceTeaser: active ? "Active launch module. Included by tier; extra modules $35/mo." : "Coming soon. Join to be notified when this module opens.",
+      includedPlanLevel: "Gold+",
+      status: active ? "active" : "coming_soon",
+      active,
+      comingSoon: !active,
+      featured: EW_FEATURED_MODULES.has(slug),
+      recommended: EW_FEATURED_MODULES.has(slug),
+      publicPreview: true,
+      published: true,
+      safetyDisclaimer: window.EW_MODULE_DISCLAIMER,
+      recommendationKeywords: [name, category, ...name.toLowerCase().split(/\s+/)].join(" ").toLowerCase(),
+      questions: [
+        `What is your main ${name.toLowerCase()} goal this month?`,
+        "Which symptoms, patterns, or environment factors do you want to track?",
+        "Which labs, wearables, BodyScan updates, or progress notes should be reviewed?",
+        "What questions should be discussed with a qualified healthcare provider?"
+      ],
+      symptoms: ["Energy", "Sleep", "Mood", "Recovery", "Body or environment pattern notes"],
+      labs: ewLabs(category),
+      protocols: [`${name} education guide`, "Quarterly review checklist", "Medication and stack check prompts"],
+      tasks: ["Track symptoms", "Complete daily habit", "Review learning resource", "Log lab, BodyScan, or exposure update"],
+      resources: [`${name} foundations`, "How module scoring works", "Questions for your provider"],
+      sort: ewSort++
+    };
+  })
+);
+
+window.EW_CATEGORY_COUNTS = window.EW_SPECIALTY_MODULES.reduce((counts, module) => {
+  counts[module.category] = (counts[module.category] || 0) + 1;
+  return counts;
+}, {});
+
+window.EW_RECOMMENDATION_RULES = [
+  { id: "fatigue-brain-sleep", terms: ["fatigue", "brain fog", "poor sleep", "tired", "focus"], modules: ["sleep-repair", "brain-fog-and-focus", "hormone-optimization"] },
+  { id: "joint-inflammation-fatigue", terms: ["joint", "inflammation", "fatigue", "stiff", "pain"], modules: ["inflammation-reduction", "autoimmune-wellness-support", "joint-health"] },
+  { id: "seasonal-allergies", terms: ["seasonal", "allergy", "allergies", "sneezing", "histamine"], modules: ["allergies-and-seasonal-wellness", "histamine-and-mast-cell-support", "immune-health"] },
+  { id: "mold-exposure", terms: ["mold", "musty", "water damage", "respiratory"], modules: ["mold-exposure-education", "environmental-toxin-awareness", "respiratory-wellness"] },
+  { id: "toxin-exposure", terms: ["toxin", "heavy metal", "plastic", "microplastic", "chemical", "sensitivity"], modules: ["environmental-toxin-awareness", "heavy-metal-awareness", "endocrine-disruptor-education", "household-chemical-exposure"] },
+  { id: "menopause", terms: ["menopause", "hot flash", "night sweat", "perimenopause"], modules: ["menopause-support", "sleep-repair", "bone-health", "heart-health"] },
+  { id: "weight-blood-sugar", terms: ["weight gain", "blood sugar", "glucose", "insulin", "craving"], modules: ["weight-loss-and-metabolism", "blood-sugar-optimization", "glp-1-companion-program"] },
+  { id: "stress-burnout", terms: ["stress", "burnout", "overwhelmed", "cortisol", "resilience"], modules: ["cortisol-and-stress", "burnout-recovery", "mental-resilience", "sleep-repair"] }
+];
+
+window.EW_RECOMMEND_MODULES = function ewRecommendModules(input, activeIds = []) {
+  const text = String(input || "").toLowerCase();
+  const active = new Set(activeIds || []);
+  const hits = new Set();
+  window.EW_RECOMMENDATION_RULES.forEach((rule) => {
+    if (rule.terms.some((term) => text.includes(term))) {
+      rule.modules.forEach((slug) => {
+        if (!active.has(slug)) hits.add(slug);
+      });
+    }
+  });
+  if (!hits.size) {
+    ["hormone-optimization", "sleep-repair", "gut-reset"].forEach((slug) => {
+      if (!active.has(slug)) hits.add(slug);
+    });
+  }
+  return window.EW_SPECIALTY_MODULES.filter((module) => hits.has(module.slug));
+};
