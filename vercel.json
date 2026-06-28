@@ -1,6 +1,5 @@
 {
   "redirects": [
-    { "source": "/signup.html", "destination": "/#pricing", "permanent": false },
     { "source": "/emerald-wellness/signup.html", "destination": "/#pricing", "permanent": false },
     { "source": "/sign%20up%20061126.html", "destination": "/#pricing", "permanent": true },
     { "source": "/command-center.html", "destination": "/404.html", "permanent": false },
@@ -26,6 +25,7 @@
     { "source": "/terms", "destination": "/terms-of-service.html", "permanent": true }
   ],
   "rewrites": [
+    { "source": "/signup", "destination": "/signup.html" },
     { "source": "/app", "destination": "/app.html" },
     { "source": "/dashboard", "destination": "/dashboard.html" },
     { "source": "/specialty-modules", "destination": "/specialty-modules.html" },
