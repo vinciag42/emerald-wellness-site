@@ -27,11 +27,20 @@ It also includes clear links back to:
 - Organization, WebPage, and FAQ schema.
 - “How It Works” section.
 - Category cards for GLP-1 support, peptides, hormone wellness, labs, recovery, performance, vitality, and longevity.
+- Internal SEO landing pages for priority shop categories:
+  - `/shop/weight-loss-glp1`
+  - `/shop/peptide-wellness`
+  - `/shop/hormone-wellness`
+  - `/shop/labs-testing`
+  - `/shop/recovery-performance`
+  - `/shop/vitality-longevity`
 - Safer product positioning language.
 - Medical/compliance disclaimer.
 - Internal links from website and app Store buttons to `/shop`.
 - Sitemap entry for `/shop`.
+- Sitemap entries for all priority shop category pages.
 - Vercel rewrite for `/shop`.
+- Vercel rewrites for all priority shop category pages.
 
 ## Copy to use inside the external shop builder
 
@@ -77,4 +86,3 @@ These must be updated inside the external shop system because the live shop is h
 - Remove or rewrite strong medical claims and guaranteed-result language.
 - Improve image alt text.
 - Add a visible link back to `https://emeraldwellness.health/` labeled “Emerald Wellness Platform” or “Back to Emerald Wellness.”
-
