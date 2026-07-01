@@ -41,6 +41,8 @@
     { "source": "/peptide-supplement-education", "destination": "/peptide-supplement-education.html" },
     { "source": "/regenesis-wellness-planning", "destination": "/regenesis-wellness-planning.html" },
     { "source": "/provider-review", "destination": "/provider-review.html" },
+    { "source": "/quality-provider-review", "destination": "/quality-provider-review.html" },
+    { "source": "/how-it-works", "destination": "/how-it-works.html" },
     { "source": "/prescriptions", "destination": "/prescriptions.html" },
     { "source": "/glp1-support", "destination": "/glp1-support.html" },
     { "source": "/hormone-wellness", "destination": "/hormone-wellness.html" },
