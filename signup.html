@@ -146,6 +146,7 @@ nav{display:flex;justify-content:space-between;align-items:center;padding:18px 4
 
 /* ERROR */
 .error-msg{background:rgba(224,92,92,.1);border:1px solid rgba(224,92,92,.3);border-radius:8px;padding:12px 16px;font-size:13px;color:#e05c5c;margin-bottom:16px;display:none;}
+.safety-note{max-width:760px;margin:18px auto 0;padding:14px 18px;border:1px solid rgba(64,216,136,.22);border-radius:12px;background:rgba(64,216,136,.07);color:var(--textMid);font-size:13px;line-height:1.6;text-align:center;}
 
 /* FOOTER */
 footer{text-align:center;padding:24px;border-top:1px solid var(--border);font-size:12px;color:var(--textDim);}
@@ -162,13 +163,14 @@ footer{text-align:center;padding:24px;border-top:1px solid var(--border);font-si
 <div class="hero">
   <div class="hero-eyebrow">Start Your Journey</div>
   <h1>Your First 7 Days<br/><em>Start for Just $1</em></h1>
-  <p class="hero-sub">Join thousands of optimizers using AI-powered protocols, 500+ compounds, and clinical-grade guidance.</p>
+  <p class="hero-sub">Join Emerald Wellness for personal health intelligence, 500+ organized compounds, stack tracking, lab rhythm, and provider-review support where appropriate.</p>
   <div class="trust-row">
     <div class="trust-item">$1 for First 7 Days</div>
     <div class="trust-item">20% Off First Month</div>
     <div class="trust-item">Cancel Anytime</div>
     <div class="trust-item">No Hidden Fees</div>
   </div>
+  <div class="safety-note">Emerald Wellness provides wellness intelligence and tracking tools. It does not diagnose, treat, cure, prescribe, guarantee results, or replace medical care. Prescription decisions, where available, are made only by qualified licensed providers.</div>
 </div>
 
 <!-- PROGRESS -->
@@ -217,7 +219,7 @@ footer{text-align:center;padding:24px;border-top:1px solid var(--border);font-si
   <!-- STEP 2: Plan Selection -->
   <div class="step-card" id="step2">
     <div class="step-title">Choose Your Plan</div>
-    <div class="step-sub">All paid plans are $1 for the first 7 days + 20% off your first month</div>
+    <div class="step-sub">All paid plans are $1 for the first 7 days + 20% off your first month. After 7 days, your selected plan renews automatically unless canceled before renewal.</div>
     <div id="err2" class="error-msg"></div>
 
     <div class="billing-toggle">
@@ -230,7 +232,7 @@ footer{text-align:center;padding:24px;border-top:1px solid var(--border);font-si
         <div class="plan-name">🥈 Silver</div>
         <div class="plan-price" id="price-silver">$74.99<span>/mo</span></div>
         <div class="plan-trial">$1 for first 7 days · then 20% off first month</div>
-        <div class="plan-features">✓ 500+ compound database<br/>✓ AI Health Advisor<br/>✓ Basic protocols<br/>✓ Lab tracker</div>
+        <div class="plan-features">✓ 500+ compound database<br/>✓ Personal health intelligence tools<br/>✓ Basic protocol organization<br/>✓ Lab tracker</div>
       </div>
       <div class="plan-card popular" id="plan-gold" onclick="selectPlan('gold')">
         <div class="plan-name">🥇 Gold</div>
@@ -242,7 +244,7 @@ footer{text-align:center;padding:24px;border-top:1px solid var(--border);font-si
         <div class="plan-name">💎 Emerald Elite</div>
         <div class="plan-price" id="price-elite">$199.99<span>/mo</span></div>
         <div class="plan-trial">$1 for first 7 days · then 20% off first month</div>
-        <div class="plan-features">✓ Everything in Gold<br/>✓ AI Protocol Builder<br/>✓ Biomarker optimization<br/>✓ Priority support</div>
+        <div class="plan-features">✓ Everything in Gold<br/>✓ Guided protocol organization<br/>✓ Biomarker trend tracking<br/>✓ Priority support</div>
       </div>
       <div class="plan-card" id="plan-pro" onclick="selectPlan('pro')">
         <div class="plan-name">⚕️ Pro Practitioner</div>
@@ -295,7 +297,7 @@ footer{text-align:center;padding:24px;border-top:1px solid var(--border);font-si
       <div class="summary-row" id="summaryAddonsRow" style="display:none;"><span>Add-ons (<span id="addonCount">0</span>)</span><span id="summaryAddons">$0</span></div>
       <div class="summary-row total"><span>Total after trial</span><span class="price" id="summaryTotal">$0/mo</span></div>
     </div>
-    <div class="trial-note">✦ Your card will be charged $1 today, then the selected plan price after 7 days</div>
+    <div class="trial-note">✦ Your card will be charged $1 today. After 7 days, your selected plan renews automatically at the displayed recurring price unless canceled before renewal.</div>
     <button class="btn-primary" onclick="goStep3()">Continue → Create Account</button>
     <button class="btn-secondary" onclick="goStep(1)">← Back</button>
   </div>
@@ -325,7 +327,7 @@ footer{text-align:center;padding:24px;border-top:1px solid var(--border);font-si
       <div class="summary-row" id="referralRow" style="display:none;"><span>Referral discount</span><span style="color:var(--greenXL);">-20% first month</span></div>
       <div class="summary-row total"><span>After 7-day trial</span><span class="price" id="summaryTotal3">$0/mo</span></div>
     </div>
-    <div class="trial-note">✦ $1 for the first 7 days — $1 charged today</div>
+    <div class="trial-note">✦ $1 for the first 7 days — $1 charged today. After 7 days, your selected plan renews automatically at the displayed recurring price unless canceled before renewal.</div>
     <button class="btn-primary" id="btnCreateAccount" onclick="createAccount()">Create Account & Go to Checkout →</button>
     <button class="btn-secondary" onclick="goStep(2)">← Back</button>
   </div>
@@ -349,7 +351,7 @@ footer{text-align:center;padding:24px;border-top:1px solid var(--border);font-si
 </div>
 
 <footer>
-  © 2026 Emerald Wellness LLC · <a href="/privacy-policy.html">Privacy</a> · <a href="/terms-of-service.html">Terms</a> · <a href="mailto:support@emeraldwellness.health">support@emeraldwellness.health</a>
+  © 2026 Emerald Wellness LLC · <a href="/privacy-policy.html">Privacy</a> · <a href="/terms-of-service.html">Terms</a> · <a href="mailto:info@emeraldwellness.health">info@emeraldwellness.health</a>
 </footer>
 
 <script>
