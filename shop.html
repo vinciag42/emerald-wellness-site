@@ -75,6 +75,9 @@ a{color:inherit;text-decoration:none}
 .brand-mark{width:34px;height:34px;border:3px solid var(--emerald);border-radius:8px;transform:rotate(45deg);position:relative}
 .brand-mark:after{content:"";position:absolute;inset:5px;border:2px solid var(--emerald);border-radius:5px}
 .brand-mark span{display:none}
+.brand-copy{display:flex;flex-direction:column;gap:2px;line-height:1.05}
+.brand-copy .brand-name{font-family:var(--serif);font-size:28px;font-weight:800;color:var(--emerald);letter-spacing:0}
+.brand-copy .brand-tagline{font-family:var(--sans);font-size:9px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:#111}
 .links{display:flex;align-items:center;gap:31px;font-size:14px;color:#243f39}
 .links a:hover{color:var(--emerald)}
 .nav-actions{display:flex;gap:12px;align-items:center}
@@ -132,20 +135,20 @@ h2{font-size:clamp(32px,4vw,42px);font-weight:800}
 .safety-icon{width:42px;height:42px;border:2px solid var(--emerald);border-radius:50%;display:grid;place-items:center;font-size:24px;flex:none}
 .footer{background:linear-gradient(135deg,#00533f,#006446);color:white;padding:38px 0 18px}
 .footer-grid{display:grid;grid-template-columns:1.25fr .6fr .7fr 1fr;gap:44px}
-.footer .brand{color:white;font-size:19px;margin-bottom:14px}.footer p{color:#d9ebe5;font-size:14px}.footer h4{font-size:16px;margin-bottom:12px}
+.footer .brand{color:white;font-size:19px;margin-bottom:14px}.footer .brand-copy .brand-name{color:white;font-size:19px;line-height:1.05}.footer .brand-copy .brand-tagline{color:#f4d76b;font-size:8px;letter-spacing:1.5px}.footer p{color:#d9ebe5;font-size:14px}.footer h4{font-size:16px;margin-bottom:12px}
 .footer a{display:block;color:#e4f1ec;margin:7px 0;font-size:14px}.social{display:flex;gap:12px;margin-top:18px}.social span{width:28px;height:28px;border:1px solid rgba(255,255,255,.5);border-radius:50%;display:grid;place-items:center}
 .email{width:100%;padding:13px;border-radius:6px;border:0;margin:10px 0;background:white}.footer .subscribe{width:100%;border-color:white;color:white}
 .footer-disclaimer{border-top:1px solid rgba(255,255,255,.18);margin-top:28px;padding-top:18px;color:#d9ebe5;font-size:13px;line-height:1.7}
 .legal{border-top:1px solid rgba(255,255,255,.2);margin-top:16px;padding-top:16px;display:flex;justify-content:space-between;gap:16px;font-size:12px;color:#d9ebe5}
 .legal-links{display:flex;gap:22px}
-@media(max-width:980px){.links{display:none}.hero-grid,.trust-row,.steps,.categories,.products,.footer-grid{grid-template-columns:1fr 1fr}.visual{min-height:430px}.brand{font-size:22px}}
+@media(max-width:980px){.links{display:none}.hero-grid,.trust-row,.steps,.categories,.products,.footer-grid{grid-template-columns:1fr 1fr}.visual{min-height:430px}.brand{font-size:22px}.brand-copy .brand-name{font-size:22px}}
 @media(max-width:640px){.container{width:min(100% - 28px,1180px)}.hero{padding-top:38px}.hero-grid,.trust-row,.steps,.categories,.products,.footer-grid{grid-template-columns:1fr}h1{font-size:42px}.visual{display:none}.actions .btn,.nav-actions .btn{width:100%}.nav-actions{display:none}.safety .container{align-items:flex-start;text-align:left}.legal{flex-direction:column}.footer{padding-bottom:28px}}
 </style>
 </head>
 <body>
 <nav class="nav" aria-label="Shop navigation">
   <div class="container nav-inner">
-    <a class="brand" href="/shop"><span class="brand-mark"><span></span></span>Emerald Wellness Shop</a>
+    <a class="brand" href="/shop"><span class="brand-mark"><span></span></span><span class="brand-copy"><span class="brand-name">Emerald Wellness Shop</span><span class="brand-tagline">Where Transformation Begins</span></span></a>
     <div class="links">
       <a href="#products">Products</a>
       <a href="#how">How It Works</a>
@@ -246,7 +249,7 @@ h2{font-size:clamp(32px,4vw,42px);font-weight:800}
 <footer class="footer">
   <div class="container footer-grid">
     <div>
-      <a class="brand" href="/shop"><span class="brand-mark"></span>Emerald<br/>Wellness Shop</a>
+      <a class="brand" href="/shop"><span class="brand-mark"></span><span class="brand-copy"><span class="brand-name">Emerald<br/>Wellness Shop</span><span class="brand-tagline">Where Transformation Begins</span></span></a>
       <p>Emerald Wellness connects products, labs, protocols, and personal health intelligence in one trusted wellness ecosystem.</p>
       <div class="social"><span>◎</span><span>f</span><span>▶</span><span>in</span></div>
     </div>
