@@ -36,8 +36,8 @@
   <text x="92" y="50" font-family="Georgia, 'Times New Roman', serif"
         font-size="11" font-weight="400" letter-spacing="7" fill="#7a9880">WELLNESS</text>
 
-  <!-- Health Intelligence badge -->
+  <!-- Brand slogan -->
   <text x="318" y="40" text-anchor="middle" dominant-baseline="middle"
         font-family="Georgia, serif" font-size="8" font-style="italic"
-        letter-spacing="1.5" fill="#4a6a50">Health Intelligence</text>
+        letter-spacing="0.7" fill="#111111">Where transformation begins</text>
 </svg>

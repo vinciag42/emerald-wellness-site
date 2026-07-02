@@ -81,6 +81,6 @@
   <!-- Tagline -->
   <text x="160" y="332" text-anchor="middle"
         font-family="Georgia, 'Times New Roman', serif"
-        font-size="9.5" font-style="italic" letter-spacing="2.5"
-        fill="#4a6a50">Health Intelligence</text>
+        font-size="8.8" font-style="italic" letter-spacing="1.8"
+        fill="#111111">Where transformation begins</text>
 </svg>
