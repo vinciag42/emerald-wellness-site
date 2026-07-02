@@ -52,6 +52,9 @@ button,input,textarea,select{font-family:inherit}
 .brand{display:flex;align-items:center;gap:12px;margin-bottom:28px}
 .diamond{width:28px;height:28px;border-radius:4px;background:linear-gradient(135deg,var(--em),var(--emXL));transform:rotate(45deg)}
 .brand span{font-family:var(--cinzel);letter-spacing:2px;font-size:13px;color:var(--emXL)}
+.brand-copy{display:flex;flex-direction:column;gap:4px;line-height:1.1}
+.brand-copy .brand-name{font-family:var(--cinzel);letter-spacing:2px;font-size:13px;color:var(--emXL)}
+.brand-copy .brand-tagline{font-family:var(--sans);letter-spacing:1.6px;text-transform:uppercase;font-size:9px;color:var(--goldL)}
 .status{border:1px solid var(--border);background:var(--bg3);border-radius:16px;padding:16px;margin-bottom:18px}
 .status small{display:block;font-family:var(--cinzel);letter-spacing:2px;text-transform:uppercase;color:var(--dim);font-size:9px;margin-bottom:8px}
 .status strong{font-family:var(--serif);font-size:22px;color:var(--goldL)}
@@ -118,7 +121,7 @@ li{margin:7px 0}
 <body>
 <div class="shell">
   <aside class="side">
-    <a class="brand" href="/"><span class="diamond"></span><span>Emerald Wellness</span></a>
+    <a class="brand" href="/"><span class="diamond"></span><span class="brand-copy"><span class="brand-name">Emerald Wellness</span><span class="brand-tagline">Where Transformation Begins</span></span></a>
     <div class="status">
       <small>App Status</small>
       <strong>Preview Live</strong>
