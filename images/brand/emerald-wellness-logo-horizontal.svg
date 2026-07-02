@@ -52,11 +52,12 @@
           letter-spacing="10"
           fill="url(#brandGreen)">WELLNESS</text>
     <line x1="525" y1="443" x2="1315" y2="443" stroke="#c9a928" stroke-width="2"/>
-    <text x="728" y="702"
+    <text x="728" y="528"
           font-family="Arial, Helvetica, sans-serif"
           font-size="34"
           font-weight="500"
           letter-spacing="11"
+          text-anchor="middle"
           fill="#000000">Where Transformation Begins</text>
   </g>
 </svg>
