@@ -52,16 +52,11 @@
           letter-spacing="10"
           fill="url(#brandGreen)">WELLNESS</text>
     <line x1="525" y1="443" x2="1315" y2="443" stroke="#c9a928" stroke-width="2"/>
-    <text x="728" y="548"
+    <text x="728" y="702"
           font-family="Arial, Helvetica, sans-serif"
           font-size="34"
           font-weight="500"
           letter-spacing="11"
           fill="#000000">Where Transformation Begins</text>
-  </g>
-
-  <g id="subtle-brand-glow" opacity=".18">
-    <ellipse cx="209" cy="740" rx="154" ry="36" fill="#40d888"/>
-    <ellipse cx="209" cy="740" rx="10" ry="4" fill="none" stroke="#0f5f3e" stroke-width="2"/>
   </g>
 </svg>
