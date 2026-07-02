@@ -128,10 +128,6 @@ module.exports = async function handler(req, res) {
 
     lineItems.forEach((item, index) => appendLineItem(params, index, item));
 
-    if (body.referralValid) {
-      params.append('discounts[0][coupon]', 'REFERRAL20');
-    }
-
     const session = await stripePost('/checkout/sessions', params);
     return json(res, 200, { id: session.id, url: session.url });
   } catch (error) {

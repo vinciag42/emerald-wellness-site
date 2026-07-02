@@ -166,7 +166,7 @@ footer{text-align:center;padding:24px;border-top:1px solid var(--border);font-si
   <p class="hero-sub">Join Emerald Wellness for personal health intelligence, 500+ organized compounds, stack tracking, lab rhythm, and provider-review support where appropriate.</p>
   <div class="trust-row">
     <div class="trust-item">$1 for First 7 Days</div>
-    <div class="trust-item">20% Off First Month</div>
+    <div class="trust-item">$1 First 7 Days</div>
     <div class="trust-item">Cancel Anytime</div>
     <div class="trust-item">No Hidden Fees</div>
   </div>
@@ -194,14 +194,14 @@ footer{text-align:center;padding:24px;border-top:1px solid var(--border);font-si
     <div class="step-sub">Personalize your Emerald Wellness experience</div>
     <div id="err1" class="error-msg"></div>
     <div class="field-row">
-      <div class="field"><label>First Name *</label><input type="text" id="firstName" placeholder="Alex"/></div>
-      <div class="field"><label>Last Name *</label><input type="text" id="lastName" placeholder="Johnson"/></div>
+      <div class="field"><label>First Name *</label><input type="text" id="firstName" placeholder="Alex" autocomplete="given-name" required/></div>
+      <div class="field"><label>Last Name *</label><input type="text" id="lastName" placeholder="Johnson" autocomplete="family-name" required/></div>
     </div>
-    <div class="field"><label>Email Address *</label><input type="email" id="email" placeholder="alex@example.com"/></div>
-    <div class="field"><label>Phone Number (optional)</label><input type="tel" id="phone" placeholder="+1 (555) 000-0000"/></div>
+    <div class="field"><label>Email Address *</label><input type="email" id="email" placeholder="alex@example.com" autocomplete="email" required/></div>
+    <div class="field"><label>Phone Number (optional)</label><input type="tel" id="phone" placeholder="+1 (555) 000-0000" autocomplete="tel"/></div>
     <div class="field">
       <label>Primary Health Goal *</label>
-      <select id="healthGoal">
+      <select id="healthGoal" required>
         <option value="">Select your main goal...</option>
         <option value="longevity">Longevity & Anti-Aging</option>
         <option value="performance">Athletic Performance</option>
@@ -219,7 +219,7 @@ footer{text-align:center;padding:24px;border-top:1px solid var(--border);font-si
   <!-- STEP 2: Plan Selection -->
   <div class="step-card" id="step2">
     <div class="step-title">Choose Your Plan</div>
-    <div class="step-sub">All paid plans are $1 for the first 7 days + 20% off your first month. After 7 days, your selected plan renews automatically unless canceled before renewal.</div>
+    <div class="step-sub">All paid plans start with a $1 intro charge for the first 7 days. After 7 days, your selected plan renews automatically unless canceled before renewal.</div>
     <div id="err2" class="error-msg"></div>
 
     <div class="billing-toggle">
@@ -231,31 +231,31 @@ footer{text-align:center;padding:24px;border-top:1px solid var(--border);font-si
       <div class="plan-card" id="plan-silver" onclick="selectPlan('silver')">
         <div class="plan-name">🥈 Silver</div>
         <div class="plan-price" id="price-silver">$74.99<span>/mo</span></div>
-        <div class="plan-trial">$1 for first 7 days · then 20% off first month</div>
+        <div class="plan-trial">$1 for first 7 days · then monthly billing</div>
         <div class="plan-features">✓ 500+ compound database<br/>✓ Personal health intelligence tools<br/>✓ Basic protocol organization<br/>✓ Lab tracker</div>
       </div>
       <div class="plan-card popular" id="plan-gold" onclick="selectPlan('gold')">
         <div class="plan-name">🥇 Gold</div>
         <div class="plan-price" id="price-gold">$149.99<span>/mo</span></div>
-        <div class="plan-trial">$1 for first 7 days · then 20% off first month</div>
+        <div class="plan-trial">$1 for first 7 days · then monthly billing</div>
         <div class="plan-features">✓ Everything in Silver<br/>✓ Stack Builder<br/>✓ 200+ protocols<br/>✓ Injection site guides</div>
       </div>
       <div class="plan-card" id="plan-elite" onclick="selectPlan('elite')">
         <div class="plan-name">💎 Emerald Elite</div>
         <div class="plan-price" id="price-elite">$199.99<span>/mo</span></div>
-        <div class="plan-trial">$1 for first 7 days · then 20% off first month</div>
+        <div class="plan-trial">$1 for first 7 days · then monthly billing</div>
         <div class="plan-features">✓ Everything in Gold<br/>✓ Guided protocol organization<br/>✓ Biomarker trend tracking<br/>✓ Priority support</div>
       </div>
       <div class="plan-card" id="plan-pro" onclick="selectPlan('pro')">
         <div class="plan-name">⚕️ Pro Practitioner</div>
         <div class="plan-price" id="price-pro">$299.99<span>/mo</span></div>
-        <div class="plan-trial">$1 for first 7 days · then 20% off first month</div>
+        <div class="plan-trial">$1 for first 7 days · then monthly billing</div>
         <div class="plan-features">✓ Everything in Elite<br/>✓ Patient management<br/>✓ HIPAA BAA<br/>✓ White-label reports</div>
       </div>
       <div class="plan-card" id="plan-platinum" onclick="selectPlan('platinum')">
         <div class="plan-name">✦ Platinum Regenesis</div>
         <div class="plan-price" id="price-platinum">$599<span>/mo</span></div>
-        <div class="plan-trial">$1 for first 7 days · then recurring billing after trial</div>
+        <div class="plan-trial">$1 for first 7 days · then recurring billing</div>
         <div class="plan-features">✓ Regenesis dashboard<br/>✓ Quarterly lab rhythm<br/>✓ Doctor visit preparation<br/>✓ Premium biology planning</div>
       </div>
     </div>
@@ -295,7 +295,7 @@ footer{text-align:center;padding:24px;border-top:1px solid var(--border);font-si
     <div class="summary-box" style="margin-top:20px;">
       <div class="summary-row"><span>Selected plan</span><span id="summaryPlan">— select a plan</span></div>
       <div class="summary-row" id="summaryAddonsRow" style="display:none;"><span>Add-ons (<span id="addonCount">0</span>)</span><span id="summaryAddons">$0</span></div>
-      <div class="summary-row total"><span>Total after trial</span><span class="price" id="summaryTotal">$0/mo</span></div>
+      <div class="summary-row total"><span>Total after first 7 days</span><span class="price" id="summaryTotal">$0/mo</span></div>
     </div>
     <div class="trial-note">✦ Your card will be charged $1 today. After 7 days, your selected plan renews automatically at the displayed recurring price unless canceled before renewal.</div>
     <button class="btn-primary" onclick="goStep3()">Continue → Create Account</button>
@@ -309,7 +309,7 @@ footer{text-align:center;padding:24px;border-top:1px solid var(--border);font-si
     <div id="err3" class="error-msg"></div>
 
     <div class="referral-wrap">
-      <label style="display:block;font-size:13px;color:var(--textMid);margin-bottom:6px;">Referral Code (optional — get 20% off first month)</label>
+      <label style="display:block;font-size:13px;color:var(--textMid);margin-bottom:6px;">Referral Code (optional)</label>
       <div class="referral-input-row">
         <input type="text" id="referralCode" placeholder="Enter referral code"/>
         <button onclick="applyReferral()">Apply</button>
@@ -317,15 +317,15 @@ footer{text-align:center;padding:24px;border-top:1px solid var(--border);font-si
       <div id="referralMsg"></div>
     </div>
 
-    <div class="field"><label>Password *</label><input type="password" id="password" placeholder="Minimum 8 characters"/></div>
-    <div class="field"><label>Confirm Password *</label><input type="password" id="confirmPassword" placeholder="Repeat your password"/></div>
+    <div class="field"><label>Password *</label><input type="password" id="password" placeholder="Minimum 8 characters" autocomplete="new-password" minlength="8" required/></div>
+    <div class="field"><label>Confirm Password *</label><input type="password" id="confirmPassword" placeholder="Repeat your password" autocomplete="new-password" minlength="8" required/></div>
 
     <div class="summary-box">
       <div style="font-size:13px;font-weight:600;color:var(--textMid);margin-bottom:12px;text-transform:uppercase;letter-spacing:1px;">Order Summary</div>
       <div class="summary-row"><span>Plan</span><span id="summaryPlan3">—</span></div>
       <div class="summary-row" id="addonsRow3" style="display:none;"><span>Add-ons</span><span id="summaryAddons3">—</span></div>
-      <div class="summary-row" id="referralRow" style="display:none;"><span>Referral discount</span><span style="color:var(--greenXL);">-20% first month</span></div>
-      <div class="summary-row total"><span>After 7-day trial</span><span class="price" id="summaryTotal3">$0/mo</span></div>
+      <div class="summary-row" id="referralRow" style="display:none;"><span>Referral code</span><span style="color:var(--greenXL);">Applied</span></div>
+      <div class="summary-row total"><span>After first 7 days</span><span class="price" id="summaryTotal3">$0/mo</span></div>
     </div>
     <div class="trial-note">✦ $1 for the first 7 days — $1 charged today. After 7 days, your selected plan renews automatically at the displayed recurring price unless canceled before renewal.</div>
     <button class="btn-primary" id="btnCreateAccount" onclick="createAccount()">Create Account & Go to Checkout →</button>
@@ -340,7 +340,7 @@ footer{text-align:center;padding:24px;border-top:1px solid var(--border);font-si
   <div class="success-sub">Your account is created and your first 7 days are active for $1. You'll receive a welcome email shortly.</div>
       <div class="success-items">
         <div class="success-item">First 7 days activated for $1</div>
-        <div class="success-item">20% off your first month locked in</div>
+        <div class="success-item">Recurring billing begins after the first 7 days unless canceled</div>
         <div class="success-item">Full platform access granted</div>
         <div class="success-item">Welcome email on its way</div>
       </div>
@@ -529,7 +529,7 @@ async function applyReferral() {
   const msg = document.getElementById('referralMsg');
   if(!code){msg.className='referral-error';msg.textContent='Please enter a referral code.';return;}
   msg.className='referral-success';
-  msg.textContent='✓ Referral code applied — 20% off your first month!';
+  msg.textContent='✓ Referral code applied.';
   referralValid = true;
   document.getElementById('referralRow').style.display='flex';
 }

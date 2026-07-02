@@ -48,7 +48,7 @@
       <p class="muted" id="planAccess">1 active module included</p>
       <p class="muted" id="planExtra">Extra modules $49.99/month each</p>
       <div class="field">
-        <label>Preview plan selector</label>
+        <label>Membership access preview</label>
         <select id="planSelect">
           <option value="free">Free — preview only</option>
           <option value="gold" selected>Gold — 1 active module</option>
@@ -66,7 +66,7 @@
       <button data-tab="biology-labs">Biology Labs</button>
       <button data-tab="progress-reports">Progress Reports</button>
       <button data-tab="biology-intelligence">Biology Intelligence</button>
-      <button data-tab="admin">Admin Builder</button>
+      <button data-tab="admin">Module Builder</button>
       <a href="/specialty-modules">Public Marketplace</a>
       <a href="/app">App Preview</a>
       <a href="/signup.html">Upgrade</a>
@@ -83,7 +83,7 @@
         <option value="biology-labs">Biology Labs</option>
         <option value="progress-reports">Progress Reports</option>
         <option value="biology-intelligence">Biology Intelligence</option>
-        <option value="admin">Admin Builder</option>
+        <option value="admin">Module Builder</option>
       </select>
       <span class="pill">Specialty Module Marketplace™</span>
       <div class="actions" style="margin-top:0">
@@ -102,7 +102,7 @@
       </div>
       <div class="grid">
         <div class="card"><div class="score-ring" style="--score:82"><div class="score-inner"><strong id="avgScore">82</strong><span>Avg Score</span></div></div><h3>Module Score</h3><p class="copy">Scores use symptoms, labs, protocol adherence, daily tasks, BodyScan changes, and goals.</p></div>
-        <div class="card"><h3>Membership Rules</h3><p class="copy">Free previews only. Gold activates 1. Platinum Plus activates 3. Concierge tiers activate unlimited modules.</p></div>
+        <div class="card"><h3>Membership Access</h3><p class="copy">Preview access shows modules before activation. Gold activates 1. Platinum Plus activates 3. Concierge tiers activate unlimited modules.</p></div>
         <div class="card"><h3>Billing Add-ons</h3><p class="copy">Extra module add-on: $49.99/month. 3-module bundle: $89/month. Concierge upgrades are handled through the member checkout and billing experience.</p></div>
         <div class="card full">
           <h3>Score Formula</h3>
@@ -139,7 +139,7 @@
     <section id="biology-labs" class="tab"><div class="hero"><p class="eyebrow">Biology Labs Integration</p><h2>Recommended labs by module.</h2><p class="lead">Labs are provider-review categories for quarterly discussion and progress tracking.</p></div><div id="labsList" class="grid"></div></section>
     <section id="progress-reports" class="tab"><div class="hero"><p class="eyebrow">Progress Reports</p><h2>Monthly reports and milestone graduation summaries.</h2><p class="lead">Generate educational summaries from module scores, symptoms, tasks, and milestones.</p></div><div class="grid"><div class="card wide" id="reportPreview"></div><div class="card"><h3>Report Actions</h3><button class="btn" id="generateMonthlyReport">Generate Monthly Report</button><button class="btn ghost" id="generateGraduationReport" style="margin-top:10px">Generate Graduation Report</button><p class="notice">Reports are educational summaries for discussion with qualified professionals.</p></div></div></section>
     <section id="biology-intelligence" class="tab"><div class="hero"><p class="eyebrow">Biology Intelligence</p><h2>Safe educational insights from module progress.</h2><p class="lead">Insights organize patterns, questions, and next discussion points without medical-provider language.</p></div><div id="insightList" class="grid"></div></section>
-    <section id="admin" class="tab"><div class="hero"><p class="eyebrow">Admin Module Builder</p><h2>Create, edit, publish, and price modules without rebuilding the app.</h2><p class="lead">This preview saves admin-created modules locally. The Supabase schema supports database-backed publishing.</p></div><div class="grid"><div class="card wide"><h3>Create / Edit Module Definition</h3><div class="admin-editor"><div class="field"><label>Module name</label><input id="adminName" placeholder="Example: Adrenal Resilience"/></div><div class="field"><label>Icon</label><input id="adminIcon" placeholder="✨"/></div><div class="field"><label>Category</label><select id="adminCategory"></select></div><div class="field"><label>Price teaser</label><input id="adminPrice" placeholder="$49.99/month add-on"/></div><div class="field"><label>Best for</label><input id="adminBestFor" placeholder="Who this module helps organize"/></div><div class="field"><label>Recommended labs</label><input id="adminLabs" placeholder="CBC, CMP, Vitamin D"/></div><div class="field"><label>Protocol templates</label><input id="adminProtocols" placeholder="Education guide, review checklist"/></div><div class="field"><label>Daily tasks</label><input id="adminTasks" placeholder="Hydration, movement, sleep"/></div></div><div class="field"><label>Public marketing copy</label><textarea id="adminDescription" placeholder="Educational module description"></textarea></div><label class="check-item"><input id="adminFeatured" type="checkbox"/> <span>Featured module</span></label><label class="check-item"><input id="adminComingSoon" type="checkbox"/> <span>Coming soon</span></label><button class="btn" id="saveAdminModule">Save Module</button></div><div class="card"><h3>Admin Rules</h3><p class="copy">Admins can set category, price, audience, questions, symptoms, labs, protocol templates, daily tasks, resources, scoring weights, featured status, coming-soon status, and publish state.</p><p class="notice" id="adminDisclaimer"></p></div></div></section>
+    <section id="admin" class="tab"><div class="hero"><p class="eyebrow">Module Builder</p><h2>Create, edit, publish, and price modules without rebuilding the app.</h2><p class="lead">This workspace saves module definitions locally for preview. The Supabase schema supports database-backed publishing when connected.</p></div><div class="grid"><div class="card wide"><h3>Create / Edit Module Definition</h3><div class="admin-editor"><div class="field"><label>Module name</label><input id="adminName" placeholder="Example: Adrenal Resilience"/></div><div class="field"><label>Icon</label><input id="adminIcon" placeholder="✨"/></div><div class="field"><label>Category</label><select id="adminCategory"></select></div><div class="field"><label>Price teaser</label><input id="adminPrice" placeholder="$49.99/month add-on"/></div><div class="field"><label>Best for</label><input id="adminBestFor" placeholder="Who this module helps organize"/></div><div class="field"><label>Recommended labs</label><input id="adminLabs" placeholder="CBC, CMP, Vitamin D"/></div><div class="field"><label>Protocol templates</label><input id="adminProtocols" placeholder="Education guide, review checklist"/></div><div class="field"><label>Daily tasks</label><input id="adminTasks" placeholder="Hydration, movement, sleep"/></div></div><div class="field"><label>Public marketing copy</label><textarea id="adminDescription" placeholder="Educational module description"></textarea></div><label class="check-item"><input id="adminFeatured" type="checkbox"/> <span>Featured module</span></label><label class="check-item"><input id="adminComingSoon" type="checkbox"/> <span>Upcoming module</span></label><button class="btn" id="saveAdminModule">Save Module</button></div><div class="card"><h3>Builder Rules</h3><p class="copy">Authorized team members can set category, price, audience, questions, symptoms, labs, protocol templates, daily tasks, resources, scoring weights, featured status, upcoming status, and publish state.</p><p class="notice" id="adminDisclaimer"></p></div></div></section>
   </main>
 </div>
 

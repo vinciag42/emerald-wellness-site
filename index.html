@@ -1045,7 +1045,7 @@ footer{background:var(--bg);border-top:1px solid var(--border);padding:60px 48px
 <section id="pricing">
   <div class="reveal text-center">
     <p class="section-label">Pricing</p>
-<p class="section-sub mx-auto" style="text-align:center;">Choose the tier that fits your protocol. Every paid plan starts at <strong>$1 for the first 7 days</strong> + <strong style="color:var(--goldL);">20% off your first month</strong>. $1 charged today.</p>
+<p class="section-sub mx-auto" style="text-align:center;">Choose the tier that fits your protocol. Every paid plan starts at <strong>$1 for the first 7 days</strong>. After 7 days, your selected plan renews automatically unless canceled before renewal.</p>
   <!-- Offer badges row -->
   <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:20px;">
     <div style="display:flex;align-items:center;gap:8px;padding:8px 16px;background:var(--emPale);border:1px solid var(--borderEm);border-radius:20px;">
@@ -1054,7 +1054,7 @@ footer{background:var(--bg);border-top:1px solid var(--border);padding:60px 48px
     </div>
     <div style="display:flex;align-items:center;gap:8px;padding:8px 16px;background:var(--goldPale);border:1px solid var(--borderGold);border-radius:20px;">
       <span style="font-size:14px;">✓</span>
-      <span style="font-family:var(--cinzel);font-size:10px;letter-spacing:1px;color:var(--goldL);text-transform:uppercase;">20% Off First Month</span>
+      <span style="font-family:var(--cinzel);font-size:10px;letter-spacing:1px;color:var(--goldL);text-transform:uppercase;">$1 First 7 Days</span>
     </div>
     <div style="display:flex;align-items:center;gap:8px;padding:8px 16px;background:var(--emPale);border:1px solid var(--borderEm);border-radius:20px;">
       <span style="font-size:14px;">✓</span>
@@ -1146,7 +1146,7 @@ footer{background:var(--bg);border-top:1px solid var(--border);padding:60px 48px
         <li>Practitioner protocol mode</li>
         <li>HIPAA BAA available</li>
       </ul>
-      <button class="plan-btn plan-btn-pro" onclick="startCheckout('pro')">Start 7-Day Pro Trial</button>
+      <button class="plan-btn plan-btn-pro" onclick="startCheckout('pro')">Start for $1</button>
     </div>
     <!-- Platinum Regenesis -->
     <div class="plan-card platinum">
@@ -1804,10 +1804,8 @@ footer{background:var(--bg);border-top:1px solid var(--border);padding:60px 48px
       <div class="faq-a"><p>Refer 3 friends who sign up for a paid Emerald Wellness plan and you'll receive <strong>20% off your next month's purchase</strong> — automatically applied. Your unique referral link is generated when you join or create an account. There is no cap on referrals; each set of 3 qualifying referrals earns you another 20% discount.</p></div>
     </div>
     <div class="faq-item" onclick="toggleFaq(this)">
-      <div class="faq-q">What does the 20% first-month discount cover? <span class="faq-arrow">+</span></div>
-      <div class="faq-a"><p>After your first 7 days, your first paid month on any plan is automatically discounted by <strong>20%</strong> — no coupon code needed. This applies to paid plans including Silver, Gold, Emerald Elite, Pro Practitioner Suite, and Emerald Platinum Regenesis. The discount is applied at checkout before your first billing cycle begins.</p></div>
-    </div>
-<div class="faq-a"><p>Yes. Every paid plan is $1 for the first 7 days, charged today. After your first 7 days, your first paid month is <strong>20% off</strong>. Cancel any time before renewal.</p></div>
+      <div class="faq-q">What happens after the first 7 days? <span class="faq-arrow">+</span></div>
+      <div class="faq-a"><p>Every paid plan starts with a $1 intro charge for the first 7 days. After the first 7 days, your selected plan renews automatically at the displayed recurring price unless canceled before renewal.</p></div>
     </div>
   </div>
 </section>
@@ -2172,10 +2170,10 @@ function closeExit(){document.getElementById('exit-popup').classList.remove('ope
       <!-- ── STEP 5: Email Capture ── -->
       <div class="wl-step" id="wl-step-5">
         <p class="wl-eyebrow">One Last Step</p>
-        <h2 class="wl-title">Claim Your $1 Trial + 20% Off</h2>
+        <h2 class="wl-title">Start Your First 7 Days for $1</h2>
         <div class="wl-counter">
           <span class="wl-counter-dot"></span>
-          <span class="wl-counter-text"><strong id="wl-count">4,847</strong> optimizers have already joined — $1 for first 7 days + 20% off your first month</span>
+          <span class="wl-counter-text"><strong id="wl-count">4,847</strong> optimizers have already joined — $1 for the first 7 days</span>
         </div>
         <div class="wl-input-row">
           <div>
@@ -2199,7 +2197,7 @@ function closeExit(){document.getElementById('exit-popup').classList.remove('ope
             </select>
           </div>
         </div>
-        <button class="wl-btn-full wl-btn-gold" onclick="submitWaitlist()">Get My $1 Trial + 20% Off →</button>
+        <button class="wl-btn-full wl-btn-gold" onclick="submitWaitlist()">Start for $1 →</button>
         <p class="wl-legal">No spam. Your personalized protocol preview will be emailed to you. Unsubscribe any time.</p>
         <div class="wl-nav" style="margin-top:12px;">
           <button class="wl-btn-back" onclick="prevStep(5)" style="width:100%;flex:none;">← Edit my answers</button>
@@ -2212,7 +2210,7 @@ function closeExit(){document.getElementById('exit-popup').classList.remove('ope
     <div class="wl-success-wrap" id="wl-success-wrap">
       <div class="wl-success-icon">✦</div>
       <h3>You're In.</h3>
-<p>Welcome to Emerald Wellness. Your first 7 days for $1 and 20% first-month discount are locked. We'll email your full personalized protocol preview shortly.</p>
+<p>Welcome to Emerald Wellness. Your first 7 days for $1 are active. We'll email your full personalized protocol preview shortly.</p>
       <div class="wl-referral">
         <p><strong style="color:var(--emXL);">Refer 3 friends who sign up → Get 20% off your next purchase</strong><br/>Share your personal link:</p>
         <div class="wl-ref-link">
@@ -2231,9 +2229,9 @@ function closeExit(){document.getElementById('exit-popup').classList.remove('ope
     <button class="exit-close" onclick="closeExit()">✕</button>
     <p class="exit-eyebrow">Ready When You Are</p>
     <h2 class="exit-title">Start Emerald Wellness for $1</h2>
-    <p class="exit-sub">Begin with $1 for the first 7 days and 20% off your first month.</p>
+    <p class="exit-sub">Begin with $1 for the first 7 days.</p>
     <div class="exit-offer">
-      <p>🔒 $1 for the first 7 days · 20% off first month</p>
+      <p>🔒 $1 for the first 7 days</p>
     </div>
     <button class="exit-btn" onclick="closeExit();startCheckout('gold');">Start for $1 →</button>
     <button class="exit-dismiss" onclick="closeExit()">Continue browsing</button>
