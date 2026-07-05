@@ -295,6 +295,10 @@ footer{text-align:center;padding:24px;border-top:1px solid var(--border);font-si
         <div class="addon-left"><div class="addon-icon">😴</div><div><div class="addon-name">Sleep Science Optimization</div><div style="font-size:12px;color:var(--textDim)">Deep sleep protocols, circadian optimization, sleep peptides</div></div></div>
         <div style="display:flex;align-items:center;gap:8px;"><div class="addon-price">+$49.99/mo</div><div class="addon-check" id="check-sleep"></div></div>
       </div>
+      <div class="addon-row" id="addon-energy_vitality" onclick="toggleAddon('energy_vitality')">
+        <div class="addon-left"><div class="addon-icon">✦</div><div><div class="addon-name">Energy &amp; Vitality</div><div style="font-size:12px;color:var(--textDim)">Daily energy, stamina, fatigue patterns, mitochondrial health, nutrient timing, sleep, and recovery tracking</div></div></div>
+        <div style="display:flex;align-items:center;gap:8px;"><div class="addon-price">+$49.99/mo</div><div class="addon-check" id="check-energy_vitality"></div></div>
+      </div>
       <div class="addon-row" id="addon-cognitive" onclick="toggleAddon('cognitive')">
         <div class="addon-left"><div class="addon-icon">🧠</div><div><div class="addon-name">Cognitive Enhancement</div><div style="font-size:12px;color:var(--textDim)">Nootropics, neuropeptides, focus & memory protocols</div></div></div>
         <div style="display:flex;align-items:center;gap:8px;"><div class="addon-price">+$49.99/mo</div><div class="addon-check" id="check-cognitive"></div></div>
@@ -422,6 +426,7 @@ const PRICES = {
 const MODULE_PRICING = window.EW_MODULE_PRICING;
 const ADDON_PRICES = {
   sleep:     { id:MODULE_PRICING.STRIPE_MODULE_ADD_ON_PRICE_ID, name:'Sleep Science Optimization', amount:MODULE_PRICING.MODULE_ADD_ON_PRICE_MONTHLY },
+  energy_vitality: { id:MODULE_PRICING.STRIPE_MODULE_ADD_ON_PRICE_ID, name:'Energy & Vitality', amount:MODULE_PRICING.MODULE_ADD_ON_PRICE_MONTHLY },
   cognitive: { id:MODULE_PRICING.STRIPE_MODULE_ADD_ON_PRICE_ID, name:'Cognitive Enhancement', amount:MODULE_PRICING.MODULE_ADD_ON_PRICE_MONTHLY },
   sexual:    { id:MODULE_PRICING.STRIPE_MODULE_ADD_ON_PRICE_ID, name:'Sexual Health & Hormones', amount:MODULE_PRICING.MODULE_ADD_ON_PRICE_MONTHLY },
   gut:       { id:MODULE_PRICING.STRIPE_MODULE_ADD_ON_PRICE_ID, name:'Gut & Microbiome Health', amount:MODULE_PRICING.MODULE_ADD_ON_PRICE_MONTHLY },

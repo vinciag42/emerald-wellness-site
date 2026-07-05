@@ -30,7 +30,7 @@ const PLAN_PRICES = {
   },
 };
 
-const ALLOWED_ADDONS = new Set(['sleep', 'cognitive', 'sexual', 'gut', 'nutrition', 'lab', 'recovery']);
+const ALLOWED_ADDONS = new Set(['sleep', 'energy_vitality', 'cognitive', 'sexual', 'gut', 'nutrition', 'lab', 'recovery']);
 const FIRST_MONTH_DISCOUNT_PERCENT = 20;
 const FIRST_MONTH_COUPON_ID = process.env.STRIPE_FIRST_MONTH_COUPON_ID || 'EW_FIRST_MONTH_20';
 
