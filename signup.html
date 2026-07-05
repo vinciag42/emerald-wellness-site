@@ -844,7 +844,7 @@ function persistCheckoutPreview(userId) {
       updatedAt: new Date().toISOString()
     }));
     const existing = JSON.parse(localStorage.getItem('ew_specialty_marketplace_v3') || '{}');
-    const fallbackActive = activeModules.length ? activeModules : (existing.active && existing.active.length ? existing.active : ['energy-and-vitality']);
+    const fallbackActive = activeModules.length ? activeModules : ['energy-and-vitality'];
     localStorage.setItem('ew_specialty_marketplace_v3', JSON.stringify({
       plan: selectedPlan || existing.plan || 'gold',
       active: fallbackActive,
@@ -855,7 +855,7 @@ function persistCheckoutPreview(userId) {
       tasks: existing.tasks || {},
       progress: existing.progress || {},
       reports: existing.reports || [],
-      currentModuleId: existing.currentModuleId || fallbackActive[0] || 'energy-and-vitality',
+      currentModuleId: fallbackActive[0] || 'energy-and-vitality',
       checkoutStatus: 'pending'
     }));
   } catch(err) {
