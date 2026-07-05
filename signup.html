@@ -383,7 +383,7 @@ footer{text-align:center;padding:24px;border-top:1px solid var(--border);font-si
         <div class="success-item">Full platform access granted</div>
         <div class="success-item">Welcome email on its way</div>
       </div>
-      <button class="btn-primary" onclick="window.location.href='/'">← Back to Home</button>
+      <button class="btn-primary" onclick="window.location.href='/dashboard?checkout=success'">Go to Member Dashboard →</button>
     </div>
   </div>
 
@@ -455,6 +455,16 @@ const GOAL_LABELS = {
   longevity: 'Longevity & Anti-Aging',
   sleep: 'Sleep Optimization',
   general: 'General Wellness'
+};
+const MODULE_ID_MAP = {
+  sleep: 'sleep-repair',
+  energy_vitality: 'energy-and-vitality',
+  cognitive: 'brain-fog-and-focus',
+  sexual: 'sexual-wellness',
+  gut: 'gut-reset',
+  nutrition: 'nutrition-foundations',
+  lab: 'health-optimization-fundamentals',
+  recovery: 'recovery-optimization'
 };
 
 // ─── STATE ────────────────────────────────────────────────────────────────────
@@ -725,6 +735,7 @@ async function syncMarketingEmail(source) {
 }
 
 async function launchStripeCheckout(userId) {
+  persistCheckoutPreview(userId);
   const response = await fetch('/api/create-checkout-session', {
     method: 'POST',
     headers: {'Content-Type':'application/json'},
@@ -750,6 +761,43 @@ async function launchStripeCheckout(userId) {
   }
 
   window.location.href = data.url;
+}
+
+function persistCheckoutPreview(userId) {
+  try {
+    const activeModules = Array.from(selectedAddons).map(key => MODULE_ID_MAP[key]).filter(Boolean);
+    localStorage.setItem('emerald-member-profile', JSON.stringify({
+      id: userId || '',
+      firstName: userData.firstName,
+      lastName: userData.lastName,
+      email: userData.email,
+      phone: userData.phone,
+      healthGoal: userData.healthGoal,
+      plan: selectedPlan,
+      billing,
+      selectedModules: Array.from(selectedAddons),
+      status: 'trial',
+      checkoutStatus: 'pending',
+      updatedAt: new Date().toISOString()
+    }));
+    const existing = JSON.parse(localStorage.getItem('ew_specialty_marketplace_v3') || '{}');
+    const fallbackActive = activeModules.length ? activeModules : (existing.active && existing.active.length ? existing.active : ['hormone-optimization']);
+    localStorage.setItem('ew_specialty_marketplace_v3', JSON.stringify({
+      plan: selectedPlan || existing.plan || 'gold',
+      active: fallbackActive,
+      modules: existing.modules || [],
+      answers: existing.answers || {},
+      symptoms: existing.symptoms || {},
+      labs: existing.labs || {},
+      tasks: existing.tasks || {},
+      progress: existing.progress || {},
+      reports: existing.reports || [],
+      currentModuleId: existing.currentModuleId || fallbackActive[0] || 'hormone-optimization',
+      checkoutStatus: 'pending'
+    }));
+  } catch(err) {
+    console.warn('[Emerald Signup] Local dashboard preview skipped', err);
+  }
 }
 
 function applyUrlSelections() {
