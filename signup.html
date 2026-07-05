@@ -119,6 +119,8 @@ nav{display:flex;justify-content:space-between;align-items:center;padding:18px 4
 .summary-row.total{border-top:1px solid var(--border);margin-top:8px;padding-top:12px;font-size:16px;font-weight:700;color:var(--text);}
 .summary-row.total .price{color:var(--greenXL);}
 .trial-note{font-size:12px;color:var(--gold);text-align:center;margin-bottom:16px;}
+.upgrade-transition-note{display:none;background:rgba(64,216,136,.09);border:1px solid rgba(64,216,136,.28);border-radius:14px;padding:15px 16px;color:var(--textMid);font-size:14px;line-height:1.55;margin:16px 0;text-align:left;}
+.upgrade-transition-note strong{display:block;color:var(--greenXL);font-size:15px;margin-bottom:4px;}
 
 /* BUTTONS */
 .btn-primary{width:100%;padding:16px;background:linear-gradient(135deg,var(--green),var(--greenL));color:#fff;border:none;border-radius:10px;font-size:16px;font-weight:700;cursor:pointer;transition:all .2s;letter-spacing:.5px;}
@@ -232,6 +234,10 @@ footer{text-align:center;padding:24px;border-top:1px solid var(--border);font-si
     <div class="step-title">Choose Your Plan</div>
     <div class="step-sub">All paid plans start with a $1 intro charge for the first 7 days. After 7 days, your selected plan renews automatically unless canceled before renewal.</div>
     <div id="err2" class="error-msg"></div>
+    <div class="upgrade-transition-note" id="upgradeTransitionNote">
+      <strong>Upgrade timing</strong>
+      Your current membership stays active at your current fee through this billing cycle. Your selected upgrade is intended to begin with your next billing cycle, so you are not surprised by a duplicate charge. If you want the higher tier to start immediately, contact Member Care before confirming.
+    </div>
 
     <div class="billing-toggle">
       <button class="toggle-btn active" id="btnMonthly" onclick="setBilling('monthly')">Monthly</button>
@@ -334,7 +340,7 @@ footer{text-align:center;padding:24px;border-top:1px solid var(--border);font-si
       <div class="summary-row" id="summaryAddonsRow" style="display:none;"><span>Module add-on: $49.99/month each</span><span id="summaryAddons">$0/month</span></div>
       <div class="summary-row total"><span>Total after first 7 days</span><span class="price" id="summaryTotal">$0/mo</span></div>
     </div>
-    <div class="trial-note">✦ Your card will be charged $1 today. After 7 days, your first paid subscription month receives 20% off once, then your selected plan renews automatically at the displayed recurring price unless canceled before renewal.</div>
+    <div class="trial-note" id="step2BillingNote">✦ Your card will be charged $1 today. After 7 days, your first paid subscription month receives 20% off once, then your selected plan renews automatically at the displayed recurring price unless canceled before renewal.</div>
     <button class="btn-primary" onclick="goStep3()">Continue → Create Member Account</button>
     <button class="btn-secondary" onclick="goStep(1)">← Back</button>
   </div>
@@ -370,7 +376,7 @@ footer{text-align:center;padding:24px;border-top:1px solid var(--border);font-si
       <div class="summary-row" id="referralRow" style="display:none;"><span>Referral code</span><span style="color:var(--greenXL);">Applied</span></div>
       <div class="summary-row total"><span>After first 7 days</span><span class="price" id="summaryTotal3">$0/mo</span></div>
     </div>
-    <div class="trial-note">✦ $1 for the first 7 days — $1 charged today. After 7 days, your selected plan renews automatically at the displayed recurring price unless canceled before renewal.</div>
+    <div class="trial-note" id="step3BillingNote">✦ $1 for the first 7 days — $1 charged today. After 7 days, your selected plan renews automatically at the displayed recurring price unless canceled before renewal.</div>
     <button class="btn-primary" id="btnCreateAccount" onclick="createAccount()">Create Member Account & Go to Checkout →</button>
     <button class="btn-secondary" onclick="goStep(2)">← Back</button>
   </div>
@@ -443,7 +449,14 @@ function applyUpgradeModeCopy() {
   if (firstStepTitle) firstStepTitle.textContent = 'Confirm your member details';
   if (firstStepSub) firstStepSub.textContent = 'Use the same email connected to your Emerald Wellness membership.';
   if (planStepTitle) planStepTitle.textContent = 'Choose Your Upgrade';
-  if (planStepSub) planStepSub.textContent = 'Select the membership level or module access you want to move into. Your updated billing is handled securely at checkout.';
+  if (planStepSub) planStepSub.textContent = 'Select the membership level or module access you want to move into. Existing-member billing changes are handled securely so the current plan stays active until the next billing cycle unless you request an immediate change.';
+  const upgradeNote = document.getElementById('upgradeTransitionNote');
+  if (upgradeNote) upgradeNote.style.display = 'block';
+  const step2BillingNote = document.getElementById('step2BillingNote');
+  const step3BillingNote = document.getElementById('step3BillingNote');
+  const upgradeBillingCopy = '✦ Existing member upgrade: your current membership remains active at your current fee through this billing cycle. Your selected upgrade is intended to begin with your next billing cycle unless you request immediate activation through Member Care.';
+  if (step2BillingNote) step2BillingNote.textContent = upgradeBillingCopy;
+  if (step3BillingNote) step3BillingNote.textContent = upgradeBillingCopy;
   if (accountStepTitle) accountStepTitle.textContent = 'Confirm Your Member Account';
   if (accountStepSub) accountStepSub.textContent = 'Use your Emerald Wellness member email and password to continue to secure checkout.';
   if (continueButton) continueButton.textContent = 'Continue → Secure Checkout';
@@ -555,6 +568,14 @@ function hydrateUpgradeUserData() {
   const goal = document.getElementById('healthGoal');
   if(goal && userData.healthGoal) goal.value = userData.healthGoal;
   return true;
+}
+
+function isCurrentMemberProfile(profile) {
+  const status = String(profile?.status || '').toLowerCase();
+  return profile?.checkoutStatus === 'complete' ||
+    status === 'trial' ||
+    status === 'active' ||
+    Boolean(profile?.stripe_customer_id || profile?.stripeCustomerId || profile?.stripe_subscription_id || profile?.stripeSubscriptionId);
 }
 
 // ─── INIT ─────────────────────────────────────────────────────────────────────
