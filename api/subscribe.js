@@ -34,6 +34,10 @@ export default async function handler(req, res) {
   const cleanTier = String(tier || '').trim().slice(0, 80);
   const cleanSource = String(source || 'landing').trim().slice(0, 80);
   const cleanReferral = String(referred_by || '').trim().slice(0, 80);
+  const marketingConsent = req.body?.marketing_consent !== false;
+  const smsConsent = req.body?.sms_consent === true && Boolean(cleanPhone);
+  const consentedAt = new Date().toISOString();
+  const consentText = String(req.body?.consent_text || 'I agree to receive Emerald Wellness emails. If I opt into text messages, I agree to receive recurring automated marketing and account text messages. Consent is not a condition of purchase. Message/data rates may apply. Reply STOP to opt out.').slice(0, 1000);
 
   const KLAVIYO_KEY = process.env.KLAVIYO_PRIVATE_KEY;
   if (!KLAVIYO_KEY) {
@@ -52,8 +56,11 @@ export default async function handler(req, res) {
   const result = { success: false, klaviyo: null, klaviyoProfile: null, supabase: null, diagnostics: null };
 
   try {
-    // ── 1. Subscribe email to Klaviyo list ──
+    // ── 1. Subscribe consented channels to Klaviyo list ──
     console.log('[subscribe] Starting consented list subscription');
+    const subscriptions = {};
+    if (marketingConsent) subscriptions.email = { marketing: { consent: 'SUBSCRIBED', consented_at: consentedAt } };
+    if (smsConsent) subscriptions.sms = { marketing: { consent: 'SUBSCRIBED', consented_at: consentedAt } };
     const subscribePayload = {
       data: {
         type: 'profile-subscription-bulk-create-job',
@@ -65,7 +72,7 @@ export default async function handler(req, res) {
               attributes: {
                 email: cleanEmail,
                 ...(cleanPhone ? { phone_number: cleanPhone } : {}),
-                subscriptions: { email: { marketing: { consent: 'SUBSCRIBED' } } }
+                subscriptions
               }
             }]
           }
@@ -74,23 +81,32 @@ export default async function handler(req, res) {
       }
     };
 
-    const klaviyoRes = await fetch('https://a.klaviyo.com/api/profile-subscription-bulk-create-jobs/', {
-      method: 'POST', headers: klaviyoHeaders, body: JSON.stringify(subscribePayload)
-    });
-    const klaviyoText = await klaviyoRes.text();
-    const klaviyoOk = klaviyoRes.ok || klaviyoRes.status === 202;
-    result.klaviyo = { ok: klaviyoOk, status: klaviyoRes.status, body: klaviyoText.slice(0, 500) };
+    if (Object.keys(subscriptions).length) {
+      const klaviyoRes = await fetch('https://a.klaviyo.com/api/profile-subscription-bulk-create-jobs/', {
+        method: 'POST', headers: klaviyoHeaders, body: JSON.stringify(subscribePayload)
+      });
+      const klaviyoText = await klaviyoRes.text();
+      const klaviyoOk = klaviyoRes.ok || klaviyoRes.status === 202;
+      result.klaviyo = { ok: klaviyoOk, status: klaviyoRes.status, body: klaviyoText.slice(0, 500), email_consent: marketingConsent, sms_consent: smsConsent };
 
-    if (!klaviyoOk) {
-      console.error('[subscribe] STEP 1 FAILED — Klaviyo', klaviyoRes.status, klaviyoText);
-      return res.status(502).json({ error: 'Subscription service unavailable', step: 'klaviyo' });
+      if (!klaviyoOk) {
+        console.error('[subscribe] STEP 1 FAILED — Klaviyo', klaviyoRes.status, klaviyoText);
+        return res.status(502).json({ error: 'Subscription service unavailable', step: 'klaviyo' });
+      }
+      console.log('[subscribe] STEP 1 OK — Klaviyo accepted subscribe job');
+    } else {
+      result.klaviyo = { ok: true, skipped: true, reason: 'no marketing channels consented' };
     }
-    console.log('[subscribe] STEP 1 OK — Klaviyo accepted subscribe job');
 
     // ── 2. Update Klaviyo profile with name + phone + goal/tier as custom properties ──
     if (cleanFirstName || cleanLastName || cleanPhone || cleanGoal || cleanTier) {
       console.log('[subscribe] STEP 2 — Klaviyo profile update…');
-      result.klaviyoProfile = await updateKlaviyoProfile(cleanEmail, cleanFirstName, cleanLastName, cleanPhone, cleanGoal, cleanTier, klaviyoHeaders);
+      result.klaviyoProfile = await updateKlaviyoProfile(cleanEmail, cleanFirstName, cleanLastName, cleanPhone, cleanGoal, cleanTier, klaviyoHeaders, {
+        marketingConsent,
+        smsConsent,
+        consentedAt,
+        consentSource: cleanSource
+      });
       if (result.klaviyoProfile.ok) console.log('[subscribe] STEP 2 OK — profile updated via', result.klaviyoProfile.method);
       else console.warn('[subscribe] STEP 2 WARN — profile not updated', result.klaviyoProfile);
     }
@@ -110,7 +126,9 @@ export default async function handler(req, res) {
       selected_tier: cleanTier || 'homepage-enrollment',
       source: cleanSource,
       referred_by: cleanReferral || '',
-      lifecycle_status: 'lead'
+      lifecycle_status: 'lead',
+      email_marketing_consent: marketingConsent,
+      sms_marketing_consent: smsConsent
     }, klaviyoHeaders);
     if (result.klaviyoEvent.ok) console.log('[subscribe] STEP 3 OK — Klaviyo Submitted Enrollment event created');
     else console.warn('[subscribe] STEP 3 WARN — Klaviyo event not created', result.klaviyoEvent);
@@ -123,7 +141,9 @@ export default async function handler(req, res) {
       selected_tier: cleanTier || 'homepage-enrollment',
       source: cleanSource,
       referred_by: cleanReferral || '',
-      lifecycle_status: 'lead'
+      lifecycle_status: 'lead',
+      email_marketing_consent: marketingConsent,
+      sms_marketing_consent: smsConsent
     }, klaviyoHeaders);
     if (result.klaviyoSignupEvent.ok) console.log('[subscribe] STEP 3B OK — Klaviyo Signup event created');
     else console.warn('[subscribe] STEP 3B WARN — Klaviyo Signup event not created', result.klaviyoSignupEvent);
@@ -136,7 +156,14 @@ export default async function handler(req, res) {
       goal: cleanGoal || null,
       tier: cleanTier || null,
       source: cleanSource,
-      referred_by: cleanReferral || null
+      referred_by: cleanReferral || null,
+      marketing_consent: marketingConsent,
+      sms_consent: smsConsent,
+      email_consent_at: marketingConsent ? consentedAt : null,
+      sms_consent_at: smsConsent ? consentedAt : null,
+      marketing_consent_source: cleanSource,
+      marketing_consent_text: consentText,
+      user_agent: String(req.headers['user-agent'] || '').slice(0, 500)
     };
     console.log('[subscribe] Saving consented signup');
 
@@ -234,10 +261,14 @@ async function addProfileToKlaviyoList(profileId, listId, headers) {
   }
 }
 
-async function updateKlaviyoProfile(email, first_name, last_name, phone, goal, tier, headers) {
+async function updateKlaviyoProfile(email, first_name, last_name, phone, goal, tier, headers, consent = {}) {
   const props = {};
   if (goal) props.health_goal = goal;
   if (tier) props.selected_tier = tier;
+  props.email_marketing_consent = consent.marketingConsent === true;
+  props.sms_marketing_consent = consent.smsConsent === true;
+  props.marketing_consent_source = consent.consentSource || 'website';
+  props.marketing_consent_updated_at = consent.consentedAt || new Date().toISOString();
 
   const createAttrs = { email };
   if (first_name) createAttrs.first_name = first_name;

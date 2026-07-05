@@ -40,6 +40,48 @@ function verifyStripeSignature(rawBody, signatureHeader, secret) {
   return safeEqual(expected, signature);
 }
 
+const FIRST_MONTH_DISCOUNT_PERCENT = 20;
+const FIRST_MONTH_COUPON_ID = process.env.STRIPE_FIRST_MONTH_COUPON_ID || 'EW_FIRST_MONTH_20';
+
+async function stripePostForm(path, params) {
+  const key = process.env.STRIPE_SECRET_KEY;
+  if (!key) throw new Error('Missing STRIPE_SECRET_KEY environment variable.');
+
+  const response = await fetch(`https://api.stripe.com/v1${path}`, {
+    method: 'POST',
+    headers: {
+      Authorization: `Bearer ${key}`,
+      'Content-Type': 'application/x-www-form-urlencoded',
+      'Stripe-Version': '2026-06-24.dahlia',
+    },
+    body: params,
+  });
+
+  const data = await response.json();
+  if (!response.ok) {
+    const message = data?.error?.message || 'Stripe API request failed.';
+    throw new Error(message);
+  }
+  return data;
+}
+
+async function applyFirstMonthSubscriptionDiscount(subscriptionId, metadata = {}) {
+  if (!subscriptionId) return;
+  if (metadata.first_month_discount_applied === 'true') return;
+
+  const couponId = metadata.first_month_discount_coupon || FIRST_MONTH_COUPON_ID;
+  if (!couponId) return;
+
+  const params = new URLSearchParams();
+  params.append('discounts[0][coupon]', couponId);
+  params.append('metadata[first_month_discount_applied]', 'true');
+  params.append('metadata[first_month_discount_coupon]', couponId);
+  params.append('metadata[first_month_discount_percent]', String(FIRST_MONTH_DISCOUNT_PERCENT));
+  params.append('metadata[first_month_discount_timing]', 'first_paid_subscription_invoice_after_trial');
+
+  await stripePostForm(`/subscriptions/${encodeURIComponent(subscriptionId)}`, params);
+}
+
 async function updateSupabaseProfile(userId, updates) {
   const url = process.env.SUPABASE_URL;
   const serviceKey = process.env.SUPABASE_SERVICE_ROLE_KEY || process.env.SUPABASE_SERVICE_KEY;
@@ -76,6 +118,13 @@ async function emitKlaviyoEvent(metricName, profile, properties = {}) {
     'stripe_customer_id',
     'stripe_subscription_id',
     'addons',
+    'selected_modules',
+    'included_module_count',
+    'unlimited_modules',
+    'billable_module_count',
+    'module_add_on_price_monthly',
+    'module_add_on_monthly_total',
+    'plan_key',
     'cancel_at_period_end',
     'current_period_end',
   ];
@@ -238,6 +287,22 @@ function subscriptionAddons(subscription) {
   return Array.from(addons);
 }
 
+function moduleMetadata(metadata = {}, fallbackAddons = []) {
+  const selectedModules = metadata.selected_modules
+    ? metadata.selected_modules.split(',').map((item) => item.trim()).filter(Boolean)
+    : fallbackAddons;
+  const includedRaw = metadata.included_module_count;
+  return {
+    selected_modules: selectedModules,
+    included_module_count: includedRaw === 'unlimited' || includedRaw === undefined ? null : Number(includedRaw),
+    unlimited_modules: metadata.unlimited_modules === 'true',
+    billable_module_count: Number(metadata.billable_module_count || 0),
+    module_add_on_price_monthly: Number(metadata.module_add_on_price_monthly || 49.99),
+    module_add_on_monthly_total: Number(metadata.module_add_on_monthly_total || 0),
+    plan_key: metadata.plan_key || metadata.plan || null,
+  };
+}
+
 async function updateSupabaseProfileByStripeCustomer(customerId, updates) {
   const url = process.env.SUPABASE_URL;
   const serviceKey = process.env.SUPABASE_SERVICE_ROLE_KEY || process.env.SUPABASE_SERVICE_KEY;
@@ -292,13 +357,28 @@ module.exports = async function handler(req, res) {
         stripe_customer_id: object.customer || null,
         stripe_subscription_id: object.subscription || null,
       };
+      const moduleFields = moduleMetadata(object.metadata || {}, object.metadata?.addons ? object.metadata.addons.split(',').filter(Boolean) : []);
+      Object.assign(lifecycle, moduleFields);
+      try {
+        await applyFirstMonthSubscriptionDiscount(object.subscription, object.metadata || {});
+        lifecycle.first_month_discount_percent = FIRST_MONTH_DISCOUNT_PERCENT;
+        lifecycle.first_month_discount_coupon = object.metadata?.first_month_discount_coupon || FIRST_MONTH_COUPON_ID;
+        lifecycle.first_month_discount_applied = true;
+      } catch (discountError) {
+        lifecycle.first_month_discount_error = discountError.message;
+        console.warn('[stripe-webhook] first-month discount not applied:', discountError.message);
+      }
       await updateSupabaseProfile(userId, {
         stripe_customer_id: lifecycle.stripe_customer_id,
         stripe_subscription_id: lifecycle.stripe_subscription_id,
         status: lifecycle.status,
         plan: lifecycle.plan,
         billing_interval: lifecycle.billing_interval,
+        first_month_discount_percent: lifecycle.first_month_discount_percent || null,
+        first_month_discount_coupon: lifecycle.first_month_discount_coupon || null,
+        first_month_discount_applied: Boolean(lifecycle.first_month_discount_applied),
         addons: object.metadata?.addons ? object.metadata.addons.split(',').filter(Boolean) : [],
+        ...moduleFields,
         updated_at: new Date().toISOString(),
       });
       await emitKlaviyoEvent('Trial Started', {
@@ -319,12 +399,15 @@ module.exports = async function handler(req, res) {
         current_period_end: object.current_period_end ? new Date(object.current_period_end * 1000).toISOString() : null,
         stripe_event: event.type,
       };
+      const moduleFields = moduleMetadata(object.metadata || {}, lifecycle.addons);
+      Object.assign(lifecycle, moduleFields);
       await updateProfileForStripeObject(object, {
         stripe_subscription_id: lifecycle.stripe_subscription_id,
         status: lifecycle.status,
         plan: lifecycle.plan,
         billing_interval: lifecycle.billing_interval,
         addons: lifecycle.addons,
+        ...moduleFields,
         cancel_at_period_end: lifecycle.cancel_at_period_end,
         current_period_end: lifecycle.current_period_end,
         updated_at: new Date().toISOString(),

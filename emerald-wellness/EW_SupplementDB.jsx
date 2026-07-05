@@ -266,7 +266,7 @@ export default function EmeraldWellnessApp() {
     {
       icon:"⬡",title:"What's your primary goal?",
       sub:"We'll personalize your protocol recommendations.",
-      options:["Longevity & Anti-Aging","Performance & Recovery","Cognitive Enhancement","Metabolic Optimization","Gut Health","Immune Optimization"],
+      options:["Metabolic Optimization","Energy & Vitality","Longevity & Anti-Aging","Performance & Recovery","Cognitive Enhancement","Gut Health","Immune Optimization"],
     },
     {
       icon:"◬",title:"What are you currently taking?",

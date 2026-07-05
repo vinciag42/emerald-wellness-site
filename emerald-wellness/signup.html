@@ -281,11 +281,12 @@ header{background:rgba(8,15,10,.95);border-bottom:1px solid var(--borderEm);padd
       <p class="step-sub">This lets us personalize your dashboard and protocol recommendations from day one. Select all that apply.</p>
 
       <div class="goal-grid" id="goal-grid">
-        <button class="goal-btn" onclick="toggleGoal(this)"><span class="goal-btn-icon">🧬</span>Longevity & Anti-Aging</button>
-        <button class="goal-btn" onclick="toggleGoal(this)"><span class="goal-btn-icon">🏋️</span>Performance & Recovery</button>
         <button class="goal-btn" onclick="toggleGoal(this)"><span class="goal-btn-icon">⚡</span>Metabolic & Weight</button>
+        <button class="goal-btn" data-goal-value="energy_vitality" onclick="toggleGoal(this)"><span class="goal-btn-icon">🔋</span>Energy &amp; Vitality</button>
         <button class="goal-btn" onclick="toggleGoal(this)"><span class="goal-btn-icon">🧠</span>Cognitive Enhancement</button>
         <button class="goal-btn" onclick="toggleGoal(this)"><span class="goal-btn-icon">💪</span>Hormonal Optimization</button>
+        <button class="goal-btn" onclick="toggleGoal(this)"><span class="goal-btn-icon">🏋️</span>Performance & Recovery</button>
+        <button class="goal-btn" onclick="toggleGoal(this)"><span class="goal-btn-icon">🧬</span>Longevity & Anti-Aging</button>
         <button class="goal-btn" onclick="toggleGoal(this)"><span class="goal-btn-icon">🛡️</span>Immune & Gut Health</button>
         <button class="goal-btn" onclick="toggleGoal(this)"><span class="goal-btn-icon">🌙</span>Sleep & Recovery</button>
         <button class="goal-btn" onclick="toggleGoal(this)"><span class="goal-btn-icon">🥗</span>Nutrition Optimization</button>
@@ -355,7 +356,7 @@ header{background:rgba(8,15,10,.95);border-bottom:1px solid var(--borderEm);padd
         <div class="form-group">
           <label class="form-label" for="su-ref">Referral Code (optional)</label>
           <input class="form-input" type="text" id="su-ref" placeholder="e.g. EW4B2F91"/>
-          <span class="form-hint">Have a friend's referral code? Enter it here — they'll get 20% off their next purchase.</span>
+          <span class="form-hint">Have a referral or source code? Enter it here.</span>
         </div>
       </div>
       <button type="button" onclick="toggleRefField()" style="background:none;border:none;color:var(--emXL);font-size:12px;cursor:pointer;padding:0;margin-bottom:18px;display:block;">+ Have a referral code?</button>
@@ -390,8 +391,8 @@ header{background:rgba(8,15,10,.95);border-bottom:1px solid var(--borderEm);padd
           <a href="index.html" class="btn-dashboard">Launch My Member Command Center™ →</a>
         </div>
         <div class="ref-success-box" style="margin-top:24px;">
-          <div class="ref-success-label">Refer 3 Friends → 20% Off Your Next Purchase</div>
-          <p style="font-size:12px;color:var(--textMid);margin-bottom:10px;line-height:1.55;">Share your personal referral link. When 3 friends sign up, you automatically get 20% off your next month — no limit on referrals.</p>
+          <div class="ref-success-label">Share Emerald Wellness</div>
+          <p style="font-size:12px;color:var(--textMid);margin-bottom:10px;line-height:1.55;">Copy your personal link if you want to share Emerald Wellness with family, friends, or your care team.</p>
           <div class="ref-row">
             <input class="ref-input" id="su-ref-url" value="emeraldwellness.health/ref/EW00000" readonly/>
             <button class="ref-copy-btn" onclick="copySignupRef()">Copy</button>
@@ -519,7 +520,8 @@ async function submitSignup(){
   const smsCon = document.getElementById('su-sms-consent')?.checked || false;
   const mktCon = document.getElementById('su-marketing')?.checked || true;
   const refCode= document.getElementById('su-ref')?.value.trim() || null;
-  const goals  = Array.from(document.querySelectorAll('.goal-btn.selected')).map(b=>b.textContent.trim());
+  const goals  = Array.from(document.querySelectorAll('.goal-btn.selected')).map(b=>b.dataset.goalValue || b.textContent.trim());
+  const goalLabels = Array.from(document.querySelectorAll('.goal-btn.selected')).map(b=>b.textContent.trim());
   const expLevel = document.getElementById('exp-level')?.value || null;
 
   // ── CLIENT-SIDE VALIDATION ──
@@ -572,6 +574,7 @@ async function submitSignup(){
         billing:          'monthly',
         status:           'trial',
         goals:            goals,
+        goal_labels:      goalLabels,
         experience_level: expLevel,
         sms_consent:      smsCon,
         marketing_consent: mktCon,
@@ -618,6 +621,7 @@ async function submitSignup(){
         first_month:   PLANS[selectedPlan].first,
         sms_consent:   smsCon,
         goals:         goals,
+        goal_labels:   goalLabels,
         referral_link: referralLink,
         supabase_uid:  userId
       })

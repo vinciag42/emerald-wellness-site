@@ -1,4 +1,11 @@
 const STRIPE_API_BASE = 'https://api.stripe.com/v1';
+const {
+  MODULE_ADD_ON_PRICE_MONTHLY,
+  STRIPE_MODULE_ADD_ON_PRICE_ID,
+  getModuleEntitlement,
+  getBillableModuleAddOnCount,
+  getModuleAddOnMonthlyTotal,
+} = require('../js/module-pricing.js');
 
 const PLAN_PRICES = {
   monthly: {
@@ -21,6 +28,8 @@ const PLAN_PRICES = {
 };
 
 const ALLOWED_ADDONS = new Set(['sleep', 'cognitive', 'sexual', 'gut', 'nutrition', 'lab', 'recovery']);
+const FIRST_MONTH_DISCOUNT_PERCENT = 20;
+const FIRST_MONTH_COUPON_ID = process.env.STRIPE_FIRST_MONTH_COUPON_ID || 'EW_FIRST_MONTH_20';
 
 function dynamicRecurringPrice(name, unitAmount, interval) {
   return {
@@ -105,10 +114,17 @@ module.exports = async function handler(req, res) {
       planLineItem,
     ];
 
-    if (addons.length) {
+    const entitlement = getModuleEntitlement(plan);
+    const billableModuleCount = getBillableModuleAddOnCount(plan, addons.length);
+    const moduleAddOnMonthlyTotal = getModuleAddOnMonthlyTotal(plan, addons.length);
+    const moduleAddOnPriceId = process.env.STRIPE_MODULE_ADD_ON_PRICE_ID || STRIPE_MODULE_ADD_ON_PRICE_ID;
+
+    if (billableModuleCount > 0) {
       lineItems.push({
-        ...dynamicRecurringPrice('Emerald Wellness Specialty Module Add-on', 4999, billing === 'annual' ? 'year' : 'month'),
-        quantity: addons.length,
+        ...(moduleAddOnPriceId
+          ? { price: moduleAddOnPriceId }
+          : dynamicRecurringPrice('Emerald Wellness Specialty Module Add-on', Math.round(MODULE_ADD_ON_PRICE_MONTHLY * 100), billing === 'annual' ? 'year' : 'month')),
+        quantity: billableModuleCount,
       });
     }
 
@@ -122,11 +138,31 @@ module.exports = async function handler(req, res) {
     params.append('metadata[plan]', plan);
     params.append('metadata[billing]', billing);
     params.append('metadata[addons]', addons.join(','));
+    params.append('metadata[selected_modules]', addons.join(','));
+    params.append('metadata[included_module_count]', String(entitlement.includedModules ?? 'unlimited'));
+    params.append('metadata[unlimited_modules]', String(entitlement.unlimitedModules));
+    params.append('metadata[billable_module_count]', String(billableModuleCount));
+    params.append('metadata[module_add_on_price_monthly]', String(MODULE_ADD_ON_PRICE_MONTHLY));
+    params.append('metadata[module_add_on_monthly_total]', String(moduleAddOnMonthlyTotal));
+    params.append('metadata[plan_key]', plan);
+    params.append('metadata[first_month_discount_percent]', String(FIRST_MONTH_DISCOUNT_PERCENT));
+    params.append('metadata[first_month_discount_coupon]', FIRST_MONTH_COUPON_ID);
+    params.append('metadata[first_month_discount_timing]', 'first_paid_subscription_invoice_after_trial');
     params.append('metadata[referral]', referral);
     params.append('subscription_data[metadata][user_id]', userId);
     params.append('subscription_data[metadata][plan]', plan);
     params.append('subscription_data[metadata][billing]', billing);
     params.append('subscription_data[metadata][addons]', addons.join(','));
+    params.append('subscription_data[metadata][selected_modules]', addons.join(','));
+    params.append('subscription_data[metadata][included_module_count]', String(entitlement.includedModules ?? 'unlimited'));
+    params.append('subscription_data[metadata][unlimited_modules]', String(entitlement.unlimitedModules));
+    params.append('subscription_data[metadata][billable_module_count]', String(billableModuleCount));
+    params.append('subscription_data[metadata][module_add_on_price_monthly]', String(MODULE_ADD_ON_PRICE_MONTHLY));
+    params.append('subscription_data[metadata][module_add_on_monthly_total]', String(moduleAddOnMonthlyTotal));
+    params.append('subscription_data[metadata][plan_key]', plan);
+    params.append('subscription_data[metadata][first_month_discount_percent]', String(FIRST_MONTH_DISCOUNT_PERCENT));
+    params.append('subscription_data[metadata][first_month_discount_coupon]', FIRST_MONTH_COUPON_ID);
+    params.append('subscription_data[metadata][first_month_discount_timing]', 'first_paid_subscription_invoice_after_trial');
     params.append('subscription_data[metadata][referral]', referral);
 
     lineItems.forEach((item, index) => appendLineItem(params, index, item));

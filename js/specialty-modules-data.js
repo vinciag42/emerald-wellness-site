@@ -1,11 +1,15 @@
 window.EW_MODULE_DISCLAIMER = "Emerald Wellness provides educational wellness intelligence and tracking tools. It does not diagnose, treat, cure, or replace medical care. Always consult a qualified healthcare provider.";
 
 window.EW_MODULE_ACCESS = {
-  free: { label: "Free", limit: 0, copy: "Preview only", extra: "Start Free Assessment / Upgrade" },
-  gold: { label: "Gold", limit: 1, copy: "1 active module included", extra: "Extra modules $49.99/month each" },
-  platinum_plus: { label: "Platinum Plus", limit: 3, copy: "3 active modules included", extra: "Extra modules $49.99/month each or 3-module bundle $89/month" },
-  concierge: { label: "Concierge Regenesis", limit: 999, copy: "Unlimited modules included", extra: "Concierge support enabled" },
-  concierge_premium: { label: "Concierge Regenesis Premium", limit: 999, copy: "Unlimited modules included", extra: "Premium concierge support enabled" }
+  free: { label: "Free", limit: 0, copy: "Basic education only. Specialty Modules require an upgrade.", extra: "Upgrade to unlock Specialty Modules." },
+  gold: { label: "Gold", limit: 1, copy: "1 Specialty Module included", extra: "Additional modules available for $49.99/month each." },
+  plus: { label: "Gold / Plus", limit: 1, copy: "1 Specialty Module included", extra: "Additional modules available for $49.99/month each." },
+  elite: { label: "Emerald Elite", limit: 2, copy: "2 Specialty Modules included", extra: "Additional modules available for $49.99/month each." },
+  pro: { label: "Pro Practitioner", limit: 2, copy: "2 Specialty Modules included", extra: "Additional modules available for $49.99/month each." },
+  platinum: { label: "Emerald Platinum Regenesis", limit: 3, copy: "3 Specialty Modules included", extra: "Additional modules available for $49.99/month each." },
+  platinum_plus: { label: "Platinum Plus", limit: 4, copy: "4 Specialty Modules included", extra: "Additional modules available for $49.99/month each." },
+  concierge: { label: "Concierge Regenesis", limit: 999, copy: "Unlimited Specialty Modules included", extra: "No module add-on charge." },
+  concierge_premium: { label: "Concierge Regenesis Premium", limit: 999, copy: "Unlimited Specialty Modules included", extra: "Premium concierge support included." }
 };
 
 window.EW_MODULE_CATEGORIES = [
@@ -277,6 +281,7 @@ window.EW_CATEGORY_COUNTS = window.EW_SPECIALTY_MODULES.reduce((counts, module) 
 }, {});
 
 window.EW_RECOMMENDATION_RULES = [
+  { id: "energy-vitality", terms: ["energy", "vitality", "stamina", "motivation", "low energy", "daily energy"], modules: ["health-optimization-fundamentals", "hydration-optimization", "nutrition-foundations", "sleep-repair", "exercise-and-movement"] },
   { id: "fatigue-brain-sleep", terms: ["fatigue", "brain fog", "poor sleep", "tired", "focus"], modules: ["sleep-repair", "brain-fog-and-focus", "hormone-optimization"] },
   { id: "joint-inflammation-fatigue", terms: ["joint", "inflammation", "fatigue", "stiff", "pain"], modules: ["inflammation-reduction", "autoimmune-wellness-support", "joint-health"] },
   { id: "seasonal-allergies", terms: ["seasonal", "allergy", "allergies", "sneezing", "histamine"], modules: ["allergies-and-seasonal-wellness", "histamine-and-mast-cell-support", "immune-health"] },

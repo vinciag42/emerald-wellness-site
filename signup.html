@@ -199,15 +199,26 @@ footer{text-align:center;padding:24px;border-top:1px solid var(--border);font-si
     </div>
     <div class="field"><label>Email Address *</label><input type="email" id="email" placeholder="alex@example.com" autocomplete="email" required/></div>
     <div class="field"><label>Phone Number (optional)</label><input type="tel" id="phone" placeholder="+1 (555) 000-0000" autocomplete="tel"/></div>
+    <div class="field" style="gap:10px">
+      <label style="display:flex;gap:10px;align-items:flex-start;text-transform:none;letter-spacing:0;color:var(--textMid);font-size:13px;line-height:1.5">
+        <input type="checkbox" id="emailMarketingConsent" checked style="width:18px;height:18px;margin-top:2px;accent-color:var(--greenL)"/>
+        <span>Send me Emerald Wellness emails about membership updates, reminders, check-ins, offers, and wellness support. I can unsubscribe anytime.</span>
+      </label>
+      <label style="display:flex;gap:10px;align-items:flex-start;text-transform:none;letter-spacing:0;color:var(--textMid);font-size:13px;line-height:1.5">
+        <input type="checkbox" id="smsMarketingConsent" style="width:18px;height:18px;margin-top:2px;accent-color:var(--greenL)"/>
+        <span>I agree to receive recurring automated Emerald Wellness text messages for reminders, check-ins, account updates, and offers. Consent is not required to purchase. Message/data rates may apply. Reply STOP to opt out.</span>
+      </label>
+    </div>
     <div class="field">
       <label>Primary Health Goal *</label>
       <select id="healthGoal" required>
         <option value="">Select your main goal...</option>
+        <option value="weight">Weight Management</option>
+        <option value="energy_vitality">Energy &amp; Vitality</option>
         <option value="longevity">Longevity & Anti-Aging</option>
         <option value="performance">Athletic Performance</option>
         <option value="cognitive">Cognitive Enhancement</option>
         <option value="hormones">Hormone Optimization</option>
-        <option value="weight">Weight Management</option>
         <option value="recovery">Injury Recovery</option>
         <option value="sleep">Sleep Optimization</option>
         <option value="general">General Wellness</option>
@@ -232,35 +243,36 @@ footer{text-align:center;padding:24px;border-top:1px solid var(--border);font-si
         <div class="plan-name">🥈 Silver</div>
         <div class="plan-price" id="price-silver">$74.99<span>/mo</span></div>
         <div class="plan-trial">$1 for first 7 days · then monthly billing</div>
-        <div class="plan-features">✓ 500+ compound database<br/>✓ Personal health intelligence tools<br/>✓ Basic protocol organization<br/>✓ Lab tracker</div>
+        <div class="plan-features">✓ 500+ compound database<br/>✓ Personal health intelligence tools<br/>✓ Basic protocol organization<br/>✓ Lab tracker<br/>✓ Specialty Modules require upgrade</div>
       </div>
       <div class="plan-card popular" id="plan-gold" onclick="selectPlan('gold')">
         <div class="plan-name">🥇 Gold</div>
         <div class="plan-price" id="price-gold">$149.99<span>/mo</span></div>
         <div class="plan-trial">$1 for first 7 days · then monthly billing</div>
-        <div class="plan-features">✓ Everything in Silver<br/>✓ Stack Builder<br/>✓ 200+ protocols<br/>✓ Injection site guides</div>
+        <div class="plan-features">✓ Everything in Silver<br/>✓ Stack Builder<br/>✓ 200+ protocols<br/>✓ Injection site guides<br/>✓ 1 Specialty Module included</div>
       </div>
       <div class="plan-card" id="plan-elite" onclick="selectPlan('elite')">
         <div class="plan-name">💎 Emerald Elite</div>
         <div class="plan-price" id="price-elite">$199.99<span>/mo</span></div>
         <div class="plan-trial">$1 for first 7 days · then monthly billing</div>
-        <div class="plan-features">✓ Everything in Gold<br/>✓ Guided protocol organization<br/>✓ Biomarker trend tracking<br/>✓ Priority support</div>
+        <div class="plan-features">✓ Everything in Gold<br/>✓ Guided protocol organization<br/>✓ Biomarker trend tracking<br/>✓ Priority support<br/>✓ 2 Specialty Modules included</div>
       </div>
       <div class="plan-card" id="plan-pro" onclick="selectPlan('pro')">
         <div class="plan-name">⚕️ Pro Practitioner</div>
         <div class="plan-price" id="price-pro">$299.99<span>/mo</span></div>
         <div class="plan-trial">$1 for first 7 days · then monthly billing</div>
-        <div class="plan-features">✓ Everything in Elite<br/>✓ Patient management<br/>✓ HIPAA BAA<br/>✓ White-label reports</div>
+        <div class="plan-features">✓ Everything in Elite<br/>✓ Patient management<br/>✓ HIPAA BAA<br/>✓ White-label reports<br/>✓ 2 Specialty Modules included</div>
       </div>
       <div class="plan-card" id="plan-platinum" onclick="selectPlan('platinum')">
         <div class="plan-name">✦ Platinum Regenesis</div>
         <div class="plan-price" id="price-platinum">$599<span>/mo</span></div>
         <div class="plan-trial">$1 for first 7 days · then recurring billing</div>
-        <div class="plan-features">✓ Regenesis dashboard<br/>✓ Quarterly lab rhythm<br/>✓ Doctor visit preparation<br/>✓ Premium biology planning</div>
+        <div class="plan-features">✓ Regenesis dashboard<br/>✓ Quarterly lab rhythm<br/>✓ Doctor visit preparation<br/>✓ Premium biology planning<br/>✓ 3 Specialty Modules included</div>
       </div>
     </div>
 
-    <div class="addons-title">Specialty Add-On Modules — +$49.99/mo each</div>
+    <div class="addons-title">Specialty Modules — included by tier, then +$49.99/mo each</div>
+    <div class="trial-note" id="moduleAllowanceNote">Select a plan to see included Specialty Modules.</div>
     <div id="addonList">
       <div class="addon-row" id="addon-sleep" onclick="toggleAddon('sleep')">
         <div class="addon-left"><div class="addon-icon">😴</div><div><div class="addon-name">Sleep Science Optimization</div><div style="font-size:12px;color:var(--textDim)">Deep sleep protocols, circadian optimization, sleep peptides</div></div></div>
@@ -294,10 +306,13 @@ footer{text-align:center;padding:24px;border-top:1px solid var(--border);font-si
 
     <div class="summary-box" style="margin-top:20px;">
       <div class="summary-row"><span>Selected plan</span><span id="summaryPlan">— select a plan</span></div>
-      <div class="summary-row" id="summaryAddonsRow" style="display:none;"><span>Add-ons (<span id="addonCount">0</span>)</span><span id="summaryAddons">$0</span></div>
+      <div class="summary-row"><span>Included modules</span><span id="includedModules">—</span></div>
+      <div class="summary-row"><span>Selected modules</span><span id="selectedModules">0</span></div>
+      <div class="summary-row"><span>Additional billable modules</span><span id="billableModules">0</span></div>
+      <div class="summary-row" id="summaryAddonsRow" style="display:none;"><span>Module add-on: $49.99/month each</span><span id="summaryAddons">$0/month</span></div>
       <div class="summary-row total"><span>Total after first 7 days</span><span class="price" id="summaryTotal">$0/mo</span></div>
     </div>
-    <div class="trial-note">✦ Your card will be charged $1 today. After 7 days, your selected plan renews automatically at the displayed recurring price unless canceled before renewal.</div>
+    <div class="trial-note">✦ Your card will be charged $1 today. After 7 days, your first paid subscription month receives 20% off once, then your selected plan renews automatically at the displayed recurring price unless canceled before renewal.</div>
     <button class="btn-primary" onclick="goStep3()">Continue → Create Member Account</button>
     <button class="btn-secondary" onclick="goStep(1)">← Back</button>
   </div>
@@ -323,7 +338,10 @@ footer{text-align:center;padding:24px;border-top:1px solid var(--border);font-si
     <div class="summary-box">
       <div style="font-size:13px;font-weight:600;color:var(--textMid);margin-bottom:12px;text-transform:uppercase;letter-spacing:1px;">Order Summary</div>
       <div class="summary-row"><span>Plan</span><span id="summaryPlan3">—</span></div>
-      <div class="summary-row" id="addonsRow3" style="display:none;"><span>Add-ons</span><span id="summaryAddons3">—</span></div>
+      <div class="summary-row"><span>Included modules</span><span id="includedModules3">—</span></div>
+      <div class="summary-row"><span>Selected modules</span><span id="selectedModules3">0</span></div>
+      <div class="summary-row"><span>Additional billable modules</span><span id="billableModules3">0</span></div>
+      <div class="summary-row" id="addonsRow3" style="display:none;"><span>Module add-on total</span><span id="summaryAddons3">—</span></div>
       <div class="summary-row" id="referralRow" style="display:none;"><span>Referral code</span><span style="color:var(--greenXL);">Applied</span></div>
       <div class="summary-row total"><span>After first 7 days</span><span class="price" id="summaryTotal3">$0/mo</span></div>
     </div>
@@ -354,6 +372,7 @@ footer{text-align:center;padding:24px;border-top:1px solid var(--border);font-si
   © 2026 Emerald Wellness LLC · <a href="/privacy-policy.html">Privacy</a> · <a href="/terms-of-service.html">Terms</a> · <a href="mailto:info@emeraldwellness.health">info@emeraldwellness.health</a>
 </footer>
 
+<script src="/js/module-pricing.js"></script>
 <script>
 // ─── CONFIG ───────────────────────────────────────────────────────────────────
 const STRIPE_KEY = 'pk_live_51SkwDxLzsA0y5z9Vs1VziksrMes1w5dzHTvFJI8FwdjqLtMVYyBItO2FeS6h8dYwHplLMo7wospF5mh3ZHS92NvC00TJqeTtpG';
@@ -377,17 +396,29 @@ const PRICES = {
   }
 };
 
+const MODULE_PRICING = window.EW_MODULE_PRICING;
 const ADDON_PRICES = {
-  sleep:     { id:'price_1TnCp8LzsA0y5z9VkssgXhRr', name:'Sleep Science Optimization', amount:49.99 },
-  cognitive: { id:'price_1TnCp8LzsA0y5z9VkssgXhRr', name:'Cognitive Enhancement', amount:49.99 },
-  sexual:    { id:'price_1TnCp8LzsA0y5z9VkssgXhRr', name:'Sexual Health & Hormones', amount:49.99 },
-  gut:       { id:'price_1TnCp8LzsA0y5z9VkssgXhRr', name:'Gut & Microbiome Health', amount:49.99 },
-  nutrition: { id:'price_1TnCp8LzsA0y5z9VkssgXhRr', name:'Nutrition & Diet Optimization', amount:49.99 },
-  lab:       { id:'price_1TnCp8LzsA0y5z9VkssgXhRr', name:'Advanced Lab Panel Builder', amount:49.99 },
-  recovery:  { id:'price_1TnCp8LzsA0y5z9VkssgXhRr', name:'Recovery Bundle', amount:49.99 },
+  sleep:     { id:MODULE_PRICING.STRIPE_MODULE_ADD_ON_PRICE_ID, name:'Sleep Science Optimization', amount:MODULE_PRICING.MODULE_ADD_ON_PRICE_MONTHLY },
+  cognitive: { id:MODULE_PRICING.STRIPE_MODULE_ADD_ON_PRICE_ID, name:'Cognitive Enhancement', amount:MODULE_PRICING.MODULE_ADD_ON_PRICE_MONTHLY },
+  sexual:    { id:MODULE_PRICING.STRIPE_MODULE_ADD_ON_PRICE_ID, name:'Sexual Health & Hormones', amount:MODULE_PRICING.MODULE_ADD_ON_PRICE_MONTHLY },
+  gut:       { id:MODULE_PRICING.STRIPE_MODULE_ADD_ON_PRICE_ID, name:'Gut & Microbiome Health', amount:MODULE_PRICING.MODULE_ADD_ON_PRICE_MONTHLY },
+  nutrition: { id:MODULE_PRICING.STRIPE_MODULE_ADD_ON_PRICE_ID, name:'Nutrition & Diet Optimization', amount:MODULE_PRICING.MODULE_ADD_ON_PRICE_MONTHLY },
+  lab:       { id:MODULE_PRICING.STRIPE_MODULE_ADD_ON_PRICE_ID, name:'Advanced Lab Panel Builder', amount:MODULE_PRICING.MODULE_ADD_ON_PRICE_MONTHLY },
+  recovery:  { id:MODULE_PRICING.STRIPE_MODULE_ADD_ON_PRICE_ID, name:'Recovery Bundle', amount:MODULE_PRICING.MODULE_ADD_ON_PRICE_MONTHLY },
 };
 
 const PLAN_NAMES = { silver:'Silver', gold:'Gold', elite:'Emerald Elite', pro:'Pro Practitioner', platinum:'Emerald Platinum Regenesis' };
+const GOAL_LABELS = {
+  weight: 'Weight Management',
+  energy_vitality: 'Energy & Vitality',
+  cognitive: 'Cognitive Enhancement',
+  hormones: 'Hormone Optimization',
+  performance: 'Athletic Performance',
+  recovery: 'Injury Recovery',
+  longevity: 'Longevity & Anti-Aging',
+  sleep: 'Sleep Optimization',
+  general: 'General Wellness'
+};
 
 // ─── STATE ────────────────────────────────────────────────────────────────────
 let selectedPlan = '';
@@ -452,7 +483,18 @@ function goStep2() {
   if(!fn||!ln){return showErr('err1','Please enter your first and last name.');}
   if(!em||!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(em)){return showErr('err1','Please enter a valid email address.');}
   if(!hg){return showErr('err1','Please select your primary health goal.');}
-  userData = {firstName:fn, lastName:ln, email:em, phone:document.getElementById('phone').value.trim(), healthGoal:hg};
+  const phone = document.getElementById('phone').value.trim();
+  const smsConsent = document.getElementById('smsMarketingConsent').checked;
+  if(smsConsent && !phone){return showErr('err1','Please enter a phone number to opt into text reminders.');}
+  userData = {
+    firstName:fn,
+    lastName:ln,
+    email:em,
+    phone,
+    healthGoal:hg,
+    marketingConsent:document.getElementById('emailMarketingConsent').checked,
+    smsConsent
+  };
   document.getElementById('summaryPlan3').textContent='—';
   goStep(2);
 }
@@ -496,21 +538,30 @@ function toggleAddon(key) {
 }
 
 function updateSummary() {
-  const addonTotal = selectedAddons.size * 49.99;
+  const selectedModuleCount = selectedAddons.size;
+  const billableModuleCount = selectedPlan ? MODULE_PRICING.getBillableModuleAddOnCount(selectedPlan, selectedModuleCount) : 0;
+  const addonTotal = selectedPlan ? MODULE_PRICING.getModuleAddOnMonthlyTotal(selectedPlan, selectedModuleCount) : 0;
   const planData = selectedPlan ? PRICES[billing][selectedPlan] : null;
   const planAmt = planData ? planData.amount : 0;
   const total = planAmt + addonTotal;
   const suffix = billing==='monthly' ? '/mo' : '/yr';
+  const includedDisplay = selectedPlan ? MODULE_PRICING.getIncludedModuleDisplay(selectedPlan) : '—';
 
   document.getElementById('summaryPlan').textContent = selectedPlan ? PLAN_NAMES[selectedPlan]+' — $'+formatMoney(planAmt)+suffix : '— select a plan';
-  document.getElementById('summaryAddonsRow').style.display = selectedAddons.size > 0 ? 'flex' : 'none';
-  document.getElementById('addonCount').textContent = selectedAddons.size;
-  document.getElementById('summaryAddons').textContent = '+$'+formatMoney(addonTotal)+suffix;
+  document.getElementById('moduleAllowanceNote').textContent = selectedPlan ? MODULE_PRICING.getModuleEntitlementMessage(selectedPlan) : 'Select a plan to see included Specialty Modules.';
+  document.getElementById('includedModules').textContent = includedDisplay;
+  document.getElementById('selectedModules').textContent = selectedModuleCount;
+  document.getElementById('billableModules').textContent = billableModuleCount;
+  document.getElementById('summaryAddonsRow').style.display = billableModuleCount > 0 ? 'flex' : 'none';
+  document.getElementById('summaryAddons').textContent = '+$'+formatMoney(addonTotal)+'/month';
   document.getElementById('summaryTotal').textContent = selectedPlan ? '$'+formatMoney(total)+suffix : '$0/mo';
 
   document.getElementById('summaryPlan3').textContent = selectedPlan ? PLAN_NAMES[selectedPlan]+' — $'+formatMoney(planAmt)+suffix : '—';
-  document.getElementById('addonsRow3').style.display = selectedAddons.size > 0 ? 'flex' : 'none';
-  document.getElementById('summaryAddons3').textContent = '+$'+formatMoney(addonTotal)+suffix;
+  document.getElementById('includedModules3').textContent = includedDisplay;
+  document.getElementById('selectedModules3').textContent = selectedModuleCount;
+  document.getElementById('billableModules3').textContent = billableModuleCount;
+  document.getElementById('addonsRow3').style.display = billableModuleCount > 0 ? 'flex' : 'none';
+  document.getElementById('summaryAddons3').textContent = '+$'+formatMoney(addonTotal)+'/month';
   document.getElementById('summaryTotal3').textContent = selectedPlan ? '$'+formatMoney(total)+suffix : '$0/mo';
 }
 
@@ -548,8 +599,8 @@ async function createAccount() {
     let userId = null;
 
     const client = await ensureSupabaseClient();
-    if(member) {
-      const {data,error} = await member.auth.signUp({
+    if(client) {
+      const {data,error} = await client.auth.signUp({
         email: userData.email,
         password: pw,
         options:{data:{first_name:userData.firstName,last_name:userData.lastName}}
@@ -558,16 +609,29 @@ async function createAccount() {
       userId = data?.user?.id;
 
       if(userId) {
-        await member.from('profiles').upsert({
+        await client.from('profiles').upsert({
           id: userId,
           first_name: userData.firstName,
           last_name: userData.lastName,
           email: userData.email,
           phone: userData.phone,
           health_goal: userData.healthGoal,
+          marketing_consent: userData.marketingConsent,
+          sms_consent: userData.smsConsent,
+          email_consent_at: userData.marketingConsent ? new Date().toISOString() : null,
+          sms_consent_at: userData.smsConsent ? new Date().toISOString() : null,
+          marketing_consent_source: 'signup-checkout',
+          marketing_consent_text: 'Email consent plus optional SMS consent captured on Emerald Wellness signup. SMS consent is not required to purchase. Message/data rates may apply. Reply STOP to opt out.',
           plan: selectedPlan,
           billing_interval: billing,
           addons: Array.from(selectedAddons),
+          selected_modules: Array.from(selectedAddons),
+          included_module_count: MODULE_PRICING.getModuleEntitlement(selectedPlan).includedModules,
+          unlimited_modules: MODULE_PRICING.getModuleEntitlement(selectedPlan).unlimitedModules,
+          billable_module_count: MODULE_PRICING.getBillableModuleAddOnCount(selectedPlan, selectedAddons.size),
+          module_add_on_price_monthly: MODULE_PRICING.MODULE_ADD_ON_PRICE_MONTHLY,
+          module_add_on_monthly_total: MODULE_PRICING.getModuleAddOnMonthlyTotal(selectedPlan, selectedAddons.size),
+          plan_key: selectedPlan,
           referral_used: referralValid ? document.getElementById('referralCode').value.trim().toUpperCase() : null,
           status: 'trial',
           created_at: new Date().toISOString()
@@ -597,9 +661,16 @@ async function syncMarketingEmail(source) {
         last_name: userData.lastName,
         phone: userData.phone,
         goal: userData.healthGoal,
+        goal_label: GOAL_LABELS[userData.healthGoal] || userData.healthGoal,
+        primary_goal: userData.healthGoal,
+        primary_goal_label: GOAL_LABELS[userData.healthGoal] || userData.healthGoal,
         tier: selectedPlan || 'signup',
         source: source || 'signup',
-        referred_by: referralValid ? document.getElementById('referralCode').value.trim().toUpperCase() : ''
+        referred_by: referralValid ? document.getElementById('referralCode').value.trim().toUpperCase() : '',
+        marketing_consent: userData.marketingConsent,
+        sms_consent: userData.smsConsent,
+        consent_source: source || 'signup',
+        consent_text: 'Email consent plus optional SMS consent captured on Emerald Wellness signup. SMS consent is not required to purchase. Message/data rates may apply. Reply STOP to opt out.'
       })
     });
   } catch(err) {
@@ -617,6 +688,8 @@ async function launchStripeCheckout(userId) {
       plan: selectedPlan,
       billing,
       addons: Array.from(selectedAddons),
+      selectedModules: Array.from(selectedAddons),
+      billableModuleCount: MODULE_PRICING.getBillableModuleAddOnCount(selectedPlan, selectedAddons.size),
       referral: referralValid ? document.getElementById('referralCode').value.trim() : '',
       referralValid
     })

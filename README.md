@@ -73,7 +73,7 @@ This project is the **marketing and signup website**, not the full app itself. I
 
 3. **Payment** → They are sent to Stripe to enter card details and pay **$1 for the first 7 days** before the selected plan renews.
 
-4. **Referrals** → Users can share a referral link. When 3 friends sign up, they get 20% off.
+4. **Sharing links** → Users can share a personal Emerald Wellness link without an automatic referral discount.
 
 ---
 

@@ -154,7 +154,7 @@ CREATE TRIGGER on_profile_insert_referral
   BEFORE INSERT ON public.profiles
   FOR EACH ROW EXECUTE FUNCTION public.generate_referral_link();
 
--- Count referrals and auto-apply 20% discount coupon when 3 qualify
+-- Track referral activity for analytics only. No automatic referral discount is applied.
 CREATE OR REPLACE FUNCTION public.check_referral_milestone()
 RETURNS TRIGGER AS $$
 DECLARE
@@ -165,12 +165,9 @@ BEGIN
     FROM public.referrals
     WHERE referrer_id = NEW.referrer_id AND status = 'paid';
 
-    IF paid_count % 3 = 0 THEN
-      UPDATE public.profiles
-      SET updated_at = NOW()
-      WHERE id = NEW.referrer_id;
-      -- Hook: your backend listens for this update and applies Stripe coupon
-    END IF;
+    UPDATE public.profiles
+    SET updated_at = NOW()
+    WHERE id = NEW.referrer_id;
   END IF;
   RETURN NEW;
 END;

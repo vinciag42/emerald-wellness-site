@@ -9,6 +9,7 @@
   - Selected recurring plan price.
   - Optional specialty module add-ons at `$49.99/month` each.
   - `trial_period_days=7` so recurring billing begins after the first seven days.
+- The first paid subscription month receives a one-time `20%` discount after the `$1` intro / 7-day trial. The webhook applies the coupon to the subscription after Checkout completes so the discount targets the first recurring invoice, not the `$1` intro charge.
 - Stripe redirects back to `/signup.html?step=4&session_id=...`.
 - Logged-in customers can open `/api/create-portal-session` from the Member Command Center™ to reach the Stripe-hosted Customer Portal for billing self-service.
 - Stripe webhooks post to `/api/stripe-webhook`.
@@ -29,6 +30,10 @@ Set these in Vercel / hosting secrets, never in committed source code:
   - Optional public anon key used server-side to validate the logged-in user token before creating a Customer Portal session.
 - `SUPABASE_SERVICE_ROLE_KEY` or existing `SUPABASE_SERVICE_KEY`
   - Service-role key for server-side profile updates only. Never expose it in browser code.
+- `STRIPE_FIRST_MONTH_COUPON_ID`
+  - Stripe coupon id for `20%` off once on the first paid subscription month. Default/fallback in code: `EW_FIRST_MONTH_20`.
+- `STRIPE_SHOP_FIRST_ORDER_PROMO_CODE`
+  - Recommended shop promo code for `20%` off the first shop order. Suggested value: `FIRST20`.
 
 ## Stripe Member Command Center™ setup
 
@@ -53,9 +58,10 @@ Configure the live Stripe Customer Portal:
 
 ## Live Stripe prices used
 
-- Specialty module add-on: `price_1TnCp8LzsA0y5z9VkssgXhRr` — `$49.99/month`
-- 3-module bundle: `price_1TnCpALzsA0y5z9V4vqXmqQh` — `$89/month`
-- Referral coupon: `REFERRAL20` — `20%` off once
+- Specialty module add-on: `price_1TnCp8LzsA0y5z9VkssgXhRr` — `$49.99/month` per billable extra module beyond the included plan allowance
+- First paid subscription month coupon: `EW_FIRST_MONTH_20` — `20%` off once, applied by webhook after Checkout completes
+- Shop first-order coupon: `EW_FIRST_ORDER_20` — `20%` off once
+- Shop first-order promotion code: `FIRST20`
 
 ## Codex / MCP setup
 

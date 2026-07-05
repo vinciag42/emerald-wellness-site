@@ -203,7 +203,7 @@ li{margin:7px 0}
         <div class="card wide">
           <div class="field"><label>Current medications</label><textarea id="meds" rows="5" placeholder="Example: metformin, Eliquis, thyroid medication, SSRI, blood pressure medication"></textarea></div>
           <div class="field"><label>Current stack</label><textarea id="stackItems" rows="5" placeholder="Example: BPC-157, semaglutide, omega-3, magnesium, vitamin D3/K2, berberine"></textarea></div>
-          <div class="field"><label>Goals or concerns</label><textarea id="goals" rows="3" placeholder="Example: inflammation, weight loss, sleep, hormone balance, gut health, parasite/yeast/fungal support"></textarea></div>
+          <div class="field"><label>Goals or concerns</label><textarea id="goals" rows="3" placeholder="Example: energy & vitality, inflammation, weight loss, sleep, hormone balance, gut health, parasite/yeast/fungal support"></textarea></div>
           <button class="btn" id="runCheck">Run Medication & Stack Check</button>
           <div id="checkResults"></div>
         </div>
@@ -298,6 +298,7 @@ li{margin:7px 0}
             <li>Quarterly labs and review workflow</li>
             <li>Medication and stack review</li>
             <li>Peptide, supplement, vitamin and bioregulator planning</li>
+            <li>3 Specialty Modules included</li>
           </ul>
         </div>
         <div class="plan">
@@ -308,6 +309,7 @@ li{margin:7px 0}
             <li>More frequent optimization touchpoints</li>
             <li>Expanded concierge support</li>
             <li>Deeper lab trend review</li>
+            <li>4 Specialty Modules included</li>
           </ul>
         </div>
         <div class="plan">
@@ -318,6 +320,7 @@ li{margin:7px 0}
             <li>Highest-touch member experience</li>
             <li>White-glove coordination</li>
             <li>Best fit for complex or executive-level support</li>
+            <li>Unlimited Specialty Modules included</li>
           </ul>
         </div>
       </div>
@@ -328,8 +331,8 @@ li{margin:7px 0}
       </div>
       <div class="card full" style="margin-top:18px">
         <p class="eyebrow">My Biology™</p>
-        <h3>Optional add-ons — $49.99/mo each</h3>
-        <p class="copy">Available for members who want deeper optimization tracks added to their core plan.</p>
+        <h3>Specialty Modules — $49.99/month for extras</h3>
+        <p class="copy">Gold includes 1 Specialty Module. Emerald Elite and Pro Practitioner include 2. Emerald Platinum Regenesis includes 3. Platinum Plus includes 4. Concierge tiers include unlimited Specialty Modules. Extra modules beyond the included allowance are $49.99/month each.</p>
         <div class="detail-grid">
           <div class="detail"><b>Sports Performance Module</b>$49.99/mo</div>
           <div class="detail"><b>Peptide Mastery Track</b>$49.99/mo</div>
@@ -410,6 +413,7 @@ function runCheck(){
   if(/thyroid|levothyroxine|synthroid/.test(meds) && /magnesium|zinc|iron|calcium/.test(stack)) out.push(["gold","Timing note: minerals are commonly separated from thyroid medication by several hours."]);
   if(/ssri|prozac|zoloft|lexapro|sertraline|fluoxetine|anxiety|depression/.test(meds) && /selank|semax|st john|5-htp|tryptophan/.test(stack)) out.push(["warn","Neurotransmitter review: psychiatric medications and neuroactive supplements/peptides should be clinician-reviewed."]);
   if(/parasite|yeast|fungal|candida|mold/.test(goals+stack)) out.push(["gold","Gut terrain note: parasite, yeast and fungal protocols should include testing/provider review, binder timing, hydration, liver support and microbiome rebuilding."]);
+  if(/energy|vitality|stamina|motivation|fatigue|tired|low energy/.test(goals+stack)) out.push(["gold","Energy & Vitality note: track sleep quality, hydration, nutrition timing, movement, recovery, stress load, labs, supplement timing and protocol adherence so patterns are easier to discuss with a qualified professional."]);
   out.push(["good","Organization suggestion: separate prescriptions, injectables, vitamins/minerals and binders into different timing blocks. Bring this list to your provider before starting or changing protocols."]);
   document.getElementById("checkResults").innerHTML=out.map(([type,text])=>`<div class="result ${type}">${text}</div>`).join("");
 }

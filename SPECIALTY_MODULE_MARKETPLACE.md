@@ -19,8 +19,7 @@ Expanded launch architecture:
 
 Stripe live prices configured:
 
-- `STRIPE_EXTRA_MODULE_PRICE_ID`: `price_1TnCp8LzsA0y5z9VkssgXhRr` for the $49.99/month extra module add-on
-- `STRIPE_THREE_MODULE_BUNDLE_PRICE_ID`: `price_1TnCpALzsA0y5z9V4vqXmqQh` for the $89/month 3-module bundle
+- `STRIPE_MODULE_ADD_ON_PRICE_ID`: `price_1TnCp8LzsA0y5z9VkssgXhRr` for the $49.99/month extra module add-on beyond the included plan allowance
 
 Safety language:
 
@@ -30,7 +29,9 @@ Notes:
 
 - Free users preview only.
 - Gold includes 1 active module.
-- Platinum Plus includes 3 active modules.
+- Emerald Elite and Pro Practitioner include 2 active modules.
+- Emerald Platinum Regenesis includes 3 active modules.
+- Platinum Plus includes 4 active modules.
 - Concierge Regenesis and Concierge Regenesis Premium include unlimited modules.
 - The current static preview saves member interactions to browser storage until authenticated Supabase writes are connected.
 
