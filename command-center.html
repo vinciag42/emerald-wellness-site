@@ -258,12 +258,16 @@ hr{border:none;border-top:1px solid var(--border);margin:14px 0}
         <label>Lead Email</label><input id="flow-email" placeholder="email@example.com" />
         <label>Flow to Trigger</label>
         <select id="flow-name">
-          <option value="EW_WaitlistWelcome">Waitlist Welcome</option>
-          <option value="EW_TrialStarted">Trial Started</option>
-          <option value="EW_TrialEnding">Trial Ending (Day 6)</option>
-          <option value="EW_MemberOnboarding">Member Onboarding</option>
-          <option value="EW_UpgradeOffer">Upgrade Offer</option>
-          <option value="EW_ReEngagement">Re-Engagement</option>
+          <option value="Signup">Signup Welcome</option>
+          <option value="Trial Started">Trial Started</option>
+          <option value="Trial Day 6">Trial Ending (Day 6)</option>
+          <option value="Abandoned Signup">Abandoned Signup</option>
+          <option value="Provider Review Completed">Post-Consultation</option>
+          <option value="Upgrade Nudge">Upgrade Nudge</option>
+          <option value="Re-Engagement">Re-Engagement</option>
+          <option value="Lab Reminder">Lab Reminder</option>
+          <option value="Shop Cart">Shop Cart</option>
+          <option value="Shop Purchase">Shop Purchase</option>
         </select>
       </div>
       <div>
@@ -352,6 +356,8 @@ hr{border:none;border-top:1px solid var(--border);margin:14px 0}
         <option value="upgrade-30">Upgrade Nudge — Day 30</option>
         <option value="reengagement">Re-Engagement — Email 1</option>
         <option value="newsletter">Monthly Newsletter</option>
+        <option value="labs">Quarterly Lab Reminders</option>
+        <option value="shop">Shop Cart + Post-Purchase</option>
       </select>
       <label>Member Tier</label>
       <select id="em-tier">
@@ -380,14 +386,17 @@ hr{border:none;border-top:1px solid var(--border);margin:14px 0}
     <div class="card-title">📊 Sequence Progress Tracker</div>
     <table><thead><tr><th>Sequence</th><th>Emails</th><th>Trigger</th><th>Status</th><th>Generate</th></tr></thead>
     <tbody>
-      <tr><td>Pre-Launch Waitlist</td><td>5</td><td>On signup</td><td><span class="badge b-green">✅ LIVE</span></td><td>—</td></tr>
-      <tr><td>Welcome / Onboarding</td><td>7</td><td>Paid signup</td><td><span class="badge b-gold">🔨 BUILD</span></td><td><button class="btn btn-primary btn-sm" onclick="quickEmail('welcome')">Generate</button></td></tr>
-      <tr><td>Trial Conversion</td><td>4</td><td>$1 trial start</td><td><span class="badge b-gold">🔨 BUILD</span></td><td><button class="btn btn-primary btn-sm" onclick="quickEmail('trial-1')">Generate</button></td></tr>
-      <tr><td>Abandoned Signup</td><td>3</td><td>Form incomplete</td><td><span class="badge b-gold">🔨 BUILD</span></td><td><button class="btn btn-primary btn-sm" onclick="quickEmail('abandoned')">Generate</button></td></tr>
-      <tr><td>Post-Consultation</td><td>2</td><td>48hr after call</td><td><span class="badge b-gold">🔨 BUILD</span></td><td><button class="btn btn-primary btn-sm" onclick="quickEmail('post-call')">Generate</button></td></tr>
-      <tr><td>Upgrade Nudge</td><td>3</td><td>Day 30/60/90</td><td><span class="badge b-gold">🔨 BUILD</span></td><td><button class="btn btn-primary btn-sm" onclick="quickEmail('upgrade-30')">Generate</button></td></tr>
-      <tr><td>Re-Engagement</td><td>3</td><td>No open 30 days</td><td><span class="badge b-gold">🔨 BUILD</span></td><td><button class="btn btn-primary btn-sm" onclick="quickEmail('reengagement')">Generate</button></td></tr>
+      <tr><td>Signup Welcome</td><td>1 email + SMS</td><td>Immediate signup event</td><td><span class="badge b-blue">📋 DRAFT READY</span></td><td><button class="btn btn-primary btn-sm" onclick="quickEmail('welcome')">Open Draft</button></td></tr>
+      <tr><td>Trial Conversion</td><td>4 emails + 2 SMS</td><td>$1 trial Day 1/3/5/6</td><td><span class="badge b-blue">📋 DRAFT READY</span></td><td><button class="btn btn-primary btn-sm" onclick="quickEmail('trial-1')">Open Draft</button></td></tr>
+      <tr><td>Abandoned Signup</td><td>3 emails + SMS</td><td>Form incomplete</td><td><span class="badge b-blue">📋 DRAFT READY</span></td><td><button class="btn btn-primary btn-sm" onclick="quickEmail('abandoned')">Open Draft</button></td></tr>
+      <tr><td>Post-Consultation</td><td>2 emails + SMS</td><td>Only after provider/doctor review</td><td><span class="badge b-blue">📋 DRAFT READY</span></td><td><button class="btn btn-primary btn-sm" onclick="quickEmail('post-call')">Open Draft</button></td></tr>
+      <tr><td>Upgrade Nudge</td><td>3 emails + SMS</td><td>Day 30/60/90</td><td><span class="badge b-blue">📋 DRAFT READY</span></td><td><button class="btn btn-primary btn-sm" onclick="quickEmail('upgrade-30')">Open Draft</button></td></tr>
+      <tr><td>Re-Engagement</td><td>3 emails + SMS</td><td>No activity 30/45/60 days</td><td><span class="badge b-blue">📋 DRAFT READY</span></td><td><button class="btn btn-primary btn-sm" onclick="quickEmail('reengagement')">Open Draft</button></td></tr>
+      <tr><td>Newsletter</td><td>1 monthly email + SMS</td><td>Monthly campaign</td><td><span class="badge b-blue">📋 DRAFT READY</span></td><td><button class="btn btn-primary btn-sm" onclick="quickEmail('newsletter')">Open Draft</button></td></tr>
+      <tr><td>Lab Reminders</td><td>3 emails + SMS</td><td>Everyone with labs/lab tracking</td><td><span class="badge b-blue">📋 DRAFT READY</span></td><td><button class="btn btn-primary btn-sm" onclick="quickEmail('labs')">Open Draft</button></td></tr>
+      <tr><td>Shop Cart + Post-Purchase</td><td>6 emails + 2 SMS</td><td>External shop cart/order events</td><td><span class="badge b-blue">📋 DRAFT READY</span></td><td><button class="btn btn-primary btn-sm" onclick="quickEmail('shop')">Open Draft</button></td></tr>
     </tbody></table>
+    <p class="text-gray text-sm mt12">Preview all approved funnel drafts: <a href="/emerald-wellness/funnel-email-sms-preview.html" target="_blank" style="color:var(--green-light)">Open Funnel Preview</a></p>
   </div>
 </div>
 
@@ -606,6 +615,7 @@ hr{border:none;border-top:1px solid var(--border);margin:14px 0}
 
 </div><!-- /main -->
 
+<script src="/emerald-wellness/marketing-funnel-library.js"></script>
 <script>
 // ── CONFIG ──────────────────────────────────────────────────────
 // In production: all API calls go through /api/connect (Vercel serverless)
@@ -867,13 +877,64 @@ async function generateContent() {
 }
 
 // ── EMAIL GENERATION ─────────────────────────────────────────────
-const emailDesc = { 'welcome':'Welcome email (Email 1 of 7) for a new paid member — warm, celebratory, tells them exactly what to do next', 'trial-1':'Trial Day 1 email — welcome to the trial, quick win tip, what to explore first', 'trial-3':'Trial Day 3 email — results check-in, social proof, build excitement', 'trial-5':'Trial Day 5 email — subject: Don\'t lose your progress! — upgrade offer with full benefits list', 'trial-6':'Trial Day 6 email — URGENCY — trial ends tomorrow — lock in your rate now — strong CTA', 'abandoned':'Abandoned Signup Email 1 — they started the form but didn\'t finish — bring them back', 'post-call':'Post-consultation follow-up 48hrs after a Health Strategy Call — warm, recap value, next step is the $1 trial', 'upgrade-30':'Day 30 upgrade nudge — they\'re on Silver, show them what Gold or Elite offers', 'reengagement':'Re-engagement Email 1 — they haven\'t opened in 30 days — compelling reason to come back', 'newsletter':'Monthly newsletter — health optimization roundup, member spotlight, one featured protocol, one CTA' };
+const emailDesc = { 'welcome':'Approved signup welcome — immediate after signup', 'trial-1':'Approved trial conversion sequence — Day 1, 3, 5, 6', 'trial-3':'Trial Day 3 email — included in Trial Conversion', 'trial-5':'Trial Day 5 email — included in Trial Conversion', 'trial-6':'Trial Day 6 email — included in Trial Conversion', 'abandoned':'Approved abandoned signup sequence — 1 hour, 24 hours, 72 hours', 'post-call':'Approved post-consultation follow-up — only after provider/doctor review', 'upgrade-30':'Approved upgrade nudge — Day 30, 60, 90', 'reengagement':'Approved re-engagement — 30, 45, 60 days inactive', 'newsletter':'Approved monthly newsletter draft', 'labs':'Approved quarterly lab reminder sequence', 'shop':'Approved shop cart + post-purchase sequence' };
 const tierDesc = { silver:'Silver member ($75/mo)', gold:'Gold member ($150/mo)', elite:'Emerald Elite member ($200/mo)', pro:'Pro Practitioner member ($300/mo)', general:'General prospect, not yet a member' };
+
+function formatApprovedFunnelDraft(type) {
+  const library = window.EMERALD_FUNNEL_LIBRARY?.flows || {};
+  const draft = library[type];
+  if (!draft) return '';
+  const decisions = window.EMERALD_FUNNEL_LIBRARY?.decisions || {};
+  const emails = (draft.emails || []).map((email, i) => `EMAIL ${i + 1} — ${email.day}
+SUBJECT LINE: ${email.subject}
+PREVIEW TEXT: ${email.preview}
+---
+${email.body}`).join('\n\n────────────────────────\n\n');
+  const sms = (draft.sms || []).map((message, i) => `SMS ${i + 1} — ${message.timing}
+${message.body}`).join('\n\n');
+  return `APPROVED EMERALD WELLNESS FUNNEL DRAFT
+Status: Draft ready for Klaviyo build. Not live until Vincia approves activation.
+
+FLOW: ${draft.name}
+TRIGGER: ${draft.trigger}
+TIMING: ${draft.timing}
+AUDIENCE: ${draft.audience}
+SENDER NAME: ${decisions.senderName || 'Emerald Wellness'}
+RECOMMENDED SENDER EMAIL: ${decisions.senderEmailRecommended || 'info@emeraldwellness.health'}
+CTA: ${draft.cta}
+
+KEY RULES:
+- ${decisions.pricingRule || 'Keep exact pricing on checkout/pricing pages.'}
+- ${decisions.smsTone || 'Luxury concierge-style SMS.'}
+- Emerald Wellness does not diagnose, treat, cure, or replace medical care.
+
+${emails}
+
+────────────────────────
+
+SMS COPY
+${sms || 'No SMS draft for this flow.'}
+
+────────────────────────
+
+KLAVIYO BUILD NOTES:
+- Keep messages in Manual/Draft until final approval.
+- Use Email + SMS only where consent exists.
+- Use flow filters to exclude canceled, refunded, unsubscribed, or non-consented profiles.
+- Use provider-review flow only after provider/doctor review is completed.
+- Use lab reminders only for profiles with lab tracking or lab reminder eligibility.`;
+}
 
 async function generateEmail() {
   const type = document.getElementById('em-type').value;
   const tier = document.getElementById('em-tier').value;
   const fname = document.getElementById('em-fname').value;
+  const approvedDraft = formatApprovedFunnelDraft(type);
+  if (approvedDraft) {
+    document.getElementById('em-output').textContent = approvedDraft.replaceAll("{{ first_name|default:'there' }}", fname);
+    showToast('Approved funnel draft loaded.');
+    return;
+  }
   const prompt = `Write a Klaviyo email for Emerald Wellness.
 Sequence context: ${emailDesc[type]}
 Tier: ${tierDesc[tier]}
