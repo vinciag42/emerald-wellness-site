@@ -46,6 +46,7 @@
     { "source": "/shop/recovery-performance", "destination": "/shop-recovery-performance.html" },
     { "source": "/shop/vitality-longevity", "destination": "/shop-vitality-longevity.html" },
     { "source": "/personal-health-intelligence-platform", "destination": "/personal-health-intelligence-platform.html" },
+    { "source": "/biology-labs", "destination": "/biology-labs.html" },
     { "source": "/medication-stack-checker", "destination": "/medication-stack-checker.html" },
     { "source": "/biomarker-lab-tracking", "destination": "/biomarker-lab-tracking.html" },
     { "source": "/peptide-supplement-education", "destination": "/peptide-supplement-education.html" },
