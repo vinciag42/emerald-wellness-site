@@ -35,6 +35,7 @@ const EW_ACTIVE_LAUNCH_MODULES = new Set([
   "menopause-support",
   "men-s-performance",
   "inflammation-reduction",
+  "energy-and-vitality",
   "longevity-and-healthy-aging",
   "skin-optimization",
   "allergies-and-seasonal-wellness",
@@ -46,9 +47,10 @@ const EW_ACTIVE_LAUNCH_MODULES = new Set([
 
 const EW_FEATURED_MODULES = new Set([
   "hormone-optimization",
-  "weight-loss-metabolism",
+  "weight-loss-and-metabolism",
   "sleep-repair",
   "brain-fog-focus",
+  "energy-and-vitality",
   "gut-reset",
   "allergies-and-seasonal-wellness",
   "autoimmune-wellness-support",
@@ -120,6 +122,7 @@ const EW_LIBRARY = {
     "Healthy Aging for Men"
   ],
   "Performance & Recovery": [
+    "Energy & Vitality",
     "Athletic Performance",
     "Muscle Building",
     "Recovery Optimization",
@@ -197,6 +200,7 @@ function ewCategoryIcon(category) {
 
 function ewDescription(name, category) {
   const lower = name.toLowerCase();
+  if (lower.includes("energy") && lower.includes("vitality")) return "Organize daily energy, stamina, motivation, mitochondrial health education, nutrient patterns, sleep quality, recovery, movement, and provider-review questions in one focused module.";
   if (lower.includes("allerg")) return "Track seasonal wellness patterns, histamine-aware education, immune-support habits, and questions to discuss with a qualified healthcare provider.";
   if (lower.includes("autoimmune")) return "Organize autoimmune wellness education, symptom tracking, inflammation patterns, recovery habits, and provider-review questions.";
   if (lower.includes("mold")) return "Build mold exposure awareness with environment notes, respiratory wellness tracking, symptom patterns, and safe next-discussion prompts.";
@@ -213,6 +217,7 @@ function ewDescription(name, category) {
 
 function ewBestFor(name, category) {
   const lower = name.toLowerCase();
+  if (lower.includes("energy") && lower.includes("vitality")) return "Members who want clearer tracking around low energy, fatigue, stamina, motivation, mitochondrial health, sleep-related tiredness, recovery, and daily performance.";
   if (lower.includes("allerg")) return "Members tracking seasonal symptoms, histamine patterns, immune routines, and environmental triggers.";
   if (lower.includes("autoimmune")) return "Members organizing inflammation patterns, fatigue, joint discomfort, recovery habits, and provider-review questions.";
   if (lower.includes("mold")) return "Members with mold exposure concerns who want organized awareness, respiratory tracking, and discussion prompts.";
@@ -230,23 +235,91 @@ function ewLabs(category) {
   return ["CBC", "CMP", "Vitamin D", "hs-CRP", "Provider-selected specialty labs"];
 }
 
+function ewModuleOverrides(name) {
+  const lower = name.toLowerCase();
+  if (lower.includes("energy") && lower.includes("vitality")) {
+    return {
+      icon: "✦",
+      features: [
+        "Energy & vitality score",
+        "Mitochondrial health education",
+        "Fatigue and stamina tracker",
+        "Sleep, recovery, and nutrient pattern review",
+        "Daily energy checklist",
+        "Provider-review questions"
+      ],
+      questions: [
+        "When during the day is your energy strongest and weakest?",
+        "What fatigue, stamina, motivation, or brain-fog patterns are you tracking?",
+        "How are sleep, hydration, nutrition timing, movement, stress, and recovery affecting your vitality?",
+        "Which labs, supplements, peptides, medications, or mitochondrial-support questions should be reviewed with a qualified provider?"
+      ],
+      symptoms: [
+        "Low energy",
+        "Fatigue",
+        "Low stamina",
+        "Brain fog",
+        "Poor recovery",
+        "Sleep-related tiredness",
+        "Motivation changes"
+      ],
+      labs: [
+        "CBC",
+        "CMP",
+        "Ferritin / iron studies",
+        "B12",
+        "Vitamin D",
+        "Thyroid panel",
+        "A1c",
+        "Fasting insulin",
+        "hs-CRP",
+        "Provider-selected mitochondrial or nutrient labs"
+      ],
+      protocols: [
+        "Energy & Vitality education guide",
+        "Mitochondrial health foundations",
+        "Nutrient and hydration timing review",
+        "Sleep and recovery rhythm checklist",
+        "Medication and stack check prompts"
+      ],
+      tasks: [
+        "Log morning and afternoon energy",
+        "Track sleep quality and recovery",
+        "Record hydration and protein timing",
+        "Complete daily movement or mobility check",
+        "Note supplement, peptide, vitamin, or medication timing",
+        "Save one provider-review question"
+      ],
+      resources: [
+        "Energy & Vitality foundations",
+        "Mitochondrial health basics",
+        "Fatigue patterns to discuss with a provider",
+        "How labs can support energy tracking"
+      ],
+      recommendationKeywords: "energy vitality stamina fatigue tired low energy motivation mitochondria mitochondrial health cellular energy recovery sleep nutrient b12 ferritin vitamin d thyroid hydration performance"
+    };
+  }
+  return {};
+}
+
 let ewSort = 1;
 window.EW_SPECIALTY_MODULES = Object.entries(EW_LIBRARY).flatMap(([category, names]) =>
   names.map((name) => {
     const slug = ewSlug(name);
     const active = EW_ACTIVE_LAUNCH_MODULES.has(slug);
+    const overrides = ewModuleOverrides(name);
     return {
       id: slug,
       slug,
       name,
       category,
-      icon: ewCategoryIcon(category),
+      icon: overrides.icon || ewCategoryIcon(category),
       desc: ewDescription(name, category),
       shortDescription: ewDescription(name, category),
       description: ewDescription(name, category),
       longDescription: `${ewDescription(name, category)} The module keeps language educational and helps members organize patterns, questions, and wellness tracking for discussion with qualified professionals.`,
       bestFor: ewBestFor(name, category),
-      features: ["Module score", "Assessment", "Symptom tracker", "Recommended labs", "Daily check-ins", "Learning center"],
+      features: overrides.features || ["Module score", "Assessment", "Symptom tracker", "Recommended labs", "Daily check-ins", "Learning center"],
       priceMonthly: 49.99,
       priceTeaser: active ? "Active launch module. Included by tier; extra modules $49.99/mo." : "Coming soon. Join to be notified when this module opens.",
       includedPlanLevel: "Gold+",
@@ -258,18 +331,18 @@ window.EW_SPECIALTY_MODULES = Object.entries(EW_LIBRARY).flatMap(([category, nam
       publicPreview: true,
       published: true,
       safetyDisclaimer: window.EW_MODULE_DISCLAIMER,
-      recommendationKeywords: [name, category, ...name.toLowerCase().split(/\s+/)].join(" ").toLowerCase(),
-      questions: [
+      recommendationKeywords: overrides.recommendationKeywords || [name, category, ...name.toLowerCase().split(/\s+/)].join(" ").toLowerCase(),
+      questions: overrides.questions || [
         `What is your main ${name.toLowerCase()} goal this month?`,
         "Which symptoms, patterns, or environment factors do you want to track?",
         "Which labs, wearables, BodyScan updates, or progress notes should be reviewed?",
         "What questions should be discussed with a qualified healthcare provider?"
       ],
-      symptoms: ["Energy", "Sleep", "Mood", "Recovery", "Body or environment pattern notes"],
-      labs: ewLabs(category),
-      protocols: [`${name} education guide`, "Quarterly review checklist", "Medication and stack check prompts"],
-      tasks: ["Track symptoms", "Complete daily habit", "Review learning resource", "Log lab, BodyScan, or exposure update"],
-      resources: [`${name} foundations`, "How module scoring works", "Questions for your provider"],
+      symptoms: overrides.symptoms || ["Energy", "Sleep", "Mood", "Recovery", "Body or environment pattern notes"],
+      labs: overrides.labs || ewLabs(category),
+      protocols: overrides.protocols || [`${name} education guide`, "Quarterly review checklist", "Medication and stack check prompts"],
+      tasks: overrides.tasks || ["Track symptoms", "Complete daily habit", "Review learning resource", "Log lab, BodyScan, or exposure update"],
+      resources: overrides.resources || [`${name} foundations`, "How module scoring works", "Questions for your provider"],
       sort: ewSort++
     };
   })
@@ -281,8 +354,8 @@ window.EW_CATEGORY_COUNTS = window.EW_SPECIALTY_MODULES.reduce((counts, module) 
 }, {});
 
 window.EW_RECOMMENDATION_RULES = [
-  { id: "energy-vitality", terms: ["energy", "vitality", "stamina", "motivation", "low energy", "daily energy"], modules: ["health-optimization-fundamentals", "hydration-optimization", "nutrition-foundations", "sleep-repair", "exercise-and-movement"] },
-  { id: "fatigue-brain-sleep", terms: ["fatigue", "brain fog", "poor sleep", "tired", "focus"], modules: ["sleep-repair", "brain-fog-and-focus", "hormone-optimization"] },
+  { id: "energy-vitality", terms: ["energy", "vitality", "stamina", "motivation", "low energy", "daily energy", "mitochondria", "mitochondrial"], modules: ["energy-and-vitality", "sleep-repair", "nutrition-foundations", "hydration-optimization", "exercise-and-movement"] },
+  { id: "fatigue-brain-sleep", terms: ["fatigue", "brain fog", "poor sleep", "tired", "focus"], modules: ["energy-and-vitality", "sleep-repair", "brain-fog-and-focus", "hormone-optimization"] },
   { id: "joint-inflammation-fatigue", terms: ["joint", "inflammation", "fatigue", "stiff", "pain"], modules: ["inflammation-reduction", "autoimmune-wellness-support", "joint-health"] },
   { id: "seasonal-allergies", terms: ["seasonal", "allergy", "allergies", "sneezing", "histamine"], modules: ["allergies-and-seasonal-wellness", "histamine-and-mast-cell-support", "immune-health"] },
   { id: "mold-exposure", terms: ["mold", "musty", "water damage", "respiratory"], modules: ["mold-exposure-education", "environmental-toxin-awareness", "respiratory-wellness"] },

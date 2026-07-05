@@ -224,7 +224,7 @@ with raw(category, names) as (
   ('Brain & Mental Performance', array['Brain Fog & Focus','Memory Optimization','Mood & Emotional Wellness','Executive Performance','Cognitive Longevity','ADHD Support','Burnout Recovery','Mental Resilience']),
   ('Digestive & Immune Health', array['Gut Reset','Digestive Health','Food Sensitivity & Elimination','Microbiome Health','Immune Health','Allergies & Seasonal Wellness','Histamine & Mast Cell Support','Autoimmune Wellness Support','Long COVID Recovery Support','Chronic Fatigue Support','Fibromyalgia Wellness Support']),
   ('Cardiovascular & Longevity', array['Longevity & Healthy Aging','Heart Health','Cholesterol Optimization','Blood Pressure Support','Inflammation Reduction','Mitochondrial Health','Cellular Longevity','Healthy Aging for Women','Healthy Aging for Men']),
-  ('Performance & Recovery', array['Athletic Performance','Muscle Building','Recovery Optimization','Mobility & Flexibility','Joint Health','Bone Health','Injury Recovery']),
+  ('Performance & Recovery', array['Energy & Vitality','Athletic Performance','Muscle Building','Recovery Optimization','Mobility & Flexibility','Joint Health','Bone Health','Injury Recovery']),
   ('Appearance & Vitality', array['Skin Optimization','Hair Growth','Healthy Nails','Collagen & Connective Tissue','Healthy Weight Maintenance','Healthy Body Composition']),
   ('Environmental Health', array['Environmental Toxin Awareness','Mold Exposure Education','Heavy Metal Awareness','Air Quality & Respiratory Wellness','Water Quality Awareness','Household Chemical Exposure','Endocrine Disruptor Education','Plastic & Microplastic Exposure']),
   ('Specialized Wellness', array['Sexual Wellness','Fertility Support','Healthy Pregnancy Education','Postpartum Recovery','Healthy Family Wellness','Healthy Travel & Jet Lag','Shift Worker Wellness','Migraine & Headache Wellness','Healthy Vision','Hearing Wellness','Oral Health','Kidney Wellness','Liver Health','Respiratory Wellness']),
@@ -238,7 +238,7 @@ expanded as (
   cross join lateral unnest(raw.names) as module_name
 ),
 launch as (
-  select unnest(array['hormone-optimization','weight-loss-and-metabolism','sleep-repair','brain-fog-and-focus','gut-reset','menopause-support','men-s-performance','inflammation-reduction','longevity-and-healthy-aging','skin-optimization','allergies-and-seasonal-wellness','autoimmune-wellness-support','environmental-toxin-awareness','mold-exposure-education','heavy-metal-awareness']) as slug
+  select unnest(array['hormone-optimization','weight-loss-and-metabolism','sleep-repair','brain-fog-and-focus','gut-reset','menopause-support','men-s-performance','inflammation-reduction','energy-and-vitality','longevity-and-healthy-aging','skin-optimization','allergies-and-seasonal-wellness','autoimmune-wellness-support','environmental-toxin-awareness','mold-exposure-education','heavy-metal-awareness']) as slug
 )
 insert into public.specialty_modules (
   slug,name,category,category_id,icon,description,short_description,long_description,best_for,status,
@@ -256,7 +256,7 @@ select
   'This module organizes educational wellness intelligence, symptom patterns, goals, labs, BodyScan notes, progress reports, and questions to discuss with a qualified healthcare provider.',
   'Members focused on ' || lower(e.name) || ' education, tracking, and wellness insights.',
   case when l.slug is null then 'coming_soon' else 'active' end,
-  35,
+  49.99,
   'Gold+',
   e.slug in ('hormone-optimization','weight-loss-and-metabolism','sleep-repair','brain-fog-and-focus','gut-reset','allergies-and-seasonal-wellness','autoimmune-wellness-support','environmental-toxin-awareness','mold-exposure-education','heavy-metal-awareness'),
   true,
@@ -298,7 +298,7 @@ with keep(slug) as (
     ('Brain Fog & Focus'),('Memory Optimization'),('Mood & Emotional Wellness'),('Executive Performance'),('Cognitive Longevity'),('ADHD Support'),('Burnout Recovery'),('Mental Resilience'),
     ('Gut Reset'),('Digestive Health'),('Food Sensitivity & Elimination'),('Microbiome Health'),('Immune Health'),('Allergies & Seasonal Wellness'),('Histamine & Mast Cell Support'),('Autoimmune Wellness Support'),('Long COVID Recovery Support'),('Chronic Fatigue Support'),('Fibromyalgia Wellness Support'),
     ('Longevity & Healthy Aging'),('Heart Health'),('Cholesterol Optimization'),('Blood Pressure Support'),('Inflammation Reduction'),('Mitochondrial Health'),('Cellular Longevity'),('Healthy Aging for Women'),('Healthy Aging for Men'),
-    ('Athletic Performance'),('Muscle Building'),('Recovery Optimization'),('Mobility & Flexibility'),('Joint Health'),('Bone Health'),('Injury Recovery'),
+    ('Energy & Vitality'),('Athletic Performance'),('Muscle Building'),('Recovery Optimization'),('Mobility & Flexibility'),('Joint Health'),('Bone Health'),('Injury Recovery'),
     ('Skin Optimization'),('Hair Growth'),('Healthy Nails'),('Collagen & Connective Tissue'),('Healthy Weight Maintenance'),('Healthy Body Composition'),
     ('Environmental Toxin Awareness'),('Mold Exposure Education'),('Heavy Metal Awareness'),('Air Quality & Respiratory Wellness'),('Water Quality Awareness'),('Household Chemical Exposure'),('Endocrine Disruptor Education'),('Plastic & Microplastic Exposure'),
     ('Sexual Wellness'),('Fertility Support'),('Healthy Pregnancy Education'),('Postpartum Recovery'),('Healthy Family Wellness'),('Healthy Travel & Jet Lag'),('Shift Worker Wellness'),('Migraine & Headache Wellness'),('Healthy Vision'),('Hearing Wellness'),('Oral Health'),('Kidney Wellness'),('Liver Health'),('Respiratory Wellness'),
@@ -311,7 +311,8 @@ where slug not in (select slug from keep);
 
 insert into public.module_settings (module_id,key,value)
 select null,'recommendation_rules','[
-  {"if":"fatigue + brain fog + poor sleep","recommend":["Sleep Repair","Brain Fog & Focus","Hormone Optimization"]},
+  {"if":"low energy, fatigue, stamina, motivation, or mitochondrial health support","recommend":["Energy & Vitality","Sleep Repair","Hormone Optimization"]},
+  {"if":"fatigue + brain fog + poor sleep","recommend":["Energy & Vitality","Sleep Repair","Brain Fog & Focus","Hormone Optimization"]},
   {"if":"joint discomfort + inflammation + fatigue","recommend":["Inflammation Reduction","Autoimmune Wellness Support","Joint Health"]},
   {"if":"seasonal allergy symptoms","recommend":["Allergies & Seasonal Wellness","Histamine & Mast Cell Support","Immune Health"]},
   {"if":"mold exposure concern","recommend":["Mold Exposure Education","Environmental Toxin Awareness","Respiratory Wellness"]},
