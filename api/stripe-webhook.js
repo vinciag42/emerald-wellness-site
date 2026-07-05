@@ -224,6 +224,9 @@ const AMOUNT_TO_PLAN = {
     191988: 'elite',
     287988: 'pro',
     649900: 'platinum',
+    767040: 'platinum_plus',
+    959040: 'concierge',
+    1439040: 'concierge_premium',
   },
 };
 

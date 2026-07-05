@@ -24,6 +24,9 @@ const PLAN_PRICES = {
     elite: dynamicRecurringPrice('Emerald Elite Annual', 191988, 'year'),
     pro: dynamicRecurringPrice('Emerald Pro Practitioner Suite Annual', 287988, 'year'),
     platinum: dynamicRecurringPrice('Emerald Platinum Regenesis Annual', 649900, 'year'),
+    platinum_plus: dynamicRecurringPrice('Emerald Platinum Regenesis Plus Annual', 767040, 'year'),
+    concierge: dynamicRecurringPrice('Emerald Concierge Regenesis Annual', 959040, 'year'),
+    concierge_premium: dynamicRecurringPrice('Emerald Concierge Regenesis Premium Annual', 1439040, 'year'),
   },
 };
 

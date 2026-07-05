@@ -151,7 +151,6 @@ nav{display:flex;justify-content:space-between;align-items:center;padding:18px 4
 /* FOOTER */
 footer{text-align:center;padding:24px;border-top:1px solid var(--border);font-size:12px;color:var(--textDim);}
 </style>
-  <meta name="robots" content="noindex, follow" />
 </head>
 <body>
 
@@ -268,6 +267,24 @@ footer{text-align:center;padding:24px;border-top:1px solid var(--border);font-si
         <div class="plan-price" id="price-platinum">$599<span>/mo</span></div>
         <div class="plan-trial">$1 for first 7 days · then recurring billing</div>
         <div class="plan-features">✓ Regenesis dashboard<br/>✓ Quarterly lab rhythm<br/>✓ Doctor visit preparation<br/>✓ Premium biology planning<br/>✓ 3 Specialty Modules included</div>
+      </div>
+      <div class="plan-card" id="plan-platinum_plus" onclick="selectPlan('platinum_plus')">
+        <div class="plan-name">✦ Platinum Plus</div>
+        <div class="plan-price" id="price-platinum_plus">$799<span>/mo</span></div>
+        <div class="plan-trial">$1 for first 7 days · then recurring billing</div>
+        <div class="plan-features">✓ Everything in Platinum<br/>✓ Deeper quarterly optimization<br/>✓ Expanded Regenesis planning<br/>✓ Priority member support<br/>✓ 4 Specialty Modules included</div>
+      </div>
+      <div class="plan-card" id="plan-concierge" onclick="selectPlan('concierge')">
+        <div class="plan-name">◆ Concierge Regenesis</div>
+        <div class="plan-price" id="price-concierge">$999<span>/mo</span></div>
+        <div class="plan-trial">$1 for first 7 days · then recurring billing</div>
+        <div class="plan-features">✓ High-touch Regenesis support<br/>✓ Unlimited Specialty Modules<br/>✓ Concierge planning workflow<br/>✓ Premium member coordination<br/>✓ Best for complex wellness journeys</div>
+      </div>
+      <div class="plan-card" id="plan-concierge_premium" onclick="selectPlan('concierge_premium')">
+        <div class="plan-name">◆ Concierge Premium</div>
+        <div class="plan-price" id="price-concierge_premium">$1,499<span>/mo</span></div>
+        <div class="plan-trial">$1 for first 7 days · then recurring billing</div>
+        <div class="plan-features">✓ Everything in Concierge<br/>✓ Premium concierge support<br/>✓ Unlimited Specialty Modules<br/>✓ Highest-touch planning path<br/>✓ Best for VIP support needs</div>
       </div>
     </div>
 
@@ -386,6 +403,9 @@ const PRICES = {
     elite:  { id:'price_1Tb97ZLzsA0y5z9VlhXybXrF', amount:199.99 },
     pro:    { id:'price_1Tb9DpLzsA0y5z9VvXt3LCRs', amount:299.99 },
     platinum: { id:'dynamic_platinum_monthly', amount:599 },
+    platinum_plus: { id:'dynamic_platinum_plus_monthly', amount:799 },
+    concierge: { id:'dynamic_concierge_monthly', amount:999 },
+    concierge_premium: { id:'dynamic_concierge_premium_monthly', amount:1499 },
   },
   annual: {
     silver: { id:'price_1Td1UpLzsA0y5z9VPeq424L4', amount:719.88 },
@@ -393,6 +413,9 @@ const PRICES = {
     elite:  { id:'price_1Tb97dLzsA0y5z9VKWuTcpIU', amount:1919.88 },
     pro:    { id:'price_1Tb9EvLzsA0y5z9Va2CX66J0', amount:2879.88 },
     platinum: { id:'dynamic_platinum_annual', amount:6499 },
+    platinum_plus: { id:'dynamic_platinum_plus_annual', amount:7670.40 },
+    concierge: { id:'dynamic_concierge_annual', amount:9590.40 },
+    concierge_premium: { id:'dynamic_concierge_premium_annual', amount:14390.40 },
   }
 };
 
@@ -407,7 +430,16 @@ const ADDON_PRICES = {
   recovery:  { id:MODULE_PRICING.STRIPE_MODULE_ADD_ON_PRICE_ID, name:'Recovery Bundle', amount:MODULE_PRICING.MODULE_ADD_ON_PRICE_MONTHLY },
 };
 
-const PLAN_NAMES = { silver:'Silver', gold:'Gold', elite:'Emerald Elite', pro:'Pro Practitioner', platinum:'Emerald Platinum Regenesis' };
+const PLAN_NAMES = {
+  silver:'Silver',
+  gold:'Gold',
+  elite:'Emerald Elite',
+  pro:'Pro Practitioner',
+  platinum:'Emerald Platinum Regenesis',
+  platinum_plus:'Platinum Plus',
+  concierge:'Concierge Regenesis',
+  concierge_premium:'Concierge Regenesis Premium'
+};
 const GOAL_LABELS = {
   weight: 'Weight Management',
   energy_vitality: 'Energy & Vitality',
@@ -509,8 +541,17 @@ function setBilling(type) {
 }
 
 function updatePriceDisplay() {
-  const plans = ['silver','gold','elite','pro','platinum'];
-  const annualLabels = {silver:'$719.88/yr',gold:'$1,439.88/yr',elite:'$1,919.88/yr',pro:'$2,879.88/yr',platinum:'$6,499/yr'};
+  const plans = ['silver','gold','elite','pro','platinum','platinum_plus','concierge','concierge_premium'];
+  const annualLabels = {
+    silver:'$719.88/yr',
+    gold:'$1,439.88/yr',
+    elite:'$1,919.88/yr',
+    pro:'$2,879.88/yr',
+    platinum:'$6,499/yr',
+    platinum_plus:'$7,670.40/yr',
+    concierge:'$9,590.40/yr',
+    concierge_premium:'$14,390.40/yr'
+  };
   plans.forEach(p => {
     const el = document.getElementById('price-'+p);
     if(billing==='monthly') {
