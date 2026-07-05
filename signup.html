@@ -732,6 +732,22 @@ async function goStep3() {
   if(!selectedPlan){return showErr('err2','Please select a plan to continue.');}
   updateSummary();
   if(IS_UPGRADE_FLOW && hydrateUpgradeUserData()) {
+    const savedProfile = getSavedMemberProfile();
+    if(isCurrentMemberProfile(savedProfile)) {
+      try {
+        localStorage.setItem('emerald-upgrade-selection', JSON.stringify({
+          plan: selectedPlan,
+          billing,
+          addons: Array.from(selectedAddons),
+          requestedAt: new Date().toISOString()
+        }));
+      } catch(e) {}
+      showErr('err2','Your upgrade selection is saved. For billing safety, active member upgrades are finalized inside Membership & Billing so your current fee stays active until the next billing cycle.');
+      setTimeout(() => {
+        window.location.href = '/dashboard?tab=membership-billing&upgrade=1';
+      }, 1200);
+      return;
+    }
     const btn = document.querySelector('#step2 .btn-primary');
     if(btn){btn.disabled=true;btn.textContent='Opening secure checkout...';}
     try {
