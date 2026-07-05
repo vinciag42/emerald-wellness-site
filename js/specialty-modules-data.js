@@ -252,7 +252,7 @@ function ewModuleOverrides(name) {
         "When during the day is your energy strongest and weakest?",
         "What fatigue, stamina, motivation, or brain-fog patterns are you tracking?",
         "How are sleep, hydration, nutrition timing, movement, stress, and recovery affecting your vitality?",
-        "Which labs, supplements, peptides, medications, or mitochondrial-support questions should be reviewed with a qualified provider?"
+        "Which labs, supplements, peptides, medications, or Energy & Vitality questions should be reviewed with a qualified provider?"
       ],
       symptoms: [
         "Low energy",
@@ -273,7 +273,7 @@ function ewModuleOverrides(name) {
         "A1c",
         "Fasting insulin",
         "hs-CRP",
-        "Provider-selected mitochondrial or nutrient labs"
+        "Provider-selected Energy & Vitality or nutrient labs"
       ],
       protocols: [
         "Energy & Vitality education guide",
