@@ -227,12 +227,12 @@ function ewBestFor(name, category) {
 }
 
 function ewLabs(category) {
-  if (category === "Hormones & Metabolism") return ["A1c", "Fasting insulin", "Lipids", "Thyroid panel", "Hormone labs as appropriate"];
+  if (category === "Hormones & Metabolism") return ["A1c", "Fasting insulin", "Lipids", "Thyroid panel", "Ferritin / iron studies", "Hormone labs as appropriate"];
   if (category === "Digestive & Immune Health") return ["CBC", "CMP", "Vitamin D", "hs-CRP", "Provider-selected immune or digestive labs"];
   if (category === "Environmental Health") return ["CBC", "CMP", "hs-CRP", "Exposure-history review", "Provider-selected specialty labs"];
   if (category === "Cardiovascular & Longevity") return ["A1c", "Lipids", "hs-CRP", "CMP", "Vitamin D"];
   if (category === "Appearance & Vitality") return ["Ferritin", "Vitamin D", "B12", "Thyroid panel", "Provider-selected nutrient labs"];
-  return ["CBC", "CMP", "Vitamin D", "hs-CRP", "Provider-selected specialty labs"];
+  return ["CBC", "CMP", "Ferritin / iron studies", "Vitamin D", "B12", "hs-CRP", "Provider-selected specialty labs"];
 }
 
 function ewModuleOverrides(name) {
