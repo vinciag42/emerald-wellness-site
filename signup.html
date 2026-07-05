@@ -424,11 +424,27 @@ function applyUpgradeModeCopy() {
   const sub = document.querySelector('.hero-sub');
   const firstStepTitle = document.querySelector('#step1 .step-title');
   const firstStepSub = document.querySelector('#step1 .step-sub');
+  const planStepTitle = document.querySelector('#step2 .step-title');
+  const planStepSub = document.querySelector('#step2 .step-sub');
+  const accountStepTitle = document.querySelector('#step3 .step-title');
+  const accountStepSub = document.querySelector('#step3 .step-sub');
+  const createButton = document.getElementById('btnCreateAccount');
+  const continueButton = document.querySelector('#step2 .btn-primary');
   if (eyebrow) eyebrow.textContent = 'Upgrade Membership';
   if (title) title.innerHTML = 'Choose Your Next<br/><em>Emerald Wellness Level</em>';
   if (sub) sub.textContent = 'Upgrade your Emerald Wellness membership, add modules, or move into a higher-touch Regenesis support tier.';
+  if (window.lbl1) lbl1.textContent = 'Member';
+  if (window.lbl2) lbl2.textContent = 'Upgrade Plan';
+  if (window.lbl3) lbl3.textContent = 'Confirm';
+  if (window.lbl4) lbl4.textContent = 'Checkout';
   if (firstStepTitle) firstStepTitle.textContent = 'Confirm your member details';
   if (firstStepSub) firstStepSub.textContent = 'Use the same email connected to your Emerald Wellness membership.';
+  if (planStepTitle) planStepTitle.textContent = 'Choose Your Upgrade';
+  if (planStepSub) planStepSub.textContent = 'Select the membership level or module access you want to move into. Your updated billing is handled securely at checkout.';
+  if (accountStepTitle) accountStepTitle.textContent = 'Confirm Your Member Account';
+  if (accountStepSub) accountStepSub.textContent = 'Use your Emerald Wellness member email and password to continue to secure checkout.';
+  if (continueButton) continueButton.textContent = 'Continue → Confirm Member Account';
+  if (createButton) createButton.textContent = 'Continue to Secure Checkout →';
 }
 
 // ─── CONFIG ───────────────────────────────────────────────────────────────────
@@ -753,7 +769,7 @@ async function createAccount() {
 
   } catch(err) {
     console.error(err);
-    btn.disabled=false; btn.textContent='Create Member Account & Go to Checkout →';
+    btn.disabled=false; btn.textContent=IS_UPGRADE_FLOW?'Continue to Secure Checkout →':'Create Member Account & Go to Checkout →';
     showErr('err3', err.message || 'Something went wrong. Please try again.');
   }
 }
@@ -818,7 +834,7 @@ async function launchStripeCheckout(userId) {
   const data = await response.json().catch(()=>({}));
   if(!response.ok || !data.url) {
     const btn = document.getElementById('btnCreateAccount');
-    btn.disabled=false; btn.textContent='Create Member Account & Go to Checkout →';
+    btn.disabled=false; btn.textContent=IS_UPGRADE_FLOW?'Continue to Secure Checkout →':'Create Member Account & Go to Checkout →';
     showErr('err3', data.error || 'Unable to start Stripe checkout. Please try again.');
     return;
   }
@@ -903,6 +919,7 @@ function loadScript(src){
 </script>
 </body>
 </html>
+
 
 
 
