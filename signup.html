@@ -872,14 +872,18 @@ function applyUrlSelections() {
   else if(requestedPlan && PRICES[billing]?.[requestedPlan]) selectPlan(requestedPlan);
 }
 
+function applyRequestedStep() {
+  const requestedStep = Number(URL_PARAMS.get('step'));
+  if(Number.isInteger(requestedStep) && requestedStep >= 1 && requestedStep <= 4) {
+    goStep(requestedStep);
+    return;
+  }
+  if(IS_UPGRADE_FLOW) goStep(2);
+}
+
 applyUpgradeModeCopy();
 applyUrlSelections();
-if(IS_UPGRADE_FLOW && !URL_PARAMS.get('step')) {
-  goStep(2);
-}
-if(URL_PARAMS.get('step')==='4') {
-  goStep(4);
-}
+applyRequestedStep();
 </script>
 <script>
 function loadScript(src){
@@ -894,8 +898,7 @@ function loadScript(src){
   initSupabaseClient();
   applyUpgradeModeCopy();
   applyUrlSelections();
-  if(IS_UPGRADE_FLOW && !URL_PARAMS.get('step')) goStep(2);
-  if(URL_PARAMS.get('step')==='4') goStep(4);
+  applyRequestedStep();
 })();
 </script>
 </body>
