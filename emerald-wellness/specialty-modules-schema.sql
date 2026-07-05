@@ -258,7 +258,7 @@ select
   case when l.slug is null then 'coming_soon' else 'active' end,
   49.99,
   'Gold+',
-  e.slug in ('hormone-optimization','weight-loss-and-metabolism','sleep-repair','brain-fog-and-focus','gut-reset','allergies-and-seasonal-wellness','autoimmune-wellness-support','environmental-toxin-awareness','mold-exposure-education','heavy-metal-awareness'),
+  e.slug in ('hormone-optimization','weight-loss-and-metabolism','sleep-repair','brain-fog-and-focus','energy-and-vitality','gut-reset','allergies-and-seasonal-wellness','autoimmune-wellness-support','environmental-toxin-awareness','mold-exposure-education','heavy-metal-awareness'),
   true,
   'Public preview card for ' || e.name || '.',
   '["Module score","Assessment","Symptom tracker","Recommended labs","Daily check-ins","Learning center"]'::jsonb,
