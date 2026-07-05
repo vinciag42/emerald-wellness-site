@@ -542,7 +542,7 @@ function goStep2() {
     marketingConsent:document.getElementById('emailMarketingConsent').checked,
     smsConsent
   };
-  document.getElementById('summaryPlan3').textContent='—';
+  updateSummary();
   goStep(2);
 }
 
@@ -627,6 +627,7 @@ function formatMoney(amount) {
 
 function goStep3() {
   if(!selectedPlan){return showErr('err2','Please select a plan to continue.');}
+  updateSummary();
   goStep(3);
 }
 
