@@ -1,20 +1,20 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1"/>
-<title>Join Emerald Wellness — Start for $1</title>
+<title>Join Emerald Wellness — Start Your Wellness Journey</title>
 <meta name="description" content="Join Emerald Wellness and start with $1 for the first seven days. Choose personal health intelligence plans for stack checks, labs, specialty modules, Regenesis, and wellness education."/>
 <meta name="robots" content="index, follow"/>
 <link rel="canonical" href="https://emeraldwellness.health/signup"/>
 <meta property="og:type" content="website"/>
 <meta property="og:url" content="https://emeraldwellness.health/signup"/>
-<meta property="og:title" content="Join Emerald Wellness — Start for $1"/>
+<meta property="og:title" content="Join Emerald Wellness — Start Your Wellness Journey"/>
 <meta property="og:description" content="Start Emerald Wellness for $1 for the first seven days and choose the plan that fits your wellness intelligence journey."/>
 <meta property="og:image" content="https://emeraldwellness.health/og-emerald-wellness.png"/>
 <meta property="og:site_name" content="Emerald Wellness"/>
 <meta name="twitter:card" content="summary_large_image"/>
-<meta name="twitter:title" content="Join Emerald Wellness — Start for $1"/>
+<meta name="twitter:title" content="Join Emerald Wellness — Start Your Wellness Journey"/>
 <meta name="twitter:description" content="Choose an Emerald Wellness plan for personal health intelligence, labs, stack checks, specialty modules, and Regenesis."/>
 <meta name="twitter:image" content="https://emeraldwellness.health/og-emerald-wellness.png"/>
 <script type="application/ld+json">
@@ -298,13 +298,13 @@ footer{text-align:center;padding:24px;border-top:1px solid var(--border);font-si
       <div class="summary-row total"><span>Total after first 7 days</span><span class="price" id="summaryTotal">$0/mo</span></div>
     </div>
     <div class="trial-note">✦ Your card will be charged $1 today. After 7 days, your selected plan renews automatically at the displayed recurring price unless canceled before renewal.</div>
-    <button class="btn-primary" onclick="goStep3()">Continue → Create Account</button>
+    <button class="btn-primary" onclick="goStep3()">Continue → Create Member Account</button>
     <button class="btn-secondary" onclick="goStep(1)">← Back</button>
   </div>
 
   <!-- STEP 3: Account Creation -->
   <div class="step-card" id="step3">
-    <div class="step-title">Create Your Account</div>
+    <div class="step-title">Create Your Member Account</div>
     <div class="step-sub">Set your password to secure your Emerald Wellness profile</div>
     <div id="err3" class="error-msg"></div>
 
@@ -328,7 +328,7 @@ footer{text-align:center;padding:24px;border-top:1px solid var(--border);font-si
       <div class="summary-row total"><span>After first 7 days</span><span class="price" id="summaryTotal3">$0/mo</span></div>
     </div>
     <div class="trial-note">✦ $1 for the first 7 days — $1 charged today. After 7 days, your selected plan renews automatically at the displayed recurring price unless canceled before renewal.</div>
-    <button class="btn-primary" id="btnCreateAccount" onclick="createAccount()">Create Account & Go to Checkout →</button>
+    <button class="btn-primary" id="btnCreateAccount" onclick="createAccount()">Create Member Account & Go to Checkout →</button>
     <button class="btn-secondary" onclick="goStep(2)">← Back</button>
   </div>
 
@@ -548,8 +548,8 @@ async function createAccount() {
     let userId = null;
 
     const client = await ensureSupabaseClient();
-    if(client) {
-      const {data,error} = await client.auth.signUp({
+    if(member) {
+      const {data,error} = await member.auth.signUp({
         email: userData.email,
         password: pw,
         options:{data:{first_name:userData.firstName,last_name:userData.lastName}}
@@ -558,7 +558,7 @@ async function createAccount() {
       userId = data?.user?.id;
 
       if(userId) {
-        await client.from('profiles').upsert({
+        await member.from('profiles').upsert({
           id: userId,
           first_name: userData.firstName,
           last_name: userData.lastName,
@@ -580,7 +580,7 @@ async function createAccount() {
 
   } catch(err) {
     console.error(err);
-    btn.disabled=false; btn.textContent='Create Account & Go to Checkout →';
+    btn.disabled=false; btn.textContent='Create Member Account & Go to Checkout →';
     showErr('err3', err.message || 'Something went wrong. Please try again.');
   }
 }
@@ -625,7 +625,7 @@ async function launchStripeCheckout(userId) {
   const data = await response.json().catch(()=>({}));
   if(!response.ok || !data.url) {
     const btn = document.getElementById('btnCreateAccount');
-    btn.disabled=false; btn.textContent='Create Account & Go to Checkout →';
+    btn.disabled=false; btn.textContent='Create Member Account & Go to Checkout →';
     showErr('err3', data.error || 'Unable to start Stripe checkout. Please try again.');
     return;
   }
@@ -666,3 +666,6 @@ function loadScript(src){
 </script>
 </body>
 </html>
+
+
+

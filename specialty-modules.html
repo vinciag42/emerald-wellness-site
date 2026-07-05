@@ -3,19 +3,19 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"/>
-<title>Emerald Wellness Specialty Module Marketplace™</title>
-<meta name="description" content="Browse Emerald Wellness Specialty Modules for hormones, metabolism, brain performance, gut health, sleep, longevity, inflammation, skin, hair, athletic recovery, sexual wellness, immune health, and peptide education."/>
+<title>Emerald Wellness | Protocol Vault™</title>
+<meta name="description" content="Browse Emerald Wellness My Biology™ modules for hormones, metabolism, brain performance, gut health, sleep, longevity, inflammation, skin, hair, athletic recovery, sexual wellness, immune health, and peptide education."/>
 <meta name="robots" content="index, follow"/>
 <link rel="canonical" href="https://emeraldwellness.health/specialty-modules"/>
 <meta property="og:type" content="website"/>
 <meta property="og:url" content="https://emeraldwellness.health/specialty-modules"/>
-<meta property="og:title" content="Emerald Wellness Specialty Module Marketplace™"/>
+<meta property="og:title" content="Emerald Wellness | Protocol Vault™"/>
 <meta property="og:description" content="Explore focused educational wellness modules for hormones, metabolism, gut health, sleep, longevity, inflammation, skin, performance, and more."/>
 <meta property="og:image" content="https://emeraldwellness.health/og-emerald-wellness.png"/>
 <meta property="og:site_name" content="Emerald Wellness"/>
 <meta name="twitter:card" content="summary_large_image"/>
-<meta name="twitter:title" content="Emerald Wellness Specialty Module Marketplace™"/>
-<meta name="twitter:description" content="Browse focused wellness education modules connected to Emerald’s personal health intelligence dashboard."/>
+<meta name="twitter:title" content="Emerald Wellness | Protocol Vault™"/>
+<meta name="twitter:description" content="Browse focused wellness education modules connected to Emerald&apos;s Member Command Center™."/>
 <meta name="twitter:image" content="https://emeraldwellness.health/og-emerald-wellness.png"/>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
@@ -24,7 +24,7 @@
 {
   "@context":"https://schema.org",
   "@type":"CollectionPage",
-  "name":"Emerald Wellness Specialty Module Marketplace",
+  "name":"Emerald Wellness Protocol Vault™
   "url":"https://emeraldwellness.health/specialty-modules",
   "description":"A marketplace of educational wellness modules for focused tracking, learning, labs, symptoms, protocols, reports, and concierge support.",
   "isPartOf":{"@type":"WebSite","name":"Emerald Wellness","url":"https://emeraldwellness.health"}
@@ -38,19 +38,19 @@
 <body>
 <nav class="nav">
   <a class="brand" href="/">Emerald Wellness</a>
-  <div class="navlinks"><a href="/">Home</a><a href="/app">App</a><a href="/dashboard">Dashboard</a><a href="/#pricing">Pricing</a><a class="btn" href="/#pricing">Join Emerald Wellness</a></div>
+  <div class="navlinks"><a href="/">Home</a><a href="/app">App</a><a href="/dashboard">Member Command Center™</a><a href="/#pricing">Pricing</a><a class="btn" href="/#pricing">Join Emerald Wellness</a></div>
 </nav>
 <main>
   <section class="hero wrap">
     <p class="eyebrow">Specialty Module Marketplace™</p>
     <h1>Focused wellness education tracks for the goals members actually live with.</h1>
-    <p class="lead">Browse modules before joining. Each module can connect to the same dashboard engine: score, assessment, symptoms, labs, Protocol Vault, BodyScan, daily actions, learning, reports, and concierge support.</p>
+    <p class="lead">Browse modules before joining. Each module can connect to the same Member Command Center™ engine: score, assessment, symptoms, labs, Protocol Vault™, BodyScan™, daily actions, learning, reports, and concierge support.</p>
     <div class="actions"><a class="btn gold" href="/#pricing">Start Assessment</a><a class="btn" href="/#pricing">Join Emerald Wellness</a><a class="btn ghost" href="/#pricing">Upgrade to Concierge</a></div>
     <div class="stats"><div class="stat"><strong id="moduleTotal">90+</strong><span>Expanded module library</span></div><div class="stat"><strong>10</strong><span>Strategic categories</span></div><div class="stat"><strong id="activeTotal">15</strong><span>Active launch modules</span></div><div class="stat"><strong>$49.99</strong><span>Extra module add-on</span></div></div>
   </section>
 
   <section class="wrap">
-    <p class="eyebrow">Browse Modules</p>
+    <p class="eyebrow">Browse My Biology™</p>
     <h2>Search by goal, category, feature, or body system.</h2>
     <div class="controls"><input id="moduleSearch" placeholder="Search allergies, autoimmune, mold, toxins, hormones, GLP-1, thyroid..."/><select id="categoryFilter"></select><select id="statusFilter"><option value="all">All modules</option><option value="active">Active launch modules</option><option value="featured">Featured</option><option value="coming_soon">Coming soon</option></select></div>
     <div id="moduleGrid" class="grid"></div>
@@ -70,7 +70,7 @@ const categories = window.EW_MODULE_CATEGORIES;
 const access = window.EW_MODULE_ACCESS;
 function esc(s){return String(s||"").replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#39;"}[m]));}
 function setup(){categoryFilter.innerHTML=categories.map(c=>`<option value="${esc(c)}">${esc(c)}${c==="All"?"":` (${window.EW_CATEGORY_COUNTS[c]||0})`}</option>`).join("");disclaimer.textContent=window.EW_MODULE_DISCLAIMER;moduleTotal.textContent=modules.length;activeTotal.textContent=modules.filter(m=>m.status==="active").length;tierGrid.innerHTML=Object.values(access).map(t=>`<div class="tier"><b>${esc(t.label)}</b><p class="copy">${esc(t.copy)}</p><p class="muted">${esc(t.extra)}</p></div>`).join("");render();}
-function render(){const q=moduleSearch.value.trim().toLowerCase();const cat=categoryFilter.value;const status=statusFilter.value;const list=modules.filter(m=>{const text=[m.name,m.category,m.desc,m.bestFor,m.recommendationKeywords,...m.features].join(" ").toLowerCase();const statusOk=status==="all"||(status==="active"&&m.status==="active")||(status==="featured"&&m.featured)||(status==="coming_soon"&&m.status==="coming_soon");return (cat==="All"||m.category===cat)&&text.includes(q)&&statusOk;});moduleGrid.innerHTML=list.map(m=>`<article class="card ${m.featured?'featured':''}"><div class="icon">${m.icon}</div><h3>${esc(m.name)}</h3><p class="copy">${esc(m.desc)}</p><p class="muted"><b>Best for:</b> ${esc(m.bestFor)}</p><div class="tags"><span class="tag">${esc(m.category)}</span>${m.featured?'<span class="tag">Featured</span>':''}${m.status==="coming_soon"?'<span class="tag">Coming Soon</span>':'<span class="tag">Active Launch</span>'}${m.recommended?'<span class="tag">Recommended for You</span>':''}</div><ul class="feature-list">${m.features.map(f=>`<li>${esc(f)}</li>`).join("")}</ul><p class="muted">${esc(m.priceTeaser)}</p><div class="actions"><a class="btn" href="/#pricing">Start Assessment</a><a class="btn ghost" href="/dashboard">${m.status==="coming_soon"?"Preview in Dashboard":"Activate in Dashboard"}</a></div></article>`).join("")||`<article class="card"><h3>No modules found</h3><p class="copy">Try a different search or category.</p></article>`;}
+function render(){const q=moduleSearch.value.trim().toLowerCase();const cat=categoryFilter.value;const status=statusFilter.value;const list=modules.filter(m=>{const text=[m.name,m.category,m.desc,m.bestFor,m.recommendationKeywords,...m.features].join(" ").toLowerCase();const statusOk=status==="all"||(status==="active"&&m.status==="active")||(status==="featured"&&m.featured)||(status==="coming_soon"&&m.status==="coming_soon");return (cat==="All"||m.category===cat)&&text.includes(q)&&statusOk;});moduleGrid.innerHTML=list.map(m=>`<article class="card ${m.featured?'featured':''}"><div class="icon">${m.icon}</div><h3>${esc(m.name)}</h3><p class="copy">${esc(m.desc)}</p><p class="muted"><b>Best for:</b> ${esc(m.bestFor)}</p><div class="tags"><span class="tag">${esc(m.category)}</span>${m.featured?'<span class="tag">Featured</span>':''}${m.status==="coming_soon"?'<span class="tag">Coming Soon</span>':'<span class="tag">Active Launch</span>'}${m.recommended?'<span class="tag">Recommended for You</span>':''}</div><ul class="feature-list">${m.features.map(f=>`<li>${esc(f)}</li>`).join("")}</ul><p class="muted">${esc(m.priceTeaser)}</p><div class="actions"><a class="btn" href="/#pricing">Start Assessment</a><a class="btn ghost" href="/dashboard">${m.status==="coming_soon"?"Preview in Member Command Center™":"Activate in Member Command Center™"}</a></div></article>`).join("")||`<article class="card"><h3>No modules found</h3><p class="copy">Try a different search or category.</p></article>`;}
 moduleSearch.addEventListener("input",render);categoryFilter.addEventListener("change",render);statusFilter.addEventListener("change",render);setup();
 </script>
 </body>

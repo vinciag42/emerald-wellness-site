@@ -1,4 +1,4 @@
-# Emerald Wellness Shop SEO Implementation
+﻿# Emerald Wellness Shop SEO Implementation
 
 Created: June 28, 2026
 
@@ -86,3 +86,4 @@ These must be updated inside the external shop system because the live shop is h
 - Remove or rewrite strong medical claims and guaranteed-result language.
 - Improve image alt text.
 - Add a visible link back to `https://emeraldwellness.health/` labeled “Emerald Wellness Platform” or “Back to Emerald Wellness.”
+

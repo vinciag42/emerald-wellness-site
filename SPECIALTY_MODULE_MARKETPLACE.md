@@ -1,4 +1,4 @@
-# Emerald Wellness Specialty Module Marketplace
+﻿# Emerald Wellness Specialty Module Marketplace
 
 Implemented surfaces:
 
@@ -33,3 +33,4 @@ Notes:
 - Platinum Plus includes 3 active modules.
 - Concierge Regenesis and Concierge Regenesis Premium include unlimited modules.
 - The current static preview saves member interactions to browser storage until authenticated Supabase writes are connected.
+

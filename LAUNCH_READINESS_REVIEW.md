@@ -1,4 +1,4 @@
-# Emerald Wellness Launch Readiness Review
+﻿# Emerald Wellness Launch Readiness Review
 
 Last updated: 2026-06-30
 
@@ -38,7 +38,7 @@ Set these in Vercel Project Settings -> Environment Variables for production:
 - `SUPABASE_ANON_KEY` - optional public anon key used to verify logged-in users for the portal endpoint. The current backend also has the public anon key as a fallback.
 - `SUPABASE_SERVICE_ROLE_KEY` or existing `SUPABASE_SERVICE_KEY` - server-only key for webhook/profile updates. Never expose this in browser code.
 
-## Stripe Dashboard settings still required
+## Stripe Member Command Center™ settings still required
 
 - Configure the live Stripe Customer Portal.
 - Enable payment method update.
@@ -99,3 +99,4 @@ This is not legal advice. Have a healthcare/privacy attorney review before stori
 - Run a real live-mode $1 checkout with a low-risk test customer, then cancel/refund if needed.
 - Confirm Supabase RLS policies for all tables storing labs, medications, stacks, and module data.
 - Move dashboard/app saved stacks, labs, medications, and module progress from local storage to Supabase before promising persistent private profiles.
+

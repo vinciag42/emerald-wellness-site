@@ -1,4 +1,4 @@
-# Emerald Wellness Stripe Integration Plan
+﻿# Emerald Wellness Stripe Integration Plan
 
 ## Current production pattern
 
@@ -10,7 +10,7 @@
   - Optional specialty module add-ons at `$49.99/month` each.
   - `trial_period_days=7` so recurring billing begins after the first seven days.
 - Stripe redirects back to `/signup.html?step=4&session_id=...`.
-- Logged-in customers can open `/api/create-portal-session` from the dashboard to reach the Stripe-hosted Customer Portal for billing self-service.
+- Logged-in customers can open `/api/create-portal-session` from the Member Command Center™ to reach the Stripe-hosted Customer Portal for billing self-service.
 - Stripe webhooks post to `/api/stripe-webhook`.
 - Webhook verifies `Stripe-Signature` before updating Supabase profile billing fields.
 
@@ -30,7 +30,7 @@ Set these in Vercel / hosting secrets, never in committed source code:
 - `SUPABASE_SERVICE_ROLE_KEY` or existing `SUPABASE_SERVICE_KEY`
   - Service-role key for server-side profile updates only. Never expose it in browser code.
 
-## Stripe Dashboard setup
+## Stripe Member Command Center™ setup
 
 Create a webhook endpoint:
 
@@ -73,3 +73,4 @@ Configure the live Stripe Customer Portal:
 ```bash
 stripe listen --forward-to localhost:3000/api/stripe-webhook
 ```
+

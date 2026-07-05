@@ -1,4 +1,4 @@
-# Emerald Wellness Positioning Memory
+﻿# Emerald Wellness Positioning Memory
 
 Use this positioning when answering questions, reviewing copy, or making product decisions for Emerald Wellness.
 
@@ -47,4 +47,5 @@ Emerald Wellness should not be described as:
 Preferred disclaimer language:
 
 > Emerald Wellness provides educational wellness intelligence and tracking tools. It does not diagnose, treat, cure, or replace medical care. Always consult a qualified healthcare provider.
+
 

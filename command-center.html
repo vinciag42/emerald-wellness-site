@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -121,7 +121,7 @@ hr{border:none;border-top:1px solid var(--border);margin:14px 0}
 </div>
 
 <div class="tabs">
-  <button class="tab active" onclick="switchTab('dashboard')" id="tab-dashboard">📊 Dashboard</button>
+  <button class="tab active" onclick="switchTab('dashboard')" id="tab-dashboard">📊 Member Command Center™</button>
   <button class="tab" onclick="switchTab('leads')" id="tab-leads">👥 Leads & Members</button>
   <button class="tab" onclick="switchTab('content')" id="tab-content">✍️ AI Content</button>
   <button class="tab" onclick="switchTab('email')" id="tab-email">📧 Email Builder</button>
@@ -568,7 +568,7 @@ hr{border:none;border-top:1px solid var(--border);margin:14px 0}
       <div class="setup-step">
         <div class="flex items-center gap12">
           <div class="setup-num">3</div>
-          <div><div class="tname">Add Environment Variables in Vercel</div><div class="tdesc">Dashboard → Your Project → Settings → Environment Variables</div></div>
+          <div><div class="tname">Add Environment Variables in Vercel</div><div class="tdesc">Member Command Center™ → Your Project → Settings → Environment Variables</div></div>
         </div>
       </div>
 
@@ -1024,7 +1024,7 @@ function saveKeys() {
   localStorage.setItem('ew_sb_key', document.getElementById('key-sb-key').value.trim());
   localStorage.setItem('ew_kl_key', document.getElementById('key-kl').value.trim());
   localStorage.setItem('ew_ai_key', document.getElementById('key-ai').value.trim());
-  document.getElementById('keys-result').innerHTML = '<div class="alert alert-success">✅ Keys saved locally. Click "Refresh Status" on Dashboard to test connections.</div>';
+  document.getElementById('keys-result').innerHTML = '<div class="alert alert-success">✅ Keys saved locally. Click "Refresh Status" on Member Command Center™ to test connections.</div>';
   testConnections();
 }
 function clearKeys() {
@@ -1041,7 +1041,7 @@ function loadSavedKeys() {
 }
 
 function copyDeployInstructions() {
-  const text = `EMERALD WELLNESS — VERCEL DEPLOYMENT SETUP\n\n1. Add api/connect.js to your GitHub repo (vinciag42/emerald-wellness-site)\n2. Add vercel.json to root of repo\n3. In Vercel Dashboard → Your Project → Settings → Environment Variables, add:\n   SUPABASE_URL = https://mczpuffmlspmghgneukz.supabase.co\n   SUPABASE_SERVICE_KEY = [your service role key from Supabase Settings → API]\n   KLAVIYO_PRIVATE_KEY = [your private key from Klaviyo → Account → API Keys]\n   ANTHROPIC_API_KEY = [your key from console.anthropic.com]\n4. Push to GitHub — Vercel auto-deploys in 60 seconds\n5. Open your Vercel URL and all connections will be live!`;
+  const text = `EMERALD WELLNESS — VERCEL DEPLOYMENT SETUP\n\n1. Add api/connect.js to your GitHub repo (vinciag42/emerald-wellness-site)\n2. Add vercel.json to root of repo\n3. In Vercel Member Command Center™ → Your Project → Settings → Environment Variables, add:\n   SUPABASE_URL = https://mczpuffmlspmghgneukz.supabase.co\n   SUPABASE_SERVICE_KEY = [your service role key from Supabase Settings → API]\n   KLAVIYO_PRIVATE_KEY = [your private key from Klaviyo → Account → API Keys]\n   ANTHROPIC_API_KEY = [your key from console.anthropic.com]\n4. Push to GitHub — Vercel auto-deploys in 60 seconds\n5. Open your Vercel URL and all connections will be live!`;
   navigator.clipboard.writeText(text);
   showToast('Deployment instructions copied!');
 }
@@ -1066,3 +1066,4 @@ window.addEventListener('load', () => {
 </script>
 </body>
 </html>
+

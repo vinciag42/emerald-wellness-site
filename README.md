@@ -1,4 +1,4 @@
-# Emerald Wellness Website
+﻿# Emerald Wellness Website
 
 ## What is this?
 
@@ -115,3 +115,4 @@ Setup guides for Supabase and email are included in the `emerald-wellness/` fold
 ---
 
 © 2026 Emerald Wellness LLC
+

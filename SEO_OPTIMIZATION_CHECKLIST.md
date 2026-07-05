@@ -1,4 +1,4 @@
-# Emerald Wellness SEO Optimization Checklist
+﻿# Emerald Wellness SEO Optimization Checklist
 
 Use this list when reviewing or expanding Emerald Wellness SEO.
 
@@ -39,8 +39,8 @@ Top health-intelligence and wellness companies emphasize:
 - Homepage Open Graph and Twitter tags updated
 - Homepage schema copy made safer and aligned with educational wellness positioning
 - App page title, description, Open Graph, Twitter, and SoftwareApplication schema added
-- Dashboard page changed from noindex to index/follow for the public preview page
-- Dashboard Open Graph, Twitter, and SoftwareApplication schema added
+- Member Command Center™ page changed from noindex to index/follow for the public preview page
+- Member Command Center™ Open Graph, Twitter, and SoftwareApplication schema added
 - Signup page description, canonical, Open Graph, Twitter, and WebPage schema added
 - Specialty Modules page robots, Open Graph, Twitter, and CollectionPage schema added
 - Sitemap updated with 2026-06-28 lastmod dates for priority pages
@@ -86,4 +86,5 @@ Avoid:
 - reverse disease
 - medical-grade unless legally approved
 - guaranteed results
+
 

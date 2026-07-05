@@ -1,4 +1,4 @@
-# Emerald Wellness Social + Tracking Approval Kit
+﻿# Emerald Wellness Social + Tracking Approval Kit
 
 Status: draft for founder approval before anything is posted or connected.
 
@@ -338,3 +338,4 @@ Next implementation after founder approval:
 3. Add checkout and plan lifecycle events from Stripe webhook.
 4. Add website tracking events with privacy-safe properties.
 5. Connect Facebook, Instagram, LinkedIn, TikTok, and YouTube UTM campaigns into Klaviyo attribution.
+

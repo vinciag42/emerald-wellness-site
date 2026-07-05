@@ -1,4 +1,4 @@
-# Emerald Wellness Email System Readiness
+﻿# Emerald Wellness Email System Readiness
 
 Status: audit started before live test email.
 
@@ -117,3 +117,4 @@ Minimum launch email automations:
 6. Payment failed.
 7. Subscription cancelled.
 8. Concierge inquiry follow-up.
+

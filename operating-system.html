@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"/>
+<title>Emerald Wellness | CEO Command Center™</title>
+<meta name="description" content="Admin-only Emerald Wellness Operating System preview for CEO oversight, approvals, marketing, content, Klaviyo strategy, assets, analytics, and AI executive recommendations."/>
+<meta name="robots" content="noindex, nofollow"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;900&family=DM+Sans:wght@300;400;500;700&family=Cinzel:wght@400;600&display=swap" rel="stylesheet"/>
+<style>
+:root{--bg:#050d07;--bg2:#08100b;--panel:#101d13;--panel2:#132417;--em:#1a6b45;--emL:#2aab6a;--emXL:#40d888;--gold:#c8a828;--goldL:#f0c84a;--text:#e8f2ec;--mid:#b8d4c0;--dim:#89aa96;--border:rgba(255,255,255,.09);--danger:#e16666;--warn:#f0c84a;--serif:'Playfair Display',Georgia,serif;--sans:'DM Sans',system-ui,sans-serif;--cinzel:'Cinzel',serif}
+*{box-sizing:border-box;margin:0;padding:0}
+body{min-height:100vh;background:radial-gradient(circle at 20% 0%,rgba(64,216,136,.14),transparent 34%),linear-gradient(180deg,var(--bg),#020503);color:var(--text);font-family:var(--sans);line-height:1.5}
+a{color:inherit;text-decoration:none}button,input,textarea,select{font-family:inherit}
+.shell{display:grid;grid-template-columns:300px minmax(0,1fr);min-height:100vh}
+.side{position:sticky;top:0;height:100vh;overflow:auto;border-right:1px solid var(--border);background:rgba(8,16,11,.94);padding:24px}
+.brand{display:flex;gap:12px;align-items:center;margin-bottom:22px}.mark{width:28px;height:28px;border-radius:4px;background:linear-gradient(135deg,var(--em),var(--emXL));transform:rotate(45deg)}.brand strong{font-family:var(--cinzel);font-size:13px;letter-spacing:2px;color:var(--emXL)}.brand span{display:block;color:var(--goldL);font-size:10px;letter-spacing:1.4px;text-transform:uppercase;margin-top:4px}
+.access-card{border:1px solid rgba(240,200,74,.28);border-radius:14px;background:rgba(200,168,40,.08);padding:14px;margin-bottom:18px}.access-card small{display:block;color:var(--dim);font-size:10px;text-transform:uppercase;letter-spacing:1.4px}.access-card strong{display:block;color:var(--goldL);font-family:var(--serif);font-size:22px;margin-top:6px}
+.nav{display:grid;gap:8px}.nav button,.nav a{border:1px solid transparent;background:transparent;color:var(--mid);padding:11px 12px;border-radius:10px;text-align:left;cursor:pointer}.nav button.active,.nav button:hover,.nav a:hover{border-color:rgba(64,216,136,.25);background:rgba(26,107,69,.15);color:var(--emXL)}
+.main{padding:28px;max-width:1420px;width:100%;margin:0 auto}.topbar{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:22px}.mobile-select{display:none;width:100%;background:var(--bg2);border:1px solid var(--border);color:var(--text);border-radius:10px;padding:12px}.pill{display:inline-flex;border:1px solid rgba(64,216,136,.25);background:rgba(26,107,69,.15);color:var(--emXL);border-radius:999px;padding:7px 12px;font-size:12px;font-weight:700;letter-spacing:.4px}
+.hero{border:1px solid rgba(64,216,136,.28);background:linear-gradient(135deg,rgba(26,107,69,.2),rgba(200,168,40,.08));border-radius:22px;padding:28px;margin-bottom:18px}.eyebrow{font-family:var(--cinzel);letter-spacing:3px;text-transform:uppercase;color:var(--emXL);font-size:10px;margin-bottom:10px}h1,h2,h3{font-family:var(--serif);line-height:1.1}h1{font-size:clamp(36px,5vw,64px)}h2{font-size:clamp(28px,3vw,42px);margin-bottom:10px}h3{font-size:22px;margin-bottom:8px}.lead{color:var(--mid);font-size:17px;max-width:900px}.muted{color:var(--dim);font-size:13px}.copy{color:var(--mid);font-size:14px}
+.tab{display:none}.tab.active{display:block}.grid{display:grid;grid-template-columns:repeat(12,1fr);gap:14px}.card{grid-column:span 4;border:1px solid var(--border);background:rgba(8,16,11,.82);border-radius:16px;padding:18px}.card.wide{grid-column:span 8}.card.full{grid-column:1/-1}.metric{font-family:var(--serif);font-size:34px;color:var(--goldL);font-weight:900}.tagrow{display:flex;gap:7px;flex-wrap:wrap;margin-top:10px}.tag{border:1px solid var(--border);border-radius:999px;padding:4px 8px;color:var(--mid);font-size:10px;text-transform:uppercase;letter-spacing:.7px}.tag.approved{border-color:rgba(64,216,136,.3);color:var(--emXL)}.tag.review{border-color:rgba(240,200,74,.35);color:var(--goldL)}.tag.blocked{border-color:rgba(225,102,102,.35);color:#ffaaaa}
+.table{width:100%;border-collapse:collapse;margin-top:12px}.table th,.table td{border-bottom:1px solid var(--border);padding:11px 8px;text-align:left;vertical-align:top}.table th{color:var(--dim);font-size:11px;text-transform:uppercase;letter-spacing:1px}.table td{color:var(--mid);font-size:13px}
+.field-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:12px}.field{display:grid;gap:7px}.field label{font-size:11px;color:var(--dim);text-transform:uppercase;letter-spacing:1px}.field input,.field select,.field textarea{width:100%;background:var(--bg2);border:1px solid var(--border);border-radius:10px;color:var(--text);padding:11px}.field textarea{min-height:98px;resize:vertical}.btn{border:0;border-radius:10px;background:linear-gradient(135deg,var(--em),var(--emL));color:white;padding:12px 15px;font-weight:800;cursor:pointer}.btn.ghost{background:transparent;border:1px solid rgba(64,216,136,.3);color:var(--emXL)}.btn.danger{background:rgba(225,102,102,.12);border:1px solid rgba(225,102,102,.35);color:#ffaaaa}
+.notice{border:1px solid rgba(240,200,74,.25);background:rgba(200,168,40,.08);border-radius:14px;padding:14px;color:var(--mid);font-size:13px;margin-top:14px}.approval-guard{border-color:rgba(225,102,102,.35);background:rgba(225,102,102,.08)}
+.agent{display:grid;gap:9px}.agent b{color:var(--emXL)}.empty{border:1px dashed rgba(255,255,255,.18);border-radius:14px;padding:18px;color:var(--dim);background:rgba(255,255,255,.03)}
+@media(max-width:980px){.shell{display:block}.side{position:relative;height:auto}.nav{display:none}.mobile-select{display:block}.main{padding:18px}.card,.card.wide{grid-column:1/-1}.field-grid{grid-template-columns:1fr}.topbar{align-items:stretch;flex-direction:column}}
+</style>
+</head>
+<body>
+<div class="shell">
+  <aside class="side">
+    <a class="brand" href="/"><span class="mark"></span><span><strong>Emerald Wellness</strong><span>Operating System</span></span></a>
+    <div class="access-card"><small>Access</small><strong>Admin Preview</strong><p class="muted">For Vincia and approved administrators only. No publishing automation is connected in Phase 1.</p></div>
+    <nav class="nav" aria-label="Operating System sections">
+      <button class="active" data-tab="ceo">CEO Command Center™</button>
+      <button data-tab="approvals">Approval Queue</button>
+      <button data-tab="marketing">Marketing HQ</button>
+      <button data-tab="content">Content Studio</button>
+      <button data-tab="klaviyo">Klaviyo Center</button>
+      <button data-tab="assets">Asset Library</button>
+      <button data-tab="analytics">Analytics Foundation</button>
+      <button data-tab="agents">AI Executive Team</button>
+      <a href="/dashboard">Member Command Center™</a>
+    </nav>
+  </aside>
+  <main class="main">
+    <div class="topbar">
+      <select class="mobile-select" aria-label="Choose operating system section">
+        <option value="ceo">CEO Command Center™</option><option value="approvals">Approval Queue</option><option value="marketing">Marketing HQ</option><option value="content">Content Studio</option><option value="klaviyo">Klaviyo Center</option><option value="assets">Asset Library</option><option value="analytics">Analytics Foundation</option><option value="agents">AI Executive Team</option>
+      </select>
+      <span class="pill">Optimize Your Life by Knowing Your Biology.™</span>
+      <a class="btn ghost" href="/dashboard">Member Command Center™</a>
+    </div>
+
+    <section id="ceo" class="tab active">
+      <div class="hero"><p class="eyebrow">CEO Command Center™</p><h1>Executive visibility for Emerald Wellness.</h1><p class="lead">A premium operating cockpit for revenue, Members, campaigns, approvals, analytics, and Codex build status. Phase 1 uses safe placeholders until data connections are approved.</p></div>
+      <div class="grid" id="metricGrid"></div>
+      <div class="grid" style="margin-top:14px">
+        <div class="card wide"><h3>Executive Recommendations</h3><table class="table" id="recommendationTable"></table><p class="notice approval-guard">AI recommendations are drafts only. They may not publish, email, schedule, deploy, charge, refund, or make medical/legal decisions without Vincia approval.</p></div>
+        <div class="card"><h3>Codex Build Status</h3><p class="metric">Preview</p><p class="copy">Phase 1 Operating System foundation is staged for review only.</p><div class="tagrow"><span class="tag review">Ready for Review</span><span class="tag blocked">No Deploy Automation</span></div></div>
+      </div>
+    </section>
+
+    <section id="approvals" class="tab">
+      <div class="hero"><p class="eyebrow">Approval Workflow</p><h2>Nothing publishes unless status is Approved by CEO.</h2><p class="lead">Applies to blog posts, social posts, emails, ads, landing pages, product campaigns, AI recommendations, and Codex build tasks.</p></div>
+      <div class="grid"><div class="card full"><h3>Approval Queue</h3><table class="table" id="approvalTable"></table><p class="notice approval-guard">Publish, schedule, send, charge, refund, deploy, and medical/legal decision actions are disabled in this preview unless approval status equals Approved by CEO.</p></div></div>
+    </section>
+
+    <section id="marketing" class="tab">
+      <div class="hero"><p class="eyebrow">Marketing HQ</p><h2>Campaign planning for premium Member growth.</h2><p class="lead">Plan campaigns by goal, Member persona, topic, platform, CTA, offer, approval status, assets, notes, and performance metrics.</p></div>
+      <div class="grid"><div class="card wide"><h3>Campaign Builder</h3><div class="field-grid" id="campaignFields"></div><button class="btn" type="button" onclick="saveDraft('campaign')">Save Draft Campaign</button></div><div class="card"><h3>Campaign Categories</h3><div class="tagrow" id="categoryTags"></div></div><div class="card full"><h3>Campaign Pipeline</h3><table class="table" id="campaignTable"></table></div></div>
+    </section>
+
+    <section id="content" class="tab">
+      <div class="hero"><p class="eyebrow">Content Studio</p><h2>One content manager for every channel.</h2><p class="lead">Draft blog, Facebook, Instagram, LinkedIn, X, Pinterest, TikTok/Reels, YouTube Shorts, Email, and SMS content with status and approval controls.</p></div>
+      <div class="grid"><div class="card wide"><h3>Content Item</h3><div class="field-grid" id="contentFields"></div><button class="btn" type="button" onclick="saveDraft('content')">Save Draft Content</button></div><div class="card"><h3>Platforms</h3><div class="tagrow" id="platformTags"></div></div><div class="card full"><h3>Content Calendar Preview</h3><table class="table" id="contentTable"></table></div></div>
+    </section>
+
+    <section id="klaviyo" class="tab">
+      <div class="hero"><p class="eyebrow">Klaviyo Center</p><h2>Email and SMS strategy structure.</h2><p class="lead">Frontend structure only. API integration should be a separate task once credentials and send approvals are available.</p></div>
+      <div class="grid"><div class="card wide"><h3>Segments</h3><div class="tagrow" id="segmentTags"></div></div><div class="card"><h3>Flows</h3><div class="tagrow" id="flowTags"></div></div><div class="card full"><h3>Send Guard</h3><p class="notice approval-guard">No email or SMS send action is connected. A flow may only be scheduled after approval status is Approved by CEO.</p></div></div>
+    </section>
+
+    <section id="assets" class="tab">
+      <div class="hero"><p class="eyebrow">Asset Library</p><h2>Searchable brand and campaign assets.</h2><p class="lead">Organize logos, founder photos, product images, social graphics, email banners, blog images, video thumbnails, PDFs, and templates.</p></div>
+      <div class="grid"><div class="card wide"><h3>Asset Intake</h3><div class="field-grid" id="assetFields"></div><button class="btn" type="button" onclick="saveDraft('asset')">Save Draft Asset</button></div><div class="card"><h3>Library Search</h3><div class="field"><label>Search assets</label><input id="assetSearch" placeholder="Logo, campaign, platform, tag..."/></div><p class="empty">No connected storage yet. Add Supabase Storage or approved DAM integration in a later phase.</p></div></div>
+    </section>
+
+    <section id="analytics" class="tab">
+      <div class="hero"><p class="eyebrow">Analytics Foundation</p><h2>Connection placeholders for performance data.</h2><p class="lead">Each card shows an empty state until the platform connection is approved and configured.</p></div>
+      <div class="grid" id="analyticsGrid"></div>
+    </section>
+
+    <section id="agents" class="tab">
+      <div class="hero"><p class="eyebrow">AI Executive Team</p><h2>AI roles may draft and recommend only.</h2><p class="lead">Every agent has clear responsibilities, permissions, approval requirements, KPIs, latest recommendations, and status.</p></div>
+      <div class="grid" id="agentGrid"></div>
+    </section>
+  </main>
+</div>
+<script>
+const APPROVAL_STATUSES=["Draft","Ready for Review","Approved by CEO","Rejected","Scheduled","Published","Archived"];
+const ADMIN_EMAILS=["vincia@emeraldwellness.health","vinciafontaine@gmail.com"];
+const metrics=[["Revenue today","Connect Stripe"],["Revenue this month","Connect Stripe"],["Active Members","Connect Supabase"],["New Members","Connect Klaviyo"],["Returning Members","Connect Klaviyo"],["Orders","Connect shop"],["Shop revenue","Connect shop"],["Membership revenue","Connect Stripe"],["Klaviyo revenue","Connect Klaviyo"],["Website visitors","Connect GA4"],["Top products","Connect shop"],["Top campaigns","Connect Klaviyo"]];
+const recommendations=[["AI recommendation","Create a Weight Management nurture campaign","Ready for Review"],["Codex build task","Wire approval status to future publish buttons","Draft"],["Compliance review","Confirm no medical claims in GLP-1 education copy","Ready for Review"]];
+const approvals=[["Blog post","Peptide education article","Ready for Review"],["Email","Welcome Series 01","Draft"],["Landing page","Concierge intake page","Ready for Review"],["AI recommendation","Monthly campaign forecast","Draft"],["Codex build task","Phase 1 Operating System","Ready for Review"]];
+const campaignCategories=["Weight Management","Peptides","Hormones","Energy","Brain Fog","Longevity","Labs","Concierge","Hair, Skin & Nails","Recovery","Men's Health","Women's Health"];
+const platforms=["Blog","Facebook","Instagram","LinkedIn","X","Pinterest","TikTok/Reels","YouTube Shorts","Email","SMS"];
+const segments=["New Members","Returning Members","Emerald Platinum Members","Weight Management Interest","Peptide Interest","Hormone Interest","Energy Interest","Brain Fog Interest","Labs Interest","Concierge Interest","Abandoned Cart","Browse Abandonment","Win-Back"];
+const flows=["Welcome Series","Abandoned Cart","Browse Abandonment","Post Purchase","Review Request","Cross-Sell","Upsell","Birthday","Membership Renewal","Win-Back"];
+const analytics=["Google Analytics","Search Console","Klaviyo","Shopify/shop","Stripe","Meta","TikTok","Pinterest","YouTube"];
+const agents=[
+["Vernatia","Chief Marketing & Brand Officer","Brand strategy, campaign architecture, premium positioning","Drafts and recommendations only","Campaign ROI, approval velocity, brand consistency"],
+["CEO Strategy Agent","Executive strategy","Prioritization, roadmap, risk summaries","Drafts and recommendations only","Revenue visibility, decision quality"],
+["COO Operations Agent","Operations","Workflow mapping, process design, handoff clarity","Drafts and recommendations only","Cycle time, operational bottlenecks"],
+["CFO Finance Agent","Finance","Revenue views, margin questions, cash-flow prompts","No charges, refunds, or financial decisions","Revenue accuracy, margin visibility"],
+["Member Care Agent","Member Care","Member support drafts and escalation summaries","No direct send without approval","Response quality, escalation time"],
+["Concierge Agent","Concierge","High-touch Member coordination drafts","No medical/legal decisions","Concierge satisfaction, task completion"],
+["SEO Agent","Organic growth","Keyword briefs, metadata recommendations, content gaps","No publishing","Organic visibility, technical issues"],
+["Content Agent","Content","Content drafts across approved platforms","No posting or scheduling","Draft volume, approval rate"],
+["Analytics Agent","Analytics","Performance summaries and anomaly detection","No platform changes","Data completeness, insight quality"],
+["Compliance Review Agent","Compliance review","Flags claims, risky wording, missing disclaimers","No legal/medical decisions","Risk reduction, review coverage"],
+["Product Manager Agent","Product","Feature briefs, acceptance checks, roadmap drafts","No deploys","Delivery clarity, backlog health"]
+];
+function esc(s){return String(s||"").replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#39;"}[m]));}
+function statusTag(status){const cls=status==="Approved by CEO"?"approved":status==="Ready for Review"?"review":status==="Rejected"?"blocked":"";return `<span class="tag ${cls}">${esc(status)}</span>`;}
+function showTab(id){document.querySelectorAll(".tab").forEach(x=>x.classList.toggle("active",x.id===id));document.querySelectorAll("[data-tab]").forEach(x=>x.classList.toggle("active",x.dataset.tab===id));document.querySelector(".mobile-select").value=id;window.scrollTo({top:0,behavior:"smooth"});}
+function renderTable(el, headers, rows){el.innerHTML=`<thead><tr>${headers.map(h=>`<th>${esc(h)}</th>`).join("")}</tr></thead><tbody>${rows.map(r=>`<tr>${r.map((c,i)=>`<td>${i===r.length-1&&APPROVAL_STATUSES.includes(c)?statusTag(c):esc(c)}</td>`).join("")}</tr>`).join("")}</tbody>`;}
+function tags(el, list){el.innerHTML=list.map(x=>`<span class="tag">${esc(x)}</span>`).join("");}
+function fields(el, list){el.innerHTML=list.map(f=>`<div class="field"><label>${esc(f)}</label>${f==="Notes"||f==="Caption/body"?`<textarea placeholder="${esc(f)}"></textarea>`:`<input placeholder="${esc(f)}"/>`}</div>`).join("");}
+function saveDraft(type){alert(`${type} saved as Draft in this frontend preview. Publishing remains disabled until Approved by CEO.`);}
+document.querySelectorAll("[data-tab]").forEach(btn=>btn.addEventListener("click",()=>showTab(btn.dataset.tab)));
+document.querySelector(".mobile-select").addEventListener("change",e=>showTab(e.target.value));
+metricGrid.innerHTML=metrics.map(([label,value])=>`<div class="card"><p class="muted">${esc(label)}</p><p class="metric">${esc(value)}</p></div>`).join("");
+renderTable(recommendationTable,["Type","Recommendation","Approval"],recommendations);
+renderTable(approvalTable,["Item type","Title","Status"],approvals);
+fields(campaignFields,["Campaign name","Goal","Target Member persona","Topic","Platform","Start date","End date","CTA","Offer","Status","Approval status","Assets","Notes"]);
+tags(categoryTags,campaignCategories);
+renderTable(campaignTable,["Campaign","Category","Platform","Approval"],[["Regenesis Membership Launch","Longevity","Email + Social","Draft"],["Brain Fog Education Sprint","Brain Fog","Blog + Instagram","Ready for Review"],["Concierge Awareness","Concierge","LinkedIn","Draft"]]);
+fields(contentFields,["Title","Platform","Caption/body","SEO keyword","CTA","Image/asset","Campaign","Publish date","Status","Approval status","Created by","Last edited","Notes"]);
+tags(platformTags,platforms);
+renderTable(contentTable,["Title","Platform","Campaign","Approval"],[["Biology-first wellness intro","Blog","Brand foundation","Draft"],["Labs interest carousel","Instagram","Labs","Ready for Review"],["Welcome Series 01","Email","New Members","Draft"]]);
+tags(segmentTags,segments);tags(flowTags,flows);
+fields(assetFields,["Name","Type","Campaign","Platform","File URL","Alt text","Usage rights","Created date","Tags"]);
+analyticsGrid.innerHTML=analytics.map(p=>`<div class="card"><h3>${esc(p)}</h3><p class="empty">Connect ${esc(p)} to display performance data.</p></div>`).join("");
+agentGrid.innerHTML=agents.map(a=>`<div class="card agent"><h3>${esc(a[0])}</h3><p class="muted">${esc(a[1])}</p><p><b>Purpose:</b> ${esc(a[2])}</p><p><b>Permissions:</b> ${esc(a[3])}</p><p><b>KPIs:</b> ${esc(a[4])}</p><p><b>Latest recommendation:</b> Prepare draft for CEO review.</p>${statusTag("Draft")}</div>`).join("");
+</script>
+</body>
+</html>

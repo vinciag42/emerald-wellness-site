@@ -1,4 +1,4 @@
-# Emerald Wellness Pre-Launch Audit Report
+﻿# Emerald Wellness Pre-Launch Audit Report
 
 Date: July 1, 2026  
 Scope: main website, app/dashboard, signup flow, Stripe-related frontend/API files, external shop at `shop.emeraldwellness.health`
@@ -160,9 +160,9 @@ Recommended fix:
 
 ## High-priority improvements
 
-### 6. Dashboard still reads like a preview/admin prototype
+### 6. Member Command Center™ still reads like a preview/admin prototype
 
-The dashboard includes terms such as:
+The Member Command Center™ includes terms such as:
 
 - “Free — preview only”
 - “Admin Builder”
@@ -251,8 +251,8 @@ Strengths:
 Concerns:
 
 - It still reads like a preview.
-- Dashboard/admin language should be reduced for customers.
-- Dashboard page lacks the same strong visible medical disclaimer signal as the main pages.
+- Member Command Center™/admin language should be reduced for customers.
+- Member Command Center™ page lacks the same strong visible medical disclaimer signal as the main pages.
 
 ### External shop
 
@@ -325,4 +325,5 @@ Overall launch readiness: 7.5 / 10
 7. Clean old/dead launch files and old waitlist/coming-soon artifacts.
 8. Separate customer dashboard from admin builder language.
 9. Submit updated sitemaps to Google Search Console and Bing Webmaster Tools.
+
 
