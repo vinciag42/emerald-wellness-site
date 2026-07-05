@@ -661,8 +661,22 @@ async function createAccount() {
         password: pw,
         options:{data:{first_name:userData.firstName,last_name:userData.lastName}}
       });
-      if(error) throw error;
-      userId = data?.user?.id;
+      if(error) {
+        if(isExistingAccountError(error)) {
+          const signedIn = await client.auth.signInWithPassword({
+            email: userData.email,
+            password: pw
+          });
+          if(signedIn.error) {
+            throw new Error('An Emerald Wellness account already exists for this email. Enter the existing password to continue checkout, or use a different email for this test signup.');
+          }
+          userId = signedIn.data?.user?.id;
+        } else {
+          throw error;
+        }
+      } else {
+        userId = data?.user?.id;
+      }
 
       if(userId) {
         await client.from('profiles').upsert({
@@ -690,7 +704,7 @@ async function createAccount() {
           plan_key: selectedPlan,
           referral_used: referralValid ? document.getElementById('referralCode').value.trim().toUpperCase() : null,
           status: 'trial',
-          created_at: new Date().toISOString()
+          updated_at: new Date().toISOString()
         });
       }
     }
@@ -703,6 +717,11 @@ async function createAccount() {
     btn.disabled=false; btn.textContent='Create Member Account & Go to Checkout →';
     showErr('err3', err.message || 'Something went wrong. Please try again.');
   }
+}
+
+function isExistingAccountError(error) {
+  const text = String(error?.message || error || '').toLowerCase();
+  return text.includes('already') || text.includes('registered') || text.includes('exists');
 }
 
 // ─── STRIPE CHECKOUT ──────────────────────────────────────────────────────────
