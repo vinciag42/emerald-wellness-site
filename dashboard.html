@@ -65,9 +65,9 @@
       </div>
     </div>
     <nav class="nav" aria-label="Member Command Center™ sections">
-      <button class="active" data-tab="overview">Overview</button>
+      <button data-tab="overview">Overview</button>
       <button data-tab="specialty-modules">My Biology™ Modules</button>
-      <button data-tab="active-module">Current Intake</button>
+      <button class="active" data-tab="active-module">Current Intake</button>
       <button data-tab="bodyscan">BodyScan™</button>
       <button data-tab="protocol-vault">Protocol Vault™</button>
       <button data-tab="biology-labs">Biology Labs™</button>
@@ -82,9 +82,9 @@
   <main class="main">
     <div class="topbar">
       <select class="mobile-select" aria-label="Choose Member Command Center™ section">
+        <option value="active-module" selected>Current Intake</option>
         <option value="overview">Overview</option>
         <option value="specialty-modules">My Biology™ Modules</option>
-        <option value="active-module">Current Intake</option>
         <option value="bodyscan">BodyScan™</option>
         <option value="protocol-vault">Protocol Vault™</option>
         <option value="biology-labs">Biology Labs™</option>
@@ -104,7 +104,7 @@
       <span>Your $1 first 7 days are active. Your Member Command Center is ready while billing and profile details finish syncing securely.</span>
     </div>
 
-    <section id="overview" class="tab active">
+    <section id="overview" class="tab">
       <div class="hero">
         <p class="eyebrow">Member Command Center™</p>
         <h1>Welcome Back, <span id="memberFirstName">Member</span></h1>
@@ -149,7 +149,7 @@
       <p class="notice" id="marketDisclaimer"></p>
     </section>
 
-    <section id="active-module" class="tab"><div id="moduleDashboard"></div></section>
+    <section id="active-module" class="tab active"><div id="moduleDashboard"></div></section>
     <section id="bodyscan" class="tab"><div class="hero"><p class="eyebrow">BodyScan™</p><h2>Track visual and body-composition progress.</h2><p class="lead">Add progress photos, body-composition notes, measurements, and recovery context from your active module intake so changes are easier to review over time.</p></div><div class="grid"><div class="card"><h3>Current Snapshot</h3><p class="copy">Use the upload field inside your active module to attach your latest BodyScan™ or progress image.</p></div><div class="card"><h3>What to Track</h3><p class="copy">Energy, measurements, strength, sleep quality, recovery, inflammation, weight trends, and how consistently you followed your plan.</p></div><div class="card"><h3>Privacy</h3><p class="notice">Your BodyScan™ information is private member information. Share it only with your chosen qualified provider or Emerald support when you request help.</p></div></div></section>
     <section id="protocol-vault" class="tab"><div class="hero"><p class="eyebrow">Protocol Vault™</p><h2>Module protocols connect to the Emerald Protocol Vault™.</h2><p class="lead">Protocols are organized by module for safer review, tracking, and provider discussion.</p></div><div id="protocolVaultList" class="grid"></div></section>
     <section id="biology-labs" class="tab"><div class="hero"><p class="eyebrow">Biology Labs™</p><h2>Recommended labs by module.</h2><p class="lead">Labs are organized for quarterly review, trend tracking, and provider discussion.</p></div><div id="labsList" class="grid"></div></section>
