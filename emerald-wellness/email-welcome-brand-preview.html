@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Emerald Wellness Welcome Email Preview</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=DM+Sans:wght@400;500;700&family=Cinzel:wght@500;600&display=swap" rel="stylesheet" />
+  <style>
+    body{margin:0;background:#eef4ef;font-family:'DM Sans',Arial,sans-serif;color:#13291c}
+    .preview-shell{max-width:980px;margin:0 auto;padding:28px 18px 60px}
+    .preview-note{background:#fff;border:1px solid #d8e5dc;border-radius:18px;padding:18px 20px;margin-bottom:18px;box-shadow:0 16px 40px rgba(4,42,24,.08)}
+    .preview-note h1{font-family:'Playfair Display',Georgia,serif;margin:0 0 8px;color:#073f2a;font-size:26px}
+    .preview-note p{margin:4px 0;color:#4b6656}
+    .email{max-width:680px;margin:0 auto;background:#06100a;border-radius:28px;overflow:hidden;box-shadow:0 32px 90px rgba(3,28,15,.26)}
+    .topbar{background:linear-gradient(135deg,#0b2416,#062014 55%,#103a27);padding:30px 34px;text-align:center;border-bottom:1px solid rgba(240,200,74,.25)}
+    .brand-mark{width:58px;height:58px;margin:0 auto 14px;border:2px solid #40d888;border-radius:14px;transform:rotate(45deg);background:linear-gradient(135deg,#124b31,#40d888);box-shadow:0 0 32px rgba(64,216,136,.32)}
+    .brand{font-family:'Cinzel',Georgia,serif;color:#40d888;letter-spacing:3px;font-size:16px;text-transform:uppercase}
+    .tagline{margin-top:8px;color:#f0c84a;font-size:12px;letter-spacing:2px;text-transform:uppercase}
+    .hero{padding:42px 38px 28px;text-align:center;background:radial-gradient(circle at 50% 0%,rgba(64,216,136,.16),transparent 42%)}
+    .eyebrow{font-family:'Cinzel',Georgia,serif;color:#f0c84a;letter-spacing:3px;font-size:11px;text-transform:uppercase;margin-bottom:16px}
+    .hero h2{font-family:'Playfair Display',Georgia,serif;color:#f7f2e8;font-size:42px;line-height:1.08;margin:0}
+    .hero h2 em{color:#40d888;font-style:italic}
+    .hero p{color:#b9d3c1;font-size:17px;line-height:1.65;margin:20px auto 0;max-width:540px}
+    .pill-row{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-top:24px}
+    .pill{border:1px solid rgba(64,216,136,.3);background:rgba(64,216,136,.08);color:#a6f4c5;border-radius:999px;padding:8px 13px;font-size:12px;font-weight:700}
+    .pill.gold{border-color:rgba(240,200,74,.36);background:rgba(240,200,74,.1);color:#f0c84a}
+    .section{padding:28px 38px;border-top:1px solid rgba(255,255,255,.08)}
+    .section h3{font-family:'Playfair Display',Georgia,serif;color:#f7f2e8;font-size:25px;margin:0 0 12px}
+    .section p{color:#c8d8cc;line-height:1.7;margin:0 0 14px;font-size:15px}
+    .promise{background:linear-gradient(135deg,rgba(240,200,74,.1),rgba(64,216,136,.06));border-top:1px solid rgba(240,200,74,.22);border-bottom:1px solid rgba(240,200,74,.18)}
+    .steps{display:grid;gap:12px}
+    .step{display:flex;gap:13px;background:rgba(255,255,255,.045);border:1px solid rgba(255,255,255,.08);border-radius:16px;padding:14px}
+    .num{flex:0 0 30px;width:30px;height:30px;border-radius:50%;display:grid;place-items:center;background:#123d29;color:#40d888;font-weight:800}
+    .step strong{display:block;color:#f7f2e8;margin-bottom:3px}
+    .cta-wrap{text-align:center;padding:32px 38px}
+    .cta{display:inline-block;background:linear-gradient(135deg,#1a6b45,#40d888);color:white;text-decoration:none;border-radius:14px;padding:15px 24px;font-weight:800;box-shadow:0 14px 34px rgba(64,216,136,.2)}
+    .small{font-size:12px!important;color:#8aac96!important;margin-top:16px!important}
+    .footer{background:#030805;padding:26px 34px;text-align:center;color:#8aac96;font-size:12px;line-height:1.7}
+    .footer a{color:#40d888;text-decoration:none}
+    @media(max-width:620px){.hero h2{font-size:34px}.section,.hero,.cta-wrap{padding-left:24px;padding-right:24px}.email{border-radius:18px}}
+  </style>
+</head>
+<body>
+  <div class="preview-shell">
+    <div class="preview-note">
+      <h1>Welcome Email Preview</h1>
+      <p><strong>Recommended subject:</strong> Welcome to Emerald Wellness — Where Transformation Begins</p>
+      <p><strong>Recommended preview text:</strong> Your personal health intelligence journey starts here.</p>
+      <p><strong>Recommended sender:</strong> Emerald Wellness &lt;info@emeraldwellness.health&gt;</p>
+    </div>
+
+    <main class="email">
+      <div class="topbar">
+        <div class="brand-mark"></div>
+        <div class="brand">Emerald Wellness</div>
+        <div class="tagline">Where Transformation Begins</div>
+      </div>
+
+      <section class="hero">
+        <div class="eyebrow">Welcome to Emerald Wellness</div>
+        <h2>Your Health Journey<br><em>Starts Here</em></h2>
+        <p>Hi {{ first_name|default:'there' }}, welcome to Emerald Wellness — a personal health intelligence platform built to help you organize your labs, supplements, peptides, symptoms, biometrics, medications, and wellness goals in one connected place.</p>
+        <div class="pill-row">
+          <span class="pill gold">$1 first 7 days</span>
+          <span class="pill">Personal Health Intelligence</span>
+          <span class="pill">Provider-review questions</span>
+        </div>
+      </section>
+
+      <section class="section promise">
+        <h3>The Emerald Wellness Story</h3>
+        <p>Emerald Wellness was born from nearly 30 years in the medical field and a front-row seat to the evolution of medicine, diagnostics, and patient care. One truth has remained constant: people want to feel their best — and they deserve to understand what is happening inside their own bodies.</p>
+        <p>This platform was created to bring scattered health information into one calmer, smarter place so you can feel more informed, organized, and confident when talking with your providers.</p>
+      </section>
+
+      <section class="section">
+        <h3>What happens next</h3>
+        <div class="steps">
+          <div class="step"><div class="num">1</div><div><strong>Complete your intake</strong><p>Share your goals, current stack, medications, symptoms, and key health priorities.</p></div></div>
+          <div class="step"><div class="num">2</div><div><strong>Build your stack</strong><p>Organize supplements, peptides, vitamins, bioregulators, and prescriptions so you can better understand timing, purpose, and provider-review questions.</p></div></div>
+          <div class="step"><div class="num">3</div><div><strong>Track your biology</strong><p>Add labs, wearables, symptoms, and progress notes so Emerald can help you identify trends over time.</p></div></div>
+          <div class="step"><div class="num">4</div><div><strong>Use the Command Center</strong><p>Review your modules, reminders, daily actions, and personalized wellness planning tools.</p></div></div>
+        </div>
+      </section>
+
+      <section class="section promise">
+        <h3>Our Promise</h3>
+        <p>Here at Emerald Wellness, we understand and support everyone’s unique biology. We are committed to guiding you and your family through every stage of life with tailored, quality care, thoughtful organization, and a focus on helping you ask better questions.</p>
+        <p>Emerald Wellness does not replace medical care. It gives you educational wellness intelligence and tracking tools to support a more informed conversation with qualified healthcare providers.</p>
+      </section>
+
+      <div class="cta-wrap">
+        <a class="cta" href="https://emeraldwellness.health/dashboard">Open My Member Command Center™</a>
+        <p class="small">Your first 7 days are active for $1. After your trial, your selected subscription renews automatically unless canceled before renewal.</p>
+      </div>
+
+      <footer class="footer">
+        Questions? Contact <a href="mailto:info@emeraldwellness.health">info@emeraldwellness.health</a><br>
+        <a href="https://emeraldwellness.health/privacy-policy.html">Privacy Policy</a> ·
+        <a href="https://emeraldwellness.health/terms-of-service.html">Terms of Service</a> ·
+        <a href="https://emeraldwellness.health">Visit Website</a>
+        <p style="margin:14px 0 0;">Emerald Wellness provides educational wellness intelligence and tracking tools. It does not diagnose, treat, cure, or replace medical care. Always consult a qualified healthcare provider.</p>
+        <p style="margin:10px 0 0;">© 2026 Emerald Wellness LLC · Unsubscribe</p>
+      </footer>
+    </main>
+  </div>
+</body>
+</html>
