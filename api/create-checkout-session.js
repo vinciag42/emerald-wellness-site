@@ -134,7 +134,7 @@ module.exports = async function handler(req, res) {
     const params = new URLSearchParams();
     params.append('mode', 'subscription');
     params.append('customer_email', email);
-    params.append('success_url', `${origin}/dashboard?checkout=success&session_id={CHECKOUT_SESSION_ID}`);
+    params.append('success_url', `${origin}/dashboard?checkout=success&tab=active-module&session_id={CHECKOUT_SESSION_ID}`);
     params.append('cancel_url', `${origin}/signup?checkout=canceled&step=3`);
     params.append('subscription_data[trial_period_days]', '7');
     params.append('metadata[user_id]', userId);
