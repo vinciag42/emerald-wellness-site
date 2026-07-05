@@ -663,18 +663,20 @@ async function createAccount() {
         options:{data:{first_name:userData.firstName,last_name:userData.lastName}}
       });
       if(error) {
-        if(isExistingAccountError(error)) {
-          const signedIn = await client.auth.signInWithPassword({
-            email: userData.email,
-            password: pw
-          });
-          if(signedIn.error) {
+        const signedIn = await client.auth.signInWithPassword({
+          email: userData.email,
+          password: pw
+        });
+        if(signedIn.error) {
+          if(isRateLimitError(error)) {
+            throw new Error('Email signup is temporarily rate limited from repeated testing. If this email already has an Emerald Wellness account, enter the existing password. Otherwise wait 15–60 minutes or use a fresh test email.');
+          }
+          if(isExistingAccountError(error)) {
             throw new Error('An Emerald Wellness account already exists for this email. Enter the existing password to continue checkout, or use a different email for this test signup.');
           }
-          userId = signedIn.data?.user?.id;
-        } else {
           throw error;
         }
+        userId = signedIn.data?.user?.id;
       } else {
         userId = data?.user?.id;
       }
@@ -723,6 +725,11 @@ async function createAccount() {
 function isExistingAccountError(error) {
   const text = String(error?.message || error || '').toLowerCase();
   return text.includes('already') || text.includes('registered') || text.includes('exists');
+}
+
+function isRateLimitError(error) {
+  const text = String(error?.message || error || '').toLowerCase();
+  return text.includes('rate') || text.includes('too many') || text.includes('exceeded');
 }
 
 // ─── STRIPE CHECKOUT ──────────────────────────────────────────────────────────
