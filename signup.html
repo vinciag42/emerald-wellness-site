@@ -432,7 +432,10 @@ function applyUpgradeModeCopy() {
   const continueButton = document.querySelector('#step2 .btn-primary');
   if (eyebrow) eyebrow.textContent = 'Upgrade Membership';
   if (title) title.innerHTML = 'Choose Your Next<br/><em>Emerald Wellness Level</em>';
-  if (sub) sub.textContent = 'Upgrade your Emerald Wellness membership, add modules, or move into a higher-touch Regenesis support tier.';
+  const savedProfile = getSavedMemberProfile();
+  const savedName = savedProfile.firstName || savedProfile.first_name || '';
+  if (sub) sub.textContent = savedName ? `Welcome back, ${savedName}. Choose the membership level, module access, or Regenesis support tier you want to move into.` : 'Upgrade your Emerald Wellness membership, add modules, or move into a higher-touch Regenesis support tier.';
+  hydrateUpgradeUserData();
   if (window.lbl1) lbl1.textContent = 'Member';
   if (window.lbl2) lbl2.textContent = 'Upgrade Plan';
   if (window.lbl3) lbl3.textContent = 'Confirm';
@@ -443,7 +446,7 @@ function applyUpgradeModeCopy() {
   if (planStepSub) planStepSub.textContent = 'Select the membership level or module access you want to move into. Your updated billing is handled securely at checkout.';
   if (accountStepTitle) accountStepTitle.textContent = 'Confirm Your Member Account';
   if (accountStepSub) accountStepSub.textContent = 'Use your Emerald Wellness member email and password to continue to secure checkout.';
-  if (continueButton) continueButton.textContent = 'Continue → Confirm Member Account';
+  if (continueButton) continueButton.textContent = 'Continue → Secure Checkout';
   if (createButton) createButton.textContent = 'Continue to Secure Checkout →';
 }
 
@@ -526,6 +529,33 @@ let selectedAddons = new Set();
 let referralValid = false;
 let userData = {};
 let supabaseClient = null;
+
+function getSavedMemberProfile() {
+  try { return JSON.parse(localStorage.getItem('emerald-member-profile') || '{}'); }
+  catch(e) { return {}; }
+}
+
+function hydrateUpgradeUserData() {
+  const profile = getSavedMemberProfile();
+  if(!profile.email) return false;
+  userData = {
+    firstName: profile.firstName || profile.first_name || 'Member',
+    lastName: profile.lastName || profile.last_name || '',
+    email: profile.email,
+    phone: profile.phone || '',
+    healthGoal: profile.healthGoal || profile.health_goal || 'energy',
+    marketingConsent: profile.marketingConsent !== false,
+    smsConsent: !!profile.smsConsent,
+    userId: profile.id || profile.userId || ''
+  };
+  ['firstName','lastName','email','phone'].forEach(id => {
+    const el = document.getElementById(id);
+    if(el && userData[id]) el.value = userData[id];
+  });
+  const goal = document.getElementById('healthGoal');
+  if(goal && userData.healthGoal) goal.value = userData.healthGoal;
+  return true;
+}
 
 // ─── INIT ─────────────────────────────────────────────────────────────────────
 function initSupabaseClient() {
@@ -677,9 +707,21 @@ function formatMoney(amount) {
   return Number(amount).toLocaleString('en-US', { minimumFractionDigits: Number(amount) % 1 ? 2 : 0, maximumFractionDigits: 2 });
 }
 
-function goStep3() {
+async function goStep3() {
   if(!selectedPlan){return showErr('err2','Please select a plan to continue.');}
   updateSummary();
+  if(IS_UPGRADE_FLOW && hydrateUpgradeUserData()) {
+    const btn = document.querySelector('#step2 .btn-primary');
+    if(btn){btn.disabled=true;btn.textContent='Opening secure checkout...';}
+    try {
+      await launchStripeCheckout(userData.userId || '');
+    } catch(err) {
+      if(btn){btn.disabled=false;btn.textContent='Continue → Secure Checkout';}
+      showErr('err2', err.message || 'Unable to open secure checkout. Please confirm your member account.');
+      goStep(3);
+    }
+    return;
+  }
   goStep(3);
 }
 
@@ -833,6 +875,10 @@ async function launchStripeCheckout(userId) {
 
   const data = await response.json().catch(()=>({}));
   if(!response.ok || !data.url) {
+    if(IS_UPGRADE_FLOW) {
+      showErr('err2', data.error || 'Unable to start secure upgrade checkout. Please try again.');
+      throw new Error(data.error || 'Unable to start secure upgrade checkout.');
+    }
     const btn = document.getElementById('btnCreateAccount');
     btn.disabled=false; btn.textContent=IS_UPGRADE_FLOW?'Continue to Secure Checkout →':'Create Member Account & Go to Checkout →';
     showErr('err3', data.error || 'Unable to start Stripe checkout. Please try again.');
@@ -919,6 +965,7 @@ function loadScript(src){
 </script>
 </body>
 </html>
+
 
 
 

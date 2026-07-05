@@ -594,6 +594,8 @@ footer{background:var(--bg);border-top:1px solid var(--border);padding:60px 48px
   </a>
   <button class="mobile-menu-toggle" type="button" aria-label="Open navigation" aria-expanded="false">☰</button>
   <div class="nav-links">
+    <a href="/dashboard" id="webMemberLogin">Existing Member Login</a>
+    <a href="/dashboard" id="webMemberWelcome" style="display:none;color:var(--emXL);font-weight:700;">Welcome back, Member</a>
     <a href="#features">Platform</a>
     <a href="#protocols">Protocols</a>
     <a href="#parasite-protocol">Parasite/Fungal</a>
@@ -602,7 +604,6 @@ footer{background:var(--bg);border-top:1px solid var(--border);padding:60px 48px
     <a href="/app">App</a>
     <a href="#pricing">Pricing</a>
     <a href="/shop">Store</a>
-    <a href="/dashboard">Existing Member Login</a>
     <a href="#pricing" class="nav-cta">Start Your Wellness Journey</a>
   </div>
 </nav>
@@ -1973,6 +1974,18 @@ document.querySelectorAll('.nav-links a').forEach(link=>link.addEventListener('c
   if(links)links.classList.remove('open');
   if(btn)btn.setAttribute('aria-expanded','false');
 }));
+function applyWebMemberWelcome(){
+  try{
+    const profile=JSON.parse(localStorage.getItem('emerald-member-profile')||'{}');
+    const name=profile.firstName||profile.first_name||'';
+    if(!name)return;
+    const welcome=document.getElementById('webMemberWelcome');
+    const login=document.getElementById('webMemberLogin');
+    if(welcome){welcome.textContent=`Welcome back, ${name}`;welcome.style.display='block';}
+    if(login)login.style.display='none';
+  }catch(e){}
+}
+applyWebMemberWelcome();
 
 // SCROLL REVEAL
 const revObs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');revObs.unobserve(e.target);}});},{threshold:.1});

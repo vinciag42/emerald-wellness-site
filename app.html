@@ -155,7 +155,8 @@ li{margin:7px 0}
       <span class="pill">Health Intelligence™</span>
       <div class="actions" style="margin-top:0">
         <a class="btn ghost" href="/">Website</a>
-        <a class="btn ghost" href="/dashboard">Existing Member Login</a>
+        <a class="btn ghost" href="/dashboard" id="appMemberLogin">Existing Member Login</a>
+        <a class="btn ghost" href="/dashboard" id="appMemberWelcome" style="display:none">Welcome back, Member</a>
         <a class="btn ghost" href="/dashboard">Modules</a>
         <a class="btn ghost" href="/dashboard?tab=specialty-modules">My Biology™ Modules</a>
         <a class="btn gold" href="/shop">Store</a>
@@ -165,7 +166,7 @@ li{margin:7px 0}
     <section id="dashboard" class="tab active">
       <div class="hero">
         <p class="eyebrow">Emerald Wellness App</p>
-        <h1>Your Biology Is Unique. Your Health Plan Should Be Too.</h1>
+        <h1 id="appWelcomeTitle">Your Biology Is Unique. Your Health Plan Should Be Too.</h1>
         <p class="lead">Your Member Command Center™ organizes supplements, vitamins, peptide pathways, bioregulators, medications, labs, wearable insights, provider-review questions and wellness planning into one connected experience.</p>
         <p class="notice">Emerald Wellness provides wellness intelligence and tracking tools. It does not provide medical diagnosis, medical treatment, prescriptions, guaranteed outcomes, or replace medical care. Always consult a qualified healthcare provider.</p>
         <div class="actions">
@@ -385,6 +386,19 @@ const compounds=[
 let current=compounds[0];
 const tabs=[...document.querySelectorAll("[data-tab]")];
 const panels=[...document.querySelectorAll(".tab")];
+function applyMemberWelcome(){
+  try{
+    const profile=JSON.parse(localStorage.getItem("emerald-member-profile")||"{}");
+    const name=profile.firstName||profile.first_name||"";
+    if(!name)return;
+    const welcome=document.getElementById("appMemberWelcome");
+    const login=document.getElementById("appMemberLogin");
+    const title=document.getElementById("appWelcomeTitle");
+    if(welcome){welcome.textContent=`Welcome back, ${name}`;welcome.style.display="inline-flex";}
+    if(login)login.style.display="none";
+    if(title)title.textContent=`Welcome back, ${name}. Your Member Command Center is ready.`;
+  }catch(e){}
+}
 function showTab(id){
   panels.forEach(p=>p.classList.toggle("active",p.id===id));
   tabs.forEach(b=>b.classList.toggle("active",b.dataset.tab===id));
@@ -423,6 +437,7 @@ function runCheck(){
 }
 document.getElementById("runCheck").addEventListener("click",runCheck);
 renderList();renderDetail();
+applyMemberWelcome();
 </script>
 </body>
 </html>
