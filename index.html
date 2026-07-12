@@ -1179,7 +1179,7 @@
       min-height: 278px;
     }
     .topic-art {
-      height: 176px;
+      height: 208px;
       position: relative;
       background: radial-gradient(circle at 38% 42%, rgba(88,227,154,.72), transparent 9%), linear-gradient(135deg, #06120d, #0d5138);
       overflow: hidden;
@@ -1189,21 +1189,33 @@
       height: 100%;
       object-fit: cover;
     }
+    .topic-art.peptides,
+    .topic-art.longevity {
+      background: linear-gradient(135deg, #030806, #0c2118 54%, #050806);
+    }
+    .topic-art.hormone,
+    .topic-art.weight-loss,
+    .topic-art.gut-health {
+      background: linear-gradient(135deg, #f7f5ef, #ffffff 48%, #eef6ef);
+    }
+    .topic-art.energy {
+      background: linear-gradient(135deg, #06120d, #123425);
+    }
     .topic-art.hormone img,
     .topic-art.longevity img {
-      object-position: center 18%;
+      object-position: center 42%;
     }
     .topic-art.peptides img {
-      object-position: center 35%;
+      object-position: center 44%;
     }
     .topic-art.weight-loss img {
-      object-position: 58% 24%;
+      object-position: 56% 24%;
     }
     .topic-art.energy img {
       object-position: 60% center;
     }
     .topic-art.gut-health img {
-      object-position: 55% 30%;
+      object-position: center 8%;
     }
     .topic-art::after {
       content: "";
@@ -1673,12 +1685,12 @@
     <header class="hero">
       <div class="hero-media" aria-hidden="true">
         <video autoplay muted loop playsinline poster="images/shop-health-vitality-young-couple.png">
-          <source src="videos/emerald-walking-hero.mp4" type="video/mp4" />
+          <source src="videos/shop-emerald-hero.mp4" type="video/mp4" />
         </video>
       </div>
       <div class="container hero-inner">
         <div class="hero-copy">
-          <div class="hero-kicker">Private Health Intelligence</div>
+          <div class="hero-kicker">Personalized Health Intelligence</div>
           <h1>Your Biology. Your Blueprint. <span>Your Best Life.</span></h1>
           <p>Emerald Wellness brings advanced lab tracking, peptide education, provider-guided protocols, and concierge-grade health organization into one premium member experience.</p>
           <div class="hero-actions">
@@ -2096,7 +2108,7 @@
               <a href="/peptide-wellness">Learn More</a>
             </article>
             <article class="topic-card">
-              <div class="topic-art gut-health"><img src="images/shop-weight-loss-hispanic-female.png" alt="Healthy foods and nutrition for gut health" /><span class="topic-badge">42</span></div>
+              <div class="topic-art gut-health"><img src="images/emerald-gut-health-support.png" alt="Emerald Wellness gut health digestive support" /><span class="topic-badge">42</span></div>
               <h3>Gut Health</h3>
               <a href="/biology-labs">Learn More</a>
             </article>
