@@ -1,0 +1,347 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Emerald Wellness | Growth Engine Board V4</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700;800;900&family=Playfair+Display:wght@700;800;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --black:#050706;
+  --ink:#07140f;
+  --deep:#001d15;
+  --forest:#003b2a;
+  --emerald:#007a4d;
+  --bright:#24c779;
+  --mint:#dff3e9;
+  --cream:#fbfaf5;
+  --line:rgba(0,58,41,.16);
+  --muted:#52665b;
+  --serif:"Playfair Display", Georgia, serif;
+  --sans:"DM Sans", system-ui, sans-serif;
+}
+*{box-sizing:border-box}
+html,body{margin:0;min-height:100%;background:var(--black);font-family:var(--sans);color:var(--ink)}
+body{padding:18px}
+a{text-decoration:none;color:inherit}
+.artboard{
+  width:min(1780px,100%);
+  margin:0 auto;
+  display:grid;
+  grid-template-columns:1.27fr 1fr;
+  gap:16px;
+  align-items:stretch;
+}
+.mock{
+  background:var(--cream);
+  border-radius:12px;
+  overflow:hidden;
+  box-shadow:0 40px 120px rgba(0,0,0,.45);
+}
+.left-site{min-height:1120px}
+.microbar{
+  height:38px;
+  background:linear-gradient(90deg,#003421,#00623f);
+  color:white;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:0 46px;
+  font-size:12px;
+  font-weight:800;
+}
+.microbar .right{display:flex;gap:26px;align-items:center}
+.microbar .cta{background:#11885a;padding:8px 20px;border-radius:7px}
+.nav{
+  height:66px;
+  background:#fff;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:0 46px;
+  border-bottom:1px solid var(--line);
+}
+.brand{display:flex;align-items:center;gap:12px;font-weight:900;color:#073f2b;letter-spacing:5px}
+.brand-mark{
+  width:36px;height:36px;border:2px solid #058456;border-radius:9px;
+  display:grid;place-items:center;transform:rotate(45deg);
+}
+.brand-mark:after{content:"";width:17px;height:17px;border:2px solid #058456;border-radius:4px}
+.brand span{display:block;font-size:23px;line-height:.9}
+.brand small{display:block;font-size:10px;letter-spacing:5px;color:#0a8b5a;margin-top:7px}
+.navlinks{display:flex;gap:32px;font-size:13px;font-weight:800;color:#14251d}
+.navtools{display:flex;gap:22px;font-weight:900;color:#06130e}
+.hero{
+  min-height:470px;
+  position:relative;
+  display:grid;
+  grid-template-columns:.72fr 1fr;
+  overflow:hidden;
+  color:white;
+  background:
+    radial-gradient(circle at 66% 43%,rgba(36,199,121,.28),transparent 20%),
+    linear-gradient(110deg,#030806 4%,#001b14 45%,#002e20 100%);
+}
+.hero:before{
+  content:"";
+  position:absolute;inset:0;
+  background-image:
+    linear-gradient(60deg,transparent 47%,rgba(58,255,177,.12) 49%,transparent 51%),
+    linear-gradient(-60deg,transparent 47%,rgba(58,255,177,.10) 49%,transparent 51%);
+  background-size:92px 92px;
+  opacity:.55;
+}
+.hero-copy{position:relative;z-index:2;padding:72px 0 0 80px}
+.hero h1{font-family:var(--serif);font-size:64px;line-height:1.02;letter-spacing:-1.8px;margin:0 0 24px}
+.hero h1 em{display:block;font-style:normal;color:#24bf72}
+.hero p{max-width:450px;color:rgba(255,255,255,.86);font-size:17px;line-height:1.65;margin:0 0 28px}
+.buttons{display:flex;gap:17px}
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;
+  min-height:46px;padding:0 27px;border-radius:9px;border:1px solid rgba(0,58,41,.22);
+  font-size:13px;font-weight:900;background:white;color:#003b2a;
+}
+.btn.primary{background:linear-gradient(135deg,#0a8d5a,#22bd79);border:0;color:white;box-shadow:0 16px 32px rgba(0,0,0,.2)}
+.btn.dark{background:rgba(0,0,0,.18);border-color:rgba(255,255,255,.38);color:white}
+.runner{
+  position:relative;z-index:1;min-height:470px;
+  background:
+    linear-gradient(90deg,rgba(0,20,14,.1),rgba(0,20,14,.48)),
+    url("https://images.pexels.com/photos/3763870/pexels-photo-3763870.jpeg?auto=compress&cs=tinysrgb&w=1200") center/cover;
+}
+.metric{
+  position:absolute;right:48px;width:168px;padding:15px 16px;border-radius:12px;
+  background:rgba(0,41,29,.78);border:1px solid rgba(97,255,185,.22);
+  box-shadow:0 25px 60px rgba(0,0,0,.3);backdrop-filter:blur(12px);
+}
+.metric strong{display:block;font-family:var(--serif);font-size:34px;line-height:1;color:white}
+.metric b{display:block;font-size:12px;color:white;margin-bottom:9px}
+.metric small{display:block;color:#8cf0bc;font-weight:800}
+.metric.one{top:36px}.metric.two{top:156px}.metric.three{top:276px}
+.hero-points{
+  position:absolute;left:80px;bottom:34px;right:40px;z-index:3;
+  display:grid;grid-template-columns:repeat(4,1fr);gap:22px;
+}
+.hero-points div{display:flex;gap:10px;align-items:center;color:white;font-size:12px;font-weight:900}
+.hero-points i{width:28px;height:28px;border-radius:50%;border:1px solid rgba(66,236,151,.5);display:grid;place-items:center;color:#40e28f;font-style:normal}
+.press{
+  height:66px;background:linear-gradient(90deg,#003f2a,#08764e);display:flex;align-items:center;justify-content:center;
+  gap:44px;color:white;
+}
+.press span{font-size:11px;letter-spacing:3px;font-weight:900}
+.press b{font-family:var(--serif);font-size:22px}
+.intel{
+  background:#fff;
+  padding:40px 74px 34px;
+  display:grid;
+  grid-template-columns:.72fr 1.12fr;
+  gap:42px;
+}
+h2{font-family:var(--serif);font-size:33px;line-height:1.08;margin:0 0 14px;color:#07140f;letter-spacing:-.5px}
+.intro{color:#46574f;font-size:13px;line-height:1.65;margin:0}
+.feature-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:13px;margin-top:28px}
+.feature{border:1px solid var(--line);border-radius:10px;padding:18px 15px;min-height:118px;background:#fff;box-shadow:0 14px 36px rgba(0,0,0,.045)}
+.icon{width:34px;height:34px;border:1px solid rgba(0,122,77,.36);border-radius:50%;display:grid;place-items:center;color:#007a4d;font-weight:900;margin-bottom:12px}
+.feature b{display:block;color:#075139;font-size:13px;margin-bottom:5px}.feature small{color:#607167;font-size:11px;line-height:1.45}
+.devices{position:relative;min-height:340px}
+.laptop{position:absolute;left:0;right:54px;top:18px;background:#111916;border-radius:18px;padding:15px;box-shadow:0 26px 60px rgba(0,0,0,.2)}
+.screen{background:#f6f8f5;border-radius:11px;min-height:238px;padding:22px}
+.screen-head{height:12px;width:42%;border-radius:20px;background:#dbe8df;margin-bottom:18px}
+.screen-grid{display:grid;grid-template-columns:1fr 1fr;gap:13px}
+.screen-card{background:#fff;border:1px solid var(--line);border-radius:12px;padding:16px;min-height:78px;font-size:11px;color:#597064}
+.screen-card strong{display:block;font-family:var(--serif);font-size:31px;color:#0b9a61;line-height:1}
+.chart{height:72px;display:flex;gap:8px;align-items:flex-end}.chart i{display:block;width:13px;background:#20b875;border-radius:5px 5px 0 0}.chart i:nth-child(1){height:32%}.chart i:nth-child(2){height:49%}.chart i:nth-child(3){height:70%}.chart i:nth-child(4){height:88%}
+.phone{position:absolute;right:7px;bottom:22px;width:108px;background:#06120d;border:6px solid #131a16;border-radius:24px;color:white;padding:13px;box-shadow:0 24px 45px rgba(0,0,0,.28)}
+.phone small{display:block;color:#8debb9;margin-bottom:9px}.phone i{display:block;height:10px;background:#16ad6c;border-radius:20px;margin:8px 0}
+.difference{
+  margin:0 46px 34px;
+  border-radius:17px;
+  background:radial-gradient(circle at 76% 8%,rgba(35,200,120,.24),transparent 24%),linear-gradient(120deg,#06100d,#003927);
+  color:white;
+  padding:34px 32px;
+  display:grid;grid-template-columns:.58fr 1.42fr;gap:28px;align-items:center;
+}
+.difference h2{color:white;font-size:31px;margin:0}
+.stat-row{display:grid;grid-template-columns:repeat(4,1fr);border:1px solid rgba(255,255,255,.13);border-radius:14px;overflow:hidden;background:rgba(255,255,255,.08)}
+.stat{padding:24px 12px;text-align:center;border-left:1px solid rgba(255,255,255,.13);font-size:12px;color:#e4fff2}.stat:first-child{border-left:0}
+.stat strong{display:block;font-family:var(--serif);font-size:31px;color:white;line-height:1.1}
+.right-stack{display:grid;gap:16px}
+.panel{background:var(--cream);border-radius:12px;box-shadow:0 40px 120px rgba(0,0,0,.42);overflow:hidden}
+.hub{display:grid;grid-template-columns:.54fr 1.46fr;gap:32px;padding:43px 42px;min-height:326px}
+.hub p,.command p,.proof p,.cta p{font-size:13px;line-height:1.6;color:#485b51;margin:0 0 22px}
+.topics{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.topic{border:1px solid var(--line);border-radius:9px;background:#fff;overflow:hidden;box-shadow:0 13px 34px rgba(0,0,0,.08)}
+.topic-img{height:93px;background-size:cover;background-position:center}
+.topic-body{padding:12px}.topic-body b{display:block;font-size:13px}.topic-body small{font-size:11px;color:#0a7650;font-weight:900}
+.command{display:grid;grid-template-columns:.34fr .66fr;gap:28px;padding:36px 42px;min-height:304px}
+.dash-frame{border:1px solid var(--line);background:#fff;border-radius:11px;overflow:hidden;display:grid;grid-template-columns:112px 1fr;box-shadow:0 18px 45px rgba(0,0,0,.08)}
+.side{background:linear-gradient(#092017,#0c3c2b);color:white;padding:16px 12px;font-size:10px}
+.side b{display:block;margin-bottom:15px}.side span{display:block;padding:6px 4px;border-radius:5px;color:#cff9e0}
+.dash{padding:18px;background:#fafbf8}.dash h3{margin:0;font-size:17px}.dash p{font-size:10px;margin:2px 0 13px;color:#63746b}
+.dash-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.dash-card{background:#fff;border:1px solid var(--line);border-radius:9px;min-height:68px;padding:11px;font-size:10px;color:#4e6258}.dash-card strong{display:block;font-family:var(--serif);font-size:28px;color:#078250}.dash-card .bar{height:6px;background:#dfeee7;border-radius:9px;margin-top:8px}.dash-card .bar i{display:block;width:72%;height:100%;background:#21bd76;border-radius:9px}
+.proof{display:grid;grid-template-columns:.32fr .68fr;gap:28px;padding:30px 42px;min-height:174px}
+.quotes{display:grid;grid-template-columns:repeat(3,1fr);gap:15px}
+.quote{background:white;border:1px solid var(--line);border-radius:10px;padding:14px;box-shadow:0 14px 34px rgba(0,0,0,.055)}
+.avatar{width:42px;height:42px;border-radius:50%;background:linear-gradient(135deg,#f1d0b8,#b8754c);margin-bottom:9px}
+.quote p{font-size:10.5px;line-height:1.45;margin:0 0 8px;color:#27362f}.quote b{font-size:11px}
+.cta{padding:0;min-height:185px;background:radial-gradient(circle at 20% 20%,rgba(52,214,140,.2),transparent 24%),linear-gradient(120deg,#06130e,#003b2a);color:white}
+.cta-inner{padding:34px 42px;display:grid;grid-template-columns:.48fr .52fr;gap:34px;align-items:center}
+.cta h2{color:white;margin-bottom:12px}.cta p{color:#ddf4e9}.cta .btn{background:#23bd78;color:white;border:0}
+.cta-boxes{display:grid;grid-template-columns:repeat(4,1fr);gap:13px}.cta-boxes div{border:1px solid rgba(255,255,255,.14);background:rgba(255,255,255,.07);border-radius:10px;min-height:88px;display:grid;place-items:center;text-align:center;font-size:12px;font-weight:900;color:white;padding:10px}
+.footer{background:linear-gradient(115deg,#06241a,#003826);color:white;padding:28px 42px 18px}
+.footer-grid{display:grid;grid-template-columns:1.5fr repeat(4,1fr);gap:28px}.footer p{font-size:11px;line-height:1.7;color:#d7f1e5}.footer b{font-size:12px}.footer .brand{color:white;letter-spacing:2px}.footer .brand small{color:#d7f1e5}.disclaimer{border-top:1px solid rgba(255,255,255,.12);margin-top:16px;padding-top:12px;font-size:10px;color:#d7f1e5;text-align:center}
+@media(max-width:1100px){
+  body{padding:10px}.artboard{grid-template-columns:1fr}.left-site{min-height:auto}
+  .hero,.intel,.difference,.hub,.command,.proof,.cta-inner{grid-template-columns:1fr}
+  .hero-copy{padding:48px}.runner{min-height:360px}.hero-points{position:relative;left:auto;right:auto;bottom:auto;padding:20px 48px;grid-template-columns:repeat(2,1fr)}
+  .feature-grid,.topics,.quotes,.stat-row,.cta-boxes{grid-template-columns:1fr 1fr}
+  .navlinks{display:none}
+}
+</style>
+</head>
+<body>
+<main class="artboard">
+  <section class="mock left-site">
+    <div class="microbar">
+      <div>Science-Backed. Data-Driven. Personalized for You.</div>
+      <div class="right"><span>866-613-EMER (3637)</span><span>Member Login</span><span class="cta">Take BodyScan™</span></div>
+    </div>
+    <nav class="nav">
+      <a class="brand" href="/"><span class="brand-mark"></span><span>EMERALD<small>WELLNESS</small></span></a>
+      <div class="navlinks"><a>Membership</a><a>Peptides</a><a>Health Goals</a><a>Resources⌄</a><a>About Us⌄</a></div>
+      <div class="navtools"><span>🛒</span><span>⌕</span></div>
+    </nav>
+    <section class="hero">
+      <div class="hero-copy">
+        <h1>Your Biology.<br>Your Blueprint.<em>Your Best Life.</em></h1>
+        <p>Personalized health intelligence, advanced lab tracking, peptides, and expert-guided protocols — all in one platform.</p>
+        <div class="buttons"><a class="btn primary" href="/signup.html">Take BodyScan™</a><a class="btn dark" href="/signup.html#pricing">Explore Memberships</a></div>
+      </div>
+      <div class="runner">
+        <div class="metric one"><b>Regenesis Score™</b><strong>842</strong><small>Excellent</small></div>
+        <div class="metric two"><b>Biological Age</b><strong>31</strong><small>-8.6 vs chronological age</small></div>
+        <div class="metric three"><b>Energy Level</b><strong>High</strong><small>Optimizing</small></div>
+      </div>
+      <div class="hero-points">
+        <div><i>✦</i>Science-Backed<br>Protocols</div>
+        <div><i>◇</i>Doctor-Designed<br>Care</div>
+        <div><i>✧</i>Personalized<br>For You</div>
+        <div><i>△</i>100,000+<br>Lives Optimized</div>
+      </div>
+    </section>
+    <section class="press"><span>FEATURED IN</span><b>Forbes</b><b>mindbodygreen</b><b>Business Insider</b><b>Benzinga</b><b>yahoo! finance</b><b>Men’s Health</b></section>
+    <section class="intel">
+      <div>
+        <h2>Personalized Health Intelligence</h2>
+        <p class="intro">We combine advanced testing, AI-powered insights, and expert guidance to create a plan unique to your biology.</p>
+        <div class="feature-grid">
+          <div class="feature"><div class="icon">◇</div><b>BodyScan™</b><small>AI-powered health assessment</small></div>
+          <div class="feature"><div class="icon">⌬</div><b>Biology Labs™</b><small>Track 100+ lab markers in one place</small></div>
+          <div class="feature"><div class="icon">□</div><b>Protocol Vault™</b><small>Personalized protocols built for you</small></div>
+          <div class="feature"><div class="icon">✦</div><b>Regenesis Outlook™</b><small>Organize your future health priorities</small></div>
+          <div class="feature"><div class="icon">◎</div><b>Concierge Care</b><small>Access expert guidance when needed</small></div>
+          <div class="feature"><div class="icon">⬡</div><b>Peptides & More</b><small>Premium wellness support options</small></div>
+        </div>
+      </div>
+      <div class="devices">
+        <div class="laptop">
+          <div class="screen">
+            <div class="screen-head"></div>
+            <div class="screen-grid">
+              <div class="screen-card"><strong>842</strong>Regenesis Score™</div>
+              <div class="screen-card"><strong>100+</strong>Biology Labs™</div>
+              <div class="screen-card"><div class="chart"><i></i><i></i><i></i><i></i></div></div>
+              <div class="screen-card">Current protocol<br><strong>75%</strong></div>
+            </div>
+          </div>
+        </div>
+        <div class="phone"><small>Today’s Plan</small><i></i><i></i><i></i></div>
+      </div>
+    </section>
+    <section class="difference">
+      <h2>The Emerald Wellness Difference</h2>
+      <div class="stat-row">
+        <div class="stat"><strong>100,000+</strong>Lives Optimized</div>
+        <div class="stat"><strong>10M+</strong>Lab Results Analyzed</div>
+        <div class="stat"><strong>500+</strong>Peptides & Compounds</div>
+        <div class="stat"><strong>50+</strong>Expert Practitioners</div>
+      </div>
+    </section>
+  </section>
+
+  <aside class="right-stack">
+    <section class="panel hub">
+      <div>
+        <h2>Explore Our<br>Health Knowledge Hub</h2>
+        <p>Evidence-based education to help you understand your body and make empowered decisions.</p>
+        <a class="btn" href="/personal-health-intelligence-platform.html">Browse All Topics</a>
+      </div>
+      <div class="topics">
+        <div class="topic"><div class="topic-img" style="background-image:url('https://images.pexels.com/photos/2280571/pexels-photo-2280571.jpeg?auto=compress&cs=tinysrgb&w=700')"></div><div class="topic-body"><b>Peptides</b><small>Learn More →</small></div></div>
+        <div class="topic"><div class="topic-img" style="background-image:url('https://images.pexels.com/photos/7089401/pexels-photo-7089401.jpeg?auto=compress&cs=tinysrgb&w=700')"></div><div class="topic-body"><b>Hormone Health</b><small>Learn More →</small></div></div>
+        <div class="topic"><div class="topic-img" style="background-image:url('https://images.pexels.com/photos/3768916/pexels-photo-3768916.jpeg?auto=compress&cs=tinysrgb&w=700')"></div><div class="topic-body"><b>Weight Loss</b><small>Learn More →</small></div></div>
+        <div class="topic"><div class="topic-img" style="background-image:url('https://images.pexels.com/photos/3825527/pexels-photo-3825527.jpeg?auto=compress&cs=tinysrgb&w=700')"></div><div class="topic-body"><b>Longevity</b><small>Learn More →</small></div></div>
+        <div class="topic"><div class="topic-img" style="background-image:url('https://images.pexels.com/photos/8439093/pexels-photo-8439093.jpeg?auto=compress&cs=tinysrgb&w=700')"></div><div class="topic-body"><b>Energy & Focus</b><small>Learn More →</small></div></div>
+        <div class="topic"><div class="topic-img" style="background-image:url('https://images.pexels.com/photos/5938358/pexels-photo-5938358.jpeg?auto=compress&cs=tinysrgb&w=700')"></div><div class="topic-body"><b>Gut Health</b><small>Learn More →</small></div></div>
+      </div>
+    </section>
+
+    <section class="panel command">
+      <div>
+        <h2>Member Command Center</h2>
+        <p>Everything you need to manage your health, track progress, and reach your goals.</p>
+        <a class="btn" href="/dashboard">See All Features</a>
+      </div>
+      <div class="dash-frame">
+        <div class="side"><b>Delta</b><span>Dashboard</span><span>BodyScan™</span><span>Biology Labs™</span><span>Protocol Vault™</span><span>Progress</span><span>Settings</span></div>
+        <div class="dash">
+          <h3>Welcome back, Alex</h3><p>Your health journey continues.</p>
+          <div class="dash-grid">
+            <div class="dash-card">Regenesis Score™<strong>842</strong></div>
+            <div class="dash-card">Biological Age<strong>31</strong></div>
+            <div class="dash-card">Current Protocol<br><b>Energy & Longevity</b><div class="bar"><i></i></div></div>
+            <div class="dash-card">Today’s Plan<br>Take supplements<br>Track nutrition</div>
+            <div class="dash-card">Latest Lab Results<br><strong style="font-size:18px">Optimal</strong></div>
+            <div class="dash-card">Next Concierge Call<br><strong style="font-size:18px">May 15</strong></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="panel proof">
+      <div>
+        <h2>Real People.<br>Real Results.</h2>
+        <p>Thousands of members are optimizing their health and transforming their lives.</p>
+        <a class="btn" href="#stories">Read Success Stories</a>
+      </div>
+      <div class="quotes">
+        <div class="quote"><div class="avatar"></div><p>“Emerald Wellness changed how I approach my health. My energy, focus, and overall well-being have never been better.”</p><b>Sarah J.</b></div>
+        <div class="quote"><div class="avatar"></div><p>“The protocols are solid, and the labs are comprehensive. Highly recommend.”</p><b>Michael T.</b></div>
+        <div class="quote"><div class="avatar"></div><p>“I’ve lost weight, my hormones feel balanced, and I finally feel like myself again.”</p><b>Jessica L.</b></div>
+      </div>
+    </section>
+
+    <section class="panel cta">
+      <div class="cta-inner">
+        <div><h2>Ready to Take Control<br>of Your Health?</h2><p>Join Emerald Wellness and start your personalized journey today.</p><a class="btn" href="/signup.html">Take BodyScan™ Now</a></div>
+        <div class="cta-boxes"><div>Personalized<br>For You</div><div>Science-Backed<br>Protocols</div><div>Expert-Guided<br>Care</div><div>Result-Driven<br>Approach</div></div>
+      </div>
+    </section>
+
+    <footer class="panel footer">
+      <div class="footer-grid">
+        <div><div class="brand"><span class="brand-mark"></span><span>EMERALD<small>WELLNESS</small></span></div><p>Personalized health intelligence, advanced testing, and expert-guided protocols to help you live your best life.</p></div>
+        <div><b>Explore</b><p>Membership<br>Peptides<br>Health Goals<br>Resources<br>Shop</p></div>
+        <div><b>Company</b><p>About Us<br>Our Team<br>Careers<br>Blog<br>Contact</p></div>
+        <div><b>Support</b><p>Help Center<br>FAQ<br>Privacy Policy<br>Terms of Service</p></div>
+        <div><b>Connect</b><p>Facebook · Instagram · YouTube · TikTok<br><br>866-613-EMER (3637)</p></div>
+      </div>
+      <div class="disclaimer">Emerald Wellness provides educational wellness intelligence and tracking tools. It does not diagnose, treat, cure, or replace medical care.</div>
+    </footer>
+  </aside>
+</main>
+</body>
+</html>

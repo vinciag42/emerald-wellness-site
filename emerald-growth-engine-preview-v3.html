@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Emerald Wellness | Growth Engine V3</title>
+<meta name="description" content="Emerald Wellness personal health intelligence platform preview: BodyScan, Biology Labs, Protocol Vault, peptides, memberships, and concierge wellness support.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800;900&family=DM+Sans:wght@400;500;700;900&family=Cinzel:wght@600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#06110c;
+  --deep:#06150f;
+  --emerald:#003f2b;
+  --emerald2:#075a3d;
+  --green:#10a66a;
+  --mint:#35d990;
+  --cream:#fbfaf5;
+  --soft:#f4f2ea;
+  --muted:#52655a;
+  --gold:#c6a53a;
+  --line:rgba(0,63,43,.14);
+  --shadow:0 28px 90px rgba(6,17,12,.14);
+  --serif:"Playfair Display", Georgia, serif;
+  --sans:"DM Sans", system-ui, sans-serif;
+  --cinzel:"Cinzel", serif;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:#030504;color:var(--ink);font-family:var(--sans);line-height:1.5}
+a{text-decoration:none;color:inherit}
+.page{max-width:1480px;margin:0 auto;background:var(--cream);overflow:hidden}
+.wrap{max-width:1250px;margin:auto;padding:0 30px}
+.topbar{background:linear-gradient(90deg,#003422,#075a3d);color:#fff;font-size:13px}
+.topbar .wrap{height:42px;display:flex;align-items:center;justify-content:space-between;gap:20px}
+.top-actions{display:flex;gap:24px;align-items:center}
+.top-button{background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.22);border-radius:9px;padding:9px 18px;font-weight:900}
+.nav-shell{background:#fff;border-bottom:1px solid rgba(0,63,43,.1);box-shadow:0 10px 28px rgba(6,17,12,.06)}
+.nav{height:76px;display:flex;align-items:center;justify-content:space-between;gap:24px}
+.brand{display:flex;align-items:center;gap:13px;color:var(--emerald);font-family:var(--cinzel);font-weight:800;letter-spacing:4px;font-size:23px;line-height:1}
+.brand small{display:block;font-family:var(--sans);font-size:11px;letter-spacing:4px;color:var(--green);margin-top:4px}
+.logo-mark{width:38px;height:38px;border:2px solid var(--green);border-radius:12px;display:grid;place-items:center;transform:rotate(45deg);box-shadow:0 10px 22px rgba(0,63,43,.12)}
+.logo-mark i{width:18px;height:18px;border:2px solid var(--green);border-radius:5px;display:block}
+.nav-links{display:flex;align-items:center;gap:27px;font-size:14px;font-weight:800;color:#12271c}
+.nav-icons{display:flex;gap:18px;align-items:center;font-weight:900}
+.btn{display:inline-flex;align-items:center;justify-content:center;border-radius:12px;padding:14px 24px;font-size:14px;font-weight:900;border:1px solid var(--line);background:#fff;color:var(--emerald);min-height:48px}
+.btn.primary{background:linear-gradient(135deg,#08784e,#14b874);border-color:transparent;color:#fff;box-shadow:0 16px 34px rgba(8,120,78,.28)}
+.btn.dark{background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.3);color:#fff}
+.hero{background:radial-gradient(circle at 68% 38%,rgba(23,202,127,.22),transparent 22%),linear-gradient(112deg,#050d09 0%,#001f16 52%,#06150f 100%);color:white;position:relative}
+.hero:before{content:"";position:absolute;inset:0;background-image:linear-gradient(60deg,transparent 48%,rgba(69,255,181,.12) 49%,transparent 50%),linear-gradient(-60deg,transparent 48%,rgba(69,255,181,.08) 49%,transparent 50%);background-size:86px 86px;opacity:.45}
+.hero-grid{position:relative;z-index:1;display:grid;grid-template-columns:.94fr 1.06fr;gap:28px;align-items:stretch;min-height:632px}
+.hero-copy{padding:74px 0 46px}
+.hero h1{font-family:var(--serif);font-size:clamp(54px,6vw,92px);line-height:.96;margin:0 0 26px;letter-spacing:-1.6px}
+.hero h1 span{display:block;color:#40d888}
+.hero p{font-size:19px;color:rgba(255,255,255,.88);max-width:610px;margin:0 0 28px}
+.hero-actions{display:flex;gap:16px;flex-wrap:wrap;margin-bottom:34px}
+.hero-trust{display:grid;grid-template-columns:repeat(4,1fr);gap:0;max-width:760px;margin-top:34px}
+.hero-trust div{border-left:1px solid rgba(255,255,255,.22);padding:0 18px;color:rgba(255,255,255,.86);font-size:13px;font-weight:900}
+.hero-trust b{display:block;color:#40d888;font-size:22px;margin-bottom:8px;font-family:var(--serif)}
+.hero-art{position:relative;min-height:632px;overflow:hidden}
+.runner{position:absolute;inset:18px 0 0 0;border-radius:36px 36px 0 0;background:linear-gradient(90deg,rgba(5,13,9,.16),rgba(5,13,9,.2)),url("https://images.pexels.com/photos/3768916/pexels-photo-3768916.jpeg?auto=compress&cs=tinysrgb&w=1400") center/cover;filter:saturate(.92) contrast(1.08);box-shadow:0 34px 95px rgba(0,0,0,.36)}
+.runner:before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 42% 50%,transparent 0 25%,rgba(0,0,0,.26) 58%,rgba(0,0,0,.55));mix-blend-mode:multiply}
+.metric{position:absolute;right:34px;width:188px;padding:17px 18px;border-radius:17px;background:rgba(3,44,30,.78);border:1px solid rgba(80,255,179,.2);backdrop-filter:blur(16px);box-shadow:0 20px 50px rgba(0,0,0,.22)}
+.metric p{font-size:13px;margin:0 0 12px;color:#fff}
+.metric b{display:block;font-family:var(--serif);font-size:38px;line-height:1;color:#fff}
+.metric small{color:#8de9ba;font-weight:800}.metric .bar{height:7px;border-radius:99px;background:rgba(255,255,255,.1);overflow:hidden;margin-top:10px}.metric .bar i{display:block;width:75%;height:100%;background:#34d98d}
+.m1{top:46px}.m2{top:198px}.m3{top:348px}
+.featured{background:linear-gradient(90deg,#00412b,#08784e);color:#fff}
+.featured .wrap{height:72px;display:flex;align-items:center;justify-content:center;gap:44px;flex-wrap:wrap}
+.featured span{font-size:11px;letter-spacing:3px}.featured b{font-family:var(--cinzel);font-size:18px;letter-spacing:1px}
+.section{padding:74px 0;background:#fff}
+.cream{background:var(--cream)}
+.section-grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:54px;align-items:center}
+h2{font-family:var(--serif);font-size:clamp(34px,4.2vw,58px);line-height:1.05;letter-spacing:-.7px;color:var(--emerald);margin:0 0 17px}
+.lead{color:var(--muted);font-size:16px;max-width:620px;margin:0 0 26px}
+.feature-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:15px;margin-top:30px}
+.feature{background:#fff;border:1px solid var(--line);border-radius:16px;padding:21px;box-shadow:0 18px 48px rgba(6,17,12,.06)}
+.icon{width:36px;height:36px;border:1px solid rgba(8,120,78,.35);border-radius:50%;display:grid;place-items:center;color:var(--green);font-weight:900;margin-bottom:14px}
+.feature h3{font-family:var(--serif);font-size:22px;line-height:1.1;color:var(--emerald);margin:0 0 8px}
+.feature p{margin:0;color:var(--muted);font-size:13px}
+.device-stage{position:relative;min-height:430px}
+.laptop{position:absolute;inset:18px 0 0 0;border-radius:28px;background:linear-gradient(135deg,#f9fbf8,#eaf2ed);border:1px solid var(--line);box-shadow:var(--shadow);padding:35px}
+.screen{background:#fff;border-radius:18px;border:1px solid rgba(0,63,43,.1);padding:22px;box-shadow:inset 0 0 0 8px #111915}
+.screen-inner{background:#f7faf7;border-radius:10px;padding:22px}
+.screen-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.screen-card{background:#fff;border:1px solid var(--line);border-radius:12px;padding:15px;font-size:12px}.screen-card b{display:block;font-family:var(--serif);font-size:32px;color:var(--green)}
+.phone{position:absolute;right:22px;bottom:12px;width:132px;border-radius:26px;background:#06150f;border:7px solid #101915;color:white;padding:16px;box-shadow:0 24px 60px rgba(0,0,0,.28)}.phone b{font-size:12px}.phone i{display:block;height:12px;background:#14b874;border-radius:99px;margin:12px 0}
+.difference{background:#fff;padding:0 0 74px}
+.diff-card{background:radial-gradient(circle at 78% 18%,rgba(32,202,127,.2),transparent 22%),linear-gradient(112deg,#06130d,#003f2b);border-radius:24px;color:white;padding:39px;display:grid;grid-template-columns:.72fr 1.28fr;gap:26px;align-items:center;box-shadow:var(--shadow)}
+.diff-card h2{color:white;margin:0}.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(255,255,255,.13);border:1px solid rgba(255,255,255,.16);border-radius:18px;overflow:hidden}.stats div{padding:25px;text-align:center;background:rgba(255,255,255,.05);font-size:13px}.stats b{display:block;font-family:var(--serif);font-size:37px;color:#fff}
+.hub-grid{display:grid;grid-template-columns:.7fr 1.3fr;gap:44px;align-items:start}.kicker{font-family:var(--cinzel);font-size:12px;letter-spacing:3px;text-transform:uppercase;color:var(--green);font-weight:900;margin:0 0 12px}
+.topics{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.topic{background:#fff;border:1px solid var(--line);border-radius:15px;overflow:hidden;box-shadow:0 18px 48px rgba(6,17,12,.08)}.topic-img{height:128px;background-size:cover;background-position:center}.topic-body{padding:16px}.topic b{color:var(--emerald)}.topic p{font-size:13px;margin:6px 0 0;color:var(--muted)}
+.command{display:grid;grid-template-columns:.45fr 1.55fr;gap:34px;align-items:center}.dashboard{background:#fff;border:1px solid var(--line);border-radius:24px;padding:18px;box-shadow:var(--shadow);display:grid;grid-template-columns:178px 1fr;gap:18px}.sidebar{border-radius:16px;background:#073c2b;color:white;padding:18px}.sidebar b{display:block;margin-bottom:12px}.sidebar span{display:block;padding:8px 0;font-size:13px;color:rgba(255,255,255,.77)}.dash-main h3{margin:4px 0 6px}.dash-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:16px}.dash-card{background:#fbfcfa;border:1px solid var(--line);border-radius:14px;padding:17px;font-size:12px}.dash-card b{display:block;font-family:var(--serif);font-size:34px;color:var(--emerald)}.progress{height:7px;background:#ddebe3;border-radius:99px;overflow:hidden;margin-top:10px}.progress i{display:block;width:75%;height:100%;background:#14b874}
+.proof{display:grid;grid-template-columns:.56fr 1.44fr;gap:34px;align-items:center}.quotes{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}.quote{background:#fff;border:1px solid var(--line);border-radius:16px;padding:20px;box-shadow:0 16px 45px rgba(6,17,12,.06)}.avatar{width:54px;height:54px;border-radius:50%;background:linear-gradient(135deg,#e3c9a7,#fff);margin-bottom:12px}.quote p{font-size:13px;color:#2d4035}.quote b{color:var(--emerald)}
+.cta{background:radial-gradient(circle at 70% 30%,rgba(32,202,127,.25),transparent 26%),linear-gradient(112deg,#06130d,#003f2b);color:white;padding:58px 0}.cta .wrap{display:grid;grid-template-columns:1fr 1fr;gap:32px;align-items:center}.cta h2{color:white}.cta p{color:rgba(255,255,255,.78)}.cta-boxes{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}.cta-boxes div{border:1px solid rgba(255,255,255,.16);background:rgba(255,255,255,.05);border-radius:16px;padding:22px;text-align:center;font-weight:900}
+.footer{background:#073c2b;color:#fff;padding:38px 0}.footer-grid{display:grid;grid-template-columns:1.5fr repeat(4,1fr);gap:28px}.footer p,.footer a{font-size:13px;color:rgba(255,255,255,.75)}.footer .brand{color:white;font-size:18px}.disclaimer{font-size:12px;text-align:center;color:rgba(255,255,255,.58);padding:26px 24px 0}
+@media(max-width:1000px){.topbar .wrap,.nav-links,.top-actions{display:none}.nav{height:72px}.hero-grid,.section-grid,.hub-grid,.command,.proof,.cta .wrap,.dashboard,.diff-card{grid-template-columns:1fr}.hero-art{min-height:500px}.runner{inset:0;border-radius:28px}.hero-trust,.feature-grid,.topics,.dash-cards,.quotes,.cta-boxes,.stats,.screen-grid,.footer-grid{grid-template-columns:1fr}.metric{right:18px;width:165px}.device-stage{min-height:auto}.laptop,.phone{position:relative;inset:auto;right:auto;bottom:auto}.phone{margin:20px auto 0}}
+</style>
+</head>
+<body>
+<main class="page">
+  <div class="topbar"><div class="wrap"><span>Science-backed. Data-driven. Personalized for you.</span><div class="top-actions"><span>866-613-EMER (3637)</span><a href="/dashboard">Member Login</a><a class="top-button" href="/signup.html">Take BodyScan&trade;</a></div></div></div>
+  <div class="nav-shell"><nav class="wrap nav"><a class="brand" href="#"><span class="logo-mark"><i></i></span><span>EMERALD<small>WELLNESS</small></span></a><div class="nav-links"><a href="/signup.html#pricing">Membership</a><a href="https://shop.emeraldwellness.health/products-list/collections/peptides">Peptides</a><a href="#hub">Health Goals</a><a href="#hub">Resources</a><a href="#story">About Us</a></div><div class="nav-icons"><a href="https://shop.emeraldwellness.health">Cart</a><a href="#hub">Search</a></div></nav></div>
+
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div class="hero-copy">
+        <h1>Your Biology.<br>Your Blueprint.<span>Your Best Life.</span></h1>
+        <p>Personalized health intelligence, advanced lab tracking, peptides, and expert-guided protocols — all in one platform.</p>
+        <div class="hero-actions"><a class="btn primary" href="/signup.html">Take BodyScan&trade;</a><a class="btn dark" href="/signup.html#pricing">Explore Memberships</a></div>
+        <div class="hero-trust"><div><b>◎</b>Science-backed protocols</div><div><b>◇</b>Doctor-designed care</div><div><b>✦</b>Personalized for you</div><div><b>△</b>100,000+ lives optimized</div></div>
+      </div>
+      <div class="hero-art"><div class="runner"></div><div class="metric m1"><p>Regenesis Score&trade;</p><b>842</b><small>Excellent</small></div><div class="metric m2"><p>Biological Age</p><b>31</b><small>-8.6 vs chronological age</small></div><div class="metric m3"><p>Energy Level</p><b>High</b><small>Optimizing</small><div class="bar"><i></i></div></div></div>
+    </div>
+  </section>
+
+  <div class="featured"><div class="wrap"><span>FEATURED IN</span><b>Forbes</b><b>mindbodygreen</b><b>Business Insider</b><b>Benzinga</b><b>Yahoo Finance</b><b>Men's Health</b></div></div>
+
+  <section class="section">
+    <div class="wrap section-grid">
+      <div>
+        <h2>Personalized Health Intelligence</h2>
+        <p class="lead">We combine advanced testing, AI-powered insights, and expert guidance to create a plan unique to your biology.</p>
+        <div class="feature-grid">
+          <div class="feature"><span class="icon">◇</span><h3>BodyScan&trade;</h3><p>AI-powered health assessment.</p></div>
+          <div class="feature"><span class="icon">△</span><h3>Biology Labs&trade;</h3><p>Track 100+ lab markers in one place.</p></div>
+          <div class="feature"><span class="icon">□</span><h3>Protocol Vault&trade;</h3><p>Personalized protocols built for you.</p></div>
+          <div class="feature"><span class="icon">✦</span><h3>Regenesis Outlook&trade;</h3><p>AI predicts your future health.</p></div>
+          <div class="feature"><span class="icon">◎</span><h3>Concierge Care</h3><p>Expert guidance when you need it.</p></div>
+          <div class="feature"><span class="icon">⬡</span><h3>Peptides & More</h3><p>Premium products delivered to you.</p></div>
+        </div>
+      </div>
+      <div class="device-stage"><div class="laptop"><div class="screen"><div class="screen-inner"><div class="screen-grid"><div class="screen-card"><b>842</b>Regenesis Score&trade;</div><div class="screen-card"><b>100+</b>Biology Labs&trade;</div><div class="screen-card"><b>75%</b>Protocol Progress</div></div></div></div></div><div class="phone"><b>Today's Plan</b><i></i><i></i><i></i></div></div>
+    </div>
+  </section>
+
+  <section class="difference"><div class="wrap diff-card"><h2>The Emerald Wellness Difference</h2><div class="stats"><div><b>100,000+</b>Lives Optimized</div><div><b>10M+</b>Lab Results Analyzed</div><div><b>500+</b>Peptides & Compounds</div><div><b>50+</b>Expert Practitioners</div></div></div></section>
+
+  <section class="section cream" id="hub">
+    <div class="wrap hub-grid">
+      <div><p class="kicker">Health Knowledge Hub</p><h2>Explore Our Health Knowledge Hub</h2><p class="lead">Evidence-based education to help you understand your body and make empowered decisions.</p><a class="btn" href="#hub">Browse All Topics</a></div>
+      <div class="topics">
+        <div class="topic"><div class="topic-img" style="background-image:url('https://images.pexels.com/photos/2280571/pexels-photo-2280571.jpeg?auto=compress&cs=tinysrgb&w=900')"></div><div class="topic-body"><b>Peptides</b><p>Learn More →</p></div></div>
+        <div class="topic"><div class="topic-img" style="background-image:url('https://images.pexels.com/photos/7089401/pexels-photo-7089401.jpeg?auto=compress&cs=tinysrgb&w=900')"></div><div class="topic-body"><b>Hormone Health</b><p>Learn More →</p></div></div>
+        <div class="topic"><div class="topic-img" style="background-image:url('https://images.pexels.com/photos/3768916/pexels-photo-3768916.jpeg?auto=compress&cs=tinysrgb&w=900')"></div><div class="topic-body"><b>Weight Loss</b><p>Learn More →</p></div></div>
+        <div class="topic"><div class="topic-img" style="background-image:url('https://images.pexels.com/photos/3825527/pexels-photo-3825527.jpeg?auto=compress&cs=tinysrgb&w=900')"></div><div class="topic-body"><b>Longevity</b><p>Learn More →</p></div></div>
+        <div class="topic"><div class="topic-img" style="background-image:url('https://images.pexels.com/photos/8439093/pexels-photo-8439093.jpeg?auto=compress&cs=tinysrgb&w=900')"></div><div class="topic-body"><b>Energy & Focus</b><p>Learn More →</p></div></div>
+        <div class="topic"><div class="topic-img" style="background-image:url('https://images.pexels.com/photos/5938358/pexels-photo-5938358.jpeg?auto=compress&cs=tinysrgb&w=900')"></div><div class="topic-body"><b>Gut Health</b><p>Learn More →</p></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section"><div class="wrap command"><div><h2>Member Command Center</h2><p class="lead">Everything you need to manage your health, track progress, and reach your goals.</p><a class="btn" href="/dashboard">See All Features</a></div><div class="dashboard"><div class="sidebar"><b>Delta</b><span>Dashboard</span><span>BodyScan&trade;</span><span>Biology Labs&trade;</span><span>Protocol Vault&trade;</span><span>Regenesis Outlook&trade;</span><span>Progress</span><span>Shop</span></div><div class="dash-main"><h3>Welcome back, Alex</h3><p>Your health journey continues.</p><div class="dash-cards"><div class="dash-card">Regenesis Score&trade;<b>842</b></div><div class="dash-card">Biological Age<b>31</b></div><div class="dash-card">Current Protocol<b>75%</b><div class="progress"><i></i></div></div><div class="dash-card">Today's Plan<br>Take Supplements<br>Track Nutrition</div><div class="dash-card">Latest Lab Results<br><b>Optimal</b></div><div class="dash-card">Next Concierge Call<br><b>May 15</b></div></div></div></div></div></section>
+
+  <section class="section cream"><div class="wrap proof"><div><h2>Real People.<br>Real Results.</h2><p class="lead">Thousands of members are optimizing their health and transforming their lives.</p><a class="btn" href="#stories">Read Success Stories</a></div><div class="quotes"><div class="quote"><div class="avatar"></div><p>"Emerald Wellness changed how I approach my health. My energy, focus, and overall well-being have never been better."</p><b>Sarah J.</b></div><div class="quote"><div class="avatar"></div><p>"The protocols are solid, the labs are comprehensive, and the team truly cares."</p><b>Michael T.</b></div><div class="quote"><div class="avatar"></div><p>"I've lost 20 pounds, my hormones are balanced, and I finally feel like myself again."</p><b>Jessica L.</b></div></div></div></section>
+
+  <section class="cta"><div class="wrap"><div><h2>Ready to Take Control of Your Health?</h2><p>Join Emerald Wellness and start your personalized journey today.</p><a class="btn primary" href="/signup.html">Take BodyScan&trade; Now</a></div><div class="cta-boxes"><div>Personalized<br>For You</div><div>Science-backed<br>Protocols</div><div>Expert-guided<br>Care</div><div>Results-driven<br>Approach</div></div></div></section>
+
+  <footer class="footer"><div class="wrap footer-grid"><div><div class="brand"><span class="logo-mark"><i></i></span><span>EMERALD<small>WELLNESS</small></span></div><p>Personalized health intelligence, advanced testing, and expert-guided protocols to help you live your best life.</p></div><div><b>Explore</b><p>Membership<br>Peptides<br>Health Goals<br>Resources<br>Shop</p></div><div><b>Company</b><p>About Us<br>Our Team<br>Careers<br>Blog<br>Contact Us</p></div><div><b>Support</b><p>Help Center<br>FAQ<br>Privacy Policy<br>Terms of Service</p></div><div><b>Connect</b><p>Facebook · Instagram · YouTube · TikTok<br><br>866-613-EMER (3637)</p></div></div><div class="disclaimer">Emerald Wellness provides educational wellness intelligence and tracking tools. It does not diagnose, treat, cure, or replace medical care. Always consult a qualified healthcare provider.</div></footer>
+</main>
+</body>
+</html>
