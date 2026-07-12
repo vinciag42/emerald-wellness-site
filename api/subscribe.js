@@ -167,7 +167,9 @@ export default async function handler(req, res) {
     };
     console.log('[subscribe] Saving consented signup');
 
-    let sbRes = await fetch(`${SUPABASE_URL}/rest/v1/waitlist`, {
+    let sbDuplicate = false;
+    try {
+      let sbRes = await fetch(`${SUPABASE_URL}/rest/v1/waitlist`, {
       method: 'POST',
       headers: {
         'apikey': SUPABASE_ANON,
@@ -191,17 +193,23 @@ export default async function handler(req, res) {
       sbText = await sbRes.text();
     }
 
-    const sbDuplicate = sbRes.status === 409 || sbText.includes('duplicate');
+    sbDuplicate = sbRes.status === 409 || sbText.includes('duplicate');
     const sbOk = sbRes.ok || sbDuplicate;
     result.supabase = { ok: sbOk, status: sbRes.status, duplicate: sbDuplicate, body: sbText.slice(0, 300) };
 
     if (!sbOk) {
       console.error('[subscribe] STEP 3 FAILED — Supabase', sbRes.status, sbText);
-      return res.status(502).json({ error: 'Signup storage unavailable', step: 'supabase' });
+      result.supabase.non_blocking = true;
+    } else {
+      console.log('[subscribe] STEP 3 OK —', sbDuplicate ? 'email already on waitlist' : 'new waitlist row saved');
     }
-    console.log('[subscribe] STEP 3 OK —', sbDuplicate ? 'email already on waitlist' : 'new waitlist row saved');
 
-    return res.status(200).json({ success: true, duplicate: sbDuplicate });
+    } catch (sbErr) {
+      result.supabase = { ok: false, status: 0, skipped: true, body: sbErr.message };
+      console.error('[subscribe] STEP 3 FAILED - Supabase unavailable after Klaviyo success', sbErr);
+    }
+
+    return res.status(200).json({ success: true, duplicate: sbDuplicate, supabase_saved: result.supabase?.ok === true });
   } catch (err) {
     console.error('[subscribe] Unexpected error', err);
     return res.status(500).json({ error: 'Unexpected signup error', step: 'exception' });
