@@ -1125,6 +1125,17 @@
       max-width: 390px;
       font-size: clamp(32px, 3.5vw, 58px);
     }
+    .difference .eyebrow {
+      color: var(--champagne-2);
+      margin-bottom: 16px;
+    }
+    .difference-copy {
+      max-width: 470px;
+      margin: 18px 0 0;
+      color: rgba(255,255,255,.76);
+      font-size: 15px;
+      line-height: 1.75;
+    }
     .stat-grid {
       display: grid;
       grid-template-columns: repeat(4, minmax(0, 1fr));
@@ -2062,12 +2073,17 @@
       <section class="section-pad" id="about" style="background:#fffdf8;">
         <div class="container">
           <div class="difference">
-            <h2>The Emerald Wellness Difference</h2>
+            <div>
+              <p class="eyebrow">About Us</p>
+              <h2>The Emerald Wellness Story</h2>
+              <p class="difference-copy">Emerald Wellness was born from nearly 30 years in the medical field and a front-row seat to the evolution of medicine, diagnostics, and patient care. Through every advancement, one truth has remained constant: people want to feel their best, understand what is happening inside their bodies, and feel confident about the questions they bring to qualified providers.</p>
+              <p class="difference-copy">After years of caring for patients, Emerald Wellness was created for people who want a calmer, more organized way to bring prescriptions, labs, supplements, vitamins, peptides, symptoms, biometrics, wearables, and wellness protocols into one connected place.</p>
+            </div>
             <div class="stat-grid">
-              <div class="stat"><div><strong>100,000+</strong><span>Lives Optimized</span></div></div>
-              <div class="stat"><div><strong>10M+</strong><span>Lab Results Analyzed</span></div></div>
-              <div class="stat"><div><strong>500+</strong><span>Peptides & Compounds</span></div></div>
-              <div class="stat"><div><strong>50+</strong><span>Expert Practitioners</span></div></div>
+              <div class="stat"><div><strong>Private</strong><span>Health Intelligence</span></div></div>
+              <div class="stat"><div><strong>Lab</strong><span>Informed Planning</span></div></div>
+              <div class="stat"><div><strong>Stack</strong><span>Organization</span></div></div>
+              <div class="stat"><div><strong>Provider</strong><span>Ready Questions</span></div></div>
             </div>
           </div>
         </div>
@@ -2240,7 +2256,6 @@
             <h4>Company</h4>
             <a href="#about">About Us</a>
             <a href="/provider-network">Our Team</a>
-            <a href="/advisors">Careers</a>
             <a href="/blog/">Blog</a>
             <a href="mailto:info@emeraldwellness.health">Contact Us</a>
           </div>

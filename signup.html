@@ -29,21 +29,21 @@
 </script>
 <style>
 :root{
-  --bg:#050d07;--bg2:#0a1a0f;--bg3:#0f2415;
-  --green:#1a6b45;--greenL:#2aab6a;--greenXL:#40d888;
-  --gold:#c9a84c;--goldL:#f0c96b;
-  --text:#e8f2ec;--textMid:#8aac96;--textDim:#4a7a5a;
-  --border:#1a3a25;--radius:12px;--mono:'Courier New',monospace;
+  --bg:#fbfaf5;--bg2:#ffffff;--bg3:#f3f0e7;
+  --green:#0c6f49;--greenL:#12a66b;--greenXL:#0c6f49;
+  --gold:#b79a4b;--goldL:#80672a;
+  --text:#06110c;--textMid:#53635a;--textDim:#6f7d75;
+  --border:rgba(8,33,23,.12);--radius:12px;--mono:'Courier New',monospace;
 }
 *{box-sizing:border-box;margin:0;padding:0;}
-body{background:var(--bg);color:var(--text);font-family:'DM Sans',system-ui,sans-serif;min-height:100vh;}
+body{background:radial-gradient(circle at 16% 0,rgba(12,111,73,.10),transparent 34%),linear-gradient(180deg,var(--bg),var(--bg3));color:var(--text);font-family:'DM Sans',system-ui,sans-serif;min-height:100vh;}
 a{color:var(--greenXL);text-decoration:none;}
 
 /* NAV */
-nav{display:flex;justify-content:space-between;align-items:center;padding:18px 40px;border-bottom:1px solid var(--border);position:sticky;top:0;background:rgba(5,13,7,.95);backdrop-filter:blur(10px);z-index:100;}
+nav{display:flex;justify-content:space-between;align-items:center;padding:18px 40px;border-bottom:1px solid var(--border);position:sticky;top:0;background:rgba(251,250,245,.92);backdrop-filter:blur(16px);box-shadow:0 10px 30px rgba(10,24,17,.06);z-index:100;}
 .logo{font-family:var(--mono);font-size:18px;font-weight:700;color:var(--greenXL);letter-spacing:2px;}
 .logo span{color:var(--gold);}
-.nav-badge{background:var(--green);color:#fff;font-size:11px;padding:4px 12px;border-radius:20px;}
+.nav-badge{background:linear-gradient(135deg,var(--green),var(--greenL));color:#fff;font-size:11px;padding:4px 12px;border-radius:20px;}
 
 /* HERO */
 .hero{text-align:center;padding:60px 20px 40px;}
@@ -59,17 +59,17 @@ nav{display:flex;justify-content:space-between;align-items:center;padding:18px 4
 .progress-wrap{max-width:600px;margin:0 auto 40px;padding:0 20px;}
 .progress-steps{display:flex;justify-content:space-between;position:relative;margin-bottom:8px;}
 .progress-steps::before{content:'';position:absolute;top:14px;left:0;right:0;height:2px;background:var(--border);}
-.progress-fill{content:'';position:absolute;top:14px;left:0;height:2px;background:var(--greenXL);transition:width .4s ease;}
+.progress-fill{content:'';position:absolute;top:14px;left:0;height:2px;background:linear-gradient(90deg,var(--green),var(--gold));transition:width .4s ease;}
 .p-step{display:flex;flex-direction:column;align-items:center;gap:6px;position:relative;z-index:1;}
-.p-dot{width:28px;height:28px;border-radius:50%;background:var(--bg2);border:2px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;transition:all .3s;}
+.p-dot{width:28px;height:28px;border-radius:50%;background:#fff;border:2px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;transition:all .3s;}
 .p-dot.active{background:var(--green);border-color:var(--greenXL);color:#fff;}
-.p-dot.done{background:var(--greenXL);border-color:var(--greenXL);color:#000;}
+.p-dot.done{background:var(--gold);border-color:var(--gold);color:#071008;}
 .p-label{font-size:11px;color:var(--textDim);}
 .p-label.active{color:var(--greenXL);}
 
 /* FORM CARD */
 .form-wrap{max-width:600px;margin:0 auto;padding:0 20px 80px;}
-.step-card{background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius);padding:36px;display:none;}
+.step-card{background:linear-gradient(145deg,#fff,rgba(243,240,231,.88));border:1px solid var(--border);border-radius:var(--radius);padding:36px;display:none;box-shadow:0 22px 60px rgba(10,24,17,.08);}
 .step-card.active{display:block;}
 .step-title{font-size:22px;font-weight:700;margin-bottom:6px;}
 .step-sub{font-size:14px;color:var(--textMid);margin-bottom:28px;}
@@ -77,20 +77,20 @@ nav{display:flex;justify-content:space-between;align-items:center;padding:18px 4
 /* INPUTS */
 .field{margin-bottom:20px;}
 .field label{display:block;font-size:13px;color:var(--textMid);margin-bottom:6px;font-weight:500;}
-.field input,.field select{width:100%;background:var(--bg3);border:1px solid var(--border);border-radius:8px;padding:12px 16px;color:var(--text);font-size:15px;outline:none;transition:border-color .2s;}
-.field input:focus,.field select:focus{border-color:var(--greenXL);}
-.field select option{background:var(--bg3);}
+.field input,.field select{width:100%;background:#fff;border:1px solid var(--border);border-radius:8px;padding:12px 16px;color:var(--text);font-size:15px;outline:none;transition:border-color .2s, box-shadow .2s;}
+.field input:focus,.field select:focus{border-color:rgba(12,111,73,.42);box-shadow:0 0 0 3px rgba(12,111,73,.08);}
+.field select option{background:#fff;}
 .field-row{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
 
 /* PLAN CARDS */
 .plans-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:24px;}
 @media(max-width:480px){.plans-grid{grid-template-columns:1fr;}}
-.plan-card{border:2px solid var(--border);border-radius:10px;padding:20px;cursor:pointer;transition:all .2s;position:relative;}
+.plan-card{border:2px solid var(--border);border-radius:10px;padding:20px;cursor:pointer;transition:all .2s;position:relative;background:#fff;box-shadow:0 14px 36px rgba(10,24,17,.05);}
 .plan-card:hover{border-color:var(--green);}
-.plan-card.selected{border-color:var(--greenXL);background:rgba(26,107,69,.15);}
+.plan-card.selected{border-color:rgba(216,200,143,.85);background:linear-gradient(145deg,rgba(216,200,143,.18),#fff);}
 .plan-card.popular::before{content:'Most Popular';position:absolute;top:-11px;left:50%;transform:translateX(-50%);background:var(--gold);color:#000;font-size:10px;font-weight:700;padding:3px 12px;border-radius:20px;white-space:nowrap;}
 .plan-name{font-size:15px;font-weight:700;margin-bottom:4px;}
-.plan-price{font-size:24px;font-weight:800;color:var(--greenXL);}
+.plan-price{font-size:24px;font-weight:800;color:var(--goldL);}
 .plan-price span{font-size:13px;color:var(--textMid);font-weight:400;}
 .plan-trial{font-size:11px;color:var(--gold);margin-top:4px;}
 .plan-features{margin-top:12px;font-size:12px;color:var(--textMid);line-height:1.8;}
@@ -98,33 +98,33 @@ nav{display:flex;justify-content:space-between;align-items:center;padding:18px 4
 /* BILLING TOGGLE */
 .billing-toggle{display:flex;align-items:center;justify-content:center;gap:12px;margin-bottom:24px;}
 .toggle-btn{padding:8px 20px;border-radius:20px;border:1px solid var(--border);background:transparent;color:var(--textMid);font-size:13px;cursor:pointer;transition:all .2s;}
-.toggle-btn.active{background:var(--green);color:#fff;border-color:var(--green);}
-.save-badge{background:rgba(240,201,107,.15);color:var(--gold);font-size:11px;padding:3px 10px;border-radius:10px;}
+.toggle-btn.active{background:linear-gradient(135deg,var(--green),var(--greenL));color:#fff;border-color:var(--green);}
+.save-badge{background:rgba(216,200,143,.18);color:var(--goldL);font-size:11px;padding:3px 10px;border-radius:10px;}
 
 /* ADD-ONS */
 .addons-title{font-size:14px;font-weight:600;color:var(--textMid);margin-bottom:14px;text-transform:uppercase;letter-spacing:1px;}
 .addon-row{display:flex;align-items:center;justify-content:space-between;padding:12px 16px;border:1px solid var(--border);border-radius:8px;margin-bottom:8px;cursor:pointer;transition:all .2s;}
 .addon-row:hover{border-color:var(--green);}
-.addon-row.selected{border-color:var(--greenXL);background:rgba(26,107,69,.1);}
+.addon-row.selected{border-color:rgba(216,200,143,.85);background:rgba(216,200,143,.16);}
 .addon-left{display:flex;align-items:center;gap:10px;}
 .addon-icon{font-size:18px;}
 .addon-name{font-size:14px;font-weight:500;}
 .addon-price{font-size:13px;color:var(--gold);}
 .addon-check{width:20px;height:20px;border-radius:50%;border:2px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:11px;transition:all .2s;}
-.addon-row.selected .addon-check{background:var(--greenXL);border-color:var(--greenXL);color:#000;}
+.addon-row.selected .addon-check{background:var(--gold);border-color:var(--gold);color:#071008;}
 
 /* ORDER SUMMARY */
-.summary-box{background:var(--bg3);border:1px solid var(--border);border-radius:10px;padding:20px;margin-bottom:24px;}
+.summary-box{background:#fff;border:1px solid var(--border);border-radius:10px;padding:20px;margin-bottom:24px;}
 .summary-row{display:flex;justify-content:space-between;font-size:14px;padding:6px 0;color:var(--textMid);}
 .summary-row.total{border-top:1px solid var(--border);margin-top:8px;padding-top:12px;font-size:16px;font-weight:700;color:var(--text);}
-.summary-row.total .price{color:var(--greenXL);}
+.summary-row.total .price{color:var(--goldL);}
 .trial-note{font-size:12px;color:var(--gold);text-align:center;margin-bottom:16px;}
-.upgrade-transition-note{display:none;background:rgba(64,216,136,.09);border:1px solid rgba(64,216,136,.28);border-radius:14px;padding:15px 16px;color:var(--textMid);font-size:14px;line-height:1.55;margin:16px 0;text-align:left;}
+.upgrade-transition-note{display:none;background:rgba(216,200,143,.16);border:1px solid rgba(216,200,143,.55);border-radius:14px;padding:15px 16px;color:var(--textMid);font-size:14px;line-height:1.55;margin:16px 0;text-align:left;}
 .upgrade-transition-note strong{display:block;color:var(--greenXL);font-size:15px;margin-bottom:4px;}
 
 /* BUTTONS */
 .btn-primary{width:100%;padding:16px;background:linear-gradient(135deg,var(--green),var(--greenL));color:#fff;border:none;border-radius:10px;font-size:16px;font-weight:700;cursor:pointer;transition:all .2s;letter-spacing:.5px;}
-.btn-primary:hover{transform:translateY(-1px);box-shadow:0 8px 24px rgba(26,107,69,.4);}
+.btn-primary:hover{transform:translateY(-1px);box-shadow:0 8px 24px rgba(12,111,73,.24);}
 .btn-primary:disabled{opacity:.6;cursor:not-allowed;transform:none;}
 .btn-secondary{width:100%;padding:12px;background:transparent;color:var(--textMid);border:1px solid var(--border);border-radius:10px;font-size:14px;cursor:pointer;margin-top:12px;transition:all .2s;}
 .btn-secondary:hover{border-color:var(--green);color:var(--text);}
@@ -148,7 +148,7 @@ nav{display:flex;justify-content:space-between;align-items:center;padding:18px 4
 
 /* ERROR */
 .error-msg{background:rgba(224,92,92,.1);border:1px solid rgba(224,92,92,.3);border-radius:8px;padding:12px 16px;font-size:13px;color:#e05c5c;margin-bottom:16px;display:none;}
-.safety-note{max-width:760px;margin:18px auto 0;padding:14px 18px;border:1px solid rgba(64,216,136,.22);border-radius:12px;background:rgba(64,216,136,.07);color:var(--textMid);font-size:13px;line-height:1.6;text-align:center;}
+.safety-note{max-width:760px;margin:18px auto 0;padding:14px 18px;border:1px solid rgba(216,200,143,.55);border-radius:12px;background:rgba(216,200,143,.16);color:var(--textMid);font-size:13px;line-height:1.6;text-align:center;}
 
 /* FOOTER */
 footer{text-align:center;padding:24px;border-top:1px solid var(--border);font-size:12px;color:var(--textDim);}
@@ -362,7 +362,7 @@ footer{text-align:center;padding:24px;border-top:1px solid var(--border);font-si
 
     <div class="field"><label>Password *</label><input type="password" id="password" placeholder="Minimum 8 characters" autocomplete="new-password" minlength="8" required/></div>
     <div class="field"><label>Confirm Password *</label><input type="password" id="confirmPassword" placeholder="Repeat your password" autocomplete="new-password" minlength="8" required/></div>
-    <div style="border:1px solid rgba(64,216,136,.22);background:rgba(64,216,136,.07);border-radius:10px;padding:12px 14px;margin:-4px 0 20px;font-size:13px;color:var(--textMid);line-height:1.5;">
+    <div style="border:1px solid rgba(216,200,143,.55);background:rgba(216,200,143,.16);border-radius:10px;padding:12px 14px;margin:-4px 0 20px;font-size:13px;color:var(--textMid);line-height:1.5;">
       Already have an account? Enter your existing Emerald Wellness password above, then <a href="#" onclick="createAccount();return false;">continue to checkout</a>. If you already paid, go to your <a href="/dashboard">Member Dashboard</a>.
     </div>
 
