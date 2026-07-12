@@ -218,15 +218,36 @@
       background:
         radial-gradient(circle at 82% 16%, rgba(216,200,143,.18), transparent 25%),
         radial-gradient(circle at 64% 48%, rgba(18,166,107,.28), transparent 28%),
-        linear-gradient(100deg, rgba(3,8,6,.98) 0%, rgba(4,20,13,.92) 38%, rgba(5,24,16,.44) 64%, rgba(3,8,6,.7) 100%),
-        url("images/emerald-hero-runner.png") center right / cover no-repeat;
+        linear-gradient(100deg, rgba(3,8,6,.98) 0%, rgba(4,20,13,.92) 38%, rgba(5,24,16,.44) 64%, rgba(3,8,6,.7) 100%);
       min-height: 812px;
       overflow: hidden;
+    }
+    .hero-media {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      overflow: hidden;
+      background: #020504;
+    }
+    .hero-media img,
+    .hero-media video {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: cover;
+      object-position: center center;
+      opacity: .9;
+    }
+    .hero-media img {
+      transform-origin: center;
+      animation: heroMediaDrift 12s ease-in-out infinite;
+      will-change: transform;
     }
     .hero::before {
       content: "";
       position: absolute;
       inset: 0;
+      z-index: 1;
       background:
         linear-gradient(90deg, rgba(2,4,3,.9), rgba(2,4,3,.56) 36%, transparent 68%),
         linear-gradient(0deg, rgba(2,4,3,.62), transparent 34%);
@@ -236,6 +257,7 @@
       content: "";
       position: absolute;
       inset: 0;
+      z-index: 1;
       background-image:
         linear-gradient(110deg, transparent 0 48%, rgba(216,200,143,.12) 48.2%, transparent 48.8%),
         radial-gradient(circle at 32% 35%, rgba(88,227,154,.16), transparent 20%);
@@ -251,6 +273,13 @@
       gap: 54px;
       align-items: center;
       padding: 72px 0 58px;
+    }
+    @keyframes heroMediaDrift {
+      0%, 100% { transform: scale(1) translate3d(0, 0, 0); }
+      50% { transform: scale(1.045) translate3d(-1.2%, 0, 0); }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .hero-media img { animation: none; }
     }
     .hero-kicker {
       width: fit-content;
@@ -615,10 +644,13 @@
       display: flex;
       flex-direction: column;
       padding: 24px;
-      border: 1px solid rgba(8, 33, 23, .13);
+      color: #fff;
+      border: 1px solid rgba(216,200,143,.28);
       border-radius: 10px;
-      background: rgba(255,255,255,.82);
-      box-shadow: 0 20px 44px rgba(10, 24, 17, .07);
+      background:
+        radial-gradient(circle at 78% 12%, rgba(216,200,143,.18), transparent 26%),
+        linear-gradient(145deg, #07120d, #0b3425);
+      box-shadow: var(--shadow-deep);
       overflow: hidden;
     }
     .tier-card::before {
@@ -630,12 +662,6 @@
       opacity: .72;
     }
     .tier-card.featured {
-      color: #fff;
-      background:
-        radial-gradient(circle at 78% 12%, rgba(216,200,143,.18), transparent 26%),
-        linear-gradient(145deg, #07120d, #0b3425);
-      border-color: rgba(216,200,143,.28);
-      box-shadow: var(--shadow-deep);
       transform: translateY(-10px);
     }
     .tier-card h3 {
@@ -644,50 +670,45 @@
       font-size: 18px;
     }
     .tier-kicker {
-      color: var(--emerald);
+      color: var(--champagne-2);
       font-size: 10px;
       font-weight: 900;
       letter-spacing: .18em;
       text-transform: uppercase;
     }
-    .featured .tier-kicker { color: var(--champagne-2); }
     .tier-price {
       display: flex;
       align-items: baseline;
       gap: 5px;
       margin: 16px 0 14px;
-      color: var(--ink);
+      color: var(--champagne-2);
       font-family: var(--serif);
       font-size: 38px;
       line-height: 1;
       font-weight: 800;
     }
-    .featured .tier-price { color: var(--champagne-2); }
     .tier-price span {
-      color: var(--slate);
+      color: rgba(255,255,255,.66);
       font-family: var(--sans);
       font-size: 12px;
       font-weight: 900;
     }
-    .featured .tier-price span { color: rgba(255,255,255,.66); }
     .tier-desc {
       min-height: 58px;
-      color: #4c5d53;
+      color: rgba(255,255,255,.76);
       font-size: 13px;
       margin-bottom: 18px;
     }
-    .featured .tier-desc { color: rgba(255,255,255,.76); }
     .tier-list {
       display: grid;
       gap: 10px;
       margin: 0 0 22px;
       padding: 0;
       list-style: none;
-      color: #33463c;
+      color: rgba(255,255,255,.82);
       font-size: 12px;
       font-weight: 800;
     }
-    .featured .tier-list { color: rgba(255,255,255,.82); }
     .tier-list li {
       display: grid;
       grid-template-columns: 16px 1fr;
@@ -696,14 +717,19 @@
     }
     .tier-list li::before {
       content: "✓";
-      color: var(--emerald);
+      color: var(--mint);
       font-weight: 900;
     }
-    .featured .tier-list li::before { color: var(--mint); }
     .tier-card .btn {
       width: 100%;
       margin-top: auto;
       min-height: 46px;
+    }
+    .tier-card .btn-light {
+      color: #fff;
+      border-color: rgba(255,255,255,.2);
+      background: linear-gradient(135deg, #08663f, #15ad70);
+      box-shadow: 0 16px 36px rgba(13, 126, 81, .2);
     }
     .tier-badge {
       position: absolute;
@@ -816,11 +842,12 @@
     }
     .body-map {
       position: relative;
-      min-height: 330px;
+      min-height: 390px;
       border: 1px solid rgba(255,255,255,.1);
       border-radius: 10px;
       background:
-        radial-gradient(ellipse at center, rgba(88,227,154,.12), transparent 58%),
+        radial-gradient(ellipse at 50% 44%, rgba(216,200,143,.13), transparent 34%),
+        radial-gradient(ellipse at center, rgba(88,227,154,.14), transparent 62%),
         linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.015));
       overflow: hidden;
     }
@@ -850,7 +877,7 @@
     }
     .body-figure {
       position: absolute;
-      inset: 30px 6px 18px;
+      inset: 30px 8px 18px;
       z-index: 1;
     }
     .body-figure svg {
@@ -861,18 +888,32 @@
     }
     .figure-fill {
       fill: url(#bodyGradient);
-      stroke: rgba(216,200,143,.56);
-      stroke-width: 2;
+      stroke: rgba(240,232,200,.5);
+      stroke-width: 1.7;
+    }
+    .figure-shadow {
+      fill: rgba(0,0,0,.18);
+      filter: blur(7px);
+    }
+    .figure-highlight {
+      fill: rgba(255,255,255,.18);
+      stroke: none;
     }
     .figure-zone {
-      fill: rgba(88,227,154,.1);
-      stroke: rgba(88,227,154,.32);
+      fill: url(#zoneGradient);
+      stroke: rgba(88,227,154,.38);
       stroke-width: 1.2;
     }
     .figure-line {
       fill: none;
-      stroke: rgba(88,227,154,.28);
-      stroke-width: 1.4;
+      stroke: rgba(255,255,255,.22);
+      stroke-width: 1.2;
+      stroke-linecap: round;
+    }
+    .figure-muscle {
+      fill: none;
+      stroke: rgba(12,111,73,.24);
+      stroke-width: 1.15;
       stroke-linecap: round;
     }
     .site-dot {
@@ -888,12 +929,12 @@
       background: var(--champagne-2);
       box-shadow: 0 0 0 8px rgba(216,200,143,.14), 0 0 26px rgba(216,200,143,.55);
     }
-    .site-dot.s1 { left: 44%; top: 45%; }
-    .site-dot.s2 { left: 55%; top: 45%; }
-    .site-dot.s3 { left: 42%; top: 72%; }
-    .site-dot.s4 { left: 58%; top: 72%; }
-    .site-dot.s5 { left: 34%; top: 39%; }
-    .site-dot.s6 { left: 65%; top: 39%; }
+    .site-dot.s1 { left: 45%; top: 43%; }
+    .site-dot.s2 { left: 54%; top: 43%; }
+    .site-dot.s3 { left: 42%; top: 73%; }
+    .site-dot.s4 { left: 58%; top: 73%; }
+    .site-dot.s5 { left: 37%; top: 40%; }
+    .site-dot.s6 { left: 62%; top: 40%; }
     .rotation-copy h3 {
       margin: 0 0 8px;
       color: #fff;
@@ -1135,9 +1176,10 @@
       border-radius: var(--radius);
       background: #fff;
       box-shadow: var(--shadow-soft);
+      min-height: 278px;
     }
     .topic-art {
-      height: 130px;
+      height: 176px;
       position: relative;
       background: radial-gradient(circle at 38% 42%, rgba(88,227,154,.72), transparent 9%), linear-gradient(135deg, #06120d, #0d5138);
       overflow: hidden;
@@ -1146,6 +1188,31 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
+    }
+    .topic-art.hormone img,
+    .topic-art.longevity img {
+      object-position: center 18%;
+    }
+    .topic-art.peptides img {
+      object-position: center 35%;
+    }
+    .topic-art.weight-loss img {
+      object-position: 58% 24%;
+    }
+    .topic-art.energy img {
+      object-position: 60% center;
+    }
+    .topic-art.gut-health img {
+      object-position: 55% 30%;
+    }
+    .topic-art::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(180deg, rgba(3,8,6,0) 48%, rgba(3,8,6,.42)),
+        linear-gradient(90deg, rgba(3,8,6,.14), transparent 45%);
+      pointer-events: none;
     }
     .topic-art.dna {
       background:
@@ -1170,6 +1237,7 @@
       position: absolute;
       top: 12px;
       left: 12px;
+      z-index: 2;
       width: 30px;
       height: 30px;
       display: grid;
@@ -1603,6 +1671,11 @@
     </nav>
 
     <header class="hero">
+      <div class="hero-media" aria-hidden="true">
+        <video autoplay muted loop playsinline poster="images/shop-health-vitality-young-couple.png">
+          <source src="videos/emerald-walking-hero.mp4" type="video/mp4" />
+        </video>
+      </div>
       <div class="container hero-inner">
         <div class="hero-copy">
           <div class="hero-kicker">Private Health Intelligence</div>
@@ -1913,31 +1986,42 @@
               </article>
             </div>
             <div class="rotation-preview" id="injection-rotation">
-              <div class="body-map" aria-label="3D-style injection site rotation map">
+              <div class="body-map" aria-label="Realistic injection site rotation map">
                 <div class="body-figure" aria-hidden="true">
-                  <svg viewBox="0 0 260 340" role="img">
+                  <svg viewBox="0 0 300 400" role="img">
                     <defs>
                       <linearGradient id="bodyGradient" x1="0" y1="0" x2="1" y2="1">
-                        <stop offset="0" stop-color="rgba(216,200,143,.24)" />
-                        <stop offset=".52" stop-color="rgba(88,227,154,.12)" />
-                        <stop offset="1" stop-color="rgba(12,111,73,.28)" />
+                        <stop offset="0" stop-color="rgba(245,221,176,.72)" />
+                        <stop offset=".42" stop-color="rgba(204,163,121,.54)" />
+                        <stop offset="1" stop-color="rgba(111,83,62,.5)" />
                       </linearGradient>
+                      <radialGradient id="zoneGradient" cx="50%" cy="48%" r="60%">
+                        <stop offset="0" stop-color="rgba(88,227,154,.22)" />
+                        <stop offset=".75" stop-color="rgba(88,227,154,.08)" />
+                        <stop offset="1" stop-color="rgba(88,227,154,.02)" />
+                      </radialGradient>
                     </defs>
-                    <circle class="figure-fill" cx="130" cy="34" r="23" />
-                    <path class="figure-fill" d="M112 57 H148 L152 78 H108 Z" />
-                    <path class="figure-fill" d="M80 82 C95 66 165 66 180 82 C171 116 164 153 166 191 C154 205 144 213 130 213 C116 213 106 205 94 191 C96 153 89 116 80 82 Z" />
-                    <path class="figure-fill" d="M79 84 C54 99 38 129 28 169 C25 181 31 190 42 192 C54 194 61 187 64 175 C71 145 83 121 99 105 Z" />
-                    <path class="figure-fill" d="M181 84 C206 99 222 129 232 169 C235 181 229 190 218 192 C206 194 199 187 196 175 C189 145 177 121 161 105 Z" />
-                    <path class="figure-fill" d="M96 193 C106 207 118 217 130 217 C142 217 154 207 164 193 L171 313 C172 324 164 332 153 329 C144 326 142 318 141 309 L132 225 H128 L119 309 C118 318 116 326 107 329 C96 332 88 324 89 313 Z" />
-                    <ellipse class="figure-zone" cx="130" cy="143" rx="37" ry="28" />
-                    <path class="figure-zone" d="M101 241 C112 235 122 234 130 238 C138 234 148 235 159 241 L160 277 C150 274 141 273 132 276 C123 273 113 274 100 277 Z" />
-                    <path class="figure-line" d="M86 93 C104 106 156 106 174 93" />
-                    <path class="figure-line" d="M101 122 C114 129 146 129 159 122" />
-                    <path class="figure-line" d="M96 164 C116 172 144 172 164 164" />
-                    <path class="figure-line" d="M130 82 V208" />
-                    <path class="figure-line" d="M95 193 C112 202 148 202 165 193" />
-                    <path class="figure-line" d="M111 220 C116 249 116 284 111 320" />
-                    <path class="figure-line" d="M149 220 C144 249 144 284 149 320" />
+                    <ellipse class="figure-shadow" cx="150" cy="365" rx="44" ry="12" />
+                    <path class="figure-fill" d="M124 58 C119 45 122 28 133 18 C145 7 163 8 174 20 C184 31 186 49 179 62 C175 71 169 78 160 81 L140 81 C132 77 127 69 124 58 Z" />
+                    <path class="figure-fill" d="M132 80 C138 85 162 85 168 80 L172 103 C164 112 136 112 128 103 Z" />
+                    <path class="figure-fill" d="M101 112 C114 92 128 96 134 103 C142 111 158 111 166 103 C172 96 186 92 199 112 C190 133 187 164 190 196 C184 223 171 244 150 244 C129 244 116 223 110 196 C113 164 110 133 101 112 Z" />
+                    <path class="figure-fill" d="M102 113 C82 128 70 160 63 207 C61 221 67 230 78 231 C89 232 95 224 97 211 C101 180 108 155 120 134 Z" />
+                    <path class="figure-fill" d="M198 113 C218 128 230 160 237 207 C239 221 233 230 222 231 C211 232 205 224 203 211 C199 180 192 155 180 134 Z" />
+                    <path class="figure-fill" d="M110 197 C120 227 130 247 150 247 C170 247 180 227 190 197 C196 229 198 255 193 279 C188 316 187 349 186 365 C185 376 178 382 169 380 C160 378 158 369 158 359 L153 266 C152 260 148 260 147 266 L142 359 C142 369 140 378 131 380 C122 382 115 376 114 365 C113 349 112 316 107 279 C102 255 104 229 110 197 Z" />
+                    <ellipse class="figure-zone" cx="150" cy="173" rx="32" ry="29" />
+                    <path class="figure-zone" d="M120 286 C132 279 142 278 150 283 C158 278 168 279 180 286 L179 324 C169 320 159 320 153 323 C144 320 134 320 121 325 Z" />
+                    <ellipse class="figure-zone" cx="91" cy="171" rx="15" ry="31" transform="rotate(15 91 171)" />
+                    <ellipse class="figure-zone" cx="209" cy="171" rx="15" ry="31" transform="rotate(-15 209 171)" />
+                    <path class="figure-highlight" d="M131 99 C140 106 160 106 169 99 C166 118 158 126 150 127 C142 126 134 118 131 99 Z" />
+                    <path class="figure-highlight" d="M123 127 C132 136 139 144 142 158 C130 155 120 147 113 133 Z" />
+                    <path class="figure-highlight" d="M177 127 C168 136 161 144 158 158 C170 155 180 147 187 133 Z" />
+                    <path class="figure-muscle" d="M116 127 C130 136 138 151 140 174" />
+                    <path class="figure-muscle" d="M184 127 C170 136 162 151 160 174" />
+                    <path class="figure-muscle" d="M122 197 C136 206 164 206 178 197" />
+                    <path class="figure-line" d="M150 112 C148 141 148 173 150 213" />
+                    <path class="figure-line" d="M128 229 C140 237 160 237 172 229" />
+                    <path class="figure-muscle" d="M134 260 C137 292 137 332 132 368" />
+                    <path class="figure-muscle" d="M166 260 C163 292 163 332 168 368" />
                   </svg>
                 </div>
                 <span class="site-dot current s1"></span>
@@ -1948,7 +2032,7 @@
                 <span class="site-dot s6"></span>
               </div>
               <div class="rotation-copy">
-                <span class="compound-meta">3D Peptide Injection Rotation</span>
+                <span class="compound-meta">Peptide Injection Site Rotation</span>
                 <h3>Cycle planning, site rotation, and dose tracking.</h3>
                 <p>Emerald organizes injection-site education, rotation history, cycle notes, dose timing, and provider-review questions so members can keep peptide protocols cleanly documented.</p>
                 <ul class="rotation-list">
@@ -1987,32 +2071,32 @@
           </div>
           <div class="topic-grid" id="goals">
             <article class="topic-card">
-              <div class="topic-art dna"><span class="topic-badge">30</span></div>
+              <div class="topic-art peptides"><img src="images/emerald-peptides-real-results.png" alt="Emerald Wellness science-backed peptides real results bottles" /><span class="topic-badge">30</span></div>
               <h3>Peptides</h3>
               <a href="/peptides">Learn More</a>
             </article>
             <article class="topic-card">
-              <div class="topic-art"><span class="topic-badge">◆</span></div>
+              <div class="topic-art hormone"><img src="images/shop-health-vitality-young-couple.png" alt="Smiling man and woman walking outdoors" /><span class="topic-badge">◆</span></div>
               <h3>Hormone Health</h3>
               <a href="/hormone-wellness">Learn More</a>
             </article>
             <article class="topic-card">
-              <div class="topic-art"><img src="images/shop-weight-loss-hispanic-female.png" alt="Healthy nutrition and weight wellness" /><span class="topic-badge">✳</span></div>
+              <div class="topic-art weight-loss"><img src="images/shop-weight-loss-hispanic-female.png" alt="Smiling woman preparing healthy food for weight wellness" /><span class="topic-badge">✳</span></div>
               <h3>Weight Loss</h3>
               <a href="/shop/weight-loss-glp1">Learn More</a>
             </article>
             <article class="topic-card">
-              <div class="topic-art dna"><span class="topic-badge">42</span></div>
+              <div class="topic-art longevity"><img src="images/emerald-longevity-solutions-labs.png" alt="Emerald Wellness science-backed longevity solutions lab testing" /><span class="topic-badge">42</span></div>
               <h3>Longevity</h3>
               <a href="/shop/vitality-longevity">Learn More</a>
             </article>
             <article class="topic-card">
-              <div class="topic-art brain"><span class="topic-badge">35</span></div>
+              <div class="topic-art energy"><img src="images/emerald-hero-runner.png" alt="Active woman running with focused energy" /><span class="topic-badge">35</span></div>
               <h3>Energy & Focus</h3>
               <a href="/peptide-wellness">Learn More</a>
             </article>
             <article class="topic-card">
-              <div class="topic-art gut"><span class="topic-badge">42</span></div>
+              <div class="topic-art gut-health"><img src="images/shop-weight-loss-hispanic-female.png" alt="Healthy foods and nutrition for gut health" /><span class="topic-badge">42</span></div>
               <h3>Gut Health</h3>
               <a href="/biology-labs">Learn More</a>
             </article>
