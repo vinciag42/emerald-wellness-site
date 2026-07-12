@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -11,26 +11,27 @@
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     :root {
-      --bg: #060e08; --bg2: #0a1610; --emerald: #4ade80; --emerald-mid: #22c55e;
-      --white: #f0f0eb; --muted: #7a9880; --border: rgba(255,255,255,0.07);
+      --bg:#fbfaf5; --bg2:#ffffff; --bg3:#f3f0e7; --emerald:#0c6f49; --emerald-mid:#12a66b;
+      --champagne:#d8c88f; --gold:#80672a; --ink:#06110c; --muted:#53635a; --border:rgba(8,33,23,.12); --goldline:rgba(216,200,143,.55);
     }
-    body { background: var(--bg); color: var(--white); font-family: 'DM Sans', sans-serif; font-size: 15px; line-height: 1.8; }
-    nav { display: flex; align-items: center; justify-content: space-between; padding: 20px 40px; border-bottom: 1px solid var(--border); }
-    .nav-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; font-size: 1.1rem; font-weight: 600; color: var(--white); }
-    .nav-back { color: var(--emerald); text-decoration: none; font-size: 13px; }
+    body { background:radial-gradient(circle at 16% 0,rgba(12,111,73,.10),transparent 34%),linear-gradient(180deg,var(--bg),var(--bg3)); color: var(--ink); font-family: 'DM Sans', sans-serif; font-size: 15px; line-height: 1.8; }
+    nav { display: flex; align-items: center; justify-content: space-between; padding: 20px 40px; border-bottom: 1px solid var(--border); background:rgba(251,250,245,.92); backdrop-filter:blur(16px); }
+    .nav-logo { display: flex; align-items: center; gap: 12px; text-decoration: none; font-size: 1.15rem; font-weight: 700; color: var(--ink); }
+    .nav-logo img { width: 40px; height: 40px; }
+    .nav-back { color: var(--emerald); text-decoration: none; font-size: 13px; font-weight:700; }
     .nav-back:hover { text-decoration: underline; }
     .page-wrap { max-width: 780px; margin: 0 auto; padding: 60px 32px 100px; }
-    .page-label { font-size: 11px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: var(--emerald); margin-bottom: 12px; }
-    h1 { font-family: 'Playfair Display', serif; font-size: 2.4rem; font-weight: 700; color: var(--white); margin-bottom: 8px; }
+    .page-label { font-size: 11px; font-weight: 800; letter-spacing: 2px; text-transform: uppercase; color: var(--gold); margin-bottom: 12px; }
+    h1 { font-family: 'Playfair Display', serif; font-size: clamp(2.4rem,5vw,4.3rem); line-height:1.05; font-weight: 700; color: var(--ink); margin-bottom: 8px; }
     .updated { font-size: 13px; color: var(--muted); margin-bottom: 48px; }
-    h2 { font-family: 'Playfair Display', serif; font-size: 1.25rem; font-weight: 600; color: var(--emerald); margin: 40px 0 12px; }
-    p { color: #c8d8cc; margin-bottom: 16px; }
+    h2 { font-family: 'Playfair Display', serif; font-size: 1.35rem; font-weight: 600; color: var(--emerald); margin: 40px 0 12px; }
+    p { color: var(--muted); margin-bottom: 16px; }
     ul { padding-left: 20px; margin-bottom: 16px; }
-    li { color: #c8d8cc; margin-bottom: 8px; }
+    li { color: var(--muted); margin-bottom: 8px; }
     a { color: var(--emerald); text-decoration: none; }
     a:hover { text-decoration: underline; }
     .divider { border: none; border-top: 1px solid var(--border); margin: 48px 0; }
-    footer { text-align: center; padding: 32px; font-size: 12px; color: var(--muted); border-top: 1px solid var(--border); }
+    footer { text-align: center; padding: 32px; font-size: 12px; color: var(--muted); border-top: 1px solid var(--border); background:#fffdf8; }
   </style>
   <meta name="description" content="Review the terms governing access to and use of the Emerald Wellness website and wellness platform." />
   <link rel="canonical" href="https://emeraldwellness.health/terms-of-service.html" />
@@ -38,8 +39,8 @@
 </head>
 <body>
 
-<div style="background:rgba(74,222,128,0.07);border-bottom:1px solid rgba(74,222,128,0.15);padding:10px 24px;text-align:center;font-size:12.5px;color:#7a9880;line-height:1.5;">
-  ⚕️ <strong style="color:#a8c8b0;">Emerald Wellness does not replace your personal physician.</strong> We encourage you to consult with your doctor before making any changes to your health or wellness protocols. <a href="medical-disclaimer.html" style="color:#4ade80;text-decoration:none;font-weight:500;">Medical Disclaimer →</a>
+<div style="background:rgba(216,200,143,.18);border-bottom:1px solid rgba(216,200,143,.55);padding:10px 24px;text-align:center;font-size:12.5px;color:#53635a;line-height:1.5;">
+  <strong style="color:#203229;">Emerald Wellness does not replace your personal physician.</strong> We encourage you to consult with your doctor before making any changes to your health or wellness protocols. <a href="medical-disclaimer.html" style="color:#0c6f49;text-decoration:none;font-weight:700;">Medical Disclaimer</a>
 </div>
 <nav>
   <a class="nav-logo" href="index.html">
@@ -54,14 +55,14 @@
   <h1>Terms of Service</h1>
   <p class="updated">Last updated: June 21, 2026</p>
 
-  <p>These Terms of Service ("Terms") govern your access to and use of the Emerald Wellness platform, website, and related services (collectively, the "Services") provided by Emerald Wellness, LLC ("Emerald Wellness," "we," "us," or "our"), located in Columbus, Ohio.</p>
+  <p>These Terms of Service ("Terms") govern your access to and use of the Emerald Wellness platform, website, and related services (collectively, the "Services") provided by Emerald Wellness, LLC ("Emerald Wellness," "we," "us," or "our").</p>
   <p>By creating an account or using our Services, you agree to be bound by these Terms. If you do not agree, do not use our Services.</p>
 
   <h2>1. Eligibility</h2>
   <p>You must be at least 18 years old to use our Services. By using our Services, you represent that you are 18 or older and have the legal capacity to enter into these Terms.</p>
 
   <h2>2. Member Account Registration</h2>
-  <p>To access most features, you must create an account. You agree to provide accurate and complete information and to keep your account credentials confidential. You are responsible for all activity that occurs under your account. Notify us immediately at <a href="mailto:support@emeraldwellness.health">support@emeraldwellness.health</a> if you suspect unauthorized access.</p>
+  <p>To access most features, you must create an account. You agree to provide accurate and complete information and to keep your account credentials confidential. You are responsible for all activity that occurs under your account. Notify us immediately at <a href="mailto:info@emeraldwellness.health">info@emeraldwellness.health</a> if you suspect unauthorized access.</p>
 
   <h2>3. Membership Plans and Membership & Billing</h2>
   <p>Emerald Wellness offers several paid membership tiers, including Silver, Gold, Emerald Elite, Pro Practitioner Suite, and Emerald Platinum Regenesis. Paid memberships are billed monthly or annually as selected at checkout and processed through Stripe.</p>
@@ -129,9 +130,7 @@
 
   <h2>15. Contact</h2>
   <ul>
-    <li><strong>Email:</strong> <a href="mailto:legal@emeraldwellness.health">legal@emeraldwellness.health</a></li>
-    <li><strong>Mail:</strong> Emerald Wellness, LLC, Columbus, Ohio</li>
-    <li><strong>Phone:</strong> <a href="tel:2166168995">216-616-8995</a></li>
+    <li><strong>Email:</strong> <a href="mailto:info@emeraldwellness.health">info@emeraldwellness.health</a></li>
   </ul>
 
   <hr class="divider"/>

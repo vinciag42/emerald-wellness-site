@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -11,29 +11,30 @@
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     :root {
-      --bg: #060e08; --bg2: #0a1610; --emerald: #4ade80; --emerald-mid: #22c55e;
-      --white: #f0f0eb; --muted: #7a9880; --border: rgba(255,255,255,0.07);
+      --bg:#fbfaf5; --bg2:#ffffff; --bg3:#f3f0e7; --emerald:#0c6f49; --emerald-mid:#12a66b;
+      --champagne:#d8c88f; --gold:#80672a; --ink:#06110c; --muted:#53635a; --border:rgba(8,33,23,.12); --goldline:rgba(216,200,143,.55);
     }
-    body { background: var(--bg); color: var(--white); font-family: 'DM Sans', sans-serif; font-size: 15px; line-height: 1.8; }
-    nav { display: flex; align-items: center; justify-content: space-between; padding: 20px 40px; border-bottom: 1px solid var(--border); }
-    .nav-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; font-size: 1.1rem; font-weight: 600; color: var(--white); }
-    .nav-back { color: var(--emerald); text-decoration: none; font-size: 13px; }
+    body { background:radial-gradient(circle at 16% 0,rgba(12,111,73,.10),transparent 34%),linear-gradient(180deg,var(--bg),var(--bg3)); color: var(--ink); font-family: 'DM Sans', sans-serif; font-size: 15px; line-height: 1.8; }
+    nav { display: flex; align-items: center; justify-content: space-between; padding: 20px 40px; border-bottom: 1px solid var(--border); background:rgba(251,250,245,.92); backdrop-filter:blur(16px); }
+    .nav-logo { display: flex; align-items: center; gap: 12px; text-decoration: none; font-size: 1.15rem; font-weight: 700; color: var(--ink); }
+    .nav-logo img { width: 40px; height: 40px; }
+    .nav-back { color: var(--emerald); text-decoration: none; font-size: 13px; font-weight:700; }
     .nav-back:hover { text-decoration: underline; }
     .page-wrap { max-width: 780px; margin: 0 auto; padding: 60px 32px 100px; }
-    .page-label { font-size: 11px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: var(--emerald); margin-bottom: 12px; }
-    h1 { font-family: 'Playfair Display', serif; font-size: 2.4rem; font-weight: 700; color: var(--white); margin-bottom: 8px; }
+    .page-label { font-size: 11px; font-weight: 800; letter-spacing: 2px; text-transform: uppercase; color: var(--gold); margin-bottom: 12px; }
+    h1 { font-family: 'Playfair Display', serif; font-size: clamp(2.4rem,5vw,4.3rem); line-height:1.05; font-weight: 700; color: var(--ink); margin-bottom: 8px; }
     .updated { font-size: 13px; color: var(--muted); margin-bottom: 48px; }
-    h2 { font-family: 'Playfair Display', serif; font-size: 1.25rem; font-weight: 600; color: var(--emerald); margin: 40px 0 12px; }
-    p { color: #c8d8cc; margin-bottom: 16px; }
+    h2 { font-family: 'Playfair Display', serif; font-size: 1.35rem; font-weight: 600; color: var(--emerald); margin: 40px 0 12px; }
+    p { color: var(--muted); margin-bottom: 16px; }
     ul { padding-left: 20px; margin-bottom: 16px; }
-    li { color: #c8d8cc; margin-bottom: 8px; }
+    li { color: var(--muted); margin-bottom: 8px; }
     a { color: var(--emerald); text-decoration: none; }
     a:hover { text-decoration: underline; }
     .divider { border: none; border-top: 1px solid var(--border); margin: 48px 0; }
     table { width: 100%; border-collapse: collapse; margin: 20px 0 28px; font-size: 14px; }
-    th { text-align: left; padding: 10px 14px; background: rgba(74,222,128,0.07); border: 1px solid rgba(74,222,128,0.12); color: var(--emerald); font-size: 12px; letter-spacing: 1px; text-transform: uppercase; }
-    td { padding: 10px 14px; border: 1px solid var(--border); color: #c8d8cc; vertical-align: top; }
-    footer { text-align: center; padding: 32px; font-size: 12px; color: var(--muted); border-top: 1px solid var(--border); }
+    th { text-align: left; padding: 10px 14px; background: rgba(216,200,143,.18); border: 1px solid rgba(216,200,143,.55); color: var(--gold); font-size: 12px; letter-spacing: 1px; text-transform: uppercase; }
+    td { padding: 10px 14px; border: 1px solid var(--border); color: var(--muted); vertical-align: top; background:#fff; }
+    footer { text-align: center; padding: 32px; font-size: 12px; color: var(--muted); border-top: 1px solid var(--border); background:#fffdf8; }
   </style>
   <meta name="description" content="Learn how Emerald Wellness uses cookies and similar technologies across its website and services." />
   <link rel="canonical" href="https://emeraldwellness.health/cookie-policy.html" />
@@ -41,13 +42,14 @@
 </head>
 <body>
 
-<div style="background:rgba(74,222,128,0.07);border-bottom:1px solid rgba(74,222,128,0.15);padding:10px 24px;text-align:center;font-size:12.5px;color:#7a9880;line-height:1.5;">
-  ⚕️ <strong style="color:#a8c8b0;">Emerald Wellness does not replace your personal physician.</strong> We encourage you to consult with your doctor before making any changes to your health or wellness protocols. <a href="medical-disclaimer.html" style="color:#4ade80;text-decoration:none;font-weight:500;">Medical Disclaimer →</a>
+<div style="background:rgba(216,200,143,.18);border-bottom:1px solid rgba(216,200,143,.55);padding:10px 24px;text-align:center;font-size:12.5px;color:#53635a;line-height:1.5;">
+  <strong style="color:#203229;">Emerald Wellness does not replace your personal physician.</strong> We encourage you to consult with your doctor before making any changes to your health or wellness protocols. <a href="medical-disclaimer.html" style="color:#0c6f49;text-decoration:none;font-weight:700;">Medical Disclaimer</a>
 </div>
 
 <nav>
   <a class="nav-logo" href="index.html">
-    💎 <span><span style="color:var(--emerald)">Emerald</span> Wellness</span>
+    <img src="logo-atom.svg" alt="Emerald Wellness" width="40" height="40" style="display:block;"/>
+    <span><span style="color:var(--emerald)">Emerald</span> Wellness</span>
   </a>
   <a class="nav-back" href="index.html">← Back to Home</a>
 </nav>
@@ -137,9 +139,7 @@
   <h2>10. Contact Us</h2>
   <p>If you have any questions about our use of cookies or this Cookie Policy, please contact us:</p>
   <ul>
-    <li><strong>Email:</strong> <a href="mailto:support@emeraldwellness.health">support@emeraldwellness.health</a></li>
-    <li><strong>Address:</strong> Emerald Wellness, LLC, Columbus, Ohio</li>
-    <li><strong>Phone:</strong> 216-616-8995</li>
+    <li><strong>Email:</strong> <a href="mailto:info@emeraldwellness.health">info@emeraldwellness.health</a></li>
   </ul>
 
   <hr class="divider"/>
@@ -152,7 +152,7 @@
 </div>
 
 <footer>
-  © 2026 Emerald Wellness, LLC · All rights reserved · Columbus, Ohio
+  © 2026 Emerald Wellness, LLC · All rights reserved
 </footer>
 </body>
 </html>
