@@ -35,37 +35,37 @@
 </script>
 <style>
 :root{
-  --bg:#050d07;--bg2:#080f0a;--bg3:#0c160e;--panel:#0f1a11;
-  --em:#1a6b45;--emL:#2aab6a;--emXL:#40d888;--emPale:rgba(26,107,69,.12);
-  --gold:#c8a828;--goldL:#f0c84a;--goldPale:rgba(200,168,40,.12);
+  --bg:#fbfaf5;--bg2:#ffffff;--bg3:#f3f0e7;--panel:#ffffff;
+  --em:#0c6f49;--emL:#12a66b;--emXL:#0c6f49;--emPale:rgba(12,111,73,.08);
+  --gold:#b79a4b;--goldL:#80672a;--goldPale:rgba(216,200,143,.18);
   --red:#e05050;--redPale:rgba(224,80,80,.12);
-  --text:#e8f2ec;--mid:#b8d4c0;--dim:#8aac96;--border:rgba(255,255,255,.08);
+  --text:#06110c;--mid:#53635a;--dim:#6f7d75;--border:rgba(8,33,23,.12);
   --serif:'Playfair Display',Georgia,serif;--sans:'DM Sans',system-ui,sans-serif;--cinzel:'Cinzel',serif;
 }
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
-body{background:radial-gradient(circle at 20% 0%,rgba(64,216,136,.15),transparent 32%),var(--bg);color:var(--text);font-family:var(--sans);line-height:1.5}
+body{background:radial-gradient(circle at 16% 0,rgba(12,111,73,.10),transparent 34%),linear-gradient(180deg,var(--bg),var(--bg3));color:var(--text);font-family:var(--sans);line-height:1.5}
 a{color:inherit;text-decoration:none}
 button,input,textarea,select{font-family:inherit}
 .shell{min-height:100vh;display:grid;grid-template-columns:280px 1fr}
-.side{position:sticky;top:0;height:100vh;background:rgba(8,15,10,.88);border-right:1px solid var(--border);padding:24px;overflow:auto}
+.side{position:sticky;top:0;height:100vh;background:rgba(251,250,245,.94);border-right:1px solid var(--border);box-shadow:12px 0 36px rgba(10,24,17,.06);padding:24px;overflow:auto}
 .brand{display:flex;align-items:center;gap:12px;margin-bottom:28px}
 .diamond{width:28px;height:28px;border-radius:4px;background:linear-gradient(135deg,var(--em),var(--emXL));transform:rotate(45deg)}
 .brand span{font-family:var(--cinzel);letter-spacing:2px;font-size:13px;color:var(--emXL)}
 .brand-copy{display:flex;flex-direction:column;gap:4px;line-height:1.1}
 .brand-copy .brand-name{font-family:var(--cinzel);letter-spacing:2px;font-size:13px;color:var(--emXL)}
 .brand-copy .brand-tagline{font-family:var(--sans);letter-spacing:1.6px;text-transform:uppercase;font-size:9px;color:var(--goldL)}
-.status{border:1px solid var(--border);background:var(--bg3);border-radius:16px;padding:16px;margin-bottom:18px}
+.status{border:1px solid var(--border);background:#fff;border-radius:16px;padding:16px;margin-bottom:18px;box-shadow:0 14px 36px rgba(10,24,17,.06)}
 .status small{display:block;font-family:var(--cinzel);letter-spacing:2px;text-transform:uppercase;color:var(--dim);font-size:9px;margin-bottom:8px}
 .status strong{font-family:var(--serif);font-size:22px;color:var(--goldL)}
 .nav{display:flex;flex-direction:column;gap:8px}
 .nav button,.nav a{width:100%;border:1px solid transparent;background:transparent;color:var(--mid);text-align:left;padding:12px 14px;border-radius:12px;cursor:pointer;font-size:14px}
-.nav button.active,.nav button:hover,.nav a:hover{background:var(--emPale);border-color:rgba(64,216,136,.25);color:var(--emXL)}
+.nav button.active,.nav button:hover,.nav a:hover{background:var(--emPale);border-color:rgba(12,111,73,.24);color:var(--emXL)}
 .main{padding:28px;max-width:1240px;width:100%;margin:0 auto}
 .topbar{display:flex;justify-content:space-between;align-items:center;gap:16px;margin-bottom:28px}
-.mobile-select{display:none;background:var(--bg2);border:1px solid var(--border);color:var(--text);border-radius:12px;padding:12px;width:100%}
-.pill{display:inline-flex;align-items:center;gap:8px;border:1px solid rgba(64,216,136,.25);background:var(--emPale);color:var(--emXL);border-radius:999px;padding:7px 12px;font-size:12px;font-weight:700;letter-spacing:.4px}
-.hero{border:1px solid rgba(64,216,136,.25);background:linear-gradient(135deg,rgba(26,107,69,.18),rgba(200,168,40,.08));border-radius:28px;padding:34px;margin-bottom:24px}
+.mobile-select{display:none;background:#fff;border:1px solid var(--border);color:var(--text);border-radius:12px;padding:12px;width:100%}
+.pill{display:inline-flex;align-items:center;gap:8px;border:1px solid rgba(12,111,73,.24);background:var(--emPale);color:var(--emXL);border-radius:999px;padding:7px 12px;font-size:12px;font-weight:700;letter-spacing:.4px}
+.hero{border:1px solid rgba(216,200,143,.55);background:linear-gradient(135deg,rgba(255,255,255,.92),rgba(216,200,143,.16));border-radius:24px;padding:34px;margin-bottom:24px;box-shadow:0 22px 60px rgba(10,24,17,.08)}
 .eyebrow{font-family:var(--cinzel);letter-spacing:3px;text-transform:uppercase;color:var(--emXL);font-size:10px;margin-bottom:12px}
 h1,h2,h3{font-family:var(--serif);line-height:1.08}
 h1{font-size:clamp(36px,6vw,68px);max-width:820px}
@@ -73,11 +73,11 @@ h2{font-size:clamp(28px,4vw,42px);margin-bottom:12px}
 h3{font-size:22px;margin-bottom:10px}
 .lead{font-size:18px;color:var(--mid);max-width:860px;margin-top:18px}
 .actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:24px}
-.btn{border:0;border-radius:12px;background:linear-gradient(135deg,var(--em),var(--emL));color:white;padding:13px 20px;font-weight:700;cursor:pointer;display:inline-flex;align-items:center;gap:8px}
-.btn.gold{background:linear-gradient(135deg,var(--gold),var(--goldL));color:#071008}
-.btn.ghost{background:transparent;border:1px solid rgba(64,216,136,.3);color:var(--emXL)}
+.btn{border:0;border-radius:12px;background:linear-gradient(135deg,#06412e,#0c6f49);color:#fffaf0;padding:13px 20px;font-weight:800;cursor:pointer;display:inline-flex;align-items:center;gap:8px;box-shadow:0 12px 28px rgba(6,65,46,.20)}
+.btn.gold{background:linear-gradient(135deg,#d8c88f,#b79a4b);color:#071008;box-shadow:0 12px 28px rgba(128,103,42,.18)}
+.btn.ghost{background:transparent;border:1px solid rgba(12,111,73,.24);color:var(--emXL);box-shadow:none}
 .grid{display:grid;grid-template-columns:repeat(12,1fr);gap:18px}
-.card{grid-column:span 4;background:rgba(8,15,10,.82);border:1px solid var(--border);border-radius:20px;padding:22px}
+.card{grid-column:span 4;background:linear-gradient(145deg,#fff,rgba(243,240,231,.88));border:1px solid var(--border);border-radius:18px;padding:22px;box-shadow:0 18px 52px rgba(10,24,17,.08)}
 .card.wide{grid-column:span 8}
 .card.full{grid-column:1/-1}
 .metric{font-family:var(--serif);font-size:38px;color:var(--emXL);font-weight:900}
@@ -86,32 +86,33 @@ h3{font-size:22px;margin-bottom:10px}
 .tab{display:none}
 .tab.active{display:block}
 .compound-tools{display:grid;grid-template-columns:minmax(260px,380px) 1fr;gap:18px}
-.searchbox,.field input,.field textarea,.field select{width:100%;background:var(--bg3);border:1px solid var(--border);border-radius:12px;color:var(--text);padding:13px 14px;outline:none}
+.searchbox,.field input,.field textarea,.field select{width:100%;background:#fff;border:1px solid var(--border);border-radius:12px;color:var(--text);padding:13px 14px;outline:none}
 .field{display:flex;flex-direction:column;gap:8px;margin-bottom:14px}
 .field label{font-size:11px;color:var(--dim);letter-spacing:1.4px;text-transform:uppercase}
 .compound-list{display:flex;flex-direction:column;gap:10px;max-height:620px;overflow:auto;padding-right:4px}
-.compound{border:1px solid var(--border);background:var(--bg3);border-radius:14px;padding:14px;cursor:pointer}
-.compound:hover,.compound.selected{border-color:rgba(64,216,136,.35);background:var(--emPale)}
+.compound{border:1px solid var(--border);background:#fff;border-radius:14px;padding:14px;cursor:pointer;box-shadow:0 12px 30px rgba(10,24,17,.05)}
+.compound:hover,.compound.selected{border-color:rgba(12,111,73,.32);background:var(--emPale)}
 .compound-name{font-weight:800;color:var(--text)}
 .compound-type{font-size:12px;color:var(--dim);margin-top:2px}
 .tags{display:flex;gap:6px;flex-wrap:wrap;margin-top:10px}
 .tag{font-size:10px;text-transform:uppercase;letter-spacing:.7px;border:1px solid var(--border);border-radius:999px;color:var(--mid);padding:3px 8px}
 .detail-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:18px}
-.detail{background:var(--bg3);border:1px solid var(--border);border-radius:14px;padding:14px}
+.detail{background:#fff;border:1px solid var(--border);border-radius:14px;padding:14px}
 .detail b{display:block;color:var(--emXL);font-size:12px;text-transform:uppercase;letter-spacing:1px;margin-bottom:6px}
-.result{border:1px solid var(--border);background:var(--bg3);border-radius:14px;padding:15px;margin-top:12px}
+.result{border:1px solid var(--border);background:#fff;border-radius:14px;padding:15px;margin-top:12px}
 .result.warn{border-color:rgba(224,80,80,.4);background:var(--redPale)}
 .result.good{border-color:rgba(64,216,136,.35);background:var(--emPale)}
 .result.gold{border-color:rgba(240,200,74,.35);background:var(--goldPale)}
 .timeline{display:grid;gap:12px;margin-top:16px}
 .timeline .result{margin-top:0}
 .plans{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:18px}
-.plan{border:1px solid var(--border);background:var(--bg3);border-radius:18px;padding:20px}
-.plan.featured{border-color:rgba(240,200,74,.38);background:linear-gradient(135deg,rgba(200,168,40,.1),var(--bg3))}
+.plan{border:1px solid var(--border);background:#fff;border-radius:18px;padding:20px;box-shadow:0 14px 38px rgba(10,24,17,.06)}
+.plan.featured{border-color:rgba(216,200,143,.65);background:linear-gradient(135deg,rgba(216,200,143,.18),#fff)}
 .price{font-family:var(--serif);font-size:32px;color:var(--goldL);font-weight:900;margin:12px 0}
 ul{padding-left:18px;color:var(--mid)}
 li{margin:7px 0}
-.notice{font-size:12px;color:var(--dim);border-top:1px solid var(--border);padding-top:16px;margin-top:18px}
+.notice{font-size:12px;color:#2f3d35;border-top:1px solid var(--border);padding-top:16px;margin-top:18px}
+.hero .notice{background:rgba(216,200,143,.18);border:1px solid rgba(128,103,42,.26);border-radius:14px;color:#203229;padding:14px 16px}
 @media(max-width:980px){
   .shell{display:block}.side{position:relative;height:auto}.nav{display:none}.mobile-select{display:block}.main{padding:18px}
   .topbar{align-items:stretch;flex-direction:column}.card,.card.wide{grid-column:1/-1}.compound-tools{grid-template-columns:1fr}.plans{grid-template-columns:1fr}.detail-grid{grid-template-columns:1fr}
@@ -167,7 +168,7 @@ li{margin:7px 0}
       <div class="hero">
         <p class="eyebrow">Emerald Wellness App</p>
         <h1 id="appWelcomeTitle">Your Biology Is Unique. Your Health Plan Should Be Too.</h1>
-        <p class="lead">Your Member Command Center™ organizes supplements, vitamins, peptide pathways, bioregulators, medications, labs, wearable insights, provider-review questions and wellness planning into one connected experience.</p>
+        <p class="lead">Your Member Command Center™ brings supplements, vitamins, peptide education, bioregulators, medications, labs, wearable insights, stack awareness, and provider-review questions into one refined member experience.</p>
         <p class="notice">Emerald Wellness provides wellness intelligence and tracking tools. It does not provide medical diagnosis, medical treatment, prescriptions, guaranteed outcomes, or replace medical care. Always consult a qualified healthcare provider.</p>
         <div class="actions">
           <button class="btn" data-go="stack">Run Stack Check</button>
@@ -177,7 +178,7 @@ li{margin:7px 0}
         </div>
       </div>
       <div class="grid">
-        <div class="card"><div class="metric">500+</div><h3>Compounds Organized</h3><p class="copy">Supplements, vitamins, peptides, glandulars and bioregulators with provider-supported wellness guidance, quality documentation notes, certificates of analysis where available and safer stack awareness.</p></div>
+        <div class="card"><div class="metric">500+</div><h3>Compounds Organized</h3><p class="copy">Peptides, supplements, vitamins, glandulars, and bioregulators organized with timing, lab context, quality-documentation notes, stack awareness, and provider-review preparation.</p></div>
         <div class="card"><div class="metric">Q90</div><h3>Quarterly Lab Rhythm</h3><p class="copy">Labs every quarter to review what is working, what needs adjustment and what needs medical review.</p></div>
         <div class="card"><div class="metric">$1</div><h3>First 7 Days</h3><p class="copy">Intro setup charge, then selected recurring membership after the first seven days.</p></div>
         <div class="card wide">
@@ -227,8 +228,8 @@ li{margin:7px 0}
     <section id="database" class="tab">
       <div class="hero">
         <p class="eyebrow">Education Database</p>
-        <h2>Definitions, best time to take, food guidance, interactions and complementary stack ideas.</h2>
-        <p class="lead">Search peptides, vitamins, supplements, bioregulators and supportive protocols.</p>
+        <h2>Names, timing, food guidance, interaction awareness, lab context, and complementary stack ideas.</h2>
+        <p class="lead">Search peptides, vitamins, supplements, bioregulators, and supportive protocols in one polished education library.</p>
       </div>
       <div class="compound-tools">
         <div>
@@ -276,7 +277,7 @@ li{margin:7px 0}
         <p class="lead">Protocol language stays educational. Emerald can organize protocols, but treatment decisions belong with a qualified clinician.</p>
       </div>
       <div class="grid">
-        <div class="card"><h3>Peptide Protocols</h3><p class="copy">Recovery, metabolic, immune, sleep, cognitive and longevity organization.</p></div>
+        <div class="card"><h3>Peptide Intelligence</h3><p class="copy">Goal, timing, cycle, lab, quality-documentation, and provider-review organization for peptide education.</p></div>
         <div class="card"><h3>Bioregulators</h3><p class="copy">Education around organ-system signaling peptides and cycle planning.</p></div>
         <div class="card"><h3>Vitamins & Supplements</h3><p class="copy">Foundational nutrient timing, food guidance and interaction notes.</p></div>
         <div class="card"><h3>Parasite / Yeast / Fungal Support</h3><p class="copy">Education around gut terrain, provider-guided testing, die-off support, binders, liver support and microbiome rebuilding.</p></div>

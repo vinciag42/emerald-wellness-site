@@ -211,6 +211,7 @@ function ewDescription(name, category) {
   if (lower.includes("hormone") || lower.includes("thyroid") || lower.includes("testosterone") || lower.includes("menopause")) return "Organize hormone and metabolism education, labs, symptoms, lifestyle patterns, and provider discussion points.";
   if (lower.includes("brain") || lower.includes("mood") || lower.includes("memory") || lower.includes("burnout") || lower.includes("adhd")) return "Support cognitive and emotional wellness education through sleep, stress, nutrients, routines, and tracking.";
   if (lower.includes("gut") || lower.includes("digestive") || lower.includes("microbiome")) return "Organize digestive education, symptom patterns, food timing, microbiome support, and provider-review questions.";
+  if (lower.includes("peptide")) return "A refined peptide intelligence workspace for organizing goals, timing, cycles, lab context, quality documentation, stack awareness, and provider-review questions.";
   if (lower.includes("heart") || lower.includes("cholesterol") || lower.includes("pressure") || lower.includes("inflammation") || lower.includes("longevity")) return "Track cardiovascular and longevity education, biomarkers, inflammation patterns, movement, sleep, and quarterly reviews.";
   return `A focused ${category.toLowerCase()} education module with module score, assessment, symptoms, labs, Protocol Vault links, BodyScan notes, daily tasks, reports, and learning resources.`;
 }
@@ -223,6 +224,7 @@ function ewBestFor(name, category) {
   if (lower.includes("mold")) return "Members with mold exposure concerns who want organized awareness, respiratory tracking, and discussion prompts.";
   if (lower.includes("heavy metal")) return "Members tracking exposure questions, lab-review planning, and safer environmental wellness education.";
   if (lower.includes("toxin") || lower.includes("chemical") || lower.includes("plastic")) return "Members reviewing toxin exposure, household products, plastics, air, water, and sensitivity patterns.";
+  if (lower.includes("peptide")) return "Members who want elevated peptide education, clearer stack context, lab-ready notes, sourcing and quality questions, and clinician-review readiness.";
   return `Members focused on ${name.toLowerCase()} education, tracking, and personalized wellness insights.`;
 }
 
@@ -237,6 +239,54 @@ function ewLabs(category) {
 
 function ewModuleOverrides(name) {
   const lower = name.toLowerCase();
+  if (lower.includes("peptide")) {
+    return {
+      features: [
+        "Peptide goal and cycle organization",
+        "Timing, route, and protocol notes",
+        "Lab and symptom context",
+        "Stack and interaction awareness",
+        "Quality documentation checklist",
+        "Provider-review questions"
+      ],
+      questions: [
+        "Which peptide education topic are you organizing?",
+        "What goal, symptom pattern, lab context, or protocol question should Emerald track?",
+        "What supplements, vitamins, medications, or bioregulators should be reviewed alongside this peptide question?",
+        "What sourcing, quality documentation, or provider-review questions do you want prepared?"
+      ],
+      symptoms: [
+        "Recovery pattern",
+        "Energy pattern",
+        "Sleep or focus change",
+        "Digestive response",
+        "Injection-site note",
+        "Side-effect concern",
+        "Provider question"
+      ],
+      protocols: [
+        "Peptide intelligence overview",
+        "Quality documentation checklist",
+        "Timing and cycle notes",
+        "Stack interaction awareness",
+        "Provider-review preparation"
+      ],
+      tasks: [
+        "Log current peptide question",
+        "Add cycle or timing note",
+        "Record symptom or lab context",
+        "Review stack interaction prompts",
+        "Save one provider-review question"
+      ],
+      resources: [
+        "Peptide education foundations",
+        "Questions to ask before starting a protocol",
+        "Quality documentation and sourcing review",
+        "How labs support peptide conversations"
+      ],
+      recommendationKeywords: "peptide peptides bpc tb cjc ipamorelin semax selank ghk-cu nad stack cycle timing quality sourcing coa labs provider review"
+    };
+  }
   if (lower.includes("energy") && lower.includes("vitality")) {
     return {
       icon: "✦",
