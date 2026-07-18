@@ -124,10 +124,14 @@ h2{font-size:clamp(32px,4vw,42px);font-weight:800}
 .package-card .btn{width:100%;justify-content:center;color:white;border-color:rgba(244,214,141,.42)}
 .products{display:grid;grid-template-columns:repeat(4,1fr);gap:24px}
 .product{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:18px;box-shadow:0 12px 30px rgba(0,0,0,.04)}
-.product-img{height:195px;border-radius:8px;background:linear-gradient(135deg,#e7efe4,#f8f3eb);position:relative;overflow:hidden;margin-bottom:18px}
-.product-img:before{content:"";position:absolute;inset:22px;border-radius:8px;background:linear-gradient(145deg,#07553f,#003f31);box-shadow:0 12px 30px rgba(0,83,63,.18)}
-.product-img.bottle:before{left:70px;right:70px;border-radius:18px 18px 28px 28px}.product-img.bottle:after{content:"";position:absolute;top:22px;left:82px;right:82px;height:22px;border-radius:8px;background:var(--gold)}
-.product-img.lab:before{background:linear-gradient(90deg,#fff,#fff 58%,#07553f 58%);border:1px solid #ddd}.product-img.lab:after{content:"LAB\A COLLECTION\A KIT";white-space:pre;position:absolute;top:76px;left:70px;color:#203b34;font-size:14px;letter-spacing:2px}
+.product-img{height:195px;border-radius:8px;background:linear-gradient(135deg,#e7efe4,#f8f3eb);position:relative;overflow:hidden;margin-bottom:18px;border:1px solid rgba(0,83,63,.08)}
+.product-img img{width:100%;height:100%;object-fit:cover;object-position:center;display:block;transition:transform .3s ease}
+.product:hover .product-img img{transform:scale(1.035)}
+.product-img:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,83,63,0) 44%,rgba(0,83,63,.32));pointer-events:none}
+.product-img.peptide img{object-position:center}
+.product-img.glp img{object-position:center 42%}
+.product-img.lab img{object-position:center}
+.product-img.hormone img{object-position:center 36%}
 .product h3{font-size:21px;color:#143e35;margin-bottom:8px}.product p{font-size:14px;color:#516963;min-height:52px}.product .btn{width:100%;padding:10px 14px;margin-top:12px;font-size:14px}
 .center{text-align:center;margin-top:28px}
 .safety{background:#eaf4e9;border-top:1px solid #d3e3d1;border-bottom:1px solid #d3e3d1;padding:20px 0;color:#15493d}
@@ -303,10 +307,10 @@ h2{font-size:clamp(32px,4vw,42px);font-weight:800}
         <h2>Curated Solutions for Your Wellness Journey</h2>
       </div>
       <div class="products">
-        <article class="product"><div class="product-img"></div><h3>GLP-1 Support Options</h3><p>Support your wellness goals with provider-reviewed options.</p><a class="btn" href="https://shop.emeraldwellness.health/products-list/collections/weight-loss">View Products</a></article>
-        <article class="product"><div class="product-img bottle"></div><h3>Peptide Wellness Support</h3><p>Explore peptide pathways connected to licensed provider review, U.S.-sourced 503B pharmacy partners where applicable, and quality documentation when available.</p><a class="btn" href="https://shop.emeraldwellness.health/products-list">View Products</a></article>
-        <article class="product"><div class="product-img lab"></div><h3>Lab Panels</h3><p>Lab-informed insights to help you and your provider track progress.</p><a class="btn" href="https://shop.emeraldwellness.health/products-list/collections/medical-services">View Products</a></article>
-        <article class="product"><div class="product-img"></div><h3>Hormone Wellness Review</h3><p>Provider-reviewed hormone wellness support.</p><a class="btn" href="https://shop.emeraldwellness.health/products-list/collections/trt-hrt">View Products</a></article>
+        <article class="product"><div class="product-img glp"><img src="images/shop-weight-loss-hispanic-female.png" alt="Emerald Wellness GLP-1 support and weight wellness lifestyle"/></div><h3>GLP-1 Support Options</h3><p>Support your wellness goals with provider-reviewed options.</p><a class="btn" href="https://shop.emeraldwellness.health/products-list/collections/weight-loss">View Products</a></article>
+        <article class="product"><div class="product-img peptide"><img src="images/emerald-peptides-real-results.png" alt="Emerald Wellness peptide wellness bottles and science-backed peptide support"/></div><h3>Peptide Wellness Support</h3><p>Explore peptide pathways connected to licensed provider review, U.S.-sourced 503B pharmacy partners where applicable, and quality documentation when available.</p><a class="btn" href="https://shop.emeraldwellness.health/products-list">View Products</a></article>
+        <article class="product"><div class="product-img lab"><img src="images/emerald-longevity-solutions-labs.png" alt="Emerald Wellness lab panels and science-backed longevity testing"/></div><h3>Lab Panels</h3><p>Lab-informed insights to help you and your provider track progress.</p><a class="btn" href="https://shop.emeraldwellness.health/products-list/collections/medical-services">View Products</a></article>
+        <article class="product"><div class="product-img hormone"><img src="images/shop-health-vitality-young-couple.png" alt="Smiling couple representing Emerald Wellness hormone wellness review"/></div><h3>Hormone Wellness Review</h3><p>Provider-reviewed hormone wellness support.</p><a class="btn" href="https://shop.emeraldwellness.health/products-list/collections/trt-hrt">View Products</a></article>
       </div>
       <div class="center"><a class="btn primary" href="https://shop.emeraldwellness.health/products-list"><span class="icon">+</span>Shop All Products</a></div>
     </div>
