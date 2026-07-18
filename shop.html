@@ -122,6 +122,19 @@ h2{font-size:clamp(32px,4vw,42px);font-weight:800}
 .categories{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
 .category{display:flex;align-items:center;gap:28px;background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:28px 30px;min-height:132px;box-shadow:0 10px 24px rgba(0,0,0,.025)}
 .category h3{font-size:22px;color:#143e35;flex:1}.arrow{font-size:32px;color:var(--emerald)}
+.package-section{background:linear-gradient(135deg,#062219,#0d3f30 58%,#07553f);color:white}
+.package-section .section-title h2{color:white}.package-section .section-title .eyebrow{color:#f4d68d}
+.package-section .section-title .eyebrow:before,.package-section .section-title .eyebrow:after{background:#f4d68d}
+.package-intro{max-width:820px;margin:-18px auto 30px;text-align:center;color:#f4f0e6;font-size:18px;line-height:1.7}
+.package-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.package-card{background:rgba(255,255,255,.07);border:1px solid rgba(244,214,141,.3);border-radius:14px;padding:26px;box-shadow:0 18px 42px rgba(0,0,0,.18)}
+.package-card.featured{border-color:rgba(244,214,141,.7);background:rgba(255,255,255,.11)}
+.package-tag{display:block;font-family:var(--cinzel);letter-spacing:2px;text-transform:uppercase;color:#f4d68d;font-size:11px;margin-bottom:10px}
+.package-card h3{font-size:24px;margin-bottom:12px;color:#f4d68d;text-shadow:0 2px 14px rgba(0,0,0,.22)}.package-card p{color:#d9ebe5;font-size:14px;min-height:68px}
+.package-price{font-family:var(--serif);font-size:32px;color:#fff3c4;margin:14px 0 10px;line-height:1;text-shadow:0 2px 14px rgba(0,0,0,.25)}
+.package-price small{display:block;font-family:var(--sans);font-size:12px;color:#b9d4c9;margin-top:7px}
+.package-list{list-style:none;padding:0;margin:14px 0 20px}.package-list li{border-top:1px solid rgba(255,255,255,.14);padding:8px 0;color:#e7f1ec;font-size:14px;margin:0}
+.package-card .btn{width:100%;justify-content:center;color:white;border-color:rgba(244,214,141,.42)}
 .products{display:grid;grid-template-columns:repeat(4,1fr);gap:24px}
 .product{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:18px;box-shadow:0 12px 30px rgba(0,0,0,.04)}
 .product-img{height:195px;border-radius:8px;background:linear-gradient(135deg,#e7efe4,#f8f3eb);position:relative;overflow:hidden;margin-bottom:18px}
@@ -141,14 +154,14 @@ h2{font-size:clamp(32px,4vw,42px);font-weight:800}
 .footer-disclaimer{border-top:1px solid rgba(255,255,255,.18);margin-top:28px;padding-top:18px;color:#d9ebe5;font-size:13px;line-height:1.7}
 .legal{border-top:1px solid rgba(255,255,255,.2);margin-top:16px;padding-top:16px;display:flex;justify-content:space-between;gap:16px;font-size:12px;color:#d9ebe5}
 .legal-links{display:flex;gap:22px}
-@media(max-width:980px){.links{display:none}.hero-grid,.trust-row,.steps,.categories,.products,.footer-grid{grid-template-columns:1fr 1fr}.visual{min-height:430px}.brand{font-size:22px}.brand-copy .brand-name{font-size:22px}}
-@media(max-width:640px){.container{width:min(100% - 28px,1180px)}.hero{padding-top:38px}.hero-grid,.trust-row,.steps,.categories,.products,.footer-grid{grid-template-columns:1fr}h1{font-size:42px}.visual{display:none}.actions .btn,.nav-actions .btn{width:100%}.nav-actions{display:none}.safety .container{align-items:flex-start;text-align:left}.legal{flex-direction:column}.footer{padding-bottom:28px}}
+@media(max-width:980px){.links{display:none}.hero-grid,.trust-row,.steps,.categories,.package-grid,.products,.footer-grid{grid-template-columns:1fr 1fr}.visual{min-height:430px}.brand{font-size:22px}.brand-copy .brand-name{font-size:22px}}
+@media(max-width:640px){.container{width:min(100% - 28px,1180px)}.hero{padding-top:38px}.hero-grid,.trust-row,.steps,.categories,.package-grid,.products,.footer-grid{grid-template-columns:1fr}h1{font-size:42px}.visual{display:none}.actions .btn,.nav-actions .btn{width:100%}.nav-actions{display:none}.safety .container{align-items:flex-start;text-align:left}.legal{flex-direction:column}.footer{padding-bottom:28px}}
 </style>
 </head>
 <body>
 <nav class="nav" aria-label="Shop navigation">
   <div class="container nav-inner">
-    <a class="brand" href="/shop"><span class="brand-mark"><span></span></span><span class="brand-copy"><span class="brand-name">Emerald Wellness Shop</span><span class="brand-tagline">Optimize Your Life by Knowing Your Biology.™</span></span></a>
+    <a class="brand" href="/shop"><span class="brand-mark"><span></span></span><span class="brand-copy"><span class="brand-name">Emerald Wellness Shop</span><span class="brand-tagline">Optimize Your Life by Knowing Your Biology.</span></span></a>
     <div class="links">
       <a href="#products">Products</a>
       <a href="#how">How It Works</a>
@@ -157,8 +170,8 @@ h2{font-size:clamp(32px,4vw,42px);font-weight:800}
       <a href="mailto:info@emeraldwellness.health">Contact</a>
     </div>
     <div class="nav-actions">
-      <a class="btn primary" href="https://shop.emeraldwellness.health/products-list"><span class="icon">▢</span>Shop Products</a>
-      <a class="btn" href="/app"><span class="icon">♙</span>Login</a>
+      <a class="btn primary" href="https://shop.emeraldwellness.health/products-list"><span class="icon">+</span>Shop Products</a>
+      <a class="btn" href="/app"><span class="icon">&gt;</span>Login</a>
     </div>
   </div>
 </nav>
@@ -170,14 +183,14 @@ h2{font-size:clamp(32px,4vw,42px);font-weight:800}
         <h1>Physician-Guided Wellness Support, Connected to Your Health Intelligence</h1>
         <p class="lead">Explore peptides, GLP-1 support, hormone wellness, lab panels, and vitality tools designed to work with provider review, safer tracking, quality documentation, and the Emerald Wellness personal health intelligence platform.</p>
         <div class="actions">
-          <a class="btn primary" href="https://shop.emeraldwellness.health/products-list"><span class="icon">▢</span>Shop Products</a>
-          <a class="btn" href="#how"><span class="icon">▷</span>Learn How It Works</a>
+          <a class="btn primary" href="https://shop.emeraldwellness.health/products-list"><span class="icon">+</span>Shop Products</a>
+          <a class="btn" href="#how"><span class="icon">i</span>Learn How It Works</a>
         </div>
         <div class="trust-row" aria-label="Trust signals">
-          <div class="trust"><span class="trust-icon">♙</span><span>Provider Review<br/>Where Required</span></div>
-          <div class="trust"><span class="trust-icon">♜</span><span>Lab-Informed<br/>Planning</span></div>
-          <div class="trust"><span class="trust-icon">⌂</span><span>Secure<br/>Checkout</span></div>
-          <div class="trust"><span class="trust-icon">☰</span><span>Educational<br/>Wellness Intelligence</span></div>
+          <div class="trust"><span class="trust-icon">?</span><span>Provider Review<br/>Where Required</span></div>
+          <div class="trust"><span class="trust-icon">?</span><span>Lab-Informed<br/>Planning</span></div>
+          <div class="trust"><span class="trust-icon">S</span><span>Secure<br/>Checkout</span></div>
+          <div class="trust"><span class="trust-icon">?</span><span>Educational<br/>Wellness Intelligence</span></div>
         </div>
       </div>
       <div class="visual" aria-label="Emerald Wellness product-style visual">
@@ -197,10 +210,10 @@ h2{font-size:clamp(32px,4vw,42px);font-weight:800}
         <h2>Personalized. Guided. Intelligent.</h2>
       </div>
       <div class="steps">
-        <article class="step"><div class="step-icon">♧</div><h3>Choose Your Focus</h3><p>Browse categories and products aligned with your wellness goals.</p><span class="step-num">1</span></article>
-        <article class="step"><div class="step-icon">▤</div><h3>Complete Intake or Provider Review</h3><p>Answer a few questions or complete a provider review where required.</p><span class="step-num">2</span></article>
-        <article class="step"><div class="step-icon">▥</div><h3>Track Inside Emerald Wellness</h3><p>Monitor progress, labs, and insights in your secure Member Command Center™.</p><span class="step-num">3</span></article>
-        <article class="step"><div class="step-icon">☵</div><h3>Prepare Smarter Provider Questions</h3><p>Get personalized summaries to support more informed conversations.</p><span class="step-num">4</span></article>
+        <article class="step"><div class="step-icon">?</div><h3>Choose Your Focus</h3><p>Browse categories and products aligned with your wellness goals.</p><span class="step-num">1</span></article>
+        <article class="step"><div class="step-icon">?</div><h3>Complete Intake or Provider Review</h3><p>Answer a few questions or complete a provider review where required.</p><span class="step-num">2</span></article>
+        <article class="step"><div class="step-icon">?</div><h3>Track Inside Emerald Wellness</h3><p>Monitor progress, labs, and insights in your secure Member Command Center.</p><span class="step-num">3</span></article>
+        <article class="step"><div class="step-icon">?</div><h3>Prepare Smarter Provider Questions</h3><p>Get personalized summaries to support more informed conversations.</p><span class="step-num">4</span></article>
       </div>
     </div>
   </section>
@@ -212,14 +225,91 @@ h2{font-size:clamp(32px,4vw,42px);font-weight:800}
         <h2>Explore Wellness Solutions</h2>
       </div>
       <div class="categories">
-        <a class="category" href="/shop/weight-loss-glp1"><span class="category-icon">▣</span><h3>Weight Loss &<br/>GLP-1 Support</h3><span class="arrow">›</span></a>
-        <a class="category" href="/shop/vitality-longevity"><span class="category-icon">⚡</span><h3>Energy &<br/>Vitality</h3><span class="arrow">›</span></a>
-        <a class="category" href="/shop/peptide-wellness"><span class="category-icon">⬡</span><h3>Peptides</h3><span class="arrow">›</span></a>
-        <a class="category" href="/shop/hormone-wellness"><span class="category-icon">♀</span><h3>Hormone<br/>Wellness</h3><span class="arrow">›</span></a>
-        <a class="category" href="/shop/labs-testing"><span class="category-icon">♜</span><h3>Labs &<br/>Testing</h3><span class="arrow">›</span></a>
-        <a class="category" href="/shop/recovery-performance"><span class="category-icon">♞</span><h3>Recovery &<br/>Performance</h3><span class="arrow">›</span></a>
-        <a class="category" href="/shop/vitality-longevity"><span class="category-icon">✾</span><h3>Vitality &<br/>Longevity</h3><span class="arrow">›</span></a>
+        <a class="category" href="/shop-weight-loss-glp1.html"><span class="category-icon">?</span><h3>Weight Loss &<br/>GLP-1 Support</h3><span class="arrow">&gt;</span></a>
+        <a class="category" href="/shop-vitality-longevity.html"><span class="category-icon">?</span><h3>Energy &<br/>Vitality</h3><span class="arrow">&gt;</span></a>
+        <a class="category" href="/shop-peptide-wellness.html"><span class="category-icon">?</span><h3>Peptides</h3><span class="arrow">&gt;</span></a>
+        <a class="category" href="/shop-hormone-wellness.html"><span class="category-icon">?</span><h3>Hormone<br/>Wellness</h3><span class="arrow">&gt;</span></a>
+        <a class="category" href="/shop-labs-testing.html"><span class="category-icon">?</span><h3>Labs &<br/>Testing</h3><span class="arrow">&gt;</span></a>
+        <a class="category" href="/shop-recovery-performance.html"><span class="category-icon">?</span><h3>Recovery &<br/>Performance</h3><span class="arrow">&gt;</span></a>
+        <a class="category" href="/shop-vitality-longevity.html"><span class="category-icon">?</span><h3>Vitality &<br/>Longevity</h3><span class="arrow">&gt;</span></a>
       </div>
+    </div>
+  </section>
+
+  <section id="peptide-packages" class="section package-section">
+    <div class="container">
+      <div class="section-title">
+        <p class="eyebrow">Most Popular</p>
+        <h2>Most popular peptide and GLP-1 packages.</h2>
+      </div>
+      <p class="package-intro">Emerald Wellness brings the most requested shop pathways into a cleaner buying experience, pairing current catalog items with supply planning, provider-review awareness, and member tracking so every purchase feels more organized from the start.</p>
+      <div class="package-grid">
+        <article class="package-card featured">
+          <span class="package-tag">Recovery</span>
+          <h3>Recovery & Repair</h3>
+          <div class="package-price">$264.95 <small>Current catalog total</small></div>
+          <p>For soreness patterns, tissue-support conversations, mobility tracking, and recovery planning.</p>
+          <ul class="package-list"><li>Wolverine BPC-157 / TB-500 - $250.00</li><li>Full injection support kit - $14.95</li><li>Pairs with recovery tracking</li></ul>
+          <a class="btn" href="/shop-peptide-wellness.html?v=direct-products-1#shop-bundle-recovery">View Package</a>
+        </article>
+        <article class="package-card">
+          <span class="package-tag">Performance</span>
+          <h3>Strength & Recovery</h3>
+          <div class="package-price">$194.95 <small>Current catalog total</small></div>
+          <p>For sleep-recovery rhythm, performance planning, training load notes, and lab-informed questions.</p>
+          <ul class="package-list"><li>CJC-1295 / Ipamorelin - $180.00</li><li>Full injection support kit - $14.95</li><li>Pairs with performance tracking</li></ul>
+          <a class="btn" href="/shop-peptide-wellness.html?v=direct-products-1#shop-bundle-strength">View Package</a>
+        </article>
+        <article class="package-card">
+          <span class="package-tag">Longevity</span>
+          <h3>Cellular Longevity</h3>
+          <div class="package-price">$476.95 <small>Current catalog total</small></div>
+          <p>For energy, mitochondrial support education, aging-well tracking, and biomarker conversations.</p>
+          <ul class="package-list"><li>NAD+ 500mg - $180.00</li><li>MOTS-C 10mg - $142.00</li><li>SS-31 10mg - $140.00</li><li>Full injection support kit - $14.95</li></ul>
+          <a class="btn" href="/shop-peptide-wellness.html?v=direct-products-1#shop-bundle-longevity">View Package</a>
+        </article>
+        <article class="package-card">
+          <span class="package-tag">Energy & Vitality</span>
+          <h3>Energy &amp; Vitality Path</h3>
+          <div class="package-price">$194.95 <small>Current catalog total</small></div>
+          <p>For members focused on energy rhythm, daily vitality, focus patterns, and organized follow-through.</p>
+          <ul class="package-list"><li>NAD+ 500mg - $180.00</li><li>Full injection support kit - $14.95</li><li>Pairs with energy and lab tracking</li></ul>
+          <a class="btn" href="/shop-peptide-wellness.html?v=direct-products-1#shop-bundle-energy">View Package</a>
+        </article>
+        <article class="package-card">
+          <span class="package-tag">Mental Focus</span>
+          <h3>Focus & Clarity</h3>
+          <div class="package-price">$229.95 <small>Current catalog total</small></div>
+          <p>For members tracking focus, calm, mental clarity, brain fog patterns, and daily output.</p>
+          <ul class="package-list"><li>Semax 11mg - $120.00</li><li>Selank 5mg - $95.00</li><li>Full injection support kit - $14.95</li></ul>
+          <a class="btn" href="/shop-peptide-wellness.html?v=direct-products-1#shop-bundle-focus">View Package</a>
+        </article>
+        <article class="package-card">
+          <span class="package-tag">Sexual Health</span>
+          <h3>Vitality & Intimacy</h3>
+          <div class="package-price">From $25.00 <small>Provider-review products</small></div>
+          <p>For libido, confidence, hormone-aware wellness conversations, and provider-review questions.</p>
+          <ul class="package-list"><li>PT-141 pathway - provider-review pricing</li><li>Tadalafil/Oxytocin ODT - from $55.00</li><li>Tadalafil ODT - from $25.00</li></ul>
+          <a class="btn" href="/shop-peptide-wellness.html?v=direct-products-1#shop-bundle-sexual-health">View Package</a>
+        </article>
+        <article class="package-card">
+          <span class="package-tag">Skin, Hair & Nails</span>
+          <h3>Regeneration Glow</h3>
+          <div class="package-price">$269.95 <small>Current catalog total</small></div>
+          <p>For members focused on skin, hair, nails, collagen-support education, and visible wellness tracking.</p>
+          <ul class="package-list"><li>GHK-Cu 50mg - $130.00</li><li>KPV 10mg - $125.00</li><li>Full injection support kit - $14.95</li></ul>
+          <a class="btn" href="/shop-peptide-wellness.html?v=direct-products-1#shop-bundle-regeneration">View Package</a>
+        </article>
+        <article class="package-card">
+          <span class="package-tag">GLP-1 Support</span>
+          <h3>Metabolic Reset Path</h3>
+          <div class="package-price">$284.95 <small>Current catalog total</small></div>
+          <p>For weight-management members who want GLP-1 product interest organized with provider review, supplies, and follow-through.</p>
+          <ul class="package-list"><li>Tirzepatide 5mg - $150.00</li><li>Doctor's consultation - $120.00</li><li>Full injection support kit - $14.95</li></ul>
+          <a class="btn" href="/shop-peptide-wellness.html?v=direct-products-1#shop-bundle-glp1">View Package</a>
+        </article>
+      </div>
+      <div class="center"><a class="btn primary" href="/shop-peptide-wellness.html?v=direct-products-1#peptide-bundles"><span class="icon">+</span>Explore All Popular Packages</a></div>
     </div>
   </section>
 
@@ -235,13 +325,13 @@ h2{font-size:clamp(32px,4vw,42px);font-weight:800}
         <article class="product"><div class="product-img lab"></div><h3>Lab Panels</h3><p>Lab-informed insights to help you and your provider track progress.</p><a class="btn" href="https://shop.emeraldwellness.health/products-list/collections/medical-services">View Products</a></article>
         <article class="product"><div class="product-img"></div><h3>Hormone Wellness Review</h3><p>Provider-reviewed hormone wellness support.</p><a class="btn" href="https://shop.emeraldwellness.health/products-list/collections/trt-hrt">View Products</a></article>
       </div>
-      <div class="center"><a class="btn primary" href="https://shop.emeraldwellness.health/products-list"><span class="icon">▢</span>Shop All Products</a></div>
+      <div class="center"><a class="btn primary" href="https://shop.emeraldwellness.health/products-list"><span class="icon">+</span>Shop All Products</a></div>
     </div>
   </section>
 
   <section id="labs" class="safety">
     <div class="container">
-      <span class="safety-icon">✓</span>
+      <span class="safety-icon">?</span>
       <p>Educational and provider-guided wellness support only. Emerald Wellness does not diagnose, treat, cure, prescribe, or replace medical care. Prescription products require qualified licensed provider review where available.</p>
     </div>
   </section>
@@ -250,26 +340,26 @@ h2{font-size:clamp(32px,4vw,42px);font-weight:800}
 <footer class="footer">
   <div class="container footer-grid">
     <div>
-      <a class="brand" href="/shop"><span class="brand-mark"></span><span class="brand-copy"><span class="brand-name">Emerald<br/>Wellness Shop</span><span class="brand-tagline">Optimize Your Life by Knowing Your Biology.™</span></span></a>
+      <a class="brand" href="/shop"><span class="brand-mark"></span><span class="brand-copy"><span class="brand-name">Emerald<br/>Wellness Shop</span><span class="brand-tagline">Optimize Your Life by Knowing Your Biology.</span></span></a>
       <p>Emerald Wellness connects products, labs, protocols, and personal health intelligence in one trusted wellness ecosystem.</p>
-      <div class="social"><span>◎</span><span>f</span><span>▶</span><span>in</span></div>
+      <a class="footer-contact" href="mailto:info@emeraldwellness.health">info@emeraldwellness.health</a>
     </div>
     <div>
       <h4>Shop</h4>
       <a href="https://shop.emeraldwellness.health/products-list">All Products</a>
-      <a href="/shop/peptide-wellness">Peptides</a>
-      <a href="/shop/weight-loss-glp1">GLP-1 Support</a>
-      <a href="/shop/hormone-wellness">Hormone Wellness</a>
-      <a href="/shop/labs-testing">Labs & Testing</a>
-      <a href="/shop/vitality-longevity">Energy & Vitality</a>
-      <a href="/shop/vitality-longevity">Vitality & Longevity</a>
+      <a href="/shop-peptide-wellness.html">Peptides</a>
+      <a href="/shop-weight-loss-glp1.html">GLP-1 Support</a>
+      <a href="/shop-hormone-wellness.html">Hormone Wellness</a>
+      <a href="/shop-labs-testing.html">Labs & Testing</a>
+      <a href="/shop-vitality-longevity.html">Energy & Vitality</a>
+      <a href="/shop-vitality-longevity.html">Vitality & Longevity</a>
     </div>
     <div>
       <h4>Company</h4>
       <a href="/">About Us</a>
       <a href="#how">How It Works</a>
-      <a href="/app">Our Providers</a>
-      <a href="#products">FAQs</a>
+      <a href="/provider-network">Provider Network</a>
+      <a href="/safety-compliance.html#faq">FAQs</a>
       <a href="mailto:info@emeraldwellness.health">Contact Us</a>
     </div>
     <div>
@@ -283,12 +373,17 @@ h2{font-size:clamp(32px,4vw,42px);font-weight:800}
     Educational and provider-guided wellness support only. Emerald Wellness does not diagnose, treat, cure, prescribe, or replace medical care. Prescription products require qualified licensed provider review where available.
   </div>
   <div class="container legal">
-    <span>© 2026 Emerald Wellness Shop. All rights reserved.</span>
-    <span class="legal-links"><a href="/privacy-policy.html">Privacy Policy</a><a href="/terms-of-service.html">Terms of Service</a><a href="/medical-disclaimer.html">Refund Policy</a></span>
+    <span>(c) 2026 Emerald Wellness Shop. All rights reserved.</span>
+    <span class="legal-links"><a href="/privacy-policy.html">Privacy Policy</a><a href="/terms-of-service.html">Terms of Service</a><a href="/medical-disclaimer.html">Medical Disclaimer</a></span>
   </div>
 </footer>
 </body>
 </html>
+
+
+
+
+
 
 
 

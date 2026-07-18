@@ -1,9 +1,9 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Privacy Policy | Emerald Wellness</title>
+  <title>Privacy Policy | Emerald Wellness Health</title>
   <link rel="icon" href="favicon.svg" type="image/svg+xml" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -11,40 +11,53 @@
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     :root {
-      --bg: #060e08; --bg2: #0a1610; --emerald: #4ade80; --emerald-mid: #22c55e;
-      --white: #f0f0eb; --muted: #7a9880; --border: rgba(255,255,255,0.07);
+      --bg: #fbfaf5;
+      --bg2: #fffdf8;
+      --bg3: #f3f0e7;
+      --emerald: #0c6f49;
+      --emerald-dark: #06412e;
+      --gold: #b79a4b;
+      --gold-dark: #80672a;
+      --ink: #06110c;
+      --slate: #53635a;
+      --muted: #6f7d75;
+      --line: rgba(8,33,23,.12);
+      --gold-line: rgba(216,200,143,.55);
+      --serif: 'Playfair Display', Georgia, serif;
+      --sans: 'DM Sans', system-ui, sans-serif;
     }
-    body { background: var(--bg); color: var(--white); font-family: 'DM Sans', sans-serif; font-size: 15px; line-height: 1.8; }
-    nav { display: flex; align-items: center; justify-content: space-between; padding: 20px 40px; border-bottom: 1px solid var(--border); }
-    .nav-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; font-size: 1.1rem; font-weight: 600; color: var(--white); }
+    body { background: radial-gradient(circle at 16% 0, rgba(12,111,73,.10), transparent 34%), linear-gradient(180deg, var(--bg), var(--bg3)); color: var(--ink); font-family: var(--sans); font-size: 15px; line-height: 1.8; }
+    .notice-bar { background: rgba(216,200,143,.18); border-bottom: 1px solid var(--gold-line); padding: 11px 24px; text-align: center; font-size: 12.5px; color: #203229; line-height: 1.5; }
+    .notice-bar strong { color: var(--emerald-dark); }
+    nav { display: flex; align-items: center; justify-content: space-between; gap: 18px; padding: 20px 40px; border-bottom: 1px solid var(--line); background: rgba(251,250,245,.92); backdrop-filter: blur(18px); }
+    .nav-logo { display: flex; align-items: center; gap: 12px; text-decoration: none; font-size: 1.05rem; font-weight: 800; color: var(--emerald-dark); }
     .nav-logo span span { color: var(--emerald); }
-    .nav-back { color: var(--emerald); text-decoration: none; font-size: 13px; }
-    .nav-back:hover { text-decoration: underline; }
-    .page-wrap { max-width: 780px; margin: 0 auto; padding: 60px 32px 100px; }
-    .page-label { font-size: 11px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: var(--emerald); margin-bottom: 12px; }
-    h1 { font-family: 'Playfair Display', serif; font-size: 2.4rem; font-weight: 700; color: var(--white); margin-bottom: 8px; }
-    .updated { font-size: 13px; color: var(--muted); margin-bottom: 48px; }
-    h2 { font-family: 'Playfair Display', serif; font-size: 1.25rem; font-weight: 600; color: var(--emerald); margin: 40px 0 12px; }
-    p { color: #c8d8cc; margin-bottom: 16px; }
+    .nav-back { color: var(--emerald); text-decoration: none; font-size: 13px; font-weight: 800; }
+    .nav-back:hover, a:hover { text-decoration: underline; }
+    .page-wrap { max-width: 860px; margin: 0 auto; padding: 68px 32px 100px; }
+    .page-label { font-size: 11px; font-weight: 800; letter-spacing: 2.6px; text-transform: uppercase; color: var(--gold-dark); margin-bottom: 12px; }
+    h1 { font-family: var(--serif); font-size: clamp(42px, 6vw, 70px); line-height: 1; font-weight: 800; color: var(--emerald-dark); margin-bottom: 12px; }
+    .updated { font-size: 13px; color: var(--muted); margin-bottom: 42px; }
+    h2 { font-family: var(--serif); font-size: 1.38rem; font-weight: 700; color: var(--emerald); margin: 42px 0 12px; }
+    p { color: var(--slate); margin-bottom: 16px; }
     ul { padding-left: 20px; margin-bottom: 16px; }
-    li { color: #c8d8cc; margin-bottom: 8px; }
-    a { color: var(--emerald); text-decoration: none; }
-    a:hover { text-decoration: underline; }
-    .divider { border: none; border-top: 1px solid var(--border); margin: 48px 0; }
-    footer { text-align: center; padding: 32px; font-size: 12px; color: var(--muted); border-top: 1px solid var(--border); }
+    li { color: var(--slate); margin-bottom: 8px; }
+    strong { color: #203229; }
+    a { color: var(--emerald); text-decoration: none; font-weight: 700; }
+    .divider { border: none; border-top: 1px solid var(--line); margin: 48px 0; }
+    footer { text-align: center; padding: 32px; font-size: 12px; color: var(--muted); border-top: 1px solid var(--line); background: var(--bg2); }
+    @media (max-width: 720px) { nav { padding: 18px 22px; align-items: flex-start; flex-direction: column; } .page-wrap { padding: 48px 22px 80px; } }
   </style>
-  <meta name="description" content="Learn how Emerald Wellness collects, uses, protects, and manages personal and health-related information." />
+  <meta name="description" content="Learn how Emerald Wellness Health collects, uses, protects, and manages personal and health-related information." />
   <link rel="canonical" href="https://emeraldwellness.health/privacy-policy.html" />
   <meta name="robots" content="index, follow" />
 </head>
 <body>
 
-<div style="background:rgba(74,222,128,0.07);border-bottom:1px solid rgba(74,222,128,0.15);padding:10px 24px;text-align:center;font-size:12.5px;color:#7a9880;line-height:1.5;">
-  ⚕️ <strong style="color:#a8c8b0;">Emerald Wellness does not replace your personal physician.</strong> We encourage you to consult with your doctor before making any changes to your health or wellness protocols. <a href="medical-disclaimer.html" style="color:#4ade80;text-decoration:none;font-weight:500;">Medical Disclaimer →</a>
-</div>
+<div class="notice-bar"><strong>Important:</strong> Emerald Wellness Health does not replace your personal physician. Consult your doctor before making changes to your health or wellness protocols. <a href="medical-disclaimer.html">Medical Disclaimer</a></div>
 <nav>
   <a class="nav-logo" href="index.html">
-    <img src="logo-atom.svg" alt="Emerald Wellness" width="32" height="32" style="display:block;"/>
+    <img src="logo-atom.svg" alt="Emerald Wellness Health" width="32" height="32" style="display:block;"/>
     <span><span style="color:var(--emerald)">Emerald</span> Wellness</span>
   </a>
   <a class="nav-back" href="index.html">← Back to Home</a>
@@ -55,7 +68,7 @@
   <h1>Privacy Policy</h1>
   <p class="updated">Last updated: June 21, 2026</p>
 
-  <p>Emerald Wellness, LLC ("Emerald Wellness," "we," "us," or "our") is committed to protecting your privacy. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you use our platform, website, and services (collectively, the "Services").</p>
+  <p>Emerald Wellness Health ("Emerald Wellness Health," "we," "us," or "our") is committed to protecting your privacy. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you use our platform, website, and services (collectively, the "Services").</p>
 
   <p>Please read this policy carefully. By using our Services, you agree to the collection and use of information in accordance with this policy.</p>
 
@@ -93,12 +106,12 @@
     <li><strong>Legal compliance:</strong> when required by law, court order, or government authority</li>
     <li><strong>Business transfers:</strong> in connection with a merger, acquisition, or sale of assets</li>
   </ul>
-  <p><strong>SMS/text message consent:</strong> Text messaging originator opt-in data and consent are not sold, rented, shared, or disclosed to third parties for their own marketing purposes. We may share limited SMS-related data with service providers who help us operate Emerald Wellness messaging, subject to contractual confidentiality and compliance obligations.</p>
+  <p><strong>SMS/text message consent:</strong> Text messaging originator opt-in data and consent are not sold, rented, shared, or disclosed to third parties for their own marketing purposes. We may share limited SMS-related data with service providers who help us operate Emerald Wellness Health messaging, subject to contractual confidentiality and compliance obligations.</p>
 
   <h2>5. SMS, Email, and Marketing Communications</h2>
-  <p>If you opt in to receive text messages, email, or other communications from Emerald Wellness, we may use your email address, phone number, consent status, and engagement activity to send account updates, membership reminders, wellness check-ins, promotional messages, appointment or order-related updates, and other messages related to Emerald Wellness services.</p>
+  <p>If you opt in to receive text messages, email, or other communications from Emerald Wellness Health, we may use your email address, phone number, consent status, and engagement activity to send account updates, membership reminders, wellness check-ins, promotional messages, appointment or order-related updates, and other messages related to Emerald Wellness Health services.</p>
   <p>You may opt out of marketing text messages at any time by replying <strong>STOP</strong>. For help, reply <strong>HELP</strong> or contact <a href="mailto:info@emeraldwellness.health">info@emeraldwellness.health</a>. Message frequency may vary. Message and data rates may apply. Consent to receive marketing text messages is not required as a condition of purchase.</p>
-  <p>Emerald Wellness websites may use cookies, tracking pixels, or similar technologies to understand website activity, including items placed in a shopping cart or pages viewed. If abandoned cart text messages are enabled, this information may be used to determine when to send cart reminder messages by text message. We do not use precise location tracking for SMS marketing unless clearly disclosed and consented to separately.</p>
+  <p>Emerald Wellness Health websites may use cookies, tracking pixels, or similar technologies to understand website activity, including items placed in a shopping cart or pages viewed. If abandoned cart text messages are enabled, this information may be used to determine when to send cart reminder messages by text message. We do not use precise location tracking for SMS marketing unless clearly disclosed and consented to separately.</p>
 
   <h2>6. Data Security</h2>
   <p>We implement industry-standard security measures including encryption in transit (TLS) and at rest, access controls, and regular security reviews. However, no method of transmission over the Internet is 100% secure, and we cannot guarantee absolute security.</p>
@@ -137,10 +150,12 @@
 </div>
 
 <footer>
-  <p>© 2026 Emerald Wellness, LLC · <a href="index.html">Home</a> · <a href="terms-of-service.html">Terms</a> · <a href="privacy-policy.html">Privacy</a> · <a href="cookie-policy.html">Cookies</a> · <a href="hipaa.html">HIPAA</a> · <a href="medical-disclaimer.html">Medical Disclaimer</a></p>
+  <p>© 2026 Emerald Wellness Health · <a href="index.html">Home</a> · <a href="terms-of-service.html">Terms</a> · <a href="privacy-policy.html">Privacy</a> · <a href="cookie-policy.html">Cookies</a> · <a href="hipaa.html">HIPAA</a> · <a href="medical-disclaimer.html">Medical Disclaimer</a></p>
 </footer>
 
 </body>
 </html>
+
+
 
 
