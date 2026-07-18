@@ -74,7 +74,7 @@ button,input,textarea,select{font-family:inherit}
 .app-video-hero .eyebrow{color:var(--champagne,#d8c88f)}
 .app-video-hero h1{color:#fff;text-shadow:0 16px 34px rgba(0,0,0,.34)}
 .app-video-hero .lead{color:rgba(255,255,255,.86);max-width:720px}
-.app-video-hero .notice{background:rgba(255,255,255,.10);border:1px solid rgba(255,255,255,.20);color:rgba(255,255,255,.82);backdrop-filter:blur(12px);max-width:760px}
+.app-video-hero .notice{background:rgba(3,8,6,.78);border:1px solid rgba(216,200,143,.46);color:#fffdf8;backdrop-filter:blur(14px);max-width:760px;font-size:13px;line-height:1.65;box-shadow:0 18px 42px rgba(0,0,0,.22)}
 .app-video-hero .btn.ghost{border-color:rgba(255,255,255,.42);color:#fff;background:rgba(255,255,255,.08)}
 .app-hero-panel{display:grid;gap:12px}
 .app-hero-card{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.20);border-radius:18px;padding:18px;backdrop-filter:blur(14px);box-shadow:0 18px 50px rgba(0,0,0,.20)}
@@ -197,7 +197,6 @@ li{margin:7px 0}
               <button class="btn" data-go="stack">Run Stack Check</button>
               <button class="btn ghost" data-go="database">Search Database</button>
               <a class="btn gold" href="/signup.html">Start Your Wellness Journey</a>
-              <a class="btn ghost" href="/dashboard?tab=active-module">Already a Member? Enter Dashboard</a>
             </div>
           </div>
           <div class="app-hero-panel" aria-label="Emerald Wellness app highlights">
@@ -428,6 +427,7 @@ function applyMemberWelcome(){
     if(welcome){welcome.textContent=`Welcome back, ${name}`;welcome.style.display="inline-flex";}
     if(login)login.style.display="none";
     if(title)title.textContent=`Welcome back, ${name}. Your Member Command Center is ready.`;
+    document.querySelectorAll("[data-member-only-cta]").forEach(el=>el.style.display="none");
   }catch(e){}
 }
 function showTab(id){
@@ -472,3 +472,5 @@ applyMemberWelcome();
 </script>
 </body>
 </html>
+
+

@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <!-- Emerald Wellness Build: EW 7.0 -->
 <html lang="en">
 <head>
@@ -1658,6 +1658,43 @@
       .quote-card { grid-template-columns: 1fr; }
     }
   </style>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Organization",
+        "@id": "https://emeraldwellness.health/#organization",
+        "name": "Emerald Wellness",
+        "url": "https://emeraldwellness.health/",
+        "logo": "https://emeraldwellness.health/og-emerald-wellness.png",
+        "email": "info@emeraldwellness.health",
+        "sameAs": ["https://shop.emeraldwellness.health/home"]
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://emeraldwellness.health/#website",
+        "url": "https://emeraldwellness.health/",
+        "name": "Emerald Wellness",
+        "publisher": {"@id": "https://emeraldwellness.health/#organization"},
+        "potentialAction": {
+          "@type": "SearchAction",
+          "target": "https://emeraldwellness.health/blog/?search={search_term_string}",
+          "query-input": "required name=search_term_string"
+        }
+      },
+      {
+        "@type": "WebPage",
+        "@id": "https://emeraldwellness.health/#webpage",
+        "url": "https://emeraldwellness.health/",
+        "name": "Emerald Wellness | Private Health Intelligence",
+        "description": "Private health intelligence for organizing labs, supplements, vitamins, peptides, medications, symptoms, wearable insights, and provider-review questions in one premium member experience.",
+        "isPartOf": {"@id": "https://emeraldwellness.health/#website"},
+        "about": {"@id": "https://emeraldwellness.health/#organization"}
+      }
+    ]
+  }
+  </script>
 </head>
 <body>
   <div class="page">
@@ -2095,7 +2132,7 @@
             <p class="eyebrow">Knowledge Hub</p>
             <h2>Evidence-based education with a premium member lens.</h2>
             <p class="lead">Explore the health topics members care about most, from peptides and hormones to longevity, weight loss, energy, and gut health.</p>
-            <a class="btn btn-light" href="/blog/index.html">Browse All Topics</a>
+            <a class="btn btn-light" href="/blog/">Browse All Topics</a>
           </div>
           <div class="topic-grid" id="goals">
             <article class="topic-card">
@@ -2121,12 +2158,12 @@
             <article class="topic-card">
               <div class="topic-art energy"><img src="images/emerald-hero-runner.png" alt="Active woman running with focused energy" /><span class="topic-badge">35</span></div>
               <h3>Energy & Focus</h3>
-              <a href="/peptide-wellness">Learn More</a>
+              <a href="/peptide-wellness.html">Learn More</a>
             </article>
             <article class="topic-card">
               <div class="topic-art gut-health"><img src="images/emerald-gut-health-support.png" alt="Emerald Wellness gut health digestive support" /><span class="topic-badge">42</span></div>
               <h3>Gut Health</h3>
-              <a href="/biology-labs">Learn More</a>
+              <a href="/biology-labs.html">Learn More</a>
             </article>
           </div>
         </div>
@@ -2182,7 +2219,7 @@
                 <div class="dash-card">
                   <h4>Latest Lab Results</h4>
                   <div class="check-list"><span>All markers optimal</span></div>
-                  <a href="/biology-labs" style="display:block;margin-top:18px;color:var(--emerald);font-size:12px;font-weight:900;">View Results</a>
+                  <a href="/biology-labs.html" style="display:block;margin-top:18px;color:var(--emerald);font-size:12px;font-weight:900;">View Results</a>
                 </div>
                 <div class="dash-card">
                   <h4>Next Concierge Call</h4>
@@ -2255,7 +2292,7 @@
           <div class="footer-col">
             <h4>Company</h4>
             <a href="#about">About Us</a>
-            <a href="/blog/index.html">Blog</a>
+            <a href="/blog/">Blog</a>
             <a href="mailto:info@emeraldwellness.health">Contact Us</a>
           </div>
           <div class="footer-col">
@@ -2292,6 +2329,7 @@
   </script>
 </body>
 </html>
+
 
 
 
