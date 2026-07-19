@@ -1,0 +1,18 @@
+'use strict';
+const test=require('node:test');const assert=require('node:assert/strict');
+const {KlaviyoClient,KlaviyoApiError,retryDelay}=require('../lib/klaviyo-client');
+const {assertSafeProperties,assertConsent}=require('../lib/marketing-validation');
+const {normalizePhone,prepare}=require('../scripts/klaviyo/prepare-contact-import');
+const {validateEvent,approvedOrigins}=require('../api/klaviyo/events');
+const {assertSchedulingAllowed}=require('../lib/campaign-approval');
+function response(status,body={},headers={}){return{ok:status>=200&&status<300,status,headers:{get:k=>headers[k.toLowerCase()]||null},text:async()=>JSON.stringify(body)};}
+test('authentication and revision headers are server-side',async()=>{let options;const c=new KlaviyoClient({apiKey:'secret-value',dryRun:false,maxRetries:0,fetch:async(u,o)=>(options=o,response(200,{data:[]}))});await c.request('/lists');assert.equal(options.headers.authorization,'Klaviyo-API-Key secret-value');assert.equal(options.headers.revision,'2026-07-15');});
+test('dry-run blocks mutations without fetch',async()=>{let called=false;const c=new KlaviyoClient({dryRun:true,fetch:async()=>{called=true;}});const r=await c.request('/events',{method:'POST',body:{}});assert.equal(r.dryRun,true);assert.equal(called,false);});
+test('structured API errors omit credentials',async()=>{const c=new KlaviyoClient({apiKey:'do-not-leak',dryRun:false,maxRetries:0,fetch:async()=>response(400,{errors:[{detail:'bad'}]})});await assert.rejects(c.request('/profiles'),e=>e instanceof KlaviyoApiError&&!JSON.stringify(e).includes('do-not-leak'));});
+test('retry honors seconds and retries temporary errors',async()=>{let calls=0;const c=new KlaviyoClient({apiKey:'x',dryRun:false,maxRetries:1,fetch:async()=>++calls===1?response(500):response(200,{data:[]})});await c.request('/lists');assert.equal(calls,2);assert.equal(retryDelay('1',0),1000);});
+test('profile property allowlist blocks sensitive and unknown fields',()=>{assert.equal(assertSafeProperties({goal_category:'General Wellness'}).goal_category,'General Wellness');assert.throws(()=>assertSafeProperties({diagnosis:'x'}));assert.throws(()=>assertSafeProperties({favorite_color:'x'}));});
+test('SMS consent requires evidence and E.164',()=>{assert.throws(()=>assertConsent({channel:'sms',consentStatus:'subscribed',phone_number:'+15551234567'},'sms'));assert.doesNotThrow(()=>assertConsent({channel:'sms',consentStatus:'subscribed',consentSource:'form',consentTimestamp:'2026-07-01T00:00:00Z',consentEvidenceReference:'submission-1',phone_number:'+15551234567'},'sms'));});
+test('phone normalization and duplicate routing',()=>{assert.equal(normalizePhone('(415) 555-1212','US'),'+14155551212');const r=prepare([{email:'A@Example.com'},{email:'a@example.com'}]);assert.equal(r.duplicates.length,1);});
+test('event validation allowlists properties and blocks PHI',()=>{const e=validateEvent({event_name:'Lead Captured',unique_id:'1',profile:{email:'test@example.com'},properties:{source_page:'/'}});assert.equal(e.properties.source_page,'/');assert.throws(()=>validateEvent({event_name:'Lead Captured',unique_id:'2',profile:{email:'x@y.com'},properties:{medical_history:'x'}}));});
+test('CORS defaults only to Emerald Wellness origins',()=>{const set=approvedOrigins();assert(set.has('https://emeraldwellness.health'));assert(!set.has('https://evil.example'));});
+test('approval gate requires approved, explicit scheduling, and dry-run off',()=>{const old=process.env.KLAVIYO_DRY_RUN;process.env.KLAVIYO_DRY_RUN='false';assert.throws(()=>assertSchedulingAllowed({approval_status:'drafting'},'true'));assert.equal(assertSchedulingAllowed({approval_status:'approved'},'true'),true);process.env.KLAVIYO_DRY_RUN=old;});

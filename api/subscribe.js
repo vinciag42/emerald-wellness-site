@@ -29,28 +29,42 @@ export default async function handler(req, res) {
   }
   const cleanFirstName = String(first_name || '').trim().slice(0, 80);
   const cleanLastName = String(last_name || '').trim().slice(0, 80);
-  const cleanPhone = String(phone || '').trim().slice(0, 40);
+  const cleanPhone = normalizeUsPhone(phone);
   const cleanGoal = String(goal || '').trim().slice(0, 120);
   const cleanTier = String(tier || '').trim().slice(0, 80);
   const cleanSource = String(source || 'landing').trim().slice(0, 80);
   const cleanReferral = String(referred_by || '').trim().slice(0, 80);
-  const marketingConsent = req.body?.marketing_consent !== false;
-  const smsConsent = req.body?.sms_consent === true && Boolean(cleanPhone);
-  const consentedAt = new Date().toISOString();
-  const consentText = String(req.body?.consent_text || 'I agree to receive Emerald Wellness emails. If I opt into text messages, I agree to receive recurring automated marketing and account text messages. Consent is not a condition of purchase. Message/data rates may apply. Reply STOP to opt out.').slice(0, 1000);
+  const marketingConsent = req.body?.marketing_consent === true;
+  const requestedSmsConsent = req.body?.sms_consent === true;
+  const consentedAt = String(req.body?.consent_timestamp || '').trim();
+  const consentSource = String(req.body?.consent_source || '').trim().slice(0, 200);
+  const disclosureVersion = String(req.body?.consent_disclosure_version || '').trim().slice(0, 100);
+  const submissionId = String(req.body?.form_submission_id || '').trim().slice(0, 200);
+  const validConsentTime = !Number.isNaN(Date.parse(consentedAt));
+  const smsEvidenceComplete = Boolean(cleanPhone && validConsentTime && consentSource && disclosureVersion && submissionId);
+  const smsConsent = requestedSmsConsent && smsEvidenceComplete;
+  if (requestedSmsConsent && !smsConsent) {
+    return res.status(400).json({ error: 'Documented SMS consent evidence is required', step: 'consent_validation' });
+  }
+  if ((marketingConsent || smsConsent) && (!validConsentTime || !consentSource || !disclosureVersion || !submissionId)) {
+    return res.status(400).json({ error: 'Documented consent evidence is required', step: 'consent_validation' });
+  }
+  const consentText = String(req.body?.consent_text || '').slice(0, 1000);
 
-  const KLAVIYO_KEY = process.env.KLAVIYO_PRIVATE_KEY;
+  const KLAVIYO_KEY = process.env.KLAVIYO_PRIVATE_API_KEY || process.env.KLAVIYO_PRIVATE_KEY;
   if (!KLAVIYO_KEY) {
     return res.status(500).json({ error: 'Signup service is not configured', step: 'configuration' });
   }
-  const KLAVIYO_LIST = process.env.KLAVIYO_LIST_ID || 'XEEg3P';
+  const KLAVIYO_LIST = process.env.KLAVIYO_MAIN_LIST_ID || process.env.KLAVIYO_LIST_ID || 'XEEg3P';
+  const KLAVIYO_SMS_LIST = process.env.KLAVIYO_SMS_LIST_ID;
+  const KLAVIYO_DRY_RUN = String(process.env.KLAVIYO_DRY_RUN ?? 'true') !== 'false';
   const SUPABASE_URL = process.env.SUPABASE_URL || 'https://mczpuffmlspmghgneukz.supabase.co';
   const SUPABASE_ANON = process.env.SUPABASE_ANON_KEY || 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im1jenB1ZmZtbHNwbWdoZ25ldWt6Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODAxNjczODAsImV4cCI6MjA5NTc0MzM4MH0.hs0CQOyrcIk5WhRr9OUU1fVs7V1sMcea7RYwWuTAVag';
 
   const klaviyoHeaders = {
     'Authorization': `Klaviyo-API-Key ${KLAVIYO_KEY}`,
     'Content-Type': 'application/json',
-    'revision': '2024-02-15'
+    'revision': process.env.KLAVIYO_API_REVISION || '2026-07-15'
   };
 
   const result = { success: false, klaviyo: null, klaviyoProfile: null, supabase: null, diagnostics: null };
@@ -60,28 +74,14 @@ export default async function handler(req, res) {
     console.log('[subscribe] Starting consented list subscription');
     const subscriptions = {};
     if (marketingConsent) subscriptions.email = { marketing: { consent: 'SUBSCRIBED', consented_at: consentedAt } };
-    if (smsConsent) subscriptions.sms = { marketing: { consent: 'SUBSCRIBED', consented_at: consentedAt } };
-    const subscribePayload = {
-      data: {
-        type: 'profile-subscription-bulk-create-job',
-        attributes: {
-          custom_source: cleanSource,
-          profiles: {
-            data: [{
-              type: 'profile',
-              attributes: {
-                email: cleanEmail,
-                ...(cleanPhone ? { phone_number: cleanPhone } : {}),
-                subscriptions
-              }
-            }]
-          }
-        },
-        relationships: { list: { data: { type: 'list', id: KLAVIYO_LIST } } }
-      }
-    };
+    if (smsConsent && !marketingConsent) subscriptions.sms = { marketing: { consent: 'SUBSCRIBED', consented_at: consentedAt } };
+    const targetList = smsConsent && !marketingConsent ? KLAVIYO_SMS_LIST : KLAVIYO_LIST;
+    const subscribePayload = buildSubscriptionJob(subscriptions, targetList, cleanEmail, cleanPhone, consentedAt, cleanSource);
 
-    if (Object.keys(subscriptions).length) {
+    if (smsConsent && !KLAVIYO_SMS_LIST) {
+      return res.status(500).json({ error: 'SMS signup service is not configured', step: 'configuration' });
+    }
+    if (Object.keys(subscriptions).length && !KLAVIYO_DRY_RUN) {
       const klaviyoRes = await fetch('https://a.klaviyo.com/api/profile-subscription-bulk-create-jobs/', {
         method: 'POST', headers: klaviyoHeaders, body: JSON.stringify(subscribePayload)
       });
@@ -93,32 +93,44 @@ export default async function handler(req, res) {
         console.error('[subscribe] STEP 1 FAILED — Klaviyo', klaviyoRes.status, klaviyoText);
         return res.status(502).json({ error: 'Subscription service unavailable', step: 'klaviyo' });
       }
+      if (marketingConsent && smsConsent) {
+        const smsPayload = buildSubscriptionJob({ sms: { marketing: { consent: 'SUBSCRIBED', consented_at: consentedAt } } }, KLAVIYO_SMS_LIST, cleanEmail, cleanPhone, consentedAt, cleanSource);
+        const smsResponse = await fetch('https://a.klaviyo.com/api/profile-subscription-bulk-create-jobs/', {
+          method: 'POST', headers: klaviyoHeaders, body: JSON.stringify(smsPayload)
+        });
+        if (!(smsResponse.ok || smsResponse.status === 202)) {
+          console.error('[subscribe] SMS subscription failed', smsResponse.status);
+          return res.status(502).json({ error: 'SMS subscription service unavailable', step: 'klaviyo_sms' });
+        }
+      }
       console.log('[subscribe] STEP 1 OK — Klaviyo accepted subscribe job');
     } else {
-      result.klaviyo = { ok: true, skipped: true, reason: 'no marketing channels consented' };
+      result.klaviyo = { ok: true, skipped: true, dry_run: KLAVIYO_DRY_RUN, reason: KLAVIYO_DRY_RUN ? 'dry-run enabled' : 'no marketing channels consented' };
     }
 
     // ── 2. Update Klaviyo profile with name + phone + goal/tier as custom properties ──
-    if (cleanFirstName || cleanLastName || cleanPhone || cleanGoal || cleanTier) {
+    if (!KLAVIYO_DRY_RUN && (cleanFirstName || cleanLastName || cleanPhone || cleanGoal || cleanTier)) {
       console.log('[subscribe] STEP 2 — Klaviyo profile update…');
       result.klaviyoProfile = await updateKlaviyoProfile(cleanEmail, cleanFirstName, cleanLastName, cleanPhone, cleanGoal, cleanTier, klaviyoHeaders, {
         marketingConsent,
         smsConsent,
         consentedAt,
-        consentSource: cleanSource
+        consentSource,
+        disclosureVersion,
+        submissionId
       });
       if (result.klaviyoProfile.ok) console.log('[subscribe] STEP 2 OK — profile updated via', result.klaviyoProfile.method);
       else console.warn('[subscribe] STEP 2 WARN — profile not updated', result.klaviyoProfile);
     }
 
     // ── 3. Supabase waitlist — store ALL fields ──
-    if (result.klaviyoProfile?.profileId) {
+    if (marketingConsent && result.klaviyoProfile?.profileId && !KLAVIYO_DRY_RUN) {
       result.klaviyoListAdd = await addProfileToKlaviyoList(result.klaviyoProfile.profileId, KLAVIYO_LIST, klaviyoHeaders);
       if (result.klaviyoListAdd.ok) console.log('[subscribe] STEP 2B OK — profile explicitly added to Klaviyo list');
       else console.warn('[subscribe] STEP 2B WARN — profile not explicitly added to list', result.klaviyoListAdd);
     }
 
-    result.klaviyoEvent = await emitKlaviyoEvent('Submitted Enrollment', {
+    result.klaviyoEvent = KLAVIYO_DRY_RUN ? { ok: true, skipped: true, dry_run: true } : await emitKlaviyoEvent('Submitted Enrollment', {
       email: cleanEmail,
       first_name: cleanFirstName,
       last_name: cleanLastName
@@ -133,7 +145,7 @@ export default async function handler(req, res) {
     if (result.klaviyoEvent.ok) console.log('[subscribe] STEP 3 OK — Klaviyo Submitted Enrollment event created');
     else console.warn('[subscribe] STEP 3 WARN — Klaviyo event not created', result.klaviyoEvent);
 
-    result.klaviyoSignupEvent = await emitKlaviyoEvent('Signup', {
+    result.klaviyoSignupEvent = KLAVIYO_DRY_RUN ? { ok: true, skipped: true, dry_run: true } : await emitKlaviyoEvent('Signup', {
       email: cleanEmail,
       first_name: cleanFirstName,
       last_name: cleanLastName
@@ -161,8 +173,10 @@ export default async function handler(req, res) {
       sms_consent: smsConsent,
       email_consent_at: marketingConsent ? consentedAt : null,
       sms_consent_at: smsConsent ? consentedAt : null,
-      marketing_consent_source: cleanSource,
+      marketing_consent_source: consentSource || cleanSource,
       marketing_consent_text: consentText,
+      consent_disclosure_version: disclosureVersion || null,
+      consent_evidence_reference: submissionId || null,
       user_agent: String(req.headers['user-agent'] || '').slice(0, 500)
     };
     console.log('[subscribe] Saving consented signup');
@@ -271,12 +285,20 @@ async function addProfileToKlaviyoList(profileId, listId, headers) {
 
 async function updateKlaviyoProfile(email, first_name, last_name, phone, goal, tier, headers, consent = {}) {
   const props = {};
-  if (goal) props.health_goal = goal;
-  if (tier) props.selected_tier = tier;
-  props.email_marketing_consent = consent.marketingConsent === true;
-  props.sms_marketing_consent = consent.smsConsent === true;
-  props.marketing_consent_source = consent.consentSource || 'website';
-  props.marketing_consent_updated_at = consent.consentedAt || new Date().toISOString();
+  const approvedGoals = new Set(['Healthy Weight','Energy and Vitality','Healthy Aging','Fitness and Recovery','Hair, Skin and Nails','General Wellness','Women\'s Wellness','Men\'s Wellness']);
+  if (approvedGoals.has(goal)) props.goal_category = goal;
+  if (tier) props.membership_tier = tier;
+  props.email_consent_status = consent.marketingConsent === true ? 'subscribed' : 'unknown';
+  props.sms_consent_status = consent.smsConsent === true ? 'subscribed' : 'unknown';
+  if (consent.consentSource) {
+    if (consent.marketingConsent) props.email_consent_source = consent.consentSource;
+    if (consent.smsConsent) props.sms_consent_source = consent.consentSource;
+  }
+  if (consent.consentedAt) {
+    if (consent.marketingConsent) props.email_consent_timestamp = consent.consentedAt;
+    if (consent.smsConsent) props.sms_consent_timestamp = consent.consentedAt;
+  }
+  if (consent.smsConsent && consent.submissionId) props.sms_consent_evidence_reference = consent.submissionId;
 
   const createAttrs = { email };
   if (first_name) createAttrs.first_name = first_name;
@@ -310,4 +332,18 @@ async function updateKlaviyoProfile(email, first_name, last_name, phone, goal, t
     method: 'PATCH', headers, body: JSON.stringify({ data: { type: 'profile', id: profileId, attributes: patchAttrs } })
   });
   return { ok: patchRes.ok, status: patchRes.status, method: 'patch', profileId };
+}
+
+function normalizeUsPhone(value) {
+  const raw = String(value || '').trim();
+  if (!raw) return '';
+  const digits = raw.replace(/\D/g, '');
+  if (raw.startsWith('+') && digits.length >= 8 && digits.length <= 15) return `+${digits}`;
+  if (digits.length === 10) return `+1${digits}`;
+  if (digits.length === 11 && digits.startsWith('1')) return `+${digits}`;
+  return '';
+}
+
+function buildSubscriptionJob(subscriptions, listId, email, phone, consentedAt, source) {
+  return { data: { type: 'profile-subscription-bulk-create-job', attributes: { custom_source: source, profiles: { data: [{ type: 'profile', attributes: { ...(email ? { email } : {}), ...(phone ? { phone_number: phone } : {}), subscriptions } }] } }, relationships: { list: { data: { type: 'list', id: listId } } } } };
 }

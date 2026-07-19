@@ -211,7 +211,7 @@ footer{text-align:center;padding:24px;border-top:1px solid var(--border);font-si
       </label>
       <label style="display:flex;gap:10px;align-items:flex-start;text-transform:none;letter-spacing:0;color:var(--textMid);font-size:13px;line-height:1.5">
         <input type="checkbox" id="smsMarketingConsent" style="width:18px;height:18px;margin-top:2px;accent-color:var(--greenL)"/>
-        <span>I agree to receive recurring automated Emerald Wellness text messages for reminders, check-ins, account updates, and offers. Consent is not required to purchase. Message/data rates may apply. Reply STOP to opt out.</span>
+        <span data-ew-sms-disclosure>SMS marketing disclosure is loading…</span>
       </label>
     </div>
     <div class="field">
@@ -406,6 +406,8 @@ footer{text-align:center;padding:24px;border-top:1px solid var(--border);font-si
   © 2026 Emerald Wellness LLC · <a href="/privacy-policy.html">Privacy</a> · <a href="/terms-of-service.html">Terms</a> · <a href="mailto:info@emeraldwellness.health">info@emeraldwellness.health</a>
 </footer>
 
+<script src="/config/marketing-consent.js"></script>
+<script src="/public/js/klaviyo-consent.js"></script>
 <script src="/js/module-pricing.js"></script>
 <script>
 const URL_PARAMS = new URLSearchParams(window.location.search);
@@ -646,7 +648,11 @@ function goStep2() {
     phone,
     healthGoal:hg,
     marketingConsent:document.getElementById('emailMarketingConsent').checked,
-    smsConsent
+    smsConsent,
+    consentTimestamp:new Date().toISOString(),
+    consentSource:'signup-checkout',
+    consentDisclosureVersion:window.EmeraldMarketingConsent?.disclosureVersion || '',
+    formSubmissionId:crypto.randomUUID()
   };
   updateSummary();
   goStep(2);
@@ -887,7 +893,10 @@ async function syncMarketingEmail(source) {
         marketing_consent: userData.marketingConsent,
         sms_consent: userData.smsConsent,
         consent_source: source || 'signup',
-        consent_text: 'Email consent plus optional SMS consent captured on Emerald Wellness signup. SMS consent is not required to purchase. Message/data rates may apply. Reply STOP to opt out.'
+        consent_timestamp: userData.consentTimestamp,
+        consent_disclosure_version: userData.consentDisclosureVersion,
+        form_submission_id: userData.formSubmissionId,
+        consent_text: window.EmeraldConsent?.disclosureHtml() || ''
       })
     });
   } catch(err) {

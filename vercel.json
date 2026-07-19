@@ -1,4 +1,5 @@
 {
+  "outputDirectory": ".",
   "redirects": [
     { "source": "/emerald-wellness/signup.html", "destination": "/#pricing", "permanent": false },
     { "source": "/sign%20up%20061126.html", "destination": "/#pricing", "permanent": true },
