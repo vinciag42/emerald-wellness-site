@@ -931,9 +931,8 @@
       font-weight: 800;
     }
     .rotation-list li {
-      display: flex;
-      justify-content: space-between;
-      gap: 16px;
+      display: grid;
+      gap: 6px;
       padding: 10px 12px;
       border: 1px solid rgba(255,255,255,.1);
       border-radius: 6px;
@@ -941,6 +940,9 @@
     }
     .rotation-list span {
       color: var(--champagne-2);
+      font-size: 11px;
+      line-height: 1.45;
+      font-weight: 700;
     }
     .console-stage {
       position: relative;
@@ -2039,9 +2041,9 @@
                 <h3>Cycle planning, site rotation, and dose tracking.</h3>
                 <p>Emerald organizes injection-site education, rotation history, cycle notes, timing, lab context, and provider-review questions so peptide conversations stay clear, documented, and clinician-ready.</p>
                 <ul class="rotation-list">
-                  <li>Current site <span>Abdomen · Left</span></li>
-                  <li>Next site <span>Abdomen · Right</span></li>
-                  <li>Protocol status <span>Provider-review ready</span></li>
+                  <li>Current Site Options <span>Lower abdomen, upper outer arms, outer thighs, glutes</span></li>
+                  <li>Next Site Options <span>Rotate to the opposite side or next approved area after provider guidance</span></li>
+                  <li>Rotation Areas Shown <span>Front abdomen, front arms, outer thighs, back arms, glutes</span></li>
                 </ul>
               </div>
             </div>
