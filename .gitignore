@@ -4,3 +4,11 @@
 .env.*.local
 
 .env*
+!.env.example
+
+# Contact imports and generated reports may contain personal information.
+data/contacts-source.csv
+data/output/*.csv
+data/output/contact-quality-report.*
+reports/klaviyo-weekly.*
+!data/output/.gitkeep
