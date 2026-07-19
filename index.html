@@ -716,7 +716,7 @@
       align-items: start;
     }
     .tier-list li::before {
-      content: "‚úì";
+      content: "?";
       color: var(--mint);
       font-weight: 900;
     }
@@ -891,26 +891,7 @@
       object-position: center;
       padding: 28px 12px 34px;
       filter: saturate(1.05) contrast(1.06) drop-shadow(0 26px 34px rgba(0,0,0,.32));
-    }    .site-dot {
-      position: absolute;
-      width: 17px;
-      height: 17px;
-      border-radius: 50%;
-      border: 2px solid rgba(3,12,8,.9);
-      background: var(--mint);
-      box-shadow: 0 0 0 6px rgba(88,227,154,.14), 0 0 24px rgba(88,227,154,.58);
-      z-index: 2;
     }
-    .site-dot.current {
-      background: var(--champagne-2);
-      box-shadow: 0 0 0 7px rgba(216,200,143,.16), 0 0 28px rgba(216,200,143,.62);
-    }
-    .site-dot.s1 { left: 45%; top: 48%; }
-    .site-dot.s2 { left: 55%; top: 48%; }
-    .site-dot.s3 { left: 45%; top: 72%; }
-    .site-dot.s4 { left: 55%; top: 72%; }
-    .site-dot.s5 { left: 31%; top: 49%; }
-    .site-dot.s6 { left: 69%; top: 49%; }
     .rotation-copy h3 {
       margin: 0 0 8px;
       color: #fff;
@@ -921,28 +902,53 @@
       color: rgba(255,255,255,.68);
       font-size: 13px;
     }
-    .rotation-list {
+    .rotation-fieldset {
       display: grid;
-      gap: 8px;
+      gap: 10px;
       margin: 0;
       padding: 0;
-      list-style: none;
-      font-size: 12px;
-      font-weight: 800;
+      border: 0;
     }
-    .rotation-list li {
+    .rotation-field {
       display: grid;
-      gap: 6px;
-      padding: 10px 12px;
-      border: 1px solid rgba(255,255,255,.1);
+      gap: 7px;
+      padding: 12px;
+      border: 1px solid rgba(216,200,143,.28);
       border-radius: 6px;
-      background: rgba(255,255,255,.035);
+      background: linear-gradient(145deg, rgba(2,8,5,.86), rgba(7,27,19,.78));
     }
-    .rotation-list span {
-      color: var(--champagne-2);
+    .rotation-field label {
+      color: rgba(240,232,200,.92);
       font-size: 11px;
-      line-height: 1.45;
-      font-weight: 700;
+      font-weight: 900;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+    .rotation-field select {
+      width: 100%;
+      min-height: 42px;
+      border: 1px solid rgba(216,200,143,.44);
+      border-radius: 6px;
+      padding: 0 38px 0 12px;
+      color: #fff8dc;
+      background: #03100b;
+      font: 800 13px/1 var(--sans);
+      outline: none;
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.06);
+    }
+    .rotation-field select option {
+      color: #fff8dc;
+      background: #03100b;
+    }
+    .rotation-field select:focus {
+      border-color: rgba(88,227,154,.52);
+      box-shadow: 0 0 0 3px rgba(88,227,154,.12);
+    }
+    .rotation-note {
+      color: rgba(255,255,255,.58);
+      font-size: 11px;
+      line-height: 1.55;
+      margin: 0;
     }
     .console-stage {
       position: relative;
@@ -1376,7 +1382,7 @@
       font-weight: 800;
     }
     .check-list span::before {
-      content: "‚úì";
+      content: "?";
       margin-right: 8px;
       color: var(--emerald-2);
     }
@@ -1683,7 +1689,7 @@
         <div class="topbar-group">
           <a href="mailto:info@emeraldwellness.health">info@emeraldwellness.health</a>
           <a href="/dashboard">Member Login</a>
-          <a class="mini-cta" href="/signup">Take BodyScan‚Ñ¢</a>
+          <a class="mini-cta" href="/signup">Take BodyScanô</a>
         </div>
       </div>
     </div>
@@ -1702,10 +1708,10 @@
           <a href="#about">About Us</a>
         </div>
         <div class="nav-actions">
-          <a class="nav-icon" href="/shop" aria-label="Shop">‚ñ£</a>
-          <a class="nav-icon" href="/dashboard" aria-label="Member dashboard">‚åÅ</a>
+          <a class="nav-icon" href="/shop" aria-label="Shop">?</a>
+          <a class="nav-icon" href="/dashboard" aria-label="Member dashboard">?</a>
         </div>
-        <button class="nav-icon menu-btn" type="button" aria-label="Open menu" onclick="document.getElementById('siteNav').classList.toggle('open')">‚ò∞</button>
+        <button class="nav-icon menu-btn" type="button" aria-label="Open menu" onclick="document.getElementById('siteNav').classList.toggle('open')">?</button>
       </div>
     </nav>
 
@@ -1721,14 +1727,14 @@
           <h1>Your Biology. Your Blueprint. <span>Your Best Life.</span></h1>
           <p>Emerald Wellness brings advanced lab tracking, peptide education, provider-guided protocols, and concierge-grade health organization into one premium member experience.</p>
           <div class="hero-actions">
-            <a class="btn btn-primary" href="/signup">Take BodyScan‚Ñ¢</a>
+            <a class="btn btn-primary" href="/signup">Take BodyScanô</a>
             <a class="btn btn-dark" href="#tiers">Explore Memberships</a>
           </div>
           <div class="trust-strip" aria-label="Emerald Wellness highlights">
-            <div class="trust-item"><i>‚óé</i>Science-Backed Protocols</div>
-            <div class="trust-item"><i>‚óá</i>Provider-Guided Care</div>
-            <div class="trust-item"><i>‚ú¶</i>Personalized For You</div>
-            <div class="trust-item"><i>‚Üó</i>Organized Wellness Journey</div>
+            <div class="trust-item"><i>?</i>Science-Backed Protocols</div>
+            <div class="trust-item"><i>?</i>Provider-Guided Care</div>
+            <div class="trust-item"><i>?</i>Personalized For You</div>
+            <div class="trust-item"><i>?</i>Organized Wellness Journey</div>
           </div>
         </div>
 
@@ -1736,13 +1742,13 @@
           <div class="panel-top">
             <div>
               <strong>Emerald Member Profile</strong>
-              <span>Regenesis Outlook‚Ñ¢ synced today</span>
+              <span>Regenesis Outlookô synced today</span>
             </div>
             <div class="signal">Optimal Trend</div>
           </div>
           <div class="metric-grid">
             <div class="metric-card wide">
-              <div class="metric-label">Regenesis Score‚Ñ¢</div>
+              <div class="metric-label">Regenesis Scoreô</div>
               <div class="score-row">
                 <div class="score-ring"><strong>842</strong></div>
                 <div class="score-copy">
@@ -1785,8 +1791,8 @@
         <div class="container">
           <div class="promise-card">
             <p class="eyebrow" style="color:var(--champagne-2);">Our Promise</p>
-            <blockquote class="promise-quote">"Here at Emerald Wellness, we understand that your biology is personal. Providing tailored, quality care is our number one priority. <em>Health is wealth</em> ‚Äî and Emerald Wellness was built to help you move with clarity, confidence, and support."</blockquote>
-            <div class="promise-signature">Sincerely, Your Founder ¬∑ Emerald Wellness</div>
+            <blockquote class="promise-quote">"Here at Emerald Wellness, we understand that your biology is personal. Providing tailored, quality care is our number one priority. <em>Health is wealth</em> ó and Emerald Wellness was built to help you move with clarity, confidence, and support."</blockquote>
+            <div class="promise-signature">Sincerely, Your Founder ∑ Emerald Wellness</div>
           </div>
         </div>
       </section>
@@ -1799,32 +1805,32 @@
             <p class="lead">Emerald Wellness combines advanced testing, AI-assisted insights, education, provider-guided support, and protocol organization so members can understand their biology and move with confidence.</p>
             <div class="feature-grid">
               <article class="feature-card">
-                <i class="feature-icon">‚óà</i>
-                <h3>BodyScan‚Ñ¢</h3>
+                <i class="feature-icon">?</i>
+                <h3>BodyScanô</h3>
                 <p>AI-powered health assessment to map goals, symptoms, and priorities.</p>
               </article>
               <article class="feature-card">
-                <i class="feature-icon">‚å¨</i>
-                <h3>Biology Labs‚Ñ¢</h3>
+                <i class="feature-icon">?</i>
+                <h3>Biology Labsô</h3>
                 <p>Track 100+ lab markers, ranges, and trendlines in one member view.</p>
               </article>
               <article class="feature-card">
-                <i class="feature-icon">‚ñ§</i>
-                <h3>Protocol Vault‚Ñ¢</h3>
+                <i class="feature-icon">?</i>
+                <h3>Protocol Vaultô</h3>
                 <p>Organized wellness protocols built around your goals and history.</p>
               </article>
               <article class="feature-card">
-                <i class="feature-icon">‚ú≥</i>
-                <h3>Regenesis Outlook‚Ñ¢</h3>
+                <i class="feature-icon">?</i>
+                <h3>Regenesis Outlookô</h3>
                 <p>Forward-looking intelligence for energy, inflammation, and longevity.</p>
               </article>
               <article class="feature-card">
-                <i class="feature-icon">‚óé</i>
+                <i class="feature-icon">?</i>
                 <h3>Concierge Care</h3>
                 <p>Support and guidance when your plan needs interpretation or refinement.</p>
               </article>
               <article class="feature-card">
-                <i class="feature-icon">‚åÅ</i>
+                <i class="feature-icon">?</i>
                 <h3>Peptides & More</h3>
                 <p>Premium education and quality-aware pathways for peptides and compounds.</p>
               </article>
@@ -1840,16 +1846,16 @@
                 </div>
                 <div class="screen-layout">
                   <div class="screen-panel">
-                    <h4>Regenesis Score‚Ñ¢</h4>
+                    <h4>Regenesis Scoreô</h4>
                     <div class="score-ring" style="width:118px;height:118px;margin:14px auto 0;background:conic-gradient(#0c6f49 0 84%, #e1e7e0 84% 100%);"><strong style="color:#07120d;">842</strong></div>
                   </div>
                   <div class="screen-panel">
-                    <h4>Biology Lab‚Ñ¢ Markers</h4>
+                    <h4>Biology Labô Markers</h4>
                     <div class="lab-bars"><i></i><i></i><i></i><i></i><i></i></div>
                   </div>
                 </div>
                 <div class="screen-panel" style="margin-top:16px;">
-                  <h4>Protocol Vault‚Ñ¢</h4>
+                  <h4>Protocol Vaultô</h4>
                   <div class="protocol-grid">
                     <div class="protocol-chip">Peptides</div>
                     <div class="protocol-chip">Metabolic</div>
@@ -1880,12 +1886,12 @@
           <div>
             <p class="eyebrow">From Signup to Purchase</p>
             <h2>A cleaner path from interest to secure checkout.</h2>
-            <p class="lead">The member journey stays simple: start with BodyScan‚Ñ¢, choose the membership that fits your health goals, create your Emerald account, then complete secure checkout for your $1 introductory access.</p>
+            <p class="lead">The member journey stays simple: start with BodyScanô, choose the membership that fits your health goals, create your Emerald account, then complete secure checkout for your $1 introductory access.</p>
             <a class="btn btn-primary" href="/signup?plan=gold">Start Your First 7 Days for $1</a>
           </div>
           <div class="journey-steps">
             <article class="journey-step">
-              <h3>Take BodyScan‚Ñ¢</h3>
+              <h3>Take BodyScanô</h3>
               <p>Tell Emerald about your goals, symptoms, lifestyle, and what you want to optimize.</p>
             </article>
             <article class="journey-step">
@@ -1921,8 +1927,8 @@
               <div class="tier-price">$74.99 <span>/ month</span></div>
               <p class="tier-desc">A clean starting point for organizing your wellness goals and learning what to track.</p>
               <ul class="tier-list">
-                <li>BodyScan‚Ñ¢ health assessment</li>
-                <li>Protocol Vault‚Ñ¢ starter access</li>
+                <li>BodyScanô health assessment</li>
+                <li>Protocol Vaultô starter access</li>
                 <li>Peptide and supplement education</li>
                 <li>Member dashboard access</li>
               </ul>
@@ -1937,8 +1943,8 @@
               <p class="tier-desc">The core Emerald experience for members who want deeper tracking and guided organization.</p>
               <ul class="tier-list">
                 <li>Everything in Silver</li>
-                <li>Biology Labs‚Ñ¢ marker tracking</li>
-                <li>Regenesis Score‚Ñ¢ insights</li>
+                <li>Biology Labsô marker tracking</li>
+                <li>Regenesis Scoreô insights</li>
                 <li>Concierge care messaging</li>
               </ul>
               <a class="btn btn-primary" href="/signup?plan=gold">Start Gold</a>
@@ -1951,7 +1957,7 @@
               <p class="tier-desc">For members focused on advanced protocols, performance, hormone wellness, and longevity planning.</p>
               <ul class="tier-list">
                 <li>Everything in Gold</li>
-                <li>Advanced Protocol Vault‚Ñ¢ access</li>
+                <li>Advanced Protocol Vaultô access</li>
                 <li>Specialty module guidance</li>
                 <li>Peptides, hormones, and longevity education</li>
               </ul>
@@ -1980,7 +1986,7 @@
               <ul class="tier-list">
                 <li>Everything in Emerald Elite</li>
                 <li>Priority concierge coordination</li>
-                <li>Enhanced Regenesis Outlook‚Ñ¢ planning</li>
+                <li>Enhanced Regenesis Outlookô planning</li>
                 <li>High-touch protocol refinement</li>
               </ul>
               <a class="btn btn-light" href="/signup?regenesis=platinum">Begin Regenesis</a>
@@ -2004,22 +2010,22 @@
             </div>
             <div class="compound-grid">
               <article class="compound-card">
-                <span class="compound-meta">Injectable Peptide ¬∑ Healing</span>
+                <span class="compound-meta">Injectable Peptide ∑ Healing</span>
                 <h3>BPC-157</h3>
                 <p>Body Protection Compound used in education for tissue, tendon, gut and inflammation support. Pairs with TB-500, collagen, vitamin C, magnesium.</p>
               </article>
               <article class="compound-card">
-                <span class="compound-meta">Peptide Stack ¬∑ Performance</span>
+                <span class="compound-meta">Peptide Stack ∑ Performance</span>
                 <h3>CJC-1295 / Ipamorelin</h3>
                 <p>Growth hormone secretagogue education stack for recovery, sleep and body composition support. Often discussed with sleep hygiene and resistance training.</p>
               </article>
               <article class="compound-card">
-                <span class="compound-meta">Mitochondrial Peptide ¬∑ Longevity</span>
+                <span class="compound-meta">Mitochondrial Peptide ∑ Longevity</span>
                 <h3>SS-31</h3>
                 <p>Mitochondrial-targeted peptide discussed for oxidative stress and cellular energy education. Review with clinician for research-stage context.</p>
               </article>
               <article class="compound-card">
-                <span class="compound-meta">Neuropeptide ¬∑ Cognitive</span>
+                <span class="compound-meta">Neuropeptide ∑ Cognitive</span>
                 <h3>Selank</h3>
                 <p>Peptide discussed for calm focus, anxiety support and neurotransmitter balance education. Review with psychiatric medications.</p>
               </article>
@@ -2029,22 +2035,38 @@
                 <div class="body-render" aria-hidden="true">
                   <img src="images/emerald-body-rotation-map.png" alt="" />
                 </div>
-                <span class="site-dot current s1"></span>
-                <span class="site-dot s2"></span>
-                <span class="site-dot s3"></span>
-                <span class="site-dot s4"></span>
-                <span class="site-dot s5"></span>
-                <span class="site-dot s6"></span>
               </div>
               <div class="rotation-copy">
                 <span class="compound-meta">Peptide Injection Site Rotation</span>
                 <h3>Cycle planning, site rotation, and dose tracking.</h3>
                 <p>Emerald organizes injection-site education, rotation history, cycle notes, timing, lab context, and provider-review questions so peptide conversations stay clear, documented, and clinician-ready.</p>
-                <ul class="rotation-list">
-                  <li>Current Site Options <span>Lower abdomen, upper outer arms, outer thighs, glutes</span></li>
-                  <li>Next Site Options <span>Rotate to the opposite side or next approved area after provider guidance</span></li>
-                  <li>Rotation Areas Shown <span>Front abdomen, front arms, outer thighs, back arms, glutes</span></li>
-                </ul>
+                <div class="rotation-fieldset" role="group" aria-label="Injection rotation site options">
+                  <div class="rotation-field">
+                    <label for="currentInjectionSite">Current Site</label>
+                    <select id="currentInjectionSite" name="currentInjectionSite">
+                      <option>Lower Abdomen</option>
+                      <option>Upper Outer Arm - Left</option>
+                      <option>Upper Outer Arm - Right</option>
+                      <option>Outer Thigh - Left</option>
+                      <option>Outer Thigh - Right</option>
+                      <option>Glute - Left</option>
+                      <option>Glute - Right</option>
+                    </select>
+                  </div>
+                  <div class="rotation-field">
+                    <label for="nextInjectionSite">Next Site</label>
+                    <select id="nextInjectionSite" name="nextInjectionSite">
+                      <option>Upper Outer Arm - Left</option>
+                      <option>Upper Outer Arm - Right</option>
+                      <option>Lower Abdomen</option>
+                      <option>Outer Thigh - Left</option>
+                      <option>Outer Thigh - Right</option>
+                      <option>Glute - Left</option>
+                      <option>Glute - Right</option>
+                    </select>
+                  </div>
+                  <p class="rotation-note">Shown areas: lower abdomen, upper outer arms, outer thighs, and glutes. Rotate sites only as directed by your qualified healthcare provider.</p>
+                </div>
               </div>
             </div>
             <div class="library-note">Educational wellness intelligence only. Always consult a qualified healthcare provider before using supplements, vitamins, peptides, medications, or wellness products.</div>
@@ -2086,12 +2108,12 @@
               <a href="/peptide-wellness.html">Learn More</a>
             </article>
             <article class="topic-card">
-              <div class="topic-art hormone"><img src="images/shop-health-vitality-young-couple.png" alt="Smiling man and woman walking outdoors" /><span class="topic-badge">‚óÜ</span></div>
+              <div class="topic-art hormone"><img src="images/shop-health-vitality-young-couple.png" alt="Smiling man and woman walking outdoors" /><span class="topic-badge">?</span></div>
               <h3>Hormone Health</h3>
               <a href="/hormone-wellness.html">Learn More</a>
             </article>
             <article class="topic-card">
-              <div class="topic-art weight-loss"><img src="images/shop-weight-loss-hispanic-female.png" alt="Smiling woman preparing healthy food for weight wellness" /><span class="topic-badge">‚ú≥</span></div>
+              <div class="topic-art weight-loss"><img src="images/shop-weight-loss-hispanic-female.png" alt="Smiling woman preparing healthy food for weight wellness" /><span class="topic-badge">?</span></div>
               <h3>Weight Loss</h3>
               <a href="/shop-weight-loss-glp1.html">Learn More</a>
             </article>
@@ -2124,14 +2146,14 @@
           </div>
           <div class="dashboard-frame">
             <aside class="sidebar">
-              <div class="side-item active">‚óé Data</div>
-              <div class="side-item">‚óà BodyScan‚Ñ¢</div>
-              <div class="side-item">‚å¨ Biology Labs‚Ñ¢</div>
-              <div class="side-item">‚ñ§ Protocol Vault‚Ñ¢</div>
-              <div class="side-item">‚ú≥ Regenesis Outlook‚Ñ¢</div>
-              <div class="side-item">‚Üó Progress</div>
-              <div class="side-item">‚úâ Messages</div>
-              <div class="side-item">‚öô Settings</div>
+              <div class="side-item active">? Data</div>
+              <div class="side-item">? BodyScanô</div>
+              <div class="side-item">? Biology Labsô</div>
+              <div class="side-item">? Protocol Vaultô</div>
+              <div class="side-item">? Regenesis Outlookô</div>
+              <div class="side-item">? Progress</div>
+              <div class="side-item">? Messages</div>
+              <div class="side-item">? Settings</div>
             </aside>
             <div class="dashboard">
               <div class="dashboard-top">
@@ -2143,7 +2165,7 @@
               </div>
               <div class="dash-grid">
                 <div class="dash-card">
-                  <h4>Regenesis Score‚Ñ¢</h4>
+                  <h4>Regenesis Scoreô</h4>
                   <strong>842</strong>
                   <div class="dash-note">Excellent</div>
                 </div>
@@ -2207,13 +2229,13 @@
           <div>
             <h2>Ready to take control of your health?</h2>
             <p>Join Emerald Wellness and begin your personalized health intelligence journey today.</p>
-            <a class="btn btn-primary" href="/signup">Take BodyScan‚Ñ¢ Now</a>
+            <a class="btn btn-primary" href="/signup">Take BodyScanô Now</a>
           </div>
           <div class="cta-card-grid">
-            <div class="cta-card"><i class="feature-icon">‚ôß</i>Personalized For You</div>
-            <div class="cta-card"><i class="feature-icon">‚óá</i>Science-Backed Protocols</div>
-            <div class="cta-card"><i class="feature-icon">‚ôô</i>Provider-Guided Care</div>
-            <div class="cta-card"><i class="feature-icon">‚Üó</i>Results-Driven Approach</div>
+            <div class="cta-card"><i class="feature-icon">?</i>Personalized For You</div>
+            <div class="cta-card"><i class="feature-icon">?</i>Science-Backed Protocols</div>
+            <div class="cta-card"><i class="feature-icon">?</i>Provider-Guided Care</div>
+            <div class="cta-card"><i class="feature-icon">?</i>Results-Driven Approach</div>
           </div>
         </div>
       </section>
@@ -2253,7 +2275,7 @@
           </div>
         </div>
         <div class="legal">
-          <span>¬© 2026 Emerald Wellness. All rights reserved.</span>
+          <span>© 2026 Emerald Wellness. All rights reserved.</span>
           <span>This site is not intended to diagnose, treat, cure, or prevent any disease.</span>
         </div>
       </div>
@@ -2274,7 +2296,6 @@
   </script>
 </body>
 </html>
-
 
 
 
