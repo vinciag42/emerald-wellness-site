@@ -843,21 +843,22 @@
     .body-map {
       position: relative;
       min-height: 390px;
-      border: 1px solid rgba(255,255,255,.1);
+      border: 1px solid rgba(216,200,143,.22);
       border-radius: 10px;
       background:
-        radial-gradient(ellipse at 50% 44%, rgba(216,200,143,.13), transparent 34%),
-        radial-gradient(ellipse at center, rgba(88,227,154,.14), transparent 62%),
-        linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.015));
+        radial-gradient(circle at 50% 32%, rgba(216,200,143,.16), transparent 24%),
+        radial-gradient(circle at 50% 58%, rgba(88,227,154,.16), transparent 38%),
+        linear-gradient(160deg, rgba(3,12,8,.94), rgba(8,44,30,.72) 58%, rgba(3,12,8,.96));
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.08), 0 22px 42px rgba(0,0,0,.24);
       overflow: hidden;
     }
     .body-map::before {
-      content: "Human Rotation Map";
+      content: "Emerald Rotation Map";
       position: absolute;
       left: 14px;
       top: 14px;
       z-index: 3;
-      color: rgba(255,255,255,.5);
+      color: rgba(240,232,200,.78);
       font-size: 10px;
       font-weight: 900;
       letter-spacing: .14em;
@@ -869,72 +870,47 @@
       left: 14px;
       bottom: 14px;
       z-index: 3;
-      color: rgba(216,200,143,.72);
+      color: rgba(216,200,143,.82);
       font-size: 10px;
       font-weight: 900;
       letter-spacing: .08em;
       text-transform: uppercase;
     }
-    .body-figure {
+    .body-render {
       position: absolute;
-      inset: 30px 8px 18px;
+      inset: 0;
       z-index: 1;
+      display: grid;
+      place-items: center;
+      background: radial-gradient(circle at 50% 48%, rgba(88,227,154,.16), transparent 45%);
     }
-    .body-figure svg {
+    .body-render img {
       width: 100%;
       height: 100%;
-      display: block;
-      filter: drop-shadow(0 26px 38px rgba(0,0,0,.26));
-    }
-    .figure-fill {
-      fill: url(#bodyGradient);
-      stroke: rgba(240,232,200,.5);
-      stroke-width: 1.7;
-    }
-    .figure-shadow {
-      fill: rgba(0,0,0,.18);
-      filter: blur(7px);
-    }
-    .figure-highlight {
-      fill: rgba(255,255,255,.18);
-      stroke: none;
-    }
-    .figure-zone {
-      fill: url(#zoneGradient);
-      stroke: rgba(88,227,154,.38);
-      stroke-width: 1.2;
-    }
-    .figure-line {
-      fill: none;
-      stroke: rgba(255,255,255,.22);
-      stroke-width: 1.2;
-      stroke-linecap: round;
-    }
-    .figure-muscle {
-      fill: none;
-      stroke: rgba(12,111,73,.24);
-      stroke-width: 1.15;
-      stroke-linecap: round;
-    }
-    .site-dot {
+      object-fit: contain;
+      object-position: center;
+      padding: 28px 12px 34px;
+      filter: saturate(1.05) contrast(1.06) drop-shadow(0 26px 34px rgba(0,0,0,.32));
+    }    .site-dot {
       position: absolute;
-      width: 18px;
-      height: 18px;
+      width: 17px;
+      height: 17px;
       border-radius: 50%;
+      border: 2px solid rgba(3,12,8,.9);
       background: var(--mint);
-      box-shadow: 0 0 0 7px rgba(88,227,154,.12), 0 0 24px rgba(88,227,154,.55);
+      box-shadow: 0 0 0 6px rgba(88,227,154,.14), 0 0 24px rgba(88,227,154,.58);
       z-index: 2;
     }
     .site-dot.current {
       background: var(--champagne-2);
-      box-shadow: 0 0 0 8px rgba(216,200,143,.14), 0 0 26px rgba(216,200,143,.55);
+      box-shadow: 0 0 0 7px rgba(216,200,143,.16), 0 0 28px rgba(216,200,143,.62);
     }
-    .site-dot.s1 { left: 45%; top: 43%; }
-    .site-dot.s2 { left: 54%; top: 43%; }
-    .site-dot.s3 { left: 42%; top: 73%; }
-    .site-dot.s4 { left: 58%; top: 73%; }
-    .site-dot.s5 { left: 37%; top: 40%; }
-    .site-dot.s6 { left: 62%; top: 40%; }
+    .site-dot.s1 { left: 45%; top: 48%; }
+    .site-dot.s2 { left: 55%; top: 48%; }
+    .site-dot.s3 { left: 45%; top: 72%; }
+    .site-dot.s4 { left: 55%; top: 72%; }
+    .site-dot.s5 { left: 31%; top: 49%; }
+    .site-dot.s6 { left: 69%; top: 49%; }
     .rotation-copy h3 {
       margin: 0 0 8px;
       color: #fff;
@@ -1132,9 +1108,10 @@
     .difference-copy {
       max-width: 470px;
       margin: 18px 0 0;
-      color: rgba(255,255,255,.76);
-      font-size: 15px;
-      line-height: 1.75;
+      color: rgba(255,255,255,.86);
+      font-size: 16px;
+      line-height: 1.76;
+      font-weight: 400;
     }
     .stat-grid {
       display: grid;
@@ -2047,42 +2024,8 @@
             </div>
             <div class="rotation-preview" id="injection-rotation">
               <div class="body-map" aria-label="Realistic injection site rotation map">
-                <div class="body-figure" aria-hidden="true">
-                  <svg viewBox="0 0 300 400" role="img">
-                    <defs>
-                      <linearGradient id="bodyGradient" x1="0" y1="0" x2="1" y2="1">
-                        <stop offset="0" stop-color="rgba(245,221,176,.72)" />
-                        <stop offset=".42" stop-color="rgba(204,163,121,.54)" />
-                        <stop offset="1" stop-color="rgba(111,83,62,.5)" />
-                      </linearGradient>
-                      <radialGradient id="zoneGradient" cx="50%" cy="48%" r="60%">
-                        <stop offset="0" stop-color="rgba(88,227,154,.22)" />
-                        <stop offset=".75" stop-color="rgba(88,227,154,.08)" />
-                        <stop offset="1" stop-color="rgba(88,227,154,.02)" />
-                      </radialGradient>
-                    </defs>
-                    <ellipse class="figure-shadow" cx="150" cy="365" rx="44" ry="12" />
-                    <path class="figure-fill" d="M124 58 C119 45 122 28 133 18 C145 7 163 8 174 20 C184 31 186 49 179 62 C175 71 169 78 160 81 L140 81 C132 77 127 69 124 58 Z" />
-                    <path class="figure-fill" d="M132 80 C138 85 162 85 168 80 L172 103 C164 112 136 112 128 103 Z" />
-                    <path class="figure-fill" d="M101 112 C114 92 128 96 134 103 C142 111 158 111 166 103 C172 96 186 92 199 112 C190 133 187 164 190 196 C184 223 171 244 150 244 C129 244 116 223 110 196 C113 164 110 133 101 112 Z" />
-                    <path class="figure-fill" d="M102 113 C82 128 70 160 63 207 C61 221 67 230 78 231 C89 232 95 224 97 211 C101 180 108 155 120 134 Z" />
-                    <path class="figure-fill" d="M198 113 C218 128 230 160 237 207 C239 221 233 230 222 231 C211 232 205 224 203 211 C199 180 192 155 180 134 Z" />
-                    <path class="figure-fill" d="M110 197 C120 227 130 247 150 247 C170 247 180 227 190 197 C196 229 198 255 193 279 C188 316 187 349 186 365 C185 376 178 382 169 380 C160 378 158 369 158 359 L153 266 C152 260 148 260 147 266 L142 359 C142 369 140 378 131 380 C122 382 115 376 114 365 C113 349 112 316 107 279 C102 255 104 229 110 197 Z" />
-                    <ellipse class="figure-zone" cx="150" cy="173" rx="32" ry="29" />
-                    <path class="figure-zone" d="M120 286 C132 279 142 278 150 283 C158 278 168 279 180 286 L179 324 C169 320 159 320 153 323 C144 320 134 320 121 325 Z" />
-                    <ellipse class="figure-zone" cx="91" cy="171" rx="15" ry="31" transform="rotate(15 91 171)" />
-                    <ellipse class="figure-zone" cx="209" cy="171" rx="15" ry="31" transform="rotate(-15 209 171)" />
-                    <path class="figure-highlight" d="M131 99 C140 106 160 106 169 99 C166 118 158 126 150 127 C142 126 134 118 131 99 Z" />
-                    <path class="figure-highlight" d="M123 127 C132 136 139 144 142 158 C130 155 120 147 113 133 Z" />
-                    <path class="figure-highlight" d="M177 127 C168 136 161 144 158 158 C170 155 180 147 187 133 Z" />
-                    <path class="figure-muscle" d="M116 127 C130 136 138 151 140 174" />
-                    <path class="figure-muscle" d="M184 127 C170 136 162 151 160 174" />
-                    <path class="figure-muscle" d="M122 197 C136 206 164 206 178 197" />
-                    <path class="figure-line" d="M150 112 C148 141 148 173 150 213" />
-                    <path class="figure-line" d="M128 229 C140 237 160 237 172 229" />
-                    <path class="figure-muscle" d="M134 260 C137 292 137 332 132 368" />
-                    <path class="figure-muscle" d="M166 260 C163 292 163 332 168 368" />
-                  </svg>
+                <div class="body-render" aria-hidden="true">
+                  <img src="images/emerald-body-rotation-map.png" alt="" />
                 </div>
                 <span class="site-dot current s1"></span>
                 <span class="site-dot s2"></span>
