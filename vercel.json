@@ -68,6 +68,7 @@
     { "source": "/hipaa", "destination": "/hipaa.html" },
     { "source": "/hipaa/", "destination": "/hipaa.html" },
     { "source": "/specialty-modules", "destination": "/specialty-modules.html" },
+    { "source": "/contact-us", "destination": "/contact-us.html" },
     { "source": "/advisors", "destination": "/emerald-wellness/advisors.html" },
     { "source": "/blog/", "destination": "/blog/index.html" },
     { "source": "/blog/:slug", "destination": "/emerald-wellness/blog/:slug.html" },
