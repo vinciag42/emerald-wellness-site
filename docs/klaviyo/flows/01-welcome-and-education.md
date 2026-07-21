@@ -1,0 +1,11 @@
+# EW7 — Welcome and Education
+
+**Objective:** educate new email subscribers and invite a next step. **Trigger:** joins Emerald Wellness Newsletter. **Filters/exclusions:** can receive email; exclude suppressed, internal test outside QA, and anyone already active in this flow. **Timing:** immediately, +1 day, +2 days, +2 days, +3 days. Exit on suppression or completed primary CTA. **UTMs:** `utm_source=klaviyo&utm_medium=email&utm_campaign=ew7_welcome&utm_content=e{n}`. **Target:** establish baseline for deliverability, clicks, and membership starts; approve targets after baseline.
+
+1. Subject “Welcome to Emerald Wellness”; preview “A clearer way to explore your wellness goals.” Copy: “Welcome. Emerald Wellness brings education, tools, and membership support into one place. Explore at your pace and choose what matters most to you.” CTA: Explore Emerald Wellness.
+2. Subject “Know your biology. Make more informed choices.”; preview “See how education and tracking fit together.” Copy: “Your experience can connect broad wellness goals, educational resources, and progress tools without promising a diagnosis or outcome.” CTA: See How It Works.
+3. Subject “What’s your primary wellness goal?”; preview “Choose a broad category to personalize your education.” Copy: “Tell us which general area matters most. Please do not submit diagnoses, medications, lab results, or medical history.” CTA: Choose My Goal.
+4. Subject “Meet your Member Command Center”; preview “One place for your membership experience.” Copy: “The Member Command Center organizes eligible benefits, resources, and account access in one place.” CTA: Preview the Command Center.
+5. Subject “Begin your Emerald Wellness journey”; preview “Choose the next step that fits.” Copy: “Explore membership, request a consultation, or continue learning. You decide what comes next.” CTA: Begin My Journey.
+
+SMS split only when SMS consent is subscribed with timestamp, source, and evidence: “Emerald Wellness: Welcome. Explore your next step: {{ link }}. Msg frequency varies. Reply HELP for help, STOP to opt out.” Smart Sending on. CEO status: **Not approved — draft**. QA: test all links/UTMs, mobile rendering, suppression, consent split, and test-profile-only entry; verify all messages remain Draft.
