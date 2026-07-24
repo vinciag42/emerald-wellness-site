@@ -36,6 +36,8 @@
     { "source": "/terms-of-service", "destination": "/terms-of-service.html", "permanent": true }
   ],
   "rewrites": [
+    { "source": "/login", "destination": "/login.html" },
+    { "source": "/member-command-center", "destination": "/dashboard.html" },
     { "source": "/signup", "destination": "/signup.html" },
     { "source": "/app", "destination": "/app.html" },
     { "source": "/dashboard", "destination": "/dashboard.html" },
