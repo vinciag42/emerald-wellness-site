@@ -161,7 +161,10 @@ footer{text-align:center;padding:24px;border-top:1px solid var(--border);font-si
 
 <nav>
   <div class="logo">EMERALD <span>WELLNESS</span></div>
-  <div class="nav-badge">$1 for First 7 Days</div>
+  <div style="display:flex;align-items:center;gap:18px">
+    <a href="/login" style="font-weight:800;color:var(--greenXL);font-size:13px">Sign In</a>
+    <div class="nav-badge">$1 for First 7 Days</div>
+  </div>
 </nav>
 
 <div class="hero">
@@ -396,7 +399,7 @@ footer{text-align:center;padding:24px;border-top:1px solid var(--border);font-si
         <div class="success-item">Your selected membership access is active</div>
         <div class="success-item">Welcome email on its way</div>
       </div>
-      <button class="btn-primary" onclick="window.location.href='/dashboard?checkout=success&tab=active-module'">Continue to Member Intake →</button>
+      <button class="btn-primary" onclick="goToMemberIntake()">Continue to Member Intake →</button>
     </div>
   </div>
 
@@ -591,6 +594,20 @@ function initSupabaseClient() {
     return supabaseClient;
   }
   return null;
+}
+async function goToMemberIntake(){
+  const dest = '/dashboard?checkout=success&tab=active-module';
+  try{
+    const client = await ensureSupabaseClient();
+    const { data } = await client.auth.getSession();
+    if(data && data.session){
+      window.location.href = dest;
+    } else {
+      window.location.href = '/login?next=' + encodeURIComponent(dest);
+    }
+  }catch(e){
+    window.location.href = '/login?next=' + encodeURIComponent(dest);
+  }
 }
 async function ensureSupabaseClient() {
   const existing = initSupabaseClient();
