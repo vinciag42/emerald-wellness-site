@@ -817,25 +817,39 @@ async function createAccount() {
       const {data,error} = await client.auth.signUp({
         email: userData.email,
         password: pw,
-        options:{data:{first_name:userData.firstName,last_name:userData.lastName}}
+        options:{
+          data:{first_name:userData.firstName,last_name:userData.lastName},
+          emailRedirectTo: window.location.origin + '/login?confirmed=1'
+        }
       });
-      if(error) {
+
+      // Supabase deliberately returns an obfuscated user with no identities when
+      // an email is already registered. Treat that as an existing account instead
+      // of incorrectly continuing as though a new password was created.
+      const existingAccount = !error && data?.user && Array.isArray(data.user.identities) && data.user.identities.length === 0;
+
+      if(error || existingAccount) {
         const signedIn = await client.auth.signInWithPassword({
           email: userData.email,
           password: pw
         });
         if(signedIn.error) {
-          if(isRateLimitError(error)) {
-            throw new Error('Email signup is temporarily rate limited from repeated testing. If this email already has an Emerald Wellness account, enter the existing password. Otherwise wait 15–60 minutes or use a fresh test email.');
+          if(error && isRateLimitError(error)) {
+            throw new Error('Email signup is temporarily rate limited. Please wait 15–60 minutes, or sign in if you already have an Emerald Wellness account.');
           }
-          if(isExistingAccountError(error)) {
-            throw new Error('An Emerald Wellness account already exists for this email. Enter the existing password to continue checkout, or use a different email for this test signup.');
+          if(existingAccount || isExistingAccountError(error)) {
+            throw new Error('An Emerald Wellness account already exists for this email, but that password did not match. Use Forgot Password on the Sign In page to reset it—creating another account will not replace the existing password.');
           }
-          throw error;
+          throw (error || signedIn.error);
         }
         userId = signedIn.data?.user?.id;
       } else {
         userId = data?.user?.id;
+        if(!data?.session) {
+          try {
+            localStorage.setItem('emerald-pending-email-confirmation', userData.email);
+          } catch(e) {}
+        }
       }
 
       if(userId) {
@@ -1031,7 +1045,6 @@ function loadScript(src){
 </script>
 </body>
 </html>
-
 
 
 
