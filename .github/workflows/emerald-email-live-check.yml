@@ -1,0 +1,38 @@
+name: Emerald Email Live Check
+
+on:
+  pull_request:
+    branches: [master]
+
+permissions:
+  contents: read
+
+jobs:
+  live-email-check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Call branded email test endpoint
+        shell: bash
+        run: |
+          set -euo pipefail
+          URL='https://emerald-wellness-site.vercel.app/api/run-email-test?key=emerald-live-email-test-20260726'
+          HTTP_STATUS=$(curl --silent --show-error --location --retry 2 --retry-delay 2 --output response.json --write-out '%{http_code}' "$URL")
+          echo "HTTP status: $HTTP_STATUS"
+          cat response.json
+          echo
+          python - "$HTTP_STATUS" <<'PY'
+          import json, sys
+          status = int(sys.argv[1])
+          with open('response.json', encoding='utf-8') as f:
+              data = json.load(f)
+          if status != 200 or data.get('ok') is not True:
+              raise SystemExit(f"Email system is not operational: HTTP {status}; {data}")
+          expected_sender = 'Emerald Wellness <welcome@emeraldwellness.health>'
+          if data.get('sender') != expected_sender:
+              raise SystemExit(f"Unexpected sender: {data.get('sender')!r}")
+          results = data.get('results') or []
+          if len(results) < 2 or not all(item.get('sent') is True for item in results):
+              raise SystemExit(f"Both test emails were not accepted: {results}")
+          print('VERIFIED: branded sender and both test emails accepted for delivery.')
+          PY
