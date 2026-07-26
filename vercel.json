@@ -1,6 +1,7 @@
 {
   "outputDirectory": ".",
   "redirects": [
+    { "source": "/api/subscribe", "destination": "/api/subscribe-v2", "permanent": false },
     { "source": "/emerald-wellness/signup.html", "destination": "/#pricing", "permanent": false },
     { "source": "/sign%20up%20061126.html", "destination": "/#pricing", "permanent": true },
     { "source": "/command-center.html", "destination": "/404.html", "permanent": false },
