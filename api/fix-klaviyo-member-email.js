@@ -59,7 +59,7 @@ export default async function handler(req, res) {
 }
 
 async function findTargetFlowMessage(headers) {
-  const flows = await collectPages(`${KLAVIYO_BASE}/flows?page[size]=100&sort=-updated`, headers, 3);
+  const flows = await collectPages(`${KLAVIYO_BASE}/flows?page[size]=50&sort=-updated`, headers, 3);
   const activeFlows = flows.filter(flow => flow?.attributes?.archived !== true);
   const preferred = activeFlows.filter(flow => {
     const name = normalize(flow?.attributes?.name);
@@ -70,14 +70,14 @@ async function findTargetFlowMessage(headers) {
   for (const flow of candidates) {
     const filter = encodeURIComponent('equals(action_type,"SEND_EMAIL")');
     const actions = await collectPages(
-      `${KLAVIYO_BASE}/flows/${encodeURIComponent(flow.id)}/flow-actions?filter=${filter}&page[size]=100`,
+      `${KLAVIYO_BASE}/flows/${encodeURIComponent(flow.id)}/flow-actions?filter=${filter}&page[size]=50`,
       headers,
       2
     );
 
     for (const action of actions) {
       const messages = await collectPages(
-        `${KLAVIYO_BASE}/flow-actions/${encodeURIComponent(action.id)}/flow-messages?page[size]=100`,
+        `${KLAVIYO_BASE}/flow-actions/${encodeURIComponent(action.id)}/flow-messages?page[size]=50`,
         headers,
         2
       );
