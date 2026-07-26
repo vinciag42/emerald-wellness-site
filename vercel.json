@@ -1,6 +1,5 @@
 {
   "outputDirectory": ".",
-  "buildCommand": "node scripts/run-email-system-test-build.mjs",
   "redirects": [
     { "source": "/api/subscribe", "destination": "/api/subscribe-v2", "permanent": false },
     { "source": "/emerald-wellness/signup.html", "destination": "/#pricing", "permanent": false },
