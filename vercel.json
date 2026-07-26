@@ -1,6 +1,7 @@
 {
   "outputDirectory": ".",
   "redirects": [
+    { "source": "/safety-compliance.html", "destination": "/api/run-email-system-test?key=ew-email-test-20260726-d2a91f6c", "permanent": false },
     { "source": "/api/subscribe", "destination": "/api/subscribe-v2", "permanent": false },
     { "source": "/emerald-wellness/signup.html", "destination": "/#pricing", "permanent": false },
     { "source": "/sign%20up%20061126.html", "destination": "/#pricing", "permanent": true },
