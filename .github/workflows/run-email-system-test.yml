@@ -1,0 +1,25 @@
+name: Run Emerald Email System Test
+
+on:
+  push:
+    paths:
+      - '.github/workflows/run-email-system-test.yml'
+
+jobs:
+  test-email-system:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Wait for Vercel deployment
+        run: sleep 120
+      - name: Trigger secured branded email test
+        run: |
+          set -euo pipefail
+          curl --fail-with-body --silent --show-error --max-time 60 \
+            'https://emeraldwellness.health/api/run-email-system-test?key=ew-email-test-20260726-d2a91f6c' \
+            | tee email-test-result.json
+      - name: Print result
+        if: always()
+        run: |
+          echo '--- Emerald email test result ---'
+          cat email-test-result.json 2>/dev/null || true
