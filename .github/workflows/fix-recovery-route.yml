@@ -5,6 +5,7 @@ on:
     branches: [master]
     paths:
       - ".github/workflows/fix-recovery-route.yml"
+  workflow_dispatch:
 
 permissions:
   contents: write
@@ -25,23 +26,26 @@ jobs:
           index_path = Path("index.html")
           index = index_path.read_text(encoding="utf-8-sig")
           marker = "<head>"
-          recovery_script = '''<head>
-  <script>
-    (function () {
-      var hash = window.location.hash || "";
-      var search = window.location.search || "";
-      var hashParams = new URLSearchParams(hash.replace(/^#/, ""));
-      var queryParams = new URLSearchParams(search);
-      var isPasswordRecovery =
-        hashParams.get("type") === "recovery" ||
-        queryParams.get("type") === "recovery" ||
-        queryParams.get("recovery") === "1";
-
-      if (isPasswordRecovery) {
-        window.location.replace("/login" + search + hash);
-      }
-    })();
-  </script>'''
+          lines = [
+              "<head>",
+              "  <script>",
+              "    (function () {",
+              "      var hash = window.location.hash || \"\";",
+              "      var search = window.location.search || \"\";",
+              "      var hashParams = new URLSearchParams(hash.replace(/^#/, \"\"));",
+              "      var queryParams = new URLSearchParams(search);",
+              "      var isPasswordRecovery =",
+              "        hashParams.get(\"type\") === \"recovery\" ||",
+              "        queryParams.get(\"type\") === \"recovery\" ||",
+              "        queryParams.get(\"recovery\") === \"1\";",
+              "",
+              "      if (isPasswordRecovery) {",
+              "        window.location.replace(\"/login\" + search + hash);",
+              "      }",
+              "    })();",
+              "  </script>",
+          ]
+          recovery_script = "\n".join(lines)
 
           if 'var isPasswordRecovery =' not in index:
               if marker not in index:
@@ -51,14 +55,8 @@ jobs:
 
           login_path = Path("login.html")
           login = login_path.read_text(encoding="utf-8")
-          old = '''  const hash = window.location.hash || "";
-  const isRecovery = hash.indexOf("type=recovery") !== -1;'''
-          new = '''  const hash = window.location.hash || "";
-  const query = new URLSearchParams(window.location.search || "");
-  const isRecovery =
-    hash.indexOf("type=recovery") !== -1 ||
-    query.get("type") === "recovery" ||
-    query.get("recovery") === "1";'''
+          old = '  const hash = window.location.hash || "";\n  const isRecovery = hash.indexOf("type=recovery") !== -1;'
+          new = '  const hash = window.location.hash || "";\n  const query = new URLSearchParams(window.location.search || "");\n  const isRecovery =\n    hash.indexOf("type=recovery") !== -1 ||\n    query.get("type") === "recovery" ||\n    query.get("recovery") === "1";'
 
           if old in login:
               login = login.replace(old, new, 1)
