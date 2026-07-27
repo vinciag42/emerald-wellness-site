@@ -1,0 +1,77 @@
+name: Fix password recovery route
+
+on:
+  push:
+    branches: [master]
+    paths:
+      - ".github/workflows/fix-recovery-route.yml"
+
+permissions:
+  contents: write
+
+jobs:
+  fix-recovery-route:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Preserve recovery links that land on the homepage
+        shell: bash
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+
+          index_path = Path("index.html")
+          index = index_path.read_text(encoding="utf-8-sig")
+          marker = "<head>"
+          recovery_script = '''<head>
+  <script>
+    (function () {
+      var hash = window.location.hash || "";
+      var search = window.location.search || "";
+      var hashParams = new URLSearchParams(hash.replace(/^#/, ""));
+      var queryParams = new URLSearchParams(search);
+      var isPasswordRecovery =
+        hashParams.get("type") === "recovery" ||
+        queryParams.get("type") === "recovery" ||
+        queryParams.get("recovery") === "1";
+
+      if (isPasswordRecovery) {
+        window.location.replace("/login" + search + hash);
+      }
+    })();
+  </script>'''
+
+          if 'var isPasswordRecovery =' not in index:
+              if marker not in index:
+                  raise SystemExit("Could not find <head> in index.html")
+              index = index.replace(marker, recovery_script, 1)
+              index_path.write_text(index, encoding="utf-8")
+
+          login_path = Path("login.html")
+          login = login_path.read_text(encoding="utf-8")
+          old = '''  const hash = window.location.hash || "";
+  const isRecovery = hash.indexOf("type=recovery") !== -1;'''
+          new = '''  const hash = window.location.hash || "";
+  const query = new URLSearchParams(window.location.search || "");
+  const isRecovery =
+    hash.indexOf("type=recovery") !== -1 ||
+    query.get("type") === "recovery" ||
+    query.get("recovery") === "1";'''
+
+          if old in login:
+              login = login.replace(old, new, 1)
+              login_path.write_text(login, encoding="utf-8")
+          elif 'query.get("recovery") === "1"' not in login:
+              raise SystemExit("Could not find recovery detection block in login.html")
+          PY
+
+      - name: Commit the correction
+        shell: bash
+        run: |
+          git config user.name "Emerald Wellness Automation"
+          git config user.email "info@emeraldwellness.health"
+          git add index.html login.html
+          git commit -m "Preserve Supabase password recovery route"
+          git push origin master
