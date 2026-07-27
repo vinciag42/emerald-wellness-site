@@ -198,7 +198,7 @@ async function handleForgot(e){
   try{
     const client = getClient();
     const { error } = await client.auth.resetPasswordForEmail(email, {
-      redirectTo: window.location.origin + "/login"
+      redirectTo: "https://emeraldwellness.health/login"
     });
     if(error){ setMsg(msg, error.message || "Unable to send reset email.", true); return; }
     setMsg(msg, "Check your email for a secure link to reset your password.", false);
