@@ -1,7 +1,23 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <!-- Emerald Wellness Build: EW 7.0 -->
 <html lang="en">
 <head>
+  <script>
+    (function () {
+      var hash = window.location.hash || "";
+      var search = window.location.search || "";
+      var hashParams = new URLSearchParams(hash.replace(/^#/, ""));
+      var queryParams = new URLSearchParams(search);
+      var isPasswordRecovery =
+        hashParams.get("type") === "recovery" ||
+        queryParams.get("type") === "recovery" ||
+        queryParams.get("recovery") === "1";
+
+      if (isPasswordRecovery) {
+        window.location.replace("/login" + search + hash);
+      }
+    })();
+  </script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <title>Emerald Wellness | Private Health Intelligence</title>

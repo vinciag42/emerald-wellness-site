@@ -243,7 +243,11 @@ async function init(){
   });
 
   const hash = window.location.hash || "";
-  const isRecovery = hash.indexOf("type=recovery") !== -1;
+  const query = new URLSearchParams(window.location.search || "");
+  const isRecovery =
+    hash.indexOf("type=recovery") !== -1 ||
+    query.get("type") === "recovery" ||
+    query.get("recovery") === "1";
 
   const { data } = await client.auth.getSession();
 
