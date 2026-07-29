@@ -348,6 +348,7 @@ footer{text-align:center;padding:24px;border-top:1px solid var(--border);font-si
     </div>
     <div class="trial-note" id="step2BillingNote">✦ Your card will be charged $1 today. After 7 days, your first paid subscription month receives 20% off once, then your selected plan renews automatically at the displayed recurring price unless canceled before renewal.</div>
     <button class="btn-primary" onclick="goStep3()">Continue → Create Member Account</button>
+    <button class="btn-secondary" id="cancelUpgradeButton" style="display:none" onclick="window.location.href='/dashboard'">Cancel Upgrade — Return to Member Dashboard</button>
     <button class="btn-secondary" onclick="goStep(1)">← Back</button>
   </div>
 
@@ -445,6 +446,7 @@ function applyUpgradeModeCopy() {
   const accountStepSub = document.querySelector('#step3 .step-sub');
   const createButton = document.getElementById('btnCreateAccount');
   const continueButton = document.querySelector('#step2 .btn-primary');
+  const cancelUpgradeButton = document.getElementById('cancelUpgradeButton');
   const navBadge = document.querySelector('.nav-badge');
   const firstTrustItem = document.querySelector('.trust-row .trust-item');
   const heroTrialNote = document.querySelector('.hero > .trial-note');
@@ -452,6 +454,7 @@ function applyUpgradeModeCopy() {
     memberNavLink.href = '/dashboard';
     memberNavLink.textContent = 'Member Dashboard';
   }
+  if (cancelUpgradeButton) cancelUpgradeButton.style.display = 'block';
   if (navBadge) navBadge.textContent = 'Existing Member Upgrade';
   if (firstTrustItem) firstTrustItem.textContent = 'Existing Member Upgrade';
   const trustItems = document.querySelectorAll('.trust-row .trust-item');
@@ -1070,4 +1073,3 @@ function loadScript(src){
 </script>
 </body>
 </html>
-
