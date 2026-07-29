@@ -445,10 +445,28 @@ function applyUpgradeModeCopy() {
   const accountStepSub = document.querySelector('#step3 .step-sub');
   const createButton = document.getElementById('btnCreateAccount');
   const continueButton = document.querySelector('#step2 .btn-primary');
+  const navBadge = document.querySelector('.nav-badge');
+  const firstTrustItem = document.querySelector('.trust-row .trust-item');
+  const heroTrialNote = document.querySelector('.hero > .trial-note');
   if (memberNavLink) {
     memberNavLink.href = '/dashboard';
     memberNavLink.textContent = 'Member Dashboard';
   }
+  if (navBadge) navBadge.textContent = 'Existing Member Upgrade';
+  if (firstTrustItem) firstTrustItem.textContent = 'Existing Member Upgrade';
+  if (heroTrialNote) heroTrialNote.textContent = 'Review the selected plan price and billing timing before confirming your membership upgrade.';
+  document.querySelectorAll('.plan-trial').forEach(note => {
+    note.textContent = 'Existing-member upgrade · billing confirmed before checkout';
+  });
+  const step2TotalLabel = document.querySelector('#summaryTotal')?.parentElement?.querySelector('span');
+  const step3TotalLabel = document.querySelector('#summaryTotal3')?.parentElement?.querySelector('span');
+  if (step2TotalLabel) step2TotalLabel.textContent = 'Selected upgrade total';
+  if (step3TotalLabel) step3TotalLabel.textContent = 'Selected upgrade total';
+  const successSub = document.querySelector('.success-sub');
+  const successItems = document.querySelectorAll('.success-item');
+  if (successSub) successSub.textContent = 'Your membership upgrade request is confirmed. You will receive an Emerald Wellness confirmation email shortly.';
+  if (successItems[0]) successItems[0].textContent = 'Membership upgrade confirmed';
+  if (successItems[1]) successItems[1].textContent = 'Billing follows the timing confirmed during checkout';
   if (eyebrow) eyebrow.textContent = 'Upgrade Membership';
   if (title) title.innerHTML = 'Choose Your Next<br/><em>Emerald Wellness Level</em>';
   const savedProfile = getSavedMemberProfile();
@@ -1050,6 +1068,5 @@ function loadScript(src){
 </script>
 </body>
 </html>
-
 
 
