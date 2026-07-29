@@ -454,6 +454,8 @@ function applyUpgradeModeCopy() {
   }
   if (navBadge) navBadge.textContent = 'Existing Member Upgrade';
   if (firstTrustItem) firstTrustItem.textContent = 'Existing Member Upgrade';
+  const trustItems = document.querySelectorAll('.trust-row .trust-item');
+  if (trustItems[1]) trustItems[1].textContent = 'Billing Confirmed Before Checkout';
   if (heroTrialNote) heroTrialNote.textContent = 'Review the selected plan price and billing timing before confirming your membership upgrade.';
   document.querySelectorAll('.plan-trial').forEach(note => {
     note.textContent = 'Existing-member upgrade · billing confirmed before checkout';
@@ -1068,5 +1070,4 @@ function loadScript(src){
 </script>
 </body>
 </html>
-
 
