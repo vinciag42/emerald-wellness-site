@@ -5,11 +5,15 @@ function json(res, status, payload) {
   res.end(JSON.stringify(payload));
 }
 
+const EMERALD_SUPABASE_ANON =
+  'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im1jenB1ZmZtbHNwbWdoZ25ldWt6Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODAxNjczODAsImV4cCI6MjA5NTc0MzM4MH0.hs0CQOyrcIk5WhRr9OUU1fVs7V1sMcea7RYwWuTAVag';
+
 function serviceConfig() {
   const url = process.env.SUPABASE_URL;
   const serviceKey = process.env.SUPABASE_SERVICE_ROLE_KEY || process.env.SUPABASE_SERVICE_KEY;
+  const anonKey = process.env.SUPABASE_ANON_KEY || process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || EMERALD_SUPABASE_ANON;
   if (!url || !serviceKey) throw new Error('Supabase service credentials are not configured.');
-  return { url, serviceKey };
+  return { url, serviceKey, anonKey };
 }
 
 const PLAN_BY_MONTHLY_AMOUNT = {
@@ -130,10 +134,10 @@ async function getUserFromBearer(req) {
   const token = auth.startsWith('Bearer ') ? auth.slice(7) : '';
   if (!token) return null;
 
-  const { url, serviceKey } = serviceConfig();
+  const { url, anonKey } = serviceConfig();
   const response = await fetch(`${url}/auth/v1/user`, {
     headers: {
-      apikey: serviceKey,
+      apikey: anonKey,
       Authorization: `Bearer ${token}`,
     },
   });
