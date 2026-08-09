@@ -160,7 +160,7 @@ function pickCommandCenterState(body, userId) {
 }
 
 async function getProfile(userId) {
-  const rows = await supabaseFetch(`/rest/v1/profiles?id=eq.${encodeURIComponent(userId)}&select=id,email,phone,first_name,last_name,plan,status,stripe_customer_id,stripe_subscription_id,marketing_consent,sms_consent`, {
+  const rows = await supabaseFetch(`/rest/v1/profiles?id=eq.${encodeURIComponent(userId)}&select=id,email,plan,status,stripe_customer_id,stripe_subscription_id`, {
     headers: { Prefer: 'return=representation' },
   });
   return Array.isArray(rows) ? rows[0] : null;
