@@ -12,6 +12,69 @@ function serviceConfig() {
   return { url, serviceKey };
 }
 
+const PLAN_BY_MONTHLY_AMOUNT = {
+  7499: 'silver',
+  14999: 'gold',
+  19999: 'elite',
+  29999: 'pro',
+  59900: 'platinum',
+  79900: 'platinum_plus',
+  99900: 'concierge',
+  149900: 'concierge_premium',
+};
+
+async function stripeGet(path, params = new URLSearchParams()) {
+  const key = process.env.STRIPE_SECRET_KEY;
+  if (!key) return null;
+  const query = params.toString();
+  const response = await fetch(`https://api.stripe.com/v1${path}${query ? `?${query}` : ''}`, {
+    headers: {
+      Authorization: `Bearer ${key}`,
+      'Stripe-Version': '2026-06-24.dahlia',
+    },
+  });
+  if (!response.ok) return null;
+  return response.json();
+}
+
+function planFromSubscription(subscription) {
+  const items = subscription?.items?.data || [];
+  const recurring = items
+    .map((item) => item?.price)
+    .filter((price) => price?.recurring?.interval === 'month' && Number.isFinite(price.unit_amount))
+    .sort((a, b) => b.unit_amount - a.unit_amount);
+  for (const price of recurring) {
+    if (PLAN_BY_MONTHLY_AMOUNT[price.unit_amount]) return PLAN_BY_MONTHLY_AMOUNT[price.unit_amount];
+  }
+  return '';
+}
+
+async function resolveStripePlan(profile) {
+  if (!profile?.stripe_customer_id) return '';
+  let subscription = null;
+  if (profile.stripe_subscription_id) {
+    subscription = await stripeGet(`/subscriptions/${encodeURIComponent(profile.stripe_subscription_id)}`);
+  }
+  if (!subscription || !['active', 'trialing', 'past_due'].includes(subscription.status)) {
+    const params = new URLSearchParams();
+    params.append('customer', profile.stripe_customer_id);
+    params.append('status', 'all');
+    params.append('limit', '10');
+    const list = await stripeGet('/subscriptions', params);
+    subscription = (list?.data || []).find((entry) => ['active', 'trialing', 'past_due'].includes(entry.status)) || null;
+  }
+  return planFromSubscription(subscription);
+}
+
+async function updateProfilePlan(userId, plan) {
+  if (!userId || !plan) return;
+  await supabaseFetch(`/rest/v1/profiles?id=eq.${encodeURIComponent(userId)}`, {
+    method: 'PATCH',
+    headers: { Prefer: 'return=minimal' },
+    body: JSON.stringify({ plan, updated_at: new Date().toISOString() }),
+  });
+}
+
 async function getUserFromBearer(req) {
   const auth = req.headers.authorization || '';
   const token = auth.startsWith('Bearer ') ? auth.slice(7) : '';
@@ -69,7 +132,7 @@ function pickCommandCenterState(body, userId) {
 }
 
 async function getProfile(userId) {
-  const rows = await supabaseFetch(`/rest/v1/profiles?id=eq.${encodeURIComponent(userId)}&select=id,email,phone,first_name,last_name,plan,marketing_consent,sms_consent`, {
+  const rows = await supabaseFetch(`/rest/v1/profiles?id=eq.${encodeURIComponent(userId)}&select=id,email,phone,first_name,last_name,plan,status,stripe_customer_id,stripe_subscription_id,marketing_consent,sms_consent`, {
     headers: { Prefer: 'return=representation' },
   });
   return Array.isArray(rows) ? rows[0] : null;
@@ -142,7 +205,20 @@ module.exports = async function handler(req, res) {
       const rows = await supabaseFetch(`/rest/v1/command_center_data?user_id=eq.${encodeURIComponent(user.id)}&select=*`, {
         headers: { Prefer: 'return=representation' },
       });
-      return json(res, 200, { success: true, data: Array.isArray(rows) ? rows[0] || null : null });
+      const data = Array.isArray(rows) ? rows[0] || null : null;
+      const profile = await getProfile(user.id);
+      const stripePlan = await resolveStripePlan(profile).catch(() => '');
+      const plan = stripePlan || profile?.plan || data?.plan_key || 'gold';
+      if (stripePlan && stripePlan !== profile?.plan) {
+        await updateProfilePlan(user.id, stripePlan).catch(() => null);
+      }
+      return json(res, 200, {
+        success: true,
+        data,
+        plan,
+        membership_status: profile?.status || null,
+        billing_source: stripePlan ? 'stripe' : 'profile',
+      });
     }
 
     const payload = pickCommandCenterState(req.body || {}, user.id);
