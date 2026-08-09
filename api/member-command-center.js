@@ -79,13 +79,35 @@ async function resolveStripeMembership(profile) {
   }
 
   subscriptions.sort((a, b) => (b.created || 0) - (a.created || 0));
-  const subscription = subscriptions.find((entry) => planFromSubscription(entry)) || null;
-  return {
-    plan: planFromSubscription(subscription),
-    customerId: subscription?.customer || '',
-    subscriptionId: subscription?.id || '',
-    status: subscription?.status || '',
-  };
+  const subscription = subscriptions.find((entry) => planFromSubscription(entry)) || subscriptions[0] || null;
+  let plan = planFromSubscription(subscription);
+  let customerId = typeof subscription?.customer === 'string' ? subscription.customer : subscription?.customer?.id || '';
+  let subscriptionId = subscription?.id || '';
+  let status = subscription?.status || '';
+
+  if (!plan) {
+    for (const candidateCustomerId of customerIds) {
+      const params = new URLSearchParams();
+      params.append('customer', candidateCustomerId);
+      params.append('status', 'paid');
+      params.append('limit', '20');
+      const invoices = await stripeGet('/invoices', params);
+      const matchingInvoice = (invoices?.data || []).find((invoice) =>
+        PLAN_BY_MONTHLY_AMOUNT[invoice.amount_paid] || PLAN_BY_MONTHLY_AMOUNT[invoice.total]
+      );
+      if (!matchingInvoice) continue;
+      plan = PLAN_BY_MONTHLY_AMOUNT[matchingInvoice.amount_paid] || PLAN_BY_MONTHLY_AMOUNT[matchingInvoice.total] || '';
+      customerId = candidateCustomerId;
+      subscriptionId = typeof matchingInvoice.subscription === 'string'
+        ? matchingInvoice.subscription
+        : matchingInvoice.subscription?.id || subscriptionId;
+      status = status || 'active';
+      break;
+    }
+  }
+
+  return { plan, customerId, subscriptionId, status };
+
 }
 
 async function updateProfileMembership(userId, membership) {
