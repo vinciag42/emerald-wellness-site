@@ -49,29 +49,58 @@ function planFromSubscription(subscription) {
   return '';
 }
 
-async function resolveStripePlan(profile) {
-  if (!profile?.stripe_customer_id) return '';
-  let subscription = null;
-  if (profile.stripe_subscription_id) {
-    subscription = await stripeGet(`/subscriptions/${encodeURIComponent(profile.stripe_subscription_id)}`);
-  }
-  if (!subscription || !['active', 'trialing', 'past_due'].includes(subscription.status)) {
+async function resolveStripeMembership(profile) {
+  const validStatuses = ['active', 'trialing', 'past_due'];
+  const customerIds = new Set();
+  if (profile?.stripe_customer_id) customerIds.add(profile.stripe_customer_id);
+
+  if (profile?.email) {
     const params = new URLSearchParams();
-    params.append('customer', profile.stripe_customer_id);
-    params.append('status', 'all');
-    params.append('limit', '10');
-    const list = await stripeGet('/subscriptions', params);
-    subscription = (list?.data || []).find((entry) => ['active', 'trialing', 'past_due'].includes(entry.status)) || null;
+    params.append('query', `email:'${String(profile.email).replace(/'/g, "\\'")}'`);
+    params.append('limit', '100');
+    const customers = await stripeGet('/customers/search', params);
+    for (const customer of customers?.data || []) customerIds.add(customer.id);
   }
-  return planFromSubscription(subscription);
+
+  const subscriptions = [];
+  if (profile?.stripe_subscription_id) {
+    const saved = await stripeGet(`/subscriptions/${encodeURIComponent(profile.stripe_subscription_id)}`);
+    if (saved && validStatuses.includes(saved.status)) subscriptions.push(saved);
+  }
+
+  for (const customerId of customerIds) {
+    const params = new URLSearchParams();
+    params.append('customer', customerId);
+    params.append('status', 'all');
+    params.append('limit', '100');
+    const list = await stripeGet('/subscriptions', params);
+    for (const subscription of list?.data || []) {
+      if (validStatuses.includes(subscription.status)) subscriptions.push(subscription);
+    }
+  }
+
+  subscriptions.sort((a, b) => (b.created || 0) - (a.created || 0));
+  const subscription = subscriptions.find((entry) => planFromSubscription(entry)) || null;
+  return {
+    plan: planFromSubscription(subscription),
+    customerId: subscription?.customer || '',
+    subscriptionId: subscription?.id || '',
+    status: subscription?.status || '',
+  };
 }
 
-async function updateProfilePlan(userId, plan) {
-  if (!userId || !plan) return;
+async function updateProfileMembership(userId, membership) {
+  if (!userId || !membership?.plan) return;
   await supabaseFetch(`/rest/v1/profiles?id=eq.${encodeURIComponent(userId)}`, {
     method: 'PATCH',
     headers: { Prefer: 'return=minimal' },
-    body: JSON.stringify({ plan, updated_at: new Date().toISOString() }),
+    body: JSON.stringify({
+      plan: membership.plan,
+      stripe_customer_id: membership.customerId || undefined,
+      stripe_subscription_id: membership.subscriptionId || undefined,
+      status: membership.status || undefined,
+      updated_at: new Date().toISOString(),
+    }),
   });
 }
 
@@ -207,17 +236,21 @@ module.exports = async function handler(req, res) {
       });
       const data = Array.isArray(rows) ? rows[0] || null : null;
       const profile = await getProfile(user.id);
-      const stripePlan = await resolveStripePlan(profile).catch(() => '');
-      const plan = stripePlan || profile?.plan || data?.plan_key || 'gold';
-      if (stripePlan && stripePlan !== profile?.plan) {
-        await updateProfilePlan(user.id, stripePlan).catch(() => null);
+      const stripeMembership = await resolveStripeMembership(profile).catch(() => ({ plan: '' }));
+      const plan = stripeMembership.plan || profile?.plan || data?.plan_key || 'gold';
+      if (stripeMembership.plan && (
+        stripeMembership.plan !== profile?.plan ||
+        stripeMembership.customerId !== profile?.stripe_customer_id ||
+        stripeMembership.subscriptionId !== profile?.stripe_subscription_id
+      )) {
+        await updateProfileMembership(user.id, stripeMembership).catch(() => null);
       }
       return json(res, 200, {
         success: true,
         data,
         plan,
-        membership_status: profile?.status || null,
-        billing_source: stripePlan ? 'stripe' : 'profile',
+        membership_status: stripeMembership.status || profile?.status || null,
+        billing_source: stripeMembership.plan ? 'stripe' : 'profile',
       });
     }
 
