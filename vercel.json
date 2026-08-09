@@ -38,6 +38,7 @@
   ],
   "rewrites": [
     { "source": "/login", "destination": "/login.html" },
+    { "source": "/forgot-password", "destination": "/forgot-password.html" },
     { "source": "/member-command-center", "destination": "/dashboard.html" },
     { "source": "/signup", "destination": "/signup.html" },
     { "source": "/app", "destination": "/app.html" },
