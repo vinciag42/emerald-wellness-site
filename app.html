@@ -238,9 +238,9 @@ li{margin:7px 0}
       </div>
       <div class="grid">
         <div class="card wide">
-          <div class="field"><label>Current medications</label><textarea id="meds" rows="5" placeholder="Example: metformin, Eliquis, thyroid medication, SSRI, blood pressure medication"></textarea></div>
-          <div class="field"><label>Current stack</label><textarea id="stackItems" rows="5" placeholder="Example: BPC-157, semaglutide, omega-3, magnesium, vitamin D3/K2, berberine"></textarea></div>
-          <div class="field"><label>Goals or concerns</label><textarea id="goals" rows="3" placeholder="Example: energy & vitality, inflammation, weight loss, sleep, hormone balance, gut health, parasite/yeast/fungal support"></textarea></div>
+          <div class="field"><label>Current medications</label><textarea id="meds" aria-label="Current medications" rows="5" placeholder="Example: metformin, Eliquis, thyroid medication, SSRI, blood pressure medication"></textarea></div>
+          <div class="field"><label>Current stack</label><textarea id="stackItems" aria-label="Current supplements vitamins and peptides" rows="5" placeholder="Example: BPC-157, semaglutide, omega-3, magnesium, vitamin D3/K2, berberine"></textarea></div>
+          <div class="field"><label>Goals or concerns</label><textarea id="goals" aria-label="Wellness goals" rows="3" placeholder="Example: energy & vitality, inflammation, weight loss, sleep, hormone balance, gut health, parasite/yeast/fungal support"></textarea></div>
           <button class="btn" id="runCheck">Run Medication & Stack Check</button>
           <div id="checkResults"></div>
         </div>
@@ -265,7 +265,7 @@ li{margin:7px 0}
       </div>
       <div class="compound-tools">
         <div>
-          <input class="searchbox" id="search" placeholder="Search BPC-157, vitamin D, parasite, bioregulator..."/>
+          <input class="searchbox" id="search" aria-label="Search compound database" placeholder="Search BPC-157, vitamin D, parasite, bioregulator..."/>
           <div class="compound-list" id="compoundList"></div>
         </div>
         <div class="card full" id="compoundDetail"></div>
