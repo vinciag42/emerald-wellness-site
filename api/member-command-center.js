@@ -30,7 +30,6 @@ async function stripeGet(path, params = new URLSearchParams()) {
   const response = await fetch(`https://api.stripe.com/v1${path}${query ? `?${query}` : ''}`, {
     headers: {
       Authorization: `Bearer ${key}`,
-      'Stripe-Version': '2026-06-24.dahlia',
     },
   });
   if (!response.ok) return null;
