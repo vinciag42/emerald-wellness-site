@@ -232,7 +232,7 @@ module.exports = async function handler(req, res) {
     if (req.method === 'GET') {
       const rows = await supabaseFetch(`/rest/v1/command_center_data?user_id=eq.${encodeURIComponent(user.id)}&select=*`, {
         headers: { Prefer: 'return=representation' },
-      });
+      }).catch(() => []);
       const data = Array.isArray(rows) ? rows[0] || null : null;
       const profile = await getProfile(user.id);
       const stripeMembership = await resolveStripeMembership(profile).catch(() => ({ plan: '' }));
