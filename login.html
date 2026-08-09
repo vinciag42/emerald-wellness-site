@@ -248,6 +248,7 @@ async function init(){
     hash.indexOf("type=recovery") !== -1 ||
     query.get("type") === "recovery" ||
     query.get("recovery") === "1";
+  const isForgot = query.get("forgot") === "1";
 
   const { data } = await client.auth.getSession();
 
@@ -256,7 +257,7 @@ async function init(){
     return;
   }
 
-  showPanel(isRecovery ? "reset" : "signin");
+  showPanel(isRecovery ? "reset" : isForgot ? "forgot" : "signin");
   document.getElementById("authGate").style.display = "none";
 }
 
