@@ -8,9 +8,9 @@ window.EW_MODULE_ACCESS = {
   elite: { label: "Founding Full Access", limit: null, copy: "All Specialty Modules included", extra: "No additional module charge." },
   pro: { label: "Founding Full Access", limit: null, copy: "All Specialty Modules included", extra: "No additional module charge." },
   platinum: { label: "Founding Full Access", limit: null, copy: "All Specialty Modules included", extra: "No additional module charge." },
-  platinum_plus: { label: "Platinum Plus", limit: 4, copy: "4 Specialty Modules included", extra: "Additional modules available for $49.99/month each." },
-  concierge: { label: "Concierge Regenesis", limit: 999, copy: "Unlimited Specialty Modules included", extra: "No module add-on charge." },
-  concierge_premium: { label: "Concierge Regenesis Premium", limit: 999, copy: "Unlimited Specialty Modules included", extra: "Premium concierge support included." }
+  platinum_plus: { label: "Founding Full Access", limit: null, copy: "All Specialty Modules included", extra: "No additional module charge." },
+  concierge: { label: "Founding Full Access", limit: null, copy: "All Specialty Modules included", extra: "No additional module charge." },
+  concierge_premium: { label: "Founding Full Access", limit: null, copy: "All Specialty Modules included", extra: "No additional module charge." }
 };
 
 window.EW_MODULE_CATEGORIES = [
@@ -371,8 +371,8 @@ window.EW_SPECIALTY_MODULES = Object.entries(EW_LIBRARY).flatMap(([category, nam
       longDescription: `${ewDescription(name, category)} The module keeps language educational and helps members organize patterns, questions, and wellness tracking for discussion with qualified professionals.`,
       bestFor: ewBestFor(name, category),
       features: overrides.features || ["Module score", "Assessment", "Symptom tracker", "Recommended labs", "Daily check-ins", "Learning center"],
-      priceMonthly: 49.99,
-      priceTeaser: active ? "Active launch module. Included by tier; extra modules $49.99/mo." : "Coming soon. Join to be notified when this module opens.",
+      priceMonthly: 0,
+      priceTeaser: active ? "Active launch module. Included with Founding Full Access." : "Coming soon. Included with Full Access when this module opens.",
       includedPlanLevel: "Founding Full Access",
       status: active ? "active" : "coming_soon",
       active,
