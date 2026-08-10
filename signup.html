@@ -163,17 +163,17 @@ footer{text-align:center;padding:24px;border-top:1px solid var(--border);font-si
   <div class="logo">EMERALD <span>WELLNESS</span></div>
   <div style="display:flex;align-items:center;gap:18px">
     <a id="memberNavLink" href="/login" style="font-weight:800;color:var(--greenXL);font-size:13px">Sign In</a>
-    <div class="nav-badge">$1 for First 7 Days</div>
+    <div class="nav-badge">Founding Full Access · $39.99/month</div>
   </div>
 </nav>
 
 <div class="hero">
   <div class="hero-eyebrow">Start Your Journey</div>
-  <h1>Your First 7 Days<br/><em>Start for Just $1</em></h1>
+  <h1>Complete Wellness Access<br/><em>Founding Rate: $39.99/month</em></h1>
   <p class="hero-sub">Join Emerald Wellness for personal health intelligence, 500+ organized compounds, stack tracking, lab rhythm, and provider-review support where appropriate.</p>
   <div class="trust-row">
-    <div class="trust-item">$1 Intro: First 7 Days</div>
-    <div class="trust-item">Renews After Trial</div>
+    <div class="trust-item">Every Digital Module Included</div>
+    <div class="trust-item">Monthly Membership</div>
     <div class="trust-item">Cancel Anytime</div>
     <div class="trust-item">No Hidden Fees</div>
   </div>
@@ -410,13 +410,13 @@ function applyUpgradeModeCopy() {
     memberNavLink.textContent = 'Member Dashboard';
   }
   if (cancelUpgradeButton) cancelUpgradeButton.style.display = 'block';
-  if (navBadge) navBadge.textContent = 'Existing Member Upgrade';
-  if (firstTrustItem) firstTrustItem.textContent = 'Existing Member Upgrade';
+  if (navBadge) navBadge.textContent = 'Founding Full Access · $39.99/month';
+  if (firstTrustItem) firstTrustItem.textContent = 'All Digital Modules Included';
   const trustItems = document.querySelectorAll('.trust-row .trust-item');
   if (trustItems[1]) trustItems[1].textContent = 'Billing Confirmed Before Checkout';
-  if (heroTrialNote) heroTrialNote.textContent = 'Review the selected plan price and billing timing before confirming your membership upgrade.';
+  if (heroTrialNote) heroTrialNote.textContent = 'Review your $39.99 monthly Full Access membership before continuing to secure checkout.';
   document.querySelectorAll('.plan-trial').forEach(note => {
-    note.textContent = 'Existing-member upgrade · billing confirmed before checkout';
+    note.textContent = 'Founding Full Access · $39.99 monthly';
   });
   const step2TotalLabel = document.querySelector('#summaryTotal')?.parentElement?.querySelector('span');
   const step3TotalLabel = document.querySelector('#summaryTotal3')?.parentElement?.querySelector('span');
@@ -427,11 +427,11 @@ function applyUpgradeModeCopy() {
   if (successSub) successSub.textContent = 'Your membership upgrade request is confirmed. You will receive an Emerald Wellness confirmation email shortly.';
   if (successItems[0]) successItems[0].textContent = 'Membership upgrade confirmed';
   if (successItems[1]) successItems[1].textContent = 'Billing follows the timing confirmed during checkout';
-  if (eyebrow) eyebrow.textContent = 'Upgrade Membership';
-  if (title) title.innerHTML = 'Choose Your Next<br/><em>Emerald Wellness Level</em>';
+  if (eyebrow) eyebrow.textContent = 'Membership Details';
+  if (title) title.innerHTML = 'Founding Full Access<br/><em>$39.99 per month</em>';
   const savedProfile = getSavedMemberProfile();
   const savedName = savedProfile.firstName || savedProfile.first_name || '';
-  if (sub) sub.textContent = savedName ? `Welcome back, ${savedName}. Choose the membership level, module access, or Regenesis support tier you want to move into.` : 'Upgrade your Emerald Wellness membership, add modules, or move into a higher-touch Regenesis support tier.';
+  if (sub) sub.textContent = savedName ? `Welcome back, ${savedName}. Review your Full Access membership and billing details.` : 'Review the Founding Full Access membership and continue securely.';
   hydrateUpgradeUserData();
   if (window.lbl1) lbl1.textContent = 'Member';
   if (window.lbl2) lbl2.textContent = 'Upgrade Plan';
