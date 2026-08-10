@@ -4,18 +4,18 @@
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1"/>
 <title>Join Emerald Wellness — Start Your Wellness Journey</title>
-<meta name="description" content="Join Emerald Wellness and start with $1 for the first seven days. Choose personal health intelligence plans for stack checks, labs, specialty modules, Regenesis, and wellness education."/>
+<meta name="description" content="Join Emerald Wellness Founding Full Access for $39.99 per month and unlock the complete digital platform and all Specialty Modules."/>
 <meta name="robots" content="index, follow"/>
 <link rel="canonical" href="https://emeraldwellness.health/signup"/>
 <meta property="og:type" content="website"/>
 <meta property="og:url" content="https://emeraldwellness.health/signup"/>
 <meta property="og:title" content="Join Emerald Wellness — Start Your Wellness Journey"/>
-<meta property="og:description" content="Start Emerald Wellness for $1 for the first seven days and choose the plan that fits your wellness intelligence journey."/>
+<meta property="og:description" content="Join Emerald Wellness Founding Full Access for $39.99 per month during the 90-day founding offer."/>
 <meta property="og:image" content="https://emeraldwellness.health/og-emerald-wellness.png"/>
 <meta property="og:site_name" content="Emerald Wellness"/>
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:title" content="Join Emerald Wellness — Start Your Wellness Journey"/>
-<meta name="twitter:description" content="Choose an Emerald Wellness plan for personal health intelligence, labs, stack checks, specialty modules, and Regenesis."/>
+<meta name="twitter:description" content="Complete Emerald Wellness digital access and all Specialty Modules for $39.99 per month."/>
 <meta name="twitter:image" content="https://emeraldwellness.health/og-emerald-wellness.png"/>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
@@ -26,7 +26,7 @@
   "@type":"WebPage",
   "name":"Join Emerald Wellness",
   "url":"https://emeraldwellness.health/signup",
-  "description":"Emerald Wellness signup page for personal health intelligence plans, $1 introductory access, specialty modules, Regenesis, and wellness education.",
+  "description":"Emerald Wellness Founding Full Access signup for personal health intelligence, all digital specialty modules, Regenesis tools, and wellness education at $39.99 per month.",
   "isPartOf":{"@type":"WebSite","name":"Emerald Wellness","url":"https://emeraldwellness.health"}
 }
 </script>
@@ -177,7 +177,7 @@ footer{text-align:center;padding:24px;border-top:1px solid var(--border);font-si
     <div class="trust-item">Cancel Anytime</div>
     <div class="trust-item">No Hidden Fees</div>
   </div>
-  <div class="trial-note">Your card is charged $1 today. After 7 days, your selected plan renews automatically at the displayed price unless canceled before renewal.</div>
+  <div class="trial-note">Founding Full Access is $39.99 per month for members who join during the 90-day founding offer.</div>
   <div class="safety-note">Emerald Wellness provides wellness intelligence and tracking tools. It does not diagnose, treat, cure, prescribe, guarantee results, or replace medical care. Prescription decisions, where available, are made only by qualified licensed providers.</div>
 </div>
 
@@ -237,104 +237,59 @@ footer{text-align:center;padding:24px;border-top:1px solid var(--border);font-si
 
   <!-- STEP 2: Plan Selection -->
   <div class="step-card" id="step2">
-    <div class="step-title">Choose Your Plan</div>
-    <div class="step-sub">All paid plans start with a $1 intro charge for the first 7 days. After 7 days, your selected plan renews automatically unless canceled before renewal.</div>
+    <div class="step-title">Activate Founding Full Access</div>
+    <div class="step-sub">One membership unlocks the complete digital platform and every Specialty Module for $39.99 per month.</div>
     <div id="err2" class="error-msg"></div>
     <div class="upgrade-transition-note" id="upgradeTransitionNote">
       <strong>Upgrade timing</strong>
       Your current membership stays active at your current fee through this billing cycle. Your selected upgrade is intended to begin with your next billing cycle, so you are not surprised by a duplicate charge. If you want the higher tier to start immediately, contact Member Care before confirming.
     </div>
 
-    <div class="billing-toggle">
-      <button class="toggle-btn active" id="btnMonthly" onclick="setBilling('monthly')">Monthly</button>
-      <button class="toggle-btn" id="btnAnnual" onclick="setBilling('annual')">Annual <span class="save-badge">Save 20%</span></button>
-    </div>
+    <div class="billing-toggle"><button class="toggle-btn active" id="btnMonthly">Monthly Founding Rate</button></div>
 
     <div class="plans-grid">
-      <div class="plan-card" id="plan-silver" onclick="selectPlan('silver')">
-        <div class="plan-name">🥈 Silver</div>
-        <div class="plan-price" id="price-silver">$74.99<span>/mo</span></div>
-        <div class="plan-trial">$1 for first 7 days · then monthly billing</div>
-        <div class="plan-features">✓ 500+ compound database<br/>✓ Personal health intelligence tools<br/>✓ Basic protocol organization<br/>✓ Lab tracker<br/>✓ Specialty Modules require upgrade</div>
-      </div>
-      <div class="plan-card popular" id="plan-gold" onclick="selectPlan('gold')">
-        <div class="plan-name">🥇 Gold</div>
-        <div class="plan-price" id="price-gold">$149.99<span>/mo</span></div>
-        <div class="plan-trial">$1 for first 7 days · then monthly billing</div>
-        <div class="plan-features">✓ Everything in Silver<br/>✓ Stack Builder<br/>✓ 200+ protocols<br/>✓ Injection site guides<br/>✓ 1 Specialty Module included</div>
-      </div>
-      <div class="plan-card" id="plan-elite" onclick="selectPlan('elite')">
-        <div class="plan-name">💎 Emerald Elite</div>
-        <div class="plan-price" id="price-elite">$199.99<span>/mo</span></div>
-        <div class="plan-trial">$1 for first 7 days · then monthly billing</div>
-        <div class="plan-features">✓ Everything in Gold<br/>✓ Guided protocol organization<br/>✓ Biomarker trend tracking<br/>✓ Priority support<br/>✓ 2 Specialty Modules included</div>
-      </div>
-      <div class="plan-card" id="plan-pro" onclick="selectPlan('pro')">
-        <div class="plan-name">⚕️ Pro Practitioner</div>
-        <div class="plan-price" id="price-pro">$299.99<span>/mo</span></div>
-        <div class="plan-trial">$1 for first 7 days · then monthly billing</div>
-        <div class="plan-features">✓ Everything in Elite<br/>✓ Patient management<br/>✓ HIPAA BAA<br/>✓ White-label reports<br/>✓ 2 Specialty Modules included</div>
-      </div>
-      <div class="plan-card" id="plan-platinum" onclick="selectPlan('platinum')">
-        <div class="plan-name">✦ Platinum Regenesis</div>
-        <div class="plan-price" id="price-platinum">$599<span>/mo</span></div>
-        <div class="plan-trial">$1 for first 7 days · then recurring billing</div>
-        <div class="plan-features">✓ Regenesis dashboard<br/>✓ Quarterly lab rhythm<br/>✓ Doctor visit preparation<br/>✓ Premium biology planning<br/>✓ 3 Specialty Modules included</div>
-      </div>
-      <div class="plan-card" id="plan-platinum_plus" onclick="selectPlan('platinum_plus')">
-        <div class="plan-name">✦ Platinum Plus</div>
-        <div class="plan-price" id="price-platinum_plus">$799<span>/mo</span></div>
-        <div class="plan-trial">$1 for first 7 days · then recurring billing</div>
-        <div class="plan-features">✓ Everything in Platinum<br/>✓ Deeper quarterly optimization<br/>✓ Expanded Regenesis planning<br/>✓ Priority member support<br/>✓ 4 Specialty Modules included</div>
-      </div>
-      <div class="plan-card" id="plan-concierge" onclick="selectPlan('concierge')">
-        <div class="plan-name">◆ Concierge Regenesis</div>
-        <div class="plan-price" id="price-concierge">$999<span>/mo</span></div>
-        <div class="plan-trial">$1 for first 7 days · then recurring billing</div>
-        <div class="plan-features">✓ High-touch Regenesis support<br/>✓ Unlimited Specialty Modules<br/>✓ Concierge planning workflow<br/>✓ Premium member coordination<br/>✓ Best for complex wellness journeys</div>
-      </div>
-      <div class="plan-card" id="plan-concierge_premium" onclick="selectPlan('concierge_premium')">
-        <div class="plan-name">◆ Concierge Premium</div>
-        <div class="plan-price" id="price-concierge_premium">$1,499<span>/mo</span></div>
-        <div class="plan-trial">$1 for first 7 days · then recurring billing</div>
-        <div class="plan-features">✓ Everything in Concierge<br/>✓ Premium concierge support<br/>✓ Unlimited Specialty Modules<br/>✓ Highest-touch planning path<br/>✓ Best for VIP support needs</div>
+      <div class="plan-card popular selected" id="plan-all_access" onclick="selectPlan('all_access')">
+        <div class="plan-name">✦ Founding Full Access</div>
+        <div class="plan-price" id="price-all_access">$39.99<span>/mo</span></div>
+        <div class="plan-trial">90-day founding offer · rate remains active while continuously subscribed</div>
+        <div class="plan-features">✓ Member Command Center<br/>✓ BodyScan™, Regenesis Score™ and Protocol Vault™<br/>✓ Biology Labs™ uploads and tracking<br/>✓ All digital Specialty Modules included<br/>✓ Provider-ready reports and weekly check-ins</div>
       </div>
     </div>
 
-    <div class="addons-title">Specialty Modules — included by tier, then +$49.99/mo each</div>
-    <div class="trial-note" id="moduleAllowanceNote">Select a plan to see included Specialty Modules.</div>
+    <div class="addons-title">Specialty Modules — all included with Full Access</div>
+    <div class="trial-note" id="moduleAllowanceNote">All Specialty Modules are included. Choose the areas you want organized in your Member Command Center.</div>
     <div id="addonList">
       <div class="addon-row" id="addon-sleep" onclick="toggleAddon('sleep')">
         <div class="addon-left"><div class="addon-icon">😴</div><div><div class="addon-name">Sleep Science Optimization</div><div style="font-size:12px;color:var(--textDim)">Deep sleep protocols, circadian optimization, sleep peptides</div></div></div>
-        <div style="display:flex;align-items:center;gap:8px;"><div class="addon-price">+$49.99/mo</div><div class="addon-check" id="check-sleep"></div></div>
+        <div style="display:flex;align-items:center;gap:8px;"><div class="addon-price">Included</div><div class="addon-check" id="check-sleep"></div></div>
       </div>
       <div class="addon-row" id="addon-energy_vitality" onclick="toggleAddon('energy_vitality')">
         <div class="addon-left"><div class="addon-icon">✦</div><div><div class="addon-name">Energy &amp; Vitality</div><div style="font-size:12px;color:var(--textDim)">Daily energy, stamina, fatigue patterns, mitochondrial health, nutrient timing, sleep, and recovery tracking</div></div></div>
-        <div style="display:flex;align-items:center;gap:8px;"><div class="addon-price">+$49.99/mo</div><div class="addon-check" id="check-energy_vitality"></div></div>
+        <div style="display:flex;align-items:center;gap:8px;"><div class="addon-price">Included</div><div class="addon-check" id="check-energy_vitality"></div></div>
       </div>
       <div class="addon-row" id="addon-cognitive" onclick="toggleAddon('cognitive')">
         <div class="addon-left"><div class="addon-icon">🧠</div><div><div class="addon-name">Cognitive Enhancement</div><div style="font-size:12px;color:var(--textDim)">Nootropics, neuropeptides, focus & memory protocols</div></div></div>
-        <div style="display:flex;align-items:center;gap:8px;"><div class="addon-price">+$49.99/mo</div><div class="addon-check" id="check-cognitive"></div></div>
+        <div style="display:flex;align-items:center;gap:8px;"><div class="addon-price">Included</div><div class="addon-check" id="check-cognitive"></div></div>
       </div>
       <div class="addon-row" id="addon-sexual" onclick="toggleAddon('sexual')">
         <div class="addon-left"><div class="addon-icon">⚡</div><div><div class="addon-name">Sexual Health & Hormones</div><div style="font-size:12px;color:var(--textDim)">Hormone optimization, peptides, performance protocols</div></div></div>
-        <div style="display:flex;align-items:center;gap:8px;"><div class="addon-price">+$49.99/mo</div><div class="addon-check" id="check-sexual"></div></div>
+        <div style="display:flex;align-items:center;gap:8px;"><div class="addon-price">Included</div><div class="addon-check" id="check-sexual"></div></div>
       </div>
       <div class="addon-row" id="addon-gut" onclick="toggleAddon('gut')">
         <div class="addon-left"><div class="addon-icon">🦠</div><div><div class="addon-name">Gut & Microbiome Health</div><div style="font-size:12px;color:var(--textDim)">Microbiome protocols, gut peptides, digestive optimization</div></div></div>
-        <div style="display:flex;align-items:center;gap:8px;"><div class="addon-price">+$49.99/mo</div><div class="addon-check" id="check-gut"></div></div>
+        <div style="display:flex;align-items:center;gap:8px;"><div class="addon-price">Included</div><div class="addon-check" id="check-gut"></div></div>
       </div>
       <div class="addon-row" id="addon-nutrition" onclick="toggleAddon('nutrition')">
         <div class="addon-left"><div class="addon-icon">🥗</div><div><div class="addon-name">Nutrition & Diet Optimization</div><div style="font-size:12px;color:var(--textDim)">Macro protocols, food-supplement timing, anti-inflammatory plans</div></div></div>
-        <div style="display:flex;align-items:center;gap:8px;"><div class="addon-price">+$49.99/mo</div><div class="addon-check" id="check-nutrition"></div></div>
+        <div style="display:flex;align-items:center;gap:8px;"><div class="addon-price">Included</div><div class="addon-check" id="check-nutrition"></div></div>
       </div>
       <div class="addon-row" id="addon-lab" onclick="toggleAddon('lab')">
         <div class="addon-left"><div class="addon-icon">🧪</div><div><div class="addon-name">Advanced Lab Panel Builder</div><div style="font-size:12px;color:var(--textDim)">Custom lab panels, reference ranges, quarterly tracking</div></div></div>
-        <div style="display:flex;align-items:center;gap:8px;"><div class="addon-price">+$49.99/mo</div><div class="addon-check" id="check-lab"></div></div>
+        <div style="display:flex;align-items:center;gap:8px;"><div class="addon-price">Included</div><div class="addon-check" id="check-lab"></div></div>
       </div>
       <div class="addon-row" id="addon-recovery" onclick="toggleAddon('recovery')">
         <div class="addon-left"><div class="addon-icon">💪</div><div><div class="addon-name">Recovery Bundle</div><div style="font-size:12px;color:var(--textDim)">BPC-157, TB-500, HRV tracking, muscle repair protocols</div></div></div>
-        <div style="display:flex;align-items:center;gap:8px;"><div class="addon-price">+$49.99/mo</div><div class="addon-check" id="check-recovery"></div></div>
+        <div style="display:flex;align-items:center;gap:8px;"><div class="addon-price">Included</div><div class="addon-check" id="check-recovery"></div></div>
       </div>
     </div>
 
@@ -342,11 +297,11 @@ footer{text-align:center;padding:24px;border-top:1px solid var(--border);font-si
       <div class="summary-row"><span>Selected plan</span><span id="summaryPlan">— select a plan</span></div>
       <div class="summary-row"><span>Included modules</span><span id="includedModules">—</span></div>
       <div class="summary-row"><span>Selected modules</span><span id="selectedModules">0</span></div>
-      <div class="summary-row"><span>Additional billable modules</span><span id="billableModules">0</span></div>
-      <div class="summary-row" id="summaryAddonsRow" style="display:none;"><span>Module add-on: $49.99/month each</span><span id="summaryAddons">$0/month</span></div>
-      <div class="summary-row total"><span>Total after first 7 days</span><span class="price" id="summaryTotal">$0/mo</span></div>
+      <div class="summary-row"><span>Additional module charges</span><span id="billableModules">$0</span></div>
+      <div class="summary-row" id="summaryAddonsRow" style="display:none;"><span>Module add-ons</span><span id="summaryAddons">Included</span></div>
+      <div class="summary-row total"><span>Monthly membership</span><span class="price" id="summaryTotal">$39.99/mo</span></div>
     </div>
-    <div class="trial-note" id="step2BillingNote">✦ Your card will be charged $1 today. After 7 days, your first paid subscription month receives 20% off once, then your selected plan renews automatically at the displayed recurring price unless canceled before renewal.</div>
+    <div class="trial-note" id="step2BillingNote">✦ $39.99 is charged monthly. Products, prescriptions, laboratory testing, telehealth and one-on-one concierge services are priced separately. Cancel before renewal to avoid the next charge.</div>
     <button class="btn-primary" onclick="goStep3()">Continue → Create Member Account</button>
     <button class="btn-secondary" id="cancelUpgradeButton" style="display:none" onclick="window.location.href='/dashboard'">Cancel Upgrade — Return to Member Dashboard</button>
     <button class="btn-secondary" onclick="goStep(1)">← Back</button>
@@ -378,12 +333,12 @@ footer{text-align:center;padding:24px;border-top:1px solid var(--border);font-si
       <div class="summary-row"><span>Plan</span><span id="summaryPlan3">—</span></div>
       <div class="summary-row"><span>Included modules</span><span id="includedModules3">—</span></div>
       <div class="summary-row"><span>Selected modules</span><span id="selectedModules3">0</span></div>
-      <div class="summary-row"><span>Additional billable modules</span><span id="billableModules3">0</span></div>
+      <div class="summary-row"><span>Additional module charges</span><span id="billableModules3">$0</span></div>
       <div class="summary-row" id="addonsRow3" style="display:none;"><span>Module add-on total</span><span id="summaryAddons3">—</span></div>
       <div class="summary-row" id="referralRow" style="display:none;"><span>Referral code</span><span style="color:var(--greenXL);">Applied</span></div>
-      <div class="summary-row total"><span>After first 7 days</span><span class="price" id="summaryTotal3">$0/mo</span></div>
+      <div class="summary-row total"><span>Monthly membership</span><span class="price" id="summaryTotal3">$39.99/mo</span></div>
     </div>
-    <div class="trial-note" id="step3BillingNote">✦ $1 for the first 7 days — $1 charged today. After 7 days, your selected plan renews automatically at the displayed recurring price unless canceled before renewal.</div>
+    <div class="trial-note" id="step3BillingNote">✦ Your Founding Full Access membership renews monthly at $39.99 unless canceled before renewal.</div>
     <button class="btn-primary" id="btnCreateAccount" onclick="createAccount()">Create Member Account & Go to Checkout →</button>
     <button class="btn-secondary" onclick="goStep(2)">← Back</button>
   </div>
@@ -393,11 +348,11 @@ footer{text-align:center;padding:24px;border-top:1px solid var(--border);font-si
     <div class="success-wrap">
       <div class="success-icon">✦</div>
       <div class="success-title">Welcome to Emerald Wellness!</div>
-  <div class="success-sub">Your account is created and your first 7 days are active for $1. You'll receive a welcome email shortly.</div>
+  <div class="success-sub">Your account is created and Founding Full Access is active. You'll receive a welcome email shortly.</div>
       <div class="success-items">
-        <div class="success-item">First 7 days activated for $1</div>
-        <div class="success-item">Recurring billing begins after the first 7 days unless canceled</div>
-        <div class="success-item">Your selected membership access is active</div>
+        <div class="success-item">Founding Full Access activated at $39.99/month</div>
+        <div class="success-item">All digital Specialty Modules included</div>
+        <div class="success-item">Your founding rate remains active while continuously subscribed</div>
         <div class="success-item">Welcome email on its way</div>
       </div>
       <button class="btn-primary" onclick="goToMemberIntake()">Continue to Member Intake →</button>
@@ -506,25 +461,9 @@ const SUPABASE_ANON = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFz
 
 const PRICES = {
   monthly: {
-    silver: { id:'price_1Tb97eLzsA0y5z9V1qno7S07', amount:74.99 },
-    gold:   { id:'price_1TmoCpLzsA0y5z9VelLKqXRr', amount:149.99 },
-    elite:  { id:'price_1Tb97ZLzsA0y5z9VlhXybXrF', amount:199.99 },
-    pro:    { id:'price_1Tb9DpLzsA0y5z9VvXt3LCRs', amount:299.99 },
-    platinum: { id:'dynamic_platinum_monthly', amount:599 },
-    platinum_plus: { id:'dynamic_platinum_plus_monthly', amount:799 },
-    concierge: { id:'dynamic_concierge_monthly', amount:999 },
-    concierge_premium: { id:'dynamic_concierge_premium_monthly', amount:1499 },
+    all_access: { id:'dynamic_all_access_monthly', amount:39.99 },
   },
-  annual: {
-    silver: { id:'price_1Td1UpLzsA0y5z9VPeq424L4', amount:719.88 },
-    gold:   { id:'price_1Tb97dLzsA0y5z9VXYyasB1x', amount:1439.88 },
-    elite:  { id:'price_1Tb97dLzsA0y5z9VKWuTcpIU', amount:1919.88 },
-    pro:    { id:'price_1Tb9EvLzsA0y5z9Va2CX66J0', amount:2879.88 },
-    platinum: { id:'dynamic_platinum_annual', amount:6499 },
-    platinum_plus: { id:'dynamic_platinum_plus_annual', amount:7670.40 },
-    concierge: { id:'dynamic_concierge_annual', amount:9590.40 },
-    concierge_premium: { id:'dynamic_concierge_premium_annual', amount:14390.40 },
-  }
+  annual: {}
 };
 
 const MODULE_PRICING = window.EW_MODULE_PRICING;
@@ -540,14 +479,7 @@ const ADDON_PRICES = {
 };
 
 const PLAN_NAMES = {
-  silver:'Silver',
-  gold:'Gold',
-  elite:'Emerald Elite',
-  pro:'Pro Practitioner',
-  platinum:'Emerald Platinum Regenesis',
-  platinum_plus:'Platinum Plus',
-  concierge:'Concierge Regenesis',
-  concierge_premium:'Concierge Regenesis Premium'
+  all_access:'Founding Full Access',
 };
 const GOAL_LABELS = {
   weight: 'Weight Management',
@@ -572,7 +504,7 @@ const MODULE_ID_MAP = {
 };
 
 // ─── STATE ────────────────────────────────────────────────────────────────────
-let selectedPlan = '';
+let selectedPlan = 'all_access';
 let billing = 'monthly';
 let selectedAddons = new Set();
 let referralValid = false;
@@ -705,15 +637,14 @@ function goStep2() {
 
 // ─── STEP 2 ───────────────────────────────────────────────────────────────────
 function setBilling(type) {
-  billing = type;
+  billing = 'monthly';
   document.getElementById('btnMonthly').classList.toggle('active', type==='monthly');
-  document.getElementById('btnAnnual').classList.toggle('active', type==='annual');
   updatePriceDisplay();
   updateSummary();
 }
 
 function updatePriceDisplay() {
-  const plans = ['silver','gold','elite','pro','platinum','platinum_plus','concierge','concierge_premium'];
+  const plans = ['all_access'];
   const annualLabels = {
     silver:'$719.88/yr',
     gold:'$1,439.88/yr',
@@ -764,7 +695,7 @@ function updateSummary() {
   document.getElementById('moduleAllowanceNote').textContent = selectedPlan ? MODULE_PRICING.getModuleEntitlementMessage(selectedPlan) : 'Select a plan to see included Specialty Modules.';
   document.getElementById('includedModules').textContent = includedDisplay;
   document.getElementById('selectedModules').textContent = selectedModuleCount;
-  document.getElementById('billableModules').textContent = billableModuleCount;
+  document.getElementById('billableModules').textContent = '$0';
   document.getElementById('summaryAddonsRow').style.display = billableModuleCount > 0 ? 'flex' : 'none';
   document.getElementById('summaryAddons').textContent = '+$'+formatMoney(addonTotal)+'/month';
   document.getElementById('summaryTotal').textContent = selectedPlan ? '$'+formatMoney(total)+suffix : '$0/mo';
@@ -772,7 +703,7 @@ function updateSummary() {
   document.getElementById('summaryPlan3').textContent = selectedPlan ? PLAN_NAMES[selectedPlan]+' — $'+formatMoney(planAmt)+suffix : '—';
   document.getElementById('includedModules3').textContent = includedDisplay;
   document.getElementById('selectedModules3').textContent = selectedModuleCount;
-  document.getElementById('billableModules3').textContent = billableModuleCount;
+  document.getElementById('billableModules3').textContent = '$0';
   document.getElementById('addonsRow3').style.display = billableModuleCount > 0 ? 'flex' : 'none';
   document.getElementById('summaryAddons3').textContent = '+$'+formatMoney(addonTotal)+'/month';
   document.getElementById('summaryTotal3').textContent = selectedPlan ? '$'+formatMoney(total)+suffix : '$0/mo';
@@ -905,7 +836,7 @@ async function createAccount() {
           module_add_on_monthly_total: MODULE_PRICING.getModuleAddOnMonthlyTotal(selectedPlan, selectedAddons.size),
           plan_key: selectedPlan,
           referral_used: referralValid ? document.getElementById('referralCode').value.trim().toUpperCase() : null,
-          status: 'trial',
+          status: 'active',
           updated_at: new Date().toISOString()
         });
       }
@@ -1009,14 +940,14 @@ function persistCheckoutPreview(userId) {
       plan: selectedPlan,
       billing,
       selectedModules: Array.from(selectedAddons),
-      status: 'trial',
+      status: 'active',
       checkoutStatus: 'pending',
       updatedAt: new Date().toISOString()
     }));
     const existing = JSON.parse(localStorage.getItem('ew_specialty_marketplace_v3') || '{}');
     const fallbackActive = activeModules.length ? activeModules : ['energy-and-vitality'];
     localStorage.setItem('ew_specialty_marketplace_v3', JSON.stringify({
-      plan: selectedPlan || existing.plan || 'gold',
+      plan: selectedPlan || existing.plan || 'all_access',
       active: fallbackActive,
       modules: existing.modules || [],
       answers: existing.answers || {},
@@ -1038,8 +969,7 @@ function applyUrlSelections() {
   const requestedBilling = params.get('billing');
   const requestedPlan = params.get('plan');
   if(requestedBilling === 'annual' || requestedBilling === 'monthly') setBilling(requestedBilling);
-  if(params.get('regenesis') === 'platinum') selectPlan('platinum');
-  else if(requestedPlan && PRICES[billing]?.[requestedPlan]) selectPlan(requestedPlan);
+  if(params.get('regenesis') === 'platinum' || requestedPlan) selectPlan('all_access');
 }
 
 function applyRequestedStep() {

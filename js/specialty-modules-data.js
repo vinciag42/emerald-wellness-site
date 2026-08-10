@@ -2,11 +2,12 @@ window.EW_MODULE_DISCLAIMER = "Emerald Wellness provides educational wellness in
 
 window.EW_MODULE_ACCESS = {
   free: { label: "Free", limit: 0, copy: "Basic education only. Specialty Modules require an upgrade.", extra: "Upgrade to unlock Specialty Modules." },
-  gold: { label: "Gold", limit: 1, copy: "1 Specialty Module included", extra: "Additional modules available for $49.99/month each." },
-  plus: { label: "Gold / Plus", limit: 1, copy: "1 Specialty Module included", extra: "Additional modules available for $49.99/month each." },
-  elite: { label: "Emerald Elite", limit: 2, copy: "2 Specialty Modules included", extra: "Additional modules available for $49.99/month each." },
-  pro: { label: "Pro Practitioner", limit: 2, copy: "2 Specialty Modules included", extra: "Additional modules available for $49.99/month each." },
-  platinum: { label: "Emerald Platinum Regenesis", limit: 3, copy: "3 Specialty Modules included", extra: "Additional modules available for $49.99/month each." },
+  all_access: { label: "Founding Full Access", limit: null, copy: "All Specialty Modules included", extra: "No additional module charge." },
+  gold: { label: "Founding Full Access", limit: null, copy: "All Specialty Modules included", extra: "No additional module charge." },
+  plus: { label: "Founding Full Access", limit: null, copy: "All Specialty Modules included", extra: "No additional module charge." },
+  elite: { label: "Founding Full Access", limit: null, copy: "All Specialty Modules included", extra: "No additional module charge." },
+  pro: { label: "Founding Full Access", limit: null, copy: "All Specialty Modules included", extra: "No additional module charge." },
+  platinum: { label: "Founding Full Access", limit: null, copy: "All Specialty Modules included", extra: "No additional module charge." },
   platinum_plus: { label: "Platinum Plus", limit: 4, copy: "4 Specialty Modules included", extra: "Additional modules available for $49.99/month each." },
   concierge: { label: "Concierge Regenesis", limit: 999, copy: "Unlimited Specialty Modules included", extra: "No module add-on charge." },
   concierge_premium: { label: "Concierge Regenesis Premium", limit: 999, copy: "Unlimited Specialty Modules included", extra: "Premium concierge support included." }
@@ -372,7 +373,7 @@ window.EW_SPECIALTY_MODULES = Object.entries(EW_LIBRARY).flatMap(([category, nam
       features: overrides.features || ["Module score", "Assessment", "Symptom tracker", "Recommended labs", "Daily check-ins", "Learning center"],
       priceMonthly: 49.99,
       priceTeaser: active ? "Active launch module. Included by tier; extra modules $49.99/mo." : "Coming soon. Join to be notified when this module opens.",
-      includedPlanLevel: "Gold+",
+      includedPlanLevel: "Founding Full Access",
       status: active ? "active" : "coming_soon",
       active,
       comingSoon: !active,

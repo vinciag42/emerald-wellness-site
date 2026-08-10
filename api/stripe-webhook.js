@@ -40,9 +40,6 @@ function verifyStripeSignature(rawBody, signatureHeader, secret) {
   return safeEqual(expected, signature);
 }
 
-const FIRST_MONTH_DISCOUNT_PERCENT = 20;
-const FIRST_MONTH_COUPON_ID = process.env.STRIPE_FIRST_MONTH_COUPON_ID || 'EW_FIRST_MONTH_20';
-
 async function stripePostForm(path, params) {
   const key = process.env.STRIPE_SECRET_KEY;
   if (!key) throw new Error('Missing STRIPE_SECRET_KEY environment variable.');
@@ -63,23 +60,6 @@ async function stripePostForm(path, params) {
     throw new Error(message);
   }
   return data;
-}
-
-async function applyFirstMonthSubscriptionDiscount(subscriptionId, metadata = {}) {
-  if (!subscriptionId) return;
-  if (metadata.first_month_discount_applied === 'true') return;
-
-  const couponId = metadata.first_month_discount_coupon || FIRST_MONTH_COUPON_ID;
-  if (!couponId) return;
-
-  const params = new URLSearchParams();
-  params.append('discounts[0][coupon]', couponId);
-  params.append('metadata[first_month_discount_applied]', 'true');
-  params.append('metadata[first_month_discount_coupon]', couponId);
-  params.append('metadata[first_month_discount_percent]', String(FIRST_MONTH_DISCOUNT_PERCENT));
-  params.append('metadata[first_month_discount_timing]', 'first_paid_subscription_invoice_after_trial');
-
-  await stripePostForm(`/subscriptions/${encodeURIComponent(subscriptionId)}`, params);
 }
 
 async function updateSupabaseProfile(userId, updates) {
@@ -209,6 +189,7 @@ const PRICE_TO_PLAN = {
 
 const AMOUNT_TO_PLAN = {
   monthly: {
+    3999: 'all_access',
     7499: 'silver',
     14999: 'gold',
     19999: 'elite',
@@ -354,7 +335,7 @@ module.exports = async function handler(req, res) {
       const lifecycle = {
         plan: object.metadata?.plan || null,
         billing_interval: object.metadata?.billing || null,
-        status: 'trial',
+        status: 'active',
         source: 'stripe_checkout',
         stripe_event: event.type,
         stripe_customer_id: object.customer || null,
@@ -362,29 +343,17 @@ module.exports = async function handler(req, res) {
       };
       const moduleFields = moduleMetadata(object.metadata || {}, object.metadata?.addons ? object.metadata.addons.split(',').filter(Boolean) : []);
       Object.assign(lifecycle, moduleFields);
-      try {
-        await applyFirstMonthSubscriptionDiscount(object.subscription, object.metadata || {});
-        lifecycle.first_month_discount_percent = FIRST_MONTH_DISCOUNT_PERCENT;
-        lifecycle.first_month_discount_coupon = object.metadata?.first_month_discount_coupon || FIRST_MONTH_COUPON_ID;
-        lifecycle.first_month_discount_applied = true;
-      } catch (discountError) {
-        lifecycle.first_month_discount_error = discountError.message;
-        console.warn('[stripe-webhook] first-month discount not applied:', discountError.message);
-      }
       await updateSupabaseProfile(userId, {
         stripe_customer_id: lifecycle.stripe_customer_id,
         stripe_subscription_id: lifecycle.stripe_subscription_id,
         status: lifecycle.status,
         plan: lifecycle.plan,
         billing_interval: lifecycle.billing_interval,
-        first_month_discount_percent: lifecycle.first_month_discount_percent || null,
-        first_month_discount_coupon: lifecycle.first_month_discount_coupon || null,
-        first_month_discount_applied: Boolean(lifecycle.first_month_discount_applied),
         addons: object.metadata?.addons ? object.metadata.addons.split(',').filter(Boolean) : [],
         ...moduleFields,
         updated_at: new Date().toISOString(),
       });
-      await emitKlaviyoEvent('Trial Started', {
+      await emitKlaviyoEvent('Membership Started', {
         email: object.customer_details?.email || object.customer_email || object.email || null,
       }, lifecycle);
     }

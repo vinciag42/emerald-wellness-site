@@ -1,8 +1,9 @@
 (function(root){
-  const MODULE_ADD_ON_PRICE_MONTHLY = 49.99;
-  const MODULE_ADD_ON_PRICE_DISPLAY = "$49.99/month";
-  const STRIPE_MODULE_ADD_ON_PRICE_ID = "price_1TnCp8LzsA0y5z9VkssgXhRr";
+  const MODULE_ADD_ON_PRICE_MONTHLY = 0;
+  const MODULE_ADD_ON_PRICE_DISPLAY = "Included with Full Access";
+  const STRIPE_MODULE_ADD_ON_PRICE_ID = "";
   const PLAN_MODULE_ENTITLEMENTS = {
+    all_access: { includedModules: null, unlimitedModules: true, canPurchaseAddOns: false, label: "All Specialty Modules included" },
     free: { includedModules: 0, unlimitedModules: false, canPurchaseAddOns: false, label: "Basic education only. Specialty Modules require an upgrade." },
     silver: { includedModules: 0, unlimitedModules: false, canPurchaseAddOns: false, label: "Basic education only. Specialty Modules require an upgrade." },
     gold: { includedModules: 1, unlimitedModules: false, canPurchaseAddOns: true, label: "1 Specialty Module included" },
@@ -19,6 +20,10 @@
   function normalizePlanKey(planKey) {
     const key = String(planKey || "free").toLowerCase().replace(/[^a-z0-9]+/g, "_").replace(/^_|_$/g, "");
     return ({
+      silver: "all_access",
+      gold: "all_access",
+      elite: "all_access",
+      pro: "all_access",
       platinum_regenesis: "platinum",
       emerald_platinum_regenesis: "platinum",
       emerald_platinum_plus: "platinum_plus",
@@ -47,7 +52,7 @@
   }
   function getModuleEntitlementMessage(planKey) {
     const entitlement = getModuleEntitlement(planKey);
-    if (entitlement.unlimitedModules) return "Your plan includes unlimited Specialty Modules.";
+    if (entitlement.unlimitedModules) return "All Specialty Modules are included with Full Access.";
     if (!entitlement.canPurchaseAddOns) return "Upgrade to unlock Specialty Modules.";
     return `Your plan includes ${entitlement.includedModules} Specialty Module${entitlement.includedModules === 1 ? "" : "s"}. Add additional modules for ${MODULE_ADD_ON_PRICE_DISPLAY} each.`;
   }

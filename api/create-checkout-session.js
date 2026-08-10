@@ -9,30 +9,12 @@ const {
 
 const PLAN_PRICES = {
   monthly: {
-    silver: dynamicRecurringPrice('Emerald Wellness Silver', 7499, 'month'),
-    gold: dynamicRecurringPrice('Emerald Wellness Gold', 14999, 'month'),
-    elite: dynamicRecurringPrice('Emerald Elite', 19999, 'month'),
-    pro: dynamicRecurringPrice('Emerald Pro Practitioner Suite', 29999, 'month'),
-    platinum: dynamicRecurringPrice('Emerald Platinum Regenesis', 59900, 'month'),
-    platinum_plus: dynamicRecurringPrice('Emerald Platinum Regenesis Plus', 79900, 'month'),
-    concierge: dynamicRecurringPrice('Emerald Concierge Regenesis', 99900, 'month'),
-    concierge_premium: dynamicRecurringPrice('Emerald Concierge Regenesis Premium', 149900, 'month'),
+    all_access: dynamicRecurringPrice('Emerald Wellness Founding Full Access', 3999, 'month'),
   },
-  annual: {
-    silver: dynamicRecurringPrice('Emerald Wellness Silver Annual', 71988, 'year'),
-    gold: dynamicRecurringPrice('Emerald Wellness Gold Annual', 143988, 'year'),
-    elite: dynamicRecurringPrice('Emerald Elite Annual', 191988, 'year'),
-    pro: dynamicRecurringPrice('Emerald Pro Practitioner Suite Annual', 287988, 'year'),
-    platinum: dynamicRecurringPrice('Emerald Platinum Regenesis Annual', 649900, 'year'),
-    platinum_plus: dynamicRecurringPrice('Emerald Platinum Regenesis Plus Annual', 767040, 'year'),
-    concierge: dynamicRecurringPrice('Emerald Concierge Regenesis Annual', 959040, 'year'),
-    concierge_premium: dynamicRecurringPrice('Emerald Concierge Regenesis Premium Annual', 1439040, 'year'),
-  },
+  annual: {},
 };
 
 const ALLOWED_ADDONS = new Set(['sleep', 'energy_vitality', 'cognitive', 'sexual', 'gut', 'nutrition', 'lab', 'recovery']);
-const FIRST_MONTH_DISCOUNT_PERCENT = 20;
-const FIRST_MONTH_COUPON_ID = process.env.STRIPE_FIRST_MONTH_COUPON_ID || 'EW_FIRST_MONTH_20';
 
 function dynamicRecurringPrice(name, unitAmount, interval) {
   return {
@@ -92,8 +74,9 @@ module.exports = async function handler(req, res) {
   try {
     const body = typeof req.body === 'string' ? JSON.parse(req.body || '{}') : req.body || {};
     const origin = req.headers.origin || `https://${req.headers.host}`;
-    const plan = String(body.plan || '').toLowerCase();
-    const billing = String(body.billing || 'monthly').toLowerCase();
+    const requestedPlan = String(body.plan || 'all_access').toLowerCase();
+    const plan = ['silver', 'gold', 'elite', 'pro', 'platinum', 'platinum_plus', 'concierge', 'concierge_premium', 'all_access'].includes(requestedPlan) ? 'all_access' : requestedPlan;
+    const billing = plan === 'all_access' ? 'monthly' : String(body.billing || 'monthly').toLowerCase();
     const email = String(body.email || '').trim();
     const userId = String(body.userId || '');
     const addons = Array.isArray(body.addons) ? body.addons.filter((key) => ALLOWED_ADDONS.has(key)) : [];
@@ -105,17 +88,7 @@ module.exports = async function handler(req, res) {
 
     const planLineItem = { ...planPrice, quantity: 1 };
 
-    const lineItems = [
-      {
-        price_data: {
-          currency: 'usd',
-          unit_amount: 100,
-          product_data: { name: 'Emerald Wellness 7-Day Intro' },
-        },
-        quantity: 1,
-      },
-      planLineItem,
-    ];
+    const lineItems = [planLineItem];
 
     const entitlement = getModuleEntitlement(plan);
     const billableModuleCount = getBillableModuleAddOnCount(plan, addons.length);
@@ -136,7 +109,6 @@ module.exports = async function handler(req, res) {
     params.append('customer_email', email);
     params.append('success_url', `${origin}/dashboard?checkout=success&tab=active-module&session_id={CHECKOUT_SESSION_ID}`);
     params.append('cancel_url', `${origin}/signup?checkout=canceled&step=3`);
-    params.append('subscription_data[trial_period_days]', '7');
     params.append('metadata[user_id]', userId);
     params.append('metadata[plan]', plan);
     params.append('metadata[billing]', billing);
@@ -148,9 +120,6 @@ module.exports = async function handler(req, res) {
     params.append('metadata[module_add_on_price_monthly]', String(MODULE_ADD_ON_PRICE_MONTHLY));
     params.append('metadata[module_add_on_monthly_total]', String(moduleAddOnMonthlyTotal));
     params.append('metadata[plan_key]', plan);
-    params.append('metadata[first_month_discount_percent]', String(FIRST_MONTH_DISCOUNT_PERCENT));
-    params.append('metadata[first_month_discount_coupon]', FIRST_MONTH_COUPON_ID);
-    params.append('metadata[first_month_discount_timing]', 'first_paid_subscription_invoice_after_trial');
     params.append('metadata[referral]', referral);
     params.append('subscription_data[metadata][user_id]', userId);
     params.append('subscription_data[metadata][plan]', plan);
@@ -163,9 +132,6 @@ module.exports = async function handler(req, res) {
     params.append('subscription_data[metadata][module_add_on_price_monthly]', String(MODULE_ADD_ON_PRICE_MONTHLY));
     params.append('subscription_data[metadata][module_add_on_monthly_total]', String(moduleAddOnMonthlyTotal));
     params.append('subscription_data[metadata][plan_key]', plan);
-    params.append('subscription_data[metadata][first_month_discount_percent]', String(FIRST_MONTH_DISCOUNT_PERCENT));
-    params.append('subscription_data[metadata][first_month_discount_coupon]', FIRST_MONTH_COUPON_ID);
-    params.append('subscription_data[metadata][first_month_discount_timing]', 'first_paid_subscription_invoice_after_trial');
     params.append('subscription_data[metadata][referral]', referral);
 
     lineItems.forEach((item, index) => appendLineItem(params, index, item));
